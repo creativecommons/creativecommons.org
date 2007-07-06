@@ -1,0 +1,125 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/@@standard_macros/page"
+      i18n:domain="cc_org">
+<head>
+  <title metal:fill-slot="title">Choose a License</title>
+</head>
+<body>
+<div metal:fill-slot="body"
+
+      tal:define="target_lang string:en;">
+
+<h1 i18n:translate="license.Choose_License">Choose A License</h1>
+
+	<p i18n:translate="license.what">
+				   <span i18n:name="lang" tal:content="target_lang" tal:omit-tag="">es</span>
+With a Creative Commons license, <strong>you keep your copyright</strong> but allow people to <a href="http://creativecommons.org/learn/licenses/fullrights">copy and distribute your work</a> provided they <a href="http://creativecommons.org/characteristic/by?lang=en" onclick="window.open('http://creativecommons.org/characteristic/by?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">give you credit</a> -- and only on the conditions you specify here. If you want to offer your work with no conditions, choose the <a href="http://creativecommons.org/license/publicdomain">public domain</a>.</p>
+	
+		<div class="licensebox">
+
+			<form action="./results-one" method="get" >
+		        <input type="hidden"  name="q_1" value="2" id="question_1-2" checked="checked" />
+                       	<input type="hidden" name="q_1" value="1" id="question_1-1" />
+			
+			
+			<p>
+			<span tal:omit-tag=""  i18n:translate="license.q2"> 
+			   <span i18n:name="lang" tal:content="target_lang" tal:omit-tag="">es</span>
+			<strong>Allow commercial uses of your work?</strong> (<a href="http://creativecommons.org/license/characteristic/nc?lang=en" onclick="window.open('http://creativecommons.org/characteristic/nc?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">more info</a> <a href="/characteristic/nc?lang=en" onclick="window.open('/characteristic/nc?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="/images/popup.gif" width="15" height="13" alt="more information" border="0" /></a>)
+			</span>
+			<br />
+		    	
+		    
+			<input type="radio" checked="checked" name="field_commercial" value="yes" id="question_2-3" /> <label for="question_2-3" i18n:translate="util.Yes">Yes</label><br />
+			
+			<input type="radio"  name="field_commercial" value="n" id="question_2-4" /> <label for="question_2-4" i18n:translate="util.No">No</label><br />
+			
+			</p>
+			
+			<p>
+			<span tal:omit-tag="" i18n:translate="license.q3">
+			   <span i18n:name="lang" tal:content="target_lang" tal:omit-tag="">es</span>
+			<strong>Allow modifications of your work?</strong></span>
+			
+			<br />
+
+			
+			<input type="radio" checked="checked" name="field_derivatives" value="yes" id="question_3-5" /> <label for="question_3-5" i18n:translate="util.Yes">Yes</label><br />
+			
+			<input type="radio"  name="field_derivatives" value="sa" id="question_3-6" /> <label for="question_3-6" i18n:translate="license.a6">
+			<span i18n:name="lang" tal:content="target_lang" tal:omit-tag="">Yes</span>
+Yes, as long as others share alike (<a href="http://creativecommons.org/characteristic/sa?lang=en" onclick="window.open('http://creativecommons.org/characteristic/sa?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">more info</a> <a href="http://creativecommons.org/characteristic/sa?lang=en" onclick="window.open('http://creativecommons.org/characteristic/sa?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="http://creativecommons.org/images/popup.gif" width="15" height="13" alt="more information" border="0" /></a>)</label><br />
+			
+			<input type="radio"  name="field_derivatives" value="n" id="question_3-7" /> <label for="question_3-7" i18n:translate="util.No">No (<a href="http://creativecommons.org/characteristic/nd?lang=en" onclick="window.open('http://creativecommons.org/characteristic/nd?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">more info</a> <a href="http://creativecommons.org/characteristic/nd?lang=en" onclick="window.open('http://creativecommons.org/characteristic/nd?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="http://creativecommons.org/images/popup.gif" width="15" height="13" alt="more information" border="0" /></a>)
+</label><br />
+			
+			</p>
+
+			<p>
+                        <span tal:omit-tag="" i18n:translate="license.jurisdiction_question">Jurisdiction of your license</span> 
+                        (<a href="/license/jurisdiction-popup?lang=en" 
+   tal:attributes="onclick string:window.open('http://creativecommons.org/license/jurisdiction-popup?lang=${target_lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');;return false;
+                   href string:/license/jurisdiction-popup?lang=${target_lang};"
+   onclick="window.open('http://creativecommons.org/license/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;" i18n:translate="util.more_info">more info</a> 
+<a href="http://creativecommons.org/license/jurisdiction-popup?lang=en" onclick="window.open('http://creativecommons.org/license/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
+   tal:attributes="onclick string:window.open('http://creativecommons.org/license/jurisdiction-popup?lang=${target_lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');;return false;
+                   href string:/license/jurisdiction-popup?lang=${target_lang};"
+
+>
+<img src="http://creativecommons.org/images/popup.gif" width="15" height="13" alt="more info" border="0" /></a>)<br />
+
+<select name="field_jurisdiction"
+        tal:define="selected view/selected_jurisdiction">
+<option value=""  
+        tal:condition="python: selected is None"
+        i18n:translate="util.Generic" selected="selected">Generic</option>
+<option value=""  
+        tal:condition="python: selected is not None"
+        i18n:translate="util.Generic" >Generic</option>
+
+<span tal:omit-tag=""
+        tal:repeat="j context/jurisdictions">
+<option value="" selected="selected"
+        tal:condition="python: j != '-' and selected == j"
+        tal:attributes="value j;" >
+  <span tal:content="string:country.${j}"
+        tal:omit-tag=""
+        i18n:translate="" />
+</option>
+<option value=""
+        tal:condition="python: j != '-' and selected != j"
+        tal:attributes="value j;">
+  <span tal:content="string:country.${j}"
+        tal:omit-tag=""
+        i18n:translate="" />
+</option>
+</span>
+
+</select>
+
+			</p>
+
+<!-- <div metal:use-macro="here/common_ui/macros/more-metadata" /> -->
+
+			<input type="hidden" name="lang" value="en" tal:attributes="value target_lang" />
+			<input type="hidden" name="language" value="en" tal:attributes="value target_lang" />
+			<input type="hidden" name="n_questions" value="3" />
+			<input type="submit" 
+                   i18n:attributes="value license.Select_a_License;" 
+                   value="Select a License" />
+			</form>
+		</div>
+		<br />
+
+		
+<!-- <div metal:use-macro="here/license_macros/macros/languages">
+  language box
+</div>
+-->
+
+</div>
+</body>
+</html>
