@@ -27,6 +27,7 @@ setup(
 
     # scripts and dependencies
     install_requires = ['setuptools',
+                        'cc.license',
                         ],
     #dependency_links=['https://cctools.svn.sourceforge.net/svnroot/cctools/vendorlibs/utidylib/#egg=utidylib-0.2-cvs',],
 
