@@ -6,12 +6,9 @@ from cc.engine.interfaces import ILicenseEngine
 
 class LicenseEngine(Persistent):
     implements(ILicenseEngine)
-
+        
     def default_jurisdiction(self, language):
         return "-"
-
-    def jurisdictions(self, launched_only=True):
-        return ["-", "fr", "de"]
     
 LicenseEngineFactory = Factory(
     LicenseEngine,

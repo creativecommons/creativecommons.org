@@ -1,7 +1,5 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
-    <include package=".browser" />
-
     <class class=".engine.LicenseEngine">
         <require permission="zope.View"
                  interface=".interfaces.ILicenseEngine"
@@ -26,5 +24,8 @@
          name="cc.engine.LicenseCatalog" 
          permission="zope.ManageContent"
     />
+
+    <include package=".browser" />
+
 
 </configure>
