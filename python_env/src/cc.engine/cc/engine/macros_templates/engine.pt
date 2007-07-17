@@ -1,0 +1,12 @@
+<html metal:define-macro="page">
+  <head>
+    <title metal:define-slot="title">Page Title</title>
+  </head>
+  <body>
+
+    <div metal:define-slot="body">
+      Put your content here...
+    </div>
+
+  </body>
+</html>
