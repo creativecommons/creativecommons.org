@@ -22,20 +22,15 @@ from setuptools import setup, find_packages
 
 setup(
     name = "cc.engine",
-    version = "0.3",
+    version = "0.0.1",
     packages = find_packages('.'),
 
     # scripts and dependencies
     install_requires = ['setuptools',
+                        'grok',
                         'cc.license',
                         ],
     #dependency_links=['https://cctools.svn.sourceforge.net/svnroot/cctools/vendorlibs/utidylib/#egg=utidylib-0.2-cvs',],
-
-    #entry_points = { 'console_scripts':
-    #                 ['server = rest_api:serveapi',
-    #                  'test = tests.test:runTests',
-    #                  ],
-    #                 },
 
     # author metadata
     author = 'Nathan R. Yergler',

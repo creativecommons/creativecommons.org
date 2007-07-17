@@ -1,0 +1,7 @@
+
+* Traversal for deeds
+* Individual adapters for Deeds, Legal Code, RDF, etc
+* i18n
+* cc.org chrome
+* partner interface
+* replace popups
