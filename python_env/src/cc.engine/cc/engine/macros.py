@@ -7,6 +7,10 @@ class Engine(grok.View):
 ## class Partner(grok.View):
 ##     grok.context(Interface)
         
-## class Deed(grok.View):
-##     grok.context(Interface)
+class Deed(grok.View):
+    grok.context(Interface)
+    
+class Support(grok.View):
+    """Container for support macros: translations, etc."""
+    grok.context(Interface)
     
