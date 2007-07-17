@@ -1,18 +1,11 @@
 import grok
-#from zope.interface import implements
+from zope.interface import implements
 
-#from cc.engine.interfaces import ILicenseEngine
-
+from cc.engine.interfaces import ILicenseEngine
 import cc.license
 
 class LicenseEngine(grok.Application, grok.Container):
-    pass
-
-##     implements(ILicenseEngine)
-        
-##     def default_jurisdiction(self, language):
-##         return "-"
-
+    implements(ILicenseEngine)
 
 class BaseIndexView(object):
 
@@ -44,15 +37,14 @@ class Index(grok.View):
 
         # determine if we're using the standard site or partner interface
         if u'partner' in self.request.form:
-            return str(grok.PageTemplateFile('unbound_templates/partner.pt'))
+            return Partner(self.context, self.request)()
 
         else:
 
             return Cc_Index(self.context, self.request)()
-            return str(grok.PageTemplateFile('unbound_templates/index.pt'))
 
     
-class results(grok.View):
+class Results(grok.View):
     grok.name('results-one')
     grok.context(LicenseEngine)
 
