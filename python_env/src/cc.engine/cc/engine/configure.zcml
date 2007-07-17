@@ -1,31 +1,5 @@
-<configure xmlns="http://namespaces.zope.org/zope">
-
-    <class class=".engine.LicenseEngine">
-        <require permission="zope.View"
-                 interface=".interfaces.ILicenseEngine"
-         />
-
-        <require permission="zope.ManageContent"
-                 set_schema=".interfaces.ILicenseEngine"
-         />
-
-    </class>
-
-    <class class=".catalog.LicenseCatalog" />
-
-    <utility
-         component=".engine.LicenseEngineFactory"
-         name="cc.engine.LicenseEngine" 
-         permission="zope.ManageContent"
-    />
-
-    <utility
-         component=".catalog.LicenseCatalogFactory"
-         name="cc.engine.LicenseCatalog" 
-         permission="zope.ManageContent"
-    />
-
-    <include package=".browser" />
-
-
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:grok="http://namespaces.zope.org/grok">
+  <include package="grok" />
+  <grok:grok package="." />
 </configure>
