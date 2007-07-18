@@ -1,25 +1,50 @@
 import grok
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
+import cc.license
 
-from cc.engine.interfaces import ILicenseCatalog
+from cc.engine import interfaces
 
-class License(grok.Model):
 
+class BrowserLicense(grok.Model):
+    implements(interfaces.ILicense)
+
+    TARGET_NAMES = ('deed', 'rdf', 'rdf-checksum',
+                    'legalcode', 'legalcode-checksum')
+
+    def __init__(self, parent, pieces):
+        self.__parent__ = parent
+        self.__name__ = pieces[-1]
+
+        self.pieces = pieces
+        
     @property
     def license(self):
-        """Return the cc.license.License object selected by the traversal."""
-        return None
-    
-    def traverse(self, foo):
-        self.code.append(foo)
+        """Return the cc.license.License object selected."""
+
+        version = jurisdiction = None
         
-        return self
+        return cc.license.LicenseFactory().by_license_code(self.pieces[0],
+                                                           version,
+                                                           jurisdiction)
+
+    def traverse(self, name):
+
+        if len(self.pieces) > 3:
+            # no cases call for more than three steps of traversal
+            return None
+
+        # XXX handle deed.de, etc
+        
+        if name not in self.TARGET_NAMES:
+            return BrowserLicense(self, self.pieces + [name])
+
 
 class LicenseDeed(grok.View):
+    grok.context(BrowserLicense)
+    grok.name('index')
     grok.template('deed')
-    grok.context(License)
-
+    
     @property
     def is_rtl(self):
         pass
@@ -27,29 +52,21 @@ class LicenseDeed(grok.View):
     @property
     def is_rtl_align(self):
         pass
-    
-class LicenseIndex(grok.View):
-    grok.name('index')
-    grok.context(License)
-    
+
+class LicenseRdf(grok.View):
+    grok.context(BrowserLicense)
+    grok.name('rdf')
+
     def render(self):
-
-        found = True
-        if found:
-            deed = LicenseDeed(self.context, self.request)
-            deed.license = self.context
-
-        raise NotFound(self.context, self.context.code)
+        return "rdf goes here"
+                 
     
 class LicenseCatalog(grok.Application, grok.Container):
-    implements(ILicenseCatalog)
+    implements(interfaces.ILicenseCatalog)
 
-    def traverse(self, foo):
+    def traverse(self, code):
 
-        model = License()
-        model.code = [foo]
-        
-        return model
+        return BrowserLicense(self, [code])
 
 class Index(grok.View):
     grok.context(LicenseCatalog)

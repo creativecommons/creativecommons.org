@@ -7,3 +7,6 @@ class ILicenseEngine(Interface):
         
 class ILicenseCatalog(Interface):
     pass
+
+class ILicense(Interface):
+    pass
