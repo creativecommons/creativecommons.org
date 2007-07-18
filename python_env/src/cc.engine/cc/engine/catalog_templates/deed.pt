@@ -2,14 +2,21 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/@@deed/page"
       i18n:domain="cc_org">
 <head>
-  <title >Choose a License</title>
+  <title metal:fill-slot="title">XXX</title>
 </head>
 <body>
 <div>
 
-<span tal:content="context/code" />
+<span tal:content="context/license/uri" />
+
+<h2 metal:fill-slot="license-name">
+<span tal:omit-tag="" tal:content="structure string:${licenseinfo/pretty_name} ${request/version} ${licenseinfo/country_name}"/>
+<span tal:omit-tag="" tal:condition="python: request['license_code'] == 'by' or request['license_code'] == 'by-sa'"> (Libre)</span>
+</h2>
+
 </div>
 </body>
 </html>

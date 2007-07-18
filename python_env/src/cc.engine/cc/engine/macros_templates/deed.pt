@@ -1,6 +1,8 @@
-<metal:page 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:cc="http://creativecommons.org/ns#"
       metal:define-macro="page"
       i18n:domain="cc_org">
@@ -12,7 +14,7 @@
           href="/includes/deed3.css" media="screen" />
     <link rel="stylesheet" type="text/css" 
           href="/includes/deed3-rtl.css" media="screen" 
-          tal:condition="here/is_rtl" />
+          tal:condition="view/is_rtl" />
     <link rel="stylesheet" type="text/css" 
           href="/includes/deed3-print.css" media="print" />
 
@@ -46,17 +48,16 @@
 	      <div id="cc-logo"><img src="/images/deed/cc-logo.jpg" alt="cc logo"/></div>
 	      <h1><span>Creative Commons License Deed</span></h1>
         <div id="deed-license">
-	        <h2><span tal:omit-tag="" tal:content="structure string:${licenseinfo/pretty_name} ${request/version} ${licenseinfo/country_name}"/>
-<span tal:omit-tag="" tal:condition="python: request['license_code'] == 'by' or request['license_code'] == 'by-sa'"> (Libre)</span></h2>
+	        <h2 metal:define-slot="license-name"></h2>
         </div>
       </div>
-      <div id="deed-main" tal:attributes="dir here/is_rtl; align here/is_rtl_align;">
+      <div id="deed-main" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
        <div id="deed-main-content">
         <div class="libre"
              tal:condition="python: request['license_code'] == 'by' or request['license_code'] == 'by-sa'">
            <a href="http://freedomdefined.org/"><img src="/images/deed/libre8.png" alt="Libre" /></a>
         </div>
-        <div id="deed-rights" tal:attributes="dir here/is_rtl; align here/is_rtl_align;">
+        <div id="deed-rights" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
 <span tal:omit-tag="" tal:condition="python: jurisdiction not in ['-', 'es']"><a tal:attributes="href python: '/worldwide/'+request['jurisdiction']+'/'" href=''><img tal:attributes="src python: '/images/international/'+request['jurisdiction']+'.png'" src='' border="0"/></a></span>
 		      <h3 rel="cc:permits" href="http://creativecommons.org/ns#Reproduction" i18n:translate="deed.You_are_free"></h3>
 		      <ul>
@@ -68,7 +69,7 @@
         </div>
         <div id="deed-conditions">
 		      <h3 i18n:translate="deed.under_conditions"></h3>
-	        <ul tal:attributes="dir here/is_rtl; align here/is_rtl_align;"> 
+	        <ul tal:attributes="dir view/is_rtl; align view/is_rtl_align;"> 
             <li rel="cc:requires" href="http://creativecommons.org/ns#Attribution" class="license @attributes.char_code@" 
                 tal:repeat="attr licenseinfo/attributes" 
                 tal:attributes="class string:license ${attr/icon_name};rel string:${attr/predicate}; href string:${attr/object}">
@@ -131,5 +132,3 @@
 
   </body>
 </html>
-
-</metal:page>
