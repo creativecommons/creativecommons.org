@@ -47,11 +47,29 @@ class LicenseDeed(grok.View):
     
     @property
     def is_rtl(self):
+
+        # XXX
         pass
 
     @property
     def is_rtl_align(self):
+
+        # XXX
         pass
+
+    @property
+    def active_languages(self):
+
+        # XXX
+        return []
+
+    
+    @property
+    def color(self):
+
+        # XXX
+        return 'green'
+    
 
 class LicenseRdf(grok.View):
     grok.context(BrowserLicense)

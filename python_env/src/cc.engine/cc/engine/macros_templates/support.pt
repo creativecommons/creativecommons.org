@@ -1,1 +1,54 @@
-<html></html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:cc="http://creativecommons.org/ns#"
+      i18n:domain="cc_org">
+
+<metal:language_javascript       
+     metal:define-macro="language_javascript">
+
+<script type="text/javascript">
+function setCookie(name, value, expires, path, domain, secure) {
+    document.cookie= name + "=" + escape(value) +
+        ((expires) ? "; expires=" + expires.toGMTString() : "") +
+        ((path) ? "; path=" + path : "") +
+        ((domain) ? "; domain=" + domain : "") +
+        ((secure) ? "; secure" : "");
+}
+var expiry = new Date();
+expiry.setTime(expiry.getTime()+(5*365*24*60*60*1000));
+setCookie('lang','%s', expiry, '/');
+</script>
+
+</metal:language_javascript>
+
+<metal:translations
+     metal:define-macro="translations">
+
+<div style="width: 620px; margin-left: auto; margin-right: auto;"><div style="text-align: center;">
+<span tal:attributes="dir view/is_rtl; align view/is_rtl_align;" i18n:translate="deed.view_in">This page is available in the following languages:</span>
+<br/>
+
+<div tal:omit-tag=""
+     tal:repeat="lang view/active_languages">
+
+<a href="#" title="Catal%Gï¿½%@" hreflang="ca" 
+   tal:define="url_juris python: ((request['jurisdiction'] != '-') and ('/' + request['jurisdiction'] + '/')) or '/';
+               deed_version python: request.get('version', False) and ('/' + request['version']) or '';
+               lang_dashlc python: lang.replace('_','-').lower()"
+   rel="alternate nofollow" lang="ca" 
+   tal:content="python: here.translate_target('icommons', 'lang.%s' % lang, lang_dashlc)"
+   tal:attributes="title python: here.translate_target('icommons', 'lang.%s' % lang, lang);
+                   href     string:/licenses/${request/license_code}${deed_version}${url_juris}deed.${lang};
+                   hreflang lang;
+                   lang     lang;
+                   "
+   >Catal%Gï¿½%@f</a>
+
+</div>
+</div></div>
+
+
+</metal:translations>
+</html>
