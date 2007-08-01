@@ -3,9 +3,14 @@
            xmlns:i18n="http://namespaces.zope.org/i18n"
            i18n_domain="icommons"
            >
+
   <include package="grok" />
   <grok:grok package="." />
 
   <i18n:registerTranslations directory="./locales/" />
+
+  <adapter for="zope.publisher.interfaces.http.IHTTPRequest"
+           provides="zope.i18n.interfaces.IUserPreferredLanguages"
+           factory=".i18n.PreferredLanguages" />
 
 </configure>
