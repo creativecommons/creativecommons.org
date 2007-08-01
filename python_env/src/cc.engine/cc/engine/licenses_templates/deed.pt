@@ -5,7 +5,9 @@
       metal:use-macro="context/@@deed/page"
       i18n:domain="icommons">
 <head>
-  <title metal:fill-slot="title">XXX</title>
+  <title metal:fill-slot="title">Creative Commons 
+    <span tal:omit-tag="" tal:content="context/license/name">Attribution 3.0 Unported</span>
+  </title>
 </head>
 <body>
 
@@ -20,6 +22,7 @@
             tal:condition="python: False and context.license.code in ('by', 'by-sa')">
            <a href="http://freedomdefined.org/"><img src="/images/deed/libre8.png" alt="Libre" /></a>
         </div>
+
         <div id="deed-rights" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
 <span tal:omit-tag="" tal:condition="python: context.license.jurisdiction not in ['-', 'es']"><a tal:attributes="href python: '/worldwide/'+context.license.jurisdiction+'/'" href=''><img tal:attributes="src python: '/images/international/'+context.license.jurisdiction+'.png'" src='' border="0"/></a></span>
 		      <h3 rel="cc:permits" href="http://creativecommons.org/ns#Reproduction" i18n:translate="deed.You_are_free"></h3>
@@ -34,7 +37,7 @@
 		      <h3 i18n:translate="deed.under_conditions"></h3>
 	        <ul tal:attributes="dir view/is_rtl; align view/is_rtl_align;"> 
             <li rel="cc:requires" href="http://creativecommons.org/ns#Attribution" class="license @attributes.char_code@" 
-                tal:repeat="attr context/license/attributes" 
+                tal:repeat="attr context/conditions" 
                 tal:attributes="class string:license ${attr/icon_name};rel string:${attr/predicate}; href string:${attr/object}">
 	            <p><strong tal:content="structure attr/char_title">@attributes.char_title@</strong>. 
               <span id='attribution-container' tal:condition="python: attr['char_code'] == 'by'"><span tal:replace="structure attr/char_brief" /></span>
@@ -51,6 +54,7 @@
             <li i18n:translate="deed.moralrights-remix.us"></li>
             </span>
           </ul>
+
           <div id="deed-newer" tal:condition="context/license/superseded">
     	      <p i18n:translate="deed.superseded">
               <span i18n:name="current_version_url"
@@ -58,6 +62,7 @@
                      tal:omit-tag=""/>
             </p>
           </div>
+
           </div>
     <span id='referrer-metadata-container'/>
 </div>
