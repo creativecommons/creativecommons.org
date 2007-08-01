@@ -5,5 +5,7 @@
            >
   <include package="grok" />
   <grok:grok package="." />
-  <i18n:registerTranslations directory="/home/paulproteus/cctools/i18n/trunk/i18n/locales/" />
+
+  <i18n:registerTranslations directory="./locales/" />
+
 </configure>
