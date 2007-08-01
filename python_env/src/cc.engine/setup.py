@@ -24,7 +24,8 @@ setup(
     name = "cc.engine",
     version = "0.0.1",
     packages = find_packages('.'),
-
+    namespace_packages = ['cc',],
+    
     # scripts and dependencies
     install_requires = ['setuptools',
                         'grok',
