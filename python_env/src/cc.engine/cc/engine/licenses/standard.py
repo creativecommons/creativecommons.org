@@ -6,7 +6,7 @@ from zope.i18n.interfaces import ITranslationDomain
 from zope.component import queryUtility
 
 import cc.license
-import i18n
+from cc.engine import i18n
 from cc.license.exceptions import LicenseException
 
 from cc.engine import interfaces
