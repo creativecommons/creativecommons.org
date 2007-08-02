@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/@@deed/page"
+      i18n:domain="icommons">
+<head>
+  <title metal:fill-slot="title">Creative Commons 
+    <span tal:omit-tag="" tal:content="context/license/name">Attribution 3.0 Unported</span>
+  </title>
+</head>
+<body>
+
+<h2 metal:fill-slot="license-name"
+    i18n:translate="deed.gpl_title">
+<span i18n:name="license_name_full" tal:omit-tag=""
+	tal:content="context/license/name" />
+</h2>
+
+<div metal:fill-slot="body" tal:define="lang string:en;">
+
+<p i18n:translate="deed.gpl_freedoms"><%=[ccommons::istr $lang deed.gpl_freedoms]%>
+<span i18n:name="license_name_full">GNU General Public License</span>
+</p>
+			
+			<ol start="0">
+				<li i18n:translate="deed.gpl_free_run"><%=[ccommons::istr $lang deed.gpl_free_run]%>
+</li>
+				<li i18n:translate="deed.gpl_free_study"><%=[ccommons::istr $lang deed.gpl_free_study]%>
+</li>
+				<li i18n:translate="deed.gpl_free_redistribute"><%=[ccommons::istr $lang deed.gpl_free_redistribute]%>
+</li>
+				<li i18n:translate="deed.gpl_free_improve"><%=[ccommons::istr $lang deed.gpl_free_improve]%></li>
+			</ol>
+
+   <p tal:condition="python: context.license.code == 'GPL'" 
+      i18n:translate="deed.gpl_under_conditions" />
+   <p tal:condition="python: context.license.code == 'LGPL'" 
+      i18n:translate="deed.lgpl_under_conditions" />
+	        <div align="center"><table class="draft" width="500" cellpadding="4" cellspacing="0" border="0">
+		<tbody>    
+			<tr>
+				<td><img hspace="4" align="left" alt="!" src="/icons/nt/deed.gif" border="0">
+				</td><td align="left"><div class="tiny" i18n:translate="deed.gpl_notice"><%=[ccommons::istr $lang deed.gpl_notice]%>
+<span i18n:name="license_name_full">GNU General Public License</span>
+</div></td>
+			</tr>
+			<tr>
+				<td><img hspace="4" align="left" alt="sa" src="/icons/sa/deed.gif" border="0">
+				</td><td align="left"><div class="tiny" i18n:translate="deed.gpl_sharealike"><%=[ccommons::istr $lang deed.gpl_sharealike]%>
+<span i18n:name="license_name_full">GNU General Public License</span>
+</div></td>
+			</tr>
+			<tr>
+				<td><img hspace="4" align="left" alt="sc" src="/icons/sc/deed.gif" border="0">
+				</td><td align="left"><div class="tiny" i18n:translate="deed.gpl_source"><%=[ccommons::istr $lang deed.gpl_source]%>
+<span i18n:name="license_name_full">GNU General Public License</span>
+</div></td>
+			</tr>
+		</tbody>
+		</table>
+		</div>
+
+<p i18n:translate="deed.permission"><%=[ccommons::istr $lang deed.permission]%></p> 
+<p i18n:translate="deed.fair_use"><%=[ccommons::istr $lang deed.fair_use]%></p> 
+<p tal:condition="python: context.license.code == 'GPL'"
+   i18n:translate="deed.gpl_human_summary" />
+<p tal:condition="python: context.license.code == 'LGPL'"
+   i18n:translate="deed.lgpl_human_summary" />
+
+<p i18n:translate="deed.gpl_disclaimer"><%=[ccommons::istr $lang deed.gpl_disclaimer]%></p> 
+
+</div>
+
+
+</body>
+</html>

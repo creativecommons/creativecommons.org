@@ -99,10 +99,9 @@ class BrowserLicense(grok.Model):
             return self
 
         if name not in self.TARGET_NAMES:
-            return BrowserLicense(self, self.pieces + [name])
-
-class PublicDomain(BrowserLicense):
-    pass
+            # make sure we always return the same class since
+            # views are registered for particular classes
+            return self.__class__(self, self.pieces + [name])
 
 class LicenseDeed(grok.View):
     grok.context(BrowserLicense)
@@ -112,8 +111,6 @@ class LicenseDeed(grok.View):
     def update(self):
         """Prepare to render the deed."""
 
-        # print self.request
-        
         # redirect if this isn't deed.xx and we don't have a trailing slash
         if self.request['PATH_INFO'].split('/')[-1].split('.', 1)[0] != 'deed':
             if self.request['PATH_INFO'][-1] != '/':
