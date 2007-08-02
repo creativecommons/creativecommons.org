@@ -17,7 +17,7 @@
    tal:condition="python: False and context.license.code in ('by', 'by-sa')"> (Libre)</span>
 </h2>
 
-<div metal:fill-slot="body">
+<div metal:fill-slot="body" tal:define="lang string:en;">
         <div class="libre" 
             tal:condition="python: False and context.license.code in ('by', 'by-sa')">
            <a href="http://freedomdefined.org/"><img src="/images/deed/libre8.png" alt="Libre" /></a>
@@ -65,10 +65,9 @@
 
           </div>
     <span id='referrer-metadata-container'/>
-</div>
 
-
-        <p id="disclaimer" tal:condition="python: context.license.jurisdiction == 'jp'"
+        <p id="disclaimer" 
+	   tal:condition="python: context.license.jurisdiction == 'jp'"
                               i18n:translate="deed.disclaimer.jp"></p>
 			  <p id="disclaimer" tal:condition="python: context.license.jurisdiction != 'jp'">
           <a href="/licenses/disclaimer-popup?lang=@lang@" onclick="window.open('/licenses/disclaimer-popup?lang=@lang@', 'characteristic_help',  'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
@@ -82,16 +81,50 @@
           <img src="/images/popup.gif" width="15" height="13" alt="disclaimer" border="0"/></a>
   		  </p>
         <p align="center" style="margin-top:40px"><strong i18n:translate="deed.fair_use"></strong></p>
-		    <p align="center">
-          <span tal:omit-tag=""
-                     tal:condition="context/license/multilanguage">
-            <span tal:omit-tag="" i18n:translate="deed.human_summary_multilanguage" />
-            <br/><span tal:replace="structure context/license/languages" />
-          </span>
-          <span tal:omit-tag=""
-                   tal:condition="not: context/license/multilanguage"
-                     i18n:translate="deed.human_summary" />
-        </p>
+  <p align="center">
+
+    <span tal:omit-tag="" tal:condition="view/multi_language">
+     <span tal:omit-tag="" i18n:translate="deed.human_summary_multilanguage" />
+       <br/>
+
+     <span tal:condition="python: context.license.jurisdiction == 'es'"
+           tal:omit-tag="">
+         <a href="legalcode.ca" i18n:translate="">lang.ca</a> 
+         <a href="legalcode.es" i18n:translate="">lang.es</a>
+
+         <span tal:condition="python: context.license.version == 2.5"
+               tal:omit-tag="">
+
+           <a href="legalcode.eu" i18n:translate="">lang.eu</a> 
+           <a href="legalcode.gl" i18n:translate="">lang.gl</a>
+
+         </span>
+     </span>
+
+     <span tal:condition="python: context.license.jurisdiction == 'ca'"
+           tal:omit-tag="">
+         <a href="legalcode.en" i18n:translate="">lang.en</a> 
+         <a href="legalcode.fr" i18n:translate="">lang.fr</a>
+     </span>
+
+     <span tal:condition="python: context.license.jurisdiction == 'be'"
+           tal:omit-tag="">
+         <a href="legalcode.fr" i18n:translate="">lang.fr</a> 
+         <a href="legalcode.nl" i18n:translate="">lang.nl</a>
+     </span>
+
+     <span tal:condition="python: context.license.jurisdiction == 'ch'"
+           tal:omit-tag="">
+         <a href="legalcode.de" i18n:translate="">lang.de</a> 
+     </span>
+
+    </span>
+
+    <span tal:omit-tag="" tal:condition="not: view/multi_language"
+          i18n:translate="deed.human_summary" />
+ </p>
+</div>
+
 
 </body>
 </html>

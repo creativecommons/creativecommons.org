@@ -171,6 +171,22 @@ class LicenseDeed(grok.View):
 
 
     @property
+    def multi_language(self):
+        """Return True if the legalcode for this license is available in
+        multiple languages (or a single language with a language code different
+        than that of the jurisdiction.
+        
+        ZZZ i18n information like this should really be stored outside of
+        the presentation layer; we don't maintain it anywhere right now, so
+        here it is.
+        """
+
+        if self.context.license.jurisdiction in ('es', 'ca', 'be', 'ch'):
+            return True
+
+        return False
+   
+    @property
     def color(self):
         """Return the "color" of the license; the color reflects the relative
         amount of freedom."""
