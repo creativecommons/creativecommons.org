@@ -32,7 +32,9 @@ class BrowserLicense(grok.Model):
             version, jurisdiction = self.pieces[1:3]
         elif len(self.pieces) > 1:
             version, jurisdiction = self.pieces[1], None
-        
+        else:
+            version, jurisdiction = None, None
+            
         # YYY cache me!
         return cc.license.LicenseFactory().by_license_code(self.pieces[0],
                                                            version,
@@ -95,10 +97,12 @@ class BrowserLicense(grok.Model):
         # shouldn't be added to our traversal stack
         if name[:5] == 'deed.': 
             return self
-        
+
         if name not in self.TARGET_NAMES:
             return BrowserLicense(self, self.pieces + [name])
 
+class PublicDomain(BrowserLicense):
+    pass
 
 class LicenseDeed(grok.View):
     grok.context(BrowserLicense)
@@ -205,6 +209,10 @@ class LicenseDeed(grok.View):
         else:
            return 'green'
 
+class PublicDomainDedication(LicenseDeed):
+    grok.context(PublicDomain)
+    grok.name('index')
+    grok.template('publicdomain')
     
 
 class LicenseRdf(grok.View):
@@ -220,6 +228,9 @@ class LicenseCatalog(grok.Application, grok.Container):
 
     def traverse(self, code):
 
+        if code == 'publicdomain':
+            return PublicDomain(self, [code])
+        
         return BrowserLicense(self, [code])
 
 class Index(grok.View):

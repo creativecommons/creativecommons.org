@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/@@deed/page"
+      i18n:domain="icommons">
+<head>
+  <title metal:fill-slot="title" 
+      tal:content="context/license/name">Attribution 3.0 Unported
+  </title>
+</head>
+<body>
+
+<h2 metal:fill-slot="license-name">Public Domain Dedication</h2>
+
+<div metal:fill-slot="body" tal:define="lang string:en;"
+     i18n:translate="deed.pd">
+
+</div>
+
+
+</body>
+</html>
