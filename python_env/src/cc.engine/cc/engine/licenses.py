@@ -102,8 +102,14 @@ class LicenseDeed(grok.View):
         """Prepare to render the deed."""
 
         # redirect if we don't have a trailing slash
-        if self.request['REQUEST_URI'][-1] != '/':
-            return self.request.response.redirect('%s/' % self.request['REQUEST_URI'])
+        if self.request['PATH_INFO'][-1] != '/':
+            if self.request.get('QUERY_STRING', ''):
+                target = '%s/?%s' % (self.request['PATH_INFO'],
+                                     self.request['QUERY_STIRNG'])
+            else:
+                target = '%s/' % self.request['PATH_INFO']
+                
+            return self.request.response.redirect(target)
 
         # make sure we've traversed to a valid license version
         try:
@@ -112,18 +118,26 @@ class LicenseDeed(grok.View):
             raise NotFound(self.context, self.request['REQUEST_URI'],
                            self.request)
 
-        
+
+        # make sure we've extracted the locale from the request querystring
+        self.request.setupLocale()
+
     @property
     def is_rtl(self):
+        """Return 'rtl' if the request locale is represented right-to-left;
+        otherwise return an empty string."""
 
-        # XXX
-        pass
+        if self.request.locale.orientation.characters == u'right-to-left':
+            return 'rtl'
+
+        return ''
 
     @property
     def is_rtl_align(self):
+        """Return the appropriate alignment for the request locale:
+        'right' or 'left'."""
 
-        # XXX
-        pass
+        return self.request.locale.orientation.characters.split('-')[0]
 
     @property
     def active_languages(self):
