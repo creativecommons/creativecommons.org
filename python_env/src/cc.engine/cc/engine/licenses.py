@@ -2,8 +2,11 @@ import grok
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
 from zope.i18n import translate
+from zope.i18n.interfaces import ITranslationDomain
+from zope.component import queryUtility
 
 import cc.license
+import i18n
 from cc.license.exceptions import LicenseException
 
 from cc.engine import interfaces
@@ -30,7 +33,7 @@ class BrowserLicense(grok.Model):
         elif len(self.pieces) > 1:
             version, jurisdiction = self.pieces[1], None
         
-        # XXX cache me!
+        # YYY cache me!
         return cc.license.LicenseFactory().by_license_code(self.pieces[0],
                                                            version,
                                                            jurisdiction)
@@ -78,7 +81,7 @@ class BrowserLicense(grok.Model):
                           'object':object,
                      })
 
-        # XXX cache me!
+        # YYY cache me!
         return attrs
         
     def traverse(self, name):
@@ -140,17 +143,32 @@ class LicenseDeed(grok.View):
 
     @property
     def active_languages(self):
+        """Return a sequence of tuples:
 
-        # XXX
-        return []
+        (language_code, uri, language_name)
 
-    
+        for each available language; the uri is the localized version of the
+        current view in the particular language."""
+
+        # YYY cache me
+        
+        domain = queryUtility(ITranslationDomain, i18n.I18N_DOMAIN)
+        lang_codes = domain.getCatalogsInfo().keys()
+        lang_codes.sort()
+        
+        return [dict(code=n,
+                     url='%sdeed.%s' % (self.context.license.uri,n) ,
+                     name=domain.translate('lang.%s' % n, target_language=n))
+                 
+                 for n in lang_codes]
+
+
     @property
     def color(self):
         """Return the "color" of the license; the color reflects the relative
         amount of freedom."""
         
-        # XXX cache me!
+        # YYY cache me!
         license_code = self.context.license.code
         
         if license_code.lower() in ('devnations', 'sampling'):

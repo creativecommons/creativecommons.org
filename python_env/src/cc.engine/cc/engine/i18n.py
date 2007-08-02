@@ -4,6 +4,8 @@ from zope.interface import implements
 from zope.i18n.interfaces import IUserPreferredLanguages
 from zope.publisher.browser import BrowserLanguages
 
+I18N_DOMAIN = 'icommons'
+
 class PreferredLanguages(object):
     """Custom language selector: looks for a language setting in the
     following order:

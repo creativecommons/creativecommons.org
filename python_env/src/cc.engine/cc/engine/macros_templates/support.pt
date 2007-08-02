@@ -34,15 +34,12 @@ setCookie('lang','%s', expiry, '/');
      tal:repeat="lang view/active_languages">
 
 <a href="#" title="Catal%Gï¿½%@" hreflang="ca" 
-   tal:define="url_juris python: ((request['jurisdiction'] != '-') and ('/' + request['jurisdiction'] + '/')) or '/';
-               deed_version python: request.get('version', False) and ('/' + request['version']) or '';
-               lang_dashlc python: lang.replace('_','-').lower()"
    rel="alternate nofollow" lang="ca" 
-   tal:content="python: here.translate_target('icommons', 'lang.%s' % lang, lang_dashlc)"
-   tal:attributes="title python: here.translate_target('icommons', 'lang.%s' % lang, lang);
-                   href     string:/licenses/${request/license_code}${deed_version}${url_juris}deed.${lang};
-                   hreflang lang;
-                   lang     lang;
+   tal:content="lang/name"
+   tal:attributes="title lang/name;
+                   href  lang/url;
+                   hreflang lang/code;
+                   lang     lang/code;
                    "
    >Catal%Gï¿½%@f</a>
 
