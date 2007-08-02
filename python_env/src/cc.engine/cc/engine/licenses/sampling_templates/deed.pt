@@ -1,0 +1,115 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/@@deed/page"
+      i18n:domain="icommons">
+<head>
+  <title metal:fill-slot="title">Creative Commons 
+    <span tal:omit-tag="" tal:content="context/license/name">Attribution 3.0 Unported</span>
+  </title>
+</head>
+<body>
+
+<h2 metal:fill-slot="license-name">
+<span tal:omit-tag="" tal:content="structure string:${context/license/name}"/>
+</h2>
+
+<div metal:fill-slot="body" tal:define="lang string:en;">
+
+        <div id="deed-rights" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+
+
+        <div id="deed-newer" align="center" tal:condition="python: context.license.code == 'sampling'"><h3 i18n:translate="deed.retired">This license is <a href="/retiredlicenses">retired</a>. Do not use for new works.</h3></div>
+
+		      <h3 i18n:translate="deed.You_are_free"></h3>
+		      <ul>
+    				<li class="license samplingplus" tal:condition="python: context.license.code == 'nc-sampling+'"
+                                        i18n:translate="deed.free_sample_nc" />
+    				<li class="license sampling" tal:condition="python: context.license.code != 'nc-sampling+'"
+                                        i18n:translate="deed.free_sample" />
+    				<li class="license samplingplus" tal:condition="python: context.license.code in ('nc-sampling+', 'sampling+')"
+                                        i18n:translate="deed.free_copy_distribute_noncommercial" />
+		      </ul>
+ 
+
+        </div>
+        <div id="deed-conditions">
+
+		      <h3 i18n:translate="deed.under_conditions"></h3>
+	        <ul tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+    				<li class="license by" i18n:translate="char.by_brief"><%=[ccommons::istr $lang char.by_brief]%></li>
+    				<li i18n:translate="char.na_brief"><%=[ccommons::istr $lang char.na_brief]%></li>
+    				<li tal:condition="python: context.license.code in ('nc-sampling+', 'sampling+')"
+                                        i18n:translate="deed.notice" />
+    				<li tal:condition="python: context.license.code not in ('nc-sampling+', 'sampling+')"
+                                        i18n:translate="deed.notice_withoutdistribution" />
+    				<li tal:condition="python: context.license.code not in ('nc-sampling+', 'sampling+')"
+                                        i18n:translate="char.no_brief" />
+    			</ul>
+
+        </div>
+    <span id='referrer-metadata-container'/>
+
+        <p id="disclaimer" 
+	   tal:condition="python: context.license.jurisdiction == 'jp'"
+                              i18n:translate="deed.disclaimer.jp"></p>
+			  <p id="disclaimer" tal:condition="python: context.license.jurisdiction != 'jp'">
+          <a href="/licenses/disclaimer-popup?lang=@lang@" onclick="window.open('/licenses/disclaimer-popup?lang=@lang@', 'characteristic_help',  'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
+                                 tal:attributes="href string:/licenses/disclaimer-popup?lang=${lang};
+                                                 onclick string:window.open('/licenses/disclaimer-popup?lang=${lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');; return false;;"
+                                 i18n:translate="util.Disclaimer"> </a> 
+          <a href="/licenses/disclaimer-popup?lang=@lang@" 
+     onclick="window.open('/licenses/disclaimer-popup?lang=${lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
+                                 tal:attributes="href string:/licenses/disclaimer-popup?lang=${lang};
+                                                 onclick string:window.open('/licenses/disclaimer-popup?lang=${lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');; return false;;">
+          <img src="/images/popup.gif" width="15" height="13" alt="disclaimer" border="0"/></a>
+  		  </p>
+        <p align="center" style="margin-top:40px"><strong i18n:translate="deed.fair_use"></strong></p>
+  <p align="center">
+
+    <span tal:omit-tag="" tal:condition="view/multi_language">
+     <span tal:omit-tag="" i18n:translate="deed.human_summary_multilanguage" />
+       <br/>
+
+     <span tal:condition="python: context.license.jurisdiction == 'es'"
+           tal:omit-tag="">
+         <a href="legalcode.ca" i18n:translate="">lang.ca</a> 
+         <a href="legalcode.es" i18n:translate="">lang.es</a>
+
+         <span tal:condition="python: context.license.version == 2.5"
+               tal:omit-tag="">
+
+           <a href="legalcode.eu" i18n:translate="">lang.eu</a> 
+           <a href="legalcode.gl" i18n:translate="">lang.gl</a>
+
+         </span>
+     </span>
+
+     <span tal:condition="python: context.license.jurisdiction == 'ca'"
+           tal:omit-tag="">
+         <a href="legalcode.en" i18n:translate="">lang.en</a> 
+         <a href="legalcode.fr" i18n:translate="">lang.fr</a>
+     </span>
+
+     <span tal:condition="python: context.license.jurisdiction == 'be'"
+           tal:omit-tag="">
+         <a href="legalcode.fr" i18n:translate="">lang.fr</a> 
+         <a href="legalcode.nl" i18n:translate="">lang.nl</a>
+     </span>
+
+     <span tal:condition="python: context.license.jurisdiction == 'ch'"
+           tal:omit-tag="">
+         <a href="legalcode.de" i18n:translate="">lang.de</a> 
+     </span>
+
+    </span>
+
+    <span tal:omit-tag="" tal:condition="not: view/multi_language"
+          i18n:translate="deed.human_summary" />
+ </p>
+</div>
+
+
+</body>
+</html>

@@ -9,12 +9,14 @@ from cc.engine import interfaces
 from cc.engine.licenses.standard import BrowserLicense
 from cc.engine.licenses.publicdomain import PublicDomain
 from cc.engine.licenses.fsf import FsfLicense
+from cc.engine.licenses.sampling import SamplingLicense
 
 class LicenseCatalog(grok.Application, grok.Container):
     implements(interfaces.ILicenseCatalog)
 
     CUSTOM_DEEDS = dict(
         publicdomain = PublicDomain,
+        sampling = SamplingLicense,
         GPL = FsfLicense,
         LGPL = FsfLicense,
         )
@@ -23,6 +25,10 @@ class LicenseCatalog(grok.Application, grok.Container):
 
         if code in self.CUSTOM_DEEDS:
             return self.CUSTOM_DEEDS[code](self, [code])
+
+        # ZZZ special case sampling
+        if code.find('sampling') == 0:
+            return SamplingLicense(self, [code])
         
         return BrowserLicense(self, [code])
 
