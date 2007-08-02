@@ -41,7 +41,7 @@
     </div>
 
     <div id="deed" 
-         tal:attributes="class string:${view/color} | green; 
+         tal:attributes="class view/color | green; 
                          dir   view/is_rtl; 
                          align view/is_rtl_align;">  
       <div id="deed-head">

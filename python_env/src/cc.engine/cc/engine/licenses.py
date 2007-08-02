@@ -118,7 +118,6 @@ class LicenseDeed(grok.View):
             raise NotFound(self.context, self.request['REQUEST_URI'],
                            self.request)
 
-
         # make sure we've extracted the locale from the request querystring
         self.request.setupLocale()
 
@@ -148,9 +147,23 @@ class LicenseDeed(grok.View):
     
     @property
     def color(self):
+        """Return the "color" of the license; the color reflects the relative
+        amount of freedom."""
+        
+        # XXX cache me!
+        license_code = self.context.license.code
+        
+        if license_code.lower() in ('devnations', 'sampling'):
+           return 'red'
+       
+        elif license_code.find('sampling') > -1 or \
+                 license_code.find('nc') > -1 or \
+                 license_code.find('nd') > -1:
+           return 'yellow'
+       
+        else:
+           return 'green'
 
-        # XXX
-        return 'green'
     
 
 class LicenseRdf(grok.View):
