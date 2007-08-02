@@ -4,6 +4,10 @@ from zope.interface import implements
 from zope.i18n.interfaces import IUserPreferredLanguages
 from zope.publisher.browser import BrowserLanguages
 
+import cc.license.support
+
+from cc.engine.interfaces import IDefaultJurisdiction
+
 I18N_DOMAIN = 'icommons'
 
 class PreferredLanguages(object):
@@ -41,3 +45,18 @@ class PreferredLanguages(object):
         # fall back to default selection (HTTP_ACCEPT_LANGUAGE)
         return BrowserLanguages(self.request).getPreferredLanguages()
 
+
+class PreferredJurisdiction(object):
+    """Adapts a Request to IDefaultJurisdiction, allowing us to make a
+    guess at what jurisdiction to use."""
+
+    implements(IDefaultJurisdiction)
+    
+    def __init__(self, request):
+        self.request = request
+
+    def getJurisdictionId(self):
+
+        return cc.license.support.lang_to_jurisdiction(
+            IUserPreferredLanguages(self.request).getPreferredLanguages()[0]
+            )

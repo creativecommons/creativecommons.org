@@ -1,13 +1,13 @@
 import grok
 from zope.interface import implements
 
-from cc.engine.interfaces import ILicenseEngine
+from cc.engine.interfaces import ILicenseEngine, IDefaultJurisdiction
 import cc.license
 
 class LicenseEngine(grok.Application, grok.Container):
     implements(ILicenseEngine)
 
-class BaseIndexView(object):
+class BaseIndexViewMixin(object):
 
     target_lang = ''
 
@@ -15,17 +15,18 @@ class BaseIndexView(object):
         """Return the appropriate default jurisdiction -- either one explicitly
         requested by the user, or a good guess based on their language."""
 
-        return "-"
-
+        # Delegate to an adapter
+        return IDefaultJurisdiction(self.request).getJurisdictionId()
+    
     def license_class(self, class_name = cc.license.classes.STANDARD):
 
         return cc.license.LicenseFactory().get_class(class_name)
     
-class Partner(grok.View, BaseIndexView):
+class Partner(grok.View, BaseIndexViewMixin):
     """Partner UI index view."""
     grok.context(LicenseEngine)
 
-class Cc_Index(grok.View, BaseIndexView):
+class Cc_Index(grok.View, BaseIndexViewMixin):
     """cc.org License Engine UI."""
     grok.context(LicenseEngine)
     

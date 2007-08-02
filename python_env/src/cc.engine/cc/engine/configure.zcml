@@ -13,4 +13,8 @@
            provides="zope.i18n.interfaces.IUserPreferredLanguages"
            factory=".i18n.PreferredLanguages" />
 
+  <adapter for="zope.publisher.interfaces.http.IHTTPRequest"
+           provides=".interfaces.IDefaultJurisdiction"
+           factory=".i18n.PreferredJurisdiction" />
+
 </configure>
