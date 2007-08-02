@@ -6,10 +6,13 @@ from zope.i18n.interfaces import ITranslationDomain
 from zope.component import queryUtility
 
 from cc.engine import interfaces
+
 from cc.engine.licenses.standard import BrowserLicense
 from cc.engine.licenses.publicdomain import PublicDomain
 from cc.engine.licenses.fsf import FsfLicense
 from cc.engine.licenses.sampling import SamplingLicense
+from cc.engine.licenses.devnations import DevNations
+from cc.engine.licenses.mitbsd import MitBsdLicense
 
 class LicenseCatalog(grok.Application, grok.Container):
     implements(interfaces.ILicenseCatalog)
@@ -19,6 +22,9 @@ class LicenseCatalog(grok.Application, grok.Container):
         sampling = SamplingLicense,
         GPL = FsfLicense,
         LGPL = FsfLicense,
+        devnations = DevNations,
+        MIT = MitBsdLicense,
+        BSD = MitBsdLicense,
         )
     
     def traverse(self, code):

@@ -158,8 +158,8 @@ class LicenseDeed(grok.View):
         for each available language; the uri is the localized version of the
         current view in the particular language."""
 
-        # YYY cache me
-        
+        # XXX cache me (yes, XXX -- this is a huge slow down right now)
+    
         domain = queryUtility(ITranslationDomain, i18n.I18N_DOMAIN)
         lang_codes = domain.getCatalogsInfo().keys()
         lang_codes.sort()

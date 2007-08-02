@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/@@deed/page"
+      i18n:domain="icommons">
+<head>
+  <title metal:fill-slot="title">Creative Commons 
+    <span tal:omit-tag="" tal:content="context/license/name">Attribution 3.0 Unported</span>
+  </title>
+</head>
+<body>
+
+<h2 metal:fill-slot="license-name">
+<span tal:omit-tag="" tal:content="structure string:${context/license/name}"/>
+</h2>
+
+<div metal:fill-slot="body" tal:define="lang string:en;">
+
+        <div id="deed-rights" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+
+         <div id="deed-newer" align="center"><h3 i18n:translate="deed.retired">This license is <a href="/retiredlicenses">retired</a>. Do not use for new works.</h3></div>
+
+         <h3 rel="cc:permits"
+            href="http://creativecommons.org/ns#Reproduction" i18n:translate="deed.You_are_free">You are free:</h3>
+		      <ul>
+			      <li class="license share" rel="cc:permits"
+             href="http://creativecommons.org/ns#Distribution" i18n:translate="deed.free_copy_distribute">
+to Share %Gâ%@ to copy, distribute and transmit the work</li>
+
+			      <li class="license remix" rel="cc:permits"
+             href="http://creativecommons.org/ns#DerivativeWorks" i18n:translate="deed.free_derivative"></li>
+		      </ul>
+
+        </div>
+        <div id="deed-conditions">
+		      <h3 i18n:translate="deed.under_conditions"></h3>
+	        <ul tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+
+            <li class="license devnations"><strong>Developing Nations</strong>.
+                       You may exercise the above freedoms in developing nations only.</li>
+
+            <li rel="cc:requires" href="http://creativecommons.org/ns#Attribution" 
+                class="license by"><p><strong i18n:translate="char.by_title"></strong>.
+                <span i18n:translate="char.by_brief"><%=[ccommons::istr $lang char.by_brief]%></span></p></li>
+
+    				<li i18n:translate="deed.notice" />
+    				<li i18n:translate="deed.permission" />
+    			</ul>
+        </div>
+
+</div>
+
+
+</body>
+</html>
