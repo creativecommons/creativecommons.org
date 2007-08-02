@@ -10,6 +10,7 @@ class PreferredLanguages(object):
     """Custom language selector: looks for a language setting in the
     following order:
 
+    * /deed.xx in the path
     * ?lang=xx querystring
     * ?language=xx querystring
     * cc_org_lang cookie
@@ -22,6 +23,12 @@ class PreferredLanguages(object):
 
     def getPreferredLanguages(self):
 
+        # see if we're dealing with deed.xx
+        path_pieces = self.request['PATH_INFO'].rsplit('.', 1)
+
+        if len(path_pieces) == 2 and len(path_pieces[1]) == 2:
+            return [path_pieces[1]]
+        
         # check for the query string
         if self.request.get('lang', False):
             return [self.request['lang'], 'en']

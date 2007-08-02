@@ -86,11 +86,15 @@ class BrowserLicense(grok.Model):
         
     def traverse(self, name):
 
-        if len(self.pieces) > 3:
-            # no cases call for more than three steps of traversal
+        if len(self.pieces) > 4:
+            # no cases call for more than four steps of traversal:
+            # code, version [jurisdiction], [deed.xx]
             return None
 
-        # XXX handle deed.de, etc
+        # handle deed.de, etc -- these shouldn't trigger views, but also
+        # shouldn't be added to our traversal stack
+        if name[:5] == 'deed.': 
+            return self
         
         if name not in self.TARGET_NAMES:
             return BrowserLicense(self, self.pieces + [name])
@@ -104,15 +108,18 @@ class LicenseDeed(grok.View):
     def update(self):
         """Prepare to render the deed."""
 
-        # redirect if we don't have a trailing slash
-        if self.request['PATH_INFO'][-1] != '/':
-            if self.request.get('QUERY_STRING', ''):
-                target = '%s/?%s' % (self.request['PATH_INFO'],
-                                     self.request['QUERY_STIRNG'])
-            else:
-                target = '%s/' % self.request['PATH_INFO']
-                
-            return self.request.response.redirect(target)
+        # print self.request
+        
+        # redirect if this isn't deed.xx and we don't have a trailing slash
+        if self.request['PATH_INFO'].split('/')[-1].split('.', 1)[0] != 'deed':
+            if self.request['PATH_INFO'][-1] != '/':
+                if self.request.get('QUERY_STRING', ''):
+                    target = '%s/?%s' % (self.request['PATH_INFO'],
+                                         self.request['QUERY_STIRNG'])
+                else:
+                    target = '%s/' % self.request['PATH_INFO']
+
+                return self.request.response.redirect(target)
 
         # make sure we've traversed to a valid license version
         try:
