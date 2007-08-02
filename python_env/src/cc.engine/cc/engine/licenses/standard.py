@@ -209,12 +209,6 @@ class LicenseDeed(grok.View):
         else:
            return 'green'
 
-class PublicDomainDedication(LicenseDeed):
-    grok.context(PublicDomain)
-    grok.name('index')
-    grok.template('publicdomain')
-    
-
 class LicenseRdf(grok.View):
     grok.context(BrowserLicense)
     grok.name('rdf')
@@ -222,19 +216,3 @@ class LicenseRdf(grok.View):
     def render(self):
         return "rdf goes here"
                  
-    
-class LicenseCatalog(grok.Application, grok.Container):
-    implements(interfaces.ILicenseCatalog)
-
-    def traverse(self, code):
-
-        if code == 'publicdomain':
-            return PublicDomain(self, [code])
-        
-        return BrowserLicense(self, [code])
-
-class Index(grok.View):
-    grok.context(LicenseCatalog)
-    grok.template('licenses-index')
-
-
