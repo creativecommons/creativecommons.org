@@ -10,6 +10,7 @@ from cc.engine import i18n
 from cc.license.exceptions import LicenseException
 
 from cc.engine import interfaces
+from cc.engine.decorators import cached, memoize
 
 class BrowserLicense(grok.Model):
     implements(interfaces.ILicense)
@@ -24,9 +25,12 @@ class BrowserLicense(grok.Model):
         self.pieces = pieces
         
     @property
+    @memoize
     def license(self):
         """Return the cc.license.License object selected."""
 
+        # YYY there's a decent speed gain we can make here by memoizing
+        
         # decode the version and jurisdiction
         if len(self.pieces) > 2:
             version, jurisdiction = self.pieces[1:3]
@@ -35,12 +39,12 @@ class BrowserLicense(grok.Model):
         else:
             version, jurisdiction = None, None
             
-        # YYY cache me!
         return cc.license.LicenseFactory().by_license_code(self.pieces[0],
                                                            version,
                                                            jurisdiction)
 
     @property
+    @cached
     def conditions(self):
         """Return a sequence of mappings defining the conditions defined by
         this license."""
@@ -83,7 +87,6 @@ class BrowserLicense(grok.Model):
                           'object':object,
                      })
 
-        # YYY cache me!
         return attrs
         
     def traverse(self, name):
@@ -150,6 +153,7 @@ class LicenseDeed(grok.View):
         return self.request.locale.orientation.characters.split('-')[0]
 
     @property
+    @cached
     def active_languages(self):
         """Return a sequence of tuples:
 
@@ -192,7 +196,6 @@ class LicenseDeed(grok.View):
         """Return the "color" of the license; the color reflects the relative
         amount of freedom."""
         
-        # YYY cache me!
         license_code = self.context.license.code
         
         if license_code.lower() in ('devnations', 'sampling'):
