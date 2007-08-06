@@ -12,63 +12,75 @@
 <body>
 
 <h2 metal:fill-slot="license-name"
-    i18n:translate="deed.gpl_title">
-<span i18n:name="license_name_full" tal:omit-tag=""
-	tal:content="context/license/name" />
-</h2>
+    tal:content="context/license/name" />
 
-<div metal:fill-slot="body" tal:define="lang string:en;">
+<div metal:fill-slot="body">
 
-<p i18n:translate="deed.gpl_freedoms"><%=[ccommons::istr $lang deed.gpl_freedoms]%>
-<span i18n:name="license_name_full">GNU General Public License</span>
-</p>
-			
-			<ol start="0">
-				<li i18n:translate="deed.gpl_free_run"><%=[ccommons::istr $lang deed.gpl_free_run]%>
+        <div id="deed-rights" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+		      <h3 rel="cc:permits" href="http://creativecommons.org/ns#Reproduction" i18n:translate="deed.You_are_free"></h3>
+		      <ul>
+			      <li class="license share" rel="cc:permits" href="http://creativecommons.org/ns#Distribution" i18n:translate="deed.free_copy_distribute"></li>
+			      <li class="license remix" rel="cc:permits" href="http://creativecommons.org/ns#DerivativeWorks"
+                                      i18n:translate="deed.free_derivative"></li>
+<span id='devnations-container'/>
+		      </ul>
+
+        </div>
+        <div id="deed-conditions" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+		      <h3 i18n:translate="deed.under_conditions"></h3>
+	        <ul  tal:attributes="dir view/is_rtl; align view/is_rtl_align;"> 
+            <li rel="cc:requires"
+                href="http://creativecommons.org/ns#Notice"
+                class="license no-endorse"
+                tal:condition="context/is_bsd">
+
+	            <p i18n:translate="deed.no_endorsement"><strong>No Endorsement</strong>. 
+              <span id="noendorse-container">The name of the author may not be used to endorse or promote products derived from this software without specific prior written permission.</span>
+              </p>
+            </li>
+
+            <li id="more-container" class="license-hidden" />
+            <li rel="cc:requires"
+                href="http://creativecommons.org/ns#Notice" 
+		i18n:translate="deed.bsd_notice"
+		tal:condition="context/is_bsd">
+You must retain the license terms and copyright notice in any source code
+distribution and reproduce them in documentation for binary distributions.
 </li>
-				<li i18n:translate="deed.gpl_free_study"><%=[ccommons::istr $lang deed.gpl_free_study]%>
-</li>
-				<li i18n:translate="deed.gpl_free_redistribute"><%=[ccommons::istr $lang deed.gpl_free_redistribute]%>
-</li>
-				<li i18n:translate="deed.gpl_free_improve"><%=[ccommons::istr $lang deed.gpl_free_improve]%></li>
-			</ol>
 
-   <p tal:condition="python: context.license.code == 'GPL'" 
-      i18n:translate="deed.gpl_under_conditions" />
-   <p tal:condition="python: context.license.code == 'LGPL'" 
-      i18n:translate="deed.lgpl_under_conditions" />
-	        <div align="center"><table class="draft" width="500" cellpadding="4" cellspacing="0" border="0">
-		<tbody>    
-			<tr>
-				<td><img hspace="4" align="left" alt="!" src="/icons/nt/deed.gif" border="0">
-				</td><td align="left"><div class="tiny" i18n:translate="deed.gpl_notice"><%=[ccommons::istr $lang deed.gpl_notice]%>
-<span i18n:name="license_name_full">GNU General Public License</span>
-</div></td>
-			</tr>
-			<tr>
-				<td><img hspace="4" align="left" alt="sa" src="/icons/sa/deed.gif" border="0">
-				</td><td align="left"><div class="tiny" i18n:translate="deed.gpl_sharealike"><%=[ccommons::istr $lang deed.gpl_sharealike]%>
-<span i18n:name="license_name_full">GNU General Public License</span>
-</div></td>
-			</tr>
-			<tr>
-				<td><img hspace="4" align="left" alt="sc" src="/icons/sc/deed.gif" border="0">
-				</td><td align="left"><div class="tiny" i18n:translate="deed.gpl_source"><%=[ccommons::istr $lang deed.gpl_source]%>
-<span i18n:name="license_name_full">GNU General Public License</span>
-</div></td>
-			</tr>
-		</tbody>
-		</table>
-		</div>
+            <li rel="cc:requires"
+                href="http://creativecommons.org/ns#Notice" 
+		i18n:translate="deed.mit_notice"
+		tal:condition="context/is_mit">The copyright notice and license shall be included in all copies or
+substantial portions of the software.</li>
 
-<p i18n:translate="deed.permission"><%=[ccommons::istr $lang deed.permission]%></p> 
-<p i18n:translate="deed.fair_use"><%=[ccommons::istr $lang deed.fair_use]%></p> 
-<p tal:condition="python: context.license.code == 'GPL'"
-   i18n:translate="deed.gpl_human_summary" />
-<p tal:condition="python: context.license.code == 'LGPL'"
-   i18n:translate="deed.lgpl_human_summary" />
+            <li i18n:translate="deed.permission">Any of the above conditions can be waived if you get permission from the copyright holder.</li>
 
-<p i18n:translate="deed.gpl_disclaimer"><%=[ccommons::istr $lang deed.gpl_disclaimer]%></p> 
+            
+          </ul>
+
+        </div>
+      </div>
+      <div id="deed-foot">
+			  <p id="disclaimer">
+          <a href="/licenses/disclaimer-popup?lang=@lang@"
+              i18n:translate="util.Disclaimer"
+              onclick="window.open('/licenses/disclaimer-popup?lang=@lang@', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
+              tal:attributes="href    string:/licenses/disclaimer-popup?lang=${lang};
+                              onclick string:window.open('/licenses/disclaimer-popup?lang=${lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');;return false;; ;
+                             "
+             >Disclaimers</a> 
+           <a href="/licenses/disclaimer-popup" 
+              onclick="window.open('/licenses/disclaimer-popup', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
+              tal:attributes="href    string:/licenses/disclaimer-popup?lang=${lang};
+                              onclick string:window.open('/licenses/disclaimer-popup?lang=${lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');;return false;; ;
+                             "
+             ><img src="/images/popup.gif" width="15" height="13" alt="disclaimer" border="0" /></a>
+  		  </p>
+        <p align="center" style="margin-top:40px"><strong i18n:translate="deed.fair_use"></strong></p>
+		    <p align="center">
+This is a human-readable summary of the <a href="http://opensource.org/licenses/bsd-license.php" class="fulltext">Legal Code (the full license)</a>.
+        </p>
 
 </div>
 

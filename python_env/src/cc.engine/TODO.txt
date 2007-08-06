@@ -1,7 +1,21 @@
+* issue licenses for devnations
+* deeds content
+** MIT
+** BSD
+** devnations
+* caching for translation list
+* container div
+* i18n deed title, license name
+* include RDF/RDFa in deeds
 
-* Traversal for deeds
-* Individual adapters for Deeds, Legal Code, RDF, etc
-* i18n
-* cc.org chrome
+* how do we handle validation (and by extension 404s) ?
+
+* public domain dedication
+* generic v. unported
+* chrome for chooser
 * partner interface
 * replace popups
+
+* functional tests for existing functionality
+* performance of deeds -- in particular i18n header
+* XXX/YYY/ZZZ report
