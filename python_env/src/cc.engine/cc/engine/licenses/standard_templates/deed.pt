@@ -17,7 +17,7 @@
    tal:condition="python: False and context.license.code in ('by', 'by-sa')"> (Libre)</span>
 </h2>
 
-<div metal:fill-slot="body" tal:define="lang string:en;">
+<div metal:fill-slot="body">
         <div class="libre" 
             tal:condition="python: False and context.license.code in ('by', 'by-sa')">
            <a href="http://freedomdefined.org/"><img src="/images/deed/libre8.png" alt="Libre" /></a>
@@ -71,13 +71,13 @@
                               i18n:translate="deed.disclaimer.jp"></p>
 			  <p id="disclaimer" tal:condition="python: context.license.jurisdiction != 'jp'">
           <a href="/licenses/disclaimer-popup?lang=@lang@" onclick="window.open('/licenses/disclaimer-popup?lang=@lang@', 'characteristic_help',  'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
-                                 tal:attributes="href string:/licenses/disclaimer-popup?lang=${lang};
-                                                 onclick string:window.open('/licenses/disclaimer-popup?lang=${lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');; return false;;"
+                                 tal:attributes="href string:/licenses/disclaimer-popup;
+                                                 onclick string:window.open('/licenses/disclaimer-popup', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');; return false;;"
                                  i18n:translate="util.Disclaimer"> </a> 
           <a href="/licenses/disclaimer-popup?lang=@lang@" 
-     onclick="window.open('/licenses/disclaimer-popup?lang=${lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
-                                 tal:attributes="href string:/licenses/disclaimer-popup?lang=${lang};
-                                                 onclick string:window.open('/licenses/disclaimer-popup?lang=${lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');; return false;;">
+     onclick="window.open('/licenses/disclaimer-popup', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
+                                 tal:attributes="href string:/licenses/disclaimer-popup;
+                                                 onclick string:window.open('/licenses/disclaimer-popup', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');; return false;;">
           <img src="/images/popup.gif" width="15" height="13" alt="disclaimer" border="0"/></a>
   		  </p>
         <p align="center" style="margin-top:40px"><strong i18n:translate="deed.fair_use"></strong></p>
