@@ -172,7 +172,8 @@ class LicenseDeed(grok.View):
                      url='%sdeed.%s' % (self.context.license.uri,n) ,
                      name=domain.translate('lang.%s' % n, target_language=n))
                  
-                 for n in lang_codes]
+                 for n in lang_codes
+                if n != 'test']
 
 
     @property
