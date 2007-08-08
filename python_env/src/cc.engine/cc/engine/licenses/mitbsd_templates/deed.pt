@@ -63,27 +63,6 @@ substantial portions of the software.</li>
           </ul>
 
         </div>
-      </div>
-      <div id="deed-foot">
-			  <p id="disclaimer">
-          <a href="/licenses/disclaimer-popup?lang=@lang@"
-              i18n:translate="util.Disclaimer"
-              onclick="window.open('/licenses/disclaimer-popup?lang=@lang@', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
-              tal:attributes="href    string:/licenses/disclaimer-popup?lang=${lang};
-                              onclick string:window.open('/licenses/disclaimer-popup?lang=${lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');;return false;; ;
-                             "
-             >Disclaimers</a> 
-           <a href="/licenses/disclaimer-popup" 
-              onclick="window.open('/licenses/disclaimer-popup', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
-              tal:attributes="href    string:/licenses/disclaimer-popup?lang=${lang};
-                              onclick string:window.open('/licenses/disclaimer-popup?lang=${lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');;return false;; ;
-                             "
-             ><img src="/images/popup.gif" width="15" height="13" alt="disclaimer" border="0" /></a>
-  		  </p>
-        <p align="center" style="margin-top:40px"><strong i18n:translate="deed.fair_use"></strong></p>
-		    <p align="center">
-This is a human-readable summary of the <a href="http://opensource.org/licenses/bsd-license.php" class="fulltext">Legal Code (the full license)</a>.
-        </p>
 
 </div>
 

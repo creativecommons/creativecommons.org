@@ -21,6 +21,7 @@ ${context/license/rdf} -->" />
 
 </div>
 
+<div metal:fill-slot="footer" tal:omit-tag=""></div>
 
 </body>
 </html>
