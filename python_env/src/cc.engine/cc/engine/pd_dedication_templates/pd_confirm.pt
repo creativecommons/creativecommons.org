@@ -32,8 +32,7 @@
     </span>
 </span>
 
-<form id="confirm" action="#" method="GET"
-      tal:attributes="action string:${request/URL1}/publicdomain-4">
+<form id="confirm" action="./publicdomain-4" method="GET">
 <p align="center">
 <input type="hidden" name="email" value="#" tal:attributes="value request/email | nothing" />
 <input type="hidden" name="title" value="#" tal:attributes="value request/title | nothing" />
@@ -47,8 +46,6 @@
 
 <div tal:omit-tag="" tal:condition="not:view/hash_ok">
 <span i18n:translate="license.pd_bad_confirmation" />
-</div>
-
 </div>
 
 </metal:body>
