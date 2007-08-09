@@ -1,3 +1,7 @@
+import email.Charset
+email.Charset.add_charset('utf-8', email.Charset.SHORTEST, None, None)
+from email.MIMEText import MIMEText
+
 from datetime import datetime
 from urllib import urlencode
 
@@ -266,9 +270,47 @@ class Music(grok.View):
 ## class Xmp(grok.View):
 ##     pass
 
-## class NonWeb(grok.View):
-##     grok.name('non-web-popup')
+class NonWeb(Results):
+    grok.name('non-web-popup')
 
-## class WorkHtml(grok.View):
-##     grok.name('work-html-popup')
+class HtmlPopup(Results):
+    grok.name('work-html-popup')
     
+class EmailHtml(grok.View):
+    grok.name('work-email')
+
+    def update(self):
+        """Email the license HTML to the user."""
+
+        mhost = getUtility(IMailDelivery, 'cc_engine')
+
+        email_addr = self.request.get('to_email', '')
+        work_title = self.request.get('work_title', '')
+        license_name = self.request.get('license_name')
+        license_html = self.request.get('license_html')
+
+        message_body = u"""
+
+Thank you for using a Creative Commons License for your work "%s"
+
+You have selected the %s License. You should include a
+reference to this license on the web page that includes the work in question.
+
+Here is the suggested HTML:
+
+%s
+
+Further tips for using the supplied HTML and RDF are here:
+http://creativecommons.org/learn/technology/usingmarkup
+
+Thank you!
+Creative Commons Support
+info@creativecommons.org
+""" % (work_title, license_name, license_html)
+
+        message = MIMEText(message_body.encode('utf-8'), 'plain', 'utf-8')
+        message['Subject'] = 'Your Creative Commons License Information'
+        message['From'] = 'info@creativecommons.org'
+        message['To'] = email_addr
+
+        mhost.send('info@creativecommons.org', (email_addr,), message)

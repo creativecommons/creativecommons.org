@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:define-macro="page">
+
+  <head>
+    <title metal:define-slot="title">Page Title</title>
+
+    <link rel="stylesheet" type="text/css" href="/includes/popup.css" />
+
+  </head>
+  <body>
+    
+<div class="bodybox">
+<div class="bodyfloat">
+
+<metal:body define-slot="body" />
+
+</div>
+</div>
+
+  </body>
+</html>

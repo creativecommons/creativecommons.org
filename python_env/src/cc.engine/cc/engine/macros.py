@@ -4,6 +4,9 @@ from zope.interface import Interface
 class Engine(grok.View):
     grok.context(Interface)
 
+class Popup(grok.View):
+    grok.context(Interface)
+    
 ## class Partner(grok.View):
 ##     grok.context(Interface)
         
