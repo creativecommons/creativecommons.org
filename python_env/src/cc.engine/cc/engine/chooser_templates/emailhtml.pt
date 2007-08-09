@@ -13,7 +13,7 @@
 <metal:body fill-slot="body" >
 
   <p i18n:translate="license.link_emailed" >
-    <span tal:omit-tag="" i18n:name="email" tal:content="request/email" />
+    <span tal:omit-tag="" i18n:name="email" tal:content="request/to_email" />
   </p>
 
   <div align="center"><a href="javascript:window.close();" i18n:translate="util.Close_window" /></div>
