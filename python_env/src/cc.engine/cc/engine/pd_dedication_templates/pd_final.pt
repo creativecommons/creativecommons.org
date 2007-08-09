@@ -56,19 +56,6 @@
         </li>
 </ul>
 
-<form action="publicize">
-    <div tal:omit-tag=""
-        tal:repeat="k request/form/keys">
-        <input type="hidden" name="" value=""
-            tal:attributes="name k;
-                            value python:request.form[k];"
-                            />
-    </div>
-    
-<p class="textbox"><span i18n:translate="license.Final_step"/> <input type=submit value="publicize"
-    i18n:attributes="value license.learn_publicize"></p>
-</form>
-
 </metal:body>
 </body>
 </html>
