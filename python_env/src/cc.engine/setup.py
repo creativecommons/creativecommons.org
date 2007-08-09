@@ -28,6 +28,7 @@ setup(
     
     # scripts and dependencies
     install_requires = ['setuptools',
+                        'zope.sendmail',
                         'grok',
                         'cc.license',
                         ],

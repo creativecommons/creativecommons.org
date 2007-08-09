@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/@@engine/page"
+      i18n:domain="icommons">
+<head>
+  <title metal:fill-slot="title">Public Domain Dedication</title>
+</head>
+
+<body>
+
+<metal:left fill-slot="sidebar">
+<div tal:omit-tag=""
+     tal:define="step string:2b;
+                 license_code string:publicdomain;" >
+    <div metal:use-macro="context/@@support/pd_nav_steps" />
+</div>
+
+</metal:left>
+
+<metal:body fill-slot="body">
+
+   <span tal:omit-tag="" i18n:translate="license.pd_enter_info" />
+	<form id="publicdomain" action="./publicdomain-waiting-email-verification">
+	<table border="0" cellspacing="3" cellpadding="3">
+	<tbody>
+		<tr>
+			<td align="right" i18n:translate="util.your_email"></td>
+			<td><input type="text" name="email" value="" />
+			</td>
+		</tr>
+		<tr>
+			<td align="right" i18n:translate="util.title_of_work"></td>
+			<td><input type="text" name="title" value="" />
+			</td>
+		</tr>
+		<tr>
+			<td align="right" i18n:translate="util.copyright_holder"></td>
+			<td><input type="text" name="copyright_holder" value="" />
+			</td>
+		</tr>
+		<tr>
+			<td align="right">&nbsp;</td>
+			<td>
+			<input type="submit" value="" 
+			     i18n:attributes="value util.proceed"/></td>
+		</tr>
+	</tbody>
+	</table>
+	</form>
+<br />
+<span i18n:translate="license.proceed_email_note" />
+
+</metal:body>
+
+</body>
+</html>

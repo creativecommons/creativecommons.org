@@ -1,11 +1,75 @@
+from urllib import urlencode
+
 import grok
 from zope.interface import implements
 
-from cc.engine.interfaces import ILicenseEngine, IDefaultJurisdiction
+import zope.component
+from zope.component import getUtility
+from zope.sendmail.interfaces import IMailDelivery, IMailSentEvent, IMailErrorEvent
+from zope.i18n import translate
+
 import cc.license
 
+import cc.engine.i18n
+from cc.engine.interfaces import ILicenseEngine, IDefaultJurisdiction
+
 class LicenseEngine(grok.Application, grok.Container):
+    """LicenseEngine Application Class
+
+    Provides web-application specific assistance (non-presentation) for the
+    license engine.
+    """
     implements(ILicenseEngine)
+
+    def generate_hash(self, email_addr, title, holder):
+        return 'foo'
+    
+    def send_pd_confirmation(self, next_url, email_addr, title, holder):
+        """Sends the confirmation email to the PD dedicator."""
+
+        mhost = getUtility(IMailDelivery, 'cc_engine')
+        print mhost
+        lang = 'en' # YYY context.getLanguage()
+
+        if False in (email_addr, title, holder):
+            return False
+
+        nextstep_qs = {'lang':lang,
+                       'license_code':'publicdomain',
+                       'title':title,
+                       'copyright_holder':holder,
+                       'email':email_addr,
+                       'hash':self.generate_hash(email_addr, title, holder),
+                      }
+        nextstep_url = "%s?%s" % (next_url, urlencode(nextstep_qs))
+
+        message = """
+        To: %s
+        From: info@creativecommons.org
+        Subject: Confirm your Public Domain Dedication at Creative Commons
+
+        %s
+        """ % (email_addr,
+               translate(domain=cc.engine.i18n.I18N_DOMAIN,
+               msgid='license.pd_confirmation_email',
+               mapping={'title':title,
+                        'clickthrough_url':nextstep_url, },
+               target_language=lang))
+
+        print mhost.send('info@creativecommons.org', (email_addr,), message)
+
+        return True
+
+@zope.component.adapter(IMailSentEvent)
+def foo(event):
+    print 'sent', event.messageId
+
+@zope.component.adapter(IMailErrorEvent)
+def bar(event):
+    print 'failed: ', event.messageId, event.errorMessage
+
+zope.component.provideHandler(foo)
+zope.component.provideHandler(bar)
 
 class BaseIndexViewMixin(object):
 

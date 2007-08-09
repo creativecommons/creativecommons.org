@@ -1,14 +1,30 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:grok="http://namespaces.zope.org/grok"
            xmlns:i18n="http://namespaces.zope.org/i18n"
+           xmlns:mail="http://namespaces.zope.org/mail"
            i18n_domain="icommons"
            >
 
   <include package="grok" />
+  <include package="zope.sendmail" file="meta.zcml" />
+  <include package="zope.sendmail" />
+
   <grok:grok package="." />
 
   <i18n:registerTranslations directory="./locales/" />
 
+  <mail:smtpMailer
+	   name="cc_engine_mailer"
+	   hostname="localhost"
+	   port="25"
+	/>
+
+  <mail:directDelivery
+	   name="cc_engine"
+	   permission="zope.SendMail"
+	   mailer="cc_engine_mailer" 
+	/>
+	   
   <adapter for="zope.publisher.interfaces.http.IHTTPRequest"
            provides="zope.i18n.interfaces.IUserPreferredLanguages"
            factory=".i18n.PreferredLanguages" />

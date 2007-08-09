@@ -26,7 +26,7 @@ setCookie('lang','%s', expiry, '/');
 <metal:translations
      metal:define-macro="translations">
 
-<div style="width: 620px; margin-left: auto; margin-right: auto;"><div style="text-align: center;">
+<div style="width: 620px; margin-left: auto; margin-right: auto; text-align: center;">
 <span tal:attributes="dir view/is_rtl; align view/is_rtl_align;" i18n:translate="deed.view_in">This page is available in the following languages:</span>
 <br/>
 
@@ -44,8 +44,14 @@ setCookie('lang','%s', expiry, '/');
    >Catal%Gï¿½%@f</a>
 
 </div>
-</div></div>
-
+</div>
 
 </metal:translations>
+
+<metal:pd_steps metal:define-macro="pd_nav_steps">
+
+<h1>XXX</h1>
+
+</metal:pd_steps>
+
 </html>
