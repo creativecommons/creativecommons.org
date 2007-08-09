@@ -8,9 +8,7 @@
   <title metal:fill-slot="title">Choose a License</title>
 </head>
 <body>
-<div metal:fill-slot="body"
-
-      tal:define="target_lang string:en;">
+<div metal:fill-slot="body">
 
 <h1 i18n:translate="license.Choose_License">Choose A License</h1>
 
@@ -102,7 +100,7 @@ Yes, as long as others share alike (<a href="http://creativecommons.org/characte
 
 			</p>
 
-<!-- <div metal:use-macro="here/common_ui/macros/more-metadata" /> -->
+<div metal:use-macro="context/@@metadata/more-metadata" />
 
 			<input type="hidden" name="lang" value="en" tal:attributes="value target_lang" />
 			<input type="hidden" name="language" value="en" tal:attributes="value target_lang" />

@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:cc="http://creativecommons.org/ns#"
+      i18n:domain="icommons">
+
+<body>
+
+<metal:more-metadata
+     metal:define-macro="more-metadata">
+
+<!-- begin optional show/hide elements for detailed RDF -->			
+	<p><a onclick="toggle('search');return false;" href="javascript:toggle('search');return false;">
+   <span id="moreinfo" i18n:translate="license.include_more">Click to include more information about your work.</span>
+   <span id="hidemoreinfo" style="display:none;" i18n:translate="license.hide_optional_fields">Hide these fields (All fields are optional)</span>
+	</a></p>
+	<div id="search" style="display:none;">
+		
+	<table border="0" cellspacing="3" cellpadding="3">
+                        <!-- new format option that is shown to all, for more detailed RDF -->
+	<tr>
+		<td align="right" i18n:translate="license.tell_format">Tell us the format of your work:</td>
+
+		<td> 
+			<select name="field_format">
+
+				<option value="" i18n:translate="util.Other" selected="selected">Other</option>
+			
+				<option value="Sound" i18n:translate="util.Audio">Audio</option>
+			
+				<option value="MovingImage" i18n:translate="util.Video">Video</option>
+			
+				<option value="StillImage" i18n:translate="util.Image">Image</option>
+			
+				<option value="Text" i18n:translate="util.Text">Text</option>
+			
+				<option value="InteractiveResource" i18n:translate="util.Interactive">Interactive</option>
+
+			
+			</select>
+		</td>
+	</tr>
+
+	<tr>
+		<td align="right" i18n:translate="util.title_of_work">title of work</td>
+
+		<td> <input type="text" name="field_worktitle" value="" /> 
+		</td>
+	</tr>
+	<tr>
+		<td align="right" i18n:translate="util.attribute_to_name">attribute to name</td>
+		<td> <input type="text" name="field_attribute_to_name" /> 
+		</td>
+
+	</tr>
+	<tr>
+		<td align="right" i18n:translate="util.attribute_to_url">
+		 attribute to url</td>
+
+		<td>
+		 <input type="text" name="field_attribute_to_url" size="40" value="" /> 
+		</td>
+	</tr>
+	<tr>
+		<td align="right" i18n:translate="util.source_work_url"><a href="http://creativecommons.org/jargon/lookup?id=1" class="jargon" onClick="window.open('http://creativecommons.org/jargon/lookup?id=10', 'jargon_term_lookup', 'width=300,height=400,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes'); return false;">source work</a> URL</td>
+		<td>
+<input type="text" name="field_sourceurl" size="40" value=""/>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" i18n:translate="util.more_permissions_url">more permissions URL</td>
+		<td>
+<input type="text" name="field_morepermissionsurl" size="40" value=""/>
+		</td>
+	</tr>
+
+	</table>
+
+<p>&nbsp;</p>
+</div>
+
+
+</metal:more-metadata>
+
+</body>
+</html>

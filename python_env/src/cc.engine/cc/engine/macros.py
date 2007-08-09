@@ -14,3 +14,8 @@ class Support(grok.View):
     """Container for support macros: translations, etc."""
     grok.context(Interface)
     
+class Metadata(grok.View):
+    """Metadata support macros."""
+    grok.context(Interface)
+
+    
