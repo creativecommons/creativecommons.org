@@ -1,6 +1,7 @@
 import email.Charset
 email.Charset.add_charset('utf-8', email.Charset.SHORTEST, None, None)
 from email.MIMEText import MIMEText
+import re
 
 from datetime import datetime
 from urllib import urlencode
@@ -151,8 +152,6 @@ class Results(grok.View):
     grok.name('results-one')
     grok.context(LicenseEngine)
 
-    template = 'engine_templates/results.pt'
-
     @property
     def is_rtl(self):
         """Return 'rtl' if the request locale is represented right-to-left;
@@ -267,8 +266,119 @@ class Wiki(grok.View):
 class Music(grok.View):
     pass
 
-## class Xmp(grok.View):
-##     pass
+class Xmp(Results):
+    grok.name('xmp')
+    grok.template('xmp')
+    
+    def _strip_href(self, input_str):
+        """Take input_str and strip out the <a href='...'></a> tags."""
+
+        return input_str
+    
+##         result = re.compile("""\<a .+ href=["'].+["']\>""", re.I).sub("", input_str)
+##         result = re.compile("""</a>""", re.I).sub("", result)
+
+##         return result
+        
+    def workType(self, format):
+
+        WORK_FORMATS = {'Other':None,
+                        'Audio':'Sound',
+                        'Video':'MovingImage',
+                        'Image':'StillImage',
+                        'Interactive':'InteractiveResource'
+                        }
+
+        if format == "":
+            return "work"
+
+        if format not in WORK_FORMATS:
+            return format
+
+        return WORK_FORMATS[format] 
+
+    def update(self):
+        # assemble the necessary information for the XMP file before rendering
+
+        year = ('field_year' in self.request.form and
+                self.request['field_year']) or ""
+        creator = ('field_creator' in self.request.form and
+                   self.request['field_creator']) or None
+        work_type = self.workType(('field_format' in self.request.form and
+                              self.request['field_format']) or "")
+        work_url = ('field_url' in self.request.form and
+                    self.request['field_url']) or None
+
+        # determine the license notice
+        if ('publicdomain' in self.license.uri):
+            notice = "This %s is dedicated to the public domain." % (work_type)
+            copyrighted = False
+        else:
+
+            if creator:
+                notice = "Copyright %s %s.  " % (year, creator,)
+            else:
+                notice = ""
+
+            i18n_work = translate(cc.engine.i18n.I18N_DOMAIN, 'util.work')
+            work_notice = self._strip_href(
+                translate(cc.engine.i18n.I18N_DOMAIN,
+                          'license.work_type_licensed',
+                          mapping={'license_name':self.license.name,
+                                   'license_url':self.license.uri,
+                                   'work_type':i18n_work}
+                ) )
+
+            notice = notice + work_notice
+
+            copyrighted = True
+
+        self.xmp_info = {
+            'copyrighted': copyrighted,
+            'notice':notice,
+            'license_url':self.license.uri,
+            'license':self.license,
+            'work_url':work_url
+            }
+
+    
+    def render(self): 
+        self.response.setHeader('Content-Type',
+                                'application/xmp; charset=UTF-8')
+        self.response.setHeader('Content-Disposition',
+                                u'attachment; filename="CC_%s.xmp"' %
+                                self.license.name.strip().replace(' ', '_'));
+
+
+        # print the XMP
+        return u"""<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>
+        <rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+
+         <rdf:Description rdf:about=''
+          xmlns:xapRights='http://ns.adobe.com/xap/1.0/rights/'>
+          <xapRights:Marked>%(copyrighted)s</xapRights:Marked>""" % xmp_info
+        if xmp_info['work_url'] != None:
+            print """  <xapRights:WebStatement rdf:resource='%(work_url)s'/>""" % xmp_info
+        print """ </rdf:Description>
+
+         <rdf:Description rdf:about=''
+          xmlns:dc='http://purl.org/dc/elements/1.1/'>
+          <dc:rights>
+           <rdf:Alt>
+            <rdf:li xml:lang='x-default' >%(notice)s</rdf:li>
+           </rdf:Alt>
+          </dc:rights>
+         </rdf:Description>
+
+         <rdf:Description rdf:about=''
+          xmlns:cc='http://creativecommons.org/ns#'>
+          <cc:license rdf:resource='%(license_url)s'/>
+         </rdf:Description>
+
+        </rdf:RDF>
+        </x:xmpmeta>
+        <?xpacket end='r'?>
+        """ % self.xmp_info
 
 class NonWeb(Results):
     grok.name('non-web-popup')
