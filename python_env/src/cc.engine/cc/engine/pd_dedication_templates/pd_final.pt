@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/@@engine/page"
+      i18n:domain="icommons">
+<head>
+  <title metal:fill-slot="title"
+         i18n:translate="">Public Domain Dedication</title>
+</head>
+
+<body>
+
+<metal:left fill-slot="sidebar">
+<div tal:omit-tag=""
+     tal:define="step string:3;
+                 license_code string:publicdomain;" >
+    <div metal:use-macro="context/@@support/pd_nav_steps" />
+</div>
+
+</metal:left>
+
+<metal:body fill-slot="body">
+
+<h1 i18n:translate="license.Mark_Content">Mark</h1>
+
+<p i18n:translate="license.mark_pd" />
+
+<p i18n:translate="license.in_order_to" />
+                                                                                
+<ul>
+<li><span tal:omit-tag="" i18n:translate="license.mark_web"/><br /><br />
+                                                                                
+<div class="textbox">
+<div align="center">
+<form action="">
+<textarea cols="30" rows="8" name="html" 
+    style="width:90%;height:150px;"
+    tal:content="python:getattr(here, 'get-html')('http://creativecommons.org/licenses/publicdomain/')">@html@</textarea>
+                                                                                
+<p><input type="button" onclick="form.html.focus();form.html.select()" value="highlight" name="grab" i18n:attributes="value util.Highlight_Text" /> 
+[<a href="work-html-popup?licensecode=pd&pd=true" 
+    onclick="window.open('work-html-popup?licensecode=pd&pd=true', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;" i18n:translate="license.get_html_email" >x</a>]</p>
+                                                                                
+</form>
+</div></div></li>
+        <li i18n:translate="license.mark_mp3"/>
+        <li i18n:translate="license.mark_nonweb">
+        <span tal:omit-tag="" i18n:name="url_vars" 
+	      tal:content="python:'pd=1&field_creator='+request['copyright_holder']+'&field_worktitle='+request['title']" />
+        </li>
+        <li i18n:translate="license.mark_rss"/>
+        <li i18n:translate="license.mark_xmp">
+	<span tal:omit-tag="" i18n:name="url_vars" 
+	      tal:content="python:'pd=1&field_creator='+request['copyright_holder']+'&field_worktitle='+request['title']" />
+        </li>
+</ul>
+
+<form action="publicize">
+    <div tal:omit-tag=""
+        tal:repeat="k request/form/keys">
+        <input type="hidden" name="" value=""
+            tal:attributes="name k;
+                            value python:request.form[k];"
+                            />
+    </div>
+    
+<p class="textbox"><span i18n:translate="license.Final_step"/> <input type=submit value="publicize"
+    i18n:attributes="value license.learn_publicize"></p>
+</form>
+
+</metal:body>
+</body>
+</html>

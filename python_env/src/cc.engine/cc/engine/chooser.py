@@ -1,3 +1,4 @@
+from datetime import datetime
 from urllib import urlencode
 
 import grok
@@ -5,7 +6,7 @@ from zope.interface import implements
 
 import zope.component
 from zope.component import getUtility
-from zope.sendmail.interfaces import IMailDelivery, IMailSentEvent, IMailErrorEvent
+from zope.sendmail.interfaces import IMailDelivery
 from zope.i18n import translate
 
 import cc.license
@@ -22,13 +23,12 @@ class LicenseEngine(grok.Application, grok.Container):
     implements(ILicenseEngine)
 
     def generate_hash(self, email_addr, title, holder):
-        return 'foo'
+        return hash((email_addr, title, holder))
     
     def send_pd_confirmation(self, next_url, email_addr, title, holder):
         """Sends the confirmation email to the PD dedicator."""
 
         mhost = getUtility(IMailDelivery, 'cc_engine')
-        print mhost
         lang = 'en' # YYY context.getLanguage()
 
         if False in (email_addr, title, holder):
@@ -43,33 +43,46 @@ class LicenseEngine(grok.Application, grok.Container):
                       }
         nextstep_url = "%s?%s" % (next_url, urlencode(nextstep_qs))
 
-        message = """
-        To: %s
-        From: info@creativecommons.org
-        Subject: Confirm your Public Domain Dedication at Creative Commons
+        message = "To: %s\n" \
+                  "From: info@creativecommons.org\n" \
+                  "Subject: Confirm your Public Domain Dedication at Creative Commons\n" \
+                  "\n%s" % (
+            email_addr,
+            translate(domain=cc.engine.i18n.I18N_DOMAIN,
+                      msgid='license.pd_confirmation_email',
+                      mapping={'title':title,
+                               'clickthrough_url':nextstep_url, },
+                      target_language=lang)
+            )
 
-        %s
-        """ % (email_addr,
-               translate(domain=cc.engine.i18n.I18N_DOMAIN,
-               msgid='license.pd_confirmation_email',
-               mapping={'title':title,
-                        'clickthrough_url':nextstep_url, },
-               target_language=lang))
-
-        print mhost.send('info@creativecommons.org', (email_addr,), message)
+        mhost.send('info@creativecommons.org', (email_addr,), message)
 
         return True
 
-@zope.component.adapter(IMailSentEvent)
-def foo(event):
-    print 'sent', event.messageId
+    def send_pd_dedication(self, email_addr, title, holder):
+        """Send the public domain dedication after confirmation."""
 
-@zope.component.adapter(IMailErrorEvent)
-def bar(event):
-    print 'failed: ', event.messageId, event.errorMessage
+        mhost = getUtility(IMailDelivery, 'cc_engine')
+        lang = "en" # YYY context.getLanguage()
 
-zope.component.provideHandler(foo)
-zope.component.provideHandler(bar)
+        message = "To: %s\n" \
+                  "From: info@creativecommons.org\n" \
+                  "Subject: Creative Commons - Public Domain Dedication\n" \
+                  "\n%s" % (
+            email_addr,
+            translate(domain=cc.engine.i18n.I18N_DOMAIN,
+                      msgid='license.pd_dedication_email',
+                      mapping={'title':title,
+                               'email':email_addr,
+                               'copyright_holder':holder,
+                               'sysdate':datetime.now().strftime("%B %d, %Y")},
+                      target_language=lang)
+            )
+
+        mhost.send('info@creativecommons.org', (email_addr,), message)
+
+        return True
+        
 
 class BaseIndexViewMixin(object):
 
