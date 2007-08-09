@@ -76,5 +76,48 @@ Select the contents of the box above and copy it. Or, have it <a href="/license/
 -->
 
 </div>
+
+<metal:sidebar fill-slot="sidebar">
+<h4 i18n:translate="license.no_web_site">No Web site?</h4>
+
+<p i18n:translate="license.learn_host">Learn about other places you can host your licensed files. These
+sites work with your Creative Commons license.</p>
+
+<ul>
+	<li><a href="http://creativecommons.org/audio/publish-internetarchive" 
+	       i18n:translate="license.publish_audio_ia"
+	       class="publish-links">Publishing your licensed music to the Internet Archive</a></li>
+	<li><a href="http://creativecommons.org/audio/publish-soundclick" 
+	       i18n:translate="license.publish_soundclick"
+	       class="publish-links">Publishing your licensed music to Soundclick</a></li>
+
+	<li><a href="http://creativecommons.org/image/publish-flickr" 
+	       i18n:translate="license.publish_flickr"
+	       class="publish-links">Posting your licensed images at Flickr</a></li>
+	<li><a href="http://creativecommons.org/image/publish-buzznet" 
+	       i18n:translate="license.publish_buzznet"
+	       class="publish-links">Posting your licensed images at Buzznet</a></li>	
+	<li><a href="http://creativecommons.org/text/publish-weblogs" 
+	       i18n:translate="license.publish_blog"
+	       class="publish-links">Adding a Creative Commons license to your blog (Blogger, Movable Type, and Typepad)</a></li>	
+	<li><a href="http://creativecommons.org/video/publish-internetarchive" 
+	       i18n:translate="license.publish_video_ia"
+	       class="publish-links">Publishing your licensed video at the Internet Archive</a></li>
+	 <li><a href="/audio/publish-morpheus" 
+	       i18n:translate="license.publish_morpheus"
+	       class="publish-links">Publishing your licensed music to the Morpheus P2P network</a></li>
+       <li i18n:translate="license.mark_xmp">
+	<%=[ccommons::istr $lang license.mark_xmp]%>
+	<span tal:omit-tag="" i18n:name="url_vars" 
+	      tal:content="request/QUERY_STRING" />
+	</li>
+       <li i18n:translate="license.mark_nonweb">
+	<%=[ccommons::istr $lang license.mark_nonweb]%>	
+	<span tal:omit-tag="" i18n:name="url_vars" 
+	      tal:content="request/QUERY_STRING" />
+	</li>
+</ul>	
+</metal:sidebar>
+
 </body>
 </html>

@@ -60,9 +60,10 @@
 		<div id="body">
 			<div id="splash">
 				<h3 class="category"><metal:page_parent_header define-slot="page_parent_header"></metal:page_parent_header></h3>
-				<h1><metal:page_header define-slot="page_header"></metal:page_header></h1>
+				<h1 tal:attributes="dir view/is_rtl|nothing; align view/is_rtl_align|nothing;" i18n:translate="license.License_Your_Work">License Your Work</h1>
 				<div id="splash-menu">
-<metal:breadcrumbs define-slot="h3_breadcrumbs" />
+<h3><a href="/" i18n:translate="util.home">Home</a></h3>
+<h3><a href="http://search.creativecommons.org/" i18n:translate="util.find">Find</a> </h3>
 				</div>
 			</div>
 

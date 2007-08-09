@@ -88,6 +88,23 @@ class BaseIndexViewMixin(object):
 
     target_lang = ''
 
+    @property
+    def is_rtl(self):
+        """Return 'rtl' if the request locale is represented right-to-left;
+        otherwise return an empty string."""
+
+        if self.request.locale.orientation.characters == u'right-to-left':
+            return 'rtl'
+
+        return ''
+
+    @property
+    def is_rtl_align(self):
+        """Return the appropriate alignment for the request locale:
+        'right' or 'left'."""
+
+        return self.request.locale.orientation.characters.split('-')[0]
+
     def selected_jurisdiction(self):
         """Return the appropriate default jurisdiction -- either one explicitly
         requested by the user, or a good guess based on their language."""
@@ -127,10 +144,24 @@ class Results(grok.View):
     grok.context(LicenseEngine)
 
     template = 'engine_templates/results.pt'
+
     @property
     def is_rtl(self):
-        return False
-    
+        """Return 'rtl' if the request locale is represented right-to-left;
+        otherwise return an empty string."""
+
+        if self.request.locale.orientation.characters == u'right-to-left':
+            return 'rtl'
+
+        return ''
+
+    @property
+    def is_rtl_align(self):
+        """Return the appropriate alignment for the request locale:
+        'right' or 'left'."""
+
+        return self.request.locale.orientation.characters.split('-')[0]
+
     def _work_info(self, request):
         """Extract work information from the request and return it as a
         dict."""

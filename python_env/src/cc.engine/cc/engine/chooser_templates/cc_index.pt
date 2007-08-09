@@ -121,5 +121,52 @@ Yes, as long as others share alike (<a href="http://creativecommons.org/characte
 -->
 
 </div>
+
+<div metal:fill-slot="sidebar" 
+     id="features" tal:omit-tag="">
+<h4 i18n:translate="license.what_you" style="margin-bottom:10px;">What You Can Do Here</h4>
+
+<p i18n:translate="license.explain">Creative Commons helps you publish your work online while letting others know exactly what they can and can't do with your work. When you choose a license, we provide you with tools and tutorials that let you add license information to our own site, or to one of several free hosting services that have incorporated Creative Commons.</p>
+
+<a href="/about/licenses/meet-the-licenses"><span i18n:translate="license.view_explanation">View an explanation of all our licenses.</span></a>
+
+
+<h4 i18n:translate="license.or_choose">Or Choose:</h4>
+
+	<p style="font-size:11px;">
+<a href="/license/publicdomain-2">
+<img src="/images/license/40publicdomain.gif" width="40" height="40" align="middle" border="0" /></a>
+<a href="/license/publicdomain-2">
+<span i18n:translate="licenses.pretty_publicdomain">Public Domain</span></a></p>
+
+<p style="font-size:11px;"><a href="/license/sampling">
+<img src="/images/license/40sampling.gif" width="40" height="40" align="middle" border="0" /></a>
+<a href="/license/sampling">
+<span i18n:translate="licenses.pretty_sampling+">Sampling+</span></a></p>
+
+        <p style="font-size:11px;"><a href="/projects/founderscopyright/">
+<img src="/images/license/40founders.gif" width="40" height="40" align="middle" border="0" /></a>
+<a href="/projects/founderscopyright/">
+<span i18n:translate="util.Founders_Copyright">Founder's Copyright</span></a></p>
+
+<p style="font-size:11px;"> <a href="/license/cc-gpl">
+<img src="/images/license/40gnugpl.gif" width="40" height="40" align="middle" border="0" /></a>
+<a href="/license/cc-gpl" i18n:translate="util.CC_GNU_GPL">CC-GNU GPL</a></p>
+
+<p style="font-size:11px;"> <a href="/license/cc-lgpl">
+<img src="/images/license/40gnulgpl.gif" width="40" height="40" align="middle" border="0" /></a>
+<a href="/license/cc-lgpl" i18n:translate="util.CC_GNU_LGPL">
+CC-GNU LGPL</a></p>
+
+<p style="font-size:11px;"> <a href="/license/wiki">
+<img src="/images/license/40wiki.gif" width="40" height="40" align="middle" border="0" /></a>
+<a href="/license/wiki" i18n:translate="util.Wiki">Wiki</a></p>
+
+<p style="font-size:11px;"> <a href="/license/music">
+<img src="/images/license/40sharemusic.gif" width="40" height="40" align="middle" border="0" /></a>
+<a href="/license/music" i18n:translate="util.Music_Sharing">Music Sharing</a></p>
+
+</div>
+
 </body>
 </html>
