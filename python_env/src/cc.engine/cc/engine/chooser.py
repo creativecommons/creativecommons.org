@@ -23,7 +23,7 @@ class LicenseEngine(grok.Application, grok.Container):
     implements(ILicenseEngine)
 
     def generate_hash(self, email_addr, title, holder):
-        return hash((email_addr, title, holder))
+        return str(hash((email_addr, title, holder)))
     
     def send_pd_confirmation(self, next_url, email_addr, title, holder):
         """Sends the confirmation email to the PD dedicator."""

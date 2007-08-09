@@ -16,7 +16,7 @@ class pd_waiting_verification(grok.View):
         """Send the PD verification email."""
 
         self.email_result = self.context.send_pd_confirmation(
-            '/licenses/publicdomain-3',
+            'http://%s/license/publicdomain-3' % self.request['HTTP_HOST'],
             self.request.get('email', False),
             self.request.get('title', False),
             self.request.get('copyright_holder', False),
@@ -31,14 +31,19 @@ class pd_confirm(grok.View):
     def hash_ok(self):
         """Verify the hash and return True or False."""
 
-    
+        return self.context.generate_hash(
+                   self.request.get('email', False),
+                   self.request.get('title', False),
+                   self.request.get('copyright_holder', False)
+               ) == self.request.get('hash', None)
+
 class pd_final(Results):
     grok.name('publicdomain-4')
 
     def update(self):
 
         # YYY set the key so Results._issue works right
-        self.request['publicdomain'] = True
+        self.request.form['publicdomain'] = True
         
         self.email_result = self.context.send_pd_dedication(
             self.request.get('email', False),
