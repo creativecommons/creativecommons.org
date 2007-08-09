@@ -36,7 +36,7 @@
 <form action="">
 <textarea cols="30" rows="8" name="html" 
     style="width:90%;height:150px;"
-    tal:content="python:getattr(here, 'get-html')('http://creativecommons.org/licenses/publicdomain/')">@html@</textarea>
+    tal:content="structure view/license/html">@html@</textarea>
                                                                                 
 <p><input type="button" onclick="form.html.focus();form.html.select()" value="highlight" name="grab" i18n:attributes="value util.Highlight_Text" /> 
 [<a href="work-html-popup?licensecode=pd&pd=true" 

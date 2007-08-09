@@ -1,7 +1,8 @@
 import grok
 
 from cc.engine.chooser import LicenseEngine
-    
+from cc.engine.chooser import Results
+
 class pd_information(grok.View):
     grok.name('publicdomain-2')
     grok.context(LicenseEngine)
@@ -31,12 +32,14 @@ class pd_confirm(grok.View):
         """Verify the hash and return True or False."""
 
     
-class pd_final(grok.View):
+class pd_final(Results):
     grok.name('publicdomain-4')
-    grok.context(LicenseEngine)
 
     def update(self):
 
+        # YYY set the key so Results._issue works right
+        self.request['publicdomain'] = True
+        
         self.email_result = self.context.send_pd_dedication(
             self.request.get('email', False),
             self.request.get('title', False),
