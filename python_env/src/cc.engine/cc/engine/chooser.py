@@ -86,8 +86,12 @@ class LicenseEngine(grok.Application, grok.Container):
 
 class BaseIndexViewMixin(object):
 
-    target_lang = ''
+    @property
+    def target_lang(self):
+        """Return the request language."""
 
+        return self.request.locale.id.language
+    
     @property
     def is_rtl(self):
         """Return 'rtl' if the request locale is represented right-to-left;
@@ -235,3 +239,36 @@ class Results(grok.View):
         return self._license
 
 
+class Sampling(grok.View):
+
+    @property
+    def target_lang(self):
+        """Return the request language."""
+
+        return self.request.locale.id.language
+    
+class Gpl(grok.View):
+    grok.name('cc-gpl')
+
+class Lgpl(grok.View):
+    grok.name('cc-lgpl')
+
+class Wiki(grok.View):
+
+    def render(self):
+
+        self.request.response.redirect(
+            'results-one?license_code=by-sa&wiki=true')
+    
+class Music(grok.View):
+    pass
+
+## class Xmp(grok.View):
+##     pass
+
+## class NonWeb(grok.View):
+##     grok.name('non-web-popup')
+
+## class WorkHtml(grok.View):
+##     grok.name('work-html-popup')
+    
