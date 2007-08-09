@@ -13,7 +13,7 @@
 <h1 i18n:translate="license.Choose_License">Choose A License</h1>
 
 	<p i18n:translate="license.what">
-				   <span i18n:name="lang" tal:content="target_lang" tal:omit-tag="">es</span>
+				   <span i18n:name="lang" tal:content="view/target_lang" tal:omit-tag="">es</span>
 With a Creative Commons license, <strong>you keep your copyright</strong> but allow people to <a href="http://creativecommons.org/learn/licenses/fullrights">copy and distribute your work</a> provided they <a href="http://creativecommons.org/characteristic/by?lang=en" onclick="window.open('http://creativecommons.org/characteristic/by?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">give you credit</a> -- and only on the conditions you specify here. If you want to offer your work with no conditions, choose the <a href="http://creativecommons.org/license/publicdomain">public domain</a>.</p>
 	
 		<div class="licensebox">
@@ -25,7 +25,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 			
 			<p>
 			<span tal:omit-tag=""  i18n:translate="license.q2"> 
-			   <span i18n:name="lang" tal:content="target_lang" tal:omit-tag="">es</span>
+			   <span i18n:name="lang" tal:content="view/target_lang" tal:omit-tag="">es</span>
 			<strong>Allow commercial uses of your work?</strong> (<a href="http://creativecommons.org/license/characteristic/nc?lang=en" onclick="window.open('http://creativecommons.org/characteristic/nc?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">more info</a> <a href="/characteristic/nc?lang=en" onclick="window.open('/characteristic/nc?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="/images/popup.gif" width="15" height="13" alt="more information" border="0" /></a>)
 			</span>
 			<br />
@@ -39,7 +39,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 			
 			<p>
 			<span tal:omit-tag="" i18n:translate="license.q3">
-			   <span i18n:name="lang" tal:content="target_lang" tal:omit-tag="">es</span>
+			   <span i18n:name="lang" tal:content="view/target_lang" tal:omit-tag="">es</span>
 			<strong>Allow modifications of your work?</strong></span>
 			
 			<br />
@@ -48,7 +48,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 			<input type="radio" checked="checked" name="field_derivatives" value="yes" id="question_3-5" /> <label for="question_3-5" i18n:translate="util.Yes">Yes</label><br />
 			
 			<input type="radio"  name="field_derivatives" value="sa" id="question_3-6" /> <label for="question_3-6" i18n:translate="license.a6">
-			<span i18n:name="lang" tal:content="target_lang" tal:omit-tag="">Yes</span>
+			<span i18n:name="lang" tal:content="view/target_lang" tal:omit-tag="">Yes</span>
 Yes, as long as others share alike (<a href="http://creativecommons.org/characteristic/sa?lang=en" onclick="window.open('http://creativecommons.org/characteristic/sa?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">more info</a> <a href="http://creativecommons.org/characteristic/sa?lang=en" onclick="window.open('http://creativecommons.org/characteristic/sa?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="http://creativecommons.org/images/popup.gif" width="15" height="13" alt="more information" border="0" /></a>)</label><br />
 			
 			<input type="radio"  name="field_derivatives" value="n" id="question_3-7" /> <label for="question_3-7" i18n:translate="util.No">No (<a href="http://creativecommons.org/characteristic/nd?lang=en" onclick="window.open('http://creativecommons.org/characteristic/nd?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">more info</a> <a href="http://creativecommons.org/characteristic/nd?lang=en" onclick="window.open('http://creativecommons.org/characteristic/nd?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="http://creativecommons.org/images/popup.gif" width="15" height="13" alt="more information" border="0" /></a>)
@@ -59,12 +59,12 @@ Yes, as long as others share alike (<a href="http://creativecommons.org/characte
 			<p>
                         <span tal:omit-tag="" i18n:translate="license.jurisdiction_question">Jurisdiction of your license</span> 
                         (<a href="/license/jurisdiction-popup?lang=en" 
-   tal:attributes="onclick string:window.open('http://creativecommons.org/license/jurisdiction-popup?lang=${target_lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');;return false;
-                   href string:/license/jurisdiction-popup?lang=${target_lang};"
+   tal:attributes="onclick string:window.open('http://creativecommons.org/license/jurisdiction-popup?lang=${view/target_lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');;return false;
+                   href string:/license/jurisdiction-popup?lang=${view/target_lang};"
    onclick="window.open('http://creativecommons.org/license/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;" i18n:translate="util.more_info">more info</a> 
 <a href="http://creativecommons.org/license/jurisdiction-popup?lang=en" onclick="window.open('http://creativecommons.org/license/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
-   tal:attributes="onclick string:window.open('http://creativecommons.org/license/jurisdiction-popup?lang=${target_lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');;return false;
-                   href string:/license/jurisdiction-popup?lang=${target_lang};"
+   tal:attributes="onclick string:window.open('http://creativecommons.org/license/jurisdiction-popup?lang=${view/target_lang}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');;return false;
+                   href string:/license/jurisdiction-popup?lang=${view/target_lang};"
 
 >
 <img src="http://creativecommons.org/images/popup.gif" width="15" height="13" alt="more info" border="0" /></a>)<br />
@@ -102,8 +102,8 @@ Yes, as long as others share alike (<a href="http://creativecommons.org/characte
 
 <div metal:use-macro="context/@@metadata/more-metadata" />
 
-			<input type="hidden" name="lang" value="en" tal:attributes="value target_lang" />
-			<input type="hidden" name="language" value="en" tal:attributes="value target_lang" />
+			<input type="hidden" name="lang" value="en" tal:attributes="value view/target_lang" />
+			<input type="hidden" name="language" value="en" tal:attributes="value view/target_lang" />
 			<input type="hidden" name="n_questions" value="3" />
 			<input type="submit" 
                    i18n:attributes="value license.Select_a_License;" 
