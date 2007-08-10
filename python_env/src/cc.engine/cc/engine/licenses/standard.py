@@ -43,6 +43,7 @@ class BrowserLicense(grok.Model):
                                                            version,
                                                            jurisdiction)
 
+    # XXX wtf? why can we cache this but not .license()
     @property
     @cached
     def conditions(self):
