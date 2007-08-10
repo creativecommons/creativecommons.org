@@ -2,15 +2,19 @@ import grok
 from zope.interface import Interface
 
 class Engine(grok.View):
+    """Skin macros for the standard license engine."""
     grok.context(Interface)
 
-class Popup(grok.View):
+class Partner_Skin(grok.View):
+    """Skin macros for the partner interface."""
     grok.context(Interface)
     
-## class Partner(grok.View):
-##     grok.context(Interface)
+class Popup(grok.View):
+    """Page-level macros for popup pages."""
+    grok.context(Interface)
         
 class Deed(grok.View):
+    """Skin macros for the license deeds."""
     grok.context(Interface)
     
 class Support(grok.View):

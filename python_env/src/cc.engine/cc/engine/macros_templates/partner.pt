@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:define-macro="page">
+
+  <head>
+    <title metal:define-slot="title">Page Title</title>
+
+<style type="text/css">
+        <!--
+                @import url(/includes/ccliss.css);
+        -->
+</style>
+<link rel="stylesheet" type="text/css" href="#"
+      tal:attributes="href request/stylesheet|nothing" 
+/>
+
+  </head>
+
+  <body>
+
+<div id="main">
+  <div id="page-body">
+    <metal:partner define-slot="body" />
+  </div>
+</div>
+
+</body>
+
+</html>
