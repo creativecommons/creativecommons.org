@@ -5,7 +5,7 @@
       metal:use-macro="context/@@engine/page"
       i18n:domain="icommons">
 <head>
-  <title metal:fill-slot="title">CC GNU GPL</title>
+  <title metal:fill-slot="title">CC Music Sharing License</title>
 </head>
 
 <body>
