@@ -52,6 +52,8 @@
 
   </browser:pages>
 
+  <include package=".xmp" />
+
   <i18n:registerTranslations directory="./locales/" />
 
   <mail:smtpMailer
