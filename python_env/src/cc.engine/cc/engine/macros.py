@@ -5,7 +5,7 @@ class Engine(grok.View):
     """Skin macros for the standard license engine."""
     grok.context(Interface)
 
-class Partner_Skin(grok.View):
+class Partner(grok.View):
     """Skin macros for the partner interface."""
     grok.context(Interface)
     

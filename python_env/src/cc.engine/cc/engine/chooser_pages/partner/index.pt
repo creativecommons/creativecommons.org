@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@standard_macros/page"
+      metal:use-macro="context/@@partner/page"
       i18n:domain="icommons">
 <head>
   <title metal:fill-slot="title">Choose a License</title>
@@ -81,7 +81,7 @@ Yes, as long as others share alike (<a href="http://creativecommons.org/characte
         i18n:translate="util.Generic" >Generic</option>
 
 <span tal:omit-tag=""
-        tal:repeat="j python:view.license_class().jurisdictions()">
+        tal:repeat="j python:context.license_class().jurisdictions()">
 <option value="" selected="selected"
         tal:condition="python: j != '-' and selected == j"
         tal:attributes="value j;" >

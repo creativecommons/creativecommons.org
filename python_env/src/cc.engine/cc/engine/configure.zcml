@@ -13,6 +13,13 @@
 
   <grok:grok package="." />
 
+  <browser:page
+     for="cc.engine.interfaces.ILicenseEngine"
+     name="index"
+     class=".chooser.IndexView"
+     permission="zope.View"
+     />
+
   <!-- Additional template-only page views
        ***********************************
 

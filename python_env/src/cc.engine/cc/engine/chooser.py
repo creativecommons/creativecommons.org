@@ -14,6 +14,8 @@ import zope.component
 from zope.component import getUtility
 from zope.sendmail.interfaces import IMailDelivery
 from zope.i18n import translate
+from zope.publisher.browser import BrowserPage
+from zope.app.pagetemplate import ViewPageTemplateFile
 
 import cc.license
 
@@ -220,8 +222,12 @@ class LicenseEngine(grok.Application, grok.Container):
         return True
         
 
-class BaseIndexViewMixin(object):
+class IndexView(BrowserPage):
+    """Index views: standard chooser and partner interface.
 
+    This view provides support methods and dispatches the appropriate page
+    template based on the presence of the partner query string parameter."""
+    
     @property
     def target_lang(self):
         """Return the request language."""
@@ -251,29 +257,16 @@ class BaseIndexViewMixin(object):
 
         # Delegate to an adapter
         return IDefaultJurisdiction(self.request).getJurisdictionId()
-        
-class Partner(grok.View, BaseIndexViewMixin):
-    """Partner UI index view."""
-    grok.context(LicenseEngine)
 
-class Cc_Index(grok.View, BaseIndexViewMixin):
-    """cc.org License Engine UI."""
-    grok.context(LicenseEngine)
-    
-class Index(grok.View):
-    """License Engine index."""
-    grok.context(LicenseEngine)
 
-    def render(self):
+    def __call__(self):
 
-        # determine if we're using the standard site or partner interface
+        # delegate rendering to the appropriate page template
         if u'partner' in self.request.form:
-            return Partner(self.context, self.request)()
+            return ViewPageTemplateFile('chooser_pages/partner/index.pt')(self)
 
         else:
-
-            return Cc_Index(self.context, self.request)()
-
+            return ViewPageTemplateFile('chooser_pages/index.pt')(self)
     
 class Results(grok.View):
     grok.name('results-one')
