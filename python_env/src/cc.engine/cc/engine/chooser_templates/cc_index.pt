@@ -79,7 +79,7 @@ Yes, as long as others share alike (<a href="http://creativecommons.org/characte
         i18n:translate="util.Generic" >Generic</option>
 
 <span tal:omit-tag=""
-        tal:repeat="j python:view.license_class().jurisdictions()">
+        tal:repeat="j python:context.license_class().jurisdictions()">
 <option value="" selected="selected"
         tal:condition="python: j != '-' and selected == j"
         tal:attributes="value j;" >

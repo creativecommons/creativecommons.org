@@ -2,6 +2,8 @@
            xmlns:grok="http://namespaces.zope.org/grok"
            xmlns:i18n="http://namespaces.zope.org/i18n"
            xmlns:mail="http://namespaces.zope.org/mail"
+           xmlns:browser="http://namespaces.zope.org/browser"
+
            i18n_domain="icommons"
            >
 
@@ -10,6 +12,45 @@
   <include package="zope.sendmail" />
 
   <grok:grok package="." />
+
+  <!-- Additional template-only page views
+       ***********************************
+
+       * non-core license pages (gpl, lgpl, etc)
+       * pop-ups
+    -->
+
+  <browser:pages
+     for="cc.engine.interfaces.ILicenseEngine"
+     permission="zope.View"
+     >
+
+     <browser:page
+        name="cc-gpl"
+        template="chooser_pages/gpl.pt"
+        />
+
+     <browser:page
+        name="cc-lgpl"
+        template="chooser_pages/lgpl.pt"
+        />
+
+     <browser:page
+        name="music"
+        template="chooser_pages/music.pt"
+        />
+
+     <browser:page
+        name="non-web-popup"
+        template="chooser_pages/nonweb_popup.pt"
+        />
+
+     <browser:page
+        name="work-html-popup"
+        template="chooser_pages/htmlpopup.pt"
+        />
+
+  </browser:pages>
 
   <i18n:registerTranslations directory="./locales/" />
 

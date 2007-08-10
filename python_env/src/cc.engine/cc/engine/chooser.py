@@ -103,7 +103,11 @@ class LicenseEngine(grok.Application, grok.Container):
             result['more_permissions_url'] = request['field_morepermissionsurl']
 
 	return result
-    
+
+    def license_class(self, class_name = cc.license.classes.STANDARD):
+
+        return cc.license.LicenseFactory().get_class(class_name)
+
     def issue(self, request):
         """Extract the license engine fields from the request and return a
         License object."""
@@ -314,12 +318,6 @@ class Sampling(grok.View):
 
         return self.request.locale.id.language
     
-class Gpl(grok.View):
-    grok.name('cc-gpl')
-
-class Lgpl(grok.View):
-    grok.name('cc-lgpl')
-
 class Wiki(grok.View):
 
     def render(self):
@@ -327,9 +325,6 @@ class Wiki(grok.View):
         self.request.response.redirect(
             'results-one?license_code=by-sa&wiki=true')
     
-class Music(grok.View):
-    pass
-
 class Xmp(grok.View):
     grok.name('xmp')
     grok.template('xmp')
@@ -455,12 +450,6 @@ class Xmp(grok.View):
         <?xpacket end='r'?>
         """ % self.xmp_info
 
-class NonWeb(Results):
-    grok.name('non-web-popup')
-
-class HtmlPopup(Results):
-    grok.name('work-html-popup')
-    
 class EmailHtml(grok.View):
     grok.name('work-email')
 
