@@ -5,6 +5,7 @@ import re
 
 from datetime import datetime
 from urllib import urlencode
+from urlparse import urlparse
 
 import grok
 from zope.interface import implements
@@ -26,6 +27,132 @@ class LicenseEngine(grok.Application, grok.Container):
     license engine.
     """
     implements(ILicenseEngine)
+
+    def _work_info(self, request):
+        """Extract work information from the request and return it as a
+        dict."""
+
+	result = {'title' : None,
+		  'creator' : None,
+		  'copyright_holder' : None,
+		  'copyright_year' : None,
+		  'description' : None,
+		  'format' : None,
+		  'work_url' : None,
+		  'source_work_url' : None,
+                  'source_work_domain' : None,
+                  'attribution_name' : None,
+                  'attribution_url' : None,
+                  'more_permissions_url' : None,
+		  }
+
+	# look for keys that match the param names
+	for key in request.form:
+	    if key in result:
+	        result[key] = request[key]
+
+	# look for keys from the license chooser interface
+
+	# work title
+	if request.has_key('field_worktitle'):
+	    result['title'] = request['field_worktitle']
+
+	# creator
+	if request.has_key('field_creator'):
+	    result['creator'] = request['field_creator']
+
+	# copyright holder
+	if request.has_key('field_copyrightholder'):
+	    result['copyright_holder'] = result['holder'] = \
+                request['field_copyrightholder']
+
+	# copyright year
+	if request.has_key('field_year'):
+	    result['copyright_year'] = result['year'] = request['field_year']
+
+	# description
+	if request.has_key('field_description'):
+	    result['description'] = request['field_description']
+
+	# format
+	if request.has_key('field_format'):
+	    result['format'] = result['type'] = request['field_format']
+
+	# source url
+	if request.has_key('field_sourceurl'):
+	    result['source_work_url'] = result['source-url'] = \
+                request['field_sourceurl']
+
+            # extract the domain from the URL
+            result['source_work_domain'] = urlparse(
+                result['source_work_url'])[1]
+
+            if not(result['source_work_domain'].strip()):
+                result['source_work_domain'] = result['source_work_url']
+
+        # attribution name
+        if request.has_key('field_attribute_to_name'):
+            result['attribution_name'] = request['field_attribute_to_name']
+
+        # attribution URL
+        if request.has_key('field_attribute_to_url'):
+            result['attribution_url'] = request['field_attribute_to_url']
+
+        # more permissions URL
+        if request.has_key('field_morepermissionsurl'):
+            result['more_permissions_url'] = request['field_morepermissionsurl']
+
+	return result
+    
+    def issue(self, request):
+        """Extract the license engine fields from the request and return a
+        License object."""
+
+	jurisdiction = ''
+	locale = request.get('lang', '')
+	code = ''
+
+        license_class = 'standard'
+        answers = {}
+        
+	if request.has_key('pd') or request.has_key('publicdomain') or (request.has_key('license_code') and request['license_code'] == 'publicdomain'):
+	   # this is public domain
+           license_class = 'publicdomain'
+
+	# check for license_code
+	elif request.has_key('license_code'):
+	   jurisdiction = (('jurisdiction' in request.keys()) and
+                           (request['jurisdiction'])) or \
+                          (('field_jurisdiction' in request.keys()) and
+                           (request['field_jurisdiction'])) or \
+			  ''
+           license_class, answers = cc.license.support.expandLicenseCode(
+               request['license_code'],
+               jurisdiction = jurisdiction,
+               locale=locale,
+               version = request.form.get('version', None)
+               )
+
+	else:
+	   jurisdiction = ('field_jurisdiction' in request.keys() and request['field_jurisdiction']) or jurisdiction
+
+           answers.update(dict(
+               jurisdiction = ('field_jurisdiction' in request.keys() and request['field_jurisdiction']) or jurisdiction,
+               commercial = request['field_commercial'],
+               derivatives = request['field_derivatives'],
+               )
+                          )
+
+           if request.form.get('version', False):
+               answers['version'] = request['version']
+
+        # add the work to the answers block
+        answers.update(self._work_info(request))
+
+	# return the license object
+        return cc.license.LicenseFactory().get_class(license_class).issue(
+            **answers)
+        
 
     def generate_hash(self, email_addr, title, holder):
         return str(hash((email_addr, title, holder)))
@@ -120,11 +247,7 @@ class BaseIndexViewMixin(object):
 
         # Delegate to an adapter
         return IDefaultJurisdiction(self.request).getJurisdictionId()
-    
-    def license_class(self, class_name = cc.license.classes.STANDARD):
-
-        return cc.license.LicenseFactory().get_class(class_name)
-    
+        
 class Partner(grok.View, BaseIndexViewMixin):
     """Partner UI index view."""
     grok.context(LicenseEngine)
@@ -169,70 +292,11 @@ class Results(grok.View):
 
         return self.request.locale.orientation.characters.split('-')[0]
 
-    def _work_info(self, request):
-        """Extract work information from the request and return it as a
-        dict."""
-
-        # XXX
-        return {}
-    
-    def _issue(self, request=None):
-        """Extract the license engine fields from the request and return a
-        License object."""
-
-	if request is None:
-	    request = self.request
-
-	jurisdiction = ''
-	locale = request.get('lang', '')
-	code = ''
-
-        license_class = 'standard'
-        answers = {}
-        
-	if request.has_key('pd') or request.has_key('publicdomain') or (request.has_key('license_code') and request['license_code'] == 'publicdomain'):
-	   # this is public domain
-           license_class = 'publicdomain'
-
-	# check for license_code
-	elif request.has_key('license_code'):
-	   jurisdiction = (('jurisdiction' in request.keys()) and
-                           (request['jurisdiction'])) or \
-                          (('field_jurisdiction' in request.keys()) and
-                           (request['field_jurisdiction'])) or \
-			  ''
-           license_class, answers = cc.license.support.expandLicenseCode(
-               request['license_code'],
-               jurisdiction = jurisdiction,
-               locale=locale,
-               version = request.form.get('version', None)
-               )
-
-	else:
-	   jurisdiction = ('field_jurisdiction' in request.keys() and request['field_jurisdiction']) or jurisdiction
-
-           answers.update(dict(
-               jurisdiction = ('field_jurisdiction' in request.keys() and request['field_jurisdiction']) or jurisdiction,
-               commercial = request['field_commercial'],
-               derivatives = request['field_derivatives'],
-               )
-                          )
-
-           if request.form.get('version', False):
-               answers['version'] = request['version']
-
-        # add the work to the answers block
-        answers.update(self._work_info(request))
-
-	# return the license object
-        return cc.license.LicenseFactory().get_class(license_class).issue(
-            **answers)
-        
     @property
     def license(self):
 
         if not(hasattr(self, '_license')):
-            self._license = self._issue()
+            self._license = self.context.issue(self.request)
 
             # browser-specific information injection
             # XXX we should probably adapt to something like IBrowserLicense
@@ -266,19 +330,29 @@ class Wiki(grok.View):
 class Music(grok.View):
     pass
 
-class Xmp(Results):
+class Xmp(grok.View):
     grok.name('xmp')
     grok.template('xmp')
-    
+
+    @property
+    def license(self):
+        if not(hasattr(self, '_license')):
+            self._license = self.context.issue(self.request)
+
+            # browser-specific information injection
+            # XXX we should probably adapt to something like IBrowserLicense
+            self._license.slim_image = self._license.imageurl.replace(
+                '88x31','80x15')
+            
+        return self._license
+        
     def _strip_href(self, input_str):
         """Take input_str and strip out the <a href='...'></a> tags."""
 
-        return input_str
-    
-##         result = re.compile("""\<a .+ href=["'].+["']\>""", re.I).sub("", input_str)
-##         result = re.compile("""</a>""", re.I).sub("", result)
+        result = re.compile("""\<a .+ href=["'].+["']\>""", re.I).sub("", input_str)
+        result = re.compile("""</a>""", re.I).sub("", result)
 
-##         return result
+        return result
         
     def workType(self, format):
 
@@ -343,6 +417,7 @@ class Xmp(Results):
 
     
     def render(self): 
+
         self.response.setHeader('Content-Type',
                                 'application/xmp; charset=UTF-8')
         self.response.setHeader('Content-Disposition',
@@ -356,9 +431,9 @@ class Xmp(Results):
 
          <rdf:Description rdf:about=''
           xmlns:xapRights='http://ns.adobe.com/xap/1.0/rights/'>
-          <xapRights:Marked>%(copyrighted)s</xapRights:Marked>""" % xmp_info
-        if xmp_info['work_url'] != None:
-            print """  <xapRights:WebStatement rdf:resource='%(work_url)s'/>""" % xmp_info
+          <xapRights:Marked>%(copyrighted)s</xapRights:Marked>""" % self.xmp_info
+        if self.xmp_info['work_url'] != None:
+            print """  <xapRights:WebStatement rdf:resource='%(work_url)s'/>""" % self.xmp_info
         print """ </rdf:Description>
 
          <rdf:Description rdf:about=''
