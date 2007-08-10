@@ -220,14 +220,10 @@ class LicenseEngine(grok.Application, grok.Container):
         mhost.send('info@creativecommons.org', (email_addr,), message)
 
         return True
-        
 
-class IndexView(BrowserPage):
-    """Index views: standard chooser and partner interface.
+class BaseBrowserView(BrowserPage):
+    """A basic view class which provides some common infrastructure."""
 
-    This view provides support methods and dispatches the appropriate page
-    template based on the presence of the partner query string parameter."""
-    
     @property
     def target_lang(self):
         """Return the request language."""
@@ -258,7 +254,19 @@ class IndexView(BrowserPage):
         # Delegate to an adapter
         return IDefaultJurisdiction(self.request).getJurisdictionId()
 
+    def __call__(self):
+        """Default __call__ which is required for BrowserPage subclasses.
+        If not overridden, we use the template assigned in configure.zcml."""
+        
+        return self.index()
 
+    
+class IndexView(BaseBrowserView):
+    """Index views: standard chooser and partner interface.
+
+    This view provides support methods and dispatches the appropriate page
+    template based on the presence of the partner query string parameter."""
+    
     def __call__(self):
 
         # delegate rendering to the appropriate page template
@@ -267,27 +275,9 @@ class IndexView(BrowserPage):
 
         else:
             return ViewPageTemplateFile('chooser_pages/index.pt')(self)
+
     
-class Results(grok.View):
-    grok.name('results-one')
-    grok.context(LicenseEngine)
-
-    @property
-    def is_rtl(self):
-        """Return 'rtl' if the request locale is represented right-to-left;
-        otherwise return an empty string."""
-
-        if self.request.locale.orientation.characters == u'right-to-left':
-            return 'rtl'
-
-        return ''
-
-    @property
-    def is_rtl_align(self):
-        """Return the appropriate alignment for the request locale:
-        'right' or 'left'."""
-
-        return self.request.locale.orientation.characters.split('-')[0]
+class ResultsView(BaseBrowserView):
 
     @property
     def license(self):
@@ -302,16 +292,16 @@ class Results(grok.View):
             
         return self._license
 
+    def __call__(self):
 
-class Sampling(grok.View):
+        # delegate rendering to the appropriate page template
+        if u'partner' in self.request.form:
+            return ViewPageTemplateFile('chooser_pages/partner/results.pt')(self)
+        else:
+            return ViewPageTemplateFile('chooser_pages/results.pt')(self)
 
-    @property
-    def target_lang(self):
-        """Return the request language."""
 
-        return self.request.locale.id.language
-    
-class Wiki(grok.View):
+class WikiRedirect(BrowserPage):
 
     def render(self):
 

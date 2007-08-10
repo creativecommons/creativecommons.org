@@ -20,6 +20,13 @@
      permission="zope.View"
      />
 
+  <browser:page
+     for="cc.engine.interfaces.ILicenseEngine"
+     name="results-one"
+     class=".chooser.ResultsView"
+     permission="zope.View"
+     />
+
   <!-- Additional template-only page views
        ***********************************
 
@@ -30,7 +37,13 @@
   <browser:pages
      for="cc.engine.interfaces.ILicenseEngine"
      permission="zope.View"
+     class=".chooser.BaseBrowserView"
      >
+
+     <browser:page
+        name="sampling"
+        template="chooser_pages/sampling.pt"
+        />
 
      <browser:page
         name="cc-gpl"
@@ -59,7 +72,16 @@
 
   </browser:pages>
 
+  <browser:page
+     for="cc.engine.interfaces.ILicenseEngine"
+     name="wiki"
+     class=".chooser.WikiRedirect"
+     permission="zope.View"
+     />
+
+
   <include package=".xmp" />
+  <include package=".pd" />
 
   <i18n:registerTranslations directory="./locales/" />
 
