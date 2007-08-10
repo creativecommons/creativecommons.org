@@ -12,112 +12,31 @@
 <div metal:fill-slot="body"
       tal:define="target_lang string:en;">
 
-<h2 i18n:translate="license.here_chosen">Here is the license you've chosen</h2>
-
-<div class="licensebox">
-<div tal:omit-tag="" i18n:translate="license.selected">
-<span tal:omit-tag="" i18n:name="license_url" tal:content="view/license/uri" />
-<span tal:omit-tag="" i18n:name="country_name" tal:content="python: '' " />
-You have selected the <span i18n:name="license_pretty_name" tal:replace="python: view.license.name.encode('utf-8')" />.  <a href="#" tal:attributes="href view/license/uri">See how the license will look</a> to your site's visitors.
+<div class="header"
+   tal:define="partner_logo python: request.form.get('partner_icon_url', '/images/remote_logo.gif');">
+   <img tal:attributes="src partner_logo;"
+        src="/images/remote_logo.gif" alt="" border="0" />
 </div>
 
-<div align="center" style="margin-top:10px;">
-<table tal:attributes="dir view/is_rtl;"><tr>
-<td align="center">
-<a tal:attributes="href view/license/uri"
-   href="#"><img id="licensebutton" alt="Creative Commons License" tal:attributes="src view/license/imageurl" border="0" src="" style="margin-right:10px;margin-bottom:4px;" /></a>
-<br/><input type="radio" name="button" checked="" onclick="" tal:attributes="onclick python: 'swapbutton(\''+view.license.imageurl+'\')'"/>
-</td>
-<td align="center">
-<a tal:attributes="href view/license/uri"
-   href="#"><img id="licensebutton" alt="Creative Commons License" src="http://creativecommons.org/images/public/somerights20.png" style="margin-right:10px;margin-bottom:4px;" /></a>
-<br/><input type="radio" name="button" onclick="swapbutton('http://creativecommons.org/images/public/somerights20.png')"/>
-</td>
-<td align="center" valign="bottom">
-<a tal:attributes="href view/license/uri"
-   href="#"><img id="licensebutton" alt="Creative Commons License" tal:attributes="src view/license/slim_image" border="0" src="" style="margin-right:10px;margin-bottom:4px;" /></a>
-<br/><input type="radio" name="button" onclick="" tal:attributes="onclick python: 'swapbutton(\''+view.license.slim_image+'\')'"/>
-</td>
-</tr></table>
-</div>
-</div>
+<div class="nav">provided by <a href="http://creativecommons.org"
+    i18n:translate="util.Creative_Commons">Creative Commons</a></div>
 
-<h2 style="margin-top:30px;margin-bottom:8px;" i18n:translate="license.what_to_do_next">What to do next</h2>
-
-<div style="margin-top:0px;margin-bottom:30px;">
-	<h4 i18n:translate="license.have_your_own_website">Have your own website?</h4>
-
-	<p i18n:translate="license.copy_text">Copy the text below to your Web site to let your visitors know what license applies to your works.</p>
-
-	<form action="">
-	<textarea id="codetocopy" name="html" style="width:90%;height:150px;" tal:content="structure view/license/html"/>
-
-	</form>
-
-
-<p i18n:translate="license.select_text">
-<span tal:content="structure python:request['QUERY_STRING']" 
-      tal:omit-tag=""
-      i18n:name="url_vars" />
-Select the contents of the box above and copy it. Or, have it <a href="/license/work-html-popup?lang=en&license_code=by-nc-nd&title=efwefewf" onclick="window.open('http://creativecommons.org/license/work-html-popup?lang=en&license_code=by-nc-nd&title=efwefewf', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">emailed to yourself.</a>
+<p i18n:translate="license.partner_selected">
+<span i18n:name="license_deed_url" tal:content="view/license/uri" tal:omit-tag="" />
+You have selected the 
+<a target="cc_other" href="#" tal:attributes="href view/license/uri"><b i18n:name="license_pretty_name" tal:content="view/license/name" /></a>.<br>
+This license is permanently located at<br>
+<b><tt tal:content="view/license/uri" i18n:name="license_url"/></b>.
 </p>
 
-<p><strong i18n:translate="license.read_tutorial">Need more help? <a href="http://creativecommons.org/education/publish-website">Read our tutorial</a>.</strong></p>
+<p i18n:translate="license.you_may_proceed">
+<span tal:omit-tag=""
+      i18n:name="processed_exit_url" tal:content="view/exit_url" />
+You may now <a href="#" tal:attributes="href view/exit_url">proceed</a>
+</p>
 
-<p i18n:translate="license.after_support_cc">After publishing your license, please consider <a href="http://creativecommons.org/support/">supporting Creative Commons</a>.</p>
-	
-</div>
-
-
-		
-<!-- <div metal:use-macro="here/license_macros/macros/languages">
-  language box
-</div>
--->
 
 </div>
-
-<metal:sidebar fill-slot="sidebar">
-<h4 i18n:translate="license.no_web_site">No Web site?</h4>
-
-<p i18n:translate="license.learn_host">Learn about other places you can host your licensed files. These
-sites work with your Creative Commons license.</p>
-
-<ul>
-	<li><a href="http://creativecommons.org/audio/publish-internetarchive" 
-	       i18n:translate="license.publish_audio_ia"
-	       class="publish-links">Publishing your licensed music to the Internet Archive</a></li>
-	<li><a href="http://creativecommons.org/audio/publish-soundclick" 
-	       i18n:translate="license.publish_soundclick"
-	       class="publish-links">Publishing your licensed music to Soundclick</a></li>
-
-	<li><a href="http://creativecommons.org/image/publish-flickr" 
-	       i18n:translate="license.publish_flickr"
-	       class="publish-links">Posting your licensed images at Flickr</a></li>
-	<li><a href="http://creativecommons.org/image/publish-buzznet" 
-	       i18n:translate="license.publish_buzznet"
-	       class="publish-links">Posting your licensed images at Buzznet</a></li>	
-	<li><a href="http://creativecommons.org/text/publish-weblogs" 
-	       i18n:translate="license.publish_blog"
-	       class="publish-links">Adding a Creative Commons license to your blog (Blogger, Movable Type, and Typepad)</a></li>	
-	<li><a href="http://creativecommons.org/video/publish-internetarchive" 
-	       i18n:translate="license.publish_video_ia"
-	       class="publish-links">Publishing your licensed video at the Internet Archive</a></li>
-	 <li><a href="/audio/publish-morpheus" 
-	       i18n:translate="license.publish_morpheus"
-	       class="publish-links">Publishing your licensed music to the Morpheus P2P network</a></li>
-       <li i18n:translate="license.mark_xmp">
-	<%=[ccommons::istr $lang license.mark_xmp]%>
-	<span tal:omit-tag="" i18n:name="url_vars" 
-	      tal:content="request/QUERY_STRING" />
-	</li>
-       <li i18n:translate="license.mark_nonweb">
-	<%=[ccommons::istr $lang license.mark_nonweb]%>	
-	<span tal:omit-tag="" i18n:name="url_vars" 
-	      tal:content="request/QUERY_STRING" />
-	</li>
-</ul>	
-</metal:sidebar>
 
 </body>
 </html>

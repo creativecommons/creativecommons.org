@@ -1,4 +1,5 @@
 import email.Charset
+from urllib import quote, unquote_plus
 email.Charset.add_charset('utf-8', email.Charset.SHORTEST, None, None)
 from email.MIMEText import MIMEText
 import re
@@ -292,6 +293,17 @@ class ResultsView(BaseBrowserView):
             
         return self._license
 
+    @property
+    def exit_url(self):
+
+        url = unquote_plus(self.request['exit_url'])
+        url = url.replace('[license_url]', quote(self.license.uri))
+        url = url.replace('[license_name]', self.license.name)
+        url = url.replace('[license_button]', quote(self.license.imageurl))
+        url = url.replace('[deed_url]', quote(self.license.uri))
+
+        return url
+    
     def __call__(self):
 
         # delegate rendering to the appropriate page template
