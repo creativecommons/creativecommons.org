@@ -76,7 +76,94 @@ setCookie('lang','%s', expiry, '/');
 
 <metal:pd_steps metal:define-macro="pd_nav_steps">
 
-<h1>XXX</h1>
+<!-- step 1 -->
+<p tal:condition="python: step == '1'" class="currentstep"> 
+    <span i18n:translate="util.step" /> 1<br /> 
+    <span i18n:translate="license.choose_license" />
+    </p>
+<p tal:condition="python: step != '1'" class="step">
+    <span i18n:translate="util.step" /> 1<br /> 
+    <span i18n:translate="license.choose_license" />
+    </p>
+
+<!-- step 2, public domain -->
+<div tal:omit-tag="" tal:condition="python: license_code == 'publicdomain'">
+    <p tal:condition="python: step == '2a'" class="currentstep">
+        <span i18n:translate="util.step" /> 2a<br /> 
+        <span i18n:translate="license.confirm_choice" />
+    </p>
+    <p tal:condition="python: step != '2a'" class="step">
+        <span i18n:translate="util.step" /> 2a<br /> 
+        <span i18n:translate="license.confirm_choice" />
+    </p>
+    
+<!-- step 2b, public domain -->
+    <p tal:condition="python: step == '2b'" class="currentstep">
+        <span i18n:translate="util.step" /> 2b<br /> 
+        <span i18n:translate="license.enter_information" />
+    </p>
+    <p tal:condition="python: step != '2b'" class="step">
+        <span i18n:translate="util.step" /> 2b<br /> 
+        <span i18n:translate="license.enter_information" />
+    </p>
+    
+<!-- step 2c, public domain -->
+    <p tal:condition="python: step == '2c'" class="currentstep">
+        <span i18n:translate="util.step" /> 2c<br /> 
+        <span i18n:translate="license.confirm">confirm</span>
+    </p>
+    <p tal:condition="python: step != '2c'" class="step">
+        <span i18n:translate="util.step" /> 2c<br /> 
+        <span i18n:translate="license.confirm">confirm</span>
+    </p>
+
+</div>
+
+<!-- step 2, not public domain -->
+<div tal:omit-tag="" tal:condition="python: license_code != 'publicdomain'">
+
+<p tal:condition="python: step == '2'" class="currentstep"> 
+    <span i18n:translate="util.step" /> 2<br /> 
+    <span i18n:translate="license.review_choice" />
+    </p>
+<p tal:condition="python: step != '2'" class="step">
+    <span i18n:translate="util.step" /> 2<br />
+    <a tal:condition="python: step > 2"
+        href="license-install?"
+        tal:attributes="href string: results-one?${here/getQueryString}">
+        <span i18n:translate="license.review_choice" />
+    </a>
+    <span tal:condition="python: step <= '2'"
+        i18n:translate="license.review_choice" />
+    </p>
+
+</div>
+
+<!-- step 3 -->
+<p tal:condition="python: step == '3'" class="currentstep">  
+    <span i18n:translate="util.step" /> 3<br /> 
+    <span i18n:translate="license.mark_content" />
+    </p>
+<p tal:condition="python: step != '3'" class="step">
+    <span i18n:translate="util.step" /> 3<br />
+    <a tal:condition="python: step > '3'"
+        href="publicdomain-4?"
+        tal:attributes="href string: license-install?${here/getQueryString}">
+        <span i18n:translate="license.mark_content" />
+    </a>
+    <span tal:condition="python: step <= '3'"
+        i18n:translate="license.mark_content" />
+    </p>
+
+<!-- step 4 -->
+<p tal:condition="python: step == '4'" class="currentstep"> 
+    <span i18n:translate="util.step" /> 4<br /> 
+    <span i18n:translate="license.publicize" />
+    </p>
+<p tal:condition="python: step != '4'" class="step">
+    <span i18n:translate="util.step" /> 4<br /> 
+    <span i18n:translate="license.publicize" />
+    </p>
 
 </metal:pd_steps>
 
