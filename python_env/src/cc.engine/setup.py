@@ -32,7 +32,6 @@ setup(
                         'grok',
                         'cc.license',
                         ],
-    #dependency_links=['https://cctools.svn.sourceforge.net/svnroot/cctools/vendorlibs/utidylib/#egg=utidylib-0.2-cvs',],
 
     # author metadata
     author = 'Nathan R. Yergler',
