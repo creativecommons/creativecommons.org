@@ -57,6 +57,11 @@ class PreferredJurisdiction(object):
 
     def getJurisdictionId(self):
 
-        return cc.license.support.lang_to_jurisdiction(
-            IUserPreferredLanguages(self.request).getPreferredLanguages()[0]
-            )
+        try:
+            return cc.license.support.lang_to_jurisdiction(
+                IUserPreferredLanguages(self.request).getPreferredLanguages()[0]
+                )
+        except IndexError:
+            # no preferred language to map from
+            return ''
+        
