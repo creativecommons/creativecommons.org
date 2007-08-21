@@ -7,14 +7,15 @@
   <head>
     <title metal:define-slot="title">Page Title</title>
 
-    <style type="text/css">
-      @import "/wp-content/themes/cc3/style.css";
-    </style>
+    <link rel="stylesheet" type="text/css" 
+          href="/wp-content/themes/cc3/style.css"
+          tal:attributes="href context/++resource++cc/cc3/style.css" />
 
-    <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="/includes/style-ie.css" />
+    <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="/includes/style-ie.css" tal:attributes="href context/++resource++cc/includes/style-ie.css" />
     <![endif]-->
 
-    <script src="/includes/icommons.js" type="text/javascript"></script>
+    <script src="/includes/icommons.js" type="text/javascript"
+       tal:attributes="src context/++resource++cc/includes/icommons.js" ></script>
 <script>
 function toggle(id)
 {
@@ -44,7 +45,8 @@ function toggle(id)
         <span class="publish">
           <a href="/license/" class="cc-actions">
             <span class="img">
-              <img src="/images/license-8.png" border="0" class="publish"/>
+              <img src="/images/license-8.png" border="0" class="publish"
+                   tal:attributes="src context/++resource++cc/images/license-8.png" />
             </span> 
             <span class="option">License</span>Your Work
           </a>

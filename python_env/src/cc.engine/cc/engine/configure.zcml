@@ -83,6 +83,8 @@
   <include package=".xmp" />
   <include package=".pd" />
 
+  <includeOverrides package=".skin" />
+
   <i18n:registerTranslations directory="./locales/" />
 
   <mail:smtpMailer
