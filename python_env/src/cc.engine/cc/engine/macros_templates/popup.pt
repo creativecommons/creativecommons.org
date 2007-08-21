@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" type="text/css" href="/includes/popup.css" />
 
+    <metal:headers define-slot="headers" />
+
   </head>
   <body>
     

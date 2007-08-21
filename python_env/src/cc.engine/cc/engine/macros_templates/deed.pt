@@ -34,6 +34,9 @@
         urchin = new urchin();
         _uacct="UA-2010376-1";  urchinTracker();
     </script>
+
+   <metal:headers define-slot="headers" />
+
   </head>
   <body onload="referrerMetadata()">
 

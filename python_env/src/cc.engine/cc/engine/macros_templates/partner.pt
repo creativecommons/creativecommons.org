@@ -16,6 +16,8 @@
       tal:attributes="href request/stylesheet|nothing" 
 />
 
+   <metal:headers define-slot="headers" />
+
   </head>
 
   <body>

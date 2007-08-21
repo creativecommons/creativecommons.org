@@ -36,6 +36,8 @@ function toggle(id)
 }
 </script>
 
+   <metal:headers define-slot="headers" />
+
   </head>
 
   <body>
