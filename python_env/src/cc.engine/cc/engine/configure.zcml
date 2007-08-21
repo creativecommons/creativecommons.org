@@ -65,11 +65,6 @@
         template="chooser_pages/nonweb_popup.pt"
         />
 
-     <browser:page
-        name="work-html-popup"
-        template="chooser_pages/htmlpopup.pt"
-        />
-
   </browser:pages>
 
   <browser:page
@@ -79,6 +74,12 @@
      permission="zope.View"
      />
 
+  <browser:page
+     for="cc.engine.interfaces.ILicenseEngine"
+     name="work-html-popup"
+     class=".chooser.EmailResultsView"
+     permission="zope.View"
+     />
 
   <include package=".xmp" />
   <include package=".pd" />

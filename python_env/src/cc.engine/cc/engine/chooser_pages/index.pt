@@ -6,6 +6,19 @@
       i18n:domain="icommons">
 <head>
   <title metal:fill-slot="title">Choose a License</title>
+
+  <metal:headers fill-slot="headers">
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.3.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.3.0/build/animation/animation-min.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.3.0/build/container/container-min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.0/build/container/assets/container.css" />
+
+    <script src="help.js" type="text/javascript"
+       tal:attributes="src context/++resource++cc/includes/help.js" ></script>
+
+  </metal:headers>
+
 </head>
 <body>
 <div metal:fill-slot="body">
@@ -23,7 +36,8 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
                        	<input type="hidden" name="q_1" value="1" id="question_1-1" />
 			
 			
-			<p>
+  <p>
+    <strong i18n:translate="api.commercial">Allow commercial uses of your work?</strong> (<a href="" class="helpLink">more info</a>)
 			<span tal:omit-tag=""  i18n:translate="license.q2"> 
 			   <span i18n:name="lang" tal:content="view/target_lang" tal:omit-tag="">es</span>
 			<strong>Allow commercial uses of your work?</strong> (<a href="http://creativecommons.org/license/characteristic/nc?lang=en" onclick="window.open('http://creativecommons.org/characteristic/nc?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">more info</a> <a href="/characteristic/nc?lang=en" onclick="window.open('/characteristic/nc?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="/images/popup.gif" width="15" height="13" alt="more information" border="0" /></a>)

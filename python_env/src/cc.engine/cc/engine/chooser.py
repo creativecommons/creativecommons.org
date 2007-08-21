@@ -312,13 +312,16 @@ class ResultsView(BaseBrowserView):
         else:
             return ViewPageTemplateFile('chooser_pages/results.pt')(self)
 
-
 class WikiRedirect(BrowserPage):
 
     def __call__(self):
 
         self.request.response.redirect(
             'results-one?license_code=by-sa&wiki=true')
+
+class EmailResultsView(ResultsView):
+
+    __call__ = ViewPageTemplateFile('chooser_pages/htmlpopup.pt')
         
 class EmailHtml(grok.View):
     grok.name('work-email')
@@ -357,4 +360,5 @@ info@creativecommons.org
         message['From'] = 'info@creativecommons.org'
         message['To'] = email_addr
 
-        mhost.send('info@creativecommons.org', (email_addr,), message)
+        mhost.send('info@creativecommons.org', (email_addr,),
+                   message.as_string())
