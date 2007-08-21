@@ -315,7 +315,7 @@ class ResultsView(BaseBrowserView):
 
 class WikiRedirect(BrowserPage):
 
-    def render(self):
+    def __call__(self):
 
         self.request.response.redirect(
             'results-one?license_code=by-sa&wiki=true')
