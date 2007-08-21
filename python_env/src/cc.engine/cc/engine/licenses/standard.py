@@ -2,8 +2,6 @@ import grok
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
 from zope.i18n import translate
-from zope.i18n.interfaces import ITranslationDomain
-from zope.component import queryUtility
 
 import cc.license
 from cc.engine import i18n
@@ -152,28 +150,6 @@ class LicenseDeed(grok.View):
         'right' or 'left'."""
 
         return self.request.locale.orientation.characters.split('-')[0]
-
-    @property
-    @cached
-    def active_languages(self):
-        """Return a sequence of tuples:
-
-        (language_code, uri, language_name)
-
-        for each available language; the uri is the localized version of the
-        current view in the particular language."""
-
-        domain = queryUtility(ITranslationDomain, i18n.I18N_DOMAIN)
-        lang_codes = domain.getCatalogsInfo().keys()
-        lang_codes.sort()
-        
-        return [dict(code=n,
-                     url='%sdeed.%s' % (self.context.license.uri,n) ,
-                     name=domain.translate('lang.%s' % n, target_language=n))
-                 
-                 for n in lang_codes
-                if n != 'test']
-
 
     @property
     def multi_language(self):

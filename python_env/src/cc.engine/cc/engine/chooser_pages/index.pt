@@ -113,10 +113,7 @@ Yes, as long as others share alike (<a href="http://creativecommons.org/characte
 		<br />
 
 		
-<!-- <div metal:use-macro="here/license_macros/macros/languages">
-  language box
-</div>
--->
+    <div metal:use-macro="context/@@support/engine_languages"></div>
 
 </div>
 

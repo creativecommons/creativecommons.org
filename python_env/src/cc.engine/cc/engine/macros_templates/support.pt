@@ -31,17 +31,43 @@ setCookie('lang','%s', expiry, '/');
 <br/>
 
 <div tal:omit-tag=""
-     tal:repeat="lang view/active_languages">
+     tal:repeat="lang context/@@support/active_languages">
 
-<a href="#" title="Catal%Gï¿½%@" hreflang="ca" 
+<a href="#" title="Catal%G�%@" hreflang="ca" 
    rel="alternate nofollow" lang="ca" 
    tal:content="lang/name"
    tal:attributes="title lang/name;
-                   href  lang/url;
+                   href  string:./deed.${lang/code};
                    hreflang lang/code;
                    lang     lang/code;
                    "
-   >Catal%Gï¿½%@f</a>
+   >Catal%G�%@f</a>
+
+</div>
+</div>
+
+</metal:translations>
+
+<metal:translations
+     metal:define-macro="engine_languages">
+
+<div class="licensebox" style="background:#FAFAD6;">
+
+<span tal:attributes="dir view/is_rtl; align view/is_rtl_align;" i18n:translate="deed.view_in">This page is available in the following languages:</span>
+<br/>
+
+<div tal:omit-tag=""
+     tal:repeat="lang context/@@support/active_languages">
+
+<a href="#" title="Catal%G�%@" hreflang="ca" 
+   rel="alternate nofollow" lang="ca" 
+   tal:content="lang/name"
+   tal:attributes="title lang/name;
+                   href  string:./?lang=${lang/code};
+                   hreflang lang/code;
+                   lang     lang/code;
+                   "
+   >Catal%G�%@f</a>
 
 </div>
 </div>
