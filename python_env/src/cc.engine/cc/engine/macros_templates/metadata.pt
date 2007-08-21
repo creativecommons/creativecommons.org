@@ -63,7 +63,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td align="right" i18n:translate="util.source_work_url"><a href="http://creativecommons.org/jargon/lookup?id=1" class="jargon" onClick="window.open('http://creativecommons.org/jargon/lookup?id=10', 'jargon_term_lookup', 'width=300,height=400,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes'); return false;">source work</a> URL</td>
+	  <td align="right"><a href="" class="helpLink" id="source_work" i18n:translate="">source work URL</a></td>
 		<td>
 <input type="text" name="field_sourceurl" size="40" value=""/>
 		</td>
@@ -77,7 +77,13 @@
 
 	</table>
 
-<p>&nbsp;</p>
+<div id="help_source_work">
+  <div class="hd">
+    <span i18n:translate="util.source_work">source work</span>
+  </div>
+  <div class="bd"><p i18n:translate="jargon.source_work_description"></p></div>
+</div>
+
 </div>
 
 
