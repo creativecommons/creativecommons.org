@@ -1,0 +1,24 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:grok="http://namespaces.zope.org/grok"
+           xmlns:i18n="http://namespaces.zope.org/i18n"
+           xmlns:mail="http://namespaces.zope.org/mail"
+           xmlns:browser="http://namespaces.zope.org/browser"
+
+           i18n_domain="icommons"
+           >
+
+  <interface
+     interface=".interfaces.ICcSkin"
+     type="zope.publisher.interfaces.browser.IBrowserSkinType"
+     name="CC"
+     />
+
+  <browser:resourceDirectory 
+     name="cc"
+     directory="resources"
+     layer=".interfaces.ICcSkin"
+     />
+
+  <browser:defaultSkin name="CC" />
+
+</configure>
