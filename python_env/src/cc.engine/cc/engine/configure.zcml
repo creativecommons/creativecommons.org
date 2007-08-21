@@ -107,4 +107,5 @@
            provides=".interfaces.IDefaultJurisdiction"
            factory=".i18n.PreferredJurisdiction" />
 
+  <subscriber handler=".init" />
 </configure>
