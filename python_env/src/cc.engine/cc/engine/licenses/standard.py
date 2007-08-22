@@ -124,6 +124,7 @@ class LicenseDeed(grok.View):
         # make sure we've traversed to a valid license version
         try:
             self.context.license
+            
         except LicenseException, e:
             raise NotFound(self.context, self.request['REQUEST_URI'],
                            self.request)
@@ -187,5 +188,10 @@ class LicenseRdf(grok.View):
     grok.name('rdf')
 
     def render(self):
-        return "rdf goes here"
-                 
+        """Return the RDF+XML for this license."""
+        
+        self.request.response.setHeader(
+            'Content-Type', 'application/rdf+xml; charset=UTF-8')
+
+        return self.context.license.rdf
+                     

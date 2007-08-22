@@ -32,7 +32,7 @@ class LicenseCatalog(grok.Application, grok.Container):
         if code in self.CUSTOM_DEEDS:
             return self.CUSTOM_DEEDS[code](self, [code])
 
-        # ZZZ special case sampling
+        # check for sampling
         if code.find('sampling') == 0:
             return SamplingLicense(self, [code])
         
