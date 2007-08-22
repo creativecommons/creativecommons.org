@@ -31,7 +31,11 @@ class pd_waiting_verification(BrowserPage):
                 )
 
             return self.__email_result
+
+    def __call__(self):
+        """Render the template specified in ZCML."""
         
+        return self.index()
 
 class pd_confirm(BrowserPage):
 
@@ -44,6 +48,11 @@ class pd_confirm(BrowserPage):
                    self.request.get('title', False),
                    self.request.get('copyright_holder', False)
                ) == self.request.get('hash', None)
+
+    def __call__(self):
+        """Render the template specified in ZCML."""
+        
+        return self.index()
 
 class pd_final(BaseBrowserView):
 
