@@ -40,13 +40,20 @@ class Support(grok.View):
         domain = queryUtility(ITranslationDomain, i18n.I18N_DOMAIN)
         lang_codes = domain.getCatalogsInfo().keys()
         lang_codes.sort()
-        
-        return [dict(code=n,
-                     name=domain.translate('lang.%s' % n, target_language=n))
-                 
-                 for n in lang_codes
-                if n != 'test']
 
+        # this loop is long hand for clarity; it's only done once, so
+        # te additional performance cost should be negligible
+        result = []
+        for code in lang_codes:
+
+            if code == 'test': continue
+            
+            name = domain.translate('lang.%s' % code, target_language=code)
+            if name != 'lang.%s' % code:
+                # we have a translation for this name...
+                result.append(dict(code=code, name=name))
+
+        return result
     
 class Metadata(grok.View):
     """Metadata support macros."""
