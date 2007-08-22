@@ -106,10 +106,10 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
         tal:define="selected view/selected_jurisdiction">
 <option value=""  
         tal:condition="python: selected is None"
-        i18n:translate="util.Generic" selected="selected">Generic</option>
+        i18n:translate="util.Unported" selected="selected">Unported</option>
 <option value=""  
         tal:condition="python: selected is not None"
-        i18n:translate="util.Generic" >Generic</option>
+        i18n:translate="util.Unported" >Unported</option>
 
 <span tal:omit-tag=""
         tal:repeat="j python:context.license_class().jurisdictions()">
