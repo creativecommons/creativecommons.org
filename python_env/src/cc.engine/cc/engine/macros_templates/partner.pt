@@ -7,23 +7,29 @@
   <head>
     <title metal:define-slot="title">Page Title</title>
 
-<style type="text/css">
-        <!--
-                @import url(/includes/ccliss.css);
-        -->
-</style>
-<link rel="stylesheet" type="text/css" href="#"
-      tal:attributes="href request/stylesheet|nothing" 
-/>
+    <link rel="stylesheet" type="text/css" 
+          href="/includes/ccliss.css"
+          tal:attributes="href context/++resource++cc/includes/ccliss.css" 
+	  />
+
+    <link rel="stylesheet" type="text/css" href="#"
+          tal:attributes="href request/stylesheet|nothing" 
+	  />
 
    <metal:headers define-slot="headers" />
 
   </head>
 
-  <body>
+  <body tal:define="partner_icon_url python: request.form.get('partner_icon_url','/images/remote_logo.gif');">
 
 <div id="main">
   <div id="page-body">
+
+<div class="header"><img src="" alt="" border="0" tal:attributes="src partner_icon_url" /></div>
+<div class="nav">provided by <a href="http://creativecommons.org/" 
+    i18n:translate="util.Creative_Commons">Creative Commons</a></div>
+	
+
     <metal:partner define-slot="body" />
   </div>
 </div>

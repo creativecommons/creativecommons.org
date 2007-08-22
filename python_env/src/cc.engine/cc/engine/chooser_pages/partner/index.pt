@@ -14,15 +14,10 @@
                  exiturl    request/exit_url;
                  pd_exiturl python:exiturl.replace('&', '%26');
                  partner    request/partner;
-                 partner_icon_url python: request.form.get('partner_icon_url','/images/remote_logo.gif');
                  show_jurisdiction request/jurisdiction_chooser | nothing;
                  def_juris request/jurisdiction | nothing;
                 ">
 
-<div class="header"><img src="" alt="" border="0" tal:attributes="src partner_icon_url" /></div>
-<div class="nav">provided by <a href="http://creativecommons.org/" 
-    i18n:translate="util.Creative_Commons">Creative Commons</a></div>
-	
 <div tal:omit-tag="" i18n:translate="license.partner_what">
 <span tal:content="string:/license/publicdomain?lang=${target_lang}&partner=${request/partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${request/stylesheet|nothing}"
       tal:omit-tag=""
