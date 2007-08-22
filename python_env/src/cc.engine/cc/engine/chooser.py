@@ -36,18 +36,19 @@ class LicenseEngine(grok.Application, grok.Container):
         """Extract work information from the request and return it as a
         dict."""
 
-	result = {'title' : None,
-		  'creator' : None,
-		  'copyright_holder' : None,
-		  'copyright_year' : None,
-		  'description' : None,
-		  'format' : None,
-		  'work_url' : None,
-		  'source_work_url' : None,
-                  'source_work_domain' : None,
-                  'attribution_name' : None,
-                  'attribution_url' : None,
-                  'more_permissions_url' : None,
+	result = {'title' : u'',
+		  'creator' : u'',
+		  'copyright_holder' : u'',
+		  'copyright_year' : u'',
+		  'description' : u'',
+		  'format' : u'',
+                  'type' : u'',
+		  'work_url' : u'',
+		  'source_work_url' : u'',
+                  'source_work_domain' : u'',
+                  'attribution_name' : u'',
+                  'attribution_url' : u'',
+                  'more_permissions_url' : u'',
 		  }
 
 	# look for keys that match the param names
