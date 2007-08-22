@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/@@partner/page"
+      i18n:domain="icommons">
+<head>
+  <title metal:fill-slot="title">Choose a License</title>
+</head>
+<body>
+<div metal:fill-slot="body"
+     tal:define="target_lang string:en;
+                 stylesheet request/stylesheet | nothing;
+                 exiturl    request/exit_url;
+                 pd_exiturl python:exiturl.replace('&', '%26');
+                 partner    request/partner;
+                 partner_icon_url python: request.form.get('partner_icon_url','/images/remote_logo.gif');
+                 show_jurisdiction request/jurisdiction_chooser | nothing;
+                 def_juris request/jurisdiction | nothing;
+                ">
+
+<h1 i18n:translate="license.Confirm_Choice"><%=[ccommons::istr $lang license.Confirm_Choice]%></h1>
+	
+<div i18n:translate="license.pd_choice" tal:omit-tag="">
+        <%=[ccommons::istr $lang license.pd_choice]%>
+</div>
+
+<p i18n:translate="license.you_may_proceed">
+<span tal:omit-tag=""
+      i18n:name="processed_exit_url" tal:content="view/exit_url" />
+You may now <a href="#" tal:attributes="href view/exit_url">proceed</a>
+</p>
+
+</div>
+
+</body>
+</html>

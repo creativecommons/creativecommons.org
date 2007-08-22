@@ -1,7 +1,18 @@
 from zope.app.pagetemplate import ViewPageTemplateFile
 from zope.publisher.browser import BrowserPage
 
-from cc.engine.chooser import BaseBrowserView
+from cc.engine.chooser import BaseBrowserView, ResultsView
+
+class pd_partner(ResultsView):
+
+    _pt = ViewPageTemplateFile('templates/publicdomain-partner.pt')
+    
+    def __call__(self):
+
+        # YYY set the key so Results._issue works right
+        self.request.form['publicdomain'] = True
+        
+        return self._pt(self)
 
 class pd_waiting_verification(BrowserPage):
 
@@ -49,5 +60,4 @@ class pd_final(BaseBrowserView):
             self.request.get('copyright_holder', False),
             )
 
-        # XXX handle partner interface
         return self._pt(self)
