@@ -19,6 +19,7 @@ from zope.publisher.browser import BrowserPage
 from zope.app.pagetemplate import ViewPageTemplateFile
 
 import cc.license
+import cc.license.license
 
 import cc.engine.i18n
 from cc.engine.interfaces import ILicenseEngine, IDefaultJurisdiction
@@ -286,11 +287,17 @@ class ResultsView(BaseBrowserView):
         if not(hasattr(self, '_license')):
             self._license = self.context.issue(self.request)
 
+            # check if we need to (shudder) wiki-fy the result
+            if self.request.get('wiki', False) == 'true':
+                self._license = cc.license.license.WikiLicense.from_License(
+                    self._license)
+
             # browser-specific information injection
             # XXX we should probably adapt to something like IBrowserLicense
             self._license.slim_image = self._license.imageurl.replace(
                 '88x31','80x15')
-            
+
+                
         return self._license
 
     @property
