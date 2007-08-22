@@ -54,7 +54,7 @@ class pd_confirm(BrowserPage):
         
         return self.index()
 
-class pd_final(BaseBrowserView):
+class pd_final(ResultsView):
 
     _pt = ViewPageTemplateFile('templates/publicdomain-4.pt')
     
