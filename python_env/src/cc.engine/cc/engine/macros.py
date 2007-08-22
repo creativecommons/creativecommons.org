@@ -3,8 +3,8 @@ from zope.interface import Interface
 from zope.i18n.interfaces import ITranslationDomain
 from zope.component import queryUtility
 
+from cc.license.decorators import memoized
 from cc.engine import i18n
-from cc.engine.decorators import cached
 
 class Engine(grok.View):
     """Skin macros for the standard license engine."""
@@ -27,7 +27,7 @@ class Support(grok.View):
     grok.context(Interface)
 
     @property
-    @cached
+    @memoized
     def active_languages(self):
         """Return a sequence of dicts, where each element consists of the
         following keys:

@@ -8,7 +8,7 @@ from cc.engine import i18n
 from cc.license.exceptions import LicenseException
 
 from cc.engine import interfaces
-from cc.engine.decorators import cached, memoize
+from cc.license.decorators import memoized
 
 class BrowserLicense(grok.Model):
     implements(interfaces.ILicense)
@@ -23,12 +23,10 @@ class BrowserLicense(grok.Model):
         self.pieces = pieces
         
     @property
-    @memoize
+    @memoized
     def license(self):
         """Return the cc.license.License object selected."""
 
-        # YYY there's a decent speed gain we can make here by memoizing
-        
         # decode the version and jurisdiction
         if len(self.pieces) > 2:
             version, jurisdiction = self.pieces[1:3]
@@ -41,9 +39,8 @@ class BrowserLicense(grok.Model):
                                                            version,
                                                            jurisdiction)
 
-    # XXX wtf? why can we cache this but not .license()
     @property
-    @cached
+    @memoized
     def conditions(self):
         """Return a sequence of mappings defining the conditions defined by
         this license."""
