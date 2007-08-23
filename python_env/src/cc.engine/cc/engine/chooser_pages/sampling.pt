@@ -6,6 +6,22 @@
       i18n:domain="icommons">
 <head>
   <title metal:fill-slot="title">Choose a License</title>
+
+  <metal:headers fill-slot="headers">
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.3.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.3.0/build/animation/animation-min.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.3.0/build/container/container-min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.0/build/container/assets/container.css" />
+
+    <style>
+	.yui-panel .hd { background-color: #43594a; }
+    </style>
+
+    <script src="help.js" type="text/javascript"
+       tal:attributes="src context/++resource++cc/includes/help.js" ></script>
+  </metal:headers>
+
 </head>
 
 <body>
@@ -53,7 +69,10 @@
 <br />
 
                         <p>
-                        <span i18n:translate="license.jurisdiction_question">Jurisdiction of your license</span> (<a href="/license/jurisdiction-popup" onclick="window.open('/license/jurisdiction-popup', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;" i18n:translate="util.more_info">more info</a> <a href="/license/jurisdiction-popup" onclick="window.open('/license/jurisdiction-popup', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="/images/popup.gif" width="15" height="13" alt="more info" border="0" i18n:attributes="alt util.more_info;" /></a>)<br />
+     <span tal:omit-tag="" i18n:translate="license.jurisdiction_question">
+       Jurisdiction of your license</span> 
+     (<a href="" class="helpLink" id="jurisdiction" i18n:translate="util.more_info">more info</a>)
+
                         <select name="field_jurisdiction" 
                             tal:condition="python: view.target_lang == 'de'">
                                 <option value=""
@@ -79,6 +98,13 @@
                             
                         </select>
                         </p>
+
+<div id="help_jurisdiction">
+  <div class="hd">
+    <span i18n:translate="util.Jurisdiction">Jurisdiction</span>
+  </div>
+  <div class="bd"><p i18n:translate="license.jurisdiction_help"></p></div>
+</div>
 			
 <div metal:use-macro="context/@@metadata/more-metadata" />
 
