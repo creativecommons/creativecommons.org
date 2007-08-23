@@ -34,14 +34,14 @@ class PreferredLanguages(object):
             return [path_pieces[1]]
         
         # check for the query string
-        if self.request.get('lang', False):
+        if self.request.form.get('lang', False):
             return [self.request['lang'], 'en']
 
-        if self.request.get('language', False):
+        if self.request.form.get('language', False):
             return [self.request['language'], 'en']
         
         # XXX look for the cookie
-        
+
         # fall back to default selection (HTTP_ACCEPT_LANGUAGE)
         return BrowserLanguages(self.request).getPreferredLanguages()
 
