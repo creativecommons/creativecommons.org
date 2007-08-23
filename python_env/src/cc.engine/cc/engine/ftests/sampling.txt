@@ -1,0 +1,8 @@
+Sampling
+--------
+
+This is a sanity check of the Sampling license interface and deeds.
+
+  >>> browser = Browser()
+  >>> browser.raiseHttpErrors = True
+  >>> browser.open('http://localhost:8080/license/sampling')

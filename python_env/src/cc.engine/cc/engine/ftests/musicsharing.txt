@@ -8,9 +8,3 @@ for license selection.
   >>> browser = Browser()
   >>> browser.raiseHttpErrors = True
   >>> browser.open('http://localhost:8080/license')
-
-The chooser has a browser form which points to results-one.
-
-  >>> #form = browser.getForm()
-  >>> #form.action
-  #/results-one

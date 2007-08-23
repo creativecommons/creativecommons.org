@@ -1,3 +1,4 @@
 License Deeds
 -------------
 
+This is just a sanity spot-check of the license deeds.

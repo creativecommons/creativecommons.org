@@ -14,7 +14,9 @@ CcEngineFunctionalLayer = ZCMLLayer(ftesting_zcml, __name__, 'CcEngineFunctional
 
 def test_suite():
     suite = unittest.TestSuite()
-    docfiles = ['initialize.txt', 'chooser.txt', 'deeds.txt']
+    docfiles = ['initialize.txt', 'chooser.txt', 'deeds.txt',
+                'publicdomain.txt', 'sampling.txt', 'musicsharing.txt',
+                'wiki.txt', 'gpl.txt', 'lgpl.txt']
 
     for docfile in docfiles:
         test = FunctionalDocFileSuite(
