@@ -24,7 +24,7 @@ class pd_waiting_verification(BrowserPage):
             return self.__email_result
         except AttributeError:
             self.__email_result = self.context.send_pd_confirmation(
-                'http://%s/license/publicdomain-3' % self.request.getVirtualHostRoot(),
+                '%s/license/publicdomain-3' % self.request.getApplicationURL(),
                 self.request.get('email', False),
                 self.request.get('title', False),
                 self.request.get('copyright_holder', False),
