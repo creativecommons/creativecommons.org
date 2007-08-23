@@ -1,0 +1,10 @@
+License Chooser
+---------------
+
+The license chooser is responsible for presenting a web-based interface
+for license selection.
+
+
+  >>> browser = Browser()
+  >>> browser.raiseHttpErrors = True
+  >>> browser.open('http://localhost:8080/license')

@@ -1,0 +1,14 @@
+ZODB Initialization
+-------------------
+
+cc.engine checks at start up to ensure that the ZODB is correctly initialized
+with a single instance of the License Engine and License Catalog objects.
+
+  >>> browser = Browser()
+  >>> browser.raiseHttpErrors = True
+  >>> browser.open('http://localhost:8080/license')
+  
+
+  >>> browser.open('http://localhost:8080/licenses')
+  >>> browser.contents == ''
+  True
