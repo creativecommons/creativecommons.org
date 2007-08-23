@@ -7,18 +7,11 @@
            i18n_domain="icommons"
            >
 
-  <interface
-     interface=".interfaces.ICcSkin"
-     type="zope.publisher.interfaces.browser.IBrowserSkinType"
-     name="CC"
-     />
-
   <browser:resourceDirectory 
      name="cc"
      directory="resources"
-     layer=".interfaces.ICcSkin"
+     layer="zope.publisher.interfaces.browser.IDefaultBrowserLayer"
      />
 
-  <browser:defaultSkin name="CC" />
 
 </configure>
