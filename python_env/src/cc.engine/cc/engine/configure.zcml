@@ -81,6 +81,13 @@
      permission="zope.View"
      />
 
+  <browser:page
+     for="cc.engine.characteristic.Characteristic"
+     name="index"
+     class=".characteristic.Characteristic_Popup"
+     permission="zope.View"
+     />
+
   <include package=".xmp" />
   <include package=".pd" />
 

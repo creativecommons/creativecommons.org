@@ -12,6 +12,7 @@ from zope.app.appsetup.interfaces import IDatabaseOpenedWithRootEvent
 from zope.app.publication.zopepublication import ZopePublication
 
 import cc.engine.chooser
+import cc.engine.characteristic
 import cc.engine.licenses.catalog
 
 @adapter(IDatabaseOpenedWithRootEvent)
@@ -29,4 +30,7 @@ def init(event):
         db_root['licenses'] = cc.engine.licenses.catalog.LicenseCatalog()
     
 
-
+    # check for the backup characteristic handler
+    if db_root.get('characteristic', None) is None:
+        db_root['characteristic'] = cc.engine.characteristic.\
+                                    CharacteristicRoot()
