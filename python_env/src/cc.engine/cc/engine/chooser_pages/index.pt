@@ -28,136 +28,133 @@
 
 <h1 i18n:translate="license.Choose_License">Choose A License</h1>
 
-	<p i18n:translate="license.what">
-				   <span i18n:name="lang" tal:content="view/target_lang" tal:omit-tag="">es</span>
+<p i18n:translate="license.what">
+  <span i18n:name="lang" tal:content="view/target_lang" tal:omit-tag="">es</span>
 With a Creative Commons license, <strong>you keep your copyright</strong> but allow people to <a href="http://creativecommons.org/learn/licenses/fullrights">copy and distribute your work</a> provided they <a href="http://creativecommons.org/characteristic/by?lang=en" onclick="window.open('http://creativecommons.org/characteristic/by?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">give you credit</a> -- and only on the conditions you specify here. If you want to offer your work with no conditions, choose the <a href="http://creativecommons.org/license/publicdomain">public domain</a>.</p>
 	
-		<div class="licensebox">
+<div class="licensebox">
 
-			<form action="./results-one" method="get" >
-		        <input type="hidden"  name="q_1" value="2" id="question_1-2" checked="checked" />
-                       	<input type="hidden" name="q_1" value="1" id="question_1-1" />
-			
-			
-  <p>
-    <strong i18n:translate="api.commercial">Allow commercial uses of your work?</strong> (<a href="" id="commercial" class="helpLink" i18n:translate="util.more_info">more info</a>)
-			<br />
+  <form action="./results-one" method="get" >
+    <input type="hidden"  name="q_1" value="2" id="question_1-2" checked="checked" />
+    <input type="hidden" name="q_1" value="1" id="question_1-1" />
+
+    <p>
+      <strong i18n:translate="api.commercial">Allow commercial uses of your work?</strong> (<a href="" id="commercial" class="helpLink" i18n:translate="util.more_info">more info</a>)
+      <br />
 		    	
 		    
-			<input type="radio" checked="checked" name="field_commercial" value="yes" id="question_2-3" /> <label for="question_2-3" i18n:translate="util.Yes">Yes</label><br />
+      <input type="radio" checked="checked" name="field_commercial" value="yes" id="question_2-3" /> <label for="question_2-3" i18n:translate="util.Yes">Yes</label><br />
 			
-			<input type="radio"  name="field_commercial" value="n" id="question_2-4" /> <label for="question_2-4" i18n:translate="util.No">No</label><br />
+      <input type="radio"  name="field_commercial" value="n" id="question_2-4" /> <label for="question_2-4" i18n:translate="util.No">No</label><br />
 			
-			</p>
+    </p>
 
-<div id="help_commercial">
-  <div class="hd">
-    <span i18n:translate="licenses.pretty_nc">Noncommercial</span>
-  </div>
-  <div class="bd"><p i18n:translate="char.nc_description"></p></div>
-</div>
+    <div id="help_commercial">
+      <div class="hd">
+	<span i18n:translate="licenses.pretty_nc">Noncommercial</span>
+      </div>
+      <div class="bd"><p i18n:translate="char.nc_description"></p></div>
+    </div>
 			
-   <p>
-     <strong i18n:translate="api.deriviatives">Allow modifications of your work?</strong> (<a href="" id="derivatives" class="helpLink" i18n:translate="util.more_info">more info</a>)
-     <br/>
+    <p>
+      <strong i18n:translate="api.deriviatives">Allow modifications of your work?</strong> (<a href="" id="derivatives" class="helpLink" i18n:translate="util.more_info">more info</a>)
+      <br/>
 			
-     <input type="radio" checked="checked" 
-	    name="field_derivatives" value="yes" id="question_3-5" /> 
-     <label for="question_3-5" i18n:translate="util.Yes">Yes</label>
+      <input type="radio" checked="checked" 
+	     name="field_derivatives" value="yes" id="question_3-5" /> 
+      <label for="question_3-5" i18n:translate="util.Yes">Yes</label>
 
-     <br />
+      <br />
 		
-     <input type="radio"  name="field_derivatives" value="sa" 
-	    id="question_3-6" /> 
-     <label for="question_3-6">
-       <span i18n:translate="">Yes, as long as others share alike</span> 
-       (<a href="" class="helpLink" id="sharealike" i18n:translate="util.more_info">more info</a>)
-     </label>
+      <input type="radio"  name="field_derivatives" value="sa" 
+	     id="question_3-6" /> 
+      <label for="question_3-6">
+	<span i18n:translate="">Yes, as long as others share alike</span> 
+	(<a href="" class="helpLink" id="sharealike" i18n:translate="util.more_info">more info</a>)
+      </label>
 
-     <br/>
+      <br/>
 			
-     <input type="radio"  name="field_derivatives" value="n" 
-	    id="question_3-7" /> 
-     <label for="question_3-7" i18n:translate="util.No">No</label>
+      <input type="radio"  name="field_derivatives" value="n" 
+	     id="question_3-7" /> 
+      <label for="question_3-7" i18n:translate="util.No">No</label>
 
-     <br />
+      <br />
 			
-   </p>
+    </p>
 
-<div id="help_derivatives">
-  <div class="hd">
-    <span i18n:translate="char.nd_title">No Derivative Works</span>
-  </div>
-  <div class="bd"><p i18n:translate="char.nd_description"></p></div>
-</div>
+    <div id="help_derivatives">
+      <div class="hd">
+	<span i18n:translate="char.nd_title">No Derivative Works</span>
+      </div>
+      <div class="bd"><p i18n:translate="char.nd_description"></p></div>
+    </div>
 
-<div id="help_sharealike">
-  <div class="hd">
-    <span i18n:translate="char.sa_title">Share-Alike</span>
-  </div>
-  <div class="bd"><p i18n:translate="char.sa_description"></p></div>
-</div>
+    <div id="help_sharealike">
+      <div class="hd">
+	<span i18n:translate="char.sa_title">Share-Alike</span>
+      </div>
+      <div class="bd"><p i18n:translate="char.sa_description"></p></div>
+    </div>
 
-   <p>
-     <span tal:omit-tag="" i18n:translate="license.jurisdiction_question">
-       Jurisdiction of your license</span> 
-     (<a href="" class="helpLink" id="jurisdiction" i18n:translate="util.more_info">more info</a>)
+    <p>
+      <span tal:omit-tag="" i18n:translate="license.jurisdiction_question">
+	Jurisdiction of your license</span> 
+      (<a href="" class="helpLink" id="jurisdiction" i18n:translate="util.more_info">more info</a>)
+      
+      <br />
 
-     <br />
+      <select name="field_jurisdiction"
+              tal:define="selected view/selected_jurisdiction">
+	<option value=""  
+		tal:condition="python: selected is None"
+		i18n:translate="util.Unported" selected="selected">Unported</option>
+	<option value=""  
+		tal:condition="python: selected is not None"
+		i18n:translate="util.Unported" >Unported</option>
 
-<select name="field_jurisdiction"
-        tal:define="selected view/selected_jurisdiction">
-<option value=""  
-        tal:condition="python: selected is None"
-        i18n:translate="util.Unported" selected="selected">Unported</option>
-<option value=""  
-        tal:condition="python: selected is not None"
-        i18n:translate="util.Unported" >Unported</option>
+	<span tal:omit-tag=""
+              tal:repeat="j python:context.license_class().jurisdictions()">
+	  <option value="" selected="selected"
+		  tal:condition="python: j != '-' and selected == j"
+		  tal:attributes="value j;" >
+	    <span tal:content="string:country.${j}"
+		  tal:omit-tag=""
+		  i18n:translate="" />
+	  </option>
+	  <option value=""
+		  tal:condition="python: j != '-' and selected != j"
+		  tal:attributes="value j;">
+	    <span tal:content="string:country.${j}"
+		  tal:omit-tag=""
+		  i18n:translate="" />
+	  </option>
+	</span>
 
-<span tal:omit-tag=""
-        tal:repeat="j python:context.license_class().jurisdictions()">
-<option value="" selected="selected"
-        tal:condition="python: j != '-' and selected == j"
-        tal:attributes="value j;" >
-  <span tal:content="string:country.${j}"
-        tal:omit-tag=""
-        i18n:translate="" />
-</option>
-<option value=""
-        tal:condition="python: j != '-' and selected != j"
-        tal:attributes="value j;">
-  <span tal:content="string:country.${j}"
-        tal:omit-tag=""
-        i18n:translate="" />
-</option>
-</span>
+      </select>
 
-</select>
+    </p>
 
-			</p>
-
-<div id="help_jurisdiction">
-  <div class="hd">
-    <span i18n:translate="util.Jurisdiction">Jurisdiction</span>
-  </div>
-  <div class="bd"><p i18n:translate="license.jurisdiction_help"></p></div>
-</div>
+    <div id="help_jurisdiction">
+      <div class="hd">
+	<span i18n:translate="util.Jurisdiction">Jurisdiction</span>
+      </div>
+      <div class="bd"><p i18n:translate="license.jurisdiction_help"></p></div>
+    </div>
 			
+    <div metal:use-macro="context/@@metadata/more-metadata" />
 
-<div metal:use-macro="context/@@metadata/more-metadata" />
+    <input type="hidden" name="lang" value="en" tal:attributes="value view/target_lang" />
+    <input type="hidden" name="language" value="en" tal:attributes="value view/target_lang" />
+    <input type="hidden" name="n_questions" value="3" />
+    <input type="submit" 
+           i18n:attributes="value license.Select_a_License;" 
+           value="Select a License" />
+  </form>
+</div>
+<br />
 
-			<input type="hidden" name="lang" value="en" tal:attributes="value view/target_lang" />
-			<input type="hidden" name="language" value="en" tal:attributes="value view/target_lang" />
-			<input type="hidden" name="n_questions" value="3" />
-			<input type="submit" 
-                   i18n:attributes="value license.Select_a_License;" 
-                   value="Select a License" />
-			</form>
-		</div>
-		<br />
-
-		
-    <div metal:use-macro="context/@@support/engine_languages"></div>
+<div metal:use-macro="context/@@support/engine_languages"></div>
 
 </div>
 
