@@ -227,6 +227,12 @@ class LicenseEngine(grok.Application, grok.Container):
 class BaseBrowserView(BrowserPage):
     """A basic view class which provides some common infrastructure."""
 
+    def __init__(self, context, request):
+        super(BaseBrowserView, self).__init__(context, request)
+
+        # YYY we do this again here when the form is fully populated
+        self.request.setupLocale()
+        
     @property
     def target_lang(self):
         """Return the request language."""
@@ -271,7 +277,7 @@ class IndexView(BaseBrowserView):
     template based on the presence of the partner query string parameter."""
     
     def __call__(self):
-
+        
         # delegate rendering to the appropriate page template
         if u'partner' in self.request.form:
             return ViewPageTemplateFile('chooser_pages/partner/index.pt')(self)
