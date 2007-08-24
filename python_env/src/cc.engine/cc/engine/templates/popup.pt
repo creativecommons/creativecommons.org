@@ -14,7 +14,7 @@
 
 <p tal:attributes="dir view/is_rtl; align view/is_rtl_align;" ><img src="#" alt="sa" align="left" hspace="4"        
         tal:attributes="src string: /icon/${context/name}/standard.gif;
-                       align python:test(view.is_rtl(), 'right', 'left');
+                       align view/is_rtl_align;
                         alt context/name;" />
 </p>
 <p tal:attributes="dir view/is_rtl; align view/is_rtl_align;"><strong i18n:translate=""
