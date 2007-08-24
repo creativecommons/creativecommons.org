@@ -81,10 +81,12 @@
      permission="zope.View"
      />
 
+  <!-- Legacy /characteristic support. -->
   <browser:page
-     for="cc.engine.characteristic.Characteristic"
-     name="index"
-     class=".characteristic.Characteristic_Popup"
+     for="cc.engine.characteristic.Characteristics"
+     name="by"
+     class=".chooser.BaseBrowserView"
+     template="templates/by.pt"
      permission="zope.View"
      />
 

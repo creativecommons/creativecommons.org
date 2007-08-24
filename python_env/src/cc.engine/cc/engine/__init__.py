@@ -32,5 +32,4 @@ def init(event):
 
     # check for the backup characteristic handler
     if db_root.get('characteristic', None) is None:
-        db_root['characteristic'] = cc.engine.characteristic.\
-                                    CharacteristicRoot()
+        db_root['characteristic'] = cc.engine.characteristic.Characteristics()
