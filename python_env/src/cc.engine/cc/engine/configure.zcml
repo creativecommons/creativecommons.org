@@ -106,7 +106,7 @@
 
   <adapter for="zope.publisher.interfaces.http.IHTTPRequest"
            provides=".interfaces.IDefaultJurisdiction"
-           factory=".i18n.PreferredJurisdiction" />
+           factory=".i18n.PreferredJurisdictionByLocale" />
 
   <subscriber handler=".init" />
 </configure>

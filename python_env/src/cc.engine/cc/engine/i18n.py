@@ -67,7 +67,7 @@ class PreferredLanguages(BrowserLanguages):
         return languages_data
 
         
-class PreferredJurisdiction(object):
+class PreferredJurisdictionByLocale(object):
     """Adapts a Request to IDefaultJurisdiction, allowing us to make a
     guess at what jurisdiction to use."""
 
@@ -77,12 +77,16 @@ class PreferredJurisdiction(object):
         self.request = request
 
     def getJurisdictionId(self):
-
+        """Return the ID of the default jurisdiction, based on the
+        preferred language of the request."""
+        
         try:
+            # ZZZ We shouldn't have to re-cast here, but we do. Sad.
             return cc.license.support.lang_to_jurisdiction(
                 IUserPreferredLanguages(self.request).getPreferredLanguages()[0]
                 )
+        
         except IndexError:
             # no preferred language to map from
-            return ''
+            return '-'
         
