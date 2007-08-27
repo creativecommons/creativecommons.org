@@ -118,7 +118,7 @@ class LicenseEngine(grok.Application, grok.Container):
         License object."""
 
 	jurisdiction = ''
-	locale = request.get('lang', '')
+	locale = request.locale.id.language
 	code = ''
 
         license_class = 'standard'
@@ -149,6 +149,7 @@ class LicenseEngine(grok.Application, grok.Container):
                jurisdiction = ('field_jurisdiction' in request.keys() and request['field_jurisdiction']) or jurisdiction,
                commercial = request['field_commercial'],
                derivatives = request['field_derivatives'],
+               locale = locale,
                )
                           )
 
