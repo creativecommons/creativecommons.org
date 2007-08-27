@@ -37,7 +37,8 @@
       to the public domain. To finalize this process, please click the 
       button below.</p>
 
-    <div class="licensebox" i18n:translate="deed.pd">
+    <div class="licensebox" i18n:name="pd_deed_text">
+      <div i18n:translate="deed.pd" tal:omit-tag="">
 
       <p align="center">
 	<em>Copyright-Only Dedication (based on United States law) or 
@@ -72,7 +73,7 @@
 	modified, built upon, or otherwise exploited by anyone for any
 	purpose, commercial or non-commercial, and in any way, including 
 	by methods that have not yet been invented or conceived.</p>
-
+      </div>
     </div>
 
   </div>
