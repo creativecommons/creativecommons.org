@@ -72,8 +72,8 @@ function toggle(id)
 
       <select name="sortby" onchange="orderby(this)">
         <option value="">Select a jurisdiction</option>
-         <script type="text/javascript" src="http://api.creativecommons.org/rest/1.5/support/jurisdictions.js"
-           tal:attributes="src string:http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
+         <script type="text/javascript" src="/includes/jurisdictions.js"
+		 tal:attributes="src context/++resource++cc/includes/jurisdictions.js"></script>
       </select>
     </div>
     <div class="clear">&nbsp;</div>
