@@ -176,8 +176,7 @@ class LicenseEngine(grok.Application, grok.Container):
         if False in (email_addr, title, holder):
             return False
 
-        nextstep_qs = {'lang':lang,
-                       'license_code':'publicdomain',
+        nextstep_qs = {'license_code':'publicdomain',
                        'title':title,
                        'copyright_holder':holder,
                        'email':email_addr,
