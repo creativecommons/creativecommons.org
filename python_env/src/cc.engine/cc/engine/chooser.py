@@ -333,6 +333,10 @@ class WikiRedirect(BrowserPage):
         self.request.response.redirect(
             'results-one?license_code=by-sa&wiki=true')
 
+class NonWebPopup(ResultsView):
+
+    __call__ = ViewPageTemplateFile('chooser_pages/nonweb_popup.pt')
+
 class EmailResultsView(ResultsView):
 
     __call__ = ViewPageTemplateFile('chooser_pages/htmlpopup.pt')

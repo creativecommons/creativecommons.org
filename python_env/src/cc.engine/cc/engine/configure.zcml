@@ -60,17 +60,19 @@
         template="chooser_pages/music.pt"
         />
 
-     <browser:page
-        name="non-web-popup"
-        template="chooser_pages/nonweb_popup.pt"
-        />
-
   </browser:pages>
 
   <browser:page
      for="cc.engine.interfaces.ILicenseEngine"
      name="wiki"
      class=".chooser.WikiRedirect"
+     permission="zope.View"
+     />
+
+  <browser:page
+     for="cc.engine.interfaces.ILicenseEngine"
+     name="non-web-popup"
+     class=".chooser.NonWebPopup"
      permission="zope.View"
      />
 
