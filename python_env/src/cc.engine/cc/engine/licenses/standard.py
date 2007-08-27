@@ -49,6 +49,10 @@ class BrowserLicense(grok.Model):
 
         for lic in self.license.code.split('-'):
 
+            # bail on sampling
+            if lic.find('sampling') > -1:
+                continue
+            
             # Go through the chars and build up the HTML and such
             char_title = translate ('char.%s_title' % lic,
                                     domain='icommons')
