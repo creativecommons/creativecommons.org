@@ -115,7 +115,7 @@ class LicenseDeed(grok.View):
             if self.request['PATH_INFO'][-1] != '/':
                 if self.request.get('QUERY_STRING', ''):
                     target = '%s/?%s' % (self.request['PATH_INFO'],
-                                         self.request['QUERY_STIRNG'])
+                                         self.request['QUERY_STRING'])
                 else:
                     target = '%s/' % self.request['PATH_INFO']
 
