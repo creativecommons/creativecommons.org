@@ -111,11 +111,11 @@
 	   
   <adapter for="zope.publisher.interfaces.http.IHTTPRequest"
            provides="zope.i18n.interfaces.IUserPreferredLanguages"
-           factory=".i18n.PreferredLanguages" />
+           factory=".i18n.preferred.PreferredLanguages" />
 
   <adapter for="zope.publisher.interfaces.http.IHTTPRequest"
            provides=".interfaces.IDefaultJurisdiction"
-           factory=".i18n.PreferredJurisdictionByLocale" />
+           factory=".i18n.preferred.PreferredJurisdictionByLocale" />
 
   <subscriber handler=".init" />
 </configure>
