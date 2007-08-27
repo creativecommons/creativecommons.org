@@ -22,18 +22,59 @@
 
 <metal:body fill-slot="body">
 
-  <span tal:condition="view/email_result"
+  <div tal:condition="view/email_result" tal:omit-tag=""
         i18n:translate="license.pd_awaiting_confirmation">
-    <span i18n:name="email" tal:content="request/email" />
-    <span i18n:name="title" tal:content="request/title" />
-    <span i18n:name="copyright_holder" tal:content="request/copyright_holder" />
-  </span>
-  <span tal:condition="not: view/email_result"
+<h1>Public Domain Dedication - Email Confirmation</h1>
+<p>An email has been sent to you at 
+  <strong><span i18n:name="email" 
+		tal:content="request/email" /></strong>. You should receive 
+it within a few minutes.</p>
+
+<p>This email includes a confirmation of your public domain dedication. 
+It should include the title of your work 
+("<b><span i18n:name="title" tal:content="request/title" /></b>"), 
+and the copyright holder of the work
+("<b><span i18n:name="copyright_holder" 
+	    tal:content="request/copyright_holder" /></b>").</p>
+
+<p>The email will also include a link with an embedded confirmation code. 
+This confirmation code enables us to verify that you are indeed the person 
+eligible to receive email at <b>${email}</b>. 
+Clicking through on this confirmation link will constitute an "overt act of 
+relinquishment" by which you will actually be placing your work in the 
+public domain.</p>
+
+<p><b>Until you click the confirmation link, your work will not be dedicated 
+to the public domain.</b>
+</p>
+
+<p>If for some reason you haven't received this email within 30-45 minutes, 
+please <a href="mailto:pd@creativecommons.org">let us know</a>.</p>
+
+<p>After clicking on the confirmation link, you'll find out how to mark your 
+content with a public domain dedication and publicize your work.</p>
+    
+  </div>
+
+  <div tal:condition="not: view/email_result" tal:omit-tag=""
         i18n:translate="license.pd_bad_confirmation">
-    <span i18n:name="email" tal:content="request/email" />
-    <span i18n:name="title" tal:content="request/title" />
-    <span i18n:name="copyright_holder" tal:content="request/copyright_holder" />
-  </span>
+
+    <h1>Public Domain Dedication - Bad Confirmation</h1>
+
+    <p>It seems you are trying to confirm your public domain dedication 
+      with an incorrect confirmation code.</p>
+
+    <p>This probably happened because you were not able to click through 
+      on the URL sent in your email, and you copy and pasted the URL 
+      incorrectly into your browser. Make sure to include <b>all 
+	characters</b> from the URL sent to you.</p>
+
+    <p>If this is not what happened, or if you continue to have trouble 
+      confirming your public domain dedication in any way, please 
+      <a href="mailto:pd@creativecommons.org">let us know</a>.
+    </p>
+
+  </div>
 
 </metal:body>
 
