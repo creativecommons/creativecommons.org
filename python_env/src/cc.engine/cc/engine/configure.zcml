@@ -83,6 +83,20 @@
      permission="zope.View"
      />
 
+  <browser:page
+     for="cc.engine.interfaces.ILicenseEngine"
+     name="get-html"
+     class=".chooser.GetHtml"
+     permission="zope.View"
+     />
+
+  <browser:page
+     for="cc.engine.interfaces.ILicenseEngine"
+     name="get-rdf"
+     class=".chooser.GetRdf"
+     permission="zope.View"
+     />
+
   <!-- Legacy /characteristic support. -->
   <browser:page
      for="cc.engine.characteristic.Characteristics"

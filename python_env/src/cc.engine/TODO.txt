@@ -1,21 +1,26 @@
-* issue licenses for devnations
-* deeds content
-** MIT
-** BSD
-** devnations
-* caching for translation list
-* container div
+TODO
+====
+
+* get-html
+* get-rdf
+* bare-bones 404 page
+
+* hostip.info based default jurisdiction
+* locale-specific sorting of jurisdiction list
+* performance
+* lock dependencies to a specific version of Zope3 
+
+* complete test coverage
 * i18n deed title, license name
-* include RDF/RDFa in deeds
 
-* how do we handle validation (and by extension 404s) ?
+* RDFa in PD dedication
+* use full RDFa in the PD metadata
+* Sampling cleanup
+* Index cleanup
+* down with mixins
 
-* public domain dedication
-* generic v. unported
-* chrome for chooser
-* partner interface
-* replace popups
+* grok v. z3
 
-* functional tests for existing functionality
-* performance of deeds -- in particular i18n header
-* XXX/YYY/ZZZ report
+* duplicate lang=xx parameters cause barfing.
+
+* sampling deeds... attribution?

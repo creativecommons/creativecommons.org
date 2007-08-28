@@ -142,6 +142,16 @@ class LicenseEngine(grok.Application, grok.Container):
                version = request.form.get('version', None)
                )
 
+        # check for license_url
+        elif request.has_key('license_url'):
+            # work backwards, generating the answers from the license code
+            code, jurisdiction, version = cc.license.support.expand_license_uri(
+                request.form['license_url'])
+            license_class, answers = cc.license.support.expandLicenseCode(
+                code, jurisdiction)
+
+            answers['version'] = version
+        
 	else:
 	   jurisdiction = ('field_jurisdiction' in request.keys() and request['field_jurisdiction']) or jurisdiction
 
@@ -326,6 +336,27 @@ class ResultsView(BaseBrowserView):
         else:
             return ViewPageTemplateFile('chooser_pages/results.pt')(self)
 
+class GetHtml(ResultsView):
+    """Return the HTML with metadata for a partner site to use."""
+
+    def __call__(self):
+
+        self.request.response.setHeader(
+            'Content-Type', 'text/html; charset=UTF-8')
+
+        return self.license.html
+    
+class GetRdf(ResultsView):
+    """Return the license/work RDF-XML for a partner site to use; examines
+    the request to determine what license, etc to use."""
+
+    def __call__(self):
+
+        self.request.response.setHeader(
+            'Content-Type', 'application/rdf+xml; charset=UTF-8')
+
+        return self.license.work_rdf
+    
 class WikiRedirect(BrowserPage):
 
     def __call__(self):

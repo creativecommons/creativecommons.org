@@ -22,7 +22,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = "cc.engine",
-    version = "1.1",
+    version = "1.2-dev",
     packages = find_packages('.'),
     namespace_packages = ['cc',],
     
@@ -31,6 +31,7 @@ setup(
                         'zope.sendmail',
                         'grok',
                         'cc.license',
+                        'pysqlite',
                         ],
 
     # author metadata
