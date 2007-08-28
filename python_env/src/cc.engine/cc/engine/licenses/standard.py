@@ -98,7 +98,7 @@ class BrowserLicense(grok.Model):
 
         # handle deed.de, etc -- these shouldn't trigger views, but also
         # shouldn't be added to our traversal stack
-        if name[:5] == 'deed.': 
+        if name[:4] == 'deed': 
             return self
 
         if name not in self.TARGET_NAMES:
