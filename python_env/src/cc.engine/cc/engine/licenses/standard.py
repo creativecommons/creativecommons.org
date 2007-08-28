@@ -130,7 +130,6 @@ class LicenseDeed(grok.View):
             self.context.license
             
         except LicenseException, e:
-            raise e
             raise NotFound(self.context, self.request['REQUEST_URI'],
                            self.request)
 

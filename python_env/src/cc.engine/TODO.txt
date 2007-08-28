@@ -1,10 +1,6 @@
 TODO
 ====
 
-* get-html
-* get-rdf
-* bare-bones 404 page
-
 * hostip.info based default jurisdiction
 * locale-specific sorting of jurisdiction list
 * performance

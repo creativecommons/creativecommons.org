@@ -14,6 +14,13 @@
   <grok:grok package="." />
 
   <browser:page
+     for="zope.publisher.interfaces.INotFound"
+     name="index.html"
+     template="templates/404.pt"
+     permission="zope.View"
+     />
+
+  <browser:page
      for="cc.engine.interfaces.ILicenseEngine"
      name="index"
      class=".chooser.IndexView"
