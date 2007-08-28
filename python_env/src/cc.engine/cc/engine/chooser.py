@@ -54,37 +54,41 @@ class LicenseEngine(grok.Application, grok.Container):
 	# look for keys that match the param names
 	for key in request.form:
 	    if key in result:
-	        result[key] = request[key]
+	        result[key] = request.form[key]
 
 	# look for keys from the license chooser interface
 
 	# work title
-	if request.has_key('field_worktitle'):
+	if request.form.has_key('field_worktitle'):
 	    result['title'] = request['field_worktitle']
 
 	# creator
-	if request.has_key('field_creator'):
+	if request.form.has_key('field_creator'):
 	    result['creator'] = request['field_creator']
 
 	# copyright holder
-	if request.has_key('field_copyrightholder'):
+	if request.form.has_key('field_copyrightholder'):
 	    result['copyright_holder'] = result['holder'] = \
                 request['field_copyrightholder']
-
+        if request.form.has_key('copyright_holder'):
+            result['holder'] = request.form['copyright_holder']
+            
 	# copyright year
-	if request.has_key('field_year'):
+	if request.form.has_key('field_year'):
 	    result['copyright_year'] = result['year'] = request['field_year']
-
+        if request.form.has_key('copyright_year'):
+            result['year'] = request.form['copyright_year']
+            
 	# description
-	if request.has_key('field_description'):
+	if request.form.has_key('field_description'):
 	    result['description'] = request['field_description']
 
 	# format
-	if request.has_key('field_format'):
+	if request.form.has_key('field_format'):
 	    result['format'] = result['type'] = request['field_format']
 
 	# source url
-	if request.has_key('field_sourceurl'):
+	if request.form.has_key('field_sourceurl'):
 	    result['source_work_url'] = result['source-url'] = \
                 request['field_sourceurl']
 
@@ -96,15 +100,15 @@ class LicenseEngine(grok.Application, grok.Container):
                 result['source_work_domain'] = result['source_work_url']
 
         # attribution name
-        if request.has_key('field_attribute_to_name'):
+        if request.form.has_key('field_attribute_to_name'):
             result['attribution_name'] = request['field_attribute_to_name']
 
         # attribution URL
-        if request.has_key('field_attribute_to_url'):
+        if request.form.has_key('field_attribute_to_url'):
             result['attribution_url'] = request['field_attribute_to_url']
 
         # more permissions URL
-        if request.has_key('field_morepermissionsurl'):
+        if request.form.has_key('field_morepermissionsurl'):
             result['more_permissions_url'] = request['field_morepermissionsurl']
 
 	return result
