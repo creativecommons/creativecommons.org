@@ -57,7 +57,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
     </div>
 			
     <p>
-      <strong i18n:translate="api.deriviatives">Allow modifications of your work?</strong> (<a href="" id="derivatives" class="helpLink" i18n:translate="util.more_info">more info</a>)
+      <strong i18n:translate="api.derivatives">Allow modifications of your work?</strong> (<a href="" id="derivatives" class="helpLink" i18n:translate="util.more_info">more info</a>)
       <br/>
 			
       <input type="radio" checked="checked" 
