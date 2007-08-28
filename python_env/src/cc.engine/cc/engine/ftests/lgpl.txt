@@ -6,3 +6,5 @@ This is a sanity check of the GNU LGPL interface and deeds.
   >>> browser = Browser()
   >>> browser.raiseHttpErrors = True
   >>> browser.open('http://localhost:8080/license/cc-lgpl/')
+
+  >>> browser.open('http://localhost:8080/licenses/LGPL/2.1/')

@@ -12,3 +12,8 @@ customized Attribution-ShareAlike license.
   >>> browser.url
   'http://localhost:8080/license/results-one?license_code=by-sa&wiki=true'
 
+  The wiki license has a special badge available:
+
+  >>> 'http://creativecommons.org/images/public/cc-wiki.png' in \
+  ... browser.contents
+  True

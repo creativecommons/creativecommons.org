@@ -16,7 +16,8 @@ def test_suite():
     suite = unittest.TestSuite()
     docfiles = ['initialize.txt', 'chooser.txt', 'deeds.txt',
                 'publicdomain.txt', 'sampling.txt', 'musicsharing.txt',
-                'wiki.txt', 'gpl.txt', 'lgpl.txt']
+                'wiki.txt', 'gpl.txt', 'lgpl.txt', 'mitbsd.txt',
+                'devnations.txt']
 
     for docfile in docfiles:
         test = FunctionalDocFileSuite(
