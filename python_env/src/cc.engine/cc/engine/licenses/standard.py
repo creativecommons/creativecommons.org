@@ -1,3 +1,5 @@
+import datetime
+
 import grok
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
@@ -9,6 +11,8 @@ from cc.license.exceptions import LicenseException
 
 from cc.engine import interfaces
 from cc.license.decorators import memoized
+
+START_TIME = datetime.datetime.now()
 
 class BrowserLicense(grok.Model):
     implements(interfaces.ILicense)
@@ -124,7 +128,7 @@ class LicenseDeed(grok.View):
                     target = '%s/' % self.request['PATH_INFO']
 
                 return self.request.response.redirect(target)
-
+        
         # make sure we've traversed to a valid license version
         try:
             self.context.license
@@ -132,6 +136,11 @@ class LicenseDeed(grok.View):
         except LicenseException, e:
             raise NotFound(self.context, self.request['REQUEST_URI'],
                            self.request)
+
+        # add cache control headers
+        self.request.response.setHeader(
+            'Last-Modified', START_TIME.strftime('%a, %d %b %Y %H:%M:%S %Z')
+            )
 
         # make sure we've extracted the locale from the request querystring
         self.request.setupLocale()
