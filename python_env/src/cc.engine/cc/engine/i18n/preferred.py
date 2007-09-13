@@ -1,5 +1,7 @@
 """Internalization support for cc.engine."""
 
+import re
+
 from zope.interface import implements
 from zope.i18n.interfaces import IUserPreferredLanguages
 from zope.publisher.browser import BrowserLanguages
@@ -24,6 +26,8 @@ class PreferredLanguages(BrowserLanguages):
 
     implements(IUserPreferredLanguages)
 
+    DEED_RE = re.compile(u"^deed\.[\w]+")
+    
     def getPreferredLanguages(self):
         languages_data = self._getLanguagesData()
         if "overridden" in languages_data:
@@ -36,11 +40,20 @@ class PreferredLanguages(BrowserLanguages):
             # actually do our calculation here; we only cache the result
             # if we're using one of the query string parameters
             
-            # see if we're dealing with deed.xx
-            path_pieces = self.request['PATH_INFO'].rsplit('.', 1)
-
-            if len(path_pieces) == 2 and len(path_pieces[1]) == 2:
-                languages_data["cached"] = [path_pieces[1]]
+            # /licenses doesn't do content negotiation
+            if self.request['PATH_INFO'].find('/licenses/') == 0:
+                path_pieces = self.request['PATH_INFO'].split('/')
+                
+                if self.DEED_RE.match(path_pieces[-1]):
+                    # deed.xx
+                    languages_data["cached"] = [path_pieces[-1].split('.',1)[1]]
+                    
+                elif len(path_pieces) == 6:
+                    # check if this is a jurisdiction
+                    languages_data["cached"] = [path_pieces[-2]]
+                else:
+                    # fall back to english
+                    languages_data["cached"] = [u'en']
 
             elif self.request.form.get(u'lang', False):
                 # check for the query string
@@ -54,7 +67,7 @@ class PreferredLanguages(BrowserLanguages):
                 # fall back to default selection (HTTP_ACCEPT_LANGUAGE)
                 return super(
                     PreferredLanguages, self).getPreferredLanguages()
-
+        
         return languages_data["cached"]
 
     def _getLanguagesData(self):
