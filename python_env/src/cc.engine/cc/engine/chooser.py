@@ -203,8 +203,8 @@ class LicenseEngine(grok.Application, grok.Container):
                   "Subject: Confirm your Public Domain Dedication at Creative Commons\n" \
                   "\n%s" % (
             email_addr,
-            translate(domain=cc.engine.i18n.I18N_DOMAIN,
-                      msgid='license.pd_confirmation_email',
+            translate('license.pd_confirmation_email',
+                      domain=cc.engine.i18n.I18N_DOMAIN,
                       mapping={'title':title,
                                'clickthrough_url':nextstep_url, },
                       target_language=lang)
@@ -225,8 +225,8 @@ class LicenseEngine(grok.Application, grok.Container):
                   "Subject: Creative Commons - Public Domain Dedication\n" \
                   "\n%s" % (
             email_addr,
-            translate(domain=cc.engine.i18n.I18N_DOMAIN,
-                      msgid='license.pd_dedication_email',
+            translate('license.pd_dedication_email',
+                      domain=cc.engine.i18n.I18N_DOMAIN,
                       mapping={'title':title,
                                'email':email_addr,
                                'copyright_holder':holder,

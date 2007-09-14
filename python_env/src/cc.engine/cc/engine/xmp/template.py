@@ -59,10 +59,10 @@ def get_xmp_info(request, license):
         else:
             notice = ""
 
-        i18n_work = translate(cc.engine.i18n.I18N_DOMAIN, 'util.work')
+        i18n_work = translate('util.work', domain=cc.engine.i18n.I18N_DOMAIN)
         work_notice = strip_href(
-            translate(cc.engine.i18n.I18N_DOMAIN,
-                      'license.work_type_licensed',
+            translate('license.work_type_licensed',
+                      domain=cc.engine.i18n.I18N_DOMAIN,
                       mapping={'license_name':license.name,
                                'license_url':license.uri,
                                'work_type':i18n_work}
