@@ -9,6 +9,8 @@
   <head>
     <title metal:define-slot="title">Creative Commons Deed</title>
 
+<base href="" tal:attributes="href context/license/uri" />
+
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" 
           href="/includes/deed3.css" media="screen" 
