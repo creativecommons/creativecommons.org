@@ -100,11 +100,6 @@ class BrowserLicense(grok.Model):
             # code, version [jurisdiction], [deed.xx]
             return None
 
-        # handle deed.de, etc -- these shouldn't trigger views, but also
-        # shouldn't be added to our traversal stack
-        if name[:4] == 'deed': 
-            return self
-
         if name not in self.TARGET_NAMES:
             # make sure we always return the same class since
             # views are registered for particular classes
@@ -119,15 +114,14 @@ class LicenseDeed(grok.View):
         """Prepare to render the deed."""
 
         # redirect if this isn't deed.xx and we don't have a trailing slash
-        if self.request['PATH_INFO'].split('/')[-1].split('.', 1)[0] != 'deed':
-            if self.request['PATH_INFO'][-1] != '/':
-                if self.request.get('QUERY_STRING', ''):
-                    target = '%s/?%s' % (self.request['PATH_INFO'],
-                                         self.request['QUERY_STRING'])
-                else:
-                    target = '%s/' % self.request['PATH_INFO']
+        if self.request['PATH_INFO'][-1] != '/':
 
-                return self.request.response.redirect(target)
+            target = self.request.getURL().rsplit('@',2)[0]
+            
+            if self.request.get('QUERY_STRING', ''):
+                target = '%s?%s' % (target, self.request['QUERY_STRING'])
+
+            return self.request.response.redirect(target)
         
         # make sure we've traversed to a valid license version
         try:

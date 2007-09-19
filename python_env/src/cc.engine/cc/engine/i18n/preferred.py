@@ -15,7 +15,7 @@ class PreferredLanguages(BrowserLanguages):
     """Custom language selector: looks for a language setting in the
     following order:
 
-    * /deed.xx in the path
+    * /deed.xx in the path -- mapped to ?lang=xx by Apache
     * ?lang=xx querystring
     * ?language=xx querystring
     * cc_org_lang cookie
@@ -26,48 +26,46 @@ class PreferredLanguages(BrowserLanguages):
 
     implements(IUserPreferredLanguages)
 
-    DEED_RE = re.compile(u"^deed\.[\w]+")
-    
     def getPreferredLanguages(self):
         languages_data = self._getLanguagesData()
         if "overridden" in languages_data:
             # if the language has been overridden by, say, ++lang++
-            print 'overridden: ', languages_data['overridden']
+
             return languages_data["overridden"]
 
         elif "cached" not in languages_data:
 
             # actually do our calculation here; we only cache the result
             # if we're using one of the query string parameters
-            
-            # /licenses doesn't do content negotiation
-            if self.request['PATH_INFO'].find('/licenses/') == 0:
-                path_pieces = self.request['PATH_INFO'].split('/')
-                
-                if self.DEED_RE.match(path_pieces[-1]):
-                    # deed.xx
-                    languages_data["cached"] = [path_pieces[-1].split('.',1)[1]]
-                    
-                elif len(path_pieces) == 6:
-                    # check if this is a jurisdiction
-                    languages_data["cached"] = [path_pieces[-2]]
-                else:
-                    # fall back to english
-                    languages_data["cached"] = [u'en']
+            path_pieces = self.request['PATH_INFO'].split('/')
 
-            elif self.request.form.get(u'lang', False):
+            # XXX the form may not be processed yet, so lets double-check
+            if self.request.form == {} and \
+               'licenses' in path_pieces and \
+               self.request.get('QUERY_STRING', '').find('lang=') > -1:
+                
+                self.request.processInputs()
+                
+            if self.request.form.get(u'lang', False):
                 # check for the query string
-                languages_data["cached"] = [self.request['lang'], 'en']
+                
+                languages_data["cached"] = [self.request['lang'], u'en']
+
+            elif len(path_pieces) >= 6 and 'licenses' in path_pieces:
+                # /licenses doesn't do content negotiation;
+                # this request specifies is a jurisdiction
+
+                languages_data["cached"] = [path_pieces[-2], u'en']
 
             elif self.request.form.get('language', False):
-                languages_data["cached"] = [self.request['language'], 'en']
+                languages_data["cached"] = [self.request['language'], u'en']
 
                 # XXX look for the cookie
             else:
                 # fall back to default selection (HTTP_ACCEPT_LANGUAGE)
                 return super(
                     PreferredLanguages, self).getPreferredLanguages()
-        
+
         return languages_data["cached"]
 
     def _getLanguagesData(self):
