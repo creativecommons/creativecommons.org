@@ -35,7 +35,7 @@
 <span tal:omit-tag="" i18n:translate="license.fsf_software_licensed">
 
   <span i18n:name="license_code">LGPL</span>
-  <span i18n:name="license_url">http://creativecommons.org/licenses/LGPL/2.1/</span>
+  <span i18n:name="license_url" tal:omit-tag="">http://creativecommons.org/licenses/LGPL/2.1/</span>
 
   </span>
 <!-- /Creative Commons License -->
