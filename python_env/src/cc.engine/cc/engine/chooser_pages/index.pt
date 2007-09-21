@@ -164,7 +164,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 
 <p i18n:translate="license.explain">Creative Commons helps you publish your work online while letting others know exactly what they can and can't do with your work. When you choose a license, we provide you with tools and tutorials that let you add license information to our own site, or to one of several free hosting services that have incorporated Creative Commons.</p>
 
-<a href="/about/licenses/meet-the-licenses"><span i18n:translate="license.view_explanation">View an explanation of all our licenses.</span></a>
+<a href="/about/license"><span i18n:translate="license.view_explanation">View an explanation of all our licenses.</span></a>
 
 
 <h4 i18n:translate="license.or_choose">Or Choose:</h4>
@@ -193,6 +193,11 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 <img src="/images/license/40gnulgpl.gif" width="40" height="40" align="middle" border="0" /></a>
 <a href="/license/cc-lgpl" i18n:translate="util.CC_GNU_LGPL">
 CC-GNU LGPL</a></p>
+
+<p style="font-size:11px;"> <a href="/licenses/BSD/">
+<img src="/images/license/40bsd.png" width="40" height="40" align="middle" border="0" /></a>
+<a href="/licenses/BSD/" i18n:translate="util.BSD">
+BSD</a></p>
 
 <p style="font-size:11px;"> <a href="/license/wiki">
 <img src="/images/license/40wiki.gif" width="40" height="40" align="middle" border="0" /></a>
