@@ -164,7 +164,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 
 <p i18n:translate="license.explain">Creative Commons helps you publish your work online while letting others know exactly what they can and can't do with your work. When you choose a license, we provide you with tools and tutorials that let you add license information to our own site, or to one of several free hosting services that have incorporated Creative Commons.</p>
 
-<a href="/about/license"><span i18n:translate="license.view_explanation">View an explanation of all our licenses.</span></a>
+<a href="/about/licenses"><span i18n:translate="license.view_explanation">View an explanation of all our licenses.</span></a>
 
 
 <h4 i18n:translate="license.or_choose">Or Choose:</h4>
