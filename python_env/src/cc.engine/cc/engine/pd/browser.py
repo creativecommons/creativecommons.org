@@ -5,14 +5,12 @@ from cc.engine.chooser import BaseBrowserView, ResultsView
 
 class pd_partner(ResultsView):
 
-    _pt = ViewPageTemplateFile('templates/publicdomain-partner.pt')
-    
     def __call__(self):
 
         # YYY set the key so Results._issue works right
         self.request.form['publicdomain'] = True
-        
-        return self._pt(self)
+
+        return self.index()
 
 class pd_waiting_verification(BrowserPage):
 
