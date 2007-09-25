@@ -4,6 +4,7 @@ import re
 
 from zope.interface import implements, providedBy
 from zope.i18n.interfaces import IUserPreferredLanguages
+from zope.i18n.negotiator import normalize_lang
 from zope.publisher.browser import BrowserLanguages
 from zope.publisher.interfaces.browser import IBrowserApplicationRequest
 from zope.app.publisher.browser import key as annotation_key
@@ -54,16 +55,19 @@ class PreferredLanguages(BrowserLanguages):
                 if self.request.form.get(u'lang', False):
                     # check for the query string
 
-                    languages_data["cached"] = [self.request['lang'], u'en']
+                    languages_data["cached"] = [
+                        normalize_lang(self.request['lang']), u'en']
 
                 elif len(path_pieces) >= 6 and 'licenses' in path_pieces:
                     # /licenses doesn't do content negotiation;
                     # this request specifies is a jurisdiction
 
-                    languages_data["cached"] = [path_pieces[-2], u'en']
+                    languages_data["cached"] = [
+                        normalize_lang(path_pieces[-2]), u'en']
 
                 elif self.request.form.get('language', False):
-                    languages_data["cached"] = [self.request['language'], u'en']
+                    languages_data["cached"] = [
+                        normalize_lang(self.request['language']), u'en']
 
                     # XXX look for the cookie
                 else:
