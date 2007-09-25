@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/@@engine/page"
+      i18n:domain="icommons">
+<head>
+  <title metal:fill-slot="title">Creative Commons Licenses</title>
+</head>
+
+<body>
+<div metal:fill-slot="body">
+     <h1>Creative Commons Licenses</h1>
+
+<p>The following are the six current license choices available from our <a href="/license/">choose a license</a> application, along with previous versions that have been phased out. They are shown by name along the license characteristics that accompany them. <a href="http://creativecommons.org/about/licenses/">This page explains what each icon represents</a>.</p>
+
+<table border="0" style="margin-left:14px;margin-bottom:30px;" cellpadding="3">
+	<tr>
+		<th align="left">Name</th>
+	    <th align="left" colspan="3">Characteristics</th>
+	</tr>
+<tr>
+	<th colspan="4" style="background:#dedede;color:#333;" align="left">Version 3.0 Licenses:</th>
+</tr>
+
+<tr>
+		<td width="250"><a href="/licenses/by/3.0/">Attribution</a></td>
+		<td><img border="0" src="/icons/by/standard.gif" alt="by" align="left" /></td>
+		<td width="32">&nbsp;</td>
+		<td width="32">&nbsp;</td>
+	</tr>
+
+	<tr>
+		<td><a href="/licenses/by-nd/3.0/">Attribution-NoDerivs</a></td>
+
+		<td><img border="0" src="/icons/by/standard.gif" alt="by" align="left" /></td><td width="32">&nbsp;</td><td><img border="0" src="/icons/nd/standard.gif" alt="nd" align="left" /></td>
+	</tr>
+
+	<tr>
+		<td><a href="/licenses/by-nc-nd/3.0/">Attribution-NonCommercial-NoDerivs</a></td>
+		<td><img border="0" src="/icons/by/standard.gif" alt="by" align="left" /></td><td><img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" /></td><td><img border="0" src="/icons/nd/standard.gif" alt="nd" align="left" /></td>
+	</tr>
+	
+	<tr>
+		<td><a href="/licenses/by-nc/3.0/">Attribution-NonCommercial</a></td>
+
+		<td><img border="0" src="/icons/by/standard.gif" alt="by" align="left" /></td><td><img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" /></td><td width="32">&nbsp;</td>
+	</tr>
+
+	<tr>
+		<td><a href="/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike</a></td>
+		<td><img border="0" src="/icons/by/standard.gif" alt="by" align="left" /></td><td><img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" /></td><td><img border="0" src="/icons/sa/standard.gif" alt="sa" align="left" /></td>
+	</tr>
+
+	<tr>
+
+		<td><a href="/licenses/by-sa/3.0/">Attribution-ShareAlike</a></td>
+		<td><img border="0" src="/icons/by/standard.gif" alt="by" align="left" /></td><td width="32">&nbsp;</td><td><img border="0" src="/icons/sa/standard.gif" alt="sa" align="left" /></td>
+	</tr>
+</table>
+<!--
+<p>Previous versions also included the licenses listed below:</p>
+
+<table border="0" style="margin-left:14px;background:#eee;" cellpadding="3">
+<tr>
+	<th colspan="4" style="background:#dedede;color:#333;" align="left">Version 1.0 Licenses:</th>
+
+</tr>	
+	
+	<tr>
+		<td width="250"><a href="/licenses/nd/1.0/">NoDerivs</a></td>
+		<td width="32">&nbsp;</td><td width="32">&nbsp;</td><td width="32"><img border="0" src="/icons/nd/standard.gif" alt="nd" align="left" /></td>
+	</tr>
+
+	<tr>
+		<td><a href="/licenses/nd-nc/1.0/">NoDerivs-NonCommercial</a></td>
+		<td width="32">&nbsp;</td><td><img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" /></td><td><img border="0" src="/icons/nd/standard.gif" alt="nd" align="left" /></td>
+
+	</tr>
+
+	<tr>
+		<td><a href="/licenses/nc/1.0/">NonCommercial</a></td>
+		<td width="32">&nbsp;</td><td><img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" /></td><td width="32">&nbsp;</td>
+	</tr>
+
+	<tr>
+		<td><a href="/licenses/nc-sa/1.0/">NonCommercial-ShareAlike</a></td>
+
+		<td width="32">&nbsp;</td><td><img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" /></td><td><img border="0" src="/icons/sa/standard.gif" alt="sa" align="left" /></td>
+	</tr>
+
+	<tr>
+		<td><a href="/licenses/sa/1.0/">ShareAlike</a></td>
+		<td width="32">&nbsp;</td><td width="32">&nbsp;</td><td><img border="0" src="/icons/sa/standard.gif" alt="sa" align="left" /></td>
+	</tr>
+
+</table>
+-->
+
+</div>
+</body>
+</html>
