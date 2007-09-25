@@ -28,9 +28,11 @@ ${context/license/rdf} -->" />
 
         <div id="deed-rights" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
 <span tal:omit-tag="" tal:condition="python: context.license.jurisdiction not in ['-', 'es']"><a tal:attributes="href python: '/worldwide/'+context.license.jurisdiction+'/'" href=''><img tal:attributes="src python: '/images/international/'+context.license.jurisdiction+'.png'" src='' border="0"/></a></span>
-		      <h3 rel="cc:permits" href="http://creativecommons.org/ns#Reproduction" i18n:translate="deed.You_are_free"></h3>
+<h3 rel="cc:permits" 
+    href="http://creativecommons.org/ns#Reproduction" 
+    i18n:translate="deed.You_are_free">You are free:</h3>
 		      <ul>
-			      <li class="license share" rel="cc:permits" href="http://creativecommons.org/ns#Distribution" i18n:translate="deed.free_copy_distribute"></li>
+			<li class="license share" rel="cc:permits" href="http://creativecommons.org/ns#Distribution" i18n:translate="deed.free_copy_distribute"></li>
 			      <li class="license remix" tal:condition="python: context.license.code.find('nd') < 0" rel="cc:permits" href="http://creativecommons.org/ns#DerivativeWorks"
                                       i18n:translate="deed.free_derivative"></li>
 <span id='devnations-container'/>
@@ -48,13 +50,22 @@ ${context/license/rdf} -->" />
               <span id="by-more-container" tal:attributes="id string:${attr/icon_name}-more-container" /></p>
             </li>
             <li id="more-container" class="license-hidden" />
-            <li rel="cc:requires" href="http://creativecommons.org/ns#Notice" i18n:translate="deed.notice"></li>
-            <li i18n:translate="deed.permission"></li>
+            <li rel="cc:requires" href="http://creativecommons.org/ns#Notice" 
+		i18n:translate="deed.notice">
+	      For any reuse or distribution, you must make clear to others the license terms of this work. The best way to do this is with a link to this web page.
+	    </li>
+            <li i18n:translate="deed.permission">
+	    Any of the above conditions can be waived if you get permission from the copyright holder.
+	    </li>
             <span tal:omit-tag="" tal:condition="python: context.license.code.find('nd') >= 0 or context.license.jurisdiction != 'us'">
-            <li i18n:translate="deed.moralrights"></li>
+            <li i18n:translate="deed.moralrights">
+Nothing in this license impairs or restricts the author's moral rights.
+	    </li>
             </span>
             <span tal:omit-tag="" tal:condition="python: context.license.jurisdiction == 'us' and context.license.code.find('nd') < 0">
-            <li i18n:translate="deed.moralrights-remix.us"></li>
+            <li i18n:translate="deed.moralrights-remix.us">
+Apart from the remix rights granted under this license, nothing in this license impairs or restricts the author's moral rights.
+	    </li>
             </span>
           </ul>
 
