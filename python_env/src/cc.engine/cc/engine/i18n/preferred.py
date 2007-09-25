@@ -2,9 +2,10 @@
 
 import re
 
-from zope.interface import implements
+from zope.interface import implements, providedBy
 from zope.i18n.interfaces import IUserPreferredLanguages
 from zope.publisher.browser import BrowserLanguages
+from zope.publisher.interfaces.browser import IBrowserApplicationRequest
 from zope.app.publisher.browser import key as annotation_key
 
 import cc.license.support
@@ -39,28 +40,37 @@ class PreferredLanguages(BrowserLanguages):
             # if we're using one of the query string parameters
             path_pieces = self.request['PATH_INFO'].split('/')
 
-            # XXX the form may not be processed yet, so lets double-check
-            if self.request.form == {} and \
-               'licenses' in path_pieces and \
-               self.request.get('QUERY_STRING', '').find('lang=') > -1:
-                
-                self.request.processInputs()
-                
-            if self.request.form.get(u'lang', False):
-                # check for the query string
-                
-                languages_data["cached"] = [self.request['lang'], u'en']
+            # see if we're dealing with a BrwoserRequest
+            if IBrowserApplicationRequest in providedBy(self.request):
+                # this request has a form available; look for query string, etc
 
-            elif len(path_pieces) >= 6 and 'licenses' in path_pieces:
-                # /licenses doesn't do content negotiation;
-                # this request specifies is a jurisdiction
+                # XXX the form may not be processed yet, so lets double-check
+                if self.request.form == {} and \
+                   'licenses' in path_pieces and \
+                   self.request.get('QUERY_STRING', '').find('lang=') > -1:
 
-                languages_data["cached"] = [path_pieces[-2], u'en']
+                    self.request.processInputs()
 
-            elif self.request.form.get('language', False):
-                languages_data["cached"] = [self.request['language'], u'en']
+                if self.request.form.get(u'lang', False):
+                    # check for the query string
 
-                # XXX look for the cookie
+                    languages_data["cached"] = [self.request['lang'], u'en']
+
+                elif len(path_pieces) >= 6 and 'licenses' in path_pieces:
+                    # /licenses doesn't do content negotiation;
+                    # this request specifies is a jurisdiction
+
+                    languages_data["cached"] = [path_pieces[-2], u'en']
+
+                elif self.request.form.get('language', False):
+                    languages_data["cached"] = [self.request['language'], u'en']
+
+                    # XXX look for the cookie
+                else:
+                    # fall back to default selection (HTTP_ACCEPT_LANGUAGE)
+                    return super(
+                        PreferredLanguages, self).getPreferredLanguages()
+
             else:
                 # fall back to default selection (HTTP_ACCEPT_LANGUAGE)
                 return super(
