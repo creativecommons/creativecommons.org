@@ -17,6 +17,14 @@
 
   <browser:page
      for="cc.engine.interfaces.ILicenseEngine"
+     name="publicdomain-direct"
+     class=".browser.pd_partner"
+     template="templates/publicdomain-partner.pt"
+     permission="zope.View"
+     />
+
+  <browser:page
+     for="cc.engine.interfaces.ILicenseEngine"
      name="publicdomain-2"
      template="templates/publicdomain-2.pt"
      permission="zope.View"
