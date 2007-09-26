@@ -42,7 +42,7 @@ ${context/license/rdf} -->" />
 		      <h3 i18n:translate="deed.under_conditions"></h3>
 	        <ul tal:attributes="dir view/is_rtl; align view/is_rtl_align;"> 
             <li rel="cc:requires" href="http://creativecommons.org/ns#Attribution" class="license @attributes.char_code@" 
-                tal:repeat="attr context/conditions" 
+                tal:repeat="attr view/conditions" 
                 tal:attributes="class string:license ${attr/icon_name};rel string:${attr/predicate}; href string:${attr/object}">
 	            <p><strong tal:content="structure attr/char_title">@attributes.char_title@</strong>. 
               <span id='attribution-container' tal:condition="python: attr['char_code'] == 'by'"><span tal:replace="structure attr/char_brief" /></span>

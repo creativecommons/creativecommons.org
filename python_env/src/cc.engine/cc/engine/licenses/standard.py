@@ -43,56 +43,6 @@ class BrowserLicense(grok.Model):
                                                            version,
                                                            jurisdiction)
 
-    @property
-    @memoized
-    def conditions(self):
-        """Return a sequence of mappings defining the conditions defined by
-        this license."""
-
-        attrs = []
-
-        for lic in self.license.code.split('-'):
-
-            # bail on sampling
-            if lic.find('sampling') > -1:
-                continue
-            
-            # Go through the chars and build up the HTML and such
-            char_title = translate ('char.%s_title' % lic,
-                                    domain='icommons')
-            char_brief = translate ('char.%s_brief' % lic,
-                                    domain='icommons')
-
-            icon_name = lic
-            predicate = 'cc:requires'
-            object = 'http://creativecommons.org/ns#Attribution'
-
-            if lic == 'nc':
-              predicate = 'cc:prohibits'
-              object = 'http://creativecommons.org/ns#CommercialUse'
-              if self.license.jurisdiction == 'jp':
-                 icon_name = '%s-jp' % icon_name
-              elif self.license.jurisdiction in ('fr', 'es', 'nl', 'at', 'fi', 'be', 'it'):
-                 icon_name = '%s-eu' % icon_name
-            elif lic == 'sa':
-              object = 'http://creativecommons.org/ns#ShareAlike'
-              if self.license.version == 3.0 and self.license.code == 'by-sa':
-                char_brief = translate ('char.sa_bysa30_brief',
-                                        domain='icommons')
-            elif lic == 'nd':
-              predicate = ''
-              object = ''
-
-            attrs.append({'char_title':char_title,
-                          'char_brief':char_brief,
-                          'icon_name':icon_name,
-                          'char_code':lic,
-                          'predicate':predicate,
-                          'object':object,
-                     })
-
-        return attrs
-        
     def traverse(self, name):
 
         if len(self.pieces) > 4:
@@ -189,6 +139,66 @@ class LicenseDeed(grok.View):
        
         else:
            return 'green'
+
+    @property
+    @memoized
+    def conditions(self):
+        """
+        YYY The predicate mapping should really be part of cc.license.
+        
+        Return a sequence of mappings defining the conditions defined by
+        this license."""
+
+        attrs = []
+
+        target_lang = self.request.locale.id.language
+        
+        for lic in self.context.license.code.split('-'):
+
+            # bail on sampling
+            if lic.find('sampling') > -1:
+                continue
+            
+            # Go through the chars and build up the HTML and such
+            char_title = translate ('char.%s_title' % lic,
+                                    domain='icommons',
+                                    target_language=target_lang)
+            char_brief = translate ('char.%s_brief' % lic,
+                                    domain='icommons',
+                                    target_language=target_lang)
+
+            icon_name = lic
+            predicate = 'cc:requires'
+            object = 'http://creativecommons.org/ns#Attribution'
+
+            if lic == 'nc':
+              predicate = 'cc:prohibits'
+              object = 'http://creativecommons.org/ns#CommercialUse'
+              if self.context.license.jurisdiction == 'jp':
+                 icon_name = '%s-jp' % icon_name
+              elif self.context.license.jurisdiction in ('fr', 'es', 'nl', 'at', 'fi', 'be', 'it'):
+                 icon_name = '%s-eu' % icon_name
+            elif lic == 'sa':
+              object = 'http://creativecommons.org/ns#ShareAlike'
+              if self.context.license.version == 3.0 and self.context.license.code == 'by-sa':
+                char_brief = translate ('char.sa_bysa30_brief',
+                                        domain='icommons',
+                                        target_language=target_lang)
+            elif lic == 'nd':
+              predicate = ''
+              object = ''
+
+            attrs.append({'char_title':char_title,
+                          'char_brief':char_brief,
+                          'icon_name':icon_name,
+                          'char_code':lic,
+                          'predicate':predicate,
+                          'object':object,
+                     })
+
+        return attrs
+        
+
 
 class LicenseRdf(grok.View):
     grok.context(BrowserLicense)
