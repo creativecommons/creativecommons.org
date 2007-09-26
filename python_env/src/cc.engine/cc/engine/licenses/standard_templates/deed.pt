@@ -15,7 +15,7 @@
 ${context/license/rdf} -->" />
 
 <h2 metal:fill-slot="license-name">
-<span tal:omit-tag="" tal:content="structure string:${context/license/name}"/>
+<span tal:omit-tag="" tal:content="structure string:${view/license/name}"/>
 <span tal:omit-tag="" 
    tal:condition="python: False and context.license.code in ('by', 'by-sa')"> (Libre)</span>
 </h2>
@@ -69,10 +69,10 @@ Apart from the remix rights granted under this license, nothing in this license 
             </span>
           </ul>
 
-          <div id="deed-newer" tal:condition="context/license/superseded">
+          <div id="deed-newer" tal:condition="view/license/superseded">
     	      <p i18n:translate="deed.superseded">
               <span i18n:name="current_version_url"
-                     tal:content="context/license/current_version/uri" 
+                     tal:content="view/license/current_version/uri" 
                      tal:omit-tag=""/>
             </p>
           </div>

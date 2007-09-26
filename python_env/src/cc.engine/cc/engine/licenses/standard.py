@@ -29,7 +29,9 @@ class BrowserLicense(grok.Model):
     @property
     @memoized
     def license(self):
-        """Return the cc.license.License object selected."""
+        """DEPRECATED
+
+        Return the cc.license.License object selected."""
 
         # decode the version and jurisdiction
         if len(self.pieces) > 2:
@@ -60,6 +62,26 @@ class LicenseDeed(grok.View):
     grok.name('index')
     grok.template('deed')
 
+    @property
+    def license(self):
+        """Return the cc.license.License object selected; note that this
+        is part of the context, as we need to pass in the request locale
+        to localize the license name."""
+
+        # decode the version and jurisdiction
+        if len(self.context.pieces) > 2:
+            version, jurisdiction = self.context.pieces[1:3]
+        elif len(self.context.pieces) > 1:
+            version, jurisdiction = self.context.pieces[1], None
+        else:
+            version, jurisdiction = None, None
+
+        return cc.license.LicenseFactory().by_license_code(
+          self.context.pieces[0],
+          version=version,
+          jurisdiction=jurisdiction,
+          locale=self.request.locale.id.language)
+      
     def update(self):
         """Prepare to render the deed."""
 
@@ -151,8 +173,6 @@ class LicenseDeed(grok.View):
 
         attrs = []
 
-        target_lang = self.request.locale.id.language
-        
         for lic in self.context.license.code.split('-'):
 
             # bail on sampling
@@ -162,10 +182,10 @@ class LicenseDeed(grok.View):
             # Go through the chars and build up the HTML and such
             char_title = translate ('char.%s_title' % lic,
                                     domain='icommons',
-                                    target_language=target_lang)
+                                    target_language=self.target_lang)
             char_brief = translate ('char.%s_brief' % lic,
                                     domain='icommons',
-                                    target_language=target_lang)
+                                    target_language=self.target_lang)
 
             icon_name = lic
             predicate = 'cc:requires'
@@ -183,7 +203,7 @@ class LicenseDeed(grok.View):
               if self.context.license.version == 3.0 and self.context.license.code == 'by-sa':
                 char_brief = translate ('char.sa_bysa30_brief',
                                         domain='icommons',
-                                        target_language=target_lang)
+                                        target_language=self.target_lang)
             elif lic == 'nd':
               predicate = ''
               object = ''
@@ -199,6 +219,11 @@ class LicenseDeed(grok.View):
         return attrs
         
 
+    @property
+    @memoized
+    def target_lang(self):
+
+        return self.request.locale.id.language
 
 class LicenseRdf(grok.View):
     grok.context(BrowserLicense)

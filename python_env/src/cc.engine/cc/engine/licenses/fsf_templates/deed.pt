@@ -6,7 +6,7 @@
       i18n:domain="icommons">
 <head>
   <title metal:fill-slot="title">Creative Commons 
-    <span tal:omit-tag="" tal:content="context/license/name">Attribution 3.0 Unported</span>
+    <span tal:omit-tag="" tal:content="view/license/name">Attribution 3.0 Unported</span>
   </title>
 </head>
 <body>
@@ -14,7 +14,7 @@
 <h2 metal:fill-slot="license-name"
     i18n:translate="deed.gpl_title">
 <span i18n:name="license_name_full" tal:omit-tag=""
-	tal:content="context/license/name" />
+	tal:content="view/license/name" />
 </h2>
 
 <div metal:fill-slot="body" tal:define="lang string:en;">
