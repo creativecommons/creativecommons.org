@@ -60,10 +60,12 @@ class PreferredLanguages(BrowserLanguages):
 
                 elif len(path_pieces) >= 6 and 'licenses' in path_pieces:
                     # /licenses doesn't do content negotiation;
-                    # this request specifies is a jurisdiction
+                    # this request specifies a jurisdiction
 
                     languages_data["cached"] = [
-                        normalize_lang(path_pieces[-2]), u'en']
+                        normalize_lang(n) for n in
+                        cc.license.support.default_locales(path_pieces[-2])] + \
+                        [u'en']
 
                 elif self.request.form.get('language', False):
                     languages_data["cached"] = [
