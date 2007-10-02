@@ -1,2 +1,2 @@
-I18N_DOMAIN = 'icommons'
+I18N_DOMAIN = 'cc_org'
 

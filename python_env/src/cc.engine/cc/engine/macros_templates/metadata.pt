@@ -3,7 +3,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:cc="http://creativecommons.org/ns#"
-      i18n:domain="icommons">
+      i18n:domain="cc_org">
 
 <body>
 

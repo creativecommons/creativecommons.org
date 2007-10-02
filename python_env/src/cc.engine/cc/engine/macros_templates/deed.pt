@@ -5,7 +5,7 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:cc="http://creativecommons.org/ns#"
       metal:define-macro="page"
-      i18n:domain="icommons">
+      i18n:domain="cc_org">
   <head>
     <title metal:define-slot="title">Creative Commons Deed</title>
 
