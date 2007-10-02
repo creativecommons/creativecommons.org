@@ -12,7 +12,7 @@
 
 <metal:block fill-slot="sidebar">
 
-   <p><a href="/license/">&laquo; back to licenses</a></p>
+   <p><a href="/license/">&#171; back to licenses</a></p>
 
 </metal:block>
 
@@ -52,9 +52,7 @@ ng="0" cellpadding="0">
         <td><a href="http://creativecommons.org/licenses/GPL/2.0/"><img src="/images/licensedeeds/deed-gpl.gif" alt="" border="0" /></a></td>
         <td><a href="http://www.gnu.org/licenses/old-licenses/gpl.html"><img src="/images/licensedeeds/legalcode-gpl.gif" border="0" alt="" /></a></td>
         <td><a href="/license/work-html-popup?license_code=GPL" 
-                onclick="window.open('work-html-popup?lang=en&license_code=GPL"
-                onclick="window.open('work-html-popup?license_code=GPL" 
-                onclick="window.open('work-html-popup?lang=en&license_code=GPL', 'html_help', width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="/images/licensedeeds/code.gif" border="0" alt="" /></a></td>
+                onclick="window.open('work-html-popup?lang=en&amp;license_code=GPL', 'html_help', width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="/images/licensedeeds/code.gif" border="0" alt="" /></a></td>
 </tr>
 </table></div>
 
@@ -109,13 +107,13 @@ ng="0" cellpadding="0">
 <p><input type="button" 
     onclick="form.html.focus();form.html.select()" 
     value="" name="grab"
-    i18n:attributes="value util.Highlight_Text;" />    [<a href="work-html-popup?license_code=GPL&lang=en"
-       onclick="window.open('work-html-popup?license_code=GPL&lang=en', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;" i18n:translate="license.get_html_email">
+    i18n:attributes="value util.Highlight_Text;" />    [<a href="work-html-popup?license_code=GPL&amp;lang=en"
+       onclick="window.open('work-html-popup?license_code=GPL&amp;lang=en', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;" i18n:translate="license.get_html_email">
 </a>]</p>
 </form>
 </div></div>
 
-<p>&nbsp;</p>
+<p>&#160;</p>
 
 <p i18n:translate="license.fsf_more_info" />
 

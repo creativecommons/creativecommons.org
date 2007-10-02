@@ -8,8 +8,8 @@
     <title metal:define-slot="title">Page Title</title>
 
     <link rel="stylesheet" type="text/css" 
-          href="/wp-content/themes/cc3/style.css"
-          tal:attributes="href context/++resource++cc/cc3/style.css" />
+          href="/wp-content/themes/cc4/style.css"
+          tal:attributes="href context/++resource++cc/cc4/style.css" />
 
     <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="/includes/style-ie.css" tal:attributes="href context/++resource++cc/includes/style-ie.css" />
     <![endif]-->
@@ -43,7 +43,7 @@ function toggle(id)
   <body>
 
     <div id="header-wrapper">
-      <div id="header-main">
+      <div id="header-main" class="box">
         <span class="publish">
           <a href="/license/" class="cc-actions">
             <span class="img">
@@ -58,44 +58,32 @@ function toggle(id)
             <span class="img">
               <img src="/images/find-8.png" border="0"/>
             </span>
-            <span class="option">Find</span>CC Licensed Work
+            <span class="option">Search</span>CC Licensed Work
           </a>
         </span>
         <span class="logo"><a href="/"><span><img src="/images/cc-title-8.png" alt="creative commons" id="cc-title" border="0"/></span></a></span>
       </div>
     </div>
-    <div id="wrapper"><div id="wrapper-ie">
-    
-    <div class="jurisdictions">
-      <h4><a href="/sitemap">Search Site</a>&nbsp;&nbsp;&nbsp;&nbsp;</h4><strong>|</strong>&nbsp;&nbsp;&nbsp;&nbsp;
-      <h4><a href="/worldwide">Worldwide</a>&nbsp;</h4>
-
-      <select name="sortby" onchange="orderby(this)">
-        <option value="">Select a jurisdiction</option>
-         <script type="text/javascript" src="/includes/jurisdictions.js"
-		 tal:attributes="src context/++resource++cc/includes/jurisdictions.js"></script>
-      </select>
+    <div id="mainmenu">
+      <ul id="navbar" class="box">
+        <li class="inactive"><a href="/" title="Home"><span>Home</span></a></li>      <li class="inactive"><a href="/about/" title="About"><span>About</span></a></li>      <li class="inactive"><a href="http://support.creativecommons.org" title="Support"><span>Support</span></a></li>      <li class="active"><a href="/license/" title="License"><span>License</span></a></li>      <li class="inactive"><a href="/projects/" title="Projects"><span>Projects</span></a></li>      <li class="inactive"><a href="/participate/" title="Participate"><span>Participate</span></a></li>      <li class="inactive"><a href="/international/" title="International"><span>International</span></a></li>      <li class="inactive"><a href="/contact/" title="Contact"><span>Contact</span></a></li> 
+      </ul>
+      <div class="clear"></div>
     </div>
-    <div class="clear">&nbsp;</div>
+    <div class="box"><div id="wrapper-ie">
     
-
-		
-		<div id="body">
-			<div id="splash">
-				<h3 class="category"><metal:page_parent_header define-slot="page_parent_header"></metal:page_parent_header></h3>
-				<h1 tal:attributes="dir view/is_rtl|nothing; align view/is_rtl_align|nothing;" i18n:translate="license.License_Your_Work">License Your Work</h1>
-				<div id="splash-menu">
-<h3><a href="/" i18n:translate="util.home">Home</a></h3>
-<h3><a href="http://search.creativecommons.org/" i18n:translate="util.find">Find</a> </h3>
-				</div>
-			</div>
-
+  	<div id="body">
 			<div id="content">
 				<div id="main-content">
-					<div id="blog"
+  				<div id="title" class="block">
+    				<h3 class="category"><metal:page_parent_header define-slot="page_parent_header"></metal:page_parent_header></h3>
+    				<h2 tal:attributes="dir view/is_rtl|nothing; align view/is_rtl_align|nothing;" i18n:translate="license.License_Your_Work">License Your Work</h2>
+  				</div>
+					<div id="alpha" class="content-box"
                              tal:attributes="dir view/is_rtl|nothing; align view/is_rtl_align|nothing;">
-							
-				<div class="post">
+				
+  		
+				<div class="block">
            <metal:block metal:define-slot="body">
            </metal:block>
 
@@ -103,32 +91,28 @@ function toggle(id)
 					
 					</div>
 
-					<div id="features"
+					<div id="beta" class="content-box"
                              tal:attributes="dir view/is_rtl|nothing; align view/is_rtl_align|nothing;">
       <metal:block define-slot="sidebar" />
 					</div>
 				</div>	
-<div id="sidebar">
-<ul class="nav">
-  <li><a href="/">Home</a></li>
-  <li><a href="/weblog/">Weblog</a></li>
-  <li><a href="/faq/">FAQ</a></li>
- 
-<li ><a href="http://creativecommons.org/learnmore/" >Learn More</a></li>
+<div id="sidebar" class="content-box-right">
+      <h4><a href="http://creativecommons.org/worldwide">International</a></h4>
+      <select id="international" name="sortby" onchange="orderby(this)">
+        <option value="">Select a jurisdiction</option>
+        <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
+      </select>
+      <span class="international"><a href="/worldwide">More information</a></span>
 
-<li ><a href="http://creativecommons.org/about/" >About</a></li>
-<li ><a href="http://creativecommons.org/about/people/" >People</a></li>
-<li ><a href="http://creativecommons.org/about/opportunities/" >Opportunities</a></li>
-<li ><a href="http://creativecommons.org/presskit/" >Press Kit</a></li>
-<li ><a href="http://creativecommons.org/about/lessigletter/" >Lessig Letter</a></li>
-<li ><a href="http://creativecommons.org/about/licenses/" >Choosing a License</a></li>
-<li ><a href="http://creativecommons.org/about/legal/" >Legal Concepts</a></li>
-<li ><a href="http://creativecommons.org/about/think/" >Think</a></li>
-<li ><a href="http://creativecommons.org/policies/" >Policies</a></li>
+<h4><br/>The Commons</h4>
+<ul>
+  <li><img src="/images/commons/sc.png"> <a href="http://sciencecommons.org/">Science Commons</a></li>
+  <li><img src="/images/commons/ic.png"> <a href="http://icommons.org/">iCommons</a></li>
+  <li><img src="/images/commons/cci.png"> <a href="http://creativecommons.org/worldwide">ccInternational</a></li>
+  <li><img src="/images/commons/learn.png"> <a href="http://learn.creativecommons.org/">ccLearn</a></li>
 
-<li ><a href="http://creativecommons.org/privacy/" >Privacy</a></li>
-<li ><a href="http://creativecommons.org/sitemap/" >Sitemap</a></li>
-<li ><a href="http://creativecommons.org/contact/" >Contact</a></li>  
+  <li><img src="/images/commons/labs.png"> <a href="http://labs.creativecommons.org/">ccLabs</a></li>
+  <li><img src="/images/commons/mix.png"> <a href="http://ccmixter.org/">ccMixter</a></li>
 </ul>
 <br/>
 <h4>Explore</h4>
@@ -139,53 +123,35 @@ function toggle(id)
 <li ><a href="/text/" >Text</a></li>
 <li ><a href="/education/" >Education</a></li>
 <li ><a href="/software/" >Software</a></li></ul>
-<br/>
-<h4>The Commons</h4>
-<ul>
-  <li><img src="/images/commons/sc.png"/> <a href="http://sciencecommons.org">Science Commons</a></li>
-  <li><img src="/images/commons/ic.png"/> <a href="http://icommons.org">iCommons</a></li>
-  <li><img src="/images/commons/cci.png"/> <a href="http://creativecommons.org/worldwide">ccInternational</a></li>
-  <li><img src="/images/commons/learn.png"/> <a href="http://learn.creativecommons.org">ccLearn</a></li>
-  <li><img src="/images/commons/labs.png"/> <a href="http://labs.creativecommons.org/">ccLabs</a></li>
-  <li><img src="/images/commons/mix.png"/> <a href="http://ccmixter.org">ccMixter</a></li>
-</ul>
 
 </div>			</div>
 			<div class="clear">&nbsp;</div>
 
 		</div>
 		</div></div>
-		<div id="footer" dir="" align="left">
-			<div id="sub-footer">
-        <div class="ccExtras">
-          <h2><a href="http://wiki.creativecommons.org/Tools">Tools</a></h2>
-          Publish from your desktop, browse with mozCC, and more...
-        </div>
-        <div class="ccExtras">
-          <h2><a href="http://wiki.creativecommons.org/Developers">Developers</a></h2>
-          Help put Creative Commons into your applications.
-        </div>
-        <div class="ccExtras">
-          <h2><a href="http://creativecommons.org/discuss">Discuss</a></h2>
-          Join our discussion lists. Read and contribute to our <a href="http://wiki.creativecommons.org/">wiki</a>.
-        </div>
-        <div class="ccExtras">
-          <h2><a href="http://wiki.creativecommons.org/Events">Events</a></h2>
-          Join us at the next Creative Commons event.
-        </div>
-        <div class="ccExtras">
-          <h2><a href="/featured-projects">Featured Projects</a></h2>
-          Read about people and projects that use CC.
-        </div>
-				<div class="clear">&nbsp;</div>
-			</div>
-			<p align="center">
+    <div id="footer">
+      <div id="sub-footer" class="box">
+        <ul>
+          <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+          <li><a href="http://support.creativecommons.org/">Support</a></li>
+          <li><a href="/weblog">Blog</a></li>
+          <li><a href="/policies">Policies</a></li>
+
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
+          <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
+          <li><a href="/sitemap">Sitemap</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+
+      </div>
+			<div id="license"><p class="box">
 <metal:license define-slot="license-override">
-				<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88"></a><br>
+				<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88"></a>
 Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on this site is<br/>
 licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
 </metal:license>
-			</p>
+			</p></div>
 
 		</div>
 
