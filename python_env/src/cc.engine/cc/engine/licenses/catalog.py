@@ -29,6 +29,10 @@ class LicenseCatalog(grok.Application, grok.Container):
     
     def traverse(self, code):
 
+        # short-circuit for known views
+        if code in ('disclaimer-popup', 'index', 'index.html'):
+            return None
+
         if code in self.CUSTOM_DEEDS:
             return self.CUSTOM_DEEDS[code](self, [code])
 
@@ -37,9 +41,5 @@ class LicenseCatalog(grok.Application, grok.Container):
             return SamplingLicense(self, [code])
         
         return BrowserLicense(self, [code])
-
-class Index(grok.View):
-    grok.context(LicenseCatalog)
-    grok.template('licenses-index')
 
 

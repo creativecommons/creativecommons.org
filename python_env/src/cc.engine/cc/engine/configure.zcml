@@ -4,7 +4,7 @@
            xmlns:mail="http://namespaces.zope.org/mail"
            xmlns:browser="http://namespaces.zope.org/browser"
 
-           i18n_domain="icommons"
+           i18n_domain="cc_org"
            >
 
   <include package="grok" />
@@ -115,6 +115,7 @@
 
   <include package=".xmp" />
   <include package=".pd" />
+  <include package=".licenses" />
 
   <include package=".skin" />
 

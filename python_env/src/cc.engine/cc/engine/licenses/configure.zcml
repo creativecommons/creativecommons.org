@@ -1,0 +1,24 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:grok="http://namespaces.zope.org/grok"
+           xmlns:i18n="http://namespaces.zope.org/i18n"
+           xmlns:mail="http://namespaces.zope.org/mail"
+           xmlns:browser="http://namespaces.zope.org/browser"
+
+           i18n_domain="cc_org"
+           >
+
+  <browser:page
+     for="cc.engine.interfaces.ILicenseCatalog"
+     name="index"
+     template="catalog_pages/licenses-index.pt"
+     permission="zope.View"
+     />
+
+  <browser:page
+     for="cc.engine.interfaces.ILicenseCatalog"
+     name="disclaimer-popup"
+     template="catalog_pages/disclaimer-popup.pt"
+     permission="zope.View"
+     />
+
+</configure>
