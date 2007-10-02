@@ -3,7 +3,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="context/@@engine/page"
-      i18n:domain="icommons">
+      i18n:domain="cc_org">
 <head>
   <title metal:fill-slot="title">Creative Commons Licenses</title>
 </head>
