@@ -181,10 +181,10 @@ class LicenseDeed(grok.View):
             
             # Go through the chars and build up the HTML and such
             char_title = translate ('char.%s_title' % lic,
-                                    domain='icommons',
+                                    domain=i18n.I18N_DOMAIN,
                                     target_language=self.target_lang)
             char_brief = translate ('char.%s_brief' % lic,
-                                    domain='icommons',
+                                    domain=i18n.I18N_DOMAIN,
                                     target_language=self.target_lang)
 
             icon_name = lic
@@ -202,7 +202,7 @@ class LicenseDeed(grok.View):
               object = 'http://creativecommons.org/ns#ShareAlike'
               if self.context.license.version == 3.0 and self.context.license.code == 'by-sa':
                 char_brief = translate ('char.sa_bysa30_brief',
-                                        domain='icommons',
+                                        domain=i18n.I18N_DOMAIN,
                                         target_language=self.target_lang)
             elif lic == 'nd':
               predicate = ''
