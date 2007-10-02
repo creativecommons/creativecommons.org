@@ -1,9 +1,12 @@
 TODO
 ====
 
+* UTF-8 in title (deed.he)
+* @@*-checksum
+
 * hostip.info based default jurisdiction
 * locale-specific sorting of jurisdiction list
-* performance
+- performance
 * lock dependencies to a specific version of Zope3 
 
 * complete test coverage
