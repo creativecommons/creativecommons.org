@@ -43,18 +43,34 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
       <br />
 		    	
 		    
-      <input type="radio" checked="checked" name="field_commercial" value="yes" id="question_2-3" /> <label for="question_2-3" i18n:translate="util.Yes">Yes</label><br />
+      <input type="radio" checked="checked" name="field_commercial" value="yes" id="question_2-3" /> <label for="question_2-3" i18n:translate="util.Yes">Yes</label>
+(<a href="" id="commercial" class="helpLink" i18n:translate="util.more_info">more info</a>)<br />
 			
       <input type="radio"  name="field_commercial" value="n" id="question_2-4" /> <label for="question_2-4" i18n:translate="util.No">No</label> 
-(<a href="" id="commercial" class="helpLink" i18n:translate="util.more_info">more info</a>)<br />
+(<a href="" id="noncommercial" class="helpLink" i18n:translate="util.more_info">more info</a>)<br />
 			
     </p>
 
     <div id="help_commercial">
       <div class="hd">
+	<span i18n:translate="">Commercial Use</span>
+      </div>
+      <div class="bd">
+	<p i18n:translate="">
+	  The licensor permits others to copy, distribute, display, and
+	  perform the work, including for commercial purposes.
+      </p></div>
+    </div>
+			
+    <div id="help_noncommercial">
+      <div class="hd">
 	<span i18n:translate="licenses.pretty_nc">Noncommercial</span>
       </div>
-      <div class="bd"><p i18n:translate="char.nc_description"></p></div>
+      <div class="bd">
+	<p i18n:translate="">
+	  The licensor permits others to copy, distribute, display, and
+	  perform the work for non-commercial purposes only.
+      </p></div>
     </div>
 			
     <p>
@@ -63,7 +79,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
       <input type="radio" checked="checked" 
 	     name="field_derivatives" value="yes" id="question_3-5" /> 
       <label for="question_3-5" i18n:translate="util.Yes">Yes</label>
-
+(<a href="" id="derivatives" class="helpLink" i18n:translate="util.more_info">more info</a>)
       <br />
 		
       <input type="radio"  name="field_derivatives" value="sa" 
@@ -78,12 +94,23 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
       <input type="radio"  name="field_derivatives" value="n" 
 	     id="question_3-7" /> 
       <label for="question_3-7" i18n:translate="util.No">No</label>
-(<a href="" id="derivatives" class="helpLink" i18n:translate="util.more_info">more info</a>)
+(<a href="" id="noderivatives" class="helpLink" i18n:translate="util.more_info">more info</a>)
       <br />
 			
     </p>
 
     <div id="help_derivatives">
+      <div class="hd">
+	<span i18n:translate="char.nd_title">Allow Derivative Works</span>
+      </div>
+      <div class="bd">
+	<p i18n:translate="">The licensor permits others to copy, 
+	  distribute, display and perform the work, as well as make derivative
+	  works based on it.
+      </p></div>
+    </div>
+
+    <div id="help_noderivatives">
       <div class="hd">
 	<span i18n:translate="char.nd_title">No Derivative Works</span>
       </div>
