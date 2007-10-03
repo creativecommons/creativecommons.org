@@ -39,13 +39,14 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
     <input type="hidden" name="q_1" value="1" id="question_1-1" />
 
     <p>
-      <strong i18n:translate="api.commercial">Allow commercial uses of your work?</strong> (<a href="" id="commercial" class="helpLink" i18n:translate="util.more_info">more info</a>)
+      <strong i18n:translate="api.commercial">Allow commercial uses of your work?</strong> 
       <br />
 		    	
 		    
       <input type="radio" checked="checked" name="field_commercial" value="yes" id="question_2-3" /> <label for="question_2-3" i18n:translate="util.Yes">Yes</label><br />
 			
-      <input type="radio"  name="field_commercial" value="n" id="question_2-4" /> <label for="question_2-4" i18n:translate="util.No">No</label><br />
+      <input type="radio"  name="field_commercial" value="n" id="question_2-4" /> <label for="question_2-4" i18n:translate="util.No">No</label> 
+(<a href="" id="commercial" class="helpLink" i18n:translate="util.more_info">more info</a>)<br />
 			
     </p>
 
@@ -57,8 +58,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
     </div>
 			
     <p>
-      <strong i18n:translate="api.derivatives">Allow modifications of your work?</strong> (<a href="" id="derivatives" class="helpLink" i18n:translate="util.more_info">more info</a>)
-      <br/>
+      <strong i18n:translate="api.derivatives">Allow modifications of your work?</strong> <br/>
 			
       <input type="radio" checked="checked" 
 	     name="field_derivatives" value="yes" id="question_3-5" /> 
@@ -78,7 +78,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
       <input type="radio"  name="field_derivatives" value="n" 
 	     id="question_3-7" /> 
       <label for="question_3-7" i18n:translate="util.No">No</label>
-
+(<a href="" id="derivatives" class="helpLink" i18n:translate="util.more_info">more info</a>)
       <br />
 			
     </p>
