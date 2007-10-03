@@ -122,7 +122,7 @@ class LicenseEngine(grok.Application, grok.Container):
         License object."""
 
 	jurisdiction = ''
-	locale = request.locale.id.language
+	locale = request.locale.getLocaleID()
 	code = ''
 
         license_class = 'standard'
@@ -251,7 +251,7 @@ class BaseBrowserView(BrowserPage):
     def target_lang(self):
         """Return the request language."""
 
-        return self.request.locale.id.language
+        return self.request.locale.getLocaleID()
     
     @property
     def is_rtl(self):

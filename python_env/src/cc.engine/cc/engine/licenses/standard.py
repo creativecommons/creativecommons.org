@@ -80,7 +80,7 @@ class LicenseDeed(grok.View):
           self.context.pieces[0],
           version=version,
           jurisdiction=jurisdiction,
-          locale=self.request.locale.id.language)
+          locale=self.target_lang)
       
     def update(self):
         """Prepare to render the deed."""
@@ -223,7 +223,7 @@ class LicenseDeed(grok.View):
     @memoized
     def target_lang(self):
 
-        return self.request.locale.id.language
+        return self.request.locale.getLocaleID()
 
 class LicenseRdf(grok.View):
     grok.context(BrowserLicense)
