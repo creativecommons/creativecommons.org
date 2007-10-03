@@ -66,7 +66,7 @@ function toggle(id)
     </div>
     <div id="mainmenu">
       <ul id="navbar" class="box">
-        <li class="inactive"><a href="/" title="Home"><span>Home</span></a></li>      <li class="inactive"><a href="/about/" title="About"><span>About</span></a></li>      <li class="inactive"><a href="http://support.creativecommons.org" title="Support"><span>Support</span></a></li>      <li class="inactive"><a href="/projects/" title="Projects"><span>Projects</span></a></li>      <li class="inactive"><a href="/participate/" title="Participate"><span>Participate</span></a></li>      <li class="inactive"><a href="/international/" title="International"><span>International</span></a></li>      <li class="inactive"><a href="/contact/" title="Contact"><span>Contact</span></a></li> 
+        <li class="inactive"><a href="/" title="Home"><span>Home</span></a></li>      <li class="inactive"><a href="/about/" title="About"><span>About</span></a></li>      <li class="inactive"><a href="http://support.creativecommons.org" title="Support"><span>Support</span></a></li>      <li class="inactive"><a href="/projects/" title="Projects"><span>Projects</span></a></li>      <li class="inactive"><a href="http://wiki.creativecommons.org" title="Participate"><span>Participate</span></a></li>      <li class="inactive"><a href="/international/" title="International"><span>International</span></a></li>      <li class="inactive"><a href="/contact/" title="Contact"><span>Contact</span></a></li> 
       </ul>
       <div class="clear"></div>
     </div>
@@ -108,9 +108,7 @@ function toggle(id)
 <ul>
   <li><img src="/images/commons/sc.png"> <a href="http://sciencecommons.org/">Science Commons</a></li>
   <li><img src="/images/commons/ic.png"> <a href="http://icommons.org/">iCommons</a></li>
-  <li><img src="/images/commons/cci.png"> <a href="http://creativecommons.org/worldwide">ccInternational</a></li>
   <li><img src="/images/commons/learn.png"> <a href="http://learn.creativecommons.org/">ccLearn</a></li>
-
   <li><img src="/images/commons/labs.png"> <a href="http://labs.creativecommons.org/">ccLabs</a></li>
   <li><img src="/images/commons/mix.png"> <a href="http://ccmixter.org/">ccMixter</a></li>
 </ul>
