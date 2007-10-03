@@ -66,7 +66,7 @@ function toggle(id)
     </div>
     <div id="mainmenu">
       <ul id="navbar" class="box">
-        <li class="inactive"><a href="/" title="Home"><span>Home</span></a></li>      <li class="inactive"><a href="/about/" title="About"><span>About</span></a></li>      <li class="inactive"><a href="http://support.creativecommons.org" title="Support"><span>Support</span></a></li>      <li class="active"><a href="/license/" title="License"><span>License</span></a></li>      <li class="inactive"><a href="/projects/" title="Projects"><span>Projects</span></a></li>      <li class="inactive"><a href="/participate/" title="Participate"><span>Participate</span></a></li>      <li class="inactive"><a href="/international/" title="International"><span>International</span></a></li>      <li class="inactive"><a href="/contact/" title="Contact"><span>Contact</span></a></li> 
+        <li class="inactive"><a href="/" title="Home"><span>Home</span></a></li>      <li class="inactive"><a href="/about/" title="About"><span>About</span></a></li>      <li class="inactive"><a href="http://support.creativecommons.org" title="Support"><span>Support</span></a></li>      <li class="inactive"><a href="/projects/" title="Projects"><span>Projects</span></a></li>      <li class="inactive"><a href="/participate/" title="Participate"><span>Participate</span></a></li>      <li class="inactive"><a href="/international/" title="International"><span>International</span></a></li>      <li class="inactive"><a href="/contact/" title="Contact"><span>Contact</span></a></li> 
       </ul>
       <div class="clear"></div>
     </div>
