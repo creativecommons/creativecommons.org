@@ -30,7 +30,7 @@ class LicenseCatalog(grok.Application, grok.Container):
     def traverse(self, code):
 
         # short-circuit for known views
-        if code in ('disclaimer-popup', 'index', 'index.html'):
+        if code in ('disclaimer-popup', 'index', 'index.html', 'index.rdf'):
             return None
 
         if code in self.CUSTOM_DEEDS:
