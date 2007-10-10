@@ -31,7 +31,6 @@ setup(
                         'zope.sendmail',
                         'grok',
                         'cc.license',
-                        'pysqlite',
                         ],
 
     # author metadata
