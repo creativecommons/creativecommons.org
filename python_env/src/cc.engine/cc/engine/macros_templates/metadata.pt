@@ -11,7 +11,7 @@
      metal:define-macro="more-metadata">
 
 <!-- begin optional show/hide elements for detailed RDF -->			
-	<p><a onclick="toggle('search');return false;" href="javascript:toggle('search');return false;">
+	<p><a onclick="show_hide('search', 'moreinfo');return false;" href="javascript:show_hide('search', 'moreinfo');return false;">
    <span id="moreinfo" i18n:translate="license.include_more">Click to include more information about your work.</span>
    <span id="hidemoreinfo" style="display:none;" i18n:translate="license.hide_optional_fields">Hide these fields (All fields are optional)</span>
 	</a></p>

@@ -34,6 +34,32 @@ function toggle(id)
                 sp.innerHTML = "Hide these fields (All fields are optional)";
     }
 }
+
+function show_hide(div_id, label_id)
+{
+    var elm = document.getElementById(div_id);
+
+    var show = document.getElementById(label_id);
+    var hide = document.getElementById("hide" + label_id);
+
+    if (!elm || elm.length == 0) return;
+    var d = elm.style.display;
+
+    if (d && (d != "none" || d == ""))
+    {
+        elm.style.display = "none";
+        show.style.display = "inline";
+        hide.style.display = "none";
+
+    } else
+    {
+        elm.style.display = "block";
+        show.style.display = "none";
+        hide.style.display = "inline";
+
+    }
+}
+
 </script>
 
    <metal:headers define-slot="headers" />
