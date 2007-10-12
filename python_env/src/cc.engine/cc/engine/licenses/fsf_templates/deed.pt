@@ -20,7 +20,8 @@
 <div metal:fill-slot="body" tal:define="lang string:en;">
 
 <p i18n:translate="deed.gpl_freedoms"><%=[ccommons::istr $lang deed.gpl_freedoms]%>
-<span i18n:name="license_name_full">GNU General Public License</span>
+<span i18n:name="license_name_full" tal:content="view/license/name">
+  GNU General Public License</span>
 </p>
 			
 			<ol start="0">
