@@ -101,7 +101,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 
     <div id="help_derivatives">
       <div class="hd">
-	<span i18n:translate="char.nd_title">Allow Derivative Works</span>
+	<span i18n:translate="">Allow Derivative Works</span>
       </div>
       <div class="bd">
 	<p i18n:translate="">The licensor permits others to copy, 
