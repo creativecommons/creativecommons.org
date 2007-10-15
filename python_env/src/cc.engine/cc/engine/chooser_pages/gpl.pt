@@ -33,8 +33,8 @@
 <img alt="CC-GNU GPL" border="0" src="/images/public/cc-GPL-a.png" /></a><br />
 <span tal:omit-tag="" i18n:translate="license.fsf_software_licensed">
 
-  <span i18n:name="license_code">GPL</span>
-  <span i18n:name="license_url">http://creativecommons.org/licenses/GPL/2.0/</span>
+  <span i18n:name="license_code" tal:omit-tag="">GPL</span>
+  <span i18n:name="license_url" tal:omit-tag="">http://creativecommons.org/licenses/GPL/2.0/</span>
 
   </span>
 <!-- /Creative Commons License -->
@@ -50,17 +50,17 @@ ng="0" cellpadding="0">
 
 <tr align="center">
         <td><a href="http://creativecommons.org/licenses/GPL/2.0/"><img src="/images/licensedeeds/deed-gpl.gif" alt="" border="0" /></a></td>
-        <td><a href="http://www.gnu.org/licenses/old-licenses/gpl.html"><img src="/images/licensedeeds/legalcode-gpl.gif" border="0" alt="" /></a></td>
+        <td><a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html"><img src="/images/licensedeeds/legalcode-gpl.gif" border="0" alt="" /></a></td>
         <td><a href="/license/work-html-popup?license_code=GPL" 
                 onclick="window.open('work-html-popup?lang=en&amp;license_code=GPL', 'html_help', width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="/images/licensedeeds/code.gif" border="0" alt="" /></a></td>
 </tr>
 </table></div>
 
 <p i18n:translate="license.fsf_how_it_works">
-  <span i18n:name="license_code">GPL</span>
-  <span i18n:name="license_name_lower">gpl</span>
-  <span i18n:name="version_title">2.0</span>
-  <span i18n:name="license_url">http://creativecommons.org/licenses/GPL/2.0/</span>
+  <span i18n:name="license_code" tal:omit-tag="">GPL</span>
+  <span i18n:name="license_name_lower" tal:omit-tag="">gpl</span>
+  <span i18n:name="version_title" tal:omit-tag="">2.0</span>
+  <span i18n:name="license_url" tal:omit-tag="">http://creativecommons.org/licenses/GPL/2.0/</span>
 </p>
 
 <span tal:omit-tag="" i18n:translate="license.fsf_mark_software" />
@@ -75,8 +75,8 @@ ng="0" cellpadding="0">
 <img alt="CC-GNU GPL" border="0" src="http://creativecommons.org/images
 /public/cc-GPL-a.png" /></a><br />
 <span tal:omit-tag="" i18n:translate="license.fsf_software_licensed">
-  <span i18n:name="license_code">GPL</span>
-  <span i18n:name="license_url">http://creativecommons.org/licenses/GPL/2.0/</span>
+  <span i18n:name="license_code" tal:omit-tag="">GPL</span>
+  <span i18n:name="license_url" tal:omit-tag="">http://creativecommons.org/licenses/GPL/2.0/</span>
 </span>
 <!-- /Creative Commons License -->
 
