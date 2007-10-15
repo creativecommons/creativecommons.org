@@ -63,7 +63,7 @@
 		</td>
 	</tr>
 	<tr>
-	  <td align="right"><a href="" class="helpLink" id="source_work" i18n:translate="">source work URL</a></td>
+	  <td align="right"><a href="" class="helpLink" id="source_work" i18n:translate="util.source_work">source work URL</a></td>
 		<td>
 <input type="text" name="field_sourceurl" size="40" value=""/>
 		</td>
