@@ -1,3 +1,8 @@
+import urllib2
+import locale
+
+locale.setlocale(locale.LC_ALL, '')
+
 import grok
 from zope.interface import Interface
 from zope.i18n.interfaces import ITranslationDomain
@@ -26,6 +31,15 @@ class Support(grok.View):
     """Container for support macros: translations, etc."""
     grok.context(Interface)
 
+    @property
+    def campaign_total(self):
+        # http://creativecommons.org/includes/total.txt
+
+        total = urllib2.urlopen(
+            'http://creativecommons.org/includes/total.txt').read().strip()
+        
+        return locale.format('$ %d', locale.atoi(total), True)
+    
     @property
     @memoized
     def active_languages(self):

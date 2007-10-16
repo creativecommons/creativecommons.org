@@ -10,6 +10,9 @@
     <link rel="stylesheet" type="text/css" 
           href="/wp-content/themes/cc4/style.css"
           tal:attributes="href context/++resource++cc/cc4/style.css" />
+    <link href="http://creativecommons.org/includes/progress.css" 
+	  rel="stylesheet" type="text/css" />
+    <link href="http://creativecommons.org/wp-content/themes/cc4/support.css" rel="stylesheet" type="text/css" />
 
     <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="/includes/style-ie.css" tal:attributes="href context/++resource++cc/includes/style-ie.css" />
     <![endif]-->
@@ -129,6 +132,15 @@ function show_hide(div_id, label_id)
         <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
       </select>
       <span class="international"><a href="/worldwide">More information</a></span>
+
+<!-- Support CC Campaign -->
+
+          <h4><br/>Fundraising Campaign</h4>
+    			<div id="campaign">
+      			<div class="progress" onclick="window.location = 'http://support.creativecommons.org';"><span>&nbsp;</span></div>
+  				  <div class="results"><a href="http://support.creativecommons.org/"><span tal:replace="context/@@support/campaign_total"></span> / $500,000</a></div>
+  			  </div>  
+
 
 <h4><br/>The Commons</h4>
 <ul>
