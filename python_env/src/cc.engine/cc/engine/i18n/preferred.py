@@ -104,7 +104,11 @@ class PreferredJurisdictionByLocale(object):
     def getJurisdictionId(self):
         """Return the ID of the default jurisdiction, based on the
         preferred language of the request."""
-        
+
+        # check for the jurisdiction query string argument
+        if self.request.form.get('jurisdiction', None):
+            return self.request.form.get('jurisdiction')
+
         try:
             # ZZZ We shouldn't have to re-cast here, but we do. Sad.
             return cc.license.support.lang_to_jurisdiction(
