@@ -128,26 +128,29 @@ class LicenseEngine(grok.Application, grok.Container):
         license_class = 'standard'
         answers = {}
         
-	if request.has_key('pd') or request.has_key('publicdomain') or (request.has_key('license_code') and request['license_code'] == 'publicdomain'):
+	if request.form.has_key('pd') or \
+                request.form.has_key('publicdomain') or \
+                request.form.get('license_code', None)  == 'publicdomain':
+
 	   # this is public domain
            license_class = 'publicdomain'
 
 	# check for license_code
-	elif request.has_key('license_code'):
-	   jurisdiction = (('jurisdiction' in request.keys()) and
-                           (request['jurisdiction'])) or \
-                          (('field_jurisdiction' in request.keys()) and
-                           (request['field_jurisdiction'])) or \
-			  ''
+	elif request.form.has_key('license_code'):
+	   jurisdiction = request.form.get('jurisdiction',
+                                request.form.get('field_jurisdiction',
+                                                 '')
+                                           )
+
            license_class, answers = cc.license.support.expandLicenseCode(
-               request['license_code'],
+               request.form.get('license_code'),
                jurisdiction = jurisdiction,
                locale=locale,
                version = request.form.get('version', None)
                )
 
         # check for license_url
-        elif request.has_key('license_url'):
+        elif request.form.has_key('license_url'):
             # work backwards, generating the answers from the license code
             code, jurisdiction, version = cc.license.support.expand_license_uri(
                 request.form['license_url'])
@@ -157,18 +160,20 @@ class LicenseEngine(grok.Application, grok.Container):
             answers['version'] = version
         
 	else:
-	   jurisdiction = ('field_jurisdiction' in request.keys() and request['field_jurisdiction']) or jurisdiction
+	   jurisdiction = request.form.get('field_jurisdiction',
+                                           jurisdiction)
 
            answers.update(dict(
-               jurisdiction = ('field_jurisdiction' in request.keys() and request['field_jurisdiction']) or jurisdiction,
-               commercial = request['field_commercial'],
-               derivatives = request['field_derivatives'],
+               jurisdiction = request.form.get('field_jurisdiction',
+                                               jurisdiction),
+               commercial = request.form.get('field_commercial', ''),
+               derivatives = request.form.get('field_derivatives', ''),
                locale = locale,
                )
                           )
 
            if request.form.get('version', False):
-               answers['version'] = request['version']
+               answers['version'] = request.form['version']
 
         # add the work to the answers block
         answers.update(self._work_info(request))
