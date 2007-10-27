@@ -11,9 +11,9 @@
 <div metal:fill-slot="body"
      tal:define="target_lang string:en;
                  stylesheet request/stylesheet | nothing;
-                 exiturl    request/exit_url;
+                 exiturl    request/exit_url | string:'';
                  pd_exiturl python:exiturl.replace('&', '%26');
-                 partner    request/partner;
+                 partner    request/partner | nothing;
                  partner_icon_url python: request.form.get('partner_icon_url','/images/remote_logo.gif');
                  show_jurisdiction request/jurisdiction_chooser | nothing;
                  def_juris request/jurisdiction | nothing;

@@ -329,7 +329,7 @@ class ResultsView(BaseBrowserView):
     @property
     def exit_url(self):
 
-        url = unquote_plus(self.request['exit_url'])
+        url = unquote_plus(self.request.form.get('exit_url', ''))
         url = url.replace('[license_url]', quote(self.license.uri))
         url = url.replace('[license_name]', self.license.name)
         url = url.replace('[license_button]', quote(self.license.imageurl))
