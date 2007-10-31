@@ -20,7 +20,7 @@
         <div id="deed-rights" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
 
 
-        <div id="deed-newer" align="center" tal:condition="python: context.license.code == 'sampling'"><h3 i18n:translate="deed.retired">This license is <a href="/retiredlicenses">retired</a>. Do not use for new works.</h3></div>
+        <div id="deed-newer" align="center" tal:condition="context/license/deprecated"><h3 i18n:translate="deed.retired">This license is <a href="/retiredlicenses">retired</a>. Do not use for new works.</h3></div>
 
 		      <h3 i18n:translate="deed.You_are_free"></h3>
 		      <ul>

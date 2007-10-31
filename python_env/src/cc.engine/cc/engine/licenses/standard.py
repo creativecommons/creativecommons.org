@@ -42,9 +42,62 @@ class BrowserLicense(grok.Model):
             version, jurisdiction = None, None
             
         return cc.license.LicenseFactory().by_license_code(self.pieces[0],
-                                                           version,
-                                                           jurisdiction)
+                                                     version=version,
+                                                     jurisdiction=jurisdiction)
 
+    @property
+    @memoized
+    def conditions(self):
+        """Return a sequence of mappings defining the conditions defined by
+        this license."""
+
+        attrs = []
+
+        for lic in self.license.code.split('-'):
+
+            # don't process empty pieces:
+            if not(lic): continue
+
+            # bail on sampling
+            if lic.find('sampling') > -1:
+                continue
+            
+            # Go through the chars and build up the HTML and such
+            char_title = translate ('char.%s_title' % lic,
+                                    domain='cc_org')
+            char_brief = translate ('char.%s_brief' % lic,
+                                    domain='cc_org')
+
+            icon_name = lic
+            predicate = 'cc:requires'
+            object = 'http://creativecommons.org/ns#Attribution'
+
+            if lic == 'nc':
+              predicate = 'cc:prohibits'
+              object = 'http://creativecommons.org/ns#CommercialUse'
+              if self.license.jurisdiction == 'jp':
+                 icon_name = '%s-jp' % icon_name
+              elif self.license.jurisdiction in ('fr', 'es', 'nl', 'at', 'fi', 'be', 'it', 'lu',):
+                 icon_name = '%s-eu' % icon_name
+            elif lic == 'sa':
+              object = 'http://creativecommons.org/ns#ShareAlike'
+              if self.license.version == 3.0 and self.license.code == 'by-sa':
+                char_brief = translate ('char.sa_bysa30_brief',
+                                        domain='cc_org')
+            elif lic == 'nd':
+              predicate = ''
+              object = ''
+
+            attrs.append({'char_title':char_title,
+                          'char_brief':char_brief,
+                          'icon_name':icon_name,
+                          'char_code':lic,
+                          'predicate':predicate,
+                          'object':object,
+                     })
+
+        return attrs
+        
     def traverse(self, name):
 
         if len(self.pieces) > 4:
