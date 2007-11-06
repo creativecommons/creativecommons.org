@@ -7,7 +7,6 @@ TODO
 * hostip.info based default jurisdiction
 * locale-specific sorting of jurisdiction list
 - performance
-* lock dependencies to a specific version of Zope3 
 
 * complete test coverage
 * i18n deed title, license name

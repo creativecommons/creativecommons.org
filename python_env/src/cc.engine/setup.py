@@ -28,10 +28,16 @@ setup(
     
     # scripts and dependencies
     install_requires = ['setuptools',
+                        'zope.testbrowser',
                         'zope.sendmail',
                         'grok',
                         'cc.license',
                         ],
+
+
+    entry_points = {'console_scripts' : 
+                    ['mkdeeds = cc.engine.scripts.deeds:cli'],
+                    },
 
     # author metadata
     author = 'Nathan R. Yergler',

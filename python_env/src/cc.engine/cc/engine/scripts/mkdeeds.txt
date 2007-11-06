@@ -1,0 +1,12 @@
+This is a doctest file used to drive the generation of static deeds.
+
+ >>> from zope.testbrowser.testing import Browser
+
+ >>> for license in get_licenses():
+ ...    for locale in get_locales():
+ ...       browser = Browser()
+ ...       browser.addHeader('Accept-Language', locale)
+ ...       browser.open( license_locale_uri(license, locale) )
+ ...       save_deed(license, locale, browser.contents)
+ >>>
+
