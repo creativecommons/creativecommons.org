@@ -127,10 +127,29 @@
            tal:omit-tag="">
          <a href="legalcode.de" i18n:translate="">lang.de</a> 
      </span>
-
     </span>
 
-    <span tal:omit-tag="" tal:condition="not: view/multi_language"
+    <metal:block 
+       tal:condition="python: view.license.code == 'LGPL'">
+      <span i18n:translate="deed.lgpl_human_summary" tal:omit-tag="">
+	This is a human-readable summary of the Legal Code (the full 
+	<a href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">
+	  GNU Lesser General Public License</a>). A 
+	<a href="legalcode.pt">Portuguese translation</a> is also available.
+      </span>
+    </metal:block>
+
+    <metal:block 
+       tal:condition="python: view.license.code == 'GPL'">
+      <span i18n:translate="deed.gpl_human_summary" tal:omit-tag="">
+This is a human-readable summary of the Legal Code (the full <a
+href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General
+Public License</a>). A <a href="legalcode.pt">Portuguese translation</a> is
+also available.
+      </span>
+    </metal:block>
+
+    <span tal:omit-tag="" tal:condition="python: not(view.multi_language) and (view.license.code not in ('GPL', 'LGPL'))"
           i18n:translate="deed.human_summary" />
  </p>
 
