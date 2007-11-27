@@ -27,7 +27,7 @@
     <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="/includes/deed3-ie.css" media="screen" tal:attributes="href context/++resource++cc/includes/deed3-ie.css" /><![endif]-->
 
     <link rel="alternate" type="application/rdf+xml" href="rdf" /> 
-    <script metal:use-macro="context/@@support/language_javascript" />
+    <script metal:use-macro="context/@@support/macros/language_javascript" />
     <script type="text/javascript" src="/includes/referrer/ccdeed.js"
        tal:attributes="src context/++resource++cc/includes/referrer/ccdeed.js">
     </script>
@@ -47,7 +47,7 @@
     <div id="header">
     <p align="center"><a href="/" i18n:translate="util.Creative_Commons"></a></p>
 
-    <div metal:use-macro="context/@@support/translations"></div>
+    <div metal:use-macro="context/@@support/macros/translations"></div>
     </div>
 
     <div id="deed" 

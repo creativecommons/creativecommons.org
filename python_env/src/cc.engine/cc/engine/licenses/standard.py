@@ -235,10 +235,10 @@ class LicenseDeed(grok.View):
             # Go through the chars and build up the HTML and such
             char_title = translate ('char.%s_title' % lic,
                                     domain=i18n.I18N_DOMAIN,
-                                    target_language=self.target_lang)
+                                    context=self.request)
             char_brief = translate ('char.%s_brief' % lic,
                                     domain=i18n.I18N_DOMAIN,
-                                    target_language=self.target_lang)
+                                    context=self.request)
 
             icon_name = lic
             predicate = 'cc:requires'
@@ -256,7 +256,7 @@ class LicenseDeed(grok.View):
               if self.context.license.version == 3.0 and self.context.license.code == 'by-sa':
                 char_brief = translate ('char.sa_bysa30_brief',
                                         domain=i18n.I18N_DOMAIN,
-                                        target_language=self.target_lang)
+                                        context=self.request)
             elif lic == 'nd':
               predicate = ''
               object = ''
