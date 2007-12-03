@@ -4,6 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:cc="http://creativecommons.org/ns#"
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
       metal:define-macro="page"
       i18n:domain="cc_org">
   <head>

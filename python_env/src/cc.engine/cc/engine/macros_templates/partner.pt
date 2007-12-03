@@ -25,7 +25,10 @@
 <div id="main">
   <div id="page-body">
 
-<div class="header"><img src="" alt="" border="0" tal:attributes="src partner_icon_url" /></div>
+<div class="header">
+  <img src="" alt="" border="0" 
+       tal:attributes="src partner_icon_url" />
+</div>
 <div class="nav">provided by <a href="http://creativecommons.org/" 
     i18n:translate="util.Creative_Commons">Creative Commons</a></div>
 	

@@ -12,15 +12,6 @@
 <div metal:fill-slot="body"
       tal:define="target_lang string:en;">
 
-<div class="header"
-   tal:define="partner_logo python: request.form.get('partner_icon_url', '/images/remote_logo.gif');">
-   <img tal:attributes="src partner_logo;"
-        src="/images/remote_logo.gif" alt="" border="0" />
-</div>
-
-<div class="nav">provided by <a href="http://creativecommons.org"
-    i18n:translate="util.Creative_Commons">Creative Commons</a></div>
-
 <p i18n:translate="license.partner_selected">
 <span i18n:name="license_deed_url" tal:content="view/license/uri" tal:omit-tag="" />
 You have selected the 

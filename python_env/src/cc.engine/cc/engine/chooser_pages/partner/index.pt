@@ -41,7 +41,10 @@ If you want to offer your work with no conditions, choose the
 
 <input type="hidden" name="partner" value="" tal:attributes="value partner" />
 <input type="hidden" name="exit_url" value="" tal:attributes="value exiturl" />
-<input type="hidden" name="stylesheet" value="" tal:attributes="value stylesheet" />
+<input type="hidden" name="stylesheet" value="" 
+       tal:attributes="value stylesheet" />
+<input type="hidden" name="partner_icon_url" value="" 
+       tal:attributes="value request/partner_icon_url|nothing" />
 
 
 <p>
