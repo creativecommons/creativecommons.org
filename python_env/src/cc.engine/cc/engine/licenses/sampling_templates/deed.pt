@@ -11,9 +11,9 @@
 </head>
 <body>
 
-<h2 metal:fill-slot="license-name" property="dc:title">
-<span tal:omit-tag="" tal:content="structure string:${view/license/name}"/>
-</h2>
+<h2 metal:fill-slot="license-name"
+    property="dc:title"><span tal:omit-tag="" 
+			      tal:content="structure string:${view/license/name}"/></h2>
 
 <div metal:fill-slot="body" tal:define="lang string:en;">
 

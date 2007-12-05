@@ -12,10 +12,9 @@
 <body>
 
 <h2 metal:fill-slot="license-name"
-    i18n:translate="deed.gpl_title" property="dc:title">
-<span i18n:name="license_name_full" tal:omit-tag=""
-	tal:content="view/license/name" />
-</h2>
+    i18n:translate="deed.gpl_title"
+    property="dc:title"><span i18n:name="license_name_full"
+    tal:omit-tag="" tal:content="view/license/name" /></h2>
 
 <div metal:fill-slot="body" tal:define="lang string:en;">
 
