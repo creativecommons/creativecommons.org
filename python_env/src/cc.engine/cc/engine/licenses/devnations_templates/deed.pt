@@ -14,7 +14,7 @@
 <metal:rdf fill-slot="page_top" tal:content="structure string:<!-- 
 ${view/license/rdf} -->" />
 
-<h2 rel="dc:title" metal:fill-slot="license-name">
+<h2 property="dc:title" metal:fill-slot="license-name">
 <span tal:omit-tag="" tal:content="structure string:${view/license/name}"/>
 </h2>
 

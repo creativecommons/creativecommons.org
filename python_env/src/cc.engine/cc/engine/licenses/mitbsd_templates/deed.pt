@@ -15,7 +15,7 @@
 ${view/license/rdf} -->" />
 
 <h2 metal:fill-slot="license-name"
-    rel="dc:title" tal:content="view/license/name" />
+    property="dc:title" tal:content="view/license/name" />
 
 <div metal:fill-slot="body">
 
