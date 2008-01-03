@@ -5,8 +5,8 @@
       metal:use-macro="context/@@popup/macros/page"
       i18n:domain="cc_org">
 <head>
-  <title metal:fill-slot="title" i18n:translate="char.by_title">
-  Attribution
+  <title metal:fill-slot="title" i18n:translate="char.sa_title">
+Share Alike
   </title>
 </head>
 
@@ -15,16 +15,16 @@
 <metal:body fill-slot="body" >
 
 <p tal:attributes="dir view/is_rtl; align view/is_rtl_align;" >
-  <img src="/icon/by/standard.gif" alt="by" align="left" hspace="4"        
+  <img src="/icon/sa/standard.gif" alt="sa" align="left" hspace="4"        
        tal:attributes="align view/is_rtl_align;" />
 </p>
 
 <p tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
-  <strong i18n:translate="">char.by_title</strong></p>
+  <strong i18n:translate="">char.sa_title</strong></p>
 
 <p i18n:translate="" 
    tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
-  char.by_description
+  char.sa_description
 </p>
 
 <div align="center">

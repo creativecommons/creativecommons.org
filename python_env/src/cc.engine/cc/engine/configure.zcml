@@ -105,13 +105,32 @@
      />
 
   <!-- Legacy /characteristic support. -->
-  <browser:page
+  <browser:pages
      for="cc.engine.characteristic.Characteristics"
-     name="by"
-     class=".chooser.BaseBrowserView"
-     template="templates/by.pt"
      permission="zope.View"
-     />
+     class=".chooser.BaseBrowserView"
+     >
+
+     <browser:page
+        name="by"
+        template="templates/by.pt"
+        />
+
+     <browser:page
+        name="nc"
+        template="templates/nc.pt"
+        />
+
+     <browser:page
+        name="nd"
+        template="templates/nd.pt"
+        />
+
+     <browser:page
+        name="sa"
+        template="templates/sa.pt"
+        />
+  </browser:pages>
 
   <include package=".xmp" />
   <include package=".pd" />
