@@ -124,6 +124,12 @@
          <a href="legalcode.nl" i18n:translate="">lang.nl</a>
      </span>
 
+     <span tal:condition="python: context.license.jurisdiction == 'rs'"
+           tal:omit-tag="">
+         <a href="legalcode.sr-Cyrl" i18n:translate="">lang.sr</a> 
+         <a href="legalcode.sr-Latn" i18n:translate="lang.sr_latn">Serbian (Latin)</a>
+     </span>
+
      <span tal:condition="python: context.license.jurisdiction == 'ch'"
            tal:omit-tag="">
          <a href="legalcode.de" i18n:translate="">lang.de</a> 

@@ -192,7 +192,7 @@ class LicenseDeed(grok.View):
         here it is.
         """
 
-        if self.context.license.jurisdiction in ('es', 'ca', 'be', 'ch'):
+        if self.context.license.jurisdiction in ('es', 'ca', 'be', 'ch', 'rs'):
             return True
 
         return False
