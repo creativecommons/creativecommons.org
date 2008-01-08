@@ -122,9 +122,14 @@ def save_deed(output_dir, license, locale, contents):
     file(output_path, 'w').write(contents)
 
     # see if this is the default locale; if so, create a second copy
-    if (license.default_locale == locale) or \
-            (not(license.default_locale in get_locales()) and 
-             normalize_lang(license.default_locale).split('-')[0] == locale):
+    if ( (license.default_locale == locale) or 
+         (not(license.default_locale in get_locales()) and 
+          normalize_lang(license.default_locale).split('-')[0] == locale) or
+         (license.default_locale not in get_locales() and 
+          normalize_lang(license.default_locale).split('-')[0] 
+          not in get_locales() and
+          locale == 'en')
+         ):
         file(output_path.rsplit('.', 1)[0], 'w').write(contents)
 
 def cli():
