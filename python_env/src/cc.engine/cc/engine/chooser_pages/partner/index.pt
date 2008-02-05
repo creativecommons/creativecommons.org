@@ -19,7 +19,7 @@
                 ">
 
 <div tal:omit-tag="" i18n:translate="license.partner_what">
-<span tal:content="string:/license/publicdomain?lang=${target_lang}&partner=${request/partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${request/stylesheet|nothing}"
+<span tal:content="string:/license/publicdomain-direct?lang=${target_lang}&partner=${request/partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${request/stylesheet|nothing}"
       tal:omit-tag=""
       i18n:name="results_pd_url" />
 				   <span i18n:name="lang" tal:content="target_lang" tal:omit-tag="">es</span>

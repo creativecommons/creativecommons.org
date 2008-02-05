@@ -19,7 +19,7 @@
                  def_juris request/jurisdiction | nothing;
                 ">
 
-<h1 i18n:translate="license.Confirm_Choice"><%=[ccommons::istr $lang license.Confirm_Choice]%></h1>
+<h1 i18n:translate="license.confirm_choice">Confirm Choice</h1>
 	
 <div i18n:translate="license.pd_choice" tal:omit-tag="">
         <%=[ccommons::istr $lang license.pd_choice]%>
