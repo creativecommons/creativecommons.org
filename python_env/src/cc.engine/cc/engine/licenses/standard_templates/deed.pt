@@ -19,10 +19,14 @@ ${context/license/rdf} -->" />
 							   string:${view/license/name}"/></h2>
 
 <div metal:fill-slot="body" tal:omit-tag="">
-        <div class="libre" 
-            tal:condition="python: False and context.license.code in ('by', 'by-sa')">
-           <a href="http://freedomdefined.org/"><img src="/images/deed/libre8.png" alt="Libre" /></a>
-        </div>
+  <div id="libre"
+       tal:condition="python: context.license.code in ('by', 'by-sa')">
+    <a href="http://freedomdefined.org/">
+      <img src="/images/deed/seal.png" border="0" 
+	   i18n:attributes="alt"
+	   alt="This license is acceptable for Free Cultural Works." />
+    </a>
+  </div>
 
         <div id="deed-rights" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
 
