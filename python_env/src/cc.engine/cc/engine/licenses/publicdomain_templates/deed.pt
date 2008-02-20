@@ -16,8 +16,16 @@ ${context/license/rdf} -->" />
 
 <h2 property="dc:title" metal:fill-slot="license-name">Public Domain Dedication</h2>
 
-<div metal:fill-slot="body" tal:define="lang string:en;"
-     i18n:translate="deed.pd">
+<div metal:fill-slot="body" tal:define="lang string:en;">
+  <div id="librepd">
+    <a href="http://freedomdefined.org/">
+      <img src="/images/deed/seal.png" border="0" 
+	   i18n:attributes="alt"
+	   alt="This license is acceptable for Free Cultural Works." />
+    </a>
+  </div>
+
+  <div tal:omit-tag="" i18n:translate="deed.pd"></div>
 
 </div>
 
