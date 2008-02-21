@@ -21,11 +21,4 @@
      permission="zope.View"
      />
 
-  <browser:page
-     for="cc.engine.interfaces.ILicenseCatalog"
-     name="disclaimer-popup"
-     template="catalog_pages/disclaimer-popup.pt"
-     permission="zope.View"
-     />
-
 </configure>

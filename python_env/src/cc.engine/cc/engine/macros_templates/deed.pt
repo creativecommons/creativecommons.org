@@ -13,6 +13,9 @@
     <base href="" tal:attributes="href context/license/uri" />
 
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" type="text/css"
+      href="http://yui.yahooapis.com/2.5.0/build/container/assets/skins/sam/container.css"> 
+
     <link rel="stylesheet" type="text/css" 
           href="/includes/deed3.css" media="screen" 
           tal:attributes="href context/++resource++cc/includes/deed3.css" />
@@ -29,9 +32,40 @@
 
     <link rel="alternate" type="application/rdf+xml" href="rdf" /> 
     <script metal:use-macro="context/@@support/macros/language_javascript" />
+
     <script type="text/javascript" src="/includes/referrer/ccdeed.js"
        tal:attributes="src context/++resource++cc/includes/referrer/ccdeed.js">
     </script>
+
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.5.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
+    
+<script type="text/javascript" src="http://yui.yahooapis.com/2.5.0/build/container/container-min.js"></script> 
+    <script type="text/javascript">
+
+function init_disclaimer() {
+var panel_one = new YAHOO.widget.Panel("disclaimer_panel", 
+	{ 
+	    close:true,  
+	    visible:false,  
+	    draggable:false,
+            width:'300px',
+            context:['disclaimer','br','tl']
+	} 
+); 
+panel_one.render();
+
+YAHOO.util.Event.addListener(YAHOO.util.Dom.get("disclaimer"), 'click',
+  function(e) {
+     panel_one.show();
+     e.preventDefault();
+  });
+
+}
+
+YAHOO.util.Event.addListener(window,'load',init_disclaimer);
+    </script>
+
+
     <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
     <script type="text/javascript">
         _uacct="UA-2010376-1";  urchinTracker();
@@ -40,7 +74,7 @@
    <metal:headers define-slot="headers" />
 
   </head>
-  <body onload="referrerMetadata()">
+  <body onload="referrerMetadata()" class="yui-skin-sam">
 
     <metal:rdf metal:define-slot="page_top">
     </metal:rdf>
@@ -70,24 +104,28 @@
       </div>
 
 
-       <div id="deed-foot">
-          <div tal:omit-tag="" metal:define-slot="footer">
+      <div id="deed-foot">
+        <div tal:omit-tag="" metal:define-slot="footer">
 
-        <p id="disclaimer" 
-	   tal:condition="python: context.license.jurisdiction == 'jp'"
-                              i18n:translate="deed.disclaimer.jp"></p>
-	<p id="disclaimer" 
-	   tal:condition="python: context.license.jurisdiction != 'jp'">
-          <a href="/licenses/disclaimer-popup?lang=@lang@" onclick="window.open('/licenses/disclaimer-popup?lang=@lang@', 'characteristic_help',  'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
-             tal:attributes="href string:/licenses/disclaimer-popup;
-			     onclick string:window.open('/licenses/disclaimer-popup', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');; return false;;"
-             i18n:translate="util.Disclaimer"> </a> 
-          <a href="/licenses/disclaimer-popup?lang=@lang@" 
-     onclick="window.open('/licenses/disclaimer-popup', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
-             tal:attributes="href string:/licenses/disclaimer-popup;
-                             onclick string:window.open('/licenses/disclaimer-popup', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');; return false;;">
-            <img src="/images/popup.gif" width="15" height="13" alt="disclaimer" border="0"/></a>
-  	</p>
+          <p id="disclaimer"
+	     tal:condition="python: context.license.jurisdiction == 'jp'"
+	     i18n:translate="deed.disclaimer.jp"></p>
+
+	  <metal:disclaimer 
+	     tal:condition="python: context.license.jurisdiction != 'jp'">
+	    <a href="" id="disclaimer" i18n:translate="util.Disclaimer">
+	      Disclaimer
+	    </a>
+	    <div id="disclaimer_panel">
+	      <div class="hd" i18n:translate="util.Disclaimer">
+		Disclaimer
+	      </div>
+	      <div class="bd" i18n:translate="deed.disclaimer">
+
+  	      </div>
+	  </div>
+	  </metal:disclaimer>
+
         <p align="center" style="margin-top:40px">
 	  <strong i18n:translate="deed.fair_use"></strong>
 	</p>
