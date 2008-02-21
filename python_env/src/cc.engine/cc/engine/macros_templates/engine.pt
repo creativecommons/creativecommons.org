@@ -69,7 +69,7 @@ function show_hide(div_id, label_id)
 
   </head>
 
-  <body>
+  <body class="yui-skin-sam">
 
     <div id="header-wrapper">
       <div id="header-main" class="box">

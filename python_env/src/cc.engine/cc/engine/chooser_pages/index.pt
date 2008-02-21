@@ -8,15 +8,14 @@
   <title metal:fill-slot="title">Choose a License</title>
 
   <metal:headers fill-slot="headers">
-    <script type="text/javascript" src="http://yui.yahooapis.com/2.3.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
-    <script type="text/javascript" src="http://yui.yahooapis.com/2.3.0/build/animation/animation-min.js"></script>
-    <script type="text/javascript" src="http://yui.yahooapis.com/2.3.0/build/container/container-min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.0/build/container/assets/container.css" />
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.5.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
 
-    <style>
-	.yui-panel .hd { background-color: #43594a; }
-    </style>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.5.0/build/container/container-min.js"></script> 
+
+    <link rel="stylesheet" type="text/css"
+	  href="http://yui.yahooapis.com/2.5.0/build/container/assets/skins/sam/container.css"
+	  /> 
 
     <script src="help.js" type="text/javascript"
        tal:attributes="src context/++resource++cc/includes/help.js" ></script>
