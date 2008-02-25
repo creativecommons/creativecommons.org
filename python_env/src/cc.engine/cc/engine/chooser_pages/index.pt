@@ -50,28 +50,6 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 			
     </p>
 
-    <div id="help_commercial">
-      <div class="hd">
-	<span i18n:translate="">Commercial Use</span>
-      </div>
-      <div class="bd">
-	<p i18n:translate="">
-	  The licensor permits others to copy, distribute, display, and
-	  perform the work, including for commercial purposes.
-      </p></div>
-    </div>
-			
-    <div id="help_noncommercial">
-      <div class="hd">
-	<span i18n:translate="licenses.pretty_nc">Noncommercial</span>
-      </div>
-      <div class="bd">
-	<p i18n:translate="">
-	  The licensor permits others to copy, distribute, display, and
-	  perform the work for non-commercial purposes only.
-      </p></div>
-    </div>
-			
     <p>
       <strong i18n:translate="api.derivatives">Allow modifications of your work?</strong> <br/>
 			
@@ -97,31 +75,6 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
       <br />
 			
     </p>
-
-    <div id="help_derivatives">
-      <div class="hd">
-	<span i18n:translate="">Allow Derivative Works</span>
-      </div>
-      <div class="bd">
-	<p i18n:translate="">The licensor permits others to copy, 
-	  distribute, display and perform the work, as well as make derivative
-	  works based on it.
-      </p></div>
-    </div>
-
-    <div id="help_noderivatives">
-      <div class="hd">
-	<span i18n:translate="char.nd_title">No Derivative Works</span>
-      </div>
-      <div class="bd"><p i18n:translate="char.nd_description"></p></div>
-    </div>
-
-    <div id="help_sharealike">
-      <div class="hd">
-	<span i18n:translate="char.sa_title">Share-Alike</span>
-      </div>
-      <div class="bd"><p i18n:translate="char.sa_description"></p></div>
-    </div>
 
     <p>
       <span tal:omit-tag="" i18n:translate="license.jurisdiction_question">
@@ -161,13 +114,6 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 
     </p>
 
-    <div id="help_jurisdiction">
-      <div class="hd">
-	<span i18n:translate="util.Jurisdiction">Jurisdiction</span>
-      </div>
-      <div class="bd"><p i18n:translate="license.jurisdiction_help"></p></div>
-    </div>
-			
     <div metal:use-macro="context/@@metadata/more-metadata" />
 
     <input type="hidden" name="lang" value="en" tal:attributes="value view/target_lang" />
@@ -184,9 +130,79 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 
 </div>
 
-<div metal:fill-slot="sidebar" 
-     id="features" tal:omit-tag="">
-<h4 i18n:translate="license.what_you" style="margin-bottom:10px;">What You Can Do Here</h4>
+  <div metal:fill-slot="sidebar" 
+       id="features" tal:omit-tag="">
+	<div id="help_jurisdiction">
+	  <div class="hd">
+	    <span i18n:translate="util.Jurisdiction">Jurisdiction</span>
+	  </div>
+	  <div class="bd">
+	    <p i18n:translate="license.jurisdiction_help">
+	    </p>
+	  </div>
+	</div>
+			
+	<div id="help_commercial">
+	  <div class="hd">
+	    <span i18n:translate="">Commercial Use</span>
+	  </div>
+	  <div class="bd">
+	    <p i18n:translate="">
+	      The licensor permits others to copy, distribute, display, and
+	      perform the work, including for commercial purposes.
+	    </p>
+	  </div>
+	</div>
+			
+	<div id="help_noncommercial">
+	  <div class="hd">
+	    <span i18n:translate="licenses.pretty_nc">Noncommercial</span>
+	  </div>
+	  <div class="bd">
+	    <p i18n:translate="">
+	      The licensor permits others to copy, distribute, display, and
+	      perform the work for non-commercial purposes only.
+	    </p>
+	  </div>
+	</div>
+			
+	<div id="help_derivatives">
+	  <div class="hd">
+	    <span i18n:translate="">Allow Derivative Works</span>
+	  </div>
+	  <div class="bd">
+	    <p i18n:translate="">
+	      The licensor permits others to copy, distribute, display
+	      and perform the work, as well as make derivative works
+	      based on it.
+	    </p>
+	  </div>
+	</div>
+
+	<div id="help_noderivatives">
+	  <div class="hd">
+	    <span i18n:translate="char.nd_title">No Derivative Works</span>
+	  </div>
+	  <div class="bd">
+	    <p i18n:translate="char.nd_description">
+	    </p>
+	  </div>
+	</div>
+
+	<div id="help_sharealike">
+	  <div class="hd">
+	    <span i18n:translate="char.sa_title">Share-Alike</span>
+	  </div>
+	  <div class="bd">
+	    <p i18n:translate="char.sa_description">
+	    </p>
+	  </div>
+	</div>
+
+    <h4 i18n:translate="license.what_you" style="margin-bottom:10px;">
+      What You Can Do Here
+    </h4>
+
 
 <p i18n:translate="license.explain">Creative Commons helps you publish your work online while letting others know exactly what they can and can't do with your work. When you choose a license, we provide you with tools and tutorials that let you add license information to our own site, or to one of several free hosting services that have incorporated Creative Commons.</p>
 
