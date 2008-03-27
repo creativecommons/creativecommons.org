@@ -126,30 +126,60 @@ function show_hide(div_id, label_id)
 					</div>
 				</div>	
 <div id="sidebar" class="content-box-right">
-      <h4><a href="http://creativecommons.org/worldwide">International</a></h4>
+    <div class="sideitem">
+      <h4><a href="http://creativecommons.org/international">International</a></h4>
       <select id="international" name="sortby" onchange="orderby(this)">
         <option value="">Select a jurisdiction</option>
         <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
       </select>
-      <span class="international"><a href="/worldwide">More information</a></span>
+      <span class="international"><a href="/international">More information</a></span>
+    </div>
 
-<h4><br/>The Commons</h4>
-<ul>
-  <li><img src="/images/commons/sc.png"> <a href="http://sciencecommons.org/">Science Commons</a></li>
-  <li><img src="/images/commons/ic.png"> <a href="http://icommons.org/">iCommons</a></li>
-  <li><img src="/images/commons/learn.png"> <a href="http://learn.creativecommons.org/">ccLearn</a></li>
-  <li><img src="/images/commons/labs.png"> <a href="http://labs.creativecommons.org/">ccLabs</a></li>
-  <li><img src="/images/commons/mix.png"> <a href="http://ccmixter.org/">ccMixter</a></li>
-</ul>
-<br/>
-<h4>Explore</h4>
-<ul>
-<li ><a href="/audio/" >Audio</a></li>
-<li ><a href="/video/" >Video</a></li>
-<li ><a href="/image/" >Images</a></li>
-<li ><a href="/text/" >Text</a></li>
-<li ><a href="/education/" >Education</a></li>
-<li ><a href="/software/" >Software</a></li></ul>
+    <div class="sideitem">
+      <h4>Search</h4>
+      <form method="get" id="searchform" action="http://creativecommons.org/">
+  <div>
+  <input type="text" value="" name="s" id="s" size="30" />
+  <input type="submit" id="searchsubmit" value="Search" />
+
+  </div>
+  </form>
+      <div class="clear"></div>
+    </div>
+
+    <div class="sideitem">
+      <ul>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/about/opportunities">Opportunities</a></li>
+        <li><a href="/presskit">Presskit</a></li>
+
+      </ul>
+    </div>
+
+    <div class="sideitem">
+      <ul>
+        <li ><a href="/commoners" >Commoners</a></li>
+        <li ><a href="/audio" >Audio</a></li>
+        <li ><a href="/video" >Video</a></li>
+
+        <li ><a href="/image" >Images</a></li>
+        <li ><a href="/text" >Text</a></li>
+        <li ><a href="/education" >Education</a></li>
+        <li ><a href="/software" >Software</a></li>
+      </ul>
+    </div>  
+
+    <div class="sideitem">
+
+      <h4>The Commons</h4>
+      <ul>
+        <li><img src="/images/commons/sc.png"> <a href="http://sciencecommons.org/">Science Commons</a></li>
+        <li><img src="/images/commons/cci.png"> <a href="http://creativecommons.org/international/">ccInternational</a></li>
+        <li><img src="/images/commons/learn.png"> <a href="http://learn.creativecommons.org/">ccLearn</a></li>
+
+      </ul>
+    </div>
+
 
 </div>			</div>
 			<div class="clear">&nbsp;</div>
