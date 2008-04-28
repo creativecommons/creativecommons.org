@@ -15,7 +15,7 @@
 <div tal:omit-tag=""
      tal:define="step string:2c;
                  license_code string:publicdomain;" >
-    <div metal:use-macro="context/@@support/pd_nav_steps" />
+    <div metal:use-macro="context/@@support/macros/pd_nav_steps" />
 </div>
 
 </metal:left>
@@ -80,6 +80,11 @@
 
 <form id="confirm" action="./publicdomain-4" method="GET">
 <p align="center">
+  <input type="hidden" name="lang" value=""
+	 tal:attributes="value python:request.form.get('lang','')" 
+	 tal:condition="python:request.form.get('lang', False)" 
+	 />
+
 <input type="hidden" name="email" value="#" tal:attributes="value request/email | nothing" />
 <input type="hidden" name="title" value="#" tal:attributes="value request/title | nothing" />
 <input type="hidden" name="copyright_holder" value="#" tal:attributes="value request/copyright_holder | nothing" />

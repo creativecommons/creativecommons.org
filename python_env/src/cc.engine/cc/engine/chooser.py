@@ -186,11 +186,11 @@ class LicenseEngine(grok.Application, grok.Container):
     def generate_hash(self, email_addr, title, holder):
         return str(hash((email_addr, title, holder)))
     
-    def send_pd_confirmation(self, next_url, email_addr, title, holder):
+    def send_pd_confirmation(self, next_url, email_addr, title, holder,
+                             lang='en'):
         """Sends the confirmation email to the PD dedicator."""
 
         mhost = getUtility(IMailDelivery, 'cc_engine')
-        lang = 'en' # YYY context.getLanguage()
 
         if False in (email_addr, title, holder):
             return False
@@ -200,11 +200,13 @@ class LicenseEngine(grok.Application, grok.Container):
                        'copyright_holder':holder,
                        'email':email_addr,
                        'hash':self.generate_hash(email_addr, title, holder),
+                       'lang':lang,
                       }
+
         nextstep_url = "%s?%s" % (next_url, urlencode(nextstep_qs))
 
         message = "To: %s\n" \
-                  "From: info@creativecommons.org\n" \
+                  "From: pd@creativecommons.org\n" \
                   "Subject: Confirm your Public Domain Dedication at Creative Commons\n" \
                   "\n%s" % (
             email_addr,
@@ -215,18 +217,17 @@ class LicenseEngine(grok.Application, grok.Container):
                       target_language=lang)
             )
 
-        mhost.send('info@creativecommons.org', (email_addr,), message)
+        mhost.send('pd@creativecommons.org', (email_addr,), message)
 
         return True
 
-    def send_pd_dedication(self, email_addr, title, holder):
+    def send_pd_dedication(self, email_addr, title, holder, lang='en'):
         """Send the public domain dedication after confirmation."""
 
         mhost = getUtility(IMailDelivery, 'cc_engine')
-        lang = "en" # YYY context.getLanguage()
 
         message = "To: %s\n" \
-                  "From: info@creativecommons.org\n" \
+                  "From: pd@creativecommons.org\n" \
                   "Subject: Creative Commons - Public Domain Dedication\n" \
                   "\n%s" % (
             email_addr,
@@ -239,7 +240,7 @@ class LicenseEngine(grok.Application, grok.Container):
                       target_language=lang)
             )
 
-        mhost.send('info@creativecommons.org', (email_addr,), message)
+        mhost.send('pd@creativecommons.org', (email_addr,), message)
 
         return True
 

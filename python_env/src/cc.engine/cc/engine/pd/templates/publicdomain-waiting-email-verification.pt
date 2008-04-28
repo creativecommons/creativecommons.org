@@ -15,7 +15,7 @@
 <div tal:omit-tag=""
      tal:define="step string:2c;
                  license_code string:publicdomain;" >
-    <div metal:use-macro="context/@@support/pd_nav_steps" />
+    <div metal:use-macro="context/@@support/macros/pd_nav_steps" />
 </div>
 
 </metal:left>

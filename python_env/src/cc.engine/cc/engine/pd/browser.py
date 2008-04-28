@@ -21,11 +21,16 @@ class pd_waiting_verification(BrowserPage):
         try:
             return self.__email_result
         except AttributeError:
+
+            next_url = '%s/license/publicdomain-3' % \
+                self.request.getApplicationURL()
+
             self.__email_result = self.context.send_pd_confirmation(
-                '%s/license/publicdomain-3' % self.request.getApplicationURL(),
+                next_url,
                 self.request.get('email', False),
                 self.request.get('title', False),
                 self.request.get('copyright_holder', False),
+                lang=self.request.get('lang', 'en')
                 )
 
             return self.__email_result
@@ -65,6 +70,7 @@ class pd_final(ResultsView):
             self.request.get('email', False),
             self.request.get('title', False),
             self.request.get('copyright_holder', False),
+            lang = self.request.get('lang', 'en')
             )
 
         return self._pt(self)
