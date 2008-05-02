@@ -63,7 +63,7 @@ setCookie('lang','%s', expiry, '/');
    rel="alternate nofollow" lang="ca" 
    tal:content="lang/name"
    tal:attributes="title lang/name;
-                   href  string:./?lang=${lang/code};
+                   href  string:?lang=${lang/code};
                    hreflang lang/code;
                    lang     lang/code;
                    "

@@ -57,6 +57,8 @@
 <br />
 <span i18n:translate="license.proceed_email_note" />
 
+    <div metal:use-macro="context/@@support/macros/engine_languages"></div>
+
 </metal:body>
 
 </body>

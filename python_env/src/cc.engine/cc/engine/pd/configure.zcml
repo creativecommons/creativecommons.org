@@ -26,6 +26,7 @@
   <browser:page
      for="cc.engine.interfaces.ILicenseEngine"
      name="publicdomain-2"
+     class="cc.engine.chooser.BaseBrowserView"
      template="templates/publicdomain-2.pt"
      permission="zope.View"
      />

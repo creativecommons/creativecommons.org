@@ -7,87 +7,182 @@
 
 <body>
 
-<metal:more-metadata
-     metal:define-macro="more-metadata">
+  <metal:moremetadata metal:define-macro="more-metadata">
 
-<!-- begin optional show/hide elements for detailed RDF -->			
-	<p><a onclick="show_hide('search', 'moreinfo');return false;" href="javascript:show_hide('search', 'moreinfo');return false;">
-   <span id="moreinfo" i18n:translate="license.include_more">Click to include more information about your work.</span>
-   <span id="hidemoreinfo" style="display:none;" i18n:translate="license.hide_optional_fields">Hide these fields (All fields are optional)</span>
-	</a></p>
-	<div id="search" style="display:none;">
-		
-	<table border="0" cellspacing="3" cellpadding="3">
-                        <!-- new format option that is shown to all, for more detailed RDF -->
-	<tr>
-		<td align="right" i18n:translate="license.tell_format">Tell us the format of your work:</td>
-
-		<td> 
-			<select name="field_format">
-
-				<option value="" i18n:translate="util.Other" selected="selected">Other</option>
-			
-				<option value="Sound" i18n:translate="util.Audio">Audio</option>
-			
-				<option value="MovingImage" i18n:translate="util.Video">Video</option>
-			
-				<option value="StillImage" i18n:translate="util.Image">Image</option>
-			
-				<option value="Text" i18n:translate="util.Text">Text</option>
-			
-				<option value="InteractiveResource" i18n:translate="util.Interactive">Interactive</option>
-
-			
-			</select>
-		</td>
-	</tr>
-
-	<tr>
-		<td align="right" i18n:translate="util.title_of_work">title of work</td>
-
-		<td> <input type="text" name="field_worktitle" value="" /> 
-		</td>
-	</tr>
-	<tr>
-		<td align="right" i18n:translate="util.attribute_to_name">attribute to name</td>
-		<td> <input type="text" name="field_attribute_to_name" /> 
-		</td>
-
-	</tr>
-	<tr>
-		<td align="right" i18n:translate="util.attribute_to_url">
-		 attribute to url</td>
-
-		<td>
-		 <input type="text" name="field_attribute_to_url" size="40" value="" /> 
-		</td>
-	</tr>
-	<tr>
-	  <td align="right"><a href="" class="helpLink" id="source_work" i18n:translate="util.source_work">source work URL</a></td>
-		<td>
-<input type="text" name="field_sourceurl" size="40" value=""/>
-		</td>
-	</tr>
-	<tr>
-		<td align="right" i18n:translate="util.more_permissions_url">more permissions URL</td>
-		<td>
-<input type="text" name="field_morepermissionsurl" size="40" value=""/>
-		</td>
-	</tr>
-
-	</table>
-
-<div id="help_source_work">
-  <div class="hd">
-    <span i18n:translate="util.source_work">source work</span>
-  </div>
-  <div class="bd"><p i18n:translate="jargon.source_work_description"></p></div>
-</div>
-
-</div>
+    <div class="more-metadata-container">
+      <h4>Additional Information</h4>
+      <p>The additional fields are <strong>optional</strong>, 
+	but will be embedded in the HTML generated for your license.
+	This allows users of your work to determine how to attribute
+	it or where to go for more information about the work.
+	<a href="" id="embedded_metadata" class="helpLink">
+	  <img src="images/information.png"
+	       tal:attributes="src
+	       context/++resource++cc/images/information.png" /></a>
+      </p>
 
 
-</metal:more-metadata>
+    <div class="more-metadata">
+      <div i18n:translate="license.tell_format">
+	Tell us the format of your work:
+      </div>
 
+      <select name="field_format">
+	      
+	<option value="" i18n:translate="util.Other" selected="selected">
+	  Other</option>
+	<option value="Sound" i18n:translate="util.Audio">
+	  Audio</option>
+	<option value="MovingImage" i18n:translate="util.Video">
+	  Video</option>
+	<option value="StillImage" i18n:translate="util.Image">
+	  Image</option>
+	<option value="Text" i18n:translate="util.Text">
+	  Text</option>
+	<option value="InteractiveResource" 
+		i18n:translate="util.Interactive">Interactive</option>
+      </select>
+    </div>
+
+    <div class="more-metadata">
+      <div i18n:translate="util.title_of_work">Title of work</div>
+
+      <input type="text" name="field_worktitle" value="" /> 
+      <a href="" id="worktitle" class="helpLink">
+	<img src="images/information.png"
+	     tal:attributes="src 
+			     context/++resource++cc/images/information.png"
+	     /></a>
+    </div>
+
+    <div class="more-metadata">
+      <div i18n:translate="util.attribute_to_name">
+	Attribute work to name</div>
+
+      <input type="text" name="field_attribute_to_name" /> 
+      <a href="" id="attribution_name" class="helpLink">
+	<img src="images/information.png"
+	     tal:attributes="src 
+			     context/++resource++cc/images/information.png"
+	     /></a>
+    </div>
+
+
+    <div class="more-metadata">
+      <div i18n:translate="util.attribute_to_url">
+	Attribute work to URL</div>
+
+      <input type="text" name="field_attribute_to_url" value="" />
+      <a href="" id="attribution_url" class="helpLink">
+	<img src="images/information.png"
+	     tal:attributes="src 
+			     context/++resource++cc/images/information.png"
+	     /></a>
+    </div>
+
+    <div class="more-metadata">
+      <div i18n:translate="util.source_work">Source work URL</div>
+
+      <input type="text" name="field_sourceurl" value=""/>
+      <a href="" id="source_work" class="helpLink">
+	<img src="images/information.png"
+	     tal:attributes="src 
+			     context/++resource++cc/images/information.png"
+		 /></a>
+    </div>
+
+    <div class="more-metadata">
+      <div i18n:translate="util.more_permissions_url">
+	More permissions URL</div>
+
+      <input type="text" name="field_morepermissionsurl" value=""/>
+      <a href="" id="more_permissions_url" class="helpLink">
+	<img src="images/information.png"
+	     tal:attributes="src 
+			     context/++resource++cc/images/information.png"
+	     /></a>
+    </div>
+
+    <div id="help_embedded_metadata">
+      <div class="hd" i18n:translate="">Embedded Metadata</div>
+      <div class="bd" i18n:translate="license.metadata_help">
+	<p>
+	  The information is embedded in a software readable format.
+	  This allows search engines to index additional information
+	  about your work and allows people coming to the license deed
+	  from your page to see information on the deed about how to
+	  attribute your work.  
+	</p>
+	<p>
+	  <a href="http://wiki.creativecommons.org/Metadata">More
+	    information</a> on Creative Commons metadata is available if
+	  you want to find out more.
+	</p>
+      </div>
+    </div>
+
+      <div id="help_source_work">
+	<div class="hd">
+	  <span i18n:translate="util.source_work">source work</span>
+	</div>
+	<div class="bd">
+	  <p i18n:translate="jargon.source_work_description">
+	    The URL of the work this work was derived from.
+	  </p>
+	</div>
+      </div>
+
+      <div id="help_worktitle">
+	<div class="hd">
+	  <span i18n:translate="util.title_of_work">Title of work</span>
+	</div>
+	<div class="bd">
+	  <p i18n:translate="">
+	    The title of the work you are licensing.
+	  </p>
+	</div>
+      </div>
+
+      <div id="help_attribution_name">
+	<div class="hd">
+	  <span i18n:translate="util.attribute_to_name">
+	    Attribute work to name</span>
+	</div>
+	<div class="bd">
+	  <p i18n:translate="">
+	    The name users of the work should give attribution to.
+	    For example, the name of the work's author.
+	  </p>
+	</div>
+      </div>
+
+      <div id="help_attribution_url">
+	<div class="hd">
+	  <span i18n:translate="util.attribute_to_url">
+	    Attribute work to URL</span>
+	</div>
+	<div class="bd">
+	  <p i18n:translate="">
+	    The URL users of the work should link to.  For example,
+	    the work's page on the author's site.
+	  </p>
+	</div>
+      </div>
+
+      <div id="help_more_permissions_url">
+	<div class="hd">
+	  <span i18n:translate="util.more_permissions_url">
+	    More permissions URL</span>
+	</div>
+	<div class="bd">
+	  <p i18n:translate="">
+	    A URL where a user can obtain information about clearing
+	    rights that are not pre-cleared by your CC license.
+	  </p>
+	</div>
+      </div>
+
+    </div>
+  </metal:moremetadata>
 </body>
 </html>

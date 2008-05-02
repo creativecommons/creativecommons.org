@@ -106,7 +106,7 @@
   <div class="bd"><p i18n:translate="license.jurisdiction_help"></p></div>
 </div>
 			
-<div metal:use-macro="context/@@metadata/more-metadata" />
+<div metal:use-macro="context/@@metadata/macros/more-metadata" />
 
 			<p><input type="submit" value="Get your Sampling License" i18n:attributes="value license.sampling_get;"></p>
 			</form>

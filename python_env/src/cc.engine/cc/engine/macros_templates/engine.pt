@@ -13,12 +13,16 @@
     <link href="http://creativecommons.org/includes/progress.css" 
 	  rel="stylesheet" type="text/css" />
     <link href="http://creativecommons.org/wp-content/themes/cc4/support.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css"
+          href="/wp-content/themes/cc4/engine.css"
+          tal:attributes="href context/++resource++cc/cc4/engine.css" />
 
     <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="/includes/style-ie.css" tal:attributes="href context/++resource++cc/includes/style-ie.css" />
     <![endif]-->
 
     <script src="/includes/icommons.js" type="text/javascript"
        tal:attributes="src context/++resource++cc/includes/icommons.js" ></script>
+
 <script>
 function toggle(id)
 {

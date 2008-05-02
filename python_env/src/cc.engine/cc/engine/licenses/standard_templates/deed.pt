@@ -8,6 +8,7 @@
   <title metal:fill-slot="title">Creative Commons 
     <span tal:omit-tag="" tal:content="context/license/name">Attribution 3.0 Unported</span>
   </title>
+
 </head>
 <body>
 
@@ -40,24 +41,67 @@ ${context/license/rdf} -->" />
 			<li class="license share" rel="cc:permits" href="http://creativecommons.org/ns#Distribution" i18n:translate="deed.free_copy_distribute"></li>
 			      <li class="license remix" tal:condition="python: context.license.code.find('nd') < 0" rel="cc:permits" href="http://creativecommons.org/ns#DerivativeWorks"
                                       i18n:translate="deed.free_derivative"></li>
-<span id='devnations-container'/>
+            <li id="more-container" class="license-hidden" />
+	    <span id='devnations-container'/>
 		      </ul>
         </div>
         <div id="deed-conditions">
-		      <h3 i18n:translate="deed.under_conditions"></h3>
-	        <ul tal:attributes="dir view/is_rtl; align view/is_rtl_align;"> 
+	  <h3 i18n:translate="deed.under_conditions"></h3>
+
+	  <ul tal:attributes="dir view/is_rtl; align view/is_rtl_align;"> 
             <li rel="cc:requires" href="http://creativecommons.org/ns#Attribution" class="license @attributes.char_code@" 
                 tal:repeat="attr view/conditions" 
                 tal:attributes="class string:license ${attr/icon_name};rel string:${attr/predicate}; href string:${attr/object}">
-	            <p><strong tal:content="structure attr/char_title">@attributes.char_title@</strong>. 
-              <span id='attribution-container' tal:condition="python: attr['char_code'] == 'by'"><span tal:replace="structure attr/char_brief" /></span>
-              <span tal:condition="python: attr['char_code'] != 'by'"><span tal:replace="structure attr/char_brief" /></span>
-              <span id="by-more-container" tal:attributes="id string:${attr/icon_name}-more-container" /></p>
+	      <p><strong tal:content="structure attr/char_title">@attributes.char_title@</strong>. 
+		<span id='attribution-container' tal:condition="python: attr['char_code'] == 'by'"><span tal:replace="structure attr/char_brief" /></span>
+		<span tal:condition="python: attr['char_code'] != 'by'"><span tal:replace="structure attr/char_brief" /></span>
+		<span id="by-more-container" 
+		      tal:attributes="id string:${attr/icon_name}-more-container" />
+	      </p>
+
+	      <metal:attribution tal:condition="python:attr['char_code']=='by'">
+		<p id="work-attribution-container" style="display:none;">
+		  <strong>Attribute this work:</strong><br/>
+		  <input id="work-attribution" value="" type="text"
+			 readonly onclick="this.select()"
+			 onfocus="document.getElementById('work-attribution').select();"/>
+		  <input id="license-code" type="hidden" 
+			 value="CC BY 3.0"
+			 tal:attributes="value python: 'CC %s %s' %
+					 (view.license.code.upper(),
+					 view.license.version)" />
+		  <input id="license-url" type="hidden"
+			 value=""
+			 tal:attributes="value view/license/uri" />
+		<a href="" id="attribution_help">
+		  <img src="images/information.png"
+		       tal:attributes="src 
+			context/++resource++cc/images/information.png"
+		       />
+		</a>
+		</p>
+		<div id="attribution_help_panel">
+		  <div class="hd" i18n:translate="">
+		    What does "Attribute this work" mean?
+		  </div>
+		  <div class="bd" i18n:translate="">
+		    The page you came from contained embedded licensing
+		    metadata, including how the creator wishes to be 
+		    attributed for re-use.  You can use the HTML here to
+		    cite the work.  Doing so will also include metadata on
+		    your page so that others can find the original work as
+		    well.
+  		  </div>
+		</div>
+
+	      </metal:attribution>
+
             </li>
-            <li id="more-container" class="license-hidden" />
             <li rel="cc:requires" href="http://creativecommons.org/ns#Notice" 
-		i18n:translate="deed.notice">
-	      For any reuse or distribution, you must make clear to others the license terms of this work. The best way to do this is with a link to this web page.
+		i18n:translate="deed.notice"> For any reuse or
+	      distribution, you must make clear to others the license
+	      terms of this work. The best way to do this is with a
+	      link to this web page.
 	    </li>
             <li i18n:translate="deed.permission">
 	    Any of the above conditions can be waived if you get permission from the copyright holder.

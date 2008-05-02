@@ -37,51 +37,91 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
     <input type="hidden"  name="q_1" value="2" id="question_1-2" checked="checked" />
     <input type="hidden" name="q_1" value="1" id="question_1-1" />
 
-    <p>
-      <strong i18n:translate="api.commercial">Allow commercial uses of your work?</strong> 
-      <br />
-		    	
-		    
-      <input type="radio" checked="checked" name="field_commercial" value="yes" id="question_2-3" /> <label for="question_2-3" i18n:translate="util.Yes">Yes</label>
-(<a href="" id="commercial" class="helpLink" i18n:translate="util.more_info">more info</a>)<br />
-			
-      <input type="radio"  name="field_commercial" value="n" id="question_2-4" /> <label for="question_2-4" i18n:translate="util.No">No</label> 
-(<a href="" id="noncommercial" class="helpLink" i18n:translate="util.more_info">more info</a>)<br />
-			
-    </p>
+	<p>
+	  <strong i18n:translate="api.commercial">
+	    Allow commercial uses of your work?
+	  </strong>
+	</p>
+	  <ul class="choices">
+	    <li>
+	  <input type="radio" checked="checked"
+		 name="field_commercial" value="yes" id="question_2-3"
+		 /> <label for="question_2-3"
+			   i18n:translate="util.Yes">Yes</label> 
+	  <a href="" id="commercial" class="helpLink">
+	    <img src="images/information.png"
+		 tal:attributes="src 
+				 context/++resource++cc/images/information.png"
+		 /></a>
+		  </li>
+		  
+			<li>
+	  <input type="radio"  
+		 name="field_commercial" value="n" id="question_2-4"
+		 /> <label for="question_2-4"
+			   i18n:translate="util.No">No</label>
+	  <a href="" id="noncommercial" class="helpLink">
+	    <img src="images/information.png"
+		 tal:attributes="src 
+				 context/++resource++cc/images/information.png"
+		 /></a>
+		  </li>
+	</ul>
 
-    <p>
-      <strong i18n:translate="api.derivatives">Allow modifications of your work?</strong> <br/>
-			
-      <input type="radio" checked="checked" 
-	     name="field_derivatives" value="yes" id="question_3-5" /> 
-      <label for="question_3-5" i18n:translate="util.Yes">Yes</label>
-(<a href="" id="derivatives" class="helpLink" i18n:translate="util.more_info">more info</a>)
-      <br />
+	<p>
+	  <strong i18n:translate="api.derivatives">
+	    Allow modifications of your work?
+	  </strong>
+	</p>
 		
-      <input type="radio"  name="field_derivatives" value="sa" 
-	     id="question_3-6" /> 
-      <label for="question_3-6">
-	<span i18n:translate="">Yes, as long as others share alike</span> 
-	(<a href="" class="helpLink" id="sharealike" i18n:translate="util.more_info">more info</a>)
-      </label>
-
-      <br/>
+		<ul class="choices">
+		  <li>
+	  <input type="radio" checked="checked" 
+		 name="field_derivatives" value="yes"
+		 id="question_3-5" />  
+	  <label for="question_3-5" i18n:translate="util.Yes">Yes</label>
+	  <a href="" id="derivatives" class="helpLink">
+	    <img src="images/information.png"
+		 tal:attributes="src 
+				 context/++resource++cc/images/information.png"
+		 /></a>
+	    </li>
+	    
+		  <li>
+	  <input type="radio" name="field_derivatives" value="sa" 
+		 id="question_3-6" /> 
+	  <label for="question_3-6">
+	    <span i18n:translate="">Yes, as long as others share alike</span>
+	    <a href="" class="helpLink" id="sharealike">
+	      <img src="images/information.png"
+		 tal:attributes="src 
+				 context/++resource++cc/images/information.png"
+		 /></a>
+	  </label>
+      </li>
 			
-      <input type="radio"  name="field_derivatives" value="n" 
-	     id="question_3-7" /> 
-      <label for="question_3-7" i18n:translate="util.No">No</label>
-(<a href="" id="noderivatives" class="helpLink" i18n:translate="util.more_info">more info</a>)
-      <br />
-			
-    </p>
+			<li>
+	  <input type="radio"  name="field_derivatives" value="n" 
+		 id="question_3-7" /> 
+	  <label for="question_3-7" i18n:translate="util.No">No</label>
+	  <a href="" id="noderivatives" class="helpLink">
+	    <img src="images/information.png"
+		 tal:attributes="src 
+				 context/++resource++cc/images/information.png"
+		 /></a>
+  	  </li>
+	</ul>
 
-    <p>
-      <span tal:omit-tag="" i18n:translate="license.jurisdiction_question">
-	Jurisdiction of your license</span> 
-      (<a href="" class="helpLink" id="jurisdiction" i18n:translate="util.more_info">more info</a>)
-      
-      <br />
+	<p>
+	  <span tal:omit-tag="" i18n:translate="license.jurisdiction_question">
+	    Jurisdiction of your license
+	  </span> 
+	  <a href="" class="helpLink" id="jurisdiction">
+	    <img src="images/information.png"
+		 tal:attributes="src 
+				 context/++resource++cc/images/information.png"
+		 /></a>
+      	  <br />
 
       <select name="field_jurisdiction"
               tal:define="selected view/selected_jurisdiction">
