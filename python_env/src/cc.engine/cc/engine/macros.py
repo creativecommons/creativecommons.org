@@ -74,7 +74,7 @@ class Support(grok.View):
             # Setting sys.setdefaultencoding('utf-8') in sitecustomize.py fixes
             # this.
             # (nkinkade 2008-05-02)
-            if name != 'lang.%s' % code
+            if name != 'lang.%s' % code:
                 # we have a translation for this name...
                 result.append(dict(code=code, name=name))
 
