@@ -7,6 +7,10 @@
   <head>
     <title metal:define-slot="title">Page Title</title>
 
+    <link rel="stylesheet" type="text/css"
+	  href="http://yui.yahooapis.com/2.5.0/build/container/assets/skins/sam/container.css"
+	  /> 
+
     <link rel="stylesheet" type="text/css" 
           href="/wp-content/themes/cc4/style.css"
           tal:attributes="href context/++resource++cc/cc4/style.css" />
@@ -16,6 +20,10 @@
     <link rel="stylesheet" type="text/css"
           href="/wp-content/themes/cc4/engine.css"
           tal:attributes="href context/++resource++cc/cc4/engine.css" />
+    <link rel="stylesheet" type="text/css"
+          href="/wp-content/themes/cc4/engine-rtl.css"
+	  tal:condition="view/is_rtl"
+          tal:attributes="href context/++resource++cc/cc4/engine-rtl.css" />
 
     <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="/includes/style-ie.css" tal:attributes="href context/++resource++cc/includes/style-ie.css" />
     <![endif]-->
