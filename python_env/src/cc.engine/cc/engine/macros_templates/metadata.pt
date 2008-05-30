@@ -10,15 +10,21 @@
   <metal:moremetadata metal:define-macro="more-metadata">
 
     <div class="more-metadata-container">
-      <h4>Additional Information</h4>
-      <p>The additional fields are <strong>optional</strong>, 
-	but will be embedded in the HTML generated for your license.
-	This allows users of your work to determine how to attribute
-	it or where to go for more information about the work.
-	<a href="" id="embedded_metadata" class="helpLink">
-	  <img src="images/information.png"
-	       tal:attributes="src
-	       context/++resource++cc/images/information.png" /></a>
+      <h4 i18n:translate="license.additional_info">
+          Additional Information</h4>
+      <p>
+        <span i18n:translate="license.additional_fields_optional">
+          The additional fields are <strong>optional</strong>,
+          but will be embedded in the HTML generated for your
+          license. This allows users of your work to determine
+          how to attribute it or where to go for more information
+          about the work.
+        </span>
+        <a href="" id="embedded_metadata" class="helpLink">
+          <img src="images/information.png"
+            tal:attributes="src
+            context/++resource++cc/images/information.png" />
+        </a>
       </p>
 
 
