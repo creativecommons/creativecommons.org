@@ -2,7 +2,8 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:define-macro="page">
+      metal:define-macro="page"
+      i18n:domain="cc_org">
 
   <head>
     <title metal:define-slot="title">Page Title</title>
@@ -114,15 +115,21 @@ function show_hide(div_id, label_id)
     <div class="box"><div id="wrapper-ie">
     
   	<div id="body">
-			<div id="content">
-				<div id="main-content">
-  				<div id="title" class="block">
-    				<h3 class="category"><metal:page_parent_header define-slot="page_parent_header"></metal:page_parent_header></h3>
-    				<h2 tal:attributes="dir view/is_rtl|nothing; align view/is_rtl_align|nothing;" i18n:translate="license.License_Your_Work">License Your Work</h2>
-  				</div>
-					<div id="alpha" class="content-box"
-                             tal:attributes="dir view/is_rtl|nothing; align view/is_rtl_align|nothing;">
-				
+	  <div id="content">
+	    <div id="main-content">
+	      <div id="alpha" class="content-box"
+                   tal:attributes="dir view/is_rtl|nothing; 
+				   align view/is_rtl_align|nothing;">
+
+    		<h3 class="category"><metal:page_parent_header define-slot="page_parent_header"></metal:page_parent_header></h3>
+    		<h2 tal:attributes="dir view/is_rtl|nothing; align
+				    view/is_rtl_align|nothing;">
+		  <metal:page_title define-slot="page-header-title">
+		    <span tal:omit-tag="" 
+			  i18n:translate="license.License_Your_Work">
+		      License Your Work</span>
+		  </metal:page_title>
+		</h2>
   		
 				<div class="block">
            <metal:block metal:define-slot="body">
