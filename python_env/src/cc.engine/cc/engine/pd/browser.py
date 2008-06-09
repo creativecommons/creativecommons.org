@@ -1,7 +1,7 @@
 from zope.app.pagetemplate import ViewPageTemplateFile
-from zope.publisher.browser import BrowserPage
 
-from cc.engine.chooser import BaseBrowserView, ResultsView
+from cc.engine.chooser import BaseBrowserView as BrowserPage
+from cc.engine.chooser import ResultsView
 
 class pd_partner(ResultsView):
 
