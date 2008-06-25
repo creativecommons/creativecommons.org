@@ -168,6 +168,8 @@ function show_hide(div_id, label_id)
 
     <div class="sideitem">
       <ul>
+        <li><a href="/projects/documentation">Documentation</a></li>
+        <li><a href="/projects/casestudies">Case Studies</a></li>
         <li><a href="/faq/">FAQ</a></li>
         <li><a href="/about/opportunities">Opportunities</a></li>
         <li><a href="/presskit">Presskit</a></li>
@@ -177,12 +179,8 @@ function show_hide(div_id, label_id)
 
     <div class="sideitem">
       <ul>
-        <li ><a href="/commoners" >Commoners</a></li>
-        <li ><a href="/audio" >Audio</a></li>
-        <li ><a href="/video" >Video</a></li>
-        <li ><a href="/image" >Images</a></li>
-        <li ><a href="/text" >Text</a></li>
-        <li ><a href="/software" >Software</a></li>
+        <li><a href="/commoners">Creative Commoners</a></li>
+        <li><a href="/press-releases">Press Releases</a></li>
       </ul>
     </div>  
 
