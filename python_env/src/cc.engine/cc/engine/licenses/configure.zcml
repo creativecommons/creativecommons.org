@@ -11,6 +11,7 @@
      for="cc.engine.interfaces.ILicenseCatalog"
      name="index"
      template="catalog_pages/licenses-index.pt"
+     class="cc.engine.chooser.BaseBrowserView"
      permission="zope.View"
      />
 
