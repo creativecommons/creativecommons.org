@@ -31,17 +31,25 @@
 	<table border="0" cellspacing="3" cellpadding="3">
 	<tbody>
 		<tr>
-			<td align="right" i18n:translate="util.your_email"></td>
+			<td align="right"
+			    i18n:translate="util.your_email">
+			  Your email:
+			</td>
 			<td><input type="text" name="email" value="" />
 			</td>
 		</tr>
 		<tr>
-			<td align="right" i18n:translate="util.title_of_work"></td>
+			<td align="right"
+			    i18n:translate="util.title_of_work">
+			Title of work:</td>
 			<td><input type="text" name="title" value="" />
 			</td>
 		</tr>
 		<tr>
-			<td align="right" i18n:translate="util.copyright_holder"></td>
+			<td align="right"
+			    i18n:translate="util.copyright_holder">
+			  Copyright holder:
+			</td>
 			<td><input type="text" name="copyright_holder" value="" />
 			</td>
 		</tr>
