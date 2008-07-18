@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@engine/page"
+      metal:use-macro="context/@@engine/macros/page"
       i18n:domain="cc_org">
 <head>
   <title metal:fill-slot="title">Creative Commons Licenses</title>
