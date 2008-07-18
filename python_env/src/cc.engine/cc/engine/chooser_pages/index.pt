@@ -150,7 +150,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 
     </p>
 
-    <div metal:use-macro="context/@@metadata/more-metadata" />
+    <div metal:use-macro="context/@@metadata/macros/more-metadata" />
 
     <input type="hidden" name="lang" value="en" tal:attributes="value view/target_lang" />
     <input type="hidden" name="language" value="en" tal:attributes="value view/target_lang" />
@@ -162,7 +162,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 </div>
 <br />
 
-<div metal:use-macro="context/@@support/engine_languages"></div>
+<div metal:use-macro="context/@@support/macros/engine_languages"></div>
 
 </div>
 
