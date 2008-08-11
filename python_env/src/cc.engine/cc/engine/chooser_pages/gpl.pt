@@ -35,8 +35,9 @@
 
   <span i18n:name="license_code" tal:omit-tag="">GPL</span>
   <span i18n:name="license_url" tal:omit-tag="">http://creativecommons.org/licenses/GPL/2.0/</span>
+  <span i18n:name="license_version" tal:omit-tag="">2.0</span>
 
-  </span>
+</span>
 <!-- /Creative Commons License -->
 </p>
 
@@ -63,7 +64,15 @@ ng="0" cellpadding="0">
   <span i18n:name="license_url" tal:omit-tag="">http://creativecommons.org/licenses/GPL/2.0/</span>
 </p>
 
-<span tal:omit-tag="" i18n:translate="license.fsf_mark_software" />
+<h1 i18n:translate="license.mark_software">Mark Software</h1>
+
+<p i18n:translate="license.fsf_instructions">Read
+  the <a href="http://www.gnu.org/licenses/gpl-howto.html">FSF's
+  instructions for including the license with your software</a>.</p> 
+
+<p i18n:translate="license.display_software_icon">You can display the icon on
+  any site you offer your software for download using the following
+  markup:</p>
 
 <div class="textbox">
 <div align="center">
@@ -72,36 +81,15 @@ ng="0" cellpadding="0">
 
 <!-- Creative Commons License -->
 <a href="http://creativecommons.org/licenses/GPL/2.0/">
-<img alt="CC-GNU GPL" border="0" src="http://creativecommons.org/images
-/public/cc-GPL-a.png" /></a><br />
+<img alt="CC-GNU GPL" border="0" 
+     src="http://creativecommons.org/images/public/cc-GPL-a.png" /></a><br />
 <span tal:omit-tag="" i18n:translate="license.fsf_software_licensed">
   <span i18n:name="license_code" tal:omit-tag="">GPL</span>
-  <span i18n:name="license_url" tal:omit-tag="">http://creativecommons.org/licenses/GPL/2.0/</span>
+  <span i18n:name="license_url"
+	tal:omit-tag="">http://creativecommons.org/licenses/GPL/2.0/</span>
+  <span i18n:name="license_version" tal:omit-tag="">2.0</span>
 </span>
 <!-- /Creative Commons License -->
-
-<!--
-
-<rdf:RDF xmlns="http://web.resource.org/cc/"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-<Work rdf:about="">
-   <license rdf:resource="http://creativecommons.org/licenses/GPL/2.0/" />
-   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Software" />
-</Work>
-
-<License rdf:about="http://creativecommons.org/licenses/GPL/2.0/">
-<permits rdf:resource="http://web.resource.org/cc/Reproduction" />
-   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
-   <requires rdf:resource="http://web.resource.org/cc/Notice" />
-   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
-   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
-   <requires rdf:resource="http://web.resource.org/cc/SourceCode" />
-</License>
-
-</rdf:RDF>
-
--->
 </textarea>
                                                                                 
 <p><input type="button" 
