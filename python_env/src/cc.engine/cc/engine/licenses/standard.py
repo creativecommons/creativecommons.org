@@ -77,7 +77,7 @@ class BrowserLicense(grok.Model):
               object = 'http://creativecommons.org/ns#CommercialUse'
               if self.license.jurisdiction == 'jp':
                  icon_name = '%s-jp' % icon_name
-              elif self.license.jurisdiction in ('fr', 'es', 'nl', 'at', 'fi', 'be', 'it', 'lu',):
+              elif self.license.jurisdiction in ('fr', 'es', 'nl', 'fi', 'be', 'it', 'lu',):
                  icon_name = '%s-eu' % icon_name
             elif lic == 'sa':
               object = 'http://creativecommons.org/ns#ShareAlike'
@@ -249,7 +249,7 @@ class LicenseDeed(grok.View):
               object = 'http://creativecommons.org/ns#CommercialUse'
               if self.context.license.jurisdiction == 'jp':
                  icon_name = '%s-jp' % icon_name
-              elif self.context.license.jurisdiction in ('fr', 'es', 'nl', 'at', 'fi', 'be', 'it', 'lu',):
+              elif self.context.license.jurisdiction in ('fr', 'es', 'nl', 'fi', 'be', 'it', 'lu',):
                  icon_name = '%s-eu' % icon_name
             elif lic == 'sa':
               object = 'http://creativecommons.org/ns#ShareAlike'
