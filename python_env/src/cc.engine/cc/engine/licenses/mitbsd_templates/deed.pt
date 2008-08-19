@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
@@ -19,21 +20,21 @@ ${view/license/rdf} -->" />
 
 <div metal:fill-slot="body">
 
-        <div id="deed-rights" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
-		      <h3 rel="cc:permits" href="http://creativecommons.org/ns#Reproduction" i18n:translate="deed.You_are_free"></h3>
+        <div id="deed-rights" tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
+		      <h3 rel="cc:permits" resource="http://creativecommons.org/ns#Reproduction" i18n:translate="deed.You_are_free"></h3>
 		      <ul>
-			      <li class="license share" rel="cc:permits" href="http://creativecommons.org/ns#Distribution" i18n:translate="deed.free_copy_distribute"></li>
-			      <li class="license remix" rel="cc:permits" href="http://creativecommons.org/ns#DerivativeWorks"
+			      <li class="license share" rel="cc:permits" resource="http://creativecommons.org/ns#Distribution" i18n:translate="deed.free_copy_distribute"></li>
+			      <li class="license remix" rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks"
                                       i18n:translate="deed.free_derivative"></li>
-<span id='devnations-container'/>
 		      </ul>
+<span id='devnations-container'/>
 
         </div>
-        <div id="deed-conditions" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+        <div id="deed-conditions" tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
 		      <h3 i18n:translate="deed.under_conditions"></h3>
-	        <ul  tal:attributes="dir view/is_rtl; align view/is_rtl_align;"> 
+	        <ul  tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;"> 
             <li rel="cc:requires"
-                href="http://creativecommons.org/ns#Notice"
+                resource="http://creativecommons.org/ns#Notice"
                 class="license no-endorse"
                 tal:condition="context/is_bsd">
 
@@ -44,7 +45,7 @@ ${view/license/rdf} -->" />
 
             <li id="more-container" class="license-hidden" />
             <li rel="cc:requires"
-                href="http://creativecommons.org/ns#Notice" 
+                resource="http://creativecommons.org/ns#Notice" 
 		i18n:translate="deed.bsd_notice"
 		tal:condition="context/is_bsd">
 You must retain the license terms and copyright notice in any source code
@@ -52,7 +53,7 @@ distribution and reproduce them in documentation for binary distributions.
 </li>
 
             <li rel="cc:requires"
-                href="http://creativecommons.org/ns#Notice" 
+                resource="http://creativecommons.org/ns#Notice" 
 		i18n:translate="deed.mit_notice"
 		tal:condition="context/is_mit">The copyright notice and license shall be included in all copies or
 substantial portions of the software.</li>

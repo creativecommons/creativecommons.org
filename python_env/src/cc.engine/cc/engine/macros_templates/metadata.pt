@@ -23,7 +23,8 @@
         <a href="" id="embedded_metadata" class="helpLink">
           <img src="images/information.png"
             tal:attributes="src
-            context/++resource++cc/images/information.png" />
+            context/++resource++cc/images/information.png"
+            i18n:attributes="alt" alt="Information" />
         </a>
       </p>
 
@@ -58,6 +59,7 @@
 	<img src="images/information.png"
 	     tal:attributes="src 
 			     context/++resource++cc/images/information.png"
+            i18n:attributes="alt" alt="Information"
 	     /></a>
     </div>
 
@@ -70,6 +72,7 @@
 	<img src="images/information.png"
 	     tal:attributes="src 
 			     context/++resource++cc/images/information.png"
+        i18n:attributes="alt" alt="Information"
 	     /></a>
     </div>
 
@@ -83,6 +86,7 @@
 	<img src="images/information.png"
 	     tal:attributes="src 
 			     context/++resource++cc/images/information.png"
+        i18n:attributes="alt" alt="Information"
 	     /></a>
     </div>
 
@@ -94,6 +98,7 @@
 	<img src="images/information.png"
 	     tal:attributes="src 
 			     context/++resource++cc/images/information.png"
+        i18n:attributes="alt" alt="Information"
 		 /></a>
     </div>
 
@@ -106,6 +111,7 @@
 	<img src="images/information.png"
 	     tal:attributes="src 
 			     context/++resource++cc/images/information.png"
+        i18n:attributes="alt" alt="Information"
 	     /></a>
     </div>
 

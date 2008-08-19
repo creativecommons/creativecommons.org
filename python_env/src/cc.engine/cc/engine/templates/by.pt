@@ -14,20 +14,20 @@
 
 <metal:body fill-slot="body" >
 
-<p tal:attributes="dir view/is_rtl; align view/is_rtl_align;" >
-  <img src="/icon/by/standard.gif" alt="by" align="left" hspace="4"        
-       tal:attributes="align view/is_rtl_align;" />
+<p tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;" >
+  <img src="/icon/by/standard.gif" alt="by" style="text-align:left" hspace="4"        
+       tal:attributes="style view/is_rtl_align;" />
 </p>
 
-<p tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+<p tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
   <strong i18n:translate="">char.by_title</strong></p>
 
 <p i18n:translate="" 
-   tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+   tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
   char.by_description
 </p>
 
-<div align="center">
+<div style="text-align:center">
   <a href="javascript:window.close();"
      i18n:translate="util.Close_window">(close window)</a>
 </div>

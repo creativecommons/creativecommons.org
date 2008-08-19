@@ -62,19 +62,9 @@ class Support(grok.View):
 
             if code == 'test': continue
             
-            name = domain.translate('lang.%s' % code, target_language=code)
-            # Asheesh, look into the comparison below.  This error gets emitted
-            # when running mkdeeds:
-            # 
-            # /home/nkinkade/cc/devel/cc.engine/branches/production/cc/engine/macros.py:66:
-            # UnicodeWarning: Unicode unequal comparison failed to convert both
-            # arguments to Unicode - interpreting them as being unequal
-            #  if name != 'lang.%s' % code:
-            #
-            # Setting sys.setdefaultencoding('utf-8') in sitecustomize.py fixes
-            # this.
-            # (nkinkade 2008-05-02)
-            if name != 'lang.%s' % code:
+            name = domain.translate('lang.%s' % code, target_language=code).\
+                decode('utf-8')
+            if name != u'lang.%s' % code:
                 # we have a translation for this name...
                 result.append(dict(code=code, name=name))
 

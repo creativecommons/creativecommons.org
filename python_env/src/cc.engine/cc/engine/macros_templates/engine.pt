@@ -32,52 +32,6 @@
     <script src="/includes/icommons.js" type="text/javascript"
        tal:attributes="src context/++resource++cc/includes/icommons.js" ></script>
 
-<script>
-function toggle(id)
-{
-    var elm = document.getElementById(id);
-        var sp = document.getElementById("moreinfo");
-    if (!elm || elm.length == 0) return;
-    var d = elm.style.display;
-        //alert(d);
-    if (d && (d != "none" || d == ""))
-    {
-        elm.style.display = "none";
-                sp.innerHTML = "Click to include more information about your work.";
-    } else
-    {
-        elm.style.display = "block";
-                sp.innerHTML = "Hide these fields (All fields are optional)";
-    }
-}
-
-function show_hide(div_id, label_id)
-{
-    var elm = document.getElementById(div_id);
-
-    var show = document.getElementById(label_id);
-    var hide = document.getElementById("hide" + label_id);
-
-    if (!elm || elm.length == 0) return;
-    var d = elm.style.display;
-
-    if (d && (d != "none" || d == ""))
-    {
-        elm.style.display = "none";
-        show.style.display = "inline";
-        hide.style.display = "none";
-
-    } else
-    {
-        elm.style.display = "block";
-        show.style.display = "none";
-        hide.style.display = "inline";
-
-    }
-}
-
-</script>
-
    <metal:headers define-slot="headers" />
 
   </head>
@@ -89,7 +43,7 @@ function show_hide(div_id, label_id)
         <span class="publish">
           <a href="/license/" class="cc-actions">
             <span class="img">
-              <img src="/images/license-8.png" border="0" class="publish"
+              <img src="/images/license-8.png" style="border: 0" class="publish" alt="License your Work"
                    tal:attributes="src context/++resource++cc/images/license-8.png" />
             </span> 
             <span class="option">License</span>Your Work
@@ -98,12 +52,12 @@ function show_hide(div_id, label_id)
         <span class="find">
           <a href="http://search.creativecommons.org/" class="cc-actions">
             <span class="img">
-              <img src="/images/find-8.png" border="0"/>
+              <img src="/images/find-8.png" style="border: 0" alt="Search CC Licensed Work"/>
             </span>
             <span class="option">Search</span>CC Licensed Work
           </a>
         </span>
-        <span class="logo"><a href="/"><span><img src="/images/cc-title-8.png" alt="creative commons" id="cc-title" border="0"/></span></a></span>
+        <span class="logo"><a href="/"><span><img src="/images/cc-title-8.png" alt="creative commons" id="cc-title" style="border: 0" /></span></a></span>
       </div>
     </div>
     <div id="mainmenu">
@@ -118,11 +72,11 @@ function show_hide(div_id, label_id)
 	  <div id="content">
 	    <div id="main-content">
 	      <div id="alpha" class="content-box"
-                   tal:attributes="dir view/is_rtl|nothing; 
-				   align view/is_rtl_align|nothing;">
+                   tal:attributes="dir view/get_ltr_rtl|nothing; 
+				   style view/is_rtl_align|nothing;">
 
     		<h3 class="category"><metal:page_parent_header define-slot="page_parent_header"></metal:page_parent_header></h3>
-    		<h2 tal:attributes="dir view/is_rtl|nothing; align
+    		<h2 tal:attributes="dir view/get_ltr_rtl|nothing; style
 				    view/is_rtl_align|nothing;">
 		  <metal:page_title define-slot="page-header-title">
 		    <span tal:omit-tag="" 
@@ -139,18 +93,15 @@ function show_hide(div_id, label_id)
 					
 					</div>
 
-					<div id="beta" class="content-box"
-                             tal:attributes="dir view/is_rtl|nothing; align view/is_rtl_align|nothing;">
-      <metal:block define-slot="sidebar" />
+	      <div id="beta" class="content-box"
+                   tal:attributes="dir view/get_ltr_rtl|nothing; style view/is_rtl_align|nothing;">
+		<metal:block define-slot="sidebar" />
 					</div>
 				</div>	
 <div id="sidebar" class="content-box-right">
     <div class="sideitem">
       <h4><a href="http://creativecommons.org/international">International</a></h4>
-      <select id="international" name="sortby" onchange="orderby(this)">
-        <option value="">Select a jurisdiction</option>
-        <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
-      </select>
+        <script type="text/javascript" src='http://api.creativecommons.org/rest/dev/support/jurisdictions.js?select=1' ></script>
       <span class="international"><a href="/international">More information</a></span>
     </div>
 
@@ -188,9 +139,9 @@ function show_hide(div_id, label_id)
 
       <h4>The Commons</h4>
       <ul>
-        <li><img src="/images/commons/sc.png"> <a href="http://sciencecommons.org/">Science Commons</a></li>
-        <li><img src="/images/commons/cci.png"> <a href="http://creativecommons.org/international/">ccInternational</a></li>
-        <li><img src="/images/commons/learn.png"> <a href="http://learn.creativecommons.org/">ccLearn</a></li>
+        <li><img src="/images/commons/sc.png" alt="Science Commons" /> <a href="http://sciencecommons.org/">Science Commons</a></li>
+        <li><img src="/images/commons/cci.png" alt="ccInternational" /> <a href="http://creativecommons.org/international/">ccInternational</a></li>
+        <li><img src="/images/commons/learn.png" alt="ccLearn" /> <a href="http://learn.creativecommons.org/">ccLearn</a></li>
 
       </ul>
     </div>
@@ -219,7 +170,7 @@ function show_hide(div_id, label_id)
       </div>
 			<div id="license"><p class="box">
 <metal:license define-slot="license-override">
-				<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88"></a>
+				<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88" /></a>
 Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on this site is<br/>
 licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
 </metal:license>

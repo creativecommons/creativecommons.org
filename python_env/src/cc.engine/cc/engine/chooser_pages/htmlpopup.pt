@@ -12,7 +12,7 @@
 
 <metal:body fill-slot="body" >
 
-<p tal:attributes="dir view/is_rtl; align view/is_rtl_align;" i18n:translate="license.html_display"><%=[ccommons::istr $lang license.html_display]%></p>
+<p tal:attributes="dir view/get_ltr_rtl; align view/is_rtl_align;" i18n:translate="license.html_display"><%=[ccommons::istr $lang license.html_display]%></p>
 <form action="">
 <textarea cols="30" rows="8" name="html" 
    style="width:90%;height:150px;"
@@ -21,10 +21,10 @@
     i18n:attributes="value util.Highlight_Text;"/></p>
 </form>
 
-<p tal:attributes="dir view/is_rtl; align view/is_rtl_align;" i18n:translate="license.html_directions"><%=[ccommons::istr $lang license.html_directions]%></p>
+<p tal:attributes="dir view/get_ltr_rtl; align view/is_rtl_align;" i18n:translate="license.html_directions"><%=[ccommons::istr $lang license.html_directions]%></p>
 
 <form action="./work-email" method="post">
-<p  tal:attributes="dir view/is_rtl; align view/is_rtl_align;"><span tal:omit-tag="" i18n:translate="license.html_email"/>
+<p  tal:attributes="dir view/get_ltr_rtl; align view/is_rtl_align;"><span tal:omit-tag="" i18n:translate="license.html_email"/>
 <input type="text" name="to_email" value="" /> 
 <input type="hidden" name="lang" value=""
        tal:attributes="value python:request.form.get('lang', '');" />
@@ -43,7 +43,7 @@
 </p></form>
 
 
-<div align="center" tal:attributes="dir view/is_rtl; align view/is_rtl_align;"><a href="javascript:window.close();" i18n:translate="util.Close_window"><%=[ccommons::istr $lang util.Close_window]%></a></div>
+<div align="center" tal:attributes="dir view/get_ltr_rtl; align view/is_rtl_align;"><a href="javascript:window.close();" i18n:translate="util.Close_window"><%=[ccommons::istr $lang util.Close_window]%></a></div>
 
 </metal:body>
 </body>

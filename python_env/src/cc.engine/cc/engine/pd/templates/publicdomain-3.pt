@@ -40,7 +40,7 @@
     <div class="licensebox" i18n:name="pd_deed_text">
       <div i18n:translate="deed.pd" tal:omit-tag="">
 
-      <p align="center">
+      <p  style="text-align:center">
 	<em>Copyright-Only Dedication (based on United States law) or 
 	  Public Domain Certification</em></p>
 
@@ -79,7 +79,7 @@
   </div>
 
 <form id="confirm" action="./publicdomain-4" method="GET">
-<p align="center">
+<p  style="text-align:center">
   <input type="hidden" name="lang" value=""
 	 tal:attributes="value python:request.form.get('lang','')" 
 	 tal:condition="python:request.form.get('lang', False)" 

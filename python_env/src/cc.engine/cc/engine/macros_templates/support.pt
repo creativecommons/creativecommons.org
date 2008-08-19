@@ -27,19 +27,19 @@ setCookie('lang','%s', expiry, '/');
      metal:define-macro="translations">
 
 <div style="width: 620px; margin-left: auto; margin-right: auto; text-align: center;">
-<span tal:attributes="dir view/is_rtl; align view/is_rtl_align;" i18n:translate="deed.view_in">This page is available in the following languages:</span>
+<span tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;" i18n:translate="deed.view_in">This page is available in the following languages:</span>
 <br/>
 
 <div tal:omit-tag=""
      tal:repeat="lang context/@@support/active_languages">
 
 <a href="#" title="Catal%G�%@" hreflang="ca" 
-   rel="alternate nofollow" lang="ca" 
+   rel="alternate nofollow" xml:lang="ca" 
    tal:content="lang/name"
    tal:attributes="title lang/name;
                    href  string:./deed.${lang/code};
                    hreflang lang/code;
-                   lang     lang/code;
+                   xml:lang     lang/code;
                    "
    >Catal%G�%@f</a>
 
@@ -53,19 +53,19 @@ setCookie('lang','%s', expiry, '/');
 
 <div class="licensebox" style="background:#FAFAD6;">
 
-<span tal:attributes="dir view/is_rtl; align view/is_rtl_align;" i18n:translate="deed.view_in">This page is available in the following languages:</span>
+<span tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;" i18n:translate="deed.view_in">This page is available in the following languages:</span>
 <br/>
 
 <div tal:omit-tag=""
      tal:repeat="lang context/@@support/active_languages">
 
 <a href="#" title="Catal%G�%@" hreflang="ca" 
-   rel="alternate nofollow" lang="ca" 
+   rel="alternate nofollow" xml:lang="ca" 
    tal:content="lang/name"
    tal:attributes="title lang/name;
                    href  string:?lang=${lang/code};
                    hreflang lang/code;
-                   lang     lang/code;
+                   xml:lang     lang/code;
                    "
    >Catal%G�%@f</a>
 

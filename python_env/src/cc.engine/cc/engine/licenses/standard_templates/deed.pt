@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
@@ -23,35 +24,34 @@ ${context/license/rdf} -->" />
   <div id="libre"
        tal:condition="python: context.license.code in ('by', 'by-sa')">
     <a href="http://freedomdefined.org/">
-      <img src="/images/deed/seal.png" border="0" 
+      <img src="/images/deed/seal.png" style="border: 0" 
 	   i18n:attributes="alt"
 	   alt="This license is acceptable for Free Cultural Works." />
     </a>
   </div>
 
-        <div id="deed-rights" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+        <div id="deed-rights" tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
 
-        <div id="deed-newer" align="center" tal:condition="context/license/deprecated"><h3 i18n:translate="deed.retired">This license is <a href="/retiredlicenses">retired</a>. Do not use for new works.</h3></div>
+        <div id="deed-newer" style="text-align:center" tal:condition="context/license/deprecated"><h3 i18n:translate="deed.retired">This license is <a href="/retiredlicenses">retired</a>. Do not use for new works.</h3></div>
 
-<span tal:omit-tag="" tal:condition="python: context.license.jurisdiction not in ['-', 'es']"><a tal:attributes="href python: '/worldwide/'+context.license.jurisdiction+'/'" href=''><img tal:attributes="src python: '/images/international/'+context.license.jurisdiction+'.png'" src='' border="0"/></a></span>
+<span tal:omit-tag="" tal:condition="python: context.license.jurisdiction not in ['-', 'es']"><a tal:attributes="href python: '/worldwide/'+context.license.jurisdiction+'/'" href=''><img tal:attributes="src python: '/images/international/'+context.license.jurisdiction+'.png'; alt python: context.license.jurisdiction;" src='' style="border: 0"/></a></span>
 <h3 rel="cc:permits" 
-    href="http://creativecommons.org/ns#Reproduction" 
+    resource="http://creativecommons.org/ns#Reproduction" 
     i18n:translate="deed.You_are_free">You are free:</h3>
 		      <ul>
-			<li class="license share" rel="cc:permits" href="http://creativecommons.org/ns#Distribution" i18n:translate="deed.free_copy_distribute"></li>
-			      <li class="license remix" tal:condition="python: context.license.code.find('nd') < 0" rel="cc:permits" href="http://creativecommons.org/ns#DerivativeWorks"
+			<li class="license share" rel="cc:permits" resource="http://creativecommons.org/ns#Distribution" i18n:translate="deed.free_copy_distribute"></li>
+			      <li class="license remix" tal:condition="python: context.license.code.find('nd') < 0" rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks"
                                       i18n:translate="deed.free_derivative"></li>
-            <li id="more-container" class="license-hidden" />
-	    <span id='devnations-container'/>
+            <li id="more-container" class="license-hidden"><span id='devnations-container'/></li>
 		      </ul>
         </div>
         <div id="deed-conditions">
 	  <h3 i18n:translate="deed.under_conditions"></h3>
 
-	  <ul tal:attributes="dir view/is_rtl; align view/is_rtl_align;"> 
-            <li rel="cc:requires" href="http://creativecommons.org/ns#Attribution" class="license @attributes.char_code@" 
+	  <ul tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;"> 
+            <li rel="cc:requires" resource="http://creativecommons.org/ns#Attribution" class="license @attributes.char_code@" 
                 tal:repeat="attr view/conditions" 
-                tal:attributes="class string:license ${attr/icon_name};rel string:${attr/predicate}; href string:${attr/object}">
+                tal:attributes="class string:license ${attr/icon_name};rel string:${attr/predicate}; resource string:${attr/object}">
 	      <p><strong tal:content="structure attr/char_title">@attributes.char_title@</strong>. 
 		<span id='attribution-container' tal:condition="python: attr['char_code'] == 'by'"><span tal:replace="structure attr/char_brief" /></span>
 		<span tal:condition="python: attr['char_code'] != 'by'"><span tal:replace="structure attr/char_brief" /></span>
@@ -63,7 +63,7 @@ ${context/license/rdf} -->" />
 		<p id="work-attribution-container" style="display:none;">
 		  <strong>Attribute this work:</strong><br/>
 		  <input id="work-attribution" value="" type="text"
-			 readonly onclick="this.select()"
+			 readonly="readonly" onclick="this.select()"
 			 onfocus="document.getElementById('work-attribution').select();"/>
 		  <input id="license-code" type="hidden" 
 			 value="CC BY 3.0"
@@ -76,7 +76,9 @@ ${context/license/rdf} -->" />
 		<a href="" id="attribution_help">
 		  <img src="images/information.png"
 		       tal:attributes="src 
-			context/++resource++cc/images/information.png"
+			context/++resource++cc/images/information.png" 
+               i18n:attributes="alt"
+	           alt="Information"
 		       />
 		</a>
 		</p>
@@ -97,7 +99,7 @@ ${context/license/rdf} -->" />
 	      </metal:attribution>
 
             </li>
-            <li rel="cc:requires" href="http://creativecommons.org/ns#Notice" 
+            <li rel="cc:requires" resource="http://creativecommons.org/ns#Notice" 
 		i18n:translate="deed.notice"> For any reuse or
 	      distribution, you must make clear to others the license
 	      terms of this work. The best way to do this is with a

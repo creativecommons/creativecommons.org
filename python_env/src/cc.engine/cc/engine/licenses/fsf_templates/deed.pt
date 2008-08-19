@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
@@ -8,6 +9,7 @@
   <title metal:fill-slot="title">Creative Commons 
     <span tal:omit-tag="" tal:content="view/license/name">Attribution 3.0 Unported</span>
   </title>
+
 </head>
 <body>
 
@@ -18,9 +20,9 @@
 
 <div metal:fill-slot="body" tal:define="lang string:en;">
 
-        <div id="deed-rights" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+        <div id="deed-rights" tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
 
-        <div id="deed-newer" align="center" tal:condition="context/license/deprecated"><h3 i18n:translate="deed.retired">This license is <a href="/retiredlicenses">retired</a>. Do not use for new works.</h3></div>
+        <div id="deed-newer" style="text-align:center" tal:condition="context/license/deprecated"><h3 i18n:translate="deed.retired">This license is <a href="/retiredlicenses">retired</a>. Do not use for new works.</h3></div>
 
 <h3 rel="cc:permits"></h3>
 
@@ -29,14 +31,14 @@
   GNU General Public License</span>
 </p>
 			
-			<ol start="0">
-				<li i18n:translate="deed.gpl_free_run"><%=[ccommons::istr $lang deed.gpl_free_run]%>
+			<ol class="gpl">
+				<li class="gpl" i18n:translate="deed.gpl_free_run"><%=[ccommons::istr $lang deed.gpl_free_run]%>
 </li>
-				<li i18n:translate="deed.gpl_free_study"><%=[ccommons::istr $lang deed.gpl_free_study]%>
+				<li class="gpl" i18n:translate="deed.gpl_free_study"><%=[ccommons::istr $lang deed.gpl_free_study]%>
 </li>
-				<li i18n:translate="deed.gpl_free_redistribute"><%=[ccommons::istr $lang deed.gpl_free_redistribute]%>
+				<li class="gpl" i18n:translate="deed.gpl_free_redistribute"><%=[ccommons::istr $lang deed.gpl_free_redistribute]%>
 </li>
-				<li i18n:translate="deed.gpl_free_improve"><%=[ccommons::istr $lang deed.gpl_free_improve]%></li>
+				<li class="gpl" i18n:translate="deed.gpl_free_improve"><%=[ccommons::istr $lang deed.gpl_free_improve]%></li>
 			</ol>
 </div>
     
@@ -49,7 +51,7 @@
    <p tal:condition="python: context.license.code == 'LGPL'" 
       i18n:translate="deed.lgpl_under_conditions" />
 
-   <ul tal:attributes="dir view/is_rtl; align view/is_rtl_align;"> 
+   <ul tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;"> 
      <li class="license notice" i18n:translate="deed.gpl_notice">
        <span i18n:name="license_name_full"
 	     tal:content="context/license/name">

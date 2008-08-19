@@ -270,11 +270,21 @@ class BaseBrowserView(BrowserPage):
         return ''
 
     @property
+    def get_ltr_rtl(self):
+        """Return 'rtl' if the request locale is represented right-to-left;
+        otherwise return 'ltr'."""
+
+        if self.request.locale.orientation.characters == u'right-to-left':
+            return 'rtl'
+
+        return 'ltr'
+
+    @property
     def is_rtl_align(self):
         """Return the appropriate alignment for the request locale:
-        'right' or 'left'."""
+        'text-align:right' or 'text-align:left'."""
 
-        return self.request.locale.orientation.characters.split('-')[0]
+        return 'text-align:' +self.request.locale.orientation.characters.split('-')[0]
 
     def selected_jurisdiction(self):
         """Return the appropriate default jurisdiction -- either one explicitly

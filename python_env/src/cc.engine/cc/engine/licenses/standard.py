@@ -1,4 +1,5 @@
 import datetime
+import urllib
 
 import grok
 from zope.interface import implements
@@ -134,7 +135,13 @@ class LicenseDeed(grok.View):
           version=version,
           jurisdiction=jurisdiction,
           locale=self.target_lang)
-      
+
+    @property
+    def license_code(self):
+        """Return the license code as it's used by the license chooser."""
+
+        return urllib.quote(self.license.code)
+
     def update(self):
         """Prepare to render the deed."""
 
@@ -175,11 +182,21 @@ class LicenseDeed(grok.View):
         return ''
 
     @property
+    def get_ltr_rtl(self):
+        """Return 'rtl' if the request locale is represented right-to-left;
+        otherwise return 'ltr'."""
+
+        if self.request.locale.orientation.characters == u'right-to-left':
+            return 'rtl'
+
+        return 'ltr'
+
+    @property
     def is_rtl_align(self):
         """Return the appropriate alignment for the request locale:
-        'right' or 'left'."""
+        'text-align:right' or 'text-align:left'."""
 
-        return self.request.locale.orientation.characters.split('-')[0]
+        return 'text-align:' + self.request.locale.orientation.characters.split('-')[0]
 
     @property
     def multi_language(self):

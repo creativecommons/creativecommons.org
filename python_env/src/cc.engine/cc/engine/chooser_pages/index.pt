@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
@@ -29,9 +30,12 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 	
 <div class="licensebox">
 
-  <form action="./results-one" method="get" >
-    <input type="hidden"  name="q_1" value="2" id="question_1-2" checked="checked" />
-    <input type="hidden" name="q_1" value="1" id="question_1-1" />
+      <form action="./results-one" method="get" >
+	<div>
+	<input type="hidden"  name="q_1" value="2" id="question_1-2"
+	       checked="checked" /> 
+	<input type="hidden" name="q_1" value="1" id="question_1-1" />
+    </div>    
 
 	<p>
 	  <strong i18n:translate="api.commercial">
@@ -48,6 +52,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 	    <img src="images/information.png"
 		 tal:attributes="src 
 				 context/++resource++cc/images/information.png"
+         i18n:attributes="alt" alt="Information"
 		 /></a>
 		  </li>
 		  
@@ -60,6 +65,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 	    <img src="images/information.png"
 		 tal:attributes="src 
 				 context/++resource++cc/images/information.png"
+         i18n:attributes="alt" alt="Information"
 		 /></a>
 		  </li>
 	</ul>
@@ -80,6 +86,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 	    <img src="images/information.png"
 		 tal:attributes="src 
 				 context/++resource++cc/images/information.png"
+         i18n:attributes="alt" alt="Information"
 		 /></a>
 	    </li>
 	    
@@ -92,6 +99,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 	      <img src="images/information.png"
 		 tal:attributes="src 
 				 context/++resource++cc/images/information.png"
+         i18n:attributes="alt" alt="Information"
 		 /></a>
 	  </label>
       </li>
@@ -104,6 +112,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 	    <img src="images/information.png"
 		 tal:attributes="src 
 				 context/++resource++cc/images/information.png"
+         i18n:attributes="alt" alt="Information"
 		 /></a>
   	  </li>
 	</ul>
@@ -116,6 +125,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 	    <img src="images/information.png"
 		 tal:attributes="src 
 				 context/++resource++cc/images/information.png"
+         i18n:attributes="alt" alt="Information"
 		 /></a>
       	  <br />
 
@@ -151,16 +161,24 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
     </p>
 
     <div metal:use-macro="context/@@metadata/macros/more-metadata" />
-
-    <input type="hidden" name="lang" value="en" tal:attributes="value view/target_lang" />
-    <input type="hidden" name="language" value="en" tal:attributes="value view/target_lang" />
-    <input type="hidden" name="n_questions" value="3" />
-    <input type="submit" 
-           i18n:attributes="value license.Select_a_License;" 
-           value="Select a License" />
-  </form>
-</div>
-<br />
+    <div>
+	<input type="hidden" name="lang" value="en"
+	       tal:attributes="value view/target_lang" /> 
+	<input type="hidden" name="language" value="en"
+	       tal:attributes="value view/target_lang" /> 
+	<input type="hidden" name="n_questions" value="3" />
+    </div>
+    
+    <div>
+    <p>	
+    <input type="submit" class="submit"
+               i18n:attributes="value license.Select_a_License;" 
+               value="Select a License" />
+    </p>    
+    </div>
+      </form>
+    </div>
+    <br />
 
 <div metal:use-macro="context/@@support/macros/engine_languages"></div>
 
@@ -244,36 +262,59 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 
 <a href="/about/licenses"><span i18n:translate="license.view_explanation">View an explanation of all our licenses.</span></a>
 
-
 <h4 i18n:translate="license.or_choose">Or Choose:</h4>
 
-	<p style="font-size:11px;">
-<a href="/license/publicdomain-2">
-<img src="/images/license/40publicdomain.gif" width="40" height="40" align="middle" border="0" /></a>
-<a href="/license/publicdomain-2">
-<span i18n:translate="licenses.pretty_publicdomain">Public Domain</span></a></p>
+    <p style="font-size:11px;">
+      <a href="/license/publicdomain">
+	<img src="/images/license/40publicdomain.gif" width="40"
+	     height="40" style="border: 0; text-align:center;"
+         i18n:attributes="alt" alt="Public Domain"
+    />
+      </a> 
+      <a href="/license/publicdomain">
+	<span i18n:translate="licenses.pretty_publicdomain">
+	  Public Domain
+        </span>
+      </a>
+    </p>
 
     <h4 i18n:translate="">Software</h4>
 
     <p style="font-size:11px;">
       <a href="/license/cc-gpl">
 	<img src="/images/license/40gnugpl.gif" width="40" height="40"
-	     align="middle" border="0" />
+	     style="border: 0; text-align:center;"
+         i18n:attributes="alt" alt="GNU GPL"    
+    />
       </a>
       <a href="/license/cc-gpl" i18n:translate="util.CC_GNU_GPL">
 	CC-GNU GPL
       </a>
     </p>
 
-<p style="font-size:11px;"> <a href="/license/cc-lgpl">
-<img src="/images/license/40gnulgpl.gif" width="40" height="40" align="middle" border="0" /></a>
-<a href="/license/cc-lgpl" i18n:translate="util.CC_GNU_LGPL">
-CC-GNU LGPL</a></p>
+    <p style="font-size:11px;">
+      <a href="/license/cc-lgpl">
+	<img src="/images/license/40gnulgpl.gif" width="40"
+	     height="40" style="border: 0; text-align:center;"
+         i18n:attributes="alt" alt="GNU LGPL"    
+    />
+      </a>
+      <a href="/license/cc-lgpl" i18n:translate="util.CC_GNU_LGPL">
+	CC-GNU LGPL
+      </a>
+    </p>
 
-<p style="font-size:11px;"> <a href="/licenses/BSD/">
-<img src="/images/license/40bsd.png" width="40" height="40" align="middle" border="0" /></a>
-<a href="/licenses/BSD/" i18n:translate="util.BSD">
-BSD</a></p>
+    <p style="font-size:11px;"> 
+      <a href="/licenses/BSD/">
+	<img src="/images/license/40bsd.png" width="40" height="40"
+	     style="border: 0; text-align:center;"
+         i18n:attributes="alt" alt="BSD"
+    />
+      </a>
+      <a href="/licenses/BSD/" i18n:translate="util.BSD">
+	BSD
+      </a>
+    </p>
 
 </div>
 

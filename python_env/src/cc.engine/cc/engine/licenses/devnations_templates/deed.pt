@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
@@ -20,35 +21,35 @@ ${view/license/rdf} -->" />
 
 <div metal:fill-slot="body" tal:define="lang string:en;">
 
-        <div id="deed-rights" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+        <div id="deed-rights" tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
 
-         <div id="deed-newer" align="center"><h3 i18n:translate="deed.retired">This license is <a href="/retiredlicenses">retired</a>. Do not use for new works.</h3></div>
+         <div id="deed-newer" style="text-align:center"><h3 i18n:translate="deed.retired">This license is <a href="/retiredlicenses">retired</a>. Do not use for new works.</h3></div>
 
          <h3 rel="cc:permits"
-            href="http://creativecommons.org/ns#Reproduction" i18n:translate="deed.You_are_free">You are free:</h3>
+            resource="http://creativecommons.org/ns#Reproduction" i18n:translate="deed.You_are_free">You are free:</h3>
 		      <ul>
 			      <li class="license share" rel="cc:permits"
-             href="http://creativecommons.org/ns#Distribution" i18n:translate="deed.free_copy_distribute">
+             resource="http://creativecommons.org/ns#Distribution" i18n:translate="deed.free_copy_distribute">
 to Share %Gâ%@ to copy, distribute and transmit the work</li>
 
 			      <li class="license remix" rel="cc:permits"
-             href="http://creativecommons.org/ns#DerivativeWorks" i18n:translate="deed.free_derivative"></li>
+             resource="http://creativecommons.org/ns#DerivativeWorks" i18n:translate="deed.free_derivative"></li>
 		      </ul>
 
         </div>
         <div id="deed-conditions">
 		      <h3 i18n:translate="deed.under_conditions"></h3>
-	        <ul tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+	        <ul tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
 
             <li class="license devnations"><strong>Developing Nations</strong>.
                        You may exercise the above freedoms in developing nations only.</li>
 
-            <li rel="cc:requires" href="http://creativecommons.org/ns#Attribution" 
+            <li rel="cc:requires" resource="http://creativecommons.org/ns#Attribution" 
                 class="license by"><p><strong i18n:translate="char.by_title"></strong>.
                 <span i18n:translate="char.by_brief"><%=[ccommons::istr $lang char.by_brief]%></span></p></li>
 
-    				<li i18n:translate="deed.notice" />
-    				<li i18n:translate="deed.permission" />
+    				<li i18n:translate="deed.notice"></li>
+    				<li i18n:translate="deed.permission"></li>
     			</ul>
         </div>
 

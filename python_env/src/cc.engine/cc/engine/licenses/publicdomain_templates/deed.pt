@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
@@ -19,7 +20,7 @@ ${context/license/rdf} -->" />
 <div metal:fill-slot="body" tal:define="lang string:en;">
   <div id="librepd">
     <a href="http://freedomdefined.org/">
-      <img src="/images/deed/seal.png" border="0" 
+      <img src="/images/deed/seal.png" style="border: 0" 
 	   i18n:attributes="alt"
 	   alt="This license is acceptable for Free Cultural Works." />
     </a>

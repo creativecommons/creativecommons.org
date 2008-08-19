@@ -1,4 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
@@ -76,7 +75,7 @@
     </metal:rdf>
 
     <div id="header">
-    <p align="center">
+    <p style="text-align:center">
       <a rel="dc:creator" href="http://creativecommons.org/">
 	<span property="dc:title"
 	      i18n:translate="util.Creative_Commons">
@@ -88,8 +87,8 @@
 
     <div id="deed" 
          tal:attributes="class view/color | green; 
-                         dir   view/is_rtl; 
-                         align view/is_rtl_align;">  
+                         dir   view/get_ltr_rtl; 
+                         style view/is_rtl_align;">  
       <div id="deed-head">
 	      <div id="cc-logo"><img src="/images/deed/cc-logo.jpg" alt="cc logo"/></div>
 	      <h1><span>Creative Commons License Deed</span></h1>
@@ -98,7 +97,7 @@
         </div>
       </div>
 
-      <div id="deed-main" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+      <div id="deed-main" tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
        <div id="deed-main-content" >
           <div tal:omit-tag="" metal:define-slot="body"></div>
        </div>
@@ -122,16 +121,16 @@
 		Disclaimer
 	      </div>
 	      <div class="bd" i18n:translate="deed.disclaimer">
-
+		
   	      </div>
 	  </div>
 	  </metal:disclaimer>
 
-        <p align="center" style="margin-top:40px">
+        <p style="text-align:center; margin-top:40px;">
 	  <strong i18n:translate="deed.fair_use"></strong>
 	</p>
 
-	<p align="center">
+	<p style="text-align:center">
 
     <span tal:omit-tag="" tal:condition="view/multi_language">
      <span tal:omit-tag="" i18n:translate="deed.human_summary_multilanguage" />
@@ -203,7 +202,12 @@ also available.
        </div>
     </div>
     <p id="footer">
-      <a href="/about/licenses" i18n:translate="deed.learn"></a>
+      <a id="get_this" href="" 
+	 i18n:translate="deed.use_this_license"
+	 tal:attributes="href
+			 string:/license/results-one?license_code=${view/license_code}&jurisdiction=${view/license/jurisdiction}&version=${view/license/version}">
+      Use this license for your own work.</a>
+
     </p>
 
   </body>

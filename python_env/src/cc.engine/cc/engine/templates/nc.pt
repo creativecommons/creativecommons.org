@@ -14,16 +14,16 @@
 
 <metal:body fill-slot="body" >
 
-<p tal:attributes="dir view/is_rtl; align view/is_rtl_align;" >
+<p tal:attributes="dir view/get_ltr_rtl; align view/is_rtl_align;" >
   <img src="/icon/nc/standard.gif" alt="nc" align="left" hspace="4"        
        tal:attributes="align view/is_rtl_align;" />
 </p>
 
-<p tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+<p tal:attributes="dir view/get_ltr_rtl; align view/is_rtl_align;">
   <strong i18n:translate="">char.nc_title</strong></p>
 
 <p i18n:translate="" 
-   tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
+   tal:attributes="dir view/get_ltr_rtl; align view/is_rtl_align;">
   char.nc_description
 </p>
 
