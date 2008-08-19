@@ -26,7 +26,7 @@
 
 <p i18n:translate="license.what">
   <span i18n:name="lang" tal:content="view/target_lang" tal:omit-tag="">es</span>
-With a Creative Commons license, <strong>you keep your copyright</strong> but allow people to <a href="http://creativecommons.org/learn/licenses/fullrights">copy and distribute your work</a> provided they <a href="http://creativecommons.org/characteristic/by?lang=en" onclick="window.open('http://creativecommons.org/characteristic/by?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">give you credit</a> -- and only on the conditions you specify here. If you want to offer your work with no conditions, choose the <a href="http://creativecommons.org/license/publicdomain">public domain</a>.</p>
+With a Creative Commons license, <strong>you keep your copyright</strong> but allow people to <a href="http://creativecommons.org/learn/licenses/fullrights">copy and distribute your work</a> provided they <a href="http://creativecommons.org/characteristic/by?lang=en" onclick="window.open('http://creativecommons.org/characteristic/by?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">give you credit</a> -- and only on the conditions you specify here. If you want to offer your work with no conditions, choose the <a href="http://creativecommons.org/license/publicdomain-2">public domain</a>.</p>
 	
 <div class="licensebox">
 
@@ -265,13 +265,13 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 <h4 i18n:translate="license.or_choose">Or Choose:</h4>
 
     <p style="font-size:11px;">
-      <a href="/license/publicdomain">
+      <a href="/license/publicdomain-2">
 	<img src="/images/license/40publicdomain.gif" width="40"
 	     height="40" style="border: 0; text-align:center;"
          i18n:attributes="alt" alt="Public Domain"
     />
       </a> 
-      <a href="/license/publicdomain">
+      <a href="/license/publicdomain-2">
 	<span i18n:translate="licenses.pretty_publicdomain">
 	  Public Domain
         </span>
