@@ -59,7 +59,7 @@ ng="0" cellpadding="0">
 
 <p i18n:translate="license.fsf_how_it_works">
   <span i18n:name="license_code" tal:omit-tag="">GPL</span>
-  <span i18n:name="license_name_lower" tal:omit-tag="">gpl</span>
+  <span i18n:name="license_name_lower" tal:omit-tag="">gpl-2.0</span>
   <span i18n:name="version_title" tal:omit-tag="">2.0</span>
   <span i18n:name="license_url" tal:omit-tag="">http://creativecommons.org/licenses/GPL/2.0/</span>
 </p>
