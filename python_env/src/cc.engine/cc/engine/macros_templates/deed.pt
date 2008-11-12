@@ -141,6 +141,11 @@
          <a href="legalcode.ca" i18n:translate="">lang.ca</a> 
          <a href="legalcode.es" i18n:translate="">lang.es</a>
 
+         <span tal:condition="python: context.license.version == 3.0"
+               tal:omit-tag="">
+           <a href="legalcode.eu" i18n:translate="">lang.eu</a> 
+         </span>
+
          <span tal:condition="python: context.license.version == 2.5"
                tal:omit-tag="">
 
