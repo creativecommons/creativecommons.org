@@ -62,7 +62,14 @@
     </div>
     <div id="mainmenu">
       <ul id="navbar" class="box">
-        <li class="inactive"><a href="/" title="Home"><span>Home</span></a></li>      <li class="inactive"><a href="/about/" title="About"><span>About</span></a></li>      <li class="inactive"><a href="http://support.creativecommons.org" title="Support"><span>Support</span></a></li>      <li class="inactive"><a href="/projects/" title="Projects"><span>Projects</span></a></li>      <li class="inactive"><a href="http://wiki.creativecommons.org" title="Participate"><span>Participate</span></a></li>      <li class="inactive"><a href="/international/" title="International"><span>International</span></a></li>      <li class="inactive"><a href="/contact/" title="Contact"><span>Contact</span></a></li> 
+			  <li class="inactive"><a href="/" title="Home"><span>Home</span></a></li>      
+			  <li class="inactive"><a href="/about/" title="About"><span>About</span></a></li>     
+			  <li class="inactive"><a href="http://wiki.creativecommons.org/FFAQ" title="FAQ"><span>FAQ</span></li>
+			  <li class="donate inactive"><a href="http://support.creativecommons.org" title="Donate"><span>Donate</span></a></li>      
+			  <li class="inactive"><a href="http://wiki.creativecommons.org" title="Wiki"><span>Wiki</span></a></li>      
+			  <li class="inactive"><a href="/projects/" title="Projects"><span>Projects</span></a></li>      
+			  <li class="inactive"><a href="/international/" title="International"><span>International</span></a></li>      
+			  <li class="inactive"><a href="/contact/" title="Contact"><span>Contact</span></a></li> 
       </ul>
       <div class="clear"></div>
     </div>
@@ -119,6 +126,7 @@
 
     <div class="sideitem">
       <ul>
+        <li><a href="/commoners">Creative Commoners</a></li>
         <li><a href="/projects/documentation">Documentation</a></li>
         <li><a href="/projects/casestudies">Case Studies</a></li>
         <li><a href="/faq/">FAQ</a></li>
@@ -130,19 +138,20 @@
 
     <div class="sideitem">
       <ul>
-        <li><a href="/commoners">Creative Commoners</a></li>
         <li><a href="/press-releases">Press Releases</a></li>
+        <li><a href="/about/newsletter">Newsletter</a></li>
+        <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
       </ul>
     </div>  
 
     <div class="sideitem">
 
       <h4>The Commons</h4>
-      <ul>
-        <li><img src="/images/commons/sc.png" alt="Science Commons" /> <a href="http://sciencecommons.org/">Science Commons</a></li>
-        <li><img src="/images/commons/cci.png" alt="ccInternational" /> <a href="http://creativecommons.org/international/">ccInternational</a></li>
-        <li><img src="/images/commons/learn.png" alt="ccLearn" /> <a href="http://learn.creativecommons.org/">ccLearn</a></li>
-
+	  <ul>
+		<li><a href="https://creativecommons.net/">CC Network</a></li>
+        <li><a href="http://sciencecommons.org/">Science Commons</a></li>
+        <li><a href="http://creativecommons.org/international/">ccInternational</a></li>
+        <li><a href="http://learn.creativecommons.org/">ccLearn</a></li>
       </ul>
     </div>
 
