@@ -129,20 +129,12 @@
         <li><a href="/commoners">Creative Commoners</a></li>
         <li><a href="/projects/documentation">Documentation</a></li>
         <li><a href="/projects/casestudies">Case Studies</a></li>
-        <li><a href="/faq/">FAQ</a></li>
-        <li><a href="/about/opportunities">Opportunities</a></li>
-        <li><a href="/presskit">Presskit</a></li>
+        <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
+        <li><a href="/about/newsletter">Newsletter</a></li>
+        <li><a href="/about/press">Press Room</a></li>
 
       </ul>
     </div>
-
-    <div class="sideitem">
-      <ul>
-        <li><a href="/press-releases">Press Releases</a></li>
-        <li><a href="/about/newsletter">Newsletter</a></li>
-        <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
-      </ul>
-    </div>  
 
     <div class="sideitem">
 
@@ -165,12 +157,12 @@
       <div id="sub-footer" class="box">
         <ul>
           <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-          <li><a href="http://support.creativecommons.org/">Support</a></li>
+          <li><a href="http://support.creativecommons.org/">Donate</a></li>
           <li><a href="/weblog">Blog</a></li>
           <li><a href="/policies">Policies</a></li>
 
           <li><a href="/privacy">Privacy</a></li>
-          <li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
+          <li><a href="/about/press">Press</a></li>
           <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
           <li><a href="/sitemap">Sitemap</a></li>
           <li><a href="/contact">Contact</a></li>
