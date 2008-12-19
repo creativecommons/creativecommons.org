@@ -27,6 +27,9 @@
           href="/includes/deed3-print.css" media="print" 
           tal:attributes="href context/++resource++cc/includes/deed3-print.css"
           />
+    <link rel="stylesheet" type="text/css" 
+          href="/includes/jurisdictions.css" media="screen" 
+          tal:attributes="href context/++resource++cc/includes/jurisdictions.css" />
 
     <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="/includes/deed3-ie.css" media="screen" tal:attributes="href context/++resource++cc/includes/deed3-ie.css" /><![endif]-->
 
@@ -98,7 +101,8 @@
       </div>
 
       <div id="deed-main" tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
-       <div id="deed-main-content" >
+       <div id="deed-main-content" tal:attributes="class string:${view/license/jurisdiction}">
+
           <div tal:omit-tag="" metal:define-slot="body"></div>
        </div>
       </div>
