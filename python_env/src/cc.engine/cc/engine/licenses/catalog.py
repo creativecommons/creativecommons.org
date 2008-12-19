@@ -37,7 +37,7 @@ class LicenseCatalog(grok.Application, grok.Container):
             return self.CUSTOM_DEEDS[code](self, [code])
 
         # check for sampling
-        if code.find('sampling') == 0:
+        if code.find('sampling') >= 0:
             return SamplingLicense(self, [code])
         
         return BrowserLicense(self, [code])
