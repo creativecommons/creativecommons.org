@@ -1,4 +1,5 @@
 from zope.publisher.browser import BrowserPage
+from zope.interface import implements
 from zope import component
 
 from interfaces import IRdfaGenerator
@@ -21,7 +22,7 @@ class View(BrowserPage):
             if license_class is None:
                 raise Exception()
 
-            license = component.getUtility(ILicenseSelector, 'zero').\
+            license = component.getUtility(ILicenseSelector, license_class).\
                 process_form(self.request.form)
 
         else:
@@ -33,3 +34,27 @@ class View(BrowserPage):
                     break
 
         return IRdfaGenerator(license).with_form(self.request.form)
+
+class Metadata(object):
+    implements(IRdfaGenerator)
+
+    IMAGE_BASE = "http://labs.creativecommons.org/zero/images"
+
+    def __init__(self, license):
+        self.license = license
+
+    def with_form(self, request_form):
+        """Generate RDFa metadata for the license adapted along with the
+        form."""
+
+        # see if a named adapter has been registered that provides
+        # license class-specific functionality
+        
+        generator = component.queryAdapter(self.license, IRdfaGenerator,
+                                           self.license.license_class, None)
+
+        if generator is not None:
+            return generator.with_form(request_form)
+
+        # XXX someday we'll have the default implementation here
+        raise Exception()

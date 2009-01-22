@@ -4,8 +4,29 @@
            i18n_domain="cc_org"
            >
 
-    <adapter for="cc.licenze.zero.interfaces.ILicense"
+    <adapter for="cc.licenze.interfaces.ILicense"
              provides=".interfaces.IRdfaGenerator"
-	     factory=".zero.Metadata" />
+	     factory=".Metadata" />
+
+    <!-- Special cases for CC0, PD Assertion 
+
+    XXX we should register these by class name, adding class as a
+    property to the ILicense specification, just like the selectors.
+
+    The "base" implementation that adapts ILicense to IRdfaMetadata
+    should look for a named implementation before proceeding.
+
+    -->
+
+    <adapter for="cc.licenze.interfaces.ILicense"
+             provides=".interfaces.IRdfaGenerator"
+	     factory=".zero.Metadata"
+	     name="zero" />
+
+    <adapter for="cc.licenze.interfaces.ILicense"
+             provides=".interfaces.IRdfaGenerator"
+	     factory=".zero.Metadata" 
+	     name="publicdomain" />
+
 
 </configure>

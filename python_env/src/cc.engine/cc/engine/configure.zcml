@@ -148,7 +148,11 @@
   </browser:pages>
 
   <include package=".xmp" />
+  <!--
   <include package=".pd" />
+  -->
+
+  <include package=".publicdomain" />
   <include package=".zero" />
 
   <include package=".licenses" />

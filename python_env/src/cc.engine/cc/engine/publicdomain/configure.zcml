@@ -7,7 +7,7 @@
 
   <view
      for="cc.engine.interfaces.ILicenseEngine"
-     name="zero"
+     name="publicdomain"
      permission="zope.View"
      class=".ZeroChooser"
      >
@@ -27,13 +27,13 @@
         />
 
      <page
-        name="waiver"
-        template="templates/waiver.pt"
+        name="assertion"
+        template="templates/assertion.pt"
         />
 
      <page
-        name="confirm-waiver"
-        template="templates/confirm-waiver.pt"
+        name="confirm-assertion"
+        template="templates/confirm-assertion.pt"
         />
 
      <page

@@ -5,9 +5,23 @@
 
     <!-- One Utility per License Class -->
 
+<!--
+    <utility 
+        name="standard"
+        factory=".standard.LicenseSelector"
+        provides=".interfaces.ILicenseSelector"
+	/>
+-->
+
     <utility 
         name="zero"
         factory=".zero.selector.ZeroSelector"
+        provides=".interfaces.ILicenseSelector"
+	/>
+
+    <utility 
+        name="publicdomain"
+        factory=".publicdomain.Selector"
         provides=".interfaces.ILicenseSelector"
 	/>
 

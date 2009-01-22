@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="context/@@engine/macros/page"
+      i18n:domain="cc_org">
+<head>
+  <title metal:fill-slot="title">CC&empty;: Results</title>
+
+
+  <metal:headers fill-slot="headers">
+    <link rel="stylesheet" type="text/css" 
+	  href="http://yui.yahooapis.com/2.4.1/build/button/assets/skins/sam/button.css">
+    <link rel="stylesheet" type="text/css"
+	  href="http://yui.yahooapis.com/2.4.1/build/container/assets/container.css">
+
+    <link rel="stylesheet" type="text/css" href="zero.css"
+	  tal:attributes="href context/++resource++cc/includes/zero.css" />
+
+  </metal:headers>
+
+</head>
+
+<body>
+
+<metal:left fill-slot="sidebar">
+</metal:left>
+
+<metal:title fill-slot="page-header-title">CC&empty;</metal:title>
+
+<metal:body fill-slot="body">
+<div class="yui-skin-sam">
+
+  <div id="error" class="yui-module"
+       tal:condition="not:view/can_issue">
+    <div class="hd">Error</div>
+    <div class="bd">
+      <p>
+	You must check the box to confirm your understanding of the
+	CC&empty; process.
+      </p>
+      <a href="" tal:attributes="href view/action">go back</a>
+    </div>
+    <div class="ft"></div>
+  </div>
+
+  <div id="results" class="yui-module" tal:condition="view/can_issue">
+    <div class="hd">Results</div>
+    <div class="bd" id="dedication-results">
+      Here's a preview of how your <span tal:replace="view/action" /> will appear on your site:
+      <div class="preview" id="results-preview"
+         tal:content="structure view/get_html">
+      </div>
+      <textarea id="results-html" cols="75" rows="10"
+         tal:content="structure view/get_html">
+      </textarea></div>
+    <div class="ft"></div>
+  </div>
+
+</div>
+</metal:body>
+
+</body>
+</html>

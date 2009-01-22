@@ -21,13 +21,13 @@ class LicenseCatalog(grok.Application, grok.Container):
     CUSTOM_DEEDS = {
         'publicdomain' : PublicDomain,
         'sampling' : SamplingLicense,
-        'GPL' : FsfLicense,
-        'LGPL' : FsfLicense,
+        'GPL' : FsfLicense, # software
+        'LGPL' : FsfLicense,# software
         'devnations' : DevNations,
-        'MIT' : MitBsdLicense,
-        'BSD' : MitBsdLicense,
-        'zero-waive' : CCZero,
-        'zero-assert' : CCZero,
+        'MIT' : MitBsdLicense, # software
+        'BSD' : MitBsdLicense, # software
+        'zero' : CCZero,
+        'pd' : CCZero,
         }
     
     def traverse(self, code):

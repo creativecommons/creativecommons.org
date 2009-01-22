@@ -5,63 +5,32 @@ from cc.licenze import interfaces
 
 _ = unicode
 
-class Zed(object):
-    """License object for CC0 licenses.
-    """
+class PublicDomainAssertion(object):
+    """ILicense for Public Domain assertions."""
 
     implements(interfaces.ILicense)
 
-    URI_BASE = 'http://staging.creativecommons.org/licenses'
-
-    def __init__(self, path):
-
-        # validate the path used
-        if len(path) != 2:
-            # we *must* have an id and version only
-            raise LicenseException("Invalid URL.")
-
-        self._id, self._version = path
-
-        # validate each piece
-        if self._id not in ('zero', 'pd'):
-            raise LicenseException("Invalid URL.")
-
-        if self._version != '1.0':
-            raise LicenseException("Invalid URL.")
-
-
-        # set up name, etc for the specific license
-        if self._id == 'pd':
-            self._name = _("Public Domain Assertion")
-
-        elif self._id == 'zero':
-            self._name = _("CC0 Waiver 1.0 Universal")
+    URI = u'http://staging.creativecommons.org/licenses/publicdomain/'
 
     @property
     def license_class(self):
-
-        return 'zero'
+        
+        return 'publicdomain'
 
     @property
     def name(self):
 
-        return self._name
+        return _("Public Domain Assertion")
 
     @property
     def version(self):
 
-        return self._version
+        return None
 
     @property
     def jurisdiction(self):
 
         return None
-
-    @property
-    def libre(self):
-
-        # only the assertion is approved as libre right now
-        return (self.code == 'pd')
 
     @property 
     def default_locale(self):
@@ -73,13 +42,13 @@ class Zed(object):
     @property
     def uri(self):
 
-        return "%s/%s/%s/" % (self.URI_BASE, self._id, self._version,)
+        return self.URI
 
     @property
     def code(self):
         """Return the license code for this license."""
 
-        return self._id
+        return 'publicdomain'
 
     @property
     def superseded(self):

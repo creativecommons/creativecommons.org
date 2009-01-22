@@ -15,187 +15,60 @@
     <script type="text/javascript" src="http://yui.yahooapis.com/2.5.0/build/container/container-min.js"></script> 
 
     <script src="help.js" type="text/javascript"
-       tal:attributes="src context/++resource++cc/includes/help.js" ></script>
+       tal:attributes="src context/++resource++cc/includes/help.js" >
+    </script>
   </metal:headers>
 
 </head>
 <body>
-<div metal:fill-slot="body">
+  <div metal:fill-slot="body">
 
-<h1 i18n:translate="license.Choose_License">Choose A License</h1>
+    <h1 i18n:translate="license.Choose_License">Choose A License</h1>
 
-<p i18n:translate="license.what">
-  <span i18n:name="lang" tal:content="view/target_lang" tal:omit-tag="">es</span>
-With a Creative Commons license, <strong>you keep your copyright</strong> but allow people to <a href="http://creativecommons.org/learn/licenses/fullrights">copy and distribute your work</a> provided they <a href="http://creativecommons.org/characteristic/by?lang=en" onclick="window.open('http://creativecommons.org/characteristic/by?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">give you credit</a> -- and only on the conditions you specify here. If you want to offer your work with no conditions, choose the <a href="http://creativecommons.org/license/publicdomain-2">public domain</a>.</p>
+    <p i18n:translate="license.what">
+      <span i18n:name="lang" 
+	    tal:content="view/target_lang" tal:omit-tag="">es</span>
+      With a Creative Commons license, <strong>you keep your
+	copyright</strong> but allow people
+	to <a href="/learn/licenses/fullrights">copy and distribute
+	your work</a> provided they <span id="attribution"
+	class="helpLink">give you credit</span> &mdash; and only on the
+	conditions you specify here. For those new to Creative Commons
+	licensing, we've prepared <a href="/about/think">a list of
+	things to think about</a>. If you want to offer your work with
+	no conditions, choose
+	the <a href="/license/publicdomain-2">public domain</a>.
+    </p> 
 	
-<div class="licensebox">
+    <div class="licensebox">
 
       <form action="./results-one" method="get" >
-	<div>
 	<input type="hidden"  name="q_1" value="2" id="question_1-2"
 	       checked="checked" /> 
 	<input type="hidden" name="q_1" value="1" id="question_1-1" />
-    </div>    
 
 	<p>
 	  <strong i18n:translate="api.commercial">
 	    Allow commercial uses of your work?
 	  </strong>
-	</p>
-	  <ul class="choices">
-	    <li>
+	  <br />
+		    	
 	  <input type="radio" checked="checked"
 		 name="field_commercial" value="yes" id="question_2-3"
 		 /> <label for="question_2-3"
 			   i18n:translate="util.Yes">Yes</label> 
-	  <a href="" id="commercial" class="helpLink">
-	    <img src="images/information.png"
-		 tal:attributes="src 
-				 context/++resource++cc/images/information.png"
-         i18n:attributes="alt" alt="Information"
-		 /></a>
-		  </li>
-		  
-			<li>
+	  (<a href="" id="commercial" class="helpLink"
+		 i18n:translate="util.more_info">more info</a>)<br /> 
+			
 	  <input type="radio"  
 		 name="field_commercial" value="n" id="question_2-4"
 		 /> <label for="question_2-4"
 			   i18n:translate="util.No">No</label>
-	  <a href="" id="noncommercial" class="helpLink">
-	    <img src="images/information.png"
-		 tal:attributes="src 
-				 context/++resource++cc/images/information.png"
-         i18n:attributes="alt" alt="Information"
-		 /></a>
-		  </li>
-	</ul>
-
-	<p>
-	  <strong i18n:translate="api.derivatives">
-	    Allow modifications of your work?
-	  </strong>
+	  (<a href="" id="noncommercial" class="helpLink"
+		 i18n:translate="util.more_info">more info</a>)<br /> 
+			
 	</p>
-		
-		<ul class="choices">
-		  <li>
-	  <input type="radio" checked="checked" 
-		 name="field_derivatives" value="yes"
-		 id="question_3-5" />  
-	  <label for="question_3-5" i18n:translate="util.Yes">Yes</label>
-	  <a href="" id="derivatives" class="helpLink">
-	    <img src="images/information.png"
-		 tal:attributes="src 
-				 context/++resource++cc/images/information.png"
-         i18n:attributes="alt" alt="Information"
-		 /></a>
-	    </li>
-	    
-		  <li>
-	  <input type="radio" name="field_derivatives" value="sa" 
-		 id="question_3-6" /> 
-	  <label for="question_3-6">
-	    <span i18n:translate="">Yes, as long as others share alike</span>
-	    <a href="" class="helpLink" id="sharealike">
-	      <img src="images/information.png"
-		 tal:attributes="src 
-				 context/++resource++cc/images/information.png"
-         i18n:attributes="alt" alt="Information"
-		 /></a>
-	  </label>
-      </li>
-			
-			<li>
-	  <input type="radio"  name="field_derivatives" value="n" 
-		 id="question_3-7" /> 
-	  <label for="question_3-7" i18n:translate="util.No">No</label>
-	  <a href="" id="noderivatives" class="helpLink">
-	    <img src="images/information.png"
-		 tal:attributes="src 
-				 context/++resource++cc/images/information.png"
-         i18n:attributes="alt" alt="Information"
-		 /></a>
-  	  </li>
-	</ul>
 
-	<p>
-	  <span tal:omit-tag="" i18n:translate="license.jurisdiction_question">
-	    Jurisdiction of your license
-	  </span> 
-	  <a href="" class="helpLink" id="jurisdiction">
-	    <img src="images/information.png"
-		 tal:attributes="src 
-				 context/++resource++cc/images/information.png"
-         i18n:attributes="alt" alt="Information"
-		 /></a>
-      	  <br />
-
-      <select name="field_jurisdiction"
-              tal:define="selected view/selected_jurisdiction">
-	<option value=""  
-		tal:condition="python: selected is None"
-		i18n:translate="util.Unported" selected="selected">Unported</option>
-	<option value=""  
-		tal:condition="python: selected is not None"
-		i18n:translate="util.Unported" >Unported</option>
-
-	<span tal:omit-tag=""
-              tal:repeat="j python:context.license_class().jurisdictions()">
-	  <option value="" selected="selected"
-		  tal:condition="python: j != '-' and selected == j"
-		  tal:attributes="value j;" >
-	    <span tal:content="string:country.${j}"
-		  tal:omit-tag=""
-		  i18n:translate="" />
-	  </option>
-	  <option value=""
-		  tal:condition="python: j != '-' and selected != j"
-		  tal:attributes="value j;">
-	    <span tal:content="string:country.${j}"
-		  tal:omit-tag=""
-		  i18n:translate="" />
-	  </option>
-	</span>
-
-      </select>
-
-    </p>
-
-    <div metal:use-macro="context/@@metadata/macros/more-metadata" />
-    <div>
-	<input type="hidden" name="lang" value="en"
-	       tal:attributes="value view/target_lang" /> 
-	<input type="hidden" name="language" value="en"
-	       tal:attributes="value view/target_lang" /> 
-	<input type="hidden" name="n_questions" value="3" />
-    </div>
-    
-    <div>
-    <p>	
-    <input type="submit" class="submit"
-               i18n:attributes="value license.Select_a_License;" 
-               value="Select a License" />
-    </p>    
-    </div>
-      </form>
-    </div>
-    <br />
-
-<div metal:use-macro="context/@@support/macros/engine_languages"></div>
-
-</div>
-
-  <div metal:fill-slot="sidebar" 
-       id="features" tal:omit-tag="">
-	<div id="help_jurisdiction">
-	  <div class="hd">
-	    <span i18n:translate="util.Jurisdiction">Jurisdiction</span>
-	  </div>
-	  <div class="bd">
-	    <p i18n:translate="license.jurisdiction_help">
-	    </p>
-	  </div>
-	</div>
-			
 	<div id="help_commercial">
 	  <div class="hd">
 	    <span i18n:translate="">Commercial Use</span>
@@ -220,6 +93,38 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 	  </div>
 	</div>
 			
+	<p>
+	  <strong i18n:translate="api.derivatives">
+	    Allow modifications of your work?
+	  </strong> <br/> 
+			
+	  <input type="radio" checked="checked" 
+		 name="field_derivatives" value="yes"
+		 id="question_3-5" />  
+	  <label for="question_3-5" i18n:translate="util.Yes">Yes</label>
+	  (<a href="" id="derivatives" class="helpLink"
+	      i18n:translate="util.more_info">more info</a>)
+	  <br />
+		
+	  <input type="radio" name="field_derivatives" value="sa" 
+		 id="question_3-6" /> 
+	  <label for="question_3-6">
+	    <span i18n:translate="">Yes, as long as others share alike</span>
+	    (<a href="" class="helpLink" id="sharealike"
+		i18n:translate="util.more_info">more info</a>) 
+	  </label>
+
+	  <br/>
+
+	  <input type="radio"  name="field_derivatives" value="n" 
+		 id="question_3-7" /> 
+	  <label for="question_3-7" i18n:translate="util.No">No</label>
+	  (<a href="" id="noderivatives" class="helpLink"
+	      i18n:translate="util.more_info">more info</a>) 
+	  <br />
+			
+	</p>
+
 	<div id="help_derivatives">
 	  <div class="hd">
 	    <span i18n:translate="">Allow Derivative Works</span>
@@ -253,25 +158,106 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
 	  </div>
 	</div>
 
+	<p>
+	  <span tal:omit-tag="" i18n:translate="license.jurisdiction_question">
+	    Jurisdiction of your license
+	  </span> 
+	  (<a href="" class="helpLink" id="jurisdiction"
+	      i18n:translate="util.more_info">more info</a>) 
+      
+	  <br />
+
+	  <select name="field_jurisdiction"
+		  tal:define="selected view/selected_jurisdiction">
+	    <span tal:omit-tag=""
+		  tal:repeat="j python:context.license_class().jurisdictions()">
+	      <option value="" selected="selected"
+		      tal:condition="python: j != '-' and selected == j"
+		      tal:attributes="value j;" >
+		<span tal:content="string:country.${j}"
+		      tal:omit-tag=""
+		      i18n:translate="" />
+	      </option>
+	      <option value=""
+		      tal:condition="python: j != '-' and selected != j"
+		      tal:attributes="value j;">
+		<span tal:content="string:country.${j}"
+		      tal:omit-tag=""
+		      i18n:translate="" />
+	      </option>
+	    </span>
+	    <option value=""  
+		    tal:condition="python: selected == '-'"
+		    i18n:translate="" selected="selected">
+	      None of the above
+	    </option> 
+	    <option value=""  
+		    tal:condition="python: selected != '-'"
+		    i18n:translate="" >
+	      None of the above
+	    </option>
+
+	  </select>
+	  
+	</p>
+
+	<div id="help_jurisdiction">
+	  <div class="hd">
+	    <span i18n:translate="util.Jurisdiction">Jurisdiction</span>
+	  </div>
+	  <div class="bd">
+	    <p i18n:translate="license.jurisdiction_help">
+	    </p>
+	  </div>
+	</div>
+			
+	<div metal:use-macro="context/@@metadata/macros/more-metadata" />
+
+	<input type="hidden" name="lang" value="en"
+	       tal:attributes="value view/target_lang" /> 
+	<input type="hidden" name="language" value="en"
+	       tal:attributes="value view/target_lang" /> 
+	<input type="hidden" name="n_questions" value="3" />
+	<input type="submit" 
+               i18n:attributes="value license.Select_a_License;" 
+               value="Select a License" />
+      </form>
+    </div>
+    <br />
+
+    <div metal:use-macro="context/@@support/macros/engine_languages"></div>
+
+  </div>
+
+  <div metal:fill-slot="sidebar" 
+       id="features" tal:omit-tag="">
     <h4 i18n:translate="license.what_you" style="margin-bottom:10px;">
       What You Can Do Here
     </h4>
 
+    <p i18n:translate="license.explain">
+      Creative Commons helps you publish your work online while
+      letting others know exactly what they can and can't do with your
+      work. When you choose a license, we provide you with tools and
+      tutorials that let you add license information to our own site,
+      or to one of several free hosting services that have
+      incorporated Creative Commons.
+    </p>
 
-<p i18n:translate="license.explain">Creative Commons helps you publish your work online while letting others know exactly what they can and can't do with your work. When you choose a license, we provide you with tools and tutorials that let you add license information to our own site, or to one of several free hosting services that have incorporated Creative Commons.</p>
+    <a href="/about/licenses">
+      <span i18n:translate="license.view_explanation">
+	View an explanation of all our licenses.
+      </span>
+    </a>
 
-<a href="/about/licenses"><span i18n:translate="license.view_explanation">View an explanation of all our licenses.</span></a>
-
-<h4 i18n:translate="license.or_choose">Or Choose:</h4>
+    <h4 i18n:translate="license.or_choose">Or Choose:</h4>
 
     <p style="font-size:11px;">
       <a href="/license/publicdomain-2">
 	<img src="/images/license/40publicdomain.gif" width="40"
-	     height="40" style="border: 0; text-align:center;"
-         i18n:attributes="alt" alt="Public Domain"
-    />
+	     height="40" align="middle" border="0" />
       </a> 
-      <a href="/license/publicdomain-2">
+      <a href="/license/publicdomain">
 	<span i18n:translate="licenses.pretty_publicdomain">
 	  Public Domain
         </span>
@@ -283,9 +269,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
     <p style="font-size:11px;">
       <a href="/license/cc-gpl">
 	<img src="/images/license/40gnugpl.gif" width="40" height="40"
-	     style="border: 0; text-align:center;"
-         i18n:attributes="alt" alt="GNU GPL"    
-    />
+	     align="middle" border="0" />
       </a>
       <a href="/license/cc-gpl" i18n:translate="util.CC_GNU_GPL">
 	CC-GNU GPL
@@ -295,9 +279,7 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
     <p style="font-size:11px;">
       <a href="/license/cc-lgpl">
 	<img src="/images/license/40gnulgpl.gif" width="40"
-	     height="40" style="border: 0; text-align:center;"
-         i18n:attributes="alt" alt="GNU LGPL"    
-    />
+	     height="40" align="middle" border="0" />
       </a>
       <a href="/license/cc-lgpl" i18n:translate="util.CC_GNU_LGPL">
 	CC-GNU LGPL
@@ -307,16 +289,14 @@ With a Creative Commons license, <strong>you keep your copyright</strong> but al
     <p style="font-size:11px;"> 
       <a href="/licenses/BSD/">
 	<img src="/images/license/40bsd.png" width="40" height="40"
-	     style="border: 0; text-align:center;"
-         i18n:attributes="alt" alt="BSD"
-    />
+	     align="middle" border="0" />
       </a>
       <a href="/licenses/BSD/" i18n:translate="util.BSD">
 	BSD
       </a>
     </p>
 
-</div>
+  </div>
 
 </body>
 </html>
