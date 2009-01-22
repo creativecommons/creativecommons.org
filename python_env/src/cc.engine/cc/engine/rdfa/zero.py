@@ -48,7 +48,7 @@ class Metadata(object):
 
         if work_href:
             if not no_title:
-                work = '<a href="%s"><span about="%s" property="dc:title">%s</span></a>' % (work_href, work_href, work)
+                work = '<a href="%s"><span property="dc:title">%s</span></a>' % (work_href, work)
                 pass
             else:
                 work = '<a href="%s">%s</a>' % (work_href, work)
@@ -60,8 +60,7 @@ class Metadata(object):
                          )
 
         template = """<p xmlns:cc="http://creativecommons.org/ns#"
-        xmlns:dc="http://purl.org/dc/elements/1.1/"
-        about="%(work_url)s" rel="cc:licenseOffer">
+        xmlns:dc="http://purl.org/dc/elements/1.1/" rel="cc:licenseOffer">
   <a rel="license"
      href="%(license_uri)s" style="text-decoration:none;">
      <img src="%(IMAGE_BASE)s/88x31/cc-zero.png" border="0" alt="" />
@@ -144,7 +143,7 @@ class Metadata(object):
             if no_title:
                 work = '<a href="%s">%s</a>' % (work_href, work)
             else:
-                work = '<a href="%s"><span about="%s" property="dc:title">%s</span></a>' % (work_href, work_href, work)
+                work = '<a href="%s"><span property="dc:title">%s</span></a>' % (work_href, work)
                 
         work_data.update(dict(work=work, 
                               actor=actor,
@@ -153,7 +152,7 @@ class Metadata(object):
                          )
 
         template = """<p xmlns:cc="http://creativecommons.org/ns#"
-        xmlns:dc="http://purl.org/dc/elements/1.1/" about="%(work_url)s" rel="cc:licenseOffer">
+        xmlns:dc="http://purl.org/dc/elements/1.1/" rel="cc:licenseOffer">
 <a rel="license"
    href="%(license_uri)s" style="text-decoration:none;">
    <img src="%(IMAGE_BASE)s/88x31/cc-zero.png" border="0" alt="CC0" /></a>

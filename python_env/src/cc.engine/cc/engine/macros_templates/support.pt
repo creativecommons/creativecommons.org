@@ -26,14 +26,14 @@ setCookie('lang','%s', expiry, '/');
 <metal:translations
      metal:define-macro="translations">
 
-<div style="width: 620px; margin-left: auto; margin-right: auto; text-align: center;">
+<div id="languages">
 <span tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;" i18n:translate="deed.view_in">This page is available in the following languages:</span>
 <br/>
 
 <div tal:omit-tag=""
      tal:repeat="lang context/@@support/active_languages">
 
-<a href="#" title="Catal%G�%@" hreflang="ca" 
+<a href="#" title="English" hreflang="ca" 
    rel="alternate nofollow" xml:lang="ca" 
    tal:content="lang/name"
    tal:attributes="title lang/name;
@@ -41,7 +41,7 @@ setCookie('lang','%s', expiry, '/');
                    hreflang lang/code;
                    xml:lang     lang/code;
                    "
-   >Catal%G�%@f</a>
+   >English</a>
 
 </div>
 </div>

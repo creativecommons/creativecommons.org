@@ -148,11 +148,15 @@
   </browser:pages>
 
   <include package=".xmp" />
-  <!--
   <include package=".pd" />
+
+  <!--
+  
+    New-style PD Assertion
+  
+  <include package=".publicdomain" />
   -->
 
-  <include package=".publicdomain" />
   <include package=".zero" />
 
   <include package=".licenses" />

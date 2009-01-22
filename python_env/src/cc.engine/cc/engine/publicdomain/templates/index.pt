@@ -215,17 +215,17 @@
 	<table>
 	  <tr>
 	    <td valign="bottom" align="center">
-	      <img src="http://labs.creativecommons.org/zero/images/88x31/cc-zero.png"
+	      <img src="http://labs.creativecommons.org/demos/zero/images/88x31/cc-zero.png"
 	      style="border:0px;" /><br/>
 	      <input type="radio" name="button" checked
-             onclick="swapbutton('http://labs.creativecommons.org/zero/images/88x31/cc-zero.png')"
+             onclick="swapbutton('http://labs.creativecommons.org/demos/zero/images/88x31/cc-zero.png')"
 	      />
 	    </td>
 	    <td valign="bottom" align="center">
-	      <img src="http://labs.creativecommons.org/zero/images/80x15/cc-zero.png"
+	      <img src="http://labs.creativecommons.org/demos/zero/images/80x15/cc-zero.png"
 	      style="border:0px;" /><br/>
 	      <input type="radio" name="button"
-             onclick="swapbutton('http://labs.creativecommons.org/zero/images/80x15/cc-zero.png')"
+             onclick="swapbutton('http://labs.creativecommons.org/demos/zero/images/80x15/cc-zero.png')"
 	      />
 	    </td>
 

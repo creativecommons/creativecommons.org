@@ -11,7 +11,7 @@ class Zed(object):
 
     implements(interfaces.ILicense)
 
-    URI_BASE = 'http://staging.creativecommons.org/licenses'
+    URI_BASE = 'http://creativecommons.org/licenses'
 
     def __init__(self, path):
 
@@ -35,7 +35,7 @@ class Zed(object):
             self._name = _("Public Domain Assertion")
 
         elif self._id == 'zero':
-            self._name = _("CC0 Waiver 1.0 Universal")
+            self._name = _("CC0 1.0 Universal")
 
     @property
     def license_class(self):

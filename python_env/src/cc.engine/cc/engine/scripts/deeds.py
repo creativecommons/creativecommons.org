@@ -137,6 +137,7 @@ def cli():
 
     # parser the command line options
     (options, args) = create_option_parser().parse_args()
+    print [l.uri for l in get_licenses(options)]
 
     # determine the absolute output dir
     output_dir = os.path.abspath( os.path.join( 

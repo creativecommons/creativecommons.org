@@ -10,34 +10,36 @@
 
   <metal:headers fill-slot="headers">
     <base href="" tal:attributes="href string:${context/@@absolute_url}/zero/" />
-    <link rel="stylesheet" type="text/css" 
-	  href="http://yui.yahooapis.com/2.4.1/build/button/assets/skins/sam/button.css">
-    <link rel="stylesheet" type="text/css"
-	  href="http://yui.yahooapis.com/2.4.1/build/container/assets/container.css">
 
-<script type="text/javascript"
-	src="ext-2.0/adapter/yui/yui-utilities.js"
-	tal:attributes="src
-	context/++resource++cc/ext-2.0/adapter/yui/yui-utilities.js"></script>
-<script type="text/javascript"
-	src="ext-2.0/adapter/yui/ext-yui-adapter.js"
-	tal:attributes="src
-	context/++resource++cc/ext-2.0/adapter/yui/ext-yui-adapter.js"></script>
-<script type="text/javascript"
-	src="ext-2.0/ext-all.js"
-	tal:attributes="src
-	context/++resource++cc/ext-2.0/ext-all.js"></script>
+    <link rel="stylesheet" type="text/css" 
+	  href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
+    <link rel="stylesheet" type="text/css"
+	  href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
+
+    <script type="text/javascript" 
+	    src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript" 
+	    src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="zero.css"
 	  tal:attributes="href context/++resource++cc/includes/zero.css" />
 
-    <link rel="stylesheet" type="text/css" href="ext-all.css"
-	  tal:attributes="href
-	  context/++resource++cc/ext-2.0/resources/css/ext-all.css" />
-
-    <script src="zero_chooser.js" type="text/javascript"
-       tal:attributes="src context/++resource++cc/includes/zero_chooser.js">
+    <script src="help.js" type="text/javascript"
+       tal:attributes="src context/++resource++cc/includes/help.js" >
     </script>
+
+    <script type="text/javascript">
+
+YAHOO.util.Event.onDOMReady(function() {
+
+    // init the buttons
+    new YAHOO.widget.Button("do-begin");
+    new YAHOO.widget.Button("do-learn-more");
+
+});
+
+    </script>
+
   </metal:headers>
 
 </head>
@@ -47,237 +49,52 @@
 <metal:left fill-slot="sidebar">
 </metal:left>
 
-<metal:title fill-slot="page-header-title"></metal:title>
+<metal:title fill-slot="page-header-title">CC0</metal:title>
 
 <metal:body fill-slot="body">
-<div class="yui-skin-sam">
 
-  <div id="zero-wizard">
-
+    <div class="yui-content">
     <div id="page-welcome" class="yui-module">
-      <div class="hd">CC0</div>
       <div class="bd">
 	<p>
-	  CC0 enables you to indicate that a work is free of copyright
-	  and any related or neighboring rights such as moral rights,
-	  publicity or privacy rights, rights protecting against
-	  unfair competition and any rights protecting the extraction,
-	  dissemination and reuse of data. 
+Using CC0, you can waive all copyrights and related or neighboring
+rights that you have over your work, such as your moral rights (to the
+extent waivable), your publicity or privacy rights, rights you have
+protecting against unfair competition, and database rights and rights
+protecting the extraction, dissemination and reuse of data.
 	</p>
+
+<p>
+You can only do this if you are the owner of  the rights to the work
+or you have authority from the person who owns those rights.
+</p>
 
 	<p>
-	  Using CC0, you can
-	  <strong>Waive</strong> all copyrights and related or neighboring 
-	  interests that you have over a work. You can only do this if
-	  you
-	  hold <a href="http://wiki.creativecommons.org/Before_Licensing#Make_sure_you_have_the_rights">the
-	  necessary rights for the work</a>. 
+<span id="mycheckbox" class="yui-button">
+    <span class="first-child">
+	  <a id="do-learn-more" href="/license/zero/learn-more/"
+	     i18n:translate="">learn more</a>
+    </span>
+</span>
+
+<span id="mycheckbox" class="yui-button">
+    <span class="first-child">
+
+	  <a id="do-begin" href="./waiver" i18n:translate="">
+	    begin &raquo;
+	  </a>
+    </span>
+</span>
+
 	</p>
-	<p>
- 	  <span id="radio1" class="yui-button yui-radio-button">
-            <span class="first-child">
-              <button type="submit" name="zero-type" value="waiver"
-		      id="do-begin" i18n:translate="">
-                continue
-              </button>
-            </span>
-	  </span>
-	</p>
 
       </div>
-
-    </div>
-
-    <div id="page-details" class="x-hide-display">
-
-
-<metal:waiver define-macro="waiver-ui">
-
-<div id="waiver_ui" class="yui-module">
-  <div class="hd">CC0 Waiver</div>
-  <div class="bd">
-    <form id="form-details" action="confirm-waiver">
-      <input type="hidden" name="license-class" value="zero" />
-
-      <div class="form-row">
-	<div class="form-question">Your name:</div>
-	<div class="form-answer"><input name="name" class="form-field"/></div>
-      </div>
-      <div class="form-row">
-	<div class="form-question">Your URL:</div>
-	<div class="form-answer"><input name="actor_href"
-					class="form-field"/>
-	</div>
-      </div>
-
-      <div class="form-row">
-	<div class="form-question">Title of your work:</div>
-	<div class="form-answer"><input name="work_title" class="form-field"/></div>
-      </div>
-
-      <div class="form-row">
-	<div class="form-question">URL of your work:</div>
-	<div class="form-answer"><input name="work_url" class="form-field"/></div>
-      </div>
-
-      <div class="form-row">
-	<div class="form-question">
-	  <input name="confirm" type="checkbox"
-	  id="confirm_details" class="form-field"
-	  value="confirm" />
-	</div>
-	<div class="form-answer">
-	  <label for="confirm">I hereby waive all rights to this work. 
-	    To the extent possible 
-	    under the law, I waive all copyright, moral rights, database
-	    rights, and any other rights that might be asserted over the
-	    work.
-	  </label>
-	</div>
-      </div>
-
-      <div class="form-row">
-	<div class="form-question">&nbsp;</div>
-	<div class="form-answer">
-	  <input type="submit" id="details-submit" 
-		 name="field1" value="continue"> 
-	</div>
-      </div>
-
-    </form>
-
-    <br clear="both"/>&nbsp;
-  </div>
-</div>
-</metal:waiver>
-
-
-    </div>
-
-
-    <div id="page-confirmation" class="x-hide-display">
-
-<metal:confirm-waiver define-macro="confirm-waiver">
-      <div id="confirm-waiver" class="yui-module">
-	<div class="hd">Confirm CC0 Waiver</div>
-	<div class="bd">
-
-	    <p>Are you certain you wish to waive all rights to your
-	      work?  Once these rights are waived, you can not reclaim
-	      them. 
-	    </p>
-
-	    <p>
-	      In particular, if you are an artist or author who
-	      depends upon copyright for your income, Creative Commons
-	      <strong>does not recommend</strong> that you use this tool. 
-	    </p>
-
-	    <p>
-	      If you don't own the rights to this work, and <strong>no
-	      one</strong> owns them,
-	      the <a href="/license/publicdomain">Public Domain
-	      Assertion</a> may be what you're looking for.
-	    </p>
-
-	    <div class="form-row yui-buttongroup">
-	      <span class="yui-button">
-		<span class="first-child">
-		  <button type="submit" id="decline-submit"
-			  name="decline">
-		    No, I Don't Waive
-		  </button>
-		</span>
-	      </span>
-
-	      <span class="yui-button">
-		<span class="first-child">
-		  <button type="submit" id="confirm-submit" 
-			  name="confirm" class="alert">
-		    Yes, I Waive
-		  </button>
-		</span>
-	      </span>
-	    </div>
-
-	</div>
-      </div>
-</metal:confirm-waiver>
-
-    </div>
-
-
-    <div id="page-results" class="x-hide-display">
-
-  <div id="results" class="yui-module">
-    <div class="hd">CC0 Results</div>
-    <div class="bd" id="dedication-results">
-
-      <p>Choose which style of button you'd like on your webpage:</p>
-
-      <div class="licensebox" align="center">
-	<table>
-	  <tr>
-	    <td valign="bottom" align="center">
-	      <img src="http://labs.creativecommons.org/zero/images/88x31/cc-zero.png"
-	      style="border:0px;" /><br/>
-	      <input type="radio" name="button" checked
-             onclick="swapbutton('http://labs.creativecommons.org/zero/images/88x31/cc-zero.png')"
-	      />
-	    </td>
-	    <td valign="bottom" align="center">
-	      <img src="http://labs.creativecommons.org/zero/images/80x15/cc-zero.png"
-	      style="border:0px;" /><br/>
-	      <input type="radio" name="button"
-             onclick="swapbutton('http://labs.creativecommons.org/zero/images/80x15/cc-zero.png')"
-	      />
-	    </td>
-
-	  </tr>
-	</table>
-      </div>
-
-      <span id="waiver-results-leadin">
-	Here's a preview of how your waiver will appear on your site:
-      </span>
-
-      <div class="preview" id="results-preview">
-      </div>
-
-      <div class="hd" style="margin-top:10px;">What to do next</div>
-      <h3>Have a website?</h3>
-      <p>Copy the text below to your Web site to let your visitors
-      know what license applies to your works.</p> 
-      <textarea id="results-html" cols="70" rows="6" onfocus="select()">
-      </textarea>
-    </div>
-    <div class="ft"></div>
-  </div>
-
-  <div id="page-bailout" class="x-hide-display">
-
-    <metal:bailout define-macro="post-bailout">
-      <div id="bailout" class="yui-module">
-	<div class="hd">CC0: Declined</div>
-	<div class="bd">
-	  <p>What would you like to do next?</p>
-	  <ul>
-	    <li><a href="./index.html">start over</a></li>
-	    <li><a href="http://wiki.creativecommons.org/CcZero">learn more</a></li>
-	  </ul>
-	</div>
-      </div>
-    </metal:bailout>
-
-  </div>
-
 
     </div>
 
   </div>
   
 
-</div>
 </metal:body>
 
 </body>

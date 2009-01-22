@@ -5,17 +5,45 @@
       metal:use-macro="context/@@engine/macros/page"
       i18n:domain="cc_org">
 <head>
-  <title metal:fill-slot="title">CC&empty;: Waiver</title>
+  <title metal:fill-slot="title">CC0: Waiver</title>
 
 
   <metal:headers fill-slot="headers">
-    <link rel="stylesheet" type="text/css" 
-	  href="http://yui.yahooapis.com/2.4.1/build/button/assets/skins/sam/button.css">
-    <link rel="stylesheet" type="text/css"
-	  href="http://yui.yahooapis.com/2.4.1/build/container/assets/container.css">
+
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
+
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="zero.css"
 	  tal:attributes="href context/++resource++cc/includes/zero.css" />
+
+    <script src="help.js" type="text/javascript"
+       tal:attributes="src context/++resource++cc/includes/help.js" >
+    </script>
+
+    <script type="text/javascript">
+
+YAHOO.namespace("cc.zero");
+
+YAHOO.cc.zero.on_click = function(event) {
+
+    YAHOO.util.Dom.get("details-submit").disabled = !(
+        YAHOO.util.Dom.get("confirm_details").checked &&
+        YAHOO.util.Dom.get("confirm_understand").checked);
+
+} // on_click
+
+YAHOO.util.Event.onDOMReady(function() {
+
+    // connect event handlers for the check boxes
+    YAHOO.util.Event.addListener("confirm_details", "click", YAHOO.cc.zero.on_click);
+    YAHOO.util.Event.addListener("confirm_understand", "click", YAHOO.cc.zero.on_click);
+
+});
+    </script>
 
   </metal:headers>
 
@@ -26,12 +54,434 @@
 <metal:left fill-slot="sidebar">
 </metal:left>
 
-<metal:title fill-slot="page-header-title">CC&empty;</metal:title>
+<metal:title fill-slot="page-header-title">CC0 Waiver</metal:title>
 
 <metal:body fill-slot="body">
 <div class="yui-skin-sam">
 
-<div metal:use-macro="context/@@zero/index.html/macros/waiver-ui" />
+<div id="waiver_ui" class="yui-module">
+  <div class="bd">
+    <p>
+      These fields are optional, but will be embedded in the HTML
+      generated for your work. This allows users of your work to
+      determine how to contact you or where to go for more information
+      about the work. 
+      <a href="" id="embedded_metadata" class="helpLink">
+	<img src="images/information.png"
+	     tal:attributes="src 
+			     context/++resource++cc/images/information.png"
+	     i18n:attributes="alt" alt="Information"
+	     /></a>
+
+    </p>
+
+    <div id="help_embedded_metadata">
+      <div class="hd" i18n:translate="">Embedded Metadata</div>
+      <div class="bd" i18n:translate="license.metadata_help">
+	<p>
+	  The information is embedded in a software readable format.
+	  This allows search engines to index additional information
+	  about your work and allows people coming to the license deed
+	  from your page to see information on the deed about how to
+	  attribute your work.  
+	</p>
+	<p>
+	  <a href="http://wiki.creativecommons.org/Metadata">More
+	    information</a> on Creative Commons metadata is available if
+	  you want to find out more.
+	</p>
+      </div>
+    </div>
+
+    <form id="form-details" action="confirm">
+      <input type="hidden" name="license-class" value="zero" />
+
+      <div class="form-row">
+	<div class="form-question">Your name:</div>
+	<div class="form-answer"><input name="name"
+					class="form-field"/>
+	</div>
+      </div>
+
+      <div class="form-row">
+	<div class="form-question">Your URL:</div>
+	<div class="form-answer"><input name="actor_href"
+					class="form-field"/>
+	  <a href="" id="url" class="helpLink">
+	    <img src="images/information.png"
+		 tal:attributes="src 
+				 context/++resource++cc/images/information.png"
+		 i18n:attributes="alt" alt="Information"
+		 /></a>
+	</div>
+      </div>
+
+    <div id="help_url" class="help_panel">
+      <div class="hd">Your URL</div>
+      <div class="bd">
+	The URL where people can find more information about 
+	the creator or rights holder.
+      </div>
+    </div>
+
+
+      <div class="form-row">
+	<div class="form-question">Title of your work:</div>
+	<div class="form-answer">
+	  <input name="work_title" class="form-field"/>
+	</div>
+      </div>
+
+      <div class="form-row">
+	<div class="form-question">Country:</div>
+	<div class="form-answer">
+	  <select name="work_jurisdiction" class="form-field">
+	    <option value="-">---</option>
+<OPTION value="0" > Afghanistan </OPTION>
+
+<OPTION value="1" > Albania </OPTION>
+<OPTION value="2" > Algeria </OPTION>
+<OPTION value="3" > American Samoa </OPTION>
+<OPTION value="4" > Andorra </OPTION>
+<OPTION value="5" > Angola </OPTION>
+<OPTION value="6" > Anguilla </OPTION>
+
+<OPTION value="7" > Antarctica </OPTION>
+<OPTION value="8" > Antigua and Barbuda </OPTION>
+<OPTION value="9" > Argentina </OPTION>
+<OPTION value="10" > Armenia </OPTION>
+<OPTION value="11" > Aruba </OPTION>
+<OPTION value="12" > Australia </OPTION>
+
+<OPTION value="13" > Austria </OPTION>
+<OPTION value="14" > Azerbaijan </OPTION>
+<OPTION value="15" > Bahamas </OPTION>
+<OPTION value="16" > Bahrain </OPTION>
+<OPTION value="17" > Bangladesh </OPTION>
+<OPTION value="18" > Barbados </OPTION>
+
+<OPTION value="19" > Belarus </OPTION>
+<OPTION value="20" > Belgium </OPTION>
+<OPTION value="21" > Belize </OPTION>
+<OPTION value="22" > Benin </OPTION>
+<OPTION value="23" > Bermuda </OPTION>
+<OPTION value="24" > Bhutan </OPTION>
+
+<OPTION value="25" > Bolivia </OPTION>
+<OPTION value="26" > Bosnia and Herzegovina </OPTION>
+<OPTION value="27" > Botswana </OPTION>
+<OPTION value="28" > Bouvet Island </OPTION>
+<OPTION value="29" > Brazil </OPTION>
+<OPTION value="30" > British Indian Ocean Territory </OPTION>
+
+<OPTION value="31" > Brunei </OPTION>
+<OPTION value="32" > Darussalam </OPTION>
+<OPTION value="33" > Bulgaria </OPTION>
+<OPTION value="34" > Burkina Faso </OPTION>
+<OPTION value="35" > Burundi </OPTION>
+<OPTION value="36" > Cambodia </OPTION>
+
+<OPTION value="37" > Cameroon </OPTION>
+<OPTION value="38" > Canada </OPTION>
+<OPTION value="39" > Cape Verde </OPTION>
+<OPTION value="40" > Cayman Islands </OPTION>
+<OPTION value="41" > Central African Republic </OPTION>
+<OPTION value="42" > Chad </OPTION>
+
+<OPTION value="43" > Chile </OPTION>
+<OPTION value="44" > China </OPTION>
+<OPTION value="45" > Christmas Island </OPTION>
+<OPTION value="46" > Cocos Islands </OPTION>
+<OPTION value="47" > Colombia </OPTION>
+<OPTION value="48" > Comoros </OPTION>
+
+<OPTION value="49" > Congo </OPTION>
+<OPTION value="50" > Cook Islands </OPTION>
+<OPTION value="51" > Costa Rica </OPTION>
+<OPTION value="52" > Cote D'Ivoire </OPTION>
+<OPTION value="53" > Croatia </OPTION>
+<OPTION value="54" > Cyprus </OPTION>
+
+<OPTION value="55" > Czech Republic </OPTION>
+<OPTION value="56" > Denmark </OPTION>
+<OPTION value="57" > Djibouti </OPTION>
+<OPTION value="58" > Dominica </OPTION>
+<OPTION value="59" > Dominican Republic </OPTION>
+<OPTION value="60" > East Timor </OPTION>
+
+<OPTION value="61" > Ecuador </OPTION>
+<OPTION value="62" > Egypt </OPTION>
+<OPTION value="63" > El Salvador </OPTION>
+<OPTION value="64" > Equatorial Guinea </OPTION>
+<OPTION value="65" > Eritrea </OPTION>
+<OPTION value="66" > Estonia </OPTION>
+
+<OPTION value="67" > Ethiopia </OPTION>
+<OPTION value="68" > Falkland Islands </OPTION>
+<OPTION value="69" > Faeroe Islands </OPTION>
+<OPTION value="70" > Fiji </OPTION>
+<OPTION value="71" > Finland </OPTION>
+<OPTION value="72" > France </OPTION>
+
+<OPTION value="73" > French Guiana </OPTION>
+<OPTION value="74" > French Polynesia </OPTION>
+<OPTION value="75" > Gabon </OPTION>
+<OPTION value="76" > Gambia </OPTION>
+<OPTION value="77" > Georgia </OPTION>
+<OPTION value="78" > Germany </OPTION>
+
+<OPTION value="79" > Ghana </OPTION>
+<OPTION value="80" > Gibraltar </OPTION>
+<OPTION value="81" > Great Britain </OPTION>
+<OPTION value="82" > Greece </OPTION>
+<OPTION value="83" > Greenland </OPTION>
+<OPTION value="84" > Grenada </OPTION>
+
+<OPTION value="85" > Guadeloupe </OPTION>
+<OPTION value="86" > Guam </OPTION>
+<OPTION value="87" > Guatemala </OPTION>
+<OPTION value="88" > Guinea </OPTION>
+<OPTION value="89" > Guinea-Bissau </OPTION>
+<OPTION value="90" > Guyana </OPTION>
+
+<OPTION value="91" > Haiti </OPTION>
+<OPTION value="92" > Heard and McDonald Islands </OPTION>
+<OPTION value="93" > Honduras </OPTION>
+<OPTION value="94" > Hong Kong </OPTION>
+<OPTION value="95" > Hrvatska </OPTION>
+<OPTION value="96" > Hungary </OPTION>
+
+<OPTION value="97" > Iceland </OPTION>
+<OPTION value="98" > India </OPTION>
+<OPTION value="99" > Indonesia </OPTION>
+<OPTION value="100" > Ireland </OPTION>
+<OPTION value="101" > Israel </OPTION>
+<OPTION value="102" > Italy </OPTION>
+
+<OPTION value="103" > Ivory Coast </OPTION>
+<OPTION value="104" > Jamaica </OPTION>
+<OPTION value="105" > Japan </OPTION>
+<OPTION value="106" > Jordan </OPTION>
+<OPTION value="107" > Kazakhstan </OPTION>
+<OPTION value="108" > Keeling Islands </OPTION>
+
+<OPTION value="109" > Kenya </OPTION>
+<OPTION value="110" > Kiribati </OPTION>
+<OPTION value="111" > Korea-South </OPTION>
+<OPTION value="112" > Kuwait </OPTION>
+<OPTION value="113" > Kyrgyzstan </OPTION>
+<OPTION value="114" > Laos </OPTION>
+
+<OPTION value="115" > Latvia </OPTION>
+<OPTION value="116" > Lebanon </OPTION>
+<OPTION value="117" > Lesotho </OPTION>
+<OPTION value="118" > Liberia </OPTION>
+<OPTION value="119" > Liechtenstein </OPTION>
+<OPTION value="120" > Lithuania </OPTION>
+
+<OPTION value="121" > Luxembourg </OPTION>
+<OPTION value="122" > Macau </OPTION>
+<OPTION value="123" > Macedonia </OPTION>
+<OPTION value="124" > Madagascar </OPTION>
+<OPTION value="125" > Malawi </OPTION>
+<OPTION value="126" > Malaysia </OPTION>
+
+<OPTION value="127" > Maldives </OPTION>
+<OPTION value="128" > Mali </OPTION>
+<OPTION value="129" > Malta </OPTION>
+<OPTION value="130" > Marshall Islands </OPTION>
+<OPTION value="131" > Martinique </OPTION>
+<OPTION value="132" > Mauritania </OPTION>
+
+<OPTION value="133" > Mauritius </OPTION>
+<OPTION value="134" > Mayotte </OPTION>
+<OPTION value="135" > Mexico </OPTION>
+<OPTION value="136" > Micronesia </OPTION>
+<OPTION value="137" > Moldova </OPTION>
+<OPTION value="138" > Monaco </OPTION>
+
+<OPTION value="139" > Mongolia </OPTION>
+<OPTION value="140" > Montserrat </OPTION>
+<OPTION value="141" > Morocco </OPTION>
+<OPTION value="142" > Mozambique </OPTION>
+<OPTION value="143" > Myanmar </OPTION>
+<OPTION value="144" > Namibia </OPTION>
+
+<OPTION value="145" > Nauru </OPTION>
+<OPTION value="146" > Nepal </OPTION>
+<OPTION value="147" > Netherlands </OPTION>
+<OPTION value="148" > Netherlands Antilles </OPTION>
+<OPTION value="149" > New Caledonia </OPTION>
+<OPTION value="150" > New Zealand </OPTION>
+
+<OPTION value="151" > Nicaragua </OPTION>
+<OPTION value="152" > Niger </OPTION>
+<OPTION value="153" > Nigeria </OPTION>
+<OPTION value="154" > Niue </OPTION>
+<OPTION value="155" > Norfolk Island </OPTION>
+<OPTION value="156" > Northern Mariana Islands </OPTION>
+
+<OPTION value="157" > Norway </OPTION>
+<OPTION value="158" > Oman </OPTION>
+<OPTION value="159" > Pakistan </OPTION>
+<OPTION value="160" > Palau </OPTION>
+<OPTION value="161" > Panama </OPTION>
+<OPTION value="162" > Papua New Guinea </OPTION>
+
+<OPTION value="163" > Paraguay </OPTION>
+<OPTION value="164" > Peru </OPTION>
+<OPTION value="165" > Philippines </OPTION>
+<OPTION value="166" > Pitcairn </OPTION>
+<OPTION value="167" > Poland </OPTION>
+<OPTION value="168" > Portugal </OPTION>
+
+<OPTION value="169" > Puerto Rico </OPTION>
+<OPTION value="170" > Qatar </OPTION>
+<OPTION value="171" > Reunion </OPTION>
+<OPTION value="172" > Romania </OPTION>
+<OPTION value="173" > Russia </OPTION>
+<OPTION value="174" > Rwanda </OPTION>
+
+<OPTION value="175" > S. Georgia and S. Sandwich Isls. </OPTION>
+<OPTION value="176" > Saint Kitts and Nevis </OPTION>
+<OPTION value="177" > Saint Lucia </OPTION>
+<OPTION value="178" > Saint Vincent and the Grenadines </OPTION>
+<OPTION value="179" > Samoa </OPTION>
+<OPTION value="180" > San Marino </OPTION>
+
+<OPTION value="181" > Sao Tome and Principe </OPTION>
+<OPTION value="182" > Saudi Arabia </OPTION>
+<OPTION value="183" > Senegal </OPTION>
+<OPTION value="184" > Seychelles </OPTION>
+<OPTION value="185" > Sierra Leone </OPTION>
+<OPTION value="186" > Singapore </OPTION>
+
+<OPTION value="187" > Slovak Republic </OPTION>
+<OPTION value="188" > Slovenia </OPTION>
+<OPTION value="189" > Solomon Islands </OPTION>
+<OPTION value="190" > Somalia </OPTION>
+<OPTION value="191" > South Africa </OPTION>
+<OPTION value="192" > Spain </OPTION>
+
+<OPTION value="193" > Sri Lanka </OPTION>
+<OPTION value="194" > St. Helena </OPTION>
+<OPTION value="195" > St. Pierre and Miquelon </OPTION>
+<OPTION value="196" > Sudan </OPTION>
+<OPTION value="197" > Suriname </OPTION>
+<OPTION value="198" > Svalbard and Jan Mayen Islands </OPTION>
+
+<OPTION value="199" > Swaziland </OPTION>
+<OPTION value="200" > Sweden </OPTION>
+<OPTION value="201" > Switzerland </OPTION>
+<OPTION value="202" > Taiwan </OPTION>
+<OPTION value="203" > Tajikistan </OPTION>
+<OPTION value="204" > Tanzania </OPTION>
+
+<OPTION value="205" > Thailand </OPTION>
+<OPTION value="206" > Togo </OPTION>
+<OPTION value="207" > Tokelau </OPTION>
+<OPTION value="208" > Tonga </OPTION>
+<OPTION value="209" > Trinidad and Tobago </OPTION>
+<OPTION value="210" > Tunisia </OPTION>
+
+<OPTION value="211" > Turkey </OPTION>
+<OPTION value="212" > Turkmenistan </OPTION>
+<OPTION value="213" > Turks and Caicos Islands </OPTION>
+<OPTION value="214" > Tuvalu </OPTION>
+<OPTION value="215" > Uganda </OPTION>
+<OPTION value="216" > Ukraine </OPTION>
+
+<OPTION value="217" > United Arab Emirates </OPTION>
+<OPTION value="218" > United Kingdom </OPTION>
+<OPTION value="219" > United States </OPTION>
+<OPTION value="220" > Uruguay </OPTION>
+<OPTION value="221" > Uzbekistan </OPTION>
+<OPTION value="222" > Vanuatu </OPTION>
+
+<OPTION value="223" > Vatican City State </OPTION>
+<OPTION value="224" > Venezuela </OPTION>
+<OPTION value="225" > Vietnam </OPTION>
+<OPTION value="226" > Virgin Islands-British </OPTION>
+<OPTION value="227" > Virgin Islands-U.S. </OPTION>
+<OPTION value="228" > Wallis and Futuna Islands </OPTION>
+
+<OPTION value="229" > Yemen </OPTION>
+<OPTION value="230" > Zaire </OPTION>
+<OPTION value="231" > Zambia </OPTION>
+<OPTION value="232" > Zimbabwe </OPTION>
+
+	  </select>
+
+	  <a href="" id="country" class="helpLink">
+	    <img src="images/information.png"
+		 tal:attributes="src 
+				 context/++resource++cc/images/information.png"
+		 i18n:attributes="alt" alt="Information"
+		 /></a>
+	</div>
+      </div>
+
+    <div id="help_country" class="help_panel">
+      <div class="hd">Country</div>
+      <div class="bd">
+	Jurisdiction where the work is being 
+	offered from under CC0.
+      </div>
+    </div>
+
+
+      <div class="form-row">
+	<div class="form-question">
+	  <input name="confirm" type="checkbox"
+	  id="confirm_details" class="form-field"
+	  value="confirm" />
+	</div>
+	<div class="form-answer">
+	  <label for="confirm">
+	    I hereby waive all copyright and related or neighboring
+	    rights together with all associated claims and causes of
+	    action with respect to this work to the extent possible
+	    under the law.
+	  </label>
+	</div>
+      </div>
+
+      <div class="form-row">
+	<div class="form-question">&nbsp;</div>
+	<div class="form-answer">
+	  <iframe class="form-field" src="/licenses/zero/1.0/legalcode/plain">
+	  </iframe>
+	</div>
+      </div>
+
+      <div class="form-row">
+	<div class="form-question">
+	  <input name="understand" type="checkbox"
+	  id="confirm_understand" class="form-field"
+	  value="confirm" />
+	</div>
+	<div class="form-answer">
+	  <label for="understand">
+	    I have read and understand the terms and intended legal
+	    effect of CC0, and hereby voluntarily elect to apply it to
+	    this work.
+	  </label>
+	</div>
+      </div>
+
+      <div class="form-row">
+	<div class="form-question">&nbsp;</div>
+	<div class="form-answer">
+	  <input type="submit" id="details-submit" disabled=""
+		 name="field1" value="continue"> 
+	</div>
+      </div>
+
+    </form>
+
+    <br clear="both"/>&nbsp;
+  </div>
+</div>
 
 </div>
 </metal:body>

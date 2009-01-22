@@ -7,14 +7,16 @@
       metal:define-macro="page"
       i18n:domain="cc_org">
   <head>
-    <title metal:define-slot="title">Creative Commons Deed</title>
-
-    <!--<base href="" tal:attributes="href context/license/uri" />-->
+    <title metal:define-slot="title">Creative Commons &mdash;
+      <span tal:omit-tag="" tal:content="view/license/name">
+	Attribution 3.0 Unported
+      </span>
+    </title>
 
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
 <link rel="stylesheet" type="text/css"
-      href="http://yui.yahooapis.com/2.5.1/build/container/assets/skins/sam/container.css"/> 
+      href="http://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css"/> 
 
     <link rel="stylesheet" type="text/css" 
           href="/includes/deed3.css" media="screen" 
@@ -35,14 +37,30 @@
 
     <link rel="alternate" type="application/rdf+xml" href="rdf" /> 
     <script metal:use-macro="context/@@support/macros/language_javascript" />
-    <script tal:condition="python: context.license.code not in ('zero-waive', 'zero-assert')"
-	    type="text/javascript" src="/includes/referrer/ccdeed.js"
-       tal:attributes="src context/++resource++cc/includes/referrer/ccdeed.js">
+
+    <script type="text/javascript" 
+	    src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js">
+    </script> 
+    <script type="text/javascript"
+	    src="http://yui.yahooapis.com/2.6.0/build/connection/connection-min.js">
+    </script> 
+    <script type="text/javascript"
+	    src="http://yui.yahooapis.com/2.6.0/build/json/json-min.js">
     </script>
-    <script tal:condition="python: context.license.code in ('zero-waive', 'zero-assert')"
-	    type="text/javascript" src="/includes/referrer/cczero.js"
-       tal:attributes="src context/++resource++cc/includes/referrer/cczero.js">
+
+    <script type="text/javascript" src="/includes/referrer/deed.js"
+       tal:attributes="src context/++resource++cc/includes/referrer/deed.js">
     </script>
+
+    <script type="text/javascript" 
+	    src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js">
+    </script>
+
+    <script type="text/javascript"
+	    src="/includes/deed3.js"
+	    tal:attributes="src context/++resource++cc/includes/deed3.js">
+    </script>
+
     <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
     <script type="text/javascript">
         _uacct="UA-2010376-1";  urchinTracker();
@@ -57,12 +75,6 @@
     </metal:rdf>
 
     <div id="header">
-    <p style="text-align:center">
-      <a rel="dc:creator" href="http://creativecommons.org/">
-	<span property="dc:title"
-	      i18n:translate="util.Creative_Commons">
-	  Creative Commons</span>
-    </a></p>
 
     <div metal:use-macro="context/@@support/macros/translations"></div>
     </div>
@@ -70,10 +82,19 @@
     <div id="deed" 
          tal:attributes="class view/color | green; 
                          dir   view/get_ltr_rtl; 
-                         style view/is_rtl_align;">  
+                         style view/is_rtl_align;">
+
       <div id="deed-head">
-	      <div id="cc-logo"><img src="/images/deed/cc-logo.jpg" alt="cc logo"/></div>
-	      <h1><span>Creative Commons License Deed</span></h1>
+	<div id="cc-logo">
+	  <img src="/images/deed/cc-logo.jpg" alt="cc logo">
+	</div>
+	<div id="cc-link">
+	  <a rel="dc:creator" href="http://creativecommons.org/">
+            <span property="dc:title">Creative Commons</span>
+          </a>	       
+	</div>
+	<h1><span>Creative Commons License Deed</span></h1>
+
         <div id="deed-license">
 	        <h2 metal:define-slot="license-name"></h2>
         </div>
@@ -106,7 +127,7 @@
 	      <div class="bd" i18n:translate="deed.disclaimer">
 		
   	      </div>
-	  </div>
+	    </div>
 	  </metal:disclaimer>
 
         <p style="text-align:center; margin-top:40px;">
@@ -128,7 +149,6 @@
                tal:omit-tag="">
            <a href="legalcode.eu" i18n:translate="">lang.eu</a> 
          </span>
-
          <span tal:condition="python: context.license.version == 2.5"
                tal:omit-tag="">
 
@@ -190,12 +210,13 @@ also available.
        </div>
     </div>
     <p id="footer">
+      <metal:use-this-license metal:define-slot="use-this-license">
       <a id="get_this" href="" 
 	 i18n:translate="deed.use_this_license"
 	 tal:attributes="href
-			 string:/license/results-one?license_code=${view/license_code}&jurisdiction=${view/license/jurisdiction}&version=${view/license/version}">
+			 string:/license/results-one?license_code=${view/license_code}&jurisdiction=${view/license/jurisdiction}&version=${view/license/version|nothing}&lang=${view/target_lang}">
       Use this license for your own work.</a>
-
+      </metal:use-this-license>
     </p>
 
   </body>

@@ -5,14 +5,14 @@
       metal:use-macro="context/@@engine/macros/page"
       i18n:domain="cc_org">
 <head>
-  <title metal:fill-slot="title">CC&empty;: Results</title>
+  <title metal:fill-slot="title">CC0: Results</title>
 
 
   <metal:headers fill-slot="headers">
     <link rel="stylesheet" type="text/css" 
-	  href="http://yui.yahooapis.com/2.4.1/build/button/assets/skins/sam/button.css">
+	  href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
     <link rel="stylesheet" type="text/css"
-	  href="http://yui.yahooapis.com/2.4.1/build/container/assets/container.css">
+	  href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
 
     <link rel="stylesheet" type="text/css" href="zero.css"
 	  tal:attributes="href context/++resource++cc/includes/zero.css" />
@@ -26,7 +26,7 @@
 <metal:left fill-slot="sidebar">
 </metal:left>
 
-<metal:title fill-slot="page-header-title">CC&empty;</metal:title>
+<metal:title fill-slot="page-header-title">CC0</metal:title>
 
 <metal:body fill-slot="body">
 <div class="yui-skin-sam">
@@ -45,15 +45,49 @@
   </div>
 
   <div id="results" class="yui-module" tal:condition="view/can_issue">
-    <div class="hd">Results</div>
-    <div class="bd" id="dedication-results">
-      Here's a preview of how your <span tal:replace="view/action" /> will appear on your site:
-      <div class="preview" id="results-preview"
-         tal:content="structure view/get_html">
+    <div class="bd" id="waiver-results">
+
+      <p>Choose which style of button you'd like on your webpage:</p>
+
+      <div class="licensebox" align="center">
+	<table>
+	  <tr>
+	    <td valign="bottom" align="center">
+	      <img src="http://labs.creativecommons.org/demos/zero/images/88x31/cc-zero.png"
+	      style="border:0px;" /><br/>
+	      <input type="radio" name="button" checked
+             onclick="swapbutton('http://labs.creativecommons.org/demos/zero/images/88x31/cc-zero.png')"
+	      />
+	    </td>
+	    <td valign="bottom" align="center">
+	      <img src="http://labs.creativecommons.org/demos/zero/images/80x15/cc-zero.png"
+	      style="border:0px;" /><br/>
+	      <input type="radio" name="button"
+             onclick="swapbutton('http://labs.creativecommons.org/demos/zero/images/80x15/cc-zero.png')"
+	      />
+	    </td>
+
+	  </tr>
+	</table>
       </div>
-      <textarea id="results-html" cols="75" rows="10"
-         tal:content="structure view/get_html">
-      </textarea></div>
+
+      <span id="waiver-results-leadin">
+	Here's a preview of how your waiver will appear on your site:
+      </span>
+
+      <div class="preview" id="results-preview" 
+	   tal:content="structure view/rdfa">
+      </div>
+
+      <div class="hd" style="margin-top:10px;">What to do next</div>
+      <h3>Have a website?</h3>
+      <p>Copy the text below to your Web site to let your visitors
+      know what license applies to your works.</p> 
+      <textarea id="results-html" cols="70" rows="6"
+		onfocus="select()"
+		tal:content="structure view/rdfa">
+      </textarea>
+    </div>
     <div class="ft"></div>
   </div>
 

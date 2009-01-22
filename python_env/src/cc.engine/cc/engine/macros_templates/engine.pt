@@ -9,12 +9,14 @@
     <title metal:define-slot="title">Page Title</title>
 
     <link rel="stylesheet" type="text/css"
-	  href="http://yui.yahooapis.com/2.5.0/build/container/assets/skins/sam/container.css"
+	  href="http://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css"
 	  /> 
 
     <link rel="stylesheet" type="text/css" 
           href="/wp-content/themes/cc4/style.css"
           tal:attributes="href context/++resource++cc/cc4/style.css" />
+    <link href="http://creativecommons.org/includes/progress.css" 
+	  rel="stylesheet" type="text/css" />
     <link href="http://creativecommons.org/wp-content/themes/cc4/support.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css"
           href="/wp-content/themes/cc4/engine.css"
@@ -88,14 +90,13 @@
 		    License Your Work
 		  </metal:page_title>
 		</h2>
-				
-		<div class="block">
-		  <metal:block metal:define-slot="body">
-		  </metal:block>
-		  
-		</div>
+				<div class="block">
+           <metal:block metal:define-slot="body">
+           </metal:block>
+
+						</div>
 					
-	      </div>
+					</div>
 
 	      <div id="beta" class="content-box"
                    tal:attributes="dir view/is_rtl|nothing; align view/is_rtl_align|nothing;">
