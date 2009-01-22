@@ -78,30 +78,29 @@
   	<div id="body">
 	  <div id="content">
 	    <div id="main-content">
-	      <div id="alpha" class="content-box"
-                   tal:attributes="dir view/get_ltr_rtl|nothing; 
-				   style view/is_rtl_align|nothing;">
-
+  	      <div id="title" class="block">
     		<h3 class="category"><metal:page_parent_header define-slot="page_parent_header"></metal:page_parent_header></h3>
-    		<h2 tal:attributes="dir view/get_ltr_rtl|nothing; style
-				    view/is_rtl_align|nothing;">
+    		<h2 tal:attributes="dir view/is_rtl|nothing; align
+				    view/is_rtl_align|nothing;" 
+		    i18n:translate="license.License_Your_Work">
 		  <metal:page_title define-slot="page-header-title">
-		    <span tal:omit-tag="" 
-			  i18n:translate="license.License_Your_Work">
-		      License Your Work</span>
+		    License Your Work
 		  </metal:page_title>
 		</h2>
-  		
-				<div class="block">
-           <metal:block metal:define-slot="body">
-           </metal:block>
-
-						</div>
+  	      </div>
+	      <div id="alpha" class="content-box"
+                   tal:attributes="dir view/is_rtl|nothing; align view/is_rtl_align|nothing;">
+				
+		<div class="block">
+		  <metal:block metal:define-slot="body">
+		  </metal:block>
+		  
+		</div>
 					
-					</div>
+	      </div>
 
 	      <div id="beta" class="content-box"
-                   tal:attributes="dir view/get_ltr_rtl|nothing; style view/is_rtl_align|nothing;">
+                   tal:attributes="dir view/is_rtl|nothing; align view/is_rtl_align|nothing;">
 		<metal:block define-slot="sidebar" />
 					</div>
 				</div>	

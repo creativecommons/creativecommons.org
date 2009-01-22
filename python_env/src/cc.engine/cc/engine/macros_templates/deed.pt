@@ -35,35 +35,14 @@
 
     <link rel="alternate" type="application/rdf+xml" href="rdf" /> 
     <script metal:use-macro="context/@@support/macros/language_javascript" />
-
-    <script type="text/javascript" 
-	    src="http://yui.yahooapis.com/2.5.1/build/yahoo-dom-event/yahoo-dom-event.js">
-    </script> 
-    <script type="text/javascript"
-	    src="http://yui.yahooapis.com/2.5.1/build/connection/connection-min.js">
-    </script> 
-    <script type="text/javascript"
-	    src="http://yui.yahooapis.com/2.5.1/build/json/json-min.js">
-    </script>
-
-    <script tal:condition="python: context.license.code not in ('zero','pd')"
+    <script tal:condition="python: context.license.code != 'zero'"
 	    type="text/javascript" src="/includes/referrer/ccdeed.js"
-       tal:attributes="src context/++resource++cc/includes/referrer/deed.js">
+       tal:attributes="src context/++resource++cc/includes/referrer/ccdeed.js">
     </script>
-    <script tal:condition="python: context.license.code in ('zero', 'pd')"
+    <script tal:condition="python: context.license.code == 'zero'"
 	    type="text/javascript" src="/includes/referrer/cczero.js"
        tal:attributes="src context/++resource++cc/includes/referrer/cczero.js">
     </script>
-
-    <script type="text/javascript" 
-	    src="http://yui.yahooapis.com/2.5.1/build/container/container-min.js">
-    </script>
-
-    <script type="text/javascript"
-	    src="/includes/deed3.js"
-	    tal:attributes="src context/++resource++cc/includes/deed3.js">
-    </script>
-
     <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
     <script type="text/javascript">
         _uacct="UA-2010376-1";  urchinTracker();

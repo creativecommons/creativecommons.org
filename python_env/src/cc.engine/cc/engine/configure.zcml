@@ -48,6 +48,11 @@
      >
 
      <browser:page
+        name="zero"
+        template="chooser_pages/zero.pt"
+        />
+
+     <browser:page
         name="sampling"
         template="chooser_pages/sampling.pt"
         />
@@ -101,6 +106,14 @@
      for="cc.engine.interfaces.ILicenseEngine"
      name="get-rdf"
      class=".chooser.GetRdf"
+     permission="zope.View"
+     />
+
+
+  <browser:page
+     for="cc.engine.interfaces.ILicenseEngine"
+     name="get-rdfa"
+     class=".rdfa.zero.Get"
      permission="zope.View"
      />
 

@@ -13,6 +13,7 @@ from cc.engine.licenses.fsf import FsfLicense
 from cc.engine.licenses.sampling import SamplingLicense
 from cc.engine.licenses.devnations import DevNations
 from cc.engine.licenses.mitbsd import MitBsdLicense
+from cc.engine.licenses.zero import CCZero
 
 class LicenseCatalog(grok.Application, grok.Container):
     implements(interfaces.ILicenseCatalog)
@@ -25,6 +26,7 @@ class LicenseCatalog(grok.Application, grok.Container):
         devnations = DevNations,
         MIT = MitBsdLicense,
         BSD = MitBsdLicense,
+        zero = CCZero,
         )
     
     def traverse(self, code):
