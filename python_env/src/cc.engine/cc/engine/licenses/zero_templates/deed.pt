@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@deed/page"
+      metal:use-macro="context/@@deed/macros/page"
       i18n:domain="cc_org">
 <head>
   <title metal:fill-slot="title">CC&empty;</title>
@@ -13,26 +13,36 @@
 ${context/license/rdf} -->" />
 
 <h2 metal:fill-slot="license-name"
-    property="dc:title">CC&empty;</h2>
+    property="dc:title" tal:content="structure view/license/name">CC&empty;</h2>
 
 <div metal:fill-slot="body" tal:omit-tag="">
         <div id="deed-rights" tal:attributes="dir view/is_rtl; align view/is_rtl_align;">
 
 	  <h3>No Law</h3>
 	  <ul>
-	    <li class="license nolaw" i18n:translate="">
+	    <li class="license nolaw" i18n:translate="" 
+	        tal:condition="python: view.license.code == 'zero-waive'">
 	      <span id="nolaw-text">
 	      The person or persons who have associated work with this
-	      document (the "Dedicator" or "Certifier") hereby either
-	      (a) certify to the best of their knowledge this work is in
-	      the public domain, or (b) hereby dedicates whatever
-	      copyright the dedicators holds in the work of authorship
-	      identified below (the "Work") to the public domain. A
-	      certifier, moreover, dedicates any copyright interest he
-	      may have in the associated work, and for these purposes,
-	      is described as a "dedicator" below. 
+	      document (the "Affirmer") hereby waives whatever
+	      copyright, moral rights, database rights or other rights 
+	      the affirmer holds in the work of authorship
+	      identified below (the "Work") to the public domain. 
 	      </span>
 	    </li>
+
+	    <li class="license nolaw" i18n:translate="" 
+	        tal:condition="python: view.license.code == 'zero-assert'">
+	      <span id="nolaw-text">
+	      The person or persons who have associated work with this
+	      document (the "Assertor") hereby 
+	      asserts to the best of their knowledge this work is free of
+	      any copyrights.  Moreover, the assertor waives any copyright 
+	      interest he
+	      may have in the associated work.
+	      </span>
+	    </li>
+
 	  </ul>
 
         </div>
@@ -43,13 +53,12 @@ ${context/license/rdf} -->" />
 	  <ul>
 	    <li id="norms-container" class="license scnorms" i18n:translate="">
 	      Notwithstanding the waiver of any legal obligations, 
-	      there are expectations associated with this work.<br/>
+	      there are norms associated with this work that you are
+	      expected to respect.<br/>
 	    </li>
 	</div>
 	<span id='referrer-metadata-container'/>
 </div>
-
-<div metal:fill-slot="footer" tal:omit-tag=""></div>
 
 </body>
 </html>

@@ -15,8 +15,6 @@
     <link rel="stylesheet" type="text/css" 
           href="/wp-content/themes/cc4/style.css"
           tal:attributes="href context/++resource++cc/cc4/style.css" />
-    <link href="http://creativecommons.org/includes/progress.css" 
-	  rel="stylesheet" type="text/css" />
     <link href="http://creativecommons.org/wp-content/themes/cc4/support.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css"
           href="/wp-content/themes/cc4/engine.css"
@@ -78,7 +76,10 @@
   	<div id="body">
 	  <div id="content">
 	    <div id="main-content">
-  	      <div id="title" class="block">
+	      <div id="alpha" class="content-box"
+                   tal:attributes="dir view/is_rtl|nothing; 
+				   align view/is_rtl_align|nothing;">
+
     		<h3 class="category"><metal:page_parent_header define-slot="page_parent_header"></metal:page_parent_header></h3>
     		<h2 tal:attributes="dir view/is_rtl|nothing; align
 				    view/is_rtl_align|nothing;" 
@@ -87,9 +88,6 @@
 		    License Your Work
 		  </metal:page_title>
 		</h2>
-  	      </div>
-	      <div id="alpha" class="content-box"
-                   tal:attributes="dir view/is_rtl|nothing; align view/is_rtl_align|nothing;">
 				
 		<div class="block">
 		  <metal:block metal:define-slot="body">

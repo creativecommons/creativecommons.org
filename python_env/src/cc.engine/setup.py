@@ -20,14 +20,20 @@
 
 from setuptools import setup, find_packages
 
+cc_licenze_deps = [
+    'setuptools', 
+    'zope.component',
+    'zope.interface',
+    ]
+
 setup(
     name = "cc.engine",
-    version = "1.2-dev",
-    packages = find_packages('.'),
+    version = "8.01-dev",
+    packages = ['cc.engine', 'cc.licenze'],
     namespace_packages = ['cc',],
     
     # scripts and dependencies
-    install_requires = ['setuptools',
+    install_requires = cc_licenze_deps + ['setuptools',
                         'zope.testbrowser',
                         'zope.sendmail',
                         'grok',

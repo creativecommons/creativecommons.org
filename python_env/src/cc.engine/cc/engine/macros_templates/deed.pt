@@ -35,11 +35,11 @@
 
     <link rel="alternate" type="application/rdf+xml" href="rdf" /> 
     <script metal:use-macro="context/@@support/macros/language_javascript" />
-    <script tal:condition="python: context.license.code != 'zero'"
+    <script tal:condition="python: context.license.code not in ('zero-waive', 'zero-assert')"
 	    type="text/javascript" src="/includes/referrer/ccdeed.js"
        tal:attributes="src context/++resource++cc/includes/referrer/ccdeed.js">
     </script>
-    <script tal:condition="python: context.license.code == 'zero'"
+    <script tal:condition="python: context.license.code in ('zero-waive', 'zero-assert')"
 	    type="text/javascript" src="/includes/referrer/cczero.js"
        tal:attributes="src context/++resource++cc/includes/referrer/cczero.js">
     </script>

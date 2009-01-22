@@ -47,7 +47,7 @@
 <metal:left fill-slot="sidebar">
 </metal:left>
 
-<metal:title fill-slot="page-header-title">CC&empty;</metal:title>
+<metal:title fill-slot="page-header-title"></metal:title>
 
 <metal:body fill-slot="body">
 <div class="yui-skin-sam">
@@ -57,41 +57,53 @@
     <div id="page-welcome" class="yui-module">
       <div class="hd">CC&empty;</div>
       <div class="bd">
-      <p>
-	CC&empty; enables you to:
-      </p>
-      <ul>
-	<li>Waive all copyright, moral rights,
-	  database rights, and any other rights that might be asserted over
-	  your work, to the extent possible under law.</li>
-	<li><em>or</em></li>
-	<li>Assert that a work is free of all copyrights.</li>
-      </ul>
-      <p>
-	To begin the process, select a path below.
-      </p>
 
-      <form action="dispatch">
-	<div id="pathbuttongroup" class="yui-buttongroup">
-	  <span id="radio1" class="yui-button yui-radio-button">
-            <span class="first-child">
-              <button type="submit" name="zero-type" value="waiver"
-		      id="do-waiver">
-                Waive
-              </button>
-            </span>
-	  </span>
+	<p>
+	  CC&empty; enables you to indicate that a work is free of copyright,
+	  moral rights, database rights, and any other rights that might be
+	  asserted, to the extent possible under law. Do you want to: 
+	</p>
+
+	<p class="indent">
+	  <strong>Assert</strong> that a work is free of legal encumberances as a
+	  matter of fact, e.g., because the
+	  work <a href="http://en.wikipedia.org/wiki/Public_Domain#Expiration">is
+	  old enough</a> to be in the public domain, or because the
+	  work is in a class not protected by copyright such
+	  as <a href="http://en.wikipedia.org/wiki/Copyright_status_of_work_by_the_U.S._government">U.S. government
+	  works</a>.  Curators and publishers of public domain
+	  material may be well placed to make such an assertion. You
+	  may
 	  <span id="radio2" class="yui-button yui-radio-button">
             <span class="first-child">
               <button type="submit" name="zero-type" value="assertion"
 		      id="do-assertion">
-                Assert
+                continue
               </button>
             </span>
 	  </span>
-	</div>
-	
-      </form>
+
+	</p>
+
+	<p>OR</p>
+
+	<p class="indent">
+	  <strong>Waive</strong> all rights that you have over a work. You can only do this if
+	  you
+	  hold <a href="http://wiki.creativecommons.org/Before_Licensing#Make_sure_you_have_the_rights">the
+	  necessary rights for the work</a>. If you hold 
+	  all of the necessary rights and want to grant the public the
+	  right to use your work in any way with no restrictions or
+	  requirements whatsoever, 
+ 	  <span id="radio1" class="yui-button yui-radio-button">
+            <span class="first-child">
+              <button type="submit" name="zero-type" value="waiver"
+		      id="do-waiver">
+                continue
+              </button>
+            </span>
+	  </span>
+	</p>
       </div>
 
     </div>
@@ -107,7 +119,7 @@
     <form id="form-waiver" action="confirm-waiver">
       <input type="hidden" name="zero-action" value="waiver" />
       <input type="hidden" name="license-uri"
-	     value="http://creativecommons.org/licenses/zero/1.0/" />
+	     value="http://labs.creativecommons.org/licenses/zero-waiver/1.0/us/" />
 
       <div class="form-row">
 	<div class="form-question">Your name:</div>
@@ -174,7 +186,7 @@
     <form id="form-assertion" action="confirm-assertion">
       <input type="hidden" name="zero-action" value="assertion" />
       <input type="hidden" name="license-uri"
-	     value="http://creativecommons.org/licenses/zero/1.0/" />
+	     value="http://labs.creativecommons.org/licenses/zero-assert/1.0/us/" />
 
       <div class="form-row">
 	<div class="form-question">Your name:</div>
@@ -200,12 +212,22 @@
 
       <div class="form-row">
 	<div class="form-question">
-	  <input name="confirm" type="checkbox" id="confirm_assertion"
-		 value="assertion" class="form-field" />
+	  <p>I assert that this work is free of any copyrights because:
+	  </p>
 	</div>
 	<div class="form-answer">
-	  <p>I assert that this work is free of any copyrights.
-	  </p>
+	  <input name="assertion_reason" type="checkbox" class="reason"
+		 value="us_govt" />
+	  <label>the work was created by the
+	  U.S. Government.</label> <br/>
+
+	  <input name="assertion_reason" type="checkbox" class="reason" 
+		 value="pd" />
+	  <label for="pd">the work was created in the US before 1923.</label> <br/>
+
+	  <input name="assertion_reason" type="checkbox" class="reason" 
+		 value="other" />
+	  <label for="other">other.</label> <br/>
 	</div>
       </div>
 
@@ -229,19 +251,32 @@
 
 <metal:confirm-waiver define-macro="confirm-waiver">
       <div id="confirm-waiver" class="yui-module">
-	<div class="hd">Confirm Waiver</div>
+	<div class="hd">Confirm CC&empty; Waiver</div>
 	<div class="bd">
 
 	    <p>Are you certain you wish to waive all rights to your
-	      work?  Once waived, these can not be reclaimed.
+	      work?  Once these rights are waived, you can not reclaim
+	      them. 
 	    </p>
 
-	    <div class="form-row">
-	      <div class="form-question">&nbsp;</div>
-	      <div class="form-answer">
-		<input type="submit" id="confirm-waiver-submit" name="confirm"
-		       class="alert" value="Yes, I'm Sure" />
-	      </div>
+	    <div class="form-row yui-buttongroup">
+	      <span class="yui-button">
+		<span class="first-child">
+		  <button type="submit" id="decline-waiver-submit"
+			  name="decline">
+		    No, I Don't Waive
+		  </button>
+		</span>
+	      </span>
+
+	      <span class="yui-button">
+		<span class="first-child">
+		  <button type="submit" id="confirm-waiver-submit" 
+			  name="confirm">
+		    Yes, I Waive
+		  </button>
+		</span>
+	      </span>
 	    </div>
 
 	</div>
@@ -254,20 +289,34 @@
 
 <metal:confirm-assertion define-macro="confirm-assertion">
       <div id="confirm-assertion" class="yui-module">
-	<div class="hd">Confirm Assertion</div>
+	<div class="hd">Confirm CC&empty; Assertion</div>
 	<div class="bd">
 
-	    <p>Asserting that a work is free of rights lets otherse
-	    know that they may re-use it without restriction.  Are you
+	    <p>Asserting that a work is free of rights lets others
+	    know that they may reuse it without restriction.  Are you
 	    certain you wish to do this?
 	    </p>
 
-	    <div class="form-row">
-	      <div class="form-question">&nbsp;</div>
-	      <div class="form-answer">
-		<input type="submit" id="confirm-assertion-submit" 
-		       name="confirm" class="alert" value="Yes, I'm Sure" />
-	      </div>
+	    <div class="form-row yui-buttongroup">
+
+	      <span class="yui-button">
+		<span class="first-child">
+		  <button type="submit" id="decline-assertion-submit"
+			  name="decline">
+		    No, I Do Not Assert
+		  </button>
+		</span>
+	      </span>
+
+	      <span class="yui-button">
+		<span class="first-child">
+		  <button type="submit" id="confirm-assertion-submit" 
+			  name="confirm">
+		    I So Assert
+		  </button>
+		</span>
+	      </span>
+
 	    </div>
 
 	</div>
@@ -279,8 +328,33 @@
     <div id="page-results" class="x-hide-display">
 
   <div id="results" class="yui-module">
-    <div class="hd">Results</div>
+    <div class="hd">CC&empty; Results</div>
     <div class="bd" id="dedication-results">
+
+      <p>Choose which style of button you'd like on your webpage:</p>
+
+      <div class="licensebox" align="center">
+	<table>
+	  <tr>
+	    <td valign="bottom" align="center">
+	      <img src="http://labs.creativecommons.org/zero/images/88x31/cc-zero.png"
+	      style="border:0px;" /><br/>
+	      <input type="radio" name="button" checked
+             onclick="swapbutton('http://labs.creativecommons.org/zero/images/88x31/cc-zero.png')"
+	      />
+	    </td>
+	    <td valign="bottom" align="center">
+	      <img src="http://labs.creativecommons.org/zero/images/80x15/cc-zero.png"
+	      style="border:0px;" /><br/>
+	      <input type="radio" name="button"
+             onclick="swapbutton('http://labs.creativecommons.org/zero/images/80x15/cc-zero.png')"
+	      />
+	    </td>
+
+	  </tr>
+	</table>
+      </div>
+
       <span id="waiver-results-leadin">
 	Here's a preview of how your waiver will appear on your site:
       </span>
@@ -288,13 +362,37 @@
 	Here's a preview of how your assertion will appear on your
 	site:
       </span>
+
       <div class="preview" id="results-preview">
       </div>
+
+      <div class="hd" style="margin-top:10px;">What to do next</div>
+      <h3>Have a website?</h3>
+      <p>Copy the text below to your Web site to let your visitors
+      know what license applies to your works.</p> 
       <textarea id="results-html" cols="70" rows="6" onfocus="select()">
       </textarea>
     </div>
     <div class="ft"></div>
   </div>
+
+  <div id="page-bailout" class="x-hide-display">
+
+    <metal:bailout define-macro="post-bailout">
+      <div id="bailout" class="yui-module">
+	<div class="hd">CC&empty;: Declined</div>
+	<div class="bd">
+	  <p>What would you like to do next?</p>
+	  <ul>
+	    <li><a href="./index.html">start over</a></li>
+	    <li><a href="http://wiki.creativecommons.org/CcZero">learn more</a></li>
+	  </ul>
+	</div>
+      </div>
+    </metal:bailout>
+
+  </div>
+
 
     </div>
 

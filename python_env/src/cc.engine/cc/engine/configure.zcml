@@ -11,6 +11,8 @@
   <include package="zope.sendmail" file="meta.zcml" />
   <include package="zope.sendmail" />
 
+  <include package="cc.licenze" />
+
   <grok:grok package="." />
 
   <browser:page

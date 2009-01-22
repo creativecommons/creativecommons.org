@@ -2,5 +2,6 @@ from zope.interface import Interface
 
 class IRdfaGenerator(Interface):
 
-    def __call__(license_uri, data_mapping):
-        pass
+    def with_form(request_form):
+        """Generate RDFa metadata for the license adapted along with the
+        form."""

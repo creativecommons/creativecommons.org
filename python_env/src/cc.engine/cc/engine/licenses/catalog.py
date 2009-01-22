@@ -18,16 +18,17 @@ from cc.engine.licenses.zero import CCZero
 class LicenseCatalog(grok.Application, grok.Container):
     implements(interfaces.ILicenseCatalog)
 
-    CUSTOM_DEEDS = dict(
-        publicdomain = PublicDomain,
-        sampling = SamplingLicense,
-        GPL = FsfLicense,
-        LGPL = FsfLicense,
-        devnations = DevNations,
-        MIT = MitBsdLicense,
-        BSD = MitBsdLicense,
-        zero = CCZero,
-        )
+    CUSTOM_DEEDS = {
+        'publicdomain' : PublicDomain,
+        'sampling' : SamplingLicense,
+        'GPL' : FsfLicense,
+        'LGPL' : FsfLicense,
+        'devnations' : DevNations,
+        'MIT' : MitBsdLicense,
+        'BSD' : MitBsdLicense,
+        'zero-waive' : CCZero,
+        'zero-assert' : CCZero,
+        }
     
     def traverse(self, code):
 

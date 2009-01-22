@@ -30,5 +30,10 @@ class ZeroChooser(BrowserPage):
         """Return the HTML for the assertion/waiver as described by the
         query string."""
 
-        return zero.Metadata()(self.request.form['license-uri'],
-                               self.request.form)
+        # XXX this is almost guaranteed not to work
+        LICENSE_CLASS = 'zero'
+
+        chooser = component.getUtility(ILicenseSelector, LICENSE_CLASS)
+        license = chooser.process_form(self.request.form)
+
+        return IRdfaGenerator(license).with_form(self.request.form)

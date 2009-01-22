@@ -1,0 +1,14 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:i18n="http://namespaces.zope.org/i18n"
+
+           >
+
+    <!-- One Utility per License Class -->
+
+    <utility 
+        name="zero"
+        factory=".zero.selector.ZeroSelector"
+        provides=".interfaces.ILicenseSelector"
+	/>
+
+</configure>
