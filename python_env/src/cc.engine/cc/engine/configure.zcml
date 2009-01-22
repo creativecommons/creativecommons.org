@@ -11,6 +11,7 @@
   <include package="zope.sendmail" file="meta.zcml" />
   <include package="zope.sendmail" />
 
+  <include package=".support" />
   <include package="cc.licenze" />
 
   <grok:grok package="." />
@@ -173,12 +174,20 @@
 	   port="25"
 	/>
 
+  <mail:queuedDelivery
+     name="cc_engine"
+     permission="zope.SendMail"
+     mailer="cc_engine_mailer"
+     queuePath="../../var/mailqueue"
+     />
+
+<!--
   <mail:directDelivery
 	   name="cc_engine"
 	   permission="zope.SendMail"
 	   mailer="cc_engine_mailer" 
 	/>
-	   
+-->	   
   <adapter for="zope.publisher.interfaces.http.IHTTPRequest"
            provides="zope.i18n.interfaces.IUserPreferredLanguages"
            factory=".i18n.preferred.PreferredLanguages" />

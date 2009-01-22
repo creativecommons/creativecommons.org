@@ -9,13 +9,31 @@
 
 
   <metal:headers fill-slot="headers">
+
     <link rel="stylesheet" type="text/css" 
 	  href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
     <link rel="stylesheet" type="text/css"
 	  href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
 
+    <script type="text/javascript" 
+	    src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script> 
+    <script type="text/javascript" 
+	    src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="zero.css"
 	  tal:attributes="href context/++resource++cc/includes/zero.css" />
+
+    <script type="text/javascript">
+
+YAHOO.util.Event.onDOMReady(function() {
+
+    // init the buttons
+    (new YAHOO.widget.Button("do-send-email")).render();
+
+});
+      
+    </script>
 
   </metal:headers>
 
@@ -33,37 +51,42 @@
 
   <div id="error" class="yui-module"
        tal:condition="not:view/can_issue">
-    <div class="hd">Error</div>
     <div class="bd">
-      <p>
-	You must check the box to confirm your understanding of the
-	CC&empty; process.
+      <p i18n:translate="cc0.declined">
+	You did not affirm your decision to waive the rights
+	associated with your work. If you'd like to continue you can
+	click the Back button to review your choice.
       </p>
-      <a href="" tal:attributes="href view/action">go back</a>
+      <ul>
+	<li><a href="/about/cc0">About CC0</a></li>
+	<li><a href="http://wiki.creativecommons.org/CC0_FAQ">Frequently
+	Asked Questions</a></li>
+      </ul>
     </div>
-    <div class="ft"></div>
   </div>
 
   <div id="results" class="yui-module" tal:condition="view/can_issue">
     <div class="bd" id="waiver-results">
 
-      <p>Choose which style of button you'd like on your webpage:</p>
+      <p i18n:translate="choose_button">
+	Choose which style of button you'd like on your webpage:
+      </p>
 
       <div class="licensebox" align="center">
 	<table>
 	  <tr>
 	    <td valign="bottom" align="center">
-	      <img src="http://labs.creativecommons.org/demos/zero/images/88x31/cc-zero.png"
+	      <img src="http://i.creativecommons.org/l/zero/1.0/88x31.png"
 	      style="border:0px;" /><br/>
 	      <input type="radio" name="button" checked
-             onclick="swapbutton('http://labs.creativecommons.org/demos/zero/images/88x31/cc-zero.png')"
+             onclick="swapbutton('http://i.creativecommons.org/l/zero/1.0/88x31.png')"
 	      />
 	    </td>
 	    <td valign="bottom" align="center">
-	      <img src="http://labs.creativecommons.org/demos/zero/images/80x15/cc-zero.png"
+	      <img src="http://i.creativecommons.org/l/zero/1.0/88x15.png"
 	      style="border:0px;" /><br/>
 	      <input type="radio" name="button"
-             onclick="swapbutton('http://labs.creativecommons.org/demos/zero/images/80x15/cc-zero.png')"
+             onclick="swapbutton('http://i.creativecommons.org/l/zero/1.0/88x15.png')"
 	      />
 	    </td>
 
@@ -71,7 +94,7 @@
 	</table>
       </div>
 
-      <span id="waiver-results-leadin">
+      <span id="waiver-results-leadin" i18n:translate="cc0.preview_waiver">
 	Here's a preview of how your waiver will appear on your site:
       </span>
 
@@ -79,14 +102,85 @@
 	   tal:content="structure view/rdfa">
       </div>
 
-      <div class="hd" style="margin-top:10px;">What to do next</div>
-      <h3>Have a website?</h3>
-      <p>Copy the text below to your Web site to let your visitors
-      know what license applies to your works.</p> 
-      <textarea id="results-html" cols="70" rows="6"
+      <div class="hd" style="margin-top:10px;"
+	   i18n:translate="license.what_to_do_next">What to do next</div>
+      <h3 i18n:translate="license.have_your_own_website">Have a website?</h3>
+      <p i18n:translate="cc0.copy_text">
+	Copy the text below to your Web site to let your visitors
+	know that you've waived the rights to your work.  Creative
+	Commons does not retain a record of your selection; as the
+	publisher it's up to you to let people know how they may use your
+	work.
+      </p> 
+
+      <textarea id="codetocopy" cols="70" rows="6"
 		onfocus="select()"
 		tal:content="structure view/rdfa">
       </textarea>
+
+      <div class="more-metadata-container">
+      <h3 style="margin-top:0;" i18n:translate="cc0.send_email">
+	Send Email
+      </h3>
+
+      <metal:email_results tal:condition="view/email_requested">
+	<metal:email_container
+			   tal:define="success view/send_email">
+	<div class="more-metadata-container error" tal:condition="not:success">
+	  An error occurred when we tried to send the email message;
+	  you can try clicking the Back button and double checking your 
+	  email address.  If the address you used (
+	  <span	tal:replace="request/email"></span>) was correct you can 
+	  <a href="/about/contact">contact us</a>.
+	</div>
+
+	<div class="more-metadata-container success" tal:condition="success">
+	  The suggested HTML has been sent to 
+	    <span tal:replace="request/form/email">foo@example.com</span>. 
+
+	  <span tal:omit-tag="" tal:condition="request/send_updates|nothing">
+	    You have asked to be notified of updates to CC0.  A subscription
+	    request has been sent on your behalf; you must click the link in
+	    the confirmation email to complete the sign-up process.
+	  </span>
+
+	</div>
+	</metal:email_container>
+      </metal:email_results>
+
+      <metal:request_email tal:condition="not:view/email_requested">
+	<p i18n:translate="cc0.send_email_updates">
+	  If you'd like to get the HTML with embedded metadata via
+	  email and optionally receive updates about CC0, fill in your
+	  email address below.
+	</p>      
+
+	<form action="" tal:attributes="action request/URL">
+
+	  <metal:form-vals tal:repeat="key python:view.request.form.keys()">
+	    <input type="hidden" name="key" value=""
+		   tal:attributes="name  key;
+				   value python:view.request.form[key]" />
+	  </metal:form-vals>
+
+	  <div class="more-metadata">
+	    <div i18n:translate="util.your_email">Your email:</div>
+	    <input type="textbox" name="email" />
+	  </div>
+
+	  <div class="more-metadata">
+	    <div i18n:translate="cc0.update_opt_in">
+	      Send me updates about CC0:
+	    </div>
+	    <input type="checkbox" name="send_updates" value="1" /><br/>
+	  </div>
+
+	  <input id="do-send-email" type="submit" value="Send" 
+		 i18n:attributes="value util.Send" />
+	</form>
+      </metal:request_email>
+
+      </div>
     </div>
     <div class="ft"></div>
   </div>

@@ -1,5 +1,7 @@
 import datetime
 import urllib
+from lxml import etree
+from lxml.cssselect import CSSSelector
 
 import grok
 from zope.interface import implements
@@ -19,7 +21,8 @@ class BrowserLicense(grok.Model):
     implements(interfaces.ILicense)
 
     TARGET_NAMES = ('deed', 'rdf', 'rdf-checksum',
-                    'legalcode', 'legalcode-checksum')
+                    'legalcode', 'legalcode-checksum',
+                    'legalcode-plain')
 
     def __init__(self, parent, pieces):
         self.__parent__ = parent
@@ -299,3 +302,47 @@ class LicenseRdf(grok.View):
 
         return self.context.license.rdf
                      
+class PlainLegalCode(grok.View):
+    grok.context(BrowserLicense)
+    grok.name('legalcode-plain')
+
+    def __init__(self, context, request):
+        super(PlainLegalCode, self).__init__(context, request)
+
+        # YYY we do this again here when the form is fully populated
+        self.request.setupLocale()
+
+    def render(self):
+
+        # retrieve the legalcode
+        parser = etree.HTMLParser()
+        legalcode = etree.parse(self.context.license.uri.replace('creativecommons.org', 'staging.creativecommons.org') + "legalcode",
+                                parser)
+
+        # remove the CSS <link> tags
+        for tag in legalcode.iter('link'):
+            tag.getparent().remove(tag)
+
+        # remove the img tags
+        for tag in legalcode.iter("img"):
+            tag.getparent().remove(tag)
+
+        # remove anchors
+        for tag in legalcode.iter('a'):
+            tag.getparent().remove(tag)
+
+        # remove //p[@id="header"]
+        header_selector = CSSSelector('#header')
+        for p in header_selector(legalcode.getroot()):
+            p.getparent().remove(p)
+
+        # add our base CSS into the mix
+        etree.SubElement(legalcode.find("head"), "link",
+                         {"rel":"stylesheet",
+                          "type":"text/css",
+                          "href":"http://yui.yahooapis.com/2.6.0/build/fonts/fonts-min.css"})
+
+        # return the serialized document
+        return etree.tostring(legalcode.getroot())
+
+

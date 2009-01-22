@@ -20,13 +20,8 @@
 
     <adapter for="cc.licenze.interfaces.ILicense"
              provides=".interfaces.IRdfaGenerator"
-	     factory=".zero.Metadata"
+	     factory=".zero.HTMLFormatter"
 	     name="zero" />
-
-    <adapter for="cc.licenze.interfaces.ILicense"
-             provides=".interfaces.IRdfaGenerator"
-	     factory=".zero.Metadata" 
-	     name="publicdomain" />
 
 
 </configure>

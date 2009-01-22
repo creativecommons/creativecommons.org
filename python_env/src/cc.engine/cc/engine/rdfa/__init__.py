@@ -43,7 +43,7 @@ class Metadata(object):
     def __init__(self, license):
         self.license = license
 
-    def with_form(self, request_form):
+    def format(self, work_dict={}, locale='en'):
         """Generate RDFa metadata for the license adapted along with the
         form."""
 
@@ -54,7 +54,7 @@ class Metadata(object):
                                            self.license.license_class, None)
 
         if generator is not None:
-            return generator.with_form(request_form)
+            return generator.format(work_dict, locale)
 
         # XXX someday we'll have the default implementation here
         raise Exception()

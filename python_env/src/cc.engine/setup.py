@@ -38,6 +38,8 @@ setup(
                         'zope.sendmail',
                         'grok',
                         'cc.license',
+                        'Genshi',
+                        'lxml',
                         ],
 
 

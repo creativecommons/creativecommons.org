@@ -1,186 +1,118 @@
-from zope.interface import implements
+import os
+#from cc.license._lib.interfaces import ILicenseFormatter
+#from cc.license._lib.exceptions import CCLicenseError
+import zope.interface
+import zope.component
+from genshi.template import TemplateLoader
+#from filters import Source, Permissions
+
+from cc.engine.support.iso3166 import IIso3166
 from interfaces import IRdfaGenerator
 
-REASON_STRINGS = dict(
-    us_govt = 'the work was created by the U.S. Government',
-    us_1923 = 'the work was created in the U.S. before 1923',
-    )
+# template loader, which is reused in a few places
+LOADER = TemplateLoader(
+             os.path.join(os.path.dirname(__file__), 'templates'),
+             auto_reload=False)
 
-class Metadata(object):
-    implements(IRdfaGenerator)
+DEFAULT_PUBLISHER = "[_:publisher]"
 
-    IMAGE_BASE = "http://labs.creativecommons.org/zero/images"
+class Country:
+
+    def __init__(self, work_dict=None):
+        if work_dict is None:
+            work_dict = {}
+        self.id = 'work_jurisdiction'
+        if work_dict.get(self.id, None) not in ('', '-', None, False):
+            self.activate = True
+            self.source = work_dict[self.id]
+
+            # only load template if we need to
+            self.tmpl = LOADER.load('zero/country.xml')
+
+            # get the additional information we need --
+            # country name
+            country_name = zope.component.getUtility(IIso3166)[self.source]
+
+            # publisher URI
+            publisher = work_dict.get('actor_href', DEFAULT_PUBLISHER)
+
+            self.source_stream = self.tmpl.generate(country=self.source,
+                                                    country_name=country_name,
+                                                    publisher=publisher)
+        else:
+            self.activate = False
+
+    def __call__(self, stream):
+
+        for kind, data, pos in stream:
+
+            if kind == 'END' and data == 'p':
+                # this is the end of the paragraph; inject our contents
+                if self.activate:
+                    for local_kind, local_data, local_pos in self.source_stream:
+                        yield local_kind, local_data, local_pos
+
+            yield kind, data, pos
+
+class HTMLFormatter(object):
+    # zope.interface.implements(ILicenseFormatter)
+    zope.interface.implements(IRdfaGenerator)
 
     def __init__(self, license):
         self.license = license
 
-    def _get_assertion_template(self, license_uri, work_data):
-        """Return the template for use with an assertion.  Assumes 
-        pre-processing of the actor and work strings."""
+    @property
+    def id(self):
+        return 'html+rdfa'
 
-        work_data['action_predicate'] = 'assertedBy'
+    @property
+    def title(self):
+        return "HTML + RDFa formatter"
 
-        # pull interesting bits out of the work_data mapping
+    def format(self, work_data={}, locale='en'):
+        """Return an HTML + RDFa string serialization for the license,
+            optionally incorporating the work metadata and locale."""
+
+        template = 'default'
+        kwargs = {}
+        w = work_data # alias work_data for brevity
+
+        # determine how we're referring to the work
+        no_title = False
+        work = work_data.get('work_title', False)
+
+        if work:
+            template = 'work'
+                        
+        # determine if we have actor information
         actor_href = work_data.get('actor_href', '').strip()
         actor = work_data.get('name', '').strip()
 
-        # assemble the actor HTML
-        if actor_href:
-            if not actor:
-                work_data['name'] = actor = actor_href
+        if actor or actor_href:
+            template = '%s-actor' % template
 
-            actor = """<a rel="cc:%(action_predicate)s" href="%(actor_href)s">
-<span about="%(actor_href)s" property="dc:title">%(name)s</span></a>""" % \
-                work_data
-
-        # assemble the work HTML
-        no_title = False
-        work_href = work_data.get('work_url', '').strip()
-        work = work_data.get('work_title', False)
-        if not work:
-            no_title = True
-            if not work_data.get('name', ''):
-                work_data['work_title'] = 'This work'
-                work = 'This work'
-            else:
-                work_data['work_title'] = 'this work'
-                work = 'this work'
-
-        if work_href:
-            if not no_title:
-                work = '<a href="%s"><span property="dc:title">%s</span></a>' % (work_href, work)
-                pass
-            else:
-                work = '<a href="%s">%s</a>' % (work_href, work)
+            # assemble the actor HTML
+            if actor_href:
+                if actor:
+                    # href and name
+                    work_data['actor'] = """<a href="%(actor_href)s" rel="dct:publisher"><span property="dct:title">%(name)s</span></a>""" % work_data
+                else:
+                    # href, no name
+                    work_data['actor'] = """<a href="%(actor_href)s" rel="dct:publisher">%(actor_href)s</a>""" % work_data
             
-        work_data.update(dict(work=work, 
-                              actor=actor,
-                              IMAGE_BASE=self.IMAGE_BASE
-                              )
-                         )
-
-        template = """<p xmlns:cc="http://creativecommons.org/ns#"
-        xmlns:dc="http://purl.org/dc/elements/1.1/" rel="cc:licenseOffer">
-  <a rel="license"
-     href="%(license_uri)s" style="text-decoration:none;">
-     <img src="%(IMAGE_BASE)s/88x31/cc-zero.png" border="0" alt="" />
-  </a>
-  <br/>"""
-
-        if not actor:
-            template +="""%(work)s """
-        else:
-            template +="""%(actor)s asserts %(work)s """
-
-        template += """ is <a rel="license"
-    href="%(license_uri)s">free
-    of any copyrights</a>"""
-
-        if work_data.get('assertion_reason', False):
-            template += "; %(reasons)s"
-
-            reasons = work_data.get('assertion_reason')
-            if type(reasons) in (str, unicode):
-                reasons = [reasons]
-
-            reason_links = []
-            for r in reasons:
-                if r == 'other' and work_data.get('other_assertion_reason', False):
-                    reason_links.append(
-                        '<span property="cc:assertionBasis">%s</span>' %
-                        work_data.get('other_assertion_reason')
-                        )
-
-                elif REASON_STRINGS.get(r, False):
-                    # general case
-                    reason_links.append('<a href="http://creativecommons.org/ns#%s"'
-                                          ' rel="cc:assertionBasis">%s</a>' % (
-                        r, REASON_STRINGS[r]))
-
-            if len(reason_links) > 1:
-                reason_links = ", ".join(reason_links[:-1]) + " and " + reason_links[-1]
             else:
-                reason_links = reason_links[0]
-
-            work_data.update(dict(reasons=reason_links))
-            
-        else:
-            template += "."
-
-        template += "</p>"
-
-        return template % work_data
-
-    def _get_waiver_template(self, license_uri, work_data):
-        """Return the template for use with a waiver.  Assumes 
-        pre-processing of the actor and work strings."""
-
-        work_data['action_predicate'] = 'waivedBy'
-
-        # pull interesting bits out of the work_data mapping
-        actor_href = work_data.get('actor_href', '').strip()
-        actor = work_data.get('name', '').strip()
-
-        # assemble the actor HTML
-        if actor_href:
-            if not actor:
-                work_data['name'] = actor = actor_href
-
-            actor = """<a rel="cc:%(action_predicate)s" href="%(actor_href)s">
-<span about="%(actor_href)s" property="dc:title">%(name)s</span></a>""" % \
-                work_data
-
-        # assemble the work HTML
-        no_title = False
-        work_href = work_data.get('work_url', '').strip()
-        work = work_data.get('work_title', False)
-        if not work:
-            no_title = True
-            work_data['work_title'] = 'this work'
-            work = 'this work'
-
-        if work_href:
-            if no_title:
-                work = '<a href="%s">%s</a>' % (work_href, work)
-            else:
-                work = '<a href="%s"><span property="dc:title">%s</span></a>' % (work_href, work)
-                
-        work_data.update(dict(work=work, 
-                              actor=actor,
-                              IMAGE_BASE=self.IMAGE_BASE
-                              )
-                         )
-
-        template = """<p xmlns:cc="http://creativecommons.org/ns#"
-        xmlns:dc="http://purl.org/dc/elements/1.1/" rel="cc:licenseOffer">
-<a rel="license"
-   href="%(license_uri)s" style="text-decoration:none;">
-   <img src="%(IMAGE_BASE)s/88x31/cc-zero.png" border="0" alt="CC0" /></a>
-<br/>"""
-
-        if not actor:
-            template += """The owner of %(work)s has """
-        else:
-            template += """To the extent possible under law, %(actor)s has """
-
-        template += """<a rel="license"
-      href="%(license_uri)s">waived</a> 
-all copyright, moral rights, database rights, and any other rights that 
-might be asserted over %(work)s.
-</p>"""
-
-        return template % work_data
-
-    def with_form(self, work_data):
-        """Return the HTML+RDFa for the license + work metadata for CC-0 
-        licenses."""
-
-        work_data['license_uri'] = self.license.uri
-
-        if self.license.code == 'zero':
-            return self._get_waiver_template(self.license.uri, work_data)
-        else:
-            return self._get_assertion_template(self.license.uri, work_data)
+                # no actor href -- use a bnode
+                work_data['actor_href'] = DEFAULT_PUBLISHER
+                work_data['actor'] = """<span rel="dct:publisher" resource="%(actor_href)s"><span property="dct:title">%(name)s</span></span>""" % work_data
 
 
-
+        # pack kwargs
+        kwargs['form'] = w
+        kwargs['license'] = self.license
+        kwargs['locale'] = locale
+        
+        template = "%s/%s.xml" % (self.license.license_class, template)
+        self.tmpl = LOADER.load(template)
+        stream = self.tmpl.generate(**kwargs)
+        stream = stream | Country(work_data)
+        return stream.render('xhtml')
