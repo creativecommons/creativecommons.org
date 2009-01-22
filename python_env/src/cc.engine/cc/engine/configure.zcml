@@ -48,8 +48,8 @@
      >
 
      <browser:page
-        name="zero"
-        template="chooser_pages/zero.pt"
+        name="software"
+        template="chooser_pages/software.pt"
         />
 
      <browser:page
@@ -113,7 +113,7 @@
   <browser:page
      for="cc.engine.interfaces.ILicenseEngine"
      name="get-rdfa"
-     class=".rdfa.zero.Get"
+     class=".rdfa.View"
      permission="zope.View"
      />
 
@@ -147,7 +147,11 @@
 
   <include package=".xmp" />
   <include package=".pd" />
+  <include package=".zero" />
+
   <include package=".licenses" />
+
+  <include package=".rdfa" />
 
   <include package=".skin" />
 

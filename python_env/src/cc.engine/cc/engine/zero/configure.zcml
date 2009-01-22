@@ -1,0 +1,56 @@
+<zope:configure
+   xmlns:zope="http://namespaces.zope.org/zope"
+   xmlns="http://namespaces.zope.org/browser"
+
+   i18n_domain="cc_org"
+   >
+
+  <view
+     for="cc.engine.interfaces.ILicenseEngine"
+     name="zero"
+     permission="zope.View"
+     class=".ZeroChooser"
+     >
+
+     <defaultPage
+        name="index.html"
+        />
+
+     <page 
+        name="index.html"	
+        template="templates/index.pt"
+        />
+
+     <page
+        name="dispatch"
+        attribute="path_dispatch" 
+        />
+
+     <page
+        name="waiver"
+        template="templates/waiver.pt"
+        />
+
+     <page
+        name="assertion"
+        template="templates/assertion.pt"
+        />
+
+     <page
+        name="confirm-waiver"
+        template="templates/confirm-waiver.pt"
+        />
+
+     <page
+        name="confirm-assertion"
+        template="templates/confirm-assertion.pt"
+        />
+
+     <page
+        name="results"
+        template="templates/results.pt"
+        />
+
+  </view>
+
+</zope:configure>

@@ -20,21 +20,34 @@ the license deeds.
 Installation
 ============
 
+NOTE: Unless you are installing this in ``Development Mode'', you will need to
+run ./bin/buildout as root, because the script needs to create directories in
+/etc and /var.
+
 cc.engine uses `zc.buildout <http://python.org/pypi/zc.buildout>`_ to 
 assemble the software and its dependencies.  For example ::
 
-  $ python2.4 bootstrap/bootstrap.py
+  $ python bootstrap/bootstrap.py
   $ ./bin/buildout
 
 After the buildout process completes the application may be started using
-the generated ``cc_engine`` script ::
+the generated init script ::
 
-  $ ./bin/cc_engine start
+  # /etc/init.d/cc_engine-run-cc_engine start
 
 You can prevent the service from detaching from the console as a daemon with
-the ``fg`` parameter ::
+the ``fg`` argument (instead of ``start'') ::
 
-  $ ./bin/cc_engine fg
+  # /etc/init.d/cc_engine-run-cc_engine fg
+
+If you get a UnicodeDecodeError from the cc.engine (you'll see this if it's
+running in the foreground) when you try to access the http://host:9080/license/
+then it's likely that the install of python you are using is set to use ASCII
+as it's default output.  You can change this to UTF-8 by creating the file
+/usr/lib/python<version>/sitecustomize.py and adding these lines:
+
+  import sys
+  sys.setdefaultencoding("utf-8")
 
 
 Development Mode
