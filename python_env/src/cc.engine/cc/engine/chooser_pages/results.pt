@@ -10,10 +10,14 @@
 </head>
 <body>
 
+
+  <metal:title metal:fill-slot="page-header-title"
+	       i18n:translate="license.here_chosen">
+    Here is the license you've chosen
+  </metal:title>
+
 <div metal:fill-slot="body"
       tal:define="target_lang string:en;">
-
-<h2 i18n:translate="license.here_chosen">Here is the license you've chosen</h2>
 
 <div class="licensebox">
 <div tal:omit-tag="" i18n:translate="license.selected">

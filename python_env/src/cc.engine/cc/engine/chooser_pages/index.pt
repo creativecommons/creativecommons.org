@@ -21,9 +21,13 @@
 
 </head>
 <body>
-  <div metal:fill-slot="body">
 
-    <h1 i18n:translate="license.Choose_License">Choose A License</h1>
+  <metal:title metal:fill-slot="page-header-title"
+	       i18n:translate="license.License_Your_Work">
+    License Your Work
+  </metal:title>
+    
+  <div metal:fill-slot="body">
 
     <p i18n:translate="license.what">
       <span i18n:name="lang" tal:content="view/target_lang"

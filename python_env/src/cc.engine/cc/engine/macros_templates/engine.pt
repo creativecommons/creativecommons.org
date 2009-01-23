@@ -82,14 +82,11 @@
                    tal:attributes="dir view/is_rtl|nothing; 
 				   align view/is_rtl_align|nothing;">
 
-    		<h3 class="category"><metal:page_parent_header define-slot="page_parent_header"></metal:page_parent_header></h3>
-    		<h2 tal:attributes="dir view/is_rtl|nothing; align
-				    view/is_rtl_align|nothing;" 
-		    i18n:translate="license.License_Your_Work">
+    		<h1 tal:attributes="dir view/get_ltr_rtl|nothing; style
+				    view/is_rtl_align|nothing;">
 		  <metal:page_title define-slot="page-header-title">
-		    License Your Work
 		  </metal:page_title>
-		</h2>
+		</h1>
 				<div class="block">
            <metal:block metal:define-slot="body">
            </metal:block>
