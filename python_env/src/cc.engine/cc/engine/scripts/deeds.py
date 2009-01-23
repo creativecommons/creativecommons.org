@@ -36,7 +36,7 @@ def create_option_parser():
     parser.add_option('-c', '--code', dest='codes', default=None,
                       help='comma separated list of license codes to generate.')
     parser.add_option('-u', '--uri', dest='single_uri', default=None,
-                      help='a single license URI to [re-]generate.')
+                      help='a single license URI to [re-]generate. *This is currently broken in a lame way; if you don\'t know what it is, ask nyergler before using.*')
 
     # locale selection options
     parser.add_option('-l', '--locales', dest='locales', default=None,
@@ -49,6 +49,13 @@ def create_option_parser():
 
     return parser
 
+class FakeLicense(object):
+    """XXX This is a terrible, terribly hack."""
+
+    def __init__(self, uri):
+        self.uri = uri
+        self.default_locale = 'en'
+
 def get_licenses(options):
     """Return a sequence of license URIs to retrieve, based on the options
     object passed in. See L{create_option_parser} for a description of 
@@ -56,7 +63,7 @@ def get_licenses(options):
 
     # see if we just want a single license
     if options.single_uri is not None:
-        return [options.single_uri]
+        return [FakeLicense(options.single_uri)]
 
     # get the list of all licenses
     licenses = cc.license.LicenseFactory().all()
