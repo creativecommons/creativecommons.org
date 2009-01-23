@@ -51,11 +51,6 @@
      >
 
      <browser:page
-        name="software"
-        template="chooser_pages/software.pt"
-        />
-
-     <browser:page
         name="sampling"
         template="chooser_pages/sampling.pt"
         />
