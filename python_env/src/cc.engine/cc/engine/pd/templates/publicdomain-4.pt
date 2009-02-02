@@ -22,7 +22,7 @@
 
 <metal:body fill-slot="body">
 
-<h1 i18n:translate="license.Mark_Content">Mark</h1>
+<h1 i18n:translate="license.mark_content">Mark</h1>
 
 <p i18n:translate="license.mark_pd" />
 
