@@ -7,6 +7,18 @@
       i18n:domain="cc_org">
 <head>
   <title metal:fill-slot="title">Choose a License</title>
+
+  <metal:style fill-slot="headers">
+    <style>
+      
+      #beta h4 {
+        margin-bottom: 0.25em;
+        margin-top: 0.5em;
+        padding-left: 0;
+      }
+
+    </style>
+  </metal:style>
 </head>
 <body>
 
@@ -47,9 +59,7 @@ You have selected the <span i18n:name="license_pretty_name" tal:replace="python:
 </div>
 </div>
 
-<h2 style="margin-top:30px;margin-bottom:8px;" i18n:translate="license.what_to_do_next">What to do next</h2>
-
-<div style="margin-top:0px;margin-bottom:30px;">
+<div style="margin-top:20px;margin-bottom:30px;">
 	<h4 i18n:translate="license.have_your_own_website">Have your own website?</h4>
 
 	<p i18n:translate="license.copy_text">Copy the text below to your Web site to let your visitors know what license applies to your works.</p>
@@ -69,7 +79,7 @@ Select the contents of the box above and copy it. Or, have it <a href="/license/
 </span>
 </p>
 
-<p><strong i18n:translate="license.read_tutorial">Need more help? <a href="http://creativecommons.org/education/publish-website">Read our tutorial</a>.</strong></p>
+<p><strong i18n:translate="license.read_tutorial">Need more help? <a href="http://creativecommons.org/Website/Publish">Read our tutorial</a>.</strong></p>
 
 <p i18n:translate="license.after_support_cc">After publishing your license, please consider <a href="http://creativecommons.org/support/">supporting Creative Commons</a>.</p>
 	
@@ -85,45 +95,50 @@ Select the contents of the box above and copy it. Or, have it <a href="/license/
 </div>
 
 <metal:sidebar fill-slot="sidebar">
-<h4 i18n:translate="license.no_web_site">No Web site?</h4>
 
 <p i18n:translate="license.learn_host">Learn about other places you can host your licensed files. These
 sites work with your Creative Commons license.</p>
 
 <ul>
-	<li><a href="http://creativecommons.org/audio/publish-internetarchive" 
-	       i18n:translate="license.publish_audio_ia"
-	       class="publish-links">Publishing your licensed music to the Internet Archive</a></li>
-	<li><a href="http://creativecommons.org/audio/publish-soundclick" 
-	       i18n:translate="license.publish_soundclick"
-	       class="publish-links">Publishing your licensed music to Soundclick</a></li>
+	<li><a href="http://wiki.creativecommons.org/Internet_Archive/Publish" 
+	       i18n:translate="license.publish_ia"
+	       class="publish-links">Publish your licensed music or video to
+	       the Internet Archive</a></li>
 
-	<li><a href="http://creativecommons.org/image/publish-flickr" 
+	<li><a href="http://wiki.creativecommons.org/Flickr/Publish" 
 	       i18n:translate="license.publish_flickr"
-	       class="publish-links">Posting your licensed images at Flickr</a></li>
-	<li><a href="http://creativecommons.org/image/publish-buzznet" 
-	       i18n:translate="license.publish_buzznet"
-	       class="publish-links">Posting your licensed images at Buzznet</a></li>	
-	<li><a href="http://creativecommons.org/text/publish-weblogs" 
+	       class="publish-links">Post your licensed images at Flickr</a></li>
+
+	<li><a href="http://wiki.creativecommons.org/Blog/Publish"
 	       i18n:translate="license.publish_blog"
-	       class="publish-links">Adding a Creative Commons license to your blog (Blogger, Movable Type, and Typepad)</a></li>	
-	<li><a href="http://creativecommons.org/video/publish-internetarchive" 
-	       i18n:translate="license.publish_video_ia"
-	       class="publish-links">Publishing your licensed video at the Internet Archive</a></li>
-	 <li><a href="/audio/publish-morpheus" 
-	       i18n:translate="license.publish_morpheus"
-	       class="publish-links">Publishing your licensed music to the Morpheus P2P network</a></li>
-       <li i18n:translate="license.mark_xmp">
-	<%=[ccommons::istr $lang license.mark_xmp]%>
-	<span tal:omit-tag="" i18n:name="url_vars" 
-	      tal:content="request/QUERY_STRING" />
-	</li>
+	       class="publish-link">Add a Creative Commons license to your blog</a>
+	</li>	
+
+</ul>
+
+<h4 i18n:translate="license.offline_work">Offline Work?</h4>
+
+<ul>
        <li i18n:translate="license.mark_nonweb">
 	<%=[ccommons::istr $lang license.mark_nonweb]%>	
 	<span tal:omit-tag="" i18n:name="url_vars" 
 	      tal:content="request/QUERY_STRING" />
 	</li>
 </ul>	
+
+<h4 i18n:translate="license.option_next_steps">Optional next steps</h4>
+
+<ul>
+  <li><a href="https://creativecommons.net/r/add/"
+	 i18n:translate="license.register_with_cc_network"
+	 >Register your work with the CC Network</a>
+  </li>
+  <li><a href="http://beta.fairshare.cc/fairshare/homepage?company=cc&license=$license_url"
+	 tal:attributes="href string: http://beta.fairshare.cc/fairshare/homepage?company=cc&license=${view/license/uri}"
+	 i18n:translate="license.track_with_fairshare"
+	 >Track use of your work with FairShare</a></li>
+</ul>
+
 </metal:sidebar>
 
 </body>

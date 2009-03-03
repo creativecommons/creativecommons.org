@@ -1,6 +1,16 @@
 TODO
 ====
 
+* convert from grok to zope 3.4
+* i18nextract support (./src)
+* remove session support?
+* z3c.layout?
+* zope.i18n
+* XXX cleanup
+
+* remove need for traversal
+* integrate ftobia work
+
 * UTF-8 in title (deed.he)
 * @@*-checksum
 
