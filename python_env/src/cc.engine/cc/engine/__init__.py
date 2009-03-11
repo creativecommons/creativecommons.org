@@ -14,6 +14,7 @@ from zope.app.publication.zopepublication import ZopePublication
 import cc.engine.chooser
 import cc.engine.characteristic
 import cc.engine.licenses.catalog
+import cc.engine.publicdomain.catalog
 
 @adapter(IDatabaseOpenedWithRootEvent)
 def init(event):
@@ -28,7 +29,10 @@ def init(event):
     # check for the deed catalog
     if db_root.get('licenses', None) is None:
         db_root['licenses'] = cc.engine.licenses.catalog.LicenseCatalog()
-    
+
+    # check for the public domain catalog
+    if db_root.get('publicdomain', None) is None:
+        db_root['publicdomain'] = cc.engine.publicdomain.catalog.PublicDomainCatalog()
 
     # check for the backup characteristic handler
     if db_root.get('characteristic', None) is None:

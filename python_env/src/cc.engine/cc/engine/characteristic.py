@@ -1,8 +1,10 @@
 """Support class for simple /characteristic views.  These are referenced
 in many translations, so we need to continue to support the URLs."""
 
-import grok
+from zope.interface import implements
+import interfaces
         
-class Characteristics(grok.Model):
-    pass
+class Characteristics(object):
+    implements(interfaces.ICharacteristic)
+
     

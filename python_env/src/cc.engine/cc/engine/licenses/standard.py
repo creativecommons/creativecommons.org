@@ -3,10 +3,14 @@ import urllib
 from lxml import etree
 from lxml.cssselect import CSSSelector
 
-import grok
+from zope.component import adapts, queryMultiAdapter
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
 from zope.i18n import translate
+from zope.publisher.browser import BrowserPage
+from zope.app.pagetemplate import ViewPageTemplateFile
+from zope.publisher.interfaces.browser import IBrowserRequest, IBrowserPublisher
+from zope.app.publisher.browser import getDefaultViewName
 
 import cc.license
 from cc.engine import i18n
@@ -17,19 +21,19 @@ from cc.license.decorators import memoized
 
 START_TIME = datetime.datetime.now()
 
-class BrowserLicense(grok.Model):
-    implements(interfaces.ILicense)
-
-    TARGET_NAMES = ('deed', 'rdf', 'rdf-checksum',
-                    'legalcode', 'legalcode-checksum',
-                    'legalcode-plain')
+class BrowserLicense(object):
+    implements(interfaces.IBrowserLicense)
 
     def __init__(self, parent, pieces):
         self.__parent__ = parent
-        self.__name__ = pieces[-1]
+        #self.__name__ = pieces[-1]
 
         self.pieces = pieces
-        
+
+    def add_piece(self, piece):
+
+        self.pieces.append(piece)
+
     @property
     @memoized
     def license(self):
@@ -52,8 +56,8 @@ class BrowserLicense(grok.Model):
     @property
     @memoized
     def conditions(self):
-        """Return a sequence of mappings defining the conditions defined by
-        this license."""
+        """Return a sequence of mappings defining the conditions defined by 
+       this license."""
 
         attrs = []
 
@@ -97,23 +101,47 @@ class BrowserLicense(grok.Model):
                      })
 
         return attrs
-        
-    def traverse(self, name):
 
-        if len(self.pieces) > 4:
+
+class LicenseTraverser(object):
+    """Browser traverser for IBrowserLicense."""
+
+    adapts(interfaces.IBrowserLicense, IBrowserRequest)
+    implements(IBrowserPublisher)
+
+    # XXX we can probably get rid of this list... 
+    TARGET_NAMES = ('deed', 'rdf', 'rdf-checksum',
+                    'legalcode', 'legalcode-checksum',
+                    'legalcode-plain')
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def browserDefault(self, request):
+        return self.context, (getDefaultViewName(self.context, request),)
+    
+    def publishTraverse(self, request, name):
+
+        if len(self.context.pieces) > 3:
             # no cases call for more than four steps of traversal:
-            # code, version [jurisdiction], [deed.xx]
-            return None
+            # code, version, [jurisdiction]
+            #
+            # deed.xx isn't counted here as it's implemented as a view
+            raise NotFound(self.context, name, request)
 
-        if name not in self.TARGET_NAMES:
-            # make sure we always return the same class since
-            # views are registered for particular classes
-            return self.__class__(self, self.pieces + [name])
+        # see if this is a known view on the License
+        view = queryMultiAdapter((self.context, request), name=name)
+        if view is not None:
+            return view
 
-class LicenseDeed(grok.View):
-    grok.context(BrowserLicense)
-    grok.name('index')
-    grok.template('deed')
+        # push the name onto the license code stack
+        self.context.add_piece(name)
+        return self.context
+
+class LicenseDeed(BrowserPage):
+
+    __call__ = ViewPageTemplateFile('standard_templates/deed.pt')
 
     @property
     def license(self):
@@ -290,11 +318,9 @@ class LicenseDeed(grok.View):
 
         return self.request.locale.getLocaleID()
 
-class LicenseRdf(grok.View):
-    grok.context(BrowserLicense)
-    grok.name('rdf')
+class LicenseRdf(BrowserPage):
 
-    def render(self):
+    def __call__(self):
         """Return the RDF+XML for this license."""
         
         self.request.response.setHeader(
@@ -302,9 +328,7 @@ class LicenseRdf(grok.View):
 
         return self.context.license.rdf
                      
-class PlainLegalCode(grok.View):
-    grok.context(BrowserLicense)
-    grok.name('legalcode-plain')
+class PlainLegalCode(BrowserPage):
 
     def __init__(self, context, request):
         super(PlainLegalCode, self).__init__(context, request)
@@ -312,11 +336,11 @@ class PlainLegalCode(grok.View):
         # YYY we do this again here when the form is fully populated
         self.request.setupLocale()
 
-    def render(self):
+    def __call__(self):
 
         # retrieve the legalcode
         parser = etree.HTMLParser()
-        legalcode = etree.parse(self.context.license.uri.replace('creativecommons.org', 'staging.creativecommons.org') + "legalcode",
+        legalcode = etree.parse(self.context.license.uri + "legalcode",
                                 parser)
 
         # remove the CSS <link> tags

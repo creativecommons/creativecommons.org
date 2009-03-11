@@ -3,7 +3,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@engine/macros/page"
+      metal:use-macro="context/@@engine/page"
       i18n:domain="cc_org">
 <head>
   <title metal:fill-slot="title">Choose a License</title>
@@ -180,7 +180,7 @@
 	  
 	</p>
 
-	<div metal:use-macro="context/@@metadata/macros/more-metadata" />
+	<div metal:use-macro="context/@@metadata/more-metadata" />
 
     <div>
 	<input type="hidden" name="lang" value="en"
@@ -201,7 +201,7 @@
     </div>
     <br />
 
-    <div metal:use-macro="context/@@support/macros/engine_languages"></div>
+    <div metal:use-macro="context/@@support/engine_languages"></div>
 
   </div>
 
@@ -296,13 +296,14 @@
     <h4 i18n:translate="license.or_choose">Or Choose:</h4>
 
     <p style="font-size:11px;">
-      <a href="/license/publicdomain-2">
+      <a href="/publicdomain/">
 	<img src="/images/license/40publicdomain.gif" width="40"
 	     height="40" style="border: 0; text-align:center;"
-         i18n:attributes="alt" alt="Public Domain"
-    />
+	     alt="Public Domain"
+             i18n:attributes="alt licenses.pretty_publicdomain;" 
+	     />
       </a> 
-      <a href="/license/publicdomain-2">
+      <a href="/publicdomain/">
 	<span i18n:translate="licenses.pretty_publicdomain">
 	  Public Domain
         </span>
@@ -315,8 +316,8 @@
       <a href="/license/cc-gpl">
 	<img src="/images/license/40gnugpl.gif" width="40" height="40"
 	     style="border: 0; text-align:center;"
-         i18n:attributes="alt" alt="GNU GPL"    
-    />
+             i18n:attributes="alt util.CC_GNU_GPL;" alt="GNU GPL" 
+	     />
       </a>
       <a href="/license/cc-gpl" i18n:translate="util.CC_GNU_GPL">
 	CC-GNU GPL
@@ -327,8 +328,9 @@
       <a href="/license/cc-lgpl">
 	<img src="/images/license/40gnulgpl.gif" width="40"
 	     height="40" style="border: 0; text-align:center;"
-         i18n:attributes="alt" alt="GNU LGPL"    
-    />
+             i18n:attributes="alt util.CC_GNU_LGPL;" 
+	     alt="GNU LGPL"    
+	     />
       </a>
       <a href="/license/cc-lgpl" i18n:translate="util.CC_GNU_LGPL">
 	CC-GNU LGPL
@@ -339,10 +341,10 @@
       <a href="/licenses/BSD/">
 	<img src="/images/license/40bsd.png" width="40" height="40"
 	     style="border: 0; text-align:center;"
-         i18n:attributes="alt" alt="BSD"
-    />
+             alt="BSD"
+	     />
       </a>
-      <a href="/licenses/BSD/" i18n:translate="util.BSD">
+      <a href="/licenses/BSD/">
 	BSD
       </a>
     </p>

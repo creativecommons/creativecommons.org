@@ -2,34 +2,38 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@engine/macros/page"
+      metal:use-macro="context/@@engine/page"
       i18n:domain="cc_org">
 <head>
   <title metal:fill-slot="title"
-         i18n:translate="">Public Domain Dedication</title>
+	 i18n:translate="util.public_domain_certification">Public Domain Certification</title>
 </head>
 
 <body>
 
-<metal:left fill-slot="sidebar">
-<div tal:omit-tag=""
-     tal:define="step string:3;
-                 license_code string:publicdomain;" >
-    <div metal:use-macro="context/@@support/macros/pd_nav_steps" />
-</div>
-
-</metal:left>
-
 <metal:body fill-slot="body">
 
-<h1 i18n:translate="license.mark_content">Mark</h1>
 
-<p i18n:translate="license.mark_pd" />
+  <h1 i18n:translate="license.pd.identify_a_pd_work">
+    Identify a Public Domain Work
+  </h1>
 
-<p i18n:translate="license.in_order_to" />
+  <p i18n:translate="license.mark_pd">
+    Now that you've chosen the Public Domain Certification, you should
+    mark the work in the appropriate way.
+  </p>
+  <p i18n:translate="license.in_order_to">
+    In order to:
+  </p>
                                                                                 
-<ul>
-<li><span tal:omit-tag="" i18n:translate="license.mark_web"/><br /><br />
+  <ul>
+    <li>
+      <span tal:omit-tag="" i18n:translate="license.mark_web">
+	Mark content on a web page, the HTML to display the
+	button is as follows and be sure
+	to <a href="/technology/web">follow the guidelines here</a>:
+      </span>
+      <br /><br />
                                                                                 
 <div class="textbox">
 <div align="center">
@@ -44,14 +48,8 @@
                                                                                 
 </form>
 </div></div></li>
-        <li i18n:translate="license.mark_mp3"/>
         <li i18n:translate="license.mark_nonweb">
         <span tal:omit-tag="" i18n:name="url_vars" 
-	      tal:content="python:'pd=1&field_creator='+request['copyright_holder']+'&field_worktitle='+request['title']" />
-        </li>
-        <li i18n:translate="license.mark_rss"/>
-        <li i18n:translate="license.mark_xmp">
-	<span tal:omit-tag="" i18n:name="url_vars" 
 	      tal:content="python:'pd=1&field_creator='+request['copyright_holder']+'&field_worktitle='+request['title']" />
         </li>
 </ul>

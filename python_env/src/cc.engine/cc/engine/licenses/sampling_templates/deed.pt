@@ -3,7 +3,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@deed/macros/page"
+      metal:use-macro="context/@@deed/page"
       i18n:domain="cc_org">
 
 <body>
@@ -20,7 +20,7 @@
         <div id="deed-newer" style="text-align:center" tal:condition="context/license/deprecated"><h3 i18n:translate="deed.retired">This license is <a href="/retiredlicenses">retired</a>. Do not use for new works.</h3></div>
 
 		      <h3 i18n:translate="deed.You_are_free"></h3>
-		      <ul>
+		      <ul class="license-properties">
     				<li class="license samplingplus" tal:condition="python: context.license.code == 'nc-sampling+'"
                                         i18n:translate="deed.free_sample_nc"></li>
     				<li class="license sampling" tal:condition="python: context.license.code != 'nc-sampling+'"
@@ -34,7 +34,9 @@
         <div id="deed-conditions">
 
 		      <h3 i18n:translate="deed.under_conditions"></h3>
-	        <ul tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
+	        <ul tal:attributes="dir view/get_ltr_rtl; style
+				    view/is_rtl_align;"
+		    class="license-properties">
     				<li class="license by" i18n:translate="char.by_brief"><%=[ccommons::istr $lang char.by_brief]%></li>
     				<li i18n:translate="char.na_brief"><%=[ccommons::istr $lang char.na_brief]%></li>
     				<li tal:condition="python: context.license.code in ('nc-sampling+', 'sampling+')"
@@ -43,7 +45,21 @@
                                         i18n:translate="deed.notice_withoutdistribution" ></li>
     				<li tal:condition="python: context.license.code not in ('nc-sampling+', 'sampling+')"
                                         i18n:translate="char.no_brief" ></li>
-    			</ul>
+	    <li>In no way are any of the following rights affected by
+	      the above:
+	     
+	      <ul>
+		<li i18n:translate="deed.fair_use">Your fair use rights.
+		</li>
+		<li i18n:translate="deed.publicity_rights">
+		  Rights other persons may have either in the work
+		  itself or in how the work is used, such as publicity
+		  or privacy rights.
+		</li>
+	      </ul>
+	    </li>
+
+        			</ul>
 
         </div>
     <span id='referrer-metadata-container'/>

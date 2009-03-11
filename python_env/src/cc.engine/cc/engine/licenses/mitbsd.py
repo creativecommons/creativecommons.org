@@ -1,9 +1,10 @@
-import grok
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
 from zope.i18n import translate
 from zope.i18n.interfaces import ITranslationDomain
 from zope.component import queryUtility
+from zope.publisher.browser import BrowserPage
+from zope.app.pagetemplate import ViewPageTemplateFile
 
 from cc.license.decorators import memoized
 from cc.engine.licenses.standard import BrowserLicense, LicenseDeed
@@ -27,7 +28,6 @@ class MitBsdLicense(BrowserLicense):
 
     
 class MitBsdDeed(LicenseDeed):
-    grok.context(MitBsdLicense)
-    grok.name('index')
-    grok.template('deed')
+
+    __call__ = ViewPageTemplateFile('mitbsd_templates/deed.pt')
     

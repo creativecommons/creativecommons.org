@@ -8,7 +8,6 @@ from datetime import datetime
 from urllib import urlencode
 from urlparse import urlparse
 
-import grok
 from zope.interface import implements
 
 import zope.component
@@ -24,7 +23,7 @@ import cc.license.license
 import cc.engine.i18n
 from cc.engine.interfaces import ILicenseEngine, IDefaultJurisdiction
 
-class LicenseEngine(grok.Application, grok.Container):
+class LicenseEngine(object):
     """LicenseEngine Application Class
 
     Provides web-application specific assistance (non-presentation) for the
@@ -392,8 +391,9 @@ class EmailResultsView(ResultsView):
 
     __call__ = ViewPageTemplateFile('chooser_pages/htmlpopup.pt')
         
-class EmailHtml(grok.View):
-    grok.name('work-email')
+class EmailHtml(BrowserPage):
+
+    __call__ = ViewPageTemplateFile('chooser_templates/emailhtml.pt')
 
     def update(self):
         """Email the license HTML to the user."""

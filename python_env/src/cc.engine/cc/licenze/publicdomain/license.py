@@ -3,14 +3,12 @@ from cc.license.exceptions import LicenseException
 
 from cc.licenze import interfaces
 
-_ = unicode
-
 class PublicDomainAssertion(object):
     """ILicense for Public Domain assertions."""
 
     implements(interfaces.ILicense)
 
-    URI = u'http://staging.creativecommons.org/licenses/publicdomain/'
+    URI = u'http://creativecommons.org/licenses/publicdomain/'
 
     @property
     def license_class(self):
@@ -20,7 +18,7 @@ class PublicDomainAssertion(object):
     @property
     def name(self):
 
-        return _("Public Domain Assertion")
+        return "Public Domain Assertion"
 
     @property
     def version(self):

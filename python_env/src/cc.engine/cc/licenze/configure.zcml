@@ -25,4 +25,7 @@
         provides=".interfaces.ILicenseSelector"
 	/>
 
+    <include package=".publicdomain" />
+    <include package=".zero" />
+
 </configure>

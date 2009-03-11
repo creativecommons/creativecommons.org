@@ -3,7 +3,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@deed/macros/page"
+      metal:use-macro="context/@@deed/page"
       i18n:domain="cc_org">
 
 <body>
@@ -23,7 +23,7 @@ ${view/license/rdf} -->" />
 
          <h3 rel="cc:permits"
             resource="http://creativecommons.org/ns#Reproduction" i18n:translate="deed.You_are_free">You are free:</h3>
-		      <ul>
+		      <ul class="license-properties">
 			      <li class="license share" rel="cc:permits"
              resource="http://creativecommons.org/ns#Distribution" i18n:translate="deed.free_copy_distribute">
 to Share %Gâ%@ to copy, distribute and transmit the work</li>
@@ -34,19 +34,42 @@ to Share %Gâ%@ to copy, distribute and transmit the work</li>
 
         </div>
         <div id="deed-conditions">
-		      <h3 i18n:translate="deed.under_conditions"></h3>
-	        <ul tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
+	  <h3 i18n:translate="deed.under_conditions"></h3>
+	  <ul class="license-properties" 
+	      tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
 
             <li class="license devnations"><strong>Developing Nations</strong>.
-                       You may exercise the above freedoms in developing nations only.</li>
+              You may exercise the above freedoms in developing
+              nations only.
+	    </li>
 
-            <li rel="cc:requires" resource="http://creativecommons.org/ns#Attribution" 
-                class="license by"><p><strong i18n:translate="char.by_title"></strong>.
-                <span i18n:translate="char.by_brief"><%=[ccommons::istr $lang char.by_brief]%></span></p></li>
+            <li rel="cc:requires" 
+		resource="http://creativecommons.org/ns#Attribution" 
+                class="license by">
+	      <p><strong i18n:translate="char.by_title"></strong>.
+                <span i18n:translate="char.by_brief">
+		  <%=[ccommons::istr $lang char.by_brief]%>
+	    </span></p></li>
 
-    				<li i18n:translate="deed.notice"></li>
-    				<li i18n:translate="deed.permission"></li>
-    			</ul>
+    	    <li i18n:translate="deed.notice"></li>
+    	    <li i18n:translate="deed.permission"></li>
+
+	    <li>In no way are any of the following rights affected by
+	      the above:
+	     
+	      <ul>
+		<li i18n:translate="deed.fair_use">Your fair use rights.
+		</li>
+		<li i18n:translate="deed.publicity_rights">
+		  Rights other persons may have either in the work
+		  itself or in how the work is used, such as publicity
+		  or privacy rights.
+		</li>
+	      </ul>
+	    </li>
+
+
+    	  </ul>
         </div>
 
 </div>

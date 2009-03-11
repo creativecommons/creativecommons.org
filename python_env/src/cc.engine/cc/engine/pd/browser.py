@@ -59,18 +59,13 @@ class pd_confirm(BrowserPage):
 
 class pd_final(ResultsView):
 
-    _pt = ViewPageTemplateFile('templates/publicdomain-4.pt')
-    
     def __call__(self):
 
+        # make sure the user selected "confirm"
+        if self.request.form.get('understand', False) != 'confirm':
+            self.request.response.redirect('./publicdomain-3')
+            
         # YYY set the key so Results._issue works right
         self.request.form['publicdomain'] = True
-        
-        self.email_result = self.context.send_pd_dedication(
-            self.request.get('email', False),
-            self.request.get('title', False),
-            self.request.get('copyright_holder', False),
-            lang = self.request.get('lang', 'en')
-            )
 
-        return self._pt(self)
+        return self.index()

@@ -7,6 +7,38 @@
            i18n_domain="cc_org"
            >
 
+  <!-- /licenses catalog and traversal -->
+  <class
+     class=".catalog.LicenseCatalog"
+     >
+    <require
+       interface="cc.engine.interfaces.ILicenseCatalog"
+       permission="zope.View"
+       />
+  </class>
+
+  <view
+     for="cc.engine.interfaces.ILicenseCatalog"
+     type="zope.publisher.interfaces.browser.IBrowserRequest"
+     provides="zope.publisher.interfaces.browser.IBrowserPublisher"
+     factory=".catalog.LicenseCatalogTraverser"
+     permission="zope.Public"
+     />
+
+  <view
+     for="cc.engine.interfaces.IBrowserLicense"
+     type="zope.publisher.interfaces.browser.IBrowserRequest"
+     provides="zope.publisher.interfaces.browser.IBrowserPublisher"
+     factory=".standard.LicenseTraverser"
+     permission="zope.Public"
+     />
+
+  <!-- /licenses "catalog" pages -->
+
+  <browser:defaultView
+     name="index"
+     for="cc.engine.interfaces.ILicenseCatalog" />
+
   <browser:page
      for="cc.engine.interfaces.ILicenseCatalog"
      name="index"
@@ -20,6 +52,128 @@
      name="index.rdf"
      template="catalog_pages/index-rdf.pt"
      permission="zope.View"
+     />
+
+  <!-- License Classes
+       ***************
+    -->
+
+  <!-- Standard CC Licenses
+       ~~~~~~~~~~~~~~~~~~~~
+    -->
+
+  <class class=".standard.BrowserLicense">
+    <allow interface="cc.engine.interfaces.IBrowserLicense" />
+  </class>
+
+  <browser:defaultView
+     name="index"
+     for="cc.engine.interfaces.IBrowserLicense" />
+
+  <!-- views -->
+  <browser:pages
+     permission="zope.View"
+     for="cc.engine.interfaces.IBrowserLicense"
+     class=".standard.LicenseDeed"
+     >
+    <browser:page name="index" />
+    <browser:page name="index.html" />
+  </browser:pages>
+
+  <browser:page
+     name="rdf"
+     permission="zope.View"
+     for="cc.engine.interfaces.IBrowserLicense"
+     class=".standard.LicenseRdf"
+     />
+
+  <browser:page
+     name="legalcode-plain"
+     permission="zope.View"
+     for="cc.engine.interfaces.IBrowserLicense"
+     class=".standard.PlainLegalCode"
+     />
+
+
+  <!-- Public Domain
+       ~~~~~~~~~~~~~
+    -->
+
+  <class class=".publicdomain.PublicDomain">
+    <allow interface="cc.engine.interfaces.IBrowserLicense" />
+  </class>
+
+  <!-- views -->
+  <browser:page
+     name="index"
+     permission="zope.View"
+     for=".publicdomain.PublicDomain"
+     class=".publicdomain.PublicDomainDedication"
+     />
+
+
+  <!-- Free Software Foundation
+       ~~~~~~~~~~~~~~~~~~~~~~~~
+    -->
+
+  <class class=".fsf.FsfLicense">
+    <allow interface="cc.engine.interfaces.IBrowserLicense" />
+  </class>
+
+  <!-- views -->
+  <browser:page
+     name="index"
+     permission="zope.View"
+     for=".fsf.FsfLicense"
+     class=".fsf.FsfDeed"
+     />
+
+  <!-- Sampling
+       ~~~~~~~~
+    -->
+
+  <class class=".sampling.SamplingLicense">
+    <allow interface="cc.engine.interfaces.IBrowserLicense" />
+  </class>
+
+  <!-- views -->
+  <browser:page
+     name="index"
+     permission="zope.View"
+     for=".sampling.SamplingLicense"
+     class=".sampling.SamplingDeed"
+     />
+
+  <!-- Developing Nations
+       ~~~~~~~~~~~~~~~~~~
+    -->
+
+  <class class=".devnations.DevNations">
+    <allow interface="cc.engine.interfaces.IBrowserLicense" />
+  </class>
+
+  <!-- views -->
+  <browser:page
+     name="index"
+     permission="zope.View"
+     for=".devnations.DevNations"
+     class=".devnations.DevNationsDeed"
+     />
+
+  <!-- MIT/BSD
+       ~~~~~~~
+    -->
+
+  <class class=".mitbsd.MitBsdLicense">
+    <allow interface="cc.engine.interfaces.IBrowserLicense" />
+  </class>
+
+  <!-- views -->
+  <browser:page
+     name="index"
+     permission="zope.View"
+     for=".mitbsd.MitBsdLicense"
+     class=".mitbsd.MitBsdDeed"
      />
 
 </configure>

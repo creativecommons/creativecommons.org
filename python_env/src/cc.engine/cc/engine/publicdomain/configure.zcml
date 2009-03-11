@@ -1,46 +1,72 @@
-<zope:configure
-   xmlns:zope="http://namespaces.zope.org/zope"
-   xmlns="http://namespaces.zope.org/browser"
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:grok="http://namespaces.zope.org/grok"
+           xmlns:i18n="http://namespaces.zope.org/i18n"
+           xmlns:mail="http://namespaces.zope.org/mail"
+           xmlns:browser="http://namespaces.zope.org/browser"
 
-   i18n_domain="cc_org"
-   >
+           i18n_domain="cc_org"
+           >
+
+  <!-- /publicdomain catalog and traversal -->
+  <class class=".catalog.PublicDomainCatalog">
+    <allow interface=".interfaces.IPublicDomainCatalog" />
+  </class>
 
   <view
-     for="cc.engine.interfaces.ILicenseEngine"
-     name="publicdomain"
+     for=".interfaces.IPublicDomainCatalog"
+     type="zope.publisher.interfaces.browser.IBrowserRequest"
+     provides="zope.publisher.interfaces.browser.IBrowserPublisher"
+     factory=".catalog.PublicDomainCatalogTraverser"
+     permission="zope.Public"
+     />
+<!--
+  <view
+     for="cc.engine.interfaces.IBrowserLicense"
+     type="zope.publisher.interfaces.browser.IBrowserRequest"
+     provides="zope.publisher.interfaces.browser.IBrowserPublisher"
+     factory=".standard.LicenseTraverser"
+     permission="zope.Public"
+     />
+-->
+  <!-- /publicdomain "catalog" pages -->
+
+  <browser:defaultView
+     name="index.html"
+     for=".interfaces.IPublicDomainCatalog" />
+
+  <browser:page
+     for=".interfaces.IPublicDomainCatalog"
+     name="index.html"
+     template="templates/index.pt"
+     class="cc.engine.chooser.BaseBrowserView"
      permission="zope.View"
-     class=".ZeroChooser"
-     >
+     />
+<!--
+  <browser:page
+     for=".interfaces.IPublicDomainCatalog"
+     name="index.rdf"
+     template="catalog_pages/index-rdf.pt"
+     permission="zope.View"
+     />
+-->
+  <!-- Tool/Waiver Classes
+       *******************
+    -->
 
-     <defaultPage
-        name="index.html"
-        />
+  <!-- CC0
+       ~~~
+    -->
 
-     <page 
-        name="index.html"	
-        template="templates/index.pt"
-        />
+  <class class=".zero.CCZero">
+    <allow interface="cc.engine.interfaces.IBrowserLicense" />
+  </class>
 
-     <page
-        name="dispatch"
-        attribute="path_dispatch" 
-        />
+  <!-- views -->
+  <browser:page
+     name="index"
+     permission="zope.View"
+     for=".zero.CCZero"
+     class=".zero.CCZeroDeed"
+     />
 
-     <page
-        name="assertion"
-        template="templates/assertion.pt"
-        />
-
-     <page
-        name="confirm-assertion"
-        template="templates/confirm-assertion.pt"
-        />
-
-     <page
-        name="results"
-        template="templates/results.pt"
-        />
-
-  </view>
-
-</zope:configure>
+</configure>

@@ -25,3 +25,4 @@ class ILicense(Interface):
     uri = Attribute(u"The fully qualified URI of the license.")
     
     libre = Attribute(u"Returns True if this is a 'Libre' license.")
+    rdf = Attribute("")

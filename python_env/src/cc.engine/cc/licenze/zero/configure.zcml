@@ -1,0 +1,9 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:i18n="http://namespaces.zope.org/i18n"
+           >
+
+    <class class=".license.Zed">
+      <allow interface="cc.licenze.interfaces.ILicense" />
+    </class>
+
+</configure>

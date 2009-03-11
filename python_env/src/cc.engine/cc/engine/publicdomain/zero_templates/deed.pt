@@ -1,8 +1,9 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@deed/macros/page"
+      metal:use-macro="context/@@deed/page"
       i18n:domain="cc_org">
 
 <body>
@@ -18,7 +19,7 @@
   <div metal:fill-slot="body" tal:omit-tag="">
     <div id="deed-rights" 
 	 tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
-
+      <h3 i18n:translate="deed.zero.no_copyright">No Copyright</h3>
       <div id="librepd" tal:condition="view/license/libre">
 	<a href="http://freedomdefined.org/">
 	  <img src="/images/deed/seal.png" border="0" 
@@ -26,10 +27,9 @@
 	       alt="This license is acceptable for Free Cultural Works." />
 	</a>
       </div>
-      <h3>No Copyright</h3>
-      <ul>
+      <ul class="license-properties">
 	<li class="license nolaw">
-	  <span id="nolaw-text" i18n:translate="">
+	  <span id="nolaw-text" i18n:translate="deed.zero.nocopyright-text">
             The person who associated a work with this document
             has dedicated this work to the Commons by waiving all
             of his or her rights to the work under copyright law
@@ -38,7 +38,7 @@
 	  </span>
 	</li>
 	<p id="work-attribution-container" style="display:none;">
-	  <strong>Attribute this work:</strong><br/>
+	  <strong i18n:translate="deed.attribute_this_work">Attribute this work:</strong><br/>
 	  <input id="work-attribution" value="" type="text"
 		 readonly="readonly" onclick="this.select()"
 		 onfocus="document.getElementById('work-attribution').select();"/>
@@ -60,22 +60,45 @@
 	  </a>
 	</p>
       </ul>
-      <ul>
-	<li>
-	  In no way are any of the following rights affected by
-	  the above: <br/><br/>
+      <ul class="license-properties">
+
+	<li><strong i18n:translate="util.other_rights">Other Rights</strong>
+	  &mdash; 
+	  <span tal:omit-tag=""
+		i18n:translate="deed.zero.other_rights">
+	    In no way are any of the following rights affected by CC0:</span>
 	  <ul>
-	    <li>Patent or trademark rights held by the person who
-	      associated this document with a work.</li>
-	    <li>Rights other persons may have either in the work
-              itself or in how the work is used, such
-              as <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F">publicity
-                or privacy rights</a>.
+	    <li i18n:translate="deed.zero.patent">Patent or trademark rights held by the person who associated this document with a work.</li>
+	    <li i18n:translate="deed.publicity_rights">Rights other
+	      persons may have either in the work itself or in how the
+	      work is used, such
+	      as <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F" class="helpLink"
+	      id="publicity_rights">publicity</a> or privacy
+	      rights.
 	    </li>
 	  </ul>
 	</li>
 
       </ul>
+
+      <div id="help_publicity_rights">
+        <div class="hd" i18n:translate="deed.publicity_rights.help.title">
+          What are "Publicity Rights"?
+        </div>
+        <div class="bd">
+          <p i18n:translate="deed.zero.publicity_rights.help">Publicity
+          rights allow individuals to control how their voice, image
+          or likeness is used for commercial purposes in public.  If a
+          work under CC0 includes the voice or image of anyone other
+          than the affirmer, a user of the work may need to get
+          permission from those individuals before using the work for
+          commercial purposes.</p>
+
+          <p><a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F"
+		i18n:translate="util.learn_more">Learn more</a>.</p>
+        </div>
+      </div>
+
     </div>
 
     <span id='referrer-metadata-container'/>
@@ -90,7 +113,7 @@
 	      <div class="hd" i18n:translate="util.Disclaimer">
 		Disclaimer
 	      </div>
-	      <div class="bd" i18n:translate="deed.cczero_disclaimer">
+	      <div class="bd" i18n:translate="deed.zero.disclaimer">
 		<p>The Commons Deed is not a legal instrument. It is simply a
 		handy reference for understanding the CC0 Legal Code,
 		a human-readable expression of some of its key
@@ -107,7 +130,8 @@
   	      </div>
 	  </div>
 
-  	<p style="text-align:center">
+  	<p style="text-align:center" 
+	   i18n:translate="deed.zero.human_summary">
 	  This is a human-readable summary of
 	  the <a href="./legalcode">Legal Code (read the full
 	  text)</a>.
@@ -116,6 +140,8 @@
 </metal:footer>
 
 <metal:use-this-license fill-slot="use-this-license">
+  <a id="get_this" href="/license/zero/" 
+     i18n:translate="deed.use_this_tool">Use this tool for your own work.</a>
 </metal:use-this-license>
 
 </body>

@@ -3,33 +3,22 @@ import locale
 
 locale.setlocale(locale.LC_ALL, '')
 
-import grok
 from zope.interface import Interface
 from zope.i18n.interfaces import ITranslationDomain
 from zope.component import queryUtility
+from zope.publisher.browser import BrowserView
+from zope.app.pagetemplate import ViewPageTemplateFile
 
 from cc.license.decorators import memoized
 from cc.engine import i18n
-
-class Engine(grok.View):
-    """Skin macros for the standard license engine."""
-    grok.context(Interface)
-
-class Partner(grok.View):
-    """Skin macros for the partner interface."""
-    grok.context(Interface)
     
-class Popup(grok.View):
-    """Page-level macros for popup pages."""
-    grok.context(Interface)
-        
-class Deed(grok.View):
-    """Skin macros for the license deeds."""
-    grok.context(Interface)
-    
-class Support(grok.View):
+class Support(BrowserView):
     """Container for support macros: translations, etc."""
-    grok.context(Interface)
+
+    template = ViewPageTemplateFile('macros_templates/support.pt')
+
+    def __getitem__(self, key):
+        return self.template.macros[key]
 
     @property
     def campaign_total(self):
@@ -69,9 +58,5 @@ class Support(grok.View):
                 result.append(dict(code=code, name=name))
 
         return result
-    
-class Metadata(grok.View):
-    """Metadata support macros."""
-    grok.context(Interface)
 
     

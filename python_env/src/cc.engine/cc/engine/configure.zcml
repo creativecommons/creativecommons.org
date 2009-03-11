@@ -7,14 +7,83 @@
            i18n_domain="cc_org"
            >
 
-  <include package="grok" />
+  <include package="zope.security" file="meta.zcml" />
+  <include package="zope.app.zcmlfiles" file="meta.zcml" />
+
+  <include package="zope.publisher" />
+  <include package="zope.traversing" />
+  <include package="zope.traversing.browser" />
+  <include package="zope.app.zcmlfiles" />
+
+  <!-- The following packages aren't needed from the beginning, but
+       end up being used in most applications -->
+  <include package="zope.i18n" file="meta.zcml" />
+  <include package="zope.annotation" />
+  <include package="zope.copypastemove" />
+  <include package="zope.formlib" />
+  <include package="zope.i18n.locales" />
+  <include package="zope.app.authentication" />
+<!--
+  <include package="zope.app.session" />
+-->
+  <include package="zope.app.intid" />
+  <include package="zope.app.keyreference" />
+  <include package="zope.app.catalog" />
+
+  <!-- Add your own component registrations here -->
+
   <include package="zope.sendmail" file="meta.zcml" />
   <include package="zope.sendmail" />
 
   <include package=".support" />
+  <include package="cc.license" />
   <include package="cc.licenze" />
 
+  <!--
   <grok:grok package="." />
+  -->
+  <!-- Macro/Template definitions -->
+
+  <browser:pages
+     for="zope.interface.Interface"
+     permission="zope.View"
+     >
+
+     <browser:page
+        name="engine"
+        template="macros_templates/engine.pt"
+        />
+
+     <browser:page
+        name="partner"
+        template="macros_templates/partner.pt"
+        />
+
+     <browser:page
+        name="deed"
+        template="macros_templates/deed.pt"
+        />
+
+     <browser:page
+        name="metadata"
+        template="macros_templates/metadata.pt"
+        />
+
+     <browser:page
+        name="popup"
+        template="macros_templates/popup.pt"
+        />
+
+  </browser:pages>
+
+  <browser:page
+     for="zope.interface.Interface"
+     name="support"
+     class=".macros.Support"
+     permission="zope.View"
+     />
+
+  <!-- End Macros/Templates -->
 
   <browser:page
      for="zope.publisher.interfaces.INotFound"
@@ -22,6 +91,23 @@
      template="templates/404.pt"
      permission="zope.View"
      />
+
+  <!-- License Engine -->
+
+  <class
+     class=".chooser.LicenseEngine"
+     >
+
+    <require
+       interface="cc.engine.interfaces.ILicenseEngine"
+       permission="zope.View"
+       />
+
+  </class>
+
+  <browser:defaultView
+     name="index"
+     for="cc.engine.interfaces.ILicenseEngine" />
 
   <browser:page
      for="cc.engine.interfaces.ILicenseEngine"
@@ -95,6 +181,13 @@
 
   <browser:page
      for="cc.engine.interfaces.ILicenseEngine"
+     name="work-email"
+     class=".chooser.EmailHtml"
+     permission="zope.View"
+     />
+
+  <browser:page
+     for="cc.engine.interfaces.ILicenseEngine"
      name="get-html"
      class=".chooser.GetHtml"
      permission="zope.View"
@@ -116,6 +209,15 @@
      />
 
   <!-- Legacy /characteristic support. -->
+  <class
+     class="cc.engine.characteristic.Characteristics"
+     >
+    <require 
+       interface=".interfaces.ICharacteristic"
+       permission="zope.View"
+       />
+  </class>
+
   <browser:pages
      for="cc.engine.characteristic.Characteristics"
      permission="zope.View"
@@ -146,16 +248,10 @@
   <include package=".xmp" />
   <include package=".pd" />
 
-  <!--
-  
-    New-style PD Assertion
-  
-  <include package=".publicdomain" />
-  -->
-
   <include package=".zero" />
 
   <include package=".licenses" />
+  <include package=".publicdomain" />
 
   <include package=".rdfa" />
 

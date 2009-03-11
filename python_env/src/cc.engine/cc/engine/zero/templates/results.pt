@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@engine/macros/page"
+      metal:use-macro="context/@@engine/page"
       i18n:domain="cc_org">
 <head>
   <title metal:fill-slot="title">CC0: Results</title>
@@ -52,15 +52,16 @@ YAHOO.util.Event.onDOMReady(function() {
   <div id="error" class="yui-module"
        tal:condition="not:view/can_issue">
     <div class="bd">
-      <p i18n:translate="cc0.declined">
+      <p i18n:translate="license.zero.declined">
 	You did not affirm your decision to waive the rights
 	associated with your work. If you'd like to continue you can
 	click the Back button to review your choice.
       </p>
       <ul>
-	<li><a href="/about/cc0">About CC0</a></li>
-	<li><a href="http://wiki.creativecommons.org/CC0_FAQ">Frequently
-	Asked Questions</a></li>
+	<li><a href="/about/cc0" 
+	       i18n:translate="license.zero.about">About CC0</a></li>
+	<li><a href="http://wiki.creativecommons.org/CC0_FAQ"
+	       i18n:translate="util.FAQ">Frequently Asked Questions</a></li>
       </ul>
     </div>
   </div>
@@ -68,7 +69,7 @@ YAHOO.util.Event.onDOMReady(function() {
   <div id="results" class="yui-module" tal:condition="view/can_issue">
     <div class="bd" id="waiver-results">
 
-      <p i18n:translate="choose_button">
+      <p i18n:translate="license.choose_button">
 	Choose which style of button you'd like on your webpage:
       </p>
 
@@ -94,7 +95,8 @@ YAHOO.util.Event.onDOMReady(function() {
 	</table>
       </div>
 
-      <span id="waiver-results-leadin" i18n:translate="cc0.preview_waiver">
+      <span id="waiver-results-leadin" 
+	    i18n:translate="license.zero.preview_waiver">
 	Here's a preview of how your waiver will appear on your site:
       </span>
 
@@ -102,10 +104,8 @@ YAHOO.util.Event.onDOMReady(function() {
 	   tal:content="structure view/rdfa">
       </div>
 
-      <div class="hd" style="margin-top:10px;"
-	   i18n:translate="license.what_to_do_next">What to do next</div>
       <h3 i18n:translate="license.have_your_own_website">Have a website?</h3>
-      <p i18n:translate="cc0.copy_text">
+      <p i18n:translate="license.zero.copy_text">
 	Copy the text below to your Web site to let your visitors
 	know that you've waived the rights to your work.  Creative
 	Commons does not retain a record of your selection; as the
@@ -119,26 +119,35 @@ YAHOO.util.Event.onDOMReady(function() {
       </textarea>
 
       <div class="more-metadata-container">
-      <h3 style="margin-top:0;" i18n:translate="cc0.send_email">
-	Send Email
-      </h3>
+      <h3 style="margin-top:0;" 
+	  i18n:translate="license.zero.send_email">Send Email</h3>
 
       <metal:email_results tal:condition="view/email_requested">
 	<metal:email_container
 			   tal:define="success view/send_email">
-	<div class="more-metadata-container error" tal:condition="not:success">
+	<div class="more-metadata-container error" 
+	     tal:condition="not:success"
+	     i18n:translate="license.zero.email_error">
 	  An error occurred when we tried to send the email message;
 	  you can try clicking the Back button and double checking your 
 	  email address.  If the address you used (
-	  <span	tal:replace="request/email"></span>) was correct you can 
+	  <span	i18n:name="email_addr" 
+		tal:replace="request/form/email"></span>) was correct you can 
 	  <a href="/about/contact">contact us</a>.
 	</div>
 
-	<div class="more-metadata-container success" tal:condition="success">
-	  The suggested HTML has been sent to 
-	    <span tal:replace="request/form/email">foo@example.com</span>. 
+	<div class="more-metadata-container success"
+	     tal:condition="success"
+	     >
+	  <p i18n:translate="license.zero.email_sent">
+	    The suggested HTML has been sent to <span
+		tal:replace="request/form/email" 
+		i18n:name="email_addr">foo@example.com</span>.
+	  </p>
 
-	  <span tal:omit-tag="" tal:condition="request/send_updates|nothing">
+	  <span tal:omit-tag="" 
+		tal:condition="request/send_updates|nothing"
+		i18n:translate="license.zero.subscribed_to_updates">
 	    You have asked to be notified of updates to CC0.  A subscription
 	    request has been sent on your behalf; you must click the link in
 	    the confirmation email to complete the sign-up process.
@@ -149,7 +158,7 @@ YAHOO.util.Event.onDOMReady(function() {
       </metal:email_results>
 
       <metal:request_email tal:condition="not:view/email_requested">
-	<p i18n:translate="cc0.send_email_updates">
+	<p i18n:translate="license.zero.send_email_updates">
 	  If you'd like to get the HTML with embedded metadata via
 	  email and optionally receive updates about CC0, fill in your
 	  email address below.
@@ -169,7 +178,7 @@ YAHOO.util.Event.onDOMReady(function() {
 	  </div>
 
 	  <div class="more-metadata">
-	    <div i18n:translate="cc0.update_opt_in">
+	    <div i18n:translate="license.zero.update_opt_in">
 	      Send me updates about CC0:
 	    </div>
 	    <input type="checkbox" name="send_updates" value="1" /><br/>

@@ -50,6 +50,7 @@
   <browser:page
      for="cc.engine.interfaces.ILicenseEngine"
      name="publicdomain-4"
+     template="templates/publicdomain-4.pt"
      class=".browser.pd_final"
      permission="zope.View"
      />

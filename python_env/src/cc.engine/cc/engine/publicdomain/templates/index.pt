@@ -2,280 +2,57 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@engine/macros/page"
+      metal:use-macro="context/@@engine/page"
       i18n:domain="cc_org">
 <head>
-  <title metal:fill-slot="title">Public Domain Assertion</title>
-
-
-  <metal:headers fill-slot="headers">
-    <base href="" tal:attributes="href string:${context/@@absolute_url}/zero/" />
-    <link rel="stylesheet" type="text/css" 
-	  href="http://yui.yahooapis.com/2.4.1/build/button/assets/skins/sam/button.css">
-    <link rel="stylesheet" type="text/css"
-	  href="http://yui.yahooapis.com/2.4.1/build/container/assets/container.css">
-
-<script type="text/javascript"
-	src="ext-2.0/adapter/yui/yui-utilities.js"
-	tal:attributes="src
-	context/++resource++cc/ext-2.0/adapter/yui/yui-utilities.js"></script>
-<script type="text/javascript"
-	src="ext-2.0/adapter/yui/ext-yui-adapter.js"
-	tal:attributes="src
-	context/++resource++cc/ext-2.0/adapter/yui/ext-yui-adapter.js"></script>
-<script type="text/javascript"
-	src="ext-2.0/ext-all.js"
-	tal:attributes="src
-	context/++resource++cc/ext-2.0/ext-all.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="zero.css"
-	  tal:attributes="href context/++resource++cc/includes/zero.css" />
-
-    <link rel="stylesheet" type="text/css" href="ext-all.css"
-	  tal:attributes="href
-	  context/++resource++cc/ext-2.0/resources/css/ext-all.css" />
-
-    <script src="zero_chooser.js" type="text/javascript"
-       tal:attributes="src context/++resource++cc/includes/zero_chooser.js">
-    </script>
-  </metal:headers>
-
+  <title metal:fill-slot="title">Creative Commons Licenses</title>
 </head>
 
 <body>
+<div metal:fill-slot="body">
 
-<metal:left fill-slot="sidebar">
-</metal:left>
+  <h1 i18n:translate="license.pdtools.title">Our Public Domain Tools</h1>
 
-<metal:title fill-slot="page-header-title"></metal:title>
+  <p i18n:translate="license.pdtools.intro">Our licenses help authors
+  keep and manage their copyright on terms they choose.  Our public
+  domain tools, on the other hand, facilitate the discovery of works
+  already in the public domain and enable authors and copyright owners
+  who want to dedicate their works to the public domain to do so.</p>
 
-<metal:body fill-slot="body">
-<div class="yui-skin-sam">
+  <h2>CC0</h2>
 
-  <div id="zero-wizard">
+  <p i18n:translate="license.pdtools.zero">Use this universal tool if
+    you are a holder of copyright or database rights, and you wish to
+    waive all your interests in your work.</p>
 
-    <div id="page-welcome" class="yui-module">
-      <div class="hd">Public Domain Assertion</div>
-      <div class="bd">
-	<p>
-	  The Public Domain Assertion enables you to indicate that a
-	  work is free of copyright and any related or neighboring
-	  rights such as moral rights, publicity or privacy rights,
-	  rights protecting against unfair competition and any rights
-	  protecting the extraction, dissemination and reuse of data. 
-	</p>
+  <ul>
+    <li>
+      <a i18n:translate="util.learn_more"
+	 href="/about/cc0">Learn more</a>
+    </li>
+    <li>
+      <a i18n:translate="util.use_this_tool"
+	 href="/license/zero/">Use this tool</a>
+    </li>
+  </ul>
 
-	<p>
-	  Using the Public Domain Assertion, you can
-	  <strong>Assert</strong> that a work is free of legal
-	  encumberances as a matter of fact, for example, because the
-	  work <a href="http://en.wikipedia.org/wiki/Public_Domain#Expiration">is
-	  old enough</a> to be in the public domain, or because the
-	  work is in a class not protected by copyright such 
-	  as <a href="http://en.wikipedia.org/wiki/Copyright_status_of_work_by_the_U.S._government">U.S. government
-	  works</a>.  Curators and publishers of public domain
-	  material may be well placed to make such an assertion. 
-	</p>
-	<p>
-	  <span id="radio2" class="yui-button yui-radio-button">
-            <span class="first-child">
-              <button type="submit" name="zero-type" value="assertion"
-		      id="do-begin">
-                continue
-              </button>
-            </span>
-	  </span>
+  <h2 i18n:translate="util.public_domain_certification">Public Domain Certification</h2>
 
-	</p>
+  <p i18n:translate="license.pdtools.pdc">Use this tool if you have
+    identified and want to certify other works that are already in the
+    public domain.  You will also be relinquishing any rights in the
+    work you may have under copyright.  Creative Commons does not
+    recommend this tool for use with works under copyright - consider
+    using CC0 instead.
+  </p>
 
-      </div>
-
-    </div>
-
-    <div id="page-details" class="x-hide-display">
-
-<metal:assertion define-macro="assertion-ui">
-
-<div id="assertion_ui" class="yui-module">
-  <div class="hd">Public Domain Assertion</div>
-  <div class="bd">
-    <form id="form-details" action="confirm-assertion">
-      <input type="hidden" name="license-class" value="zero" />
-      <input type="hidden" name="code" value="pd" />
-
-      <div class="form-row">
-	<div class="form-question">Your name:</div>
-	<div class="form-answer"><input name="name" class="form-field" /></div>
-      </div>
-
-      <div class="form-row">
-	<div class="form-question">Your URL:</div>
-	<div class="form-answer"><input name="actor_href"
-					class="form-field"/>
-	</div>
-      </div>
-
-      <div class="form-row">
-	<div class="form-question">Title of the work:</div>
-	<div class="form-answer"><input name="work_title" class="form-field"/></div>
-      </div>
-
-      <div class="form-row">
-	<div class="form-question">URL of the work:</div>
-	<div class="form-answer"><input name="work_url" class="form-field"/></div>
-      </div>
-
-      <div class="form-row">
-	<div class="form-question">
-	  <p>I assert that this work is free of any copyrights because:
-	  </p>
-	</div>
-	<div class="form-answer">
-	  <input name="assertion_reason" type="checkbox" class="reason"
-		 value="us_govt" />
-	  <label>the work was created by the U.S. Government.</label> <br/>
-
-	  <input name="assertion_reason" type="checkbox" class="reason" 
-		 value="us_1923" />
-	  <label for="us_1923">the work was created in the U.S. before 1923.</label> <br/>
-
-	  <input name="assertion_reason" type="checkbox" class="reason" 
-		 value="other" id="enable_other_assertion_reason"/>
-	  <label for="other">other:</label> <br/>
-          <input name="other_assertion_reason" id="other_assertion_reason"
-                 class="form-field" />
-	</div>
-      </div>
-
-      <div class="form-row">
-	<div class="form-question">&nbsp;</div>
-	<div class="form-answer">
-	  <input type="submit" id="details-submit" name="field1" 
-		 value="continue"> 
-	</div>
-      </div>
-
-    </form>
-    <br clear="both"/>&nbsp;
-  </div>
-
-</metal:assertion>
-
-    </div>
-
-    <div id="page-confirmation" class="x-hide-display">
-
-<metal:confirm-assertion define-macro="confirm-assertion">
-      <div id="confirm-assertion" class="yui-module">
-	<div class="hd">Confirm Public Domain Assertion</div>
-	<div class="bd">
-
-	    <p>Asserting that a work is free of rights lets others
-	    know that they may reuse it without restriction.  Are you
-	    certain you wish to do this?
-	    </p>
-
-	    <div class="form-row yui-buttongroup">
-
-	      <span class="yui-button">
-		<span class="first-child">
-		  <button type="submit" id="decline-submit"
-			  name="decline">
-		    No, I Do Not Assert
-		  </button>
-		</span>
-	      </span>
-
-	      <span class="yui-button">
-		<span class="first-child">
-		  <button type="submit" id="confirm-submit" 
-			  name="confirm">
-		    I So Assert
-		  </button>
-		</span>
-	      </span>
-
-	    </div>
-
-	</div>
-      </div>
-</metal:confirm-assertion>
-
-    </div>
-
-    <div id="page-results" class="x-hide-display">
-
-  <div id="results" class="yui-module">
-    <div class="hd">Public Domain Assertion Results</div>
-    <div class="bd" id="dedication-results">
-
-      <p>Choose which style of button you'd like on your webpage:</p>
-
-      <div class="licensebox" align="center">
-	<table>
-	  <tr>
-	    <td valign="bottom" align="center">
-	      <img src="http://labs.creativecommons.org/demos/zero/images/88x31/cc-zero.png"
-	      style="border:0px;" /><br/>
-	      <input type="radio" name="button" checked
-             onclick="swapbutton('http://labs.creativecommons.org/demos/zero/images/88x31/cc-zero.png')"
-	      />
-	    </td>
-	    <td valign="bottom" align="center">
-	      <img src="http://labs.creativecommons.org/demos/zero/images/80x15/cc-zero.png"
-	      style="border:0px;" /><br/>
-	      <input type="radio" name="button"
-             onclick="swapbutton('http://labs.creativecommons.org/demos/zero/images/80x15/cc-zero.png')"
-	      />
-	    </td>
-
-	  </tr>
-	</table>
-      </div>
-
-      <span i18n:translate="">
-	Here's a preview of how your assertion will appear on your
-	site:
-      </span>
-
-      <div class="preview" id="results-preview">
-      </div>
-
-      <div class="hd" style="margin-top:10px;">What to do next</div>
-      <h3>Have a website?</h3>
-      <p>Copy the text below to your Web site to let your visitors
-      know what license applies to your works.</p> 
-      <textarea id="results-html" cols="70" rows="6" onfocus="select()">
-      </textarea>
-    </div>
-    <div class="ft"></div>
-  </div>
-
-  <div id="page-bailout" class="x-hide-display">
-
-    <metal:bailout define-macro="post-bailout">
-      <div id="bailout" class="yui-module">
-	<div class="hd">Public Domain Assertion: Declined</div>
-	<div class="bd">
-	  <p>What would you like to do next?</p>
-	  <ul>
-	    <li><a href="./index.html">start over</a></li>
-	    <li><a href="http://wiki.creativecommons.org/CcZero">learn more</a></li>
-	  </ul>
-	</div>
-      </div>
-    </metal:bailout>
-
-  </div>
-
-
-    </div>
-
-  </div>
-  
+  <ul>
+    <li>
+      <a i18n:translate="util.use_this_tool"
+	 href="/license/publicdomain-2">Use this tool</a>
+    </li>
+  </ul>
 
 </div>
-</metal:body>
-
 </body>
 </html>

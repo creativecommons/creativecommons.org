@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@engine/macros/page"
+      metal:use-macro="context/@@engine/page"
       i18n:domain="cc_org">
 <head>
   <title metal:fill-slot="title">Choose a License</title>
@@ -105,7 +105,7 @@
   <div class="bd"><p i18n:translate="license.jurisdiction_help"></p></div>
 </div>
 			
-<div metal:use-macro="context/@@metadata/macros/more-metadata" />
+<div metal:use-macro="context/@@metadata/more-metadata" />
 
 			<p><input type="submit" value="Get your Sampling License" i18n:attributes="value license.sampling_get;"></p>
 			</form>

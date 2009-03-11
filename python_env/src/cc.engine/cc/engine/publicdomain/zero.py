@@ -1,9 +1,10 @@
-import grok
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
 from zope.i18n import translate
 from zope.i18n.interfaces import ITranslationDomain
 from zope import component
+from zope.publisher.browser import BrowserPage
+from zope.app.pagetemplate import ViewPageTemplateFile
 
 from cc.licenze.interfaces import ILicenseSelector
 
@@ -30,9 +31,8 @@ class CCZero(BrowserLicense):
 
 
 class CCZeroDeed(LicenseDeed):
-    grok.context(CCZero)
-    grok.name('index')
-    grok.template('deed')
+
+    __call__ = ViewPageTemplateFile('zero_templates/deed.pt')
     
     @property
     def license(self):

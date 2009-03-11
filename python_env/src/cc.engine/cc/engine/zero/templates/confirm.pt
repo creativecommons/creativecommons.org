@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@engine/macros/page"
+      metal:use-macro="context/@@engine/page"
       i18n:domain="cc_org">
 <head>
   <title metal:fill-slot="title">CC0: Confirm Waiver</title>
@@ -28,7 +28,8 @@
 
 <metal:title fill-slot="page-header-title">CC0: 
   <span tal:omit-tag="" 
-	i18n:translate="cc0.confirm_title">Confirm Waiver</span></metal:title>
+	i18n:translate="license.zero.confirm_title">Confirm Waiver</span>
+</metal:title>
 
 <metal:body fill-slot="body">
 <div class="yui-skin-sam">
@@ -44,20 +45,20 @@
       <div id="confirm-waiver" class="yui-module">
 	<div class="bd">
 
-	  <p i18n:translate="cc0.confirm_waiver_1">
+	  <p i18n:translate="license.zero.confirm_waiver_1">
 	    Are you certain you wish to waive all rights to your
 	    work?  Once these rights are waived, you cannot reclaim
 	    them. 
 	  </p>
 
-	  <p i18n:translate="cc0.confirm_waiver_2">
+	  <p i18n:translate="license.zero.confirm_waiver_2">
 	    In particular, if you are an artist or author who
 	    depends upon copyright for your income, Creative Commons
 	    <strong>does not recommend</strong> that you use this
 	    tool.
 	  </p>
 
-	  <p i18n:translate="cc0.confirm_waiver_3">
+	  <p i18n:translate="license.zero.confirm_waiver_3">
 	    If you don't own the rights to this work, then do not
 	    use CC0.  If you believe that nobody owns rights to the
 	    work, then the <a href="/license/publicdomain-2">Public
@@ -69,7 +70,7 @@
 	      <span class="first-child">
 		<button type="submit" id="decline-submit"
 			name="waiver"
-			i18n:translate="cc0.confirm_waiver_no"
+			i18n:translate="license.zero.confirm_waiver_no"
 			value="decline">
 		  No, I Do Not Waive
 		</button>
@@ -81,7 +82,7 @@
 		<button type="submit" id="confirm-submit" 
 			name="waiver" class="alert" 
 			value="affirm"
-			i18n:translate="cc0.confirm_waiver_yes">
+			i18n:translate="license.zero.confirm_waiver_yes">
 		  Yes, I Waive
 		</button>
 	      </span>

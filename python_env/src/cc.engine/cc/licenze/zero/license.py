@@ -3,15 +3,13 @@ from cc.license.exceptions import LicenseException
 
 from cc.licenze import interfaces
 
-_ = unicode
-
 class Zed(object):
     """License object for CC0 licenses.
     """
 
     implements(interfaces.ILicense)
 
-    URI_BASE = 'http://creativecommons.org/licenses'
+    URI_BASE = 'http://creativecommons.org/publicdomain'
 
     def __init__(self, path):
 
@@ -32,10 +30,10 @@ class Zed(object):
 
         # set up name, etc for the specific license
         if self._id == 'pd':
-            self._name = _("Public Domain Assertion")
+            self._name = "Public Domain Assertion"
 
         elif self._id == 'zero':
-            self._name = _("CC0 1.0 Universal")
+            self._name = "CC0 1.0 Universal"
 
     @property
     def license_class(self):
@@ -60,8 +58,7 @@ class Zed(object):
     @property
     def libre(self):
 
-        # only the assertion is approved as libre right now
-        return (self.code == 'pd')
+        return True
 
     @property 
     def default_locale(self):

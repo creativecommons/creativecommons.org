@@ -1,9 +1,10 @@
-import grok
 from zope.interface import implements
 from zope.publisher.interfaces import NotFound
 from zope.i18n import translate
 from zope.i18n.interfaces import ITranslationDomain
 from zope import component
+from zope.publisher.browser import BrowserPage
+from zope.app.pagetemplate import ViewPageTemplateFile
 
 from cc.licenze.interfaces import ILicenseSelector
 
@@ -24,10 +25,9 @@ class PublicDomain(BrowserLicense):
             '/'.join(pieces), False)
 
 class PublicDomainDedication(LicenseDeed):
-    grok.context(PublicDomain)
-    grok.name('index')
-    grok.template('deed')
     
+    __call__ = ViewPageTemplateFile('publicdomain_templates/deed.pt')
+
     @property
     def license(self):
         """Return the cc.license.License object selected; note that this

@@ -1,15 +1,22 @@
 TODO
 ====
 
-* convert from grok to zope 3.4
+* publicdomain RDF
+* CC0 RDF
+
+* cc.license integration
+** add configure.zcml to give zope.View access to classes
+** make list of selectors explicit
+** add ZCML to register selectors as names Utilities
+** add bootstrap entry point to cc.engine (i think)
+*** look up selectors, iterate over licenses, create objects
+** test
+** i18n
+** "static license" class (no RDF lookups)
+
 * i18nextract support (./src)
-* remove session support?
-* z3c.layout?
 * zope.i18n
 * XXX cleanup
-
-* remove need for traversal
-* integrate ftobia work
 
 * UTF-8 in title (deed.he)
 * @@*-checksum
@@ -32,3 +39,4 @@ TODO
 * duplicate lang=xx parameters cause barfing.
 
 * sampling deeds... attribution?
+* /licenses/by/ shouldn't work
