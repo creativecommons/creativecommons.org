@@ -60,9 +60,12 @@
 	  </a>
 	</p>
       </ul>
+    </div>
+    <div id="deed-understanding-zero">
       <ul class="license-properties">
 
-	<li><strong i18n:translate="util.other_rights">Other Rights</strong>
+	<li class="license">
+	  <strong i18n:translate="util.other_rights">Other Rights</strong>
 	  &mdash; 
 	  <span tal:omit-tag=""
 		i18n:translate="deed.zero.other_rights">
