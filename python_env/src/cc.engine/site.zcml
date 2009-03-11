@@ -3,10 +3,6 @@
 
   <include package="cc.engine" />
 
-  <!-- Remove this reference to disable the APIDoc tool.
-       You should do this for production -->
-  <include file="apidoc.zcml" />
-
   <include package="zope.securitypolicy" file="meta.zcml" />
   <include package="zope.app.securitypolicy" />
   <securityPolicy 
@@ -22,13 +18,14 @@
                   title="All Users" />
 
   <!-- Initial administrator account.  Disable this for production -->
+  <!--
   <principal id="zope.manager"
              title="Manager"
              login="admin"
              password_manager="Plain Text"
              password="admin"
              />
-
+  -->
   <!-- With the default zope securitypolicy, this is a
        special role that every user has -->
   <role id="zope.Anonymous"

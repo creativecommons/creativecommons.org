@@ -6,6 +6,9 @@
 
   <include package="cc.engine" />
 
+  <include package="zope.securitypolicy" file="meta.zcml" />
+  <include package="zope.app.securitypolicy" />
+
   <!-- Typical functional testing security setup -->
   <securityPolicy
       component="zope.app.securitypolicy.zopepolicy.ZopeSecurityPolicy"
