@@ -10,9 +10,7 @@
 
   <metal:headers fill-slot="headers">
 
-    <script type="text/javascript" src="http://yui.yahooapis.com/2.5.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
-
-    <script type="text/javascript" src="http://yui.yahooapis.com/2.5.0/build/container/container-min.js"></script> 
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script> 
 
     <script src="help.js" type="text/javascript"
        tal:attributes="src context/++resource++cc/includes/help.js" >
