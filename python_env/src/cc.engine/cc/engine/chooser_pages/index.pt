@@ -220,7 +220,7 @@
 	    <span i18n:translate="">Commercial Use</span>
 	  </div>
 	  <div class="bd">
-	    <p i18n:translate="">
+	    <p i18n:translate="license.help.commercial">
 	      The licensor permits others to copy, distribute, display, and
 	      perform the work, including for commercial purposes.
 	    </p>
@@ -232,7 +232,7 @@
 	    <span i18n:translate="licenses.pretty_nc">Noncommercial</span>
 	  </div>
 	  <div class="bd">
-	    <p i18n:translate="">
+	    <p i18n:translate="license.help.noncommercial">
 	      The licensor permits others to copy, distribute, display, and
 	      perform the work for non-commercial purposes only.
 	    </p>
@@ -244,7 +244,7 @@
 	    <span i18n:translate="">Allow Derivative Works</span>
 	  </div>
 	  <div class="bd">
-	    <p i18n:translate="">
+	    <p i18n:translate="license.help.derivatives">
 	      The licensor permits others to copy, distribute, display
 	      and perform the work, as well as make derivative works
 	      based on it.
