@@ -7,10 +7,20 @@ from zope.publisher.browser import BrowserPage
 from zope.app.pagetemplate import ViewPageTemplateFile
 
 from cc.license.decorators import memoized
+from cc.engine import interfaces
 from cc.engine.licenses.standard import BrowserLicense, LicenseDeed
+
+class IMitBsdLicense(interfaces.IBrowserLicense):
+
+    def is_mit():
+        """Return True if the context is an MIT license."""
+
+    def is_bsd():
+        """Return True if the context is a BSD license."""
 
 class MitBsdLicense(BrowserLicense):
     """Browser License for MIT/BSD licenses."""
+    implements(IMitBsdLicense)
 
     @property
     @memoized

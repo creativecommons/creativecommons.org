@@ -165,7 +165,7 @@
     -->
 
   <class class=".mitbsd.MitBsdLicense">
-    <allow interface="cc.engine.interfaces.IBrowserLicense" />
+    <allow interface=".mitbsd.IMitBsdLicense" />
   </class>
 
   <!-- views -->

@@ -63,6 +63,9 @@ substantial portions of the software.</li>
 
 </div>
 
+<metal:use-this-license fill-slot="use-this-license">
+</metal:use-this-license>
+
 
 </body>
 </html>
