@@ -35,7 +35,8 @@ class ZeroChooser(BrowserPage):
         # make sure they've confirmed their understanding
         confirm = self.request.form.get('confirm', False)
         understand = self.request.form.get('understand', False)
-        accept = self.request.form.get('waiver', 'decline') == 'affirm'
+        accept = self.request.form.get('waiver-affirm', False) and \
+            self.request.form.get('waiver-decline', True)
 
         return (confirm and understand and accept)
 

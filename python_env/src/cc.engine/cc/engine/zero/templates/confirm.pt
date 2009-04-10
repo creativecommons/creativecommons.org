@@ -69,7 +69,7 @@
 	    <span class="yui-button">
 	      <span class="first-child">
 		<button type="submit" id="decline-submit"
-			name="waiver"
+			name="waiver-decline"
 			i18n:translate="license.zero.confirm_waiver_no"
 			value="decline">
 		  No, I Do Not Waive
@@ -80,7 +80,7 @@
 	    <span class="yui-button">
 	      <span class="first-child">
 		<button type="submit" id="confirm-submit" 
-			name="waiver" class="alert" 
+			name="waiver-affirm" class="alert" 
 			value="affirm"
 			i18n:translate="license.zero.confirm_waiver_yes">
 		  Yes, I Waive
