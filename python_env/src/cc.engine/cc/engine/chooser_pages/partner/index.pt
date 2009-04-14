@@ -38,6 +38,7 @@ If you want to offer your work with no conditions, choose the
 <FORM method="get" action="results-one">
 <input type="hidden" name="lang" value="en" tal:attributes="value target_lang"/>
 <input type="hidden" name="language" value="en" tal:attributes="value target_lang"/>
+<input type="hidden" name="referrer" value="en" tal:attributes="value view/referrer"/>
 
 <input type="hidden" name="partner" value="" tal:attributes="value partner" />
 <input type="hidden" name="exit_url" value="" tal:attributes="value exiturl" />

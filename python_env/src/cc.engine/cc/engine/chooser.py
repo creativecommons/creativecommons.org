@@ -6,7 +6,7 @@ import re
 
 from datetime import datetime
 from urllib import urlencode
-from urlparse import urlparse
+from urlparse import urlparse, urljoin
 
 from zope.interface import implements
 
@@ -180,68 +180,6 @@ class LicenseEngine(object):
 	# return the license object
         return cc.license.LicenseFactory().get_class(license_class).issue(
             **answers)
-        
-
-    def generate_hash(self, email_addr, title, holder):
-        return str(hash((email_addr, title, holder)))
-    
-    def send_pd_confirmation(self, next_url, email_addr, title, holder,
-                             lang='en'):
-        """Sends the confirmation email to the PD dedicator."""
-
-        mhost = getUtility(IMailDelivery, 'cc_engine')
-
-        if False in (email_addr, title, holder):
-            return False
-
-        nextstep_qs = {'license_code':'publicdomain',
-                       'title':title,
-                       'copyright_holder':holder,
-                       'email':email_addr,
-                       'hash':self.generate_hash(email_addr, title, holder),
-                       'lang':lang,
-                      }
-
-        nextstep_url = "%s?%s" % (next_url, urlencode(nextstep_qs))
-
-        message = "To: %s\n" \
-                  "From: pd@creativecommons.org\n" \
-                  "Subject: Confirm your Public Domain Dedication at Creative Commons\n" \
-                  "\n%s" % (
-            email_addr,
-            translate('license.pd_confirmation_email',
-                      domain=cc.engine.i18n.I18N_DOMAIN,
-                      mapping={'title':title,
-                               'clickthrough_url':nextstep_url, },
-                      target_language=lang)
-            )
-
-        mhost.send('pd@creativecommons.org', (email_addr,), message)
-
-        return True
-
-    def send_pd_dedication(self, email_addr, title, holder, lang='en'):
-        """Send the public domain dedication after confirmation."""
-
-        mhost = getUtility(IMailDelivery, 'cc_engine')
-
-        message = "To: %s\n" \
-                  "From: pd@creativecommons.org\n" \
-                  "Subject: Creative Commons - Public Domain Dedication\n" \
-                  "\n%s" % (
-            email_addr,
-            translate('license.pd_dedication_email',
-                      domain=cc.engine.i18n.I18N_DOMAIN,
-                      mapping={'title':title,
-                               'email':email_addr,
-                               'copyright_holder':holder,
-                               'sysdate':datetime.now().strftime("%B %d, %Y")},
-                      target_language=lang)
-            )
-
-        mhost.send('pd@creativecommons.org', (email_addr,), message)
-
-        return True
 
 class BaseBrowserView(BrowserPage):
     """A basic view class which provides some common infrastructure."""
@@ -305,6 +243,12 @@ class IndexView(BaseBrowserView):
     This view provides support methods and dispatches the appropriate page
     template based on the presence of the partner query string parameter."""
     
+    @property
+    def referrer(self):
+        """Return the initial referrer for possible exit_url fix-up."""
+        
+        return self.request.headers.get('REFERER','')
+
     def __call__(self):
         
         # delegate rendering to the appropriate page template
@@ -338,13 +282,25 @@ class ResultsView(BaseBrowserView):
 
     @property
     def exit_url(self):
+        
+        url = self.request.form.get('exit_url', '')
+        
+        # test if the exit_url is an absolute uri
+        if urlparse(url).scheme not in ['http', 'https']:
+            
+            # get the initial referrer and join the two
+            referrer = self.request.form.get('referrer')
 
-        url = unquote_plus(self.request.form.get('exit_url', ''))
+            # this will accomodate only for 'valid' relative paths
+            # e.g. foo/bar.php or /foo/bar.php?id=1, etc.
+            url = urljoin(referrer, url)
+
+        url = unquote_plus(url)
         url = url.replace('[license_url]', quote(self.license.uri))
         url = url.replace('[license_name]', self.license.name)
         url = url.replace('[license_button]', quote(self.license.imageurl))
         url = url.replace('[deed_url]', quote(self.license.uri))
-
+        
         return url
     
     def __call__(self):
