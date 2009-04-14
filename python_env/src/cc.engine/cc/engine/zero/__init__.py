@@ -25,8 +25,8 @@ class ZeroChooser(BrowserPage):
     def country_list(self):
         """Return a sequence of two-tuples containing a country code 
         and name."""
-
-        return component.getUtility(IIso3166).country_list()
+        return component.getUtility(IIso3166).country_list(
+                self.request.locale.getLocaleID())
 
     def can_issue(self):
         """Inspect the request and see if we have enough information to

@@ -35,6 +35,7 @@
 
   <include package="zope.sendmail" file="meta.zcml" />
   <include package="zope.sendmail" />
+  <include package="z3c.i18n" />
 
   <include package=".support" />
   <include package="cc.license" />

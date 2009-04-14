@@ -63,6 +63,7 @@ setup(
                         'zope.app.testing',
                         'zope.app.securitypolicy',
                         'zope.testbrowser',
+                        'z3c.i18n',
 
                         'cc.license',
                         'Genshi',
