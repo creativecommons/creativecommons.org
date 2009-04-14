@@ -57,12 +57,7 @@
     </script>
 
     <script type="text/javascript"
-	    src="/includes/deed3.js"
-	    tal:attributes="src context/++resource++cc/includes/deed3.js">
-    </script>
-
-    <script type="text/javascript"
-	    src="/includes/deed3.js"
+	    src="/includes/help.js"
 	    tal:attributes="src context/++resource++cc/includes/help.js">
     </script>
 
@@ -112,7 +107,6 @@
        </div>
       </div>
 
-
       <div id="deed-foot">
         <div tal:omit-tag="" metal:define-slot="footer">
 
@@ -122,10 +116,10 @@
 
 	  <metal:disclaimer 
 	     tal:condition="python: context.license.jurisdiction != 'jp'">
-	    <a href="" id="disclaimer" i18n:translate="util.Disclaimer">
+	    <a href="#" id="disclaimer" class="helpLink" i18n:translate="util.Disclaimer">
 	      Disclaimer
 	    </a>
-	    <div id="disclaimer_panel">
+	    <div id="help_disclaimer">
 	      <div class="hd" i18n:translate="util.Disclaimer">
 		Disclaimer
 	      </div>
