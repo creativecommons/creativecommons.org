@@ -18,7 +18,10 @@ DEFAULT_PUBLISHER = "[_:publisher]"
 
 class Country:
 
-    def __init__(self, work_dict=None):
+    def __init__(self, work_dict=None, locale='en'):
+        
+        self.locale = locale
+
         if work_dict is None:
             work_dict = {}
         self.id = 'work_jurisdiction'
@@ -31,7 +34,8 @@ class Country:
 
             # get the additional information we need --
             # country name
-            country_name = zope.component.getUtility(IIso3166)[self.source]
+            country_name = zope.component.getUtility(IIso3166).\
+                get_name(self.source, self.locale)
 
             # publisher URI
             publisher = work_dict.get('actor_href', DEFAULT_PUBLISHER)
@@ -114,5 +118,5 @@ class HTMLFormatter(object):
         template = "%s/%s.xml" % (self.license.license_class, template)
         self.tmpl = LOADER.load(template)
         stream = self.tmpl.generate(**kwargs)
-        stream = stream | Country(work_data)
+        stream = stream | Country(work_data, locale=locale)
         return stream.render('xhtml')

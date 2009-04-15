@@ -57,7 +57,9 @@ class ZeroChooser(BrowserPage):
 
     def rdfa(self):
 
-        return IRdfaGenerator(self.issue()).format(self.request.form)
+        return IRdfaGenerator(self.issue()).format(
+            self.request.form,
+            locale=self.request.locale.getLocaleID())
 
 
     def _send_html(self):

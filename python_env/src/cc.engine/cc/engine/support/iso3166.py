@@ -13,26 +13,53 @@ class IIso3166(Interface):
         """Return a sequence of two-tuples containing a country code 
         and name."""
 
+    def get_name(token, target_lang='en'):
+        """Return the translated name for the territory specified by
+        token."""
+
+def ensure_loaded(f):
+    
+    def preload(self, *args, **kwargs):
+        if getattr(self, '_loaded', False):
+            return f(self, *args, **kwargs)
+
+        self._load()
+        self._loaded = True
+
+        return f(self, *args, **kwargs)
+
+    return preload
+
 class Z3cIso3166(object):
     """z3c.i18n based implementation of IIso3166."""
     implements(IIso3166)
     
     countries_locale = {}
 
-    def __init__(self):
-        self._i18n = self._vocabulary = None
+    def _load(self):
+        """Do the actual component lookups; defered to here so that our
+        factory can run successfully.
+        """
 
+        #self._i18n = component.getUtility(ITranslationDomain,
+        #                                  'z3c.i18n.iso.territories')
+
+        self._vocabulary = component.getUtility(
+            zope.schema.interfaces.IVocabularyFactory,
+            'z3c.i18n.iso.territories')(None)
+
+    @ensure_loaded
+    def get_name(self, token, target_lang='en'):
+        """Return the translated name for the territory specified by
+        token."""
+
+        name = self._vocabulary.getTerm(token)
+        return translate(name.title, target_language=target_lang)
+
+    @ensure_loaded
     def country_list(self, target_lang='en'):
         """Return a sequence of two-tuples containing a country code 
         and name."""
-
-        if self._i18n is None:
-            self._i18n = component.getUtility(ITranslationDomain,
-                                              'z3c.i18n.iso.territories')
-
-            self._vocabulary = component.getUtility(
-                zope.schema.interfaces.IVocabularyFactory,
-                'z3c.i18n.iso.territories')(None)
 
         try:
             result = self.countries_locale[target_lang]
@@ -72,9 +99,12 @@ class Iso3166(object):
         self._data = tuple(self._data)
 
 
-    def __getitem__(self, key):
 
-        return self._codes[key]
+    def get_name(self, token, target_lang='en'):
+        """Return the translated name for the territory specified by
+        token."""
+
+        return self._codes[token]
 
     def country_list(self, target_lang='en'):
         """Return a sequence of two-tuples containing a country code 
