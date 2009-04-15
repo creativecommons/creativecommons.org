@@ -54,7 +54,10 @@ class Z3cIso3166(object):
         token."""
 
         name = self._vocabulary.getTerm(token)
-        return translate(name.title, target_language=target_lang)
+        try:
+            return translate(name.title, target_language=target_lang)
+        except LoadLocaleError, e:
+            return name.title.default
 
     @ensure_loaded
     def country_list(self, target_lang='en'):
