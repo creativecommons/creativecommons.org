@@ -1,5 +1,6 @@
 import os
 import csv
+import locale
 
 from zope.interface import Interface, implements
 from zope import component
@@ -75,9 +76,10 @@ class Z3cIso3166(object):
             except LoadLocaleError, e:
                 result = [(v.token, v.title.default) 
                     for v in self._vocabulary]
-            
-            self.countries_locale[target_lang] = sorted(result, key=lambda x:x[1])
 
+            result.sort(key=lambda x:locale.strxfrm(x[1]))
+            self.countries_locale[target_lang] = result
+        			
         return result
 
 class Iso3166(object):
