@@ -22,6 +22,7 @@ import cc.license.license
 
 import cc.engine.i18n
 from cc.engine.interfaces import ILicenseEngine, IDefaultJurisdiction
+from cc.engine.support.exiturl import IExiturlGenerator
 
 class LicenseEngine(object):
     """LicenseEngine Application Class
@@ -282,26 +283,10 @@ class ResultsView(BaseBrowserView):
 
     @property
     def exit_url(self):
-        
-        url = self.request.form.get('exit_url', '')
-        
-        # test if the exit_url is an absolute uri
-        if urlparse(url).scheme not in ['http', 'https']:
-            
-            # get the initial referrer and join the two
-            referrer = self.request.form.get('referrer')
-
-            # this will accomodate only for 'valid' relative paths
-            # e.g. foo/bar.php or /foo/bar.php?id=1, etc.
-            url = urljoin(referrer, url)
-
-        url = unquote_plus(url)
-        url = url.replace('[license_url]', quote(self.license.uri))
-        url = url.replace('[license_name]', self.license.name)
-        url = url.replace('[license_button]', quote(self.license.imageurl))
-        url = url.replace('[deed_url]', quote(self.license.uri))
-        
-        return url
+        return getUtility(IExiturlGenerator).exit_url(
+            self.request.form.get('exit_url', ''),
+            self.request.form.get('referrer', ''),
+            self.license)
     
     def __call__(self):
 

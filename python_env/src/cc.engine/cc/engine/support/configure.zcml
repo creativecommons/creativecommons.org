@@ -11,5 +11,9 @@
 		provides=".iso3166.IIso3166"
 		factory=".iso3166.Z3cIso3166"
 		/>
+   	   <utility
+		provides=".exiturl.IExiturlGenerator"
+		factory=".exiturl.ExiturlGenerator"
+		/>
 
 </configure>

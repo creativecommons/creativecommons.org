@@ -12,6 +12,7 @@ from cc.license.decorators import memoized
 from cc.licenze.interfaces import ILicenseSelector
 
 from cc.engine.support.iso3166 import IIso3166
+from cc.engine.support.exiturl import IExiturlGenerator
 
 class ZeroChooser(BrowserPage):
 
@@ -43,7 +44,7 @@ class ZeroChooser(BrowserPage):
     def issue(self):
 
         # we don't have a license URI; assume we need to issue
-        license_class = self.request.form.get('license-class', None)
+        license_class = self.request.form.get('license-class', 'zero')
 
         if license_class is None:
             raise Exception()
@@ -127,4 +128,11 @@ info@creativecommons.org
             return False
 
         return True
+    
+    def exit_url(self):
+        return component.getUtility(IExiturlGenerator).exit_url(
+            self.request.form.get('exit_url', ''),
+            self.request.form.get('referrer', ''),
+            self.license)
+
 

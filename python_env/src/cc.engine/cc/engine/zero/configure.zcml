@@ -35,7 +35,12 @@
         name="results"
         template="templates/results.pt"
         />
-
+     
+     <page 
+        name="partner"
+        template="templates/partner.pt"
+        />
   </view>
+  
 
 </zope:configure>

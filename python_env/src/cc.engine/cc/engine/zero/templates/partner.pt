@@ -21,17 +21,31 @@
 
 <h1 i18n:translate="license.confirm_choice">Confirm Choice</h1>
 
-<p i18n:translate="license.partner.pd_intro">Your choice suggests you
-want to certify a work is in the public domain. The Public Domain
-Certification is not a license. By using it you assert that a work is
-already in the public domain.</p>
+	<p i18n:translate="license.zero.intro_1">
+	  Using CC0, you can waive all copyrights and related or
+	  neighboring rights that you have over your work, such as
+	  your moral rights (to the extent waivable), your publicity
+	  or privacy rights, rights you have protecting against unfair
+	  competition, and database rights and rights protecting the
+	  extraction, dissemination and reuse of data.
+	</p>
 
-<p i18n:translate="license.partner.pd.use_cc0">If instead you want to
-waive copyright and neighboring rights on a work <em>in which you hold
-these rights</em>, choose <a href="/license/zero/partner"
-tal:attributes="href
-string:/license/zero/partner?partner=${partner}&exit_url=${exiturl}&license_code=zero&stylesheet=${stylesheet}">CC0</a>.
-</p>
+	<p i18n:translate="license.zero.intro_2">
+	  Keep in mind that you cannot waive rights to a work that you
+	  do not own unless you have permission from the owner.  To
+	  avoid infringing third party rights, you should consult with
+	  your legal advisor if you are unsure whether you have all
+	  the rights you need to distribute the work.
+	</p>
+
+	<p i18n:translate="license.partner.zero.use_pdc_instead">If
+	instead you want to certify that a work is <em>already in the
+	public domain</em>, use
+	the <a href="/license/publicdomain-direct"
+	tal:attributes="href
+	string:/license/publicdomain-direct?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}">Public
+	Domain Certification</a>.
+	</p>
 
 <p i18n:translate="license.you_may_proceed">
 <span tal:omit-tag=""
