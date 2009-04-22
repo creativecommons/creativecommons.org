@@ -58,44 +58,13 @@
 		<td><img border="0" src="/icons/by/standard.gif" alt="by" align="left" /></td><td width="32">&nbsp;</td><td><img border="0" src="/icons/sa/standard.gif" alt="sa" align="left" /></td>
 	</tr>
 </table>
-<!--
-<p>Previous versions also included the licenses listed below:</p>
 
-<table border="0" style="margin-left:14px;background:#eee;" cellpadding="3">
-<tr>
-	<th colspan="4" style="background:#dedede;color:#333;" align="left">Version 1.0 Licenses:</th>
-
-</tr>	
-	
-	<tr>
-		<td width="250"><a href="/licenses/nd/1.0/">NoDerivs</a></td>
-		<td width="32">&nbsp;</td><td width="32">&nbsp;</td><td width="32"><img border="0" src="/icons/nd/standard.gif" alt="nd" align="left" /></td>
-	</tr>
-
-	<tr>
-		<td><a href="/licenses/nd-nc/1.0/">NoDerivs-NonCommercial</a></td>
-		<td width="32">&nbsp;</td><td><img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" /></td><td><img border="0" src="/icons/nd/standard.gif" alt="nd" align="left" /></td>
-
-	</tr>
-
-	<tr>
-		<td><a href="/licenses/nc/1.0/">NonCommercial</a></td>
-		<td width="32">&nbsp;</td><td><img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" /></td><td width="32">&nbsp;</td>
-	</tr>
-
-	<tr>
-		<td><a href="/licenses/nc-sa/1.0/">NonCommercial-ShareAlike</a></td>
-
-		<td width="32">&nbsp;</td><td><img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" /></td><td><img border="0" src="/icons/sa/standard.gif" alt="sa" align="left" /></td>
-	</tr>
-
-	<tr>
-		<td><a href="/licenses/sa/1.0/">ShareAlike</a></td>
-		<td width="32">&nbsp;</td><td width="32">&nbsp;</td><td><img border="0" src="/icons/sa/standard.gif" alt="sa" align="left" /></td>
-	</tr>
-
-</table>
--->
+<p>
+With Creative Commons licenses creators keep their copyright. If you
+want to waive all restrictions on your work or certify that a work is
+already in the public domain, see our <a href="/publicdomain">public
+domain tools</a>.
+</p>
 
 </div>
 </body>
