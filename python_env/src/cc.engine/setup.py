@@ -68,6 +68,7 @@ setup(
                         'cc.license',
                         'Genshi',
                         'lxml>2.0',
+                        'WebTest',
                         ],
 
       entry_points = """

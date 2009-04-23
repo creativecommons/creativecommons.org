@@ -2,25 +2,27 @@ import os
 import sys
 import optparse
 import unittest
+import logging
 
 from zope.component import queryUtility
-from zope.testing import doctest
+#from zope.testing import doctest
 from zope.i18n.negotiator import normalize_lang
 from zope.i18n.interfaces import ITranslationDomain
-from zope.app.testing.functional import (FunctionalTestSetup, ZCMLLayer,
-                                         getRootFolder, FunctionalDocFileSuite)
+#from zope.app.testing.functional import (FunctionalTestSetup, ZCMLLayer,
+#                                         getRootFolder, FunctionalDocFileSuite)
+
+from webtest import TestApp
 
 import cc.license
 import cc.engine
 from cc.engine import i18n
+from cc.engine import startup
 
 LICENSES_XML = os.path.join(os.path.dirname(cc.engine.__file__),
                             'scripts', 'license_xsl', 'licenses.xml')
 
-SERVER_BASE = "http://localhost:8080/"
-
-ftesting_zcml = os.path.join(os.path.dirname(cc.engine.__file__), 'ftesting.zcml')
-CcEngineFunctionalLayer = ZCMLLayer(ftesting_zcml, __name__, 'CcEngineFunctionalLayer')
+#ftesting_zcml = os.path.join(os.path.dirname(cc.engine.__file__), 'ftesting.zcml')
+#CcEngineFunctionalLayer = ZCMLLayer(ftesting_zcml, __name__, 'CcEngineFunctionalLayer')
 
 def create_option_parser():
     """Return an optparse.OptionParser configured for the mkdeeds script."""
@@ -106,12 +108,9 @@ def license_locale_uri(license, locale):
 
     CC_URL = 'http://creativecommons.org/'
 
-    return "%s++vh++http:creativecommons.org:80/++/%s?lang=%s" % (
-        SERVER_BASE, license.uri[len(CC_URL):], locale)
+    return "/++vh++http:creativecommons.org:80/++/%s?lang=%s" % (
+        license.uri[len(CC_URL):], locale)
 
-    return '%sdeed?lang=%s' %(license.uri.replace(CC_URL,
-                                               SERVER_BASE), 
-                               locale)
 
 def save_deed(output_dir, license, locale, contents):
     """Save the deed to disk and update the mulitview mapping file."""
@@ -142,35 +141,34 @@ def save_deed(output_dir, license, locale, contents):
 def cli():
     """Generate static deed files."""
 
+    # logging.basicConfig(level=logging.DEBUG)
+
     # parser the command line options
     (options, args) = create_option_parser().parse_args()
-    print [l.uri for l in get_licenses(options)]
+    # print [l.uri for l in get_licenses(options)]
 
     # determine the absolute output dir
     output_dir = os.path.abspath( os.path.join( 
             os.getcwd(), options.output_dir)
                                   )
 
-    # run the "test" suite
-    cur_dir = os.getcwd()
-    os.chdir(os.path.dirname(__file__))
+    # set up the app for "testing"
+    here = os.path.join(os.path.dirname(__file__), '..','..','..')
+    app = TestApp(startup.application_factory({'here':here}))
 
-    suite = unittest.TestSuite()
-    test = FunctionalDocFileSuite(
-         'mkdeeds.txt',
-         globs=dict(getRootFolder=getRootFolder,
-                    save_deed = lambda x, y, z:save_deed(output_dir, x, y, z),
-                    get_licenses = lambda:get_licenses(options),
-                    get_locales = lambda:get_locales(options),
-                    license_locale_uri = license_locale_uri,
-                    ),
-         optionflags = (doctest.ELLIPSIS
-                        | doctest.REPORT_NDIFF
-                        | doctest.NORMALIZE_WHITESPACE),)
-    test.layer = CcEngineFunctionalLayer
-    suite.addTest(test)
+    # generate the deeds
+    logging.info('Generating a list of licenses to generate.')
+    licenses = get_licenses(options)
+    for license in licenses:
 
-    unittest.TextTestRunner().run(suite)
+        logging.info('Generating a list of locales to generate.')
+        for locale in get_locales(options):
 
-    # restore the initial working directory
-    os.chdir(cur_dir)
+            logging.info('Generating %s for %s' % (locale, license.uri))
+
+            deed = app.get(license_locale_uri(license, locale))
+            save_deed(output_dir, license, locale, deed.body)
+
+    print app.get('/licenses/')
+
+    
