@@ -33,14 +33,6 @@
 
   <browser:page
      for="cc.engine.interfaces.ILicenseEngine"
-     name="publicdomain-waiting-email-verification"
-     template="templates/publicdomain-waiting-email-verification.pt"
-     class=".browser.pd_waiting_verification"
-     permission="zope.View"
-     />
-
-  <browser:page
-     for="cc.engine.interfaces.ILicenseEngine"
      name="publicdomain-3"
      template="templates/publicdomain-3.pt"
      class=".browser.pd_confirm"

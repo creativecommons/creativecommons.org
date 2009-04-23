@@ -35,7 +35,8 @@ If instead you want to waive copyright and neighboring rights on a work
 </p>
 
 <p i18n:translate="license.you_may_proceed">
-<span tal:omit-tag="" i18n:name="processed_exit_url" tal:content="string:/license/zero/partner?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}">
+<span tal:omit-tag="" i18n:name="processed_exit_url" 
+      tal:content="view/exit_url">
 You may now <a href="${processed_exit_url}">proceed</a>
 </span>
 </p>
