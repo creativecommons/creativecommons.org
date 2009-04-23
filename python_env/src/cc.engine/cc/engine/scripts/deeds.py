@@ -169,6 +169,6 @@ def cli():
             deed = app.get(license_locale_uri(license, locale))
             save_deed(output_dir, license, locale, deed.body)
 
-    print app.get('/licenses/')
+    logging.info("Generation complete.")
 
     
