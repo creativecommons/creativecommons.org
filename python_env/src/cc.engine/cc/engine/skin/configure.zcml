@@ -4,7 +4,7 @@
            xmlns:mail="http://namespaces.zope.org/mail"
            xmlns:browser="http://namespaces.zope.org/browser"
 
-           i18n_domain="icommons"
+           i18n_domain="cc_org"
            >
 
   <browser:resourceDirectory 

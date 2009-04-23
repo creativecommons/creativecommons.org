@@ -26,17 +26,18 @@ want to certify a work is in the public domain. The Public Domain
 Certification is not a license. By using it you assert that a work is
 already in the public domain.</p>
 
-<p i18n:translate="license.partner.pd.use_cc0">If instead you want to
-waive copyright and neighboring rights on a work <em>in which you hold
-these rights</em>, choose <a href="/license/zero/partner"
-tal:attributes="href
-string:/license/zero/partner?partner=${partner}&exit_url=${exiturl}&license_code=zero&stylesheet=${stylesheet}">CC0</a>.
+<style>.hidden{ display: none }</style>
+  
+<p i18n:translate="license.partner.pd.use_cc0">
+If instead you want to waive copyright and neighboring rights on a work 
+<span tal:omit-tag="" i18n:name="cc0_url" tal:content="string:/license/zero/partner?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
+  <em>in which you hold these rights</em>, choose <a href="${cc0_url}">CC0</a>.
 </p>
 
 <p i18n:translate="license.you_may_proceed">
-<span tal:omit-tag=""
-      i18n:name="processed_exit_url" tal:content="view/exit_url" />
-You may now <a href="#" tal:attributes="href view/exit_url">proceed</a>
+<span tal:omit-tag="" i18n:name="processed_exit_url" tal:content="string:/license/zero/partner?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}">
+You may now <a href="${processed_exit_url}">proceed</a>
+</span>
 </p>
 
 </div>

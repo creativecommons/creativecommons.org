@@ -18,23 +18,23 @@
                  def_juris request/jurisdiction | nothing;
                 ">
 
-<div tal:omit-tag="" i18n:translate="license.partner_what">
-<p>Creative Commons licenses help you share your work while keeping
+<p i18n:translate="license.partner_what">
+Creative Commons licenses help you share your work while keeping
 your copyright.  Other people can copy and distribute your work provided they
 <a href="http://creativecommons.org/characteristic/by?lang=en"
    onclick="window.open('http://creativecommons.org/characteristic/by?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">give
 you credit</a> -- and only on the conditions you specify here.
 This page helps you choose those conditions.
 </p>
-</div>
+
 <p i18n:translate="license.partner.publicdomain_options">
 If you want to share a work you created with no conditions, choose
-<a href="/license/zero/partner" tal:attributes="href
-   string:/license/zero/partner?partner=${partner}&exit_url=${exiturl}&license_code=zero&stylesheet=${stylesheet}">CC0</a>. If
+<span tal:omit-tag="" i18n:name="cc0_url" tal:content="string:/license/zero/partner?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
+<a href="${cc0_url}">CC0</a>.  If
    you're sharing a work that isn't covered by copyright or on which
    the copyright has expired, choose the
-   <a href="/license/publicdomain-direct" 
-      tal:attributes="href string:/license/publicdomain-direct?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}">public domain certification</a>.
+<span tal:omit-tag="" i18n:name="pd_url" tal:content="string:/license/publicdomain-direct?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
+<a href="${pd_url}">public domain certification</a>.
 </p>
 
 <FORM method="get" action="results-one">
