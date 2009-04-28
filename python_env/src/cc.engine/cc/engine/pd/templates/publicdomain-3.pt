@@ -50,11 +50,12 @@ YAHOO.util.Event.onDOMReady(function() {
 </head>
 
 <body>
+  <metal:title metal:fill-slot="page-header-title"
+	       i18n:translate="license.pd.confirm_title">
+    Confirm Your Public Domain Certification
+  </metal:title>
 
 <metal:body fill-slot="body">
-
-  <h1 i18n:translate="license.pd.confirm_title">
-    Confirm Your Public Domain Certification</h1>
 
 <div class="yui-module">
   <div class="bd">

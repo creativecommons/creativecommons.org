@@ -15,7 +15,10 @@
     <link rel="stylesheet" type="text/css" 
           href="/wp-content/themes/cc5/style.css"
           tal:attributes="href context/++resource++cc/cc5/style.css" />
-    <link href="http://creativecommons.org/includes/progress.css" 
+	 <link rel="stylesheet" type="text/css" media="print"
+		  href="/wp-content/themes/cc5/print.css"
+		  tal:attributes="href context/++resource++cc/cc5/print.css" />
+	<link href="http://creativecommons.org/includes/progress.css" 
 	  rel="stylesheet" type="text/css" />
     <link href="http://creativecommons.org/wp-content/themes/cc4/support.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css"
@@ -99,6 +102,21 @@
               </div>
             </form>
             <div class="clear"></div>
+          </div>
+
+          <div class="sideitem">
+            <ul>
+              <li><img src="/wp-content/themes/cc5/images/license-alt.png" 
+                        tal:attributes="src context/++resource++cc/cc5/images/license-alt.png" 
+                        alt="License your work" />&nbsp;&nbsp;
+                  <a href="/license/">License your work</a>
+              </li>
+              <li><img src="/wp-content/themes/cc5/images/find-alt.png" 
+                        tal:attributes="src context/++resource++cc/cc5/images/find-alt.png" 
+                        alt="Find licensed works" width="12" height="12" />&nbsp;&nbsp;
+                  <a href="http://search.creativecommons.org/">Find licensed works</a>
+              </li>
+            </ul>
           </div>
 
           <div class="sideitem">

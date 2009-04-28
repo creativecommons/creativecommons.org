@@ -8,6 +8,11 @@
   <title metal:fill-slot="title">Choose a License</title>
 </head>
 <body>
+  <metal:title metal:fill-slot="page-header-title"
+	       i18n:translate="license.confirm_choice">
+    Confirm Choice
+  </metal:title>
+  
 <div metal:fill-slot="body"
      tal:define="target_lang string:en;
                  stylesheet request/stylesheet | nothing;
@@ -18,8 +23,6 @@
                  show_jurisdiction request/jurisdiction_chooser | nothing;
                  def_juris request/jurisdiction | nothing;
                 ">
-
-<h1 i18n:translate="license.confirm_choice">Confirm Choice</h1>
 
 <p i18n:translate="license.partner.pd_intro">Your choice suggests you
 want to certify a work is in the public domain. The Public Domain

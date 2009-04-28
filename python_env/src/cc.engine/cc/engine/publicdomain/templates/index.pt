@@ -9,9 +9,13 @@
 </head>
 
 <body>
+  
+  <metal:title metal:fill-slot="page-header-title"
+	       i18n:translate="license.pdtools.title">
+    Our Public Domain Tools
+  </metal:title>
+  
 <div metal:fill-slot="body">
-
-  <h1 i18n:translate="license.pdtools.title">Our Public Domain Tools</h1>
 
   <p i18n:translate="license.pdtools.intro">Our licenses help authors
   keep and manage their copyright on terms they choose.  Our public

@@ -11,11 +11,12 @@
 
 <body>
 
-<metal:body fill-slot="body">
-
-  <h1 i18n:translate="license.pd.identify_a_pd_work">
+  <metal:title metal:fill-slot="page-header-title"
+	       i18n:translate="license.pd.identify_a_pd_work">
     Identify a Public Domain Work
-  </h1>
+  </metal:title>
+
+<metal:body fill-slot="body">
 
   <p i18n:translate="license.pd.intro_1">
     You have selected the Public Domain Certification.  The Public
