@@ -13,26 +13,30 @@
 	  /> 
 
     <link rel="stylesheet" type="text/css" 
-          href="/wp-content/themes/cc4/style.css"
-          tal:attributes="href context/++resource++cc/cc4/style.css" />
+          href="/wp-content/themes/cc5/style.css"
+          tal:attributes="href context/++resource++cc/cc5/style.css" />
     <link href="http://creativecommons.org/includes/progress.css" 
 	  rel="stylesheet" type="text/css" />
     <link href="http://creativecommons.org/wp-content/themes/cc4/support.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css"
-          href="/wp-content/themes/cc4/engine.css"
-          tal:attributes="href context/++resource++cc/cc4/engine.css" />
+          href="/wp-content/themes/cc5/engine.css"
+          tal:attributes="href context/++resource++cc/cc5/engine.css" />
     <link rel="stylesheet" type="text/css"
-          href="/wp-content/themes/cc4/engine-rtl.css"
+          href="/wp-content/themes/cc5/engine-rtl.css"
 	  tal:condition="view/is_rtl"
-          tal:attributes="href context/++resource++cc/cc4/engine-rtl.css" />
+          tal:attributes="href context/++resource++cc/cc5/engine-rtl.css" />
 
     <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="/includes/style-ie.css" tal:attributes="href context/++resource++cc/includes/style-ie.css" />
     <![endif]-->
 
     <script type="text/javascript" 
 	    src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/animation/animation-min.js"></script> 
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script>
     <script src="/includes/license-results.js" type="text/javascript"
        tal:attributes="src context/++resource++cc/includes/license-results.js" ></script>
+    <script src="/includes/license-results.js" type="text/javascript"
+       tal:attributes="src context/++resource++cc/cc5/site.js" ></script>
 
    <metal:headers define-slot="headers" />
 
@@ -40,144 +44,102 @@
 
   <body class="yui-skin-sam">
 
-    <div id="header-wrapper">
-      <div id="header-main" class="box">
-        <span class="publish">
-          <a href="/license/" class="cc-actions">
-            <span class="img">
-              <img src="/images/license-8.png" style="border: 0" class="publish" alt="License your Work"
-                   tal:attributes="src context/++resource++cc/images/license-8.png" />
-            </span> 
-            <span class="option">License</span>Your Work
-          </a>
-        </span>
-        <span class="find">
-          <a href="http://search.creativecommons.org/" class="cc-actions">
-            <span class="img">
-              <img src="/images/find-8.png" style="border: 0" alt="Search CC Licensed Work"/>
-            </span>
-            <span class="option">Search</span>CC Licensed Work
-          </a>
-        </span>
-        <span class="logo"><a href="/"><span><img src="/images/cc-title-8.png" alt="creative commons" id="cc-title" style="border: 0" /></span></a></span>
+    <div id="globalWrapper">
+      <div id="headerWrapper" class="box">
+        <div id="headerLogo">
+          <h1><a href="http://creativecommons.org/"><span>Creative Commons</span></a></h1>
+        </div>
+        <div id="headerNav">
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/weblog/">News</a></li>
+            <li><a href="http://creativecommons.org/faq">FAQ</a></li>
+            <li><a href="http://support.creativecommons.org/">Donate</a></li>
+            <li><a href="http://wiki.creativecommons.org/">Wiki</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li class="helpLink" id="international_list"><a href="/international/">International</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div id="mainmenu">
-      <ul id="navbar" class="box">
-			  <li class="inactive"><a href="/" title="Home"><span>Home</span></a></li>      
-			  <li class="inactive"><a href="/about/" title="About"><span>About</span></a></li>     
-			  <li class="inactive"><a href="http://wiki.creativecommons.org/FFAQ" title="FAQ"><span>FAQ</span></li>
-			  <li class="donate inactive"><a href="http://support.creativecommons.org" title="Donate"><span>Donate</span></a></li>      
-			  <li class="inactive"><a href="http://wiki.creativecommons.org" title="Wiki"><span>Wiki</span></a></li>      
-			  <li class="inactive"><a href="/projects/" title="Projects"><span>Projects</span></a></li>      
-			  <li class="inactive"><a href="/international/" title="International"><span>International</span></a></li>      
-			  <li class="inactive"><a href="/contact/" title="Contact"><span>Contact</span></a></li> 
-      </ul>
-      <div class="clear"></div>
-    </div>
-    <div class="box"><div id="wrapper-ie">
-    
-  	<div id="body">
-	  <div id="content">
-	    <div id="main-content">
-	      <div id="alpha" class="content-box"
-                   tal:attributes="dir view/is_rtl|nothing; 
-				   align view/is_rtl_align|nothing;">
-
-    		<h1 tal:attributes="dir view/get_ltr_rtl|nothing; style
-				    view/is_rtl_align|nothing;">
-		  <metal:page_title define-slot="page-header-title">
-		  </metal:page_title>
-		</h1>
-				<div class="block">
-           <metal:block metal:define-slot="body">
-           </metal:block>
-
+	    <div id="mainContent" class="box">
+	      <div id="contentPrimary" tal:attributes="dir view/get_ltr_rtl|nothing; style view/is_rtl_align|nothing;">
+          <div class="block" id="title">
+        		<h2 tal:attributes="dir view/get_ltr_rtl|nothing; style
+    				    view/is_rtl_align|nothing;">
+        		  <metal:page_title define-slot="page-header-title">
+        		  </metal:page_title>
+    		    </h2>
+    		  </div>
+    		  <div id="blocks">
+				    <div class="block page">
+              <metal:block metal:define-slot="body">
+              </metal:block>
 						</div>
-					
 					</div>
-
-	      <div id="beta" class="content-box"
-                   tal:attributes="dir view/is_rtl|nothing; align view/is_rtl_align|nothing;">
-		<metal:block define-slot="sidebar" />
+	        <div id="sideContent" class="content-box"
+                   tal:attributes="dir view/get_ltr_rtl|nothing; style view/is_rtl_align|nothing;">
+		        <metal:block define-slot="sidebar" />
 					</div>
 				</div>	
-<div id="sidebar" class="content-box-right">
-    <div class="sideitem">
-      <h4><a href="http://creativecommons.org/international">International</a></h4>
-        <script type="text/javascript" src='http://api.creativecommons.org/rest/dev/support/jurisdictions.js?select=1' ></script>
-      <span class="international"><a href="/international">More information</a></span>
-    </div>
+ 
+        <div id="sidebar" class="content-box-right">
+          <div id="help_international_list" class="sideitem">
+           <div class="bd">
+             <select id="international" name="sortby" onchange="orderby(this)">    
+               <option value="">Select a jurisdiction</option>
+               <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
+             </select>
+           </div>
+          </div>
 
-    <div class="sideitem">
-      <h4>Search</h4>
-      <form method="get" id="searchform" action="http://creativecommons.org/">
-  <div>
-  <input type="text" value="" name="s" id="s" size="30" />
-  <input type="submit" id="searchsubmit" value="Search" />
+          <div class="sideitem">
+            <form method="get" id="searchform" action="http://creativecommons.org/">
+              <div>
+                <input type="text" value="" name="s" id="s" class="inactive" />  <input type="submit" id="searchsubmit" value="Go" />
+              </div>
+            </form>
+            <div class="clear"></div>
+          </div>
 
-  </div>
-  </form>
-      <div class="clear"></div>
-    </div>
-
-    <div class="sideitem">
-      <ul>
-        <li><a href="/commoners">Creative Commoners</a></li>
-        <li><a href="/projects/documentation">Documentation</a></li>
-        <li><a href="/projects/casestudies">Case Studies</a></li>
-        <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
-        <li><a href="/about/newsletter">Newsletter</a></li>
-        <li><a href="/about/press">Press Room</a></li>
-
-      </ul>
-    </div>
-
-    <div class="sideitem">
-
-      <h4>The Commons</h4>
-	  <ul>
-		<li><a href="https://creativecommons.net/">CC Network</a></li>
-        <li><a href="http://sciencecommons.org/">Science Commons</a></li>
-        <li><a href="http://creativecommons.org/international/">ccInternational</a></li>
-        <li><a href="http://learn.creativecommons.org/">ccLearn</a></li>
-      </ul>
-    </div>
-
-
-</div>			</div>
-			<div class="clear">&nbsp;</div>
-
-		</div>
-		</div></div>
-    <div id="footer">
-      <div id="sub-footer" class="box">
-        <ul>
-          <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-          <li><a href="http://support.creativecommons.org/">Donate</a></li>
-          <li><a href="/weblog">Blog</a></li>
-          <li><a href="/policies">Policies</a></li>
-
-          <li><a href="/privacy">Privacy</a></li>
-          <li><a href="/about/press">Press</a></li>
-          <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
-          <li><a href="/sitemap">Sitemap</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-
+          <div class="sideitem">
+            <ul>
+              <li><a href="/about/opportunities/">Jobs</a></li>
+              <li><a href="/about/events/">Events</a></li>
+              <li><a href="/about/newsletter/">Newsletter</a></li>
+              <li><a href="http://wiki.creativecommons.org/Casestudies">Case Studies</a></li>
+              <li><a href="/commoners/">Creative Commoners</a></li>
+              <li><a href="/about/press">Press Room</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-			<div id="license"><p class="box">
-<metal:license define-slot="license-override">
-				<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88" /></a>
-Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on this site is<br/>
-licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
-</metal:license>
-			</p></div>
-
-		</div>
-
-<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
-<script type="text/javascript">_uacct = "UA-2010376-1"; urchinTracker();</script>
-</body>
+      <div id="footer">
+        <div id="footerContent" class="box">
+          <ul>
+            <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            <li><a href="http://support.creativecommons.org/">Donate</a></li>
+            <li><a href="/weblog">Blog</a></li>
+            <li><a href="/policies">Policies</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/about/press">Press</a></li>
+            <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
+            <li><a href="/sitemap">Sitemap</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+  			<div id="footerLicense">
+  			  <p class="box">
+            <metal:license define-slot="license-override">
+  				    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88" /></a>
+  Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on this site is<br/>
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
+            </metal:license>
+  			  </p>
+  			</div>
+  		</div>
+    </div>
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+    <script type="text/javascript">_uacct = "UA-2010376-1"; urchinTracker();</script>
+  </body>
 
 </html>
