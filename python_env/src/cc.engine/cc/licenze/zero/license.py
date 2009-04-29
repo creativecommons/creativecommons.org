@@ -106,7 +106,12 @@ class Zed(object):
     @property
     def rdf(self):
 
-        return ''
+        return """<rdf:RDF xmlns="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <License rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+      <permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+      <permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+   </License>
+</rdf:RDF>"""
 
     @property
     def work_rdf(self):
