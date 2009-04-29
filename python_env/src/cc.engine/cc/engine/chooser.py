@@ -334,9 +334,7 @@ class EmailResultsView(ResultsView):
         
 class EmailHtml(BrowserPage):
 
-    __call__ = ViewPageTemplateFile('chooser_templates/emailhtml.pt')
-
-    def update(self):
+    def __call__(self):
         """Email the license HTML to the user."""
 
         mhost = getUtility(IMailDelivery, 'cc_engine')
@@ -372,3 +370,6 @@ info@creativecommons.org
 
         mhost.send('info@creativecommons.org', (email_addr,),
                    message.as_string())
+
+        # return the success page
+        return ViewPageTemplateFile('chooser_templates/emailhtml.pt')(self)
