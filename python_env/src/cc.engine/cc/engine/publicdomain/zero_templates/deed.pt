@@ -19,7 +19,9 @@
   <div metal:fill-slot="body" tal:omit-tag="">
     <div id="deed-rights" 
 	 tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
-      <h3 i18n:translate="deed.zero.no_copyright">No Copyright</h3>
+      <h3 rel="cc:permits" 
+	  resource="http://creativecommons.org/ns#Reproduction"
+	  i18n:translate="deed.zero.no_copyright">No Copyright</h3>
       <div id="librepd" tal:condition="view/license/libre">
 	<a href="http://freedomdefined.org/">
 	  <img src="/images/deed/seal.png" border="0" 
@@ -29,7 +31,9 @@
       </div>
       <ul class="license-properties">
 	<li class="license nolaw">
-	  <span id="nolaw-text" i18n:translate="deed.zero.nocopyright-text">
+	  <span id="nolaw-text" rel="cc:permits" 
+		resource="http://creativecommons.org/ns#Distribution"
+		i18n:translate="deed.zero.nocopyright-text">
             The person who associated a work with this document
             has dedicated this work to the Commons by waiving all
             of his or her rights to the work under copyright law
