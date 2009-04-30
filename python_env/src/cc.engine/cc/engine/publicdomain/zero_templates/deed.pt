@@ -113,10 +113,11 @@
 
 <metal:footer fill-slot="footer">
 
-	    <a href="" id="disclaimer" i18n:translate="util.Disclaimer">
+	    <a href="" id="disclaimer" class="helpLink"
+	       i18n:translate="util.Disclaimer">
 	      Disclaimer
 	    </a>
-	    <div id="disclaimer_panel">
+	    <div id="help_disclaimer">
 	      <div class="hd" i18n:translate="util.Disclaimer">
 		Disclaimer
 	      </div>

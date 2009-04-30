@@ -116,9 +116,15 @@ def save_deed(output_dir, license, locale, contents):
     """Save the deed to disk and update the mulitview mapping file."""
 
     # determine the output file path
+    if 'licenses/' in license.uri:
+        path = license.uri.split('licenses/')[1]
+    elif 'publicdomain/' in license.uri:
+        path = license.uri.split('publicdomain/')[1]
+    else:
+        raise Exception("Can not determine output path.")
+
     output_path = '%sdeed.%s' % (
-        os.path.join(output_dir, license.uri.split('licenses/')[1]),
-        locale)
+        os.path.join(output_dir, path), locale)
 
     # make sure the directory structure exists
     if not(os.path.exists(os.path.dirname(output_path))):
