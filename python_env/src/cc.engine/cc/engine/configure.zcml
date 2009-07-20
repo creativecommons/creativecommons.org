@@ -169,6 +169,13 @@
 
   <browser:page
      for="cc.engine.interfaces.ILicenseEngine"
+     name="devnations"
+     class=".chooser.DevNationsRedirect"
+     permission="zope.View"
+     />
+
+  <browser:page
+     for="cc.engine.interfaces.ILicenseEngine"
      name="non-web-popup"
      class=".chooser.NonWebPopup"
      permission="zope.View"
