@@ -22,7 +22,7 @@ class pd_waiting_verification(BrowserPage):
             return self.__email_result
         except AttributeError:
 
-            next_url = '%s/license/publicdomain-3' % \
+            next_url = '%s/choose/publicdomain-3' % \
                 self.request.getApplicationURL()
 
             self.__email_result = self.context.send_pd_confirmation(

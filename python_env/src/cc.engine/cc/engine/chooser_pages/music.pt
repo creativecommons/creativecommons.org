@@ -12,7 +12,7 @@
 
 <metal:block fill-slot="sidebar">
 
-   <p><a href="/license/">&laquo; back to licenses</a></p>
+   <p><a href="/choose/">&laquo; back to licenses</a></p>
 
 </metal:block>
 

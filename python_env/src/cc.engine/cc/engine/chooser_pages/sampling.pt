@@ -115,8 +115,8 @@
 <li><strong i18n:translate="license.sampling_before">Before you apply the Sampling License to your work, make sure you have the authority to license all the rights involved. Musical works, for example, often consist of multiple copyrights (composition, recording, lyrics).</strong></li></ul>
 
 <div tal:omit-tag="" i18n:translate="license.sampling_alternatives">
-<p>If you <strong>want</strong> to invite people to make <strong>any</strong> commercial re-use of your work &mdash; transformative or not &mdash; you should consider either the <a href="http://creativecommons.org/license/results-one?license_code=by-sa">Attribution-ShareAlike</a>
- license or simply the <a href="http://creativecommons.org/license/results-one?license_code=by">Attribution</a> license.</p>
+<p>If you <strong>want</strong> to invite people to make <strong>any</strong> commercial re-use of your work &mdash; transformative or not &mdash; you should consider either the <a href="http://creativecommons.org/choose/results-one?license_code=by-sa">Attribution-ShareAlike</a>
+ license or simply the <a href="http://creativecommons.org/choose/results-one?license_code=by">Attribution</a> license.</p>
 </div>
 
 </metal:right>

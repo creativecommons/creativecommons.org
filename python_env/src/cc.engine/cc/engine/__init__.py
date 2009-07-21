@@ -23,8 +23,8 @@ def init(event):
     db_root = event.database.open().root()[ZopePublication.root_name]
                                            
     # check for the license chooser
-    if db_root.get('license', None) is None:
-        db_root['license'] = cc.engine.chooser.LicenseEngine()
+    if db_root.get('choose', None) is None:
+        db_root['choose'] = cc.engine.chooser.LicenseEngine()
 
     # check for the deed catalog
     if db_root.get('licenses', None) is None:

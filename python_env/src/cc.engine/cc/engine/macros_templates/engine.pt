@@ -109,7 +109,7 @@
               <li><img src="/wp-content/themes/cc5/images/license-alt.png" 
                         tal:attributes="src context/++resource++cc/cc5/images/license-alt.png" 
                         alt="License your work" />&nbsp;&nbsp;
-                  <a href="/license/">License your work</a>
+                  <a href="/choose/">License your work</a>
               </li>
               <li><img src="/wp-content/themes/cc5/images/find-alt.png" 
                         tal:attributes="src context/++resource++cc/cc5/images/find-alt.png" 

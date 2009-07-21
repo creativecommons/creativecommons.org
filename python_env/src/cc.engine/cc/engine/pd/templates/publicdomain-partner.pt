@@ -33,7 +33,7 @@ already in the public domain.</p>
   
 <p i18n:translate="license.partner.pd.use_cc0">
 If instead you want to waive copyright and neighboring rights on a work 
-<span tal:omit-tag="" i18n:name="cc0_url" tal:content="string:/license/zero/partner?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
+<span tal:omit-tag="" i18n:name="cc0_url" tal:content="string:/choose/zero/partner?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
   <em>in which you hold these rights</em>, choose <a href="${cc0_url}">CC0</a>.
 </p>
 

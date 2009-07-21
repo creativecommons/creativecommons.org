@@ -12,7 +12,7 @@
 <div metal:fill-slot="body">
      <h1>Creative Commons Licenses</h1>
 
-<p>The following are the six current license choices available from our <a href="/license/">choose a license</a> application, along with previous versions that have been phased out. They are shown by name along the license characteristics that accompany them. <a href="http://creativecommons.org/about/licenses/">This page explains what each icon represents</a>.</p>
+<p>The following are the six current license choices available from our <a href="/choose/">choose a license</a> application, along with previous versions that have been phased out. They are shown by name along the license characteristics that accompany them. <a href="http://creativecommons.org/about/licenses/">This page explains what each icon represents</a>.</p>
 
 <table border="0" style="margin-left:14px;margin-bottom:30px;" cellpadding="3">
 	<tr>

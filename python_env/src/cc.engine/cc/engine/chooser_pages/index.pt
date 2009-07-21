@@ -317,26 +317,26 @@
     <h4 i18n:translate="">Software</h4>
 
     <p style="font-size:11px;">
-      <a href="/license/cc-gpl">
+      <a href="/choose/cc-gpl">
 	<img src="/images/license/40gnugpl.gif" width="40" height="40"
 	     style="border: 0; text-align:center;"
              i18n:attributes="alt util.CC_GNU_GPL;" alt="GNU GPL" 
 	     />
       </a>
-      <a href="/license/cc-gpl" i18n:translate="util.CC_GNU_GPL">
+      <a href="/choose/cc-gpl" i18n:translate="util.CC_GNU_GPL">
 	CC-GNU GPL
       </a>
     </p>
 
     <p style="font-size:11px;">
-      <a href="/license/cc-lgpl">
+      <a href="/choose/cc-lgpl">
 	<img src="/images/license/40gnulgpl.gif" width="40"
 	     height="40" style="border: 0; text-align:center;"
              i18n:attributes="alt util.CC_GNU_LGPL;" 
 	     alt="GNU LGPL"    
 	     />
       </a>
-      <a href="/license/cc-lgpl" i18n:translate="util.CC_GNU_LGPL">
+      <a href="/choose/cc-lgpl" i18n:translate="util.CC_GNU_LGPL">
 	CC-GNU LGPL
       </a>
     </p>

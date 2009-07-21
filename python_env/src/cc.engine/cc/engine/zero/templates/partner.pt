@@ -42,7 +42,7 @@
 	instead you want to certify that a work is <em>already in the
 	public domain</em>, use
 	the
-<span tal:omit-tag="" i18n:name="pd_url" tal:content="string:/license/publicdomain-direct?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
+<span tal:omit-tag="" i18n:name="pd_url" tal:content="string:/choose/publicdomain-direct?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
 <a href="${pd_url}">Public Domain Certification</a>.
 	</p>
 

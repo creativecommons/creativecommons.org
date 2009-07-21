@@ -12,7 +12,7 @@
 
 <metal:block fill-slot="sidebar">
 
-   <p><a href="/license/">&laquo; back to licenses</a></p>
+   <p><a href="/choose/">&laquo; back to licenses</a></p>
 
 </metal:block>
 
@@ -54,7 +54,7 @@ ng="0" cellpadding="0">
 <tr align="center">
         <td><a href="http://creativecommons.org/licenses/LGPL/2.1/"><img src="/images/licensedeeds/deed-gpl.gif" alt="" border="0" /></a></td>
         <td><a href="http://creativecommons.org/licenses/LGPL/2.1/legalcode"><img src="/images/licensedeeds/legalcode-gpl.gif" border="0" alt="" /></a></td>
-        <td><a href="/license/work-html-popup?license_code=LGPL" 
+        <td><a href="/choose/work-html-popup?license_code=LGPL" 
                 onclick="window.open('work-html-popup?lang=en&license_code=LGPL"
                 onclick="window.open('work-html-popup?license_code=LGPL" 
                 onclick="window.open('work-html-popup?lang=en&license_code=LGPL', 'html_help', width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="/images/licensedeeds/code.gif" border="0" alt="" /></a></td>

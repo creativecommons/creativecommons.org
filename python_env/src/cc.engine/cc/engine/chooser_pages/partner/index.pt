@@ -29,11 +29,11 @@ This page helps you choose those conditions.
 
 <p i18n:translate="license.partner.publicdomain_options">
 If you want to share a work you created with no conditions, choose
-<span tal:omit-tag="" i18n:name="cc0_url" tal:content="string:/license/zero/partner?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
+<span tal:omit-tag="" i18n:name="cc0_url" tal:content="string:/choose/zero/partner?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
 <a href="${cc0_url}">CC0</a>.  If
    you're sharing a work that isn't covered by copyright or on which
    the copyright has expired, choose the
-<span tal:omit-tag="" i18n:name="pd_url" tal:content="string:/license/publicdomain-direct?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
+<span tal:omit-tag="" i18n:name="pd_url" tal:content="string:/choose/publicdomain-direct?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
 <a href="${pd_url}">public domain certification</a>.
 </p>
 
@@ -82,7 +82,7 @@ Yes, as long as others share alike (<a href="http://creativecommons.org/characte
 <input type=hidden name="field_jurisdiction" value="" tal:attributes="value request/jurisdiction"/>
 </span>
 <p tal:condition="request/jurisdiction_choose|nothing">
-<span tal:omit-tag="" i18n:translate="license.jurisdiction_question">Jurisdiction of your license</span> (<a href="http://creativecommons.org/license/jurisdiction-popup?lang=en" onclick="window.open('http://creativecommons.org/license/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">more info</a> <a href="http://creativecommons.org/license/jurisdiction-popup?lang=en" onclick="window.open('http://creativecommons.org/license/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="http://creativecommons.org/images/popup.gif" width="15" height="13" alt="more info" border="0" /></a>)<br />
+<span tal:omit-tag="" i18n:translate="license.jurisdiction_question">Jurisdiction of your license</span> (<a href="http://creativecommons.org/choose/jurisdiction-popup?lang=en" onclick="window.open('http://creativecommons.org/choose/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">more info</a> <a href="http://creativecommons.org/choose/jurisdiction-popup?lang=en" onclick="window.open('http://creativecommons.org/choose/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="http://creativecommons.org/images/popup.gif" width="15" height="13" alt="more info" border="0" /></a>)<br />
 
 <select name="field_jurisdiction"
         tal:define="selected view/selected_jurisdiction">

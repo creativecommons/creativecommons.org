@@ -77,7 +77,7 @@ ${context/license/rdf} -->" />
   <div class="bd">
     This tool is based on United States law and may not be applicable
     outside the US. For dedicating new works to the public domain, we
-    recommend <a href="/license/zero/">CC0</a>.
+    recommend <a href="/choose/zero/">CC0</a>.
   </div>
 </div>
 
@@ -86,7 +86,7 @@ ${context/license/rdf} -->" />
 <div metal:fill-slot="footer" tal:omit-tag=""></div>
 
       <metal:use-this-license metal:fill-slot="use-this-license">
-      <a id="get_this" href="/license/publicdomain-2" 
+      <a id="get_this" href="/choose/publicdomain-2" 
 	 i18n:translate="deed.use_this_tool">
       Use this tool for your own work.</a>
       </metal:use-this-license>
