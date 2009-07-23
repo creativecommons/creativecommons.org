@@ -22,7 +22,7 @@ class ExiturlGenerator:
             url = urljoin(referrer, url)
 
         url = url.replace('[license_url]', quote(license.uri))
-        url = url.replace('[license_name]', license.name)
+        url = url.replace('[license_name]', quote(license.name))
         url = url.replace('[license_button]', quote(license.imageurl))
         url = url.replace('[deed_url]', quote(license.uri))
         
