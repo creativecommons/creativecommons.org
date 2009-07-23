@@ -12,6 +12,8 @@ class ExiturlGenerator:
 
     def exit_url(self, url, referrer, license):
         
+        url = unquote_plus(url)
+ 
         # test if the exit_url is an absolute uri
         if urlparse(url).scheme not in ['http', 'https']:
             
@@ -19,7 +21,6 @@ class ExiturlGenerator:
             # e.g. foo/bar.php or /foo/bar.php?id=1, etc.
             url = urljoin(referrer, url)
 
-        url = unquote_plus(url)
         url = url.replace('[license_url]', quote(license.uri))
         url = url.replace('[license_name]', license.name)
         url = url.replace('[license_button]', quote(license.imageurl))
