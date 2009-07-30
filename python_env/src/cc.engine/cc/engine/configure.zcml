@@ -125,6 +125,21 @@
      permission="zope.View"
      />
 
+  <!-- place holder to redirect /license to /choose
+
+       Some users are using POST to send information to the partner
+       interface, which using a redirect w/o special handling of the
+       form break.
+
+    -->
+  <browser:page
+     name="license"
+     for="zope.app.folder.interfaces.IRootFolder"
+     class=".license.Redirector"
+     permission="zope.View"
+     >
+  </browser:page>
+  
   <!-- Additional template-only page views
        ***********************************
 
