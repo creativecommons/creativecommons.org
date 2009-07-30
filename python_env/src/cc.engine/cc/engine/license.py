@@ -20,8 +20,11 @@ class Redirector(BrowserPage):
 
         new_url = self.request.getURL().replace("/license", "/choose")
 
-        return self.request.response.redirect(
-            "%s?%s" % (new_url, urllib.urlencode(self.request.form))
-            )
+        if self.request.form:
+            return self.request.response.redirect(
+                "%s?%s" % (new_url, urllib.urlencode(self.request.form))
+                )
+
+        return self.request.response.redirect(new_url)
 
 
