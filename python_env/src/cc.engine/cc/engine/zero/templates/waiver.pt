@@ -139,13 +139,13 @@ YAHOO.util.Event.onDOMReady(function() {
 
       <div class="form-row">
 	<div class="form-question" 
-	     i18n:translate="util.country">Country</div>
+	     i18n:translate="util.territory">Territory</div>
 	<div class="form-answer">
 	  <select name="work_jurisdiction" class="form-field">
 	    <option value="-">---</option>
 	    <metal:country tal:repeat="c view/country_list">
 	      <option value="code" tal:content="python: c[1]"
-		      tal:attributes="value python:c[0]">country</option>
+		      tal:attributes="value python:c[0]">territory</option>
 
 	    </metal:country>
 	  </select>
@@ -160,7 +160,7 @@ YAHOO.util.Event.onDOMReady(function() {
       </div>
 
     <div id="help_country" class="help_panel">
-      <div class="hd" i18n:translate="util.country">Country</div>
+      <div class="hd" i18n:translate="util.territory">Territory</div>
       <div class="bd" i18n:translate="license.zero.country_help">
 	Jurisdiction from which the work is being offered under CC0.
       </div>

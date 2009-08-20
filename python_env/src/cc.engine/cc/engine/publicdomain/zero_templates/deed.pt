@@ -31,15 +31,20 @@
       </div>
       <ul class="license-properties">
 	<li class="license nolaw">
-	  <span id="nolaw-text" rel="cc:permits" 
+	  <p id="nolaw-text" rel="cc:permits" 
 		resource="http://creativecommons.org/ns#Distribution"
+	        style="margin-bottom:0.5em;"
 		i18n:translate="deed.zero.nocopyright-text">
             The person who associated a work with this document
-            has dedicated this work to the Commons by waiving all
-            of his or her rights to the work under copyright law
+            has dedicated the work to the Commons by waiving all
+            of his or her rights to the work worldwide under copyright law
             and all related or neighboring legal rights he or she
             had in the work, to the extent allowable by law.  
-	  </span>
+	  </p>
+	  <p i18n:translate="deed.zero.no-endorsment">
+	    Works under CC0 do not require attribution.  When citing
+	    the work, you should not imply endorsement by the author.
+	  </p>
 	</li>
 	<p id="work-attribution-container" style="display:none;">
 	  <strong i18n:translate="deed.attribute_this_work">Attribute this work:</strong><br/>
