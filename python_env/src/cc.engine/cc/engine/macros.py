@@ -10,6 +10,7 @@ from zope.publisher.browser import BrowserView
 from zope.app.pagetemplate import ViewPageTemplateFile
 
 from cc.license.decorators import memoized
+from cc.license import license_xsl
 from cc.engine import i18n
     
 class Support(BrowserView):
@@ -40,12 +41,24 @@ class Support(BrowserView):
 
         for each available language."""
 
+        # get a list of avaialable translations
         domain = queryUtility(ITranslationDomain, i18n.I18N_DOMAIN)
         lang_codes = domain.getCatalogsInfo().keys()
+
+        # determine the intersection of available translations and
+        # launched jurisdiction locales
+        launched_locales = []
+        for juris in license_xsl.valid_jurisdictions('standard'):
+            for locale in license_xsl.jurisdiction_locales(juris):
+                if locale in lang_codes:
+                    launched_locales.append(locale)
+
+        # remove duplicates
+        lang_codes = list(set(launched_locales))
         lang_codes.sort()
 
         # this loop is long hand for clarity; it's only done once, so
-        # te additional performance cost should be negligible
+        # the additional performance cost should be negligible
         result = []
         for code in lang_codes:
 

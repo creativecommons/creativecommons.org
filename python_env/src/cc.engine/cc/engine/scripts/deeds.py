@@ -18,6 +18,8 @@ import cc.engine
 from cc.engine import i18n
 from cc.engine import startup
 
+from cc.license import license_xsl
+
 LICENSES_XML = os.path.join(os.path.dirname(cc.engine.__file__),
                             'scripts', 'license_xsl', 'licenses.xml')
 
@@ -97,7 +99,16 @@ def get_locales(options = None):
     if options is None or options.locales is None:
         # all locales
         domain = queryUtility(ITranslationDomain, i18n.I18N_DOMAIN)
-        return [str(n) for n in domain.getCatalogsInfo().keys()]
+
+        avail_locales = [str(n) for n in domain.getCatalogsInfo().keys()]
+        launched_locales = []
+
+        for juris in license_xsl.valid_jurisdictions('standard'):
+            for locale in license_xsl.jurisdiction_locales(juris):
+                if locale in avail_locales:
+                    launched_locales.append(locale)
+
+        return list(set(launched_locales))
 
     else:
         return [normalize_lang(n) for n in options.locales.split(',')]
