@@ -1,0 +1,32 @@
+<configure xmlns="http://namespaces.repoze.org/bfg">
+
+  <!-- this must be included for the view declarations to work -->
+  <include package="repoze.bfg.includes" />
+
+  <route
+     view=".views.root_view"
+     path=""
+     name="root"
+     />
+
+  <route
+     view=".views.licenses_view"
+     path="licenses/"
+     name="licenses" />
+
+  <route
+     view=".views.specific_licenses_view"
+     path="licenses/:license_id/:license_version"
+     name="specific_license" />
+
+  <route
+     view=".views.publicdomain_view"
+     path="publicdomain"
+     name="publicdomain" />
+
+  <static
+     name="static"
+     path="templates/static"
+     />
+
+</configure>
