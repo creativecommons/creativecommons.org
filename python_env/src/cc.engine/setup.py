@@ -32,7 +32,7 @@ setup(
     # scripts and dependencies
     install_requires = [
         'setuptools',
-        #'cc.license',
+        'cc.license',
         'zope.interface',
         'PasteScript',
         'repoze.bfg'],
