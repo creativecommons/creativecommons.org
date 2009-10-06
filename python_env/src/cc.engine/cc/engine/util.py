@@ -1,6 +1,6 @@
 import os
 
-from cc.license.formatters import CCLPageTemplateFile
+from cc.license.formatters.pagetemplate import CCLPageTemplateFile
 
 BASE_TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
 
