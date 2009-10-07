@@ -40,7 +40,10 @@ def licenses_view(context, request):
 
 
 def specific_licenses_view(context, request):
-    return Response("this is the specific licenses view")
+    return Response(
+        "this is the creative commons %s %s license" % (
+            request.matchdict['license_id'],
+            request.matchdict['license_version']))
 
 
 def publicdomain_view(context, request):
