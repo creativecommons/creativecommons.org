@@ -1,10 +1,12 @@
 import os
 
+from zope.i18n.translationdomain import TranslationDomain
+
 from cc.license.formatters.pagetemplate import CCLPageTemplateFile
 
 BASE_TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
 
-_I18N_SETUP = FALSE
+_I18N_SETUP = False
 
 def get_zpt_template(template_path):
     setup_i18n_if_necessary()

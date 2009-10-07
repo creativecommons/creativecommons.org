@@ -13,33 +13,27 @@
 	  /> 
 
     <link rel="stylesheet" type="text/css" 
-          href="/wp-content/themes/cc5/style.css"
-          tal:attributes="href context/++resource++cc/cc5/style.css" />
+          href="/@@/cc/cc5/style.css" />
 	 <link rel="stylesheet" type="text/css" media="print"
-		  href="/wp-content/themes/cc5/print.css"
-		  tal:attributes="href context/++resource++cc/cc5/print.css" />
+	       href="/@@/cc/cc5/print.css" />
 	<link href="http://creativecommons.org/includes/progress.css" 
 	  rel="stylesheet" type="text/css" />
     <link href="http://creativecommons.org/wp-content/themes/cc4/support.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css"
-          href="/wp-content/themes/cc5/engine.css"
-          tal:attributes="href context/++resource++cc/cc5/engine.css" />
+          href="/@@/cc/cc5/engine.css" />
     <link rel="stylesheet" type="text/css"
-          href="/wp-content/themes/cc5/engine-rtl.css"
-	  tal:condition="view/is_rtl"
-          tal:attributes="href context/++resource++cc/cc5/engine-rtl.css" />
+          href="/@@/cc/cc5/engine-rtl.css"
+	  tal:condition="view/is_rtl"/>
 
-    <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="/includes/style-ie.css" tal:attributes="href context/++resource++cc/includes/style-ie.css" />
+    <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="/includes/style-ie.css" tal:attributes="href /@@/cc/includes/style-ie.css" />
     <![endif]-->
 
     <script type="text/javascript" 
 	    src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
     <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/animation/animation-min.js"></script> 
     <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script>
-    <script src="/includes/license-results.js" type="text/javascript"
-       tal:attributes="src context/++resource++cc/includes/license-results.js" ></script>
-    <script src="/includes/license-results.js" type="text/javascript"
-       tal:attributes="src context/++resource++cc/cc5/site.js" ></script>
+    <script type="text/javascript" src="/@@/cc/includes/license-results.js" ></script>
+    <script type="text/javascript" src="/@@/cc/cc5/site.js" ></script>
 
    <metal:headers define-slot="headers" />
 
@@ -106,13 +100,11 @@
 
           <div class="sideitem">
             <ul>
-              <li><img src="/wp-content/themes/cc5/images/license-alt.png" 
-                        tal:attributes="src context/++resource++cc/cc5/images/license-alt.png" 
+              <li><img src="/@@/cc/cc5/images/license-alt.png" 
                         alt="License your work" />&nbsp;&nbsp;
                   <a href="/choose/">License your work</a>
               </li>
-              <li><img src="/wp-content/themes/cc5/images/find-alt.png" 
-                        tal:attributes="src context/++resource++cc/cc5/images/find-alt.png" 
+              <li><img src="/@@/cc/cc5/images/find-alt.png" 
                         alt="Find licensed works" width="12" height="12" />&nbsp;&nbsp;
                   <a href="http://search.creativecommons.org/">Find licensed works</a>
               </li>

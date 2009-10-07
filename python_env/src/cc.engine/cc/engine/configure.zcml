@@ -1,4 +1,5 @@
-<configure xmlns="http://namespaces.repoze.org/bfg">
+<configure xmlns="http://namespaces.repoze.org/bfg"
+           xmlns:browser="http://namespaces.zope.org/browser">
 
   <!-- this must be included for the view declarations to work -->
   <include package="repoze.bfg.includes" />
@@ -24,9 +25,14 @@
      path="publicdomain"
      name="publicdomain" />
 
-  <static
-     name="static"
-     path="templates/static"
-     />
+  <view
+      for=".models.MyModel"
+      view=".static.static_view"
+      name="static" />
+
+  <!-- <static -->
+  <!--    name="static" -->
+  <!--    path="templates/static" -->
+  <!--    /> -->
 
 </configure>
