@@ -3,6 +3,7 @@ from webob import Response
 from repoze.bfg.chameleon_zpt import render_template_to_response
 
 from cc.engine import util
+from cc.license import by_code, CCLicenseError
 
 
 class FakeView(object):
@@ -39,11 +40,43 @@ def licenses_view(context, request):
              'context': context}))
 
 
-def specific_licenses_view(context, request):
+def specific_licenses_router(context, request):
+    """
+    """
+    # Router isn't the right name here.  But I can't think fo a better
+    # name :\
+    license_code = request.matchdict['license_code']
+    license_version = request.matchdict['license_version']
+    license_jurisdiction = request.matchdict.get('license_jurisdiction')
+    license_action = request.matchdict.get('license_action')
+
+    ambiguous_jurisdiction_or_action = request.matchdict.get(
+        'jurisdiction_or_action')
+    if ambiguous_jurisdiction_or_action:
+        if ambiguous_jurisdiction_or_action in ('rdf', 'legalcode'):
+            license_action = ambiguous_jurisdiction_or_action
+        else:
+            license_jurisdiction = str(ambiguous_jurisdiction_or_action)
+
+    try:
+        license = by_code(
+            license_code,
+            jurisdiction=license_jurisdiction,
+            version=license_version)
+    except CCLicenseError:
+        ### give a proper errored httpresponse
+        return Response(
+            "No such license.")
+
     return Response(
         "this is the creative commons %s %s license" % (
-            request.matchdict['license_id'],
+            request.matchdict['license_code'],
             request.matchdict['license_version']))
+
+
+def specific_licenses_rdf(context, request):
+    return Response("RDF TIME")
+
 
 
 def publicdomain_view(context, request):
