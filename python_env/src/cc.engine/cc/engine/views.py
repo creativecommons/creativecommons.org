@@ -45,10 +45,10 @@ def specific_licenses_router(context, request):
     """
     # Router isn't the right name here.  But I can't think fo a better
     # name :\
-    license_code = request.matchdict['license_code']
-    license_version = request.matchdict['license_version']
-    license_jurisdiction = request.matchdict.get('license_jurisdiction')
-    license_action = request.matchdict.get('license_action')
+    license_code = request.matchdict['code']
+    license_version = request.matchdict['version']
+    license_jurisdiction = request.matchdict.get('jurisdiction')
+    license_action = request.matchdict.get('action')
 
     ambiguous_jurisdiction_or_action = request.matchdict.get(
         'jurisdiction_or_action')
@@ -68,14 +68,47 @@ def specific_licenses_router(context, request):
         return Response(
             "No such license.")
 
+    if license_action:
+        if license_action == 'rdf':
+            return license_rdf_view(
+                context, request, license,
+                license_code, license_version, license_jurisdiction)
+        elif license_action == 'legalcode':
+            return license_legalcode_view(
+                context, request, license,
+                license_code, license_version, license_jurisdiction)
+        else:
+            # TODO: This isn't the right thing to do, obviously.
+            return Response("No such action :(")
+    else:
+        return license_deed_view(
+            context, request, license,
+            license_code, license_version, license_jurisdiction)
+
+
+def license_deed_view(context, request, license,
+                      license_code, license_version, license_jurisdiction):
+    text_orientation = util.get_locale_text_orientation(request)
+
+    template = util.get_zpt_template('standard_templates/deed.pt')
+
     return Response(
-        "this is the creative commons %s %s license" % (
-            request.matchdict['license_code'],
-            request.matchdict['license_version']))
+        template.pt_render(
+            {'license_code': license_code,
+             'license_version': license_version,
+             'license': license,
+                }
+            ))
 
 
-def specific_licenses_rdf(context, request):
-    return Response("RDF TIME")
+def license_rdf_view(context, request, license,
+                     license_code, license_version, license_jurisdiction):
+    return Response('license rdf')
+
+
+def license_legalcode_view(context, request, license,
+                      license_code, license_version, license_jurisdiction):
+    return Response('license legalcode')
 
 
 

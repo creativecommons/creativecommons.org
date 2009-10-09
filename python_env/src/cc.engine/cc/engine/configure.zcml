@@ -17,17 +17,17 @@
 
   <route
      view=".views.specific_licenses_router"
-     path="licenses/:license_code/:license_version/"
+     path="licenses/:code/:version/"
      name="specific_licenses_router_basic" />
 
   <route
      view=".views.specific_licenses_router"
-     path="licenses/:license_code/:license_version/:jurisdiction_or_action/"
+     path="licenses/:code/:version/:jurisdiction_or_action/"
      name="specific_licenses_router_jurisdiction_action_ambiguous" />
 
   <route
      view=".views.specific_licenses_router"
-     path="licenses/:license_code/:license_version/:jurisdiction/:action/"
+     path="licenses/:code/:version/:jurisdiction/:action/"
      name="specific_licenses_router_jurisdiction_action" />
 
   <route
