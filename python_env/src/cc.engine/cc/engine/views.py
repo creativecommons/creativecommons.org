@@ -90,6 +90,38 @@ def license_deed_view(context, request, license,
                       license_code, license_version, license_jurisdiction):
     text_orientation = util.get_locale_text_orientation(request)
 
+    # 'rtl' if the request locale is represented right-to-left;
+    # otherwise an empty string.
+
+    is_rtl = text_orientation == 'rtl'
+
+    # Return the appropriate alignment for the request locale:
+    # 'text-align:right' or 'text-align:left'.
+    if text_orientation == 'rtl':
+        is_rtl_align = 'text-align: right'
+    else:
+        is_rtl_align = 'text-align: left'
+
+    # True if the legalcode for this license is available in
+    # multiple languages (or a single language with a language code different
+    # than that of the jurisdiction.
+    #
+    # ZZZ i18n information like this should really be stored outside of
+    # the presentation layer; we don't maintain it anywhere right now, so
+    # here it is.
+    multi_language = license.jurisdiction in ('es', 'ca', 'be', 'ch', 'rs')
+
+    # "color" of the license; the color reflects the relative amount
+    # of freedom.
+    if license_code in ('devnations', 'sampling'):
+       color = 'red'
+    elif license_code.find('sampling') > -1 or \
+             license_code.find('nc') > -1 or \
+             license_code.find('nd') > -1:
+       color = 'yellow'
+    else:
+       color = 'green'
+
     template = util.get_zpt_template('standard_templates/deed.pt')
 
     return Response(
@@ -97,6 +129,10 @@ def license_deed_view(context, request, license,
             {'license_code': license_code,
              'license_version': license_version,
              'license': license,
+             'get_ltr_rtl': text_orientation,
+             'is_rtl_align': is_rtl_align,
+             'multi_language': multi_language,
+             'color': color,
                 }
             ))
 

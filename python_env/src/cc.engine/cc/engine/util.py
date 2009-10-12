@@ -72,3 +72,4 @@ def get_locale_text_orientation(request):
             return u'ltr'
     except IndexError:
         return u'ltr'
+
