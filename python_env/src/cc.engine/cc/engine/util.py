@@ -40,13 +40,15 @@ def setup_i18n_if_necessary():
     _I18N_SETUP = True
 
 
-def get_locale_text_orientation(request):
+def get_locale_file_from_lang_matches(lang_matches):
     """
-    Find out whether the locale is ltr or rtl
-    """
-    locale_filename = None
+    Iterate through a series of language matches and pick the first
+    one that has a file associated with it, if any
 
-    for lang in request.accept_language.best_matches():
+    Returns a tuple of (lang, locale_filename) or (None, None) if
+    nothing found
+    """
+    for lang in lang_matches:
         split_lang = lang.split('-')
         language = split_lang[0].lower()
         if len(split_lang) == 2:
@@ -56,8 +58,17 @@ def get_locale_text_orientation(request):
             u'zope.i18n.locales', u'data/%s.xml' % language)
 
         if os.path.exists(this_locale_filename):
-            locale_filename = this_locale_filename
-            break
+            return lang, this_locale_filename
+
+    return None, None
+
+
+def get_locale_text_orientation(request):
+    """
+    Find out whether the locale is ltr or rtl
+    """
+    lang, locale_filename = get_locale_file_from_lang_matches(
+        request.accept_language.best_matches())
 
     if not locale_filename:
         return u'ltr'
