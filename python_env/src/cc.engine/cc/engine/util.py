@@ -63,6 +63,41 @@ def get_locale_file_from_lang_matches(lang_matches):
     return None, None
 
 
+def _get_xpath_attribute(etree, path, attribute):
+    """
+    Get an attribute from a node grabbed from xpath.
+    If not found, return None.
+    """
+    try:
+        return etree.xpath(path)[0].attrib[attribute]
+    except IndexError, KeyError:
+        return None
+
+
+def get_locale_identity_data(request):
+    """
+    Get the identity data for a locale
+    """
+    lang, locale_filename = get_locale_file_from_lang_matches(
+        request.accept_language.best_matches())
+    
+    if not locale_filename:
+        return {}
+
+    locale_tree = etree.parse(file(locale_filename))
+    identity_data = {}
+    identity_data['language'] = _get_xpath_attribute(
+        locale_tree, '/ldml/identity/language', 'type')
+    identity_data['script'] = _get_xpath_attribute(
+        locale_tree, '/ldml/identity/script', 'type')
+    identity_data['territory'] = _get_xpath_attribute(
+        locale_tree, '/ldml/identity/territory', 'type')
+    identity_data['variant'] = _get_xpath_attribute(
+        locale_tree, '/ldml/identity/variant', 'type')
+    
+    return identity_data
+
+
 def get_locale_text_orientation(request):
     """
     Find out whether the locale is ltr or rtl
@@ -76,7 +111,7 @@ def get_locale_text_orientation(request):
     locale_tree = etree.parse(file(locale_filename))
     try:
         char_orientation = locale_tree.xpath(
-            '//orientation')[0].attrib['characters']
+            '/ldml/layout/orientation')[0].attrib['characters']
         if char_orientation == u'right-to-left':
             return u'rtl'
         else:

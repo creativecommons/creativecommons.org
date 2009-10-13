@@ -1,3 +1,7 @@
+import StringIO
+
+from lxml import etree
+
 from cc.engine import util
 
 class FakeAcceptLanguage(object):
@@ -11,6 +15,22 @@ class FakeAcceptLanguage(object):
 class FakeRequest(object):
     def __init__(self, best_matches):
         self.accept_language = FakeAcceptLanguage(best_matches)
+
+
+def test_get_xpath_attribute():
+    tree = etree.parse(
+        StringIO.StringIO('<foo><bar><baz basil="herb" /></bar></foo>'))
+    assert util._get_xpath_attribute(tree, '/foo/bar/baz', 'basil') == 'herb'
+
+
+def test_get_locale_identity_data():
+    identity_data = util.get_locale_identity_data(
+        FakeRequest(['en-US_POSIX']))
+
+    assert identity_data['language'] == 'en'
+    assert identity_data['territory'] == 'US'
+    assert identity_data['variant'] == 'POSIX'
+    assert identity_data['script'] == None
 
 
 def test_get_locale_text_orientation():
