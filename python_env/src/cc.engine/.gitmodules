@@ -1,0 +1,3 @@
+[submodule "cc/engine/i18n"]
+	path = cc/engine/i18n
+	url = git://code.creativecommons.org/i18n.git
