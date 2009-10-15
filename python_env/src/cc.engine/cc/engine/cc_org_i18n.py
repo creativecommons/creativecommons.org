@@ -33,9 +33,6 @@ def _setup_i18n():
 
         compile_mo_file(I18N_DOMAIN, catalog_path)
         
-        print "providing: (%s, %s, %s)" % (
-                catalog, I18N_DOMAIN, mo_path)
-
         domain.addCatalog(GettextMessageCatalog(
                 catalog, I18N_DOMAIN, mo_path))
 
