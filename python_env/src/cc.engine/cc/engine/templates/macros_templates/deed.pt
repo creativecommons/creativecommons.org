@@ -36,7 +36,7 @@
     <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="/includes/deed3-ie.css" media="screen" tal:attributes="href /@@/cc/includes/deed3-ie.css" /><![endif]-->
 
     <link rel="alternate" type="application/rdf+xml" href="rdf" /> 
-    <script metal:use-macro="context/@@support/language_javascript" />
+    <script metal:use-macro="support/macros/language_javascript" />
 
     <script type="text/javascript" 
 	    src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js">
@@ -76,7 +76,7 @@
 
     <div id="header">
 
-    <div metal:use-macro="context/@@support/translations"></div>
+    <div metal:use-macro="support/macros/translations"></div>
     </div>
 
     <div id="deed" 
