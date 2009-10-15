@@ -131,6 +131,8 @@ def license_deed_view(context, request, license,
     conditions = util.get_license_conditions(license, target_lang)
 
     template = util.get_zpt_template('licenses/standard_templates/deed.pt')
+    deed_template = util.get_zpt_template(
+        'macros_templates/deed.pt')
 
     return Response(
         template.pt_render(
@@ -139,9 +141,11 @@ def license_deed_view(context, request, license,
              'license': license,
              'get_ltr_rtl': text_orientation,
              'is_rtl_align': is_rtl_align,
+             'is_rtl': is_rtl,
              'multi_language': multi_language,
              'color': color,
-             'conditions': conditions}))
+             'conditions': conditions,
+             'deed_template': deed_template}))
 
 
 def license_rdf_view(context, request, license,

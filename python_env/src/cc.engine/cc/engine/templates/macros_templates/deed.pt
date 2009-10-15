@@ -8,7 +8,7 @@
       i18n:domain="cc_org">
   <head>
     <title metal:define-slot="title">Creative Commons &mdash;
-      <span tal:omit-tag="" tal:content="view/license/name">
+      <span tal:omit-tag="" tal:content="license/name">
 	Attribution 3.0 Unported
       </span>
     </title>
@@ -20,20 +20,20 @@
 
     <link rel="stylesheet" type="text/css" 
           href="/includes/deed3.css" media="screen" 
-          tal:attributes="href context/++resource++cc/includes/deed3.css" />
+          tal:attributes="href /@@/cc/includes/deed3.css" />
     <link rel="stylesheet" type="text/css" 
           href="/includes/deed3-rtl.css" media="screen" 
-          tal:attributes="href context/++resource++cc/includes/deed3-rtl.css" 
-          tal:condition="view/is_rtl" />
+          tal:attributes="href /@@/cc/includes/deed3-rtl.css" 
+          tal:condition="is_rtl" />
     <link rel="stylesheet" type="text/css" 
           href="/includes/deed3-print.css" media="print" 
-          tal:attributes="href context/++resource++cc/includes/deed3-print.css"
+          tal:attributes="href /@@/cc/includes/deed3-print.css"
           />
     <link rel="stylesheet" type="text/css" 
           href="/includes/jurisdictions.css" media="screen" 
-          tal:attributes="href context/++resource++cc/includes/jurisdictions.css" />
+          tal:attributes="href /@@/cc/includes/jurisdictions.css" />
 
-    <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="/includes/deed3-ie.css" media="screen" tal:attributes="href context/++resource++cc/includes/deed3-ie.css" /><![endif]-->
+    <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="/includes/deed3-ie.css" media="screen" tal:attributes="href /@@/cc/includes/deed3-ie.css" /><![endif]-->
 
     <link rel="alternate" type="application/rdf+xml" href="rdf" /> 
     <script metal:use-macro="context/@@support/language_javascript" />
@@ -49,7 +49,7 @@
     </script>
 
     <script type="text/javascript" src="/includes/referrer/deed.js"
-       tal:attributes="src context/++resource++cc/includes/referrer/deed.js">
+       tal:attributes="src /@@/cc/includes/referrer/deed.js">
     </script>
 
     <script type="text/javascript" 
@@ -58,7 +58,7 @@
 
     <script type="text/javascript"
 	    src="/includes/help.js"
-	    tal:attributes="src context/++resource++cc/includes/help.js">
+	    tal:attributes="src /@@/cc/includes/help.js">
     </script>
 
     <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
@@ -80,9 +80,9 @@
     </div>
 
     <div id="deed" 
-         tal:attributes="class view/color | green; 
-                         dir   view/get_ltr_rtl; 
-                         style view/is_rtl_align;">
+         tal:attributes="class color | green; 
+                         dir   get_ltr_rtl; 
+                         style is_rtl_align;">
 
       <div id="deed-head">
 	<div id="cc-logo">
@@ -100,8 +100,8 @@
         </div>
       </div>
 
-      <div id="deed-main" tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
-       <div id="deed-main-content" tal:attributes="class string:${view/license/jurisdiction}">
+      <div id="deed-main" tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
+       <div id="deed-main-content" tal:attributes="class string:${license/jurisdiction}">
 
           <div tal:omit-tag="" metal:define-slot="body"></div>
        </div>
@@ -111,11 +111,11 @@
         <div tal:omit-tag="" metal:define-slot="footer">
 
           <p id="disclaimer"
-	     tal:condition="python: context.license.jurisdiction == 'jp'"
+	     tal:condition="python: license.jurisdiction == 'jp'"
 	     i18n:translate="deed.disclaimer.jp"></p>
 
 	  <metal:disclaimer 
-	     tal:condition="python: context.license.jurisdiction != 'jp'">
+	     tal:condition="python: license.jurisdiction != 'jp'">
 	    <a href="#" id="disclaimer" class="helpLink" i18n:translate="util.Disclaimer">
 	      Disclaimer
 	    </a>
@@ -131,21 +131,21 @@
 
 	<p style="text-align:center">
 
-    <span tal:omit-tag="" tal:condition="view/multi_language">
+    <span tal:omit-tag="" tal:condition="multi_language">
      <span tal:omit-tag="" i18n:translate="deed.human_summary_multilanguage" />
        <br/>
 
-     <span tal:condition="python: context.license.jurisdiction == 'es'"
+     <span tal:condition="python: license.jurisdiction == 'es'"
            tal:omit-tag="">
          <a href="legalcode.ca" i18n:translate="">lang.ca</a> 
          <a href="legalcode.es" i18n:translate="">lang.es</a>
 
-         <span tal:condition="python: context.license.version == 3.0"
+         <span tal:condition="python: license.version == 3.0"
                tal:omit-tag="">
            <a href="legalcode.eu" i18n:translate="">lang.eu</a> 
            <a href="legalcode.gl" i18n:translate="">lang.gl</a> 
          </span>
-         <span tal:condition="python: context.license.version == 2.5"
+         <span tal:condition="python: license.version == 2.5"
                tal:omit-tag="">
 
            <a href="legalcode.eu" i18n:translate="">lang.eu</a> 
@@ -154,32 +154,32 @@
          </span>
      </span>
 
-     <span tal:condition="python: context.license.jurisdiction == 'ca'"
+     <span tal:condition="python: license.jurisdiction == 'ca'"
            tal:omit-tag="">
          <a href="legalcode.en" i18n:translate="">lang.en</a> 
          <a href="legalcode.fr" i18n:translate="">lang.fr</a>
      </span>
 
-     <span tal:condition="python: context.license.jurisdiction == 'be'"
+     <span tal:condition="python: license.jurisdiction == 'be'"
            tal:omit-tag="">
          <a href="legalcode.fr" i18n:translate="">lang.fr</a> 
          <a href="legalcode.nl" i18n:translate="">lang.nl</a>
      </span>
 
-     <span tal:condition="python: context.license.jurisdiction == 'rs'"
+     <span tal:condition="python: license.jurisdiction == 'rs'"
            tal:omit-tag="">
          <a href="legalcode.sr-Cyrl" i18n:translate="">lang.sr</a> 
          <a href="legalcode.sr-Latn">srpski (latinica)</a>
      </span>
 
-     <span tal:condition="python: context.license.jurisdiction == 'ch'"
+     <span tal:condition="python: license.jurisdiction == 'ch'"
            tal:omit-tag="">
          <a href="legalcode.de" i18n:translate="">lang.de</a> 
      </span>
     </span>
 
     <metal:block 
-       tal:condition="python: view.license.code == 'LGPL'">
+       tal:condition="python: license.code == 'LGPL'">
       <span i18n:translate="deed.lgpl_human_summary" tal:omit-tag="">
 	This is a human-readable summary of the Legal Code (the full 
 	<a href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">
@@ -189,7 +189,7 @@
     </metal:block>
 
     <metal:block 
-       tal:condition="python: view.license.code == 'GPL'">
+       tal:condition="python: license.code == 'GPL'">
       <span i18n:translate="deed.gpl_human_summary" tal:omit-tag="">
 This is a human-readable summary of the Legal Code (the full <a
 href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General
@@ -198,7 +198,7 @@ also available.
       </span>
     </metal:block>
 
-    <span tal:omit-tag="" tal:condition="python: not(view.multi_language) and (view.license.code not in ('GPL', 'LGPL'))"
+    <span tal:omit-tag="" tal:condition="python: not(multi_language) and (license.code not in ('GPL', 'LGPL'))"
           i18n:translate="deed.human_summary" />
  </p>
 
@@ -210,7 +210,7 @@ also available.
       <a id="get_this" href="" 
 	 i18n:translate="deed.use_this_license"
 	 tal:attributes="href
-			 string:/choose/results-one?license_code=${view/license_code}&jurisdiction=${view/license/jurisdiction}&version=${view/license/version|nothing}&lang=${view/target_lang}">
+			 string:/choose/results-one?license_code=${license_code}&jurisdiction=${license/jurisdiction}&version=${license/version|nothing}&lang=${target_lang}">
       Use this license for your own work.</a>
       </metal:use-this-license>
     </p>

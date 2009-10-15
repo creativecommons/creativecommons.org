@@ -3,7 +3,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@deed/page"
+      metal:use-macro="deed_template/macros/page"
       i18n:domain="cc_org">
 
 <body>
@@ -19,7 +19,7 @@ ${context/license/rdf} -->" />
 
   <div metal:fill-slot="body" tal:omit-tag="">
     <div id="libre"
-         tal:condition="python: context.license.code in ('by', 'by-sa')">
+         tal:condition="python: license.code in ('by', 'by-sa')">
       <a href="http://freedomdefined.org/">
         <img src="/images/deed/seal.png" style="border: 0" 
              i18n:attributes="alt"
@@ -35,10 +35,10 @@ ${context/license/rdf} -->" />
       </div>
 
       <span tal:omit-tag=""
-            tal:condition="python: context.license.jurisdiction not in ['-', 'es']">
-        <a tal:attributes="href python: '/worldwide/'+context.license.jurisdiction+'/'"
+            tal:condition="python: license.jurisdiction not in ['-', 'es']">
+        <a tal:attributes="href python: '/worldwide/'+license.jurisdiction+'/'"
            href=''>
-          <img tal:attributes="src python: '/images/international/'+context.license.jurisdiction+'.png'; alt python: context.license.jurisdiction;"
+          <img tal:attributes="src python: '/images/international/'+license.jurisdiction+'.png'; alt python: license.jurisdiction;"
                src=''
                style="border: 0"/>
         </a>
@@ -55,7 +55,7 @@ ${context/license/rdf} -->" />
         </li>
 
         <li class="license remix"
-            tal:condition="python: context.license.code.find('nd') < 0"
+            tal:condition="python: license.code.find('nd') < 0"
             rel="cc:permits"
             resource="http://creativecommons.org/ns#DerivativeWorks"
             i18n:translate="deed.free_derivative">
@@ -168,14 +168,14 @@ ${context/license/rdf} -->" />
             </li>
 
             <span tal:omit-tag="" 
-                  tal:condition="python: context.license.code.find('nd') >= 0 or context.license.jurisdiction != 'us'">
+                  tal:condition="python: license.code.find('nd') >= 0 or license.jurisdiction != 'us'">
               <li i18n:translate="deed.moralrights">
                 The author's <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#I_don.E2.80.99t_like_the_way_a_person_has_used_my_work_in_a_derivative_work_or_included_it_in_a_collective_work.3B_what_can_I_do.3F" id="moral_rights" class="helpLink">moral</a>
                 rights;
               </li>
             </span>
             <span tal:omit-tag="" 
-                  tal:condition="python: context.license.jurisdiction == 'us' and context.license.code.find('nd') < 0">
+                  tal:condition="python: license.jurisdiction == 'us' and license.code.find('nd') < 0">
               <li i18n:translate="deed.moralrights-remix.us">
                 Apart from the remix rights granted under this
                 license, the author's
