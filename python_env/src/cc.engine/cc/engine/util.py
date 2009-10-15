@@ -3,12 +3,19 @@ import pkg_resources
 
 from lxml import etree
 from zope.i18n.translationdomain import TranslationDomain
+from zope.i18n import translate
 
 from cc.license.formatters.pagetemplate import CCLPageTemplateFile
+from cc.engine import cc_org_i18n
 
 BASE_TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
 
+PERMITS_NAME_MAP = {
+    "http://creativecommons.org/ns#DerivativeWorks": "nd",
+    }
+
 _I18N_SETUP = False
+
 
 def get_zpt_template(template_path):
     setup_i18n_if_necessary()
@@ -119,3 +126,55 @@ def get_locale_text_orientation(request):
     except IndexError:
         return u'ltr'
 
+
+def get_license_conditions(license, target_language="en_US"):
+    """
+    This is for compatibility with the way the old cc.engine handled
+    conditions on the deeds page.  It kinda sucks... I think we could
+    do better with the new api.
+    """
+    attrs = []
+
+    for lic in license.license_code.split('-'):
+
+        # bail on sampling
+        if lic.find('sampling') > -1:
+            continue
+        
+        # Go through the chars and build up the HTML and such
+        char_title = translate(
+            'char.%s_title' % lic,
+            domain=cc_org_i18n.I18N_DOMAIN,
+            target_language=target_language)
+        char_brief = translate(
+            'char.%s_brief' % lic,
+            domain=cc_org_i18n.I18N_DOMAIN,
+            target_language=target_language)
+
+        icon_name = lic
+        predicate = 'cc:requires'
+        object = 'http://creativecommons.org/ns#Attribution'
+
+        if lic == 'nc':
+            predicate = 'cc:prohibits'
+            object = 'http://creativecommons.org/ns#CommercialUse'
+        elif lic == 'sa':
+            object = 'http://creativecommons.org/ns#ShareAlike'
+            if license.version == 3.0 and license.code == 'by-sa':
+                char_brief = translate(
+                    'char.sa_bysa30_brief',
+                    domain=cc_org_i18n.I18N_DOMAIN,
+                    target_language=target_language)
+        elif lic == 'nd':
+            predicate = ''
+            object = ''
+
+        attrs.append(
+            {'char_title': char_title,
+             'char_brief': char_brief,
+             'icon_name': icon_name,
+             'char_code': lic,
+             'predicate': predicate,
+             'object': object})
+
+    return attrs

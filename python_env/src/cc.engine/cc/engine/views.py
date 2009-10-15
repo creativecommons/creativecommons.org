@@ -122,6 +122,8 @@ def license_deed_view(context, request, license,
     else:
        color = 'green'
 
+    identity_data = util.get_locale_identity_data(request)
+
     template = util.get_zpt_template('standard_templates/deed.pt')
 
     return Response(

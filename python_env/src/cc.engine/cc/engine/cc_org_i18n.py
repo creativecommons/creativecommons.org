@@ -12,7 +12,7 @@ from zope import component
 DOMAIN_SETUP = False
 
 I18N_PATH = pkg_resources.resource_filename(
-    'cc.licenserdf.i18n', 'po')
+    'cc.engine', 'i18n/po')
 I18N_DOMAIN = 'cc_org'
 
 
@@ -33,10 +33,13 @@ def _setup_i18n():
 
         compile_mo_file(I18N_DOMAIN, catalog_path)
         
+        print "providing: (%s, %s, %s)" % (
+                catalog, I18N_DOMAIN, mo_path)
+
         domain.addCatalog(GettextMessageCatalog(
                 catalog, I18N_DOMAIN, mo_path))
 
-    component.provideUtility(domain, ITranslationDomain, name=I18N_DOMAIN)
+    component.provideUtility(domain, ITranslationDomain, name='cc_org')
     DOMAIN_SETUP = True
 
 
