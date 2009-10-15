@@ -2,6 +2,7 @@ import StringIO
 
 from lxml import etree
 
+import cc.license
 from cc.engine import util
 
 class FakeAcceptLanguage(object):
@@ -63,3 +64,22 @@ def test_get_locale_text_orientation():
     # If only an no language is given, default to ltr
     assert util.get_locale_text_orientation(
         FakeRequest([])) == u'ltr'
+
+
+def test_get_license_conditions():
+    # TODO: we should test for all license possibilities here in
+    #   several languages..
+
+    expected = [
+        {'char_title': 'Attribution',
+         'char_brief': (
+                "You must attribute the work in the manner specified "
+                "by the author or licensor (but not in any way that suggests "
+                "that they endorse you or your use of the work)."),
+         'icon_name': 'by',
+         'char_code': 'by',
+         'predicate': 'cc:requires',
+         'object': 'http://creativecommons.org/ns#Attribution'}]
+    result = util.get_license_conditions(
+        cc.license.by_code('by'))
+    assert result == expected
