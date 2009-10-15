@@ -124,15 +124,13 @@ def license_deed_view(context, request, license,
 
     identity_data = util.get_locale_identity_data(request)
 
-    template = util.get_zpt_template('standard_templates/deed.pt')
-
-    conditions = util.get_license_conditions(license)
-
     # TODO: use lang from util.get_locale_file_from_lang_matches, but
     #   only get it once..
     lang_matches = request.accept_language.best_matches()[0]
     target_lang = lang_matches[0]
-    conditions = get_license_conditions(license, target_lang)
+    conditions = util.get_license_conditions(license, target_lang)
+
+    template = util.get_zpt_template('licenses/standard_templates/deed.pt')
 
     return Response(
         template.pt_render(
