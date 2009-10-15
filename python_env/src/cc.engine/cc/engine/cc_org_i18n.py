@@ -12,7 +12,7 @@ from zope import component
 DOMAIN_SETUP = False
 
 I18N_PATH = pkg_resources.resource_filename(
-    'cc.engine', 'i18n/po')
+    'cc.engine', 'i18n/i18n')
 I18N_DOMAIN = 'cc_org'
 
 
