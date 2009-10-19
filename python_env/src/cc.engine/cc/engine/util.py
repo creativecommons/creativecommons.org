@@ -3,6 +3,8 @@ import pkg_resources
 
 import RDF
 from lxml import etree
+from zope.component import queryUtility
+from zope.i18n.interfaces import ITranslationDomain
 from zope.i18n.translationdomain import TranslationDomain
 from zope.i18n import translate
 
@@ -207,12 +209,46 @@ def active_languages():
 
     for each available language."""
     # get a list of avaialable translations
-    domain = queryUtility(ITranslationDomain, i18n.I18N_DOMAIN)
-    lang_codes = domain.getCatalogsInfo().keys()
+    domain = queryUtility(ITranslationDomain, cc_org_i18n.I18N_DOMAIN)
+    lang_codes = set(domain.getCatalogsInfo().keys())
 
     # determine the intersection of available translations and
     # launched jurisdiction locales
     launched_locales = set()
     jurisdictions = get_valid_jurisdictions()
 
-    
+    for jurisdiction in jurisdictions:
+        query_string = (
+            'PREFIX dc: <http://purl.org/dc/elements/1.1/> '
+            'SELECT ?title WHERE {'
+            '  <%s> dc:title ?title}') % jurisdiction
+
+        query = RDF.Query(
+            str(query_string),
+            query_language='sparql')
+        this_juri_locales = set(
+            [result['title'].literal_value['language']
+             for result in query.execute(rdf_helper.JURI_MODEL)])
+
+        # Append those locales that are applicable to this domain
+        launched_locales.update(lang_codes.intersection(this_juri_locales))
+
+    # make our sequence have a predictable order
+    launched_locales = list(launched_locales)
+    launched_locales.sort()
+
+    # this loop is long hand for clarity; it's only done once, so
+    # the additional performance cost should be negligible
+    result = []
+    for code in lang_codes:
+
+        if code == 'test': continue
+
+        name = domain.translate('lang.%s' % code, target_language=code).\
+            decode('utf-8')
+        if name != u'lang.%s' % code:
+            # we have a translation for this name...
+            result.append(dict(code=code, name=name))
+
+    return result
+
