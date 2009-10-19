@@ -187,10 +187,10 @@ def get_license_conditions(license, target_language="en_US"):
 def get_valid_jurisdictions(license_class='standard'):
     # TODO: use license_class here
     query = RDF.Query(
-        ('PREFIX cc: <http://creativecommons.org/ns#> '
-         'SELECT ?jurisdiction WHERE '
-         '{ ?license cc:licenseClass <http://creativecommons.org/license/> . '
-         '  ?license cc:jurisdiction ?jurisdiction }'),
+        str('PREFIX cc: <http://creativecommons.org/ns#> '
+            'SELECT ?jurisdiction WHERE '
+            '{ ?license cc:licenseClass <http://creativecommons.org/license/> .'
+            '  ?license cc:jurisdiction ?jurisdiction }'),
         query_language="sparql")
 
     jurisdictions = set(
