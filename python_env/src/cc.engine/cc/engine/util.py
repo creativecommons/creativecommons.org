@@ -4,6 +4,7 @@ import pkg_resources
 import RDF
 from lxml import etree
 from zope.component import queryUtility
+from zope.component.globalregistry import base
 from zope.i18n.interfaces import ITranslationDomain
 from zope.i18n.translationdomain import TranslationDomain
 from zope.i18n import translate
@@ -209,7 +210,7 @@ def active_languages():
 
     for each available language."""
     # get a list of avaialable translations
-    domain = queryUtility(ITranslationDomain, cc_org_i18n.I18N_DOMAIN)
+    domain = base.queryUtility(ITranslationDomain, cc_org_i18n.I18N_DOMAIN)
     lang_codes = set(domain.getCatalogsInfo().keys())
 
     # determine the intersection of available translations and
