@@ -3,7 +3,6 @@ import pkg_resources
 
 import RDF
 from lxml import etree
-from zope.component import queryUtility
 from zope.component.globalregistry import base
 from zope.i18n.interfaces import ITranslationDomain
 from zope.i18n.translationdomain import TranslationDomain
