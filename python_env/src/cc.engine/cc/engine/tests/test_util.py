@@ -83,3 +83,7 @@ def test_get_license_conditions():
     result = util.get_license_conditions(
         cc.license.by_code('by'))
     assert result == expected
+
+
+def test_active_languages():
+    {'code': 'en', 'name': u'English'} in util.active_languages()
