@@ -1,10 +1,12 @@
 import os
 import pkg_resources
 
+import RDF
 from lxml import etree
 from zope.i18n.translationdomain import TranslationDomain
 from zope.i18n import translate
 
+from cc.license._lib import rdf_helper
 from cc.license.formatters.pagetemplate import CCLPageTemplateFile
 from cc.engine import cc_org_i18n
 
@@ -178,3 +180,39 @@ def get_license_conditions(license, target_language="en_US"):
              'object': object})
 
     return attrs
+
+
+def get_valid_jurisdictions(license_class='standard'):
+    # TODO: use license_class here
+    query = RDF.Query(
+        ('PREFIX cc: <http://creativecommons.org/ns#> '
+         'SELECT ?jurisdiction WHERE '
+         '{ ?license cc:licenseClass <http://creativecommons.org/license/> . '
+         '  ?license cc:jurisdiction ?jurisdiction }'),
+        query_language="sparql")
+
+    jurisdictions = set(
+        [unicode(result['jurisdiction'].uri)
+         for result in query.execute(rdf_helper.ALL_MODEL)])
+
+    return jurisdictions
+
+
+def active_languages():
+    """Return a sequence of dicts, where each element consists of the
+    following keys:
+
+    * code: the language code
+    * name: the translated name of this language
+
+    for each available language."""
+    # get a list of avaialable translations
+    domain = queryUtility(ITranslationDomain, i18n.I18N_DOMAIN)
+    lang_codes = domain.getCatalogsInfo().keys()
+
+    # determine the intersection of available translations and
+    # launched jurisdiction locales
+    launched_locales = set()
+    jurisdictions = get_valid_jurisdictions()
+
+    
