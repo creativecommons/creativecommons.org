@@ -3,6 +3,7 @@ from webob import Response
 from repoze.bfg.chameleon_zpt import render_template_to_response
 
 from cc.engine import util
+from cc.engine import cc_org_i18n
 from cc.license import by_code, CCLicenseError
 
 
@@ -134,7 +135,9 @@ def license_deed_view(context, request, license,
     deed_template = util.get_zpt_template(
         'macros_templates/deed.pt')
     support_template = util.get_zpt_template(
-        'support_templates/deed.pt')
+        'macros_templates/support.pt')
+
+    active_languages = util.active_languages()
 
     return Response(
         template.pt_render(
@@ -148,6 +151,7 @@ def license_deed_view(context, request, license,
              'color': color,
              'conditions': conditions,
              'deed_template': deed_template,
+             'active_languages': active_languages,
              'support_template': support_template}))
 
 

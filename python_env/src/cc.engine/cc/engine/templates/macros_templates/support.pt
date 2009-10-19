@@ -31,7 +31,7 @@ setCookie('lang','%s', expiry, '/');
 <br/>
 
 <div tal:omit-tag=""
-     tal:repeat="lang context/@@support/active_languages">
+     tal:repeat="lang active_languages">
 
 <a href="#" title="English" hreflang="ca" 
    rel="alternate nofollow" xml:lang="ca" 
@@ -57,7 +57,7 @@ setCookie('lang','%s', expiry, '/');
 <br/>
 
 <div tal:omit-tag=""
-     tal:repeat="lang context/@@support/active_languages">
+     tal:repeat="lang active_languages">
 
 <a href="#" title="Catal%G�%@" hreflang="ca" 
    rel="alternate nofollow" xml:lang="ca" 
