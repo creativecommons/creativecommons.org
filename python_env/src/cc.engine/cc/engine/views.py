@@ -5,6 +5,7 @@ from repoze.bfg.chameleon_zpt import render_template_to_response
 from cc.engine import util
 from cc.engine import cc_org_i18n
 from cc.license import by_code, CCLicenseError
+from cc.licenserdf.tools.license import license_rdf_filename
 
 
 class FakeView(object):
@@ -160,7 +161,9 @@ def license_deed_view(context, request, license,
 
 def license_rdf_view(context, request, license,
                      license_code, license_version, license_jurisdiction):
-    return Response('license rdf')
+    rdf_response = Response(file(license_rdf_filename(license.uri)).read())
+    rdf_response.headers['Content-Type'] = 'application/rdf+xml; charset=UTF-8'
+    return rdf_response
 
 
 def license_legalcode_view(context, request, license,
