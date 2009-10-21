@@ -131,28 +131,31 @@ def license_deed_view(context, request, license,
     target_lang = lang_matches[0]
     conditions = util.get_license_conditions(license, target_lang)
 
+    active_languages = util.active_languages()
+
+
     template = util.get_zpt_template('licenses/standard_templates/deed.pt')
     deed_template = util.get_zpt_template(
         'macros_templates/deed.pt')
     support_template = util.get_zpt_template(
         'macros_templates/support.pt')
 
-    active_languages = util.active_languages()
+    context = {
+            'license_code': license_code,
+            'license_version': license_version,
+            'license': license,
+            'get_ltr_rtl': text_orientation,
+            'is_rtl_align': is_rtl_align,
+            'is_rtl': is_rtl,
+            'multi_language': multi_language,
+            'color': color,
+            'conditions': conditions,
+            'deed_template': deed_template,
+            'active_languages': active_languages,
+            'support_template': support_template,
+            'target_lang': target_lang}
 
-    return Response(
-        template.pt_render(
-            {'license_code': license_code,
-             'license_version': license_version,
-             'license': license,
-             'get_ltr_rtl': text_orientation,
-             'is_rtl_align': is_rtl_align,
-             'is_rtl': is_rtl,
-             'multi_language': multi_language,
-             'color': color,
-             'conditions': conditions,
-             'deed_template': deed_template,
-             'active_languages': active_languages,
-             'support_template': support_template}))
+    return Response(template.pt_render(context))
 
 
 def license_rdf_view(context, request, license,

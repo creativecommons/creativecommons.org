@@ -23,7 +23,7 @@
           href="/@@/cc/cc5/engine.css" />
     <link rel="stylesheet" type="text/css"
           href="/@@/cc/cc5/engine-rtl.css"
-	  tal:condition="view/is_rtl"/>
+	  tal:condition="is_rtl"/>
 
     <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href=/@@/cc/includes/style-ie.css" />
     <![endif]-->
@@ -59,10 +59,10 @@
         </div>
       </div>
 	    <div id="mainContent" class="box">
-	      <div id="contentPrimary" tal:attributes="dir view/get_ltr_rtl|nothing; style view/is_rtl_align|nothing;">
+	      <div id="contentPrimary" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
           <div class="block" id="title">
-        		<h2 tal:attributes="dir view/get_ltr_rtl|nothing; style
-    				    view/is_rtl_align|nothing;">
+        		<h2 tal:attributes="dir get_ltr_rtl|nothing; style
+    				    is_rtl_align|nothing;">
         		  <metal:page_title define-slot="page-header-title">
         		  </metal:page_title>
     		    </h2>
@@ -74,7 +74,7 @@
 						</div>
 					</div>
 	        <div id="sideContent" class="content-box"
-                   tal:attributes="dir view/get_ltr_rtl|nothing; style view/is_rtl_align|nothing;">
+                   tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
 		        <metal:block define-slot="sidebar" />
 					</div>
 				</div>	

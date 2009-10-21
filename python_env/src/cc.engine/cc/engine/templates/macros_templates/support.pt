@@ -27,7 +27,7 @@ setCookie('lang','%s', expiry, '/');
      metal:define-macro="translations">
 
 <div id="languages">
-<span tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;" i18n:translate="deed.view_in">This page is available in the following languages:</span>
+<span tal:attributes="dir get_ltr_rtl; style is_rtl_align;" i18n:translate="deed.view_in">This page is available in the following languages:</span>
 <br/>
 
 <div tal:omit-tag=""
@@ -53,7 +53,7 @@ setCookie('lang','%s', expiry, '/');
 
 <div class="licensebox" style="background:#FAFAD6;">
 
-<span tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;" i18n:translate="deed.view_in">This page is available in the following languages:</span>
+<span tal:attributes="dir get_ltr_rtl; style is_rtl_align;" i18n:translate="deed.view_in">This page is available in the following languages:</span>
 <br/>
 
 <div tal:omit-tag=""
