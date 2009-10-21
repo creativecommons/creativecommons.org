@@ -25,7 +25,7 @@
           href="/@@/cc/cc5/engine-rtl.css"
 	  tal:condition="view/is_rtl"/>
 
-    <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href="/includes/style-ie.css" tal:attributes="href /@@/cc/includes/style-ie.css" />
+    <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href=/@@/cc/includes/style-ie.css" />
     <![endif]-->
 
     <script type="text/javascript" 
