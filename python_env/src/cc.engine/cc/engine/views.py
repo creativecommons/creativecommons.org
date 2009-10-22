@@ -10,22 +10,7 @@ from cc.licenserdf.tools.license import license_rdf_filename
 
 
 LICENSE_ACTIONS = ('rdf', 'legalcode',
-                   'rdf-checksum', 'legalcode-checksum',
                    'legalcode-plain')
-
-
-class FakeView(object):
-    """
-    Currently just used to satisfy the rtl stuff.  We need to get rid
-    of this.
-    """
-    is_rtl =  False
-
-    def get_ltr_rtl(self):
-        return None
-
-    def is_rtl_align(self):
-        return None
 
 
 def root_view(context, request):
@@ -40,11 +25,28 @@ def licenses_view(context, request):
 
     fake_view = FakeView()
 
+    ### TODO: Redo templates so we don't have to put this in every view.
+    text_orientation = util.get_locale_text_orientation(request)
+
+    # 'rtl' if the request locale is represented right-to-left;
+    # otherwise an empty string.
+
+    is_rtl = text_orientation == 'rtl'
+
+    # Return the appropriate alignment for the request locale:
+    # 'text-align:right' or 'text-align:left'.
+    if text_orientation == 'rtl':
+        is_rtl_align = 'text-align: right'
+    else:
+        is_rtl_align = 'text-align: left'
+
     return Response(
         template.pt_render(
             {'request': request,
              'engine_template': engine_template,
-             'view': fake_view,
+             'text_orientation': text_orientation,
+             'is_rtl': is_rtl,
+             'is_rtl_align': is_rtl_align,
              'context': context}))
 
 
@@ -140,10 +142,10 @@ def license_deed_view(context, request, license,
     #   only get it once..
     lang_matches = request.accept_language.best_matches()[0]
     target_lang = lang_matches[0]
+
     conditions = util.get_license_conditions(license, target_lang)
 
     active_languages = util.active_languages()
-
 
     template = util.get_zpt_template('licenses/standard_templates/deed.pt')
     deed_template = util.get_zpt_template(
