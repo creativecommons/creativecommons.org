@@ -30,10 +30,10 @@
      path="licenses/:code/:version/:jurisdiction/:action/"
      name="specific_licenses_router_jurisdiction_action" />
 
-  <route
-     view=".views.publicdomain_view"
-     path="publicdomain"
-     name="publicdomain" />
+  <!-- <route -->
+  <!--    view=".views.publicdomain_view" -->
+  <!--    path="publicdomain" -->
+  <!--    name="publicdomain" /> -->
 
   <view
       for=".models.MyModel"
