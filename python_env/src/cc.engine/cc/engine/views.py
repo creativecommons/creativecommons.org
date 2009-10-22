@@ -1,11 +1,17 @@
+from lxml import etree
+from lxml.cssselect import CSSSelector
 from webob import Response
-
 from repoze.bfg.chameleon_zpt import render_template_to_response
 
 from cc.engine import util
 from cc.engine import cc_org_i18n
 from cc.license import by_code, CCLicenseError
 from cc.licenserdf.tools.license import license_rdf_filename
+
+
+LICENSE_ACTIONS = ('rdf', 'legalcode',
+                   'rdf-checksum', 'legalcode-checksum',
+                   'legalcode-plain')
 
 
 class FakeView(object):
@@ -55,7 +61,7 @@ def specific_licenses_router(context, request):
     ambiguous_jurisdiction_or_action = request.matchdict.get(
         'jurisdiction_or_action')
     if ambiguous_jurisdiction_or_action:
-        if ambiguous_jurisdiction_or_action in ('rdf', 'legalcode'):
+        if ambiguous_jurisdiction_or_action in LICENSE_ACTIONS:
             license_action = ambiguous_jurisdiction_or_action
         else:
             license_jurisdiction = str(ambiguous_jurisdiction_or_action)
@@ -77,6 +83,10 @@ def specific_licenses_router(context, request):
                 license_code, license_version, license_jurisdiction)
         elif license_action == 'legalcode':
             return license_legalcode_view(
+                context, request, license,
+                license_code, license_version, license_jurisdiction)
+        elif license_action == 'legalcode-plain':
+            return license_legalcode_plain_view(
                 context, request, license,
                 license_code, license_version, license_jurisdiction)
         else:
@@ -167,10 +177,41 @@ def license_rdf_view(context, request, license,
 
 
 def license_legalcode_view(context, request, license,
-                      license_code, license_version, license_jurisdiction):
+                           license_code, license_version, license_jurisdiction):
     return Response('license legalcode')
 
 
+def license_legalcode_plain_view(context, request, license,
+                                 license_code, license_version,
+                                 license_jurisdiction):
+    parser = etree.HTMLParser()
+    legalcode = etree.parse(
+        license.uri + "legalcode", parser)
 
-def publicdomain_view(context, request):
-    return Response("this is the public domain view")
+    # remove the CSS <link> tags
+    for tag in legalcode.iter('link'):
+        tag.getparent().remove(tag)
+
+    # remove the img tags
+    for tag in legalcode.iter("img"):
+        tag.getparent().remove(tag)
+
+    # remove anchors
+    for tag in legalcode.iter('a'):
+        tag.getparent().remove(tag)
+
+    # remove //p[@id="header"]
+    header_selector = CSSSelector('#header')
+    for p in header_selector(legalcode.getroot()):
+        p.getparent().remove(p)
+
+    # add our base CSS into the mix
+    etree.SubElement(
+        legalcode.find("head"), "link",
+        {"rel":"stylesheet",
+         "type":"text/css",
+         "href":"http://yui.yahooapis.com/2.6.0/build/fonts/fonts-min.css"})
+
+    # return the serialized document
+    return Response(etree.tostring(legalcode.getroot()))
+
