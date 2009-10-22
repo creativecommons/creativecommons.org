@@ -138,10 +138,12 @@ def license_deed_view(context, request, license,
 
     identity_data = util.get_locale_identity_data(request)
 
-    # TODO: use lang from util.get_locale_file_from_lang_matches, but
-    #   only get it once..
-    lang_matches = request.accept_language.best_matches()[0]
-    target_lang = lang_matches[0]
+    target_lang = request.accept_language.best_matches()[0]
+    try:
+        license_title = license.title(target_lang.lower())
+    except KeyError:
+        # don't have one for that language, use default
+        license_title = license.title()
 
     conditions = util.get_license_conditions(license, target_lang)
 
@@ -155,6 +157,7 @@ def license_deed_view(context, request, license,
 
     context = {
             'license_code': license_code,
+            'license_title': license_title,
             'license_version': license_version,
             'license': license,
             'get_ltr_rtl': text_orientation,
