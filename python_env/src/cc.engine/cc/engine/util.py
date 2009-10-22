@@ -21,6 +21,15 @@ PERMITS_NAME_MAP = {
 _I18N_SETUP = False
 
 
+def locale_to_cclicense_style(locale):
+    split_locale = locale.split('-')
+    new_locale = split_locale[0].lower()
+    if len(split_locale) == 2:
+        new_locale = new_locale + u'_' + split_locale[1].upper()
+
+    return new_locale
+
+
 def get_zpt_template(template_path):
     setup_i18n_if_necessary()
     full_template_path = os.path.join(BASE_TEMPLATE_DIR, template_path)
@@ -60,10 +69,7 @@ def get_locale_file_from_lang_matches(lang_matches):
     nothing found
     """
     for lang in lang_matches:
-        split_lang = lang.split('-')
-        language = split_lang[0].lower()
-        if len(split_lang) == 2:
-            language = language + u'_' + split_lang[1].upper()
+        language = locale_to_cclicense_style(lang)
 
         this_locale_filename = pkg_resources.resource_filename(
             u'zope.i18n.locales', u'data/%s.xml' % language)
