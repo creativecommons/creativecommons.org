@@ -8,78 +8,89 @@
 
 <body>
 
-<h2 metal:fill-slot="license-name"
-    i18n:translate="deed.gpl_title"
-    property="dc:title"><span i18n:name="license_name_full"
-    tal:omit-tag="" tal:content="view/license/name" /></h2>
+  <h2 metal:fill-slot="license-name"
+      i18n:translate="deed.gpl_title"
+      property="dc:title">
+    <span i18n:name="license_name_full"
+          tal:omit-tag="" tal:content="view/license/name" />
+  </h2>
 
-<div metal:fill-slot="body" tal:define="lang string:en;">
+  <div metal:fill-slot="body" tal:define="lang string:en;">
 
-        <div id="deed-rights" tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
+    <div id="deed-rights" tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
 
-        <div id="deed-newer" style="text-align:center" tal:condition="context/license/deprecated"><h3 i18n:translate="deed.retired">This license is <a href="/retiredlicenses">retired</a>. Do not use for new works.</h3></div>
+      <div id="deed-newer"
+           style="text-align:center"
+           tal:condition="context/license/deprecated">
+        <h3 i18n:translate="deed.retired">
+          This license is <a href="/retiredlicenses">retired</a>. Do not use for
+          new works.
+        </h3>
+      </div>
 
-<h3 rel="cc:permits"></h3>
+      <h3 rel="cc:permits"></h3>
 
-<p i18n:translate="deed.gpl_freedoms"><%=[ccommons::istr $lang deed.gpl_freedoms]%>
-<span i18n:name="license_name_full" tal:content="view/license/name">
-  GNU General Public License</span>
-</p>
+      <p i18n:translate="deed.gpl_freedoms"><%=[ccommons::istr $lang deed.gpl_freedoms]%>
+        <span i18n:name="license_name_full" tal:content="view/license/name">
+          GNU General Public License</span>
+      </p>
 			
-			<ol class="gpl">
-				<li class="gpl" i18n:translate="deed.gpl_free_run"><%=[ccommons::istr $lang deed.gpl_free_run]%>
-</li>
-				<li class="gpl" i18n:translate="deed.gpl_free_study"><%=[ccommons::istr $lang deed.gpl_free_study]%>
-</li>
-				<li class="gpl" i18n:translate="deed.gpl_free_redistribute"><%=[ccommons::istr $lang deed.gpl_free_redistribute]%>
-</li>
-				<li class="gpl" i18n:translate="deed.gpl_free_improve"><%=[ccommons::istr $lang deed.gpl_free_improve]%></li>
-			</ol>
-</div>
+      <ol class="gpl">
+	<li class="gpl" i18n:translate="deed.gpl_free_run">
+          <%=[ccommons::istr $lang deed.gpl_free_run]%>
+        </li>
+	<li class="gpl" i18n:translate="deed.gpl_free_study">
+          <%=[ccommons::istr $lang deed.gpl_free_study]%>
+        </li>
+	<li class="gpl" i18n:translate="deed.gpl_free_redistribute">
+          <%=[ccommons::istr $lang deed.gpl_free_redistribute]%>
+        </li>
+	<li class="gpl" i18n:translate="deed.gpl_free_improve">
+          <%=[ccommons::istr $lang deed.gpl_free_improve]%>
+        </li>
+      </ol>
+    </div>
     
-<div id="deed-conditions">
-  <h3></h3>
+    <div id="deed-conditions">
+      <h3></h3>
 
+      <p tal:condition="python: context.license.code == 'GPL'" 
+         i18n:translate="deed.gpl_under_conditions" />
+      <p tal:condition="python: context.license.code == 'LGPL'" 
+         i18n:translate="deed.lgpl_under_conditions" />
 
-   <p tal:condition="python: context.license.code == 'GPL'" 
-      i18n:translate="deed.gpl_under_conditions" />
-   <p tal:condition="python: context.license.code == 'LGPL'" 
-      i18n:translate="deed.lgpl_under_conditions" />
+      <ul tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;"> 
+        <li class="license notice" i18n:translate="deed.gpl_notice">
+          <span i18n:name="license_name_full"
+	        tal:content="context/license/name">
+	    GNU General Public License</span>
+        </li>
 
-   <ul tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;"> 
-     <li class="license notice" i18n:translate="deed.gpl_notice">
-       <span i18n:name="license_name_full"
-	     tal:content="context/license/name">
-	 GNU General Public License</span>
-     </li>
+        <li class="license sa" i18n:translate="deed.gpl_sharealike"
+            tal:condition="python: context.license.code == 'GPL'">
+          <span i18n:name="license_name_full"
+	        tal:content="context/license/name">
+	    GNU General Public License</span>
+        </li>
 
-     <li class="license sa" i18n:translate="deed.gpl_sharealike"
-         tal:condition="python: context.license.code == 'GPL'">
-       <span i18n:name="license_name_full"
-	     tal:content="context/license/name">
-	 GNU General Public License</span>
-     </li>
+        <li class="license sa" i18n:translate="deed.lgpl_sharealike"
+            tal:condition="python:context.license.code == 'LGPL'">
+          <span i18n:name="license_name_full"
+	        tal:content="context/license/name">
+	    GNU General Public License</span>
+        </li>
 
-     <li class="license sa" i18n:translate="deed.lgpl_sharealike"
-         tal:condition="python:context.license.code == 'LGPL'">
-       <span i18n:name="license_name_full"
-	     tal:content="context/license/name">
-	 GNU General Public License</span>
-     </li>
+        <li class="license src" i18n:translate="deed.gpl_source">
+          <span i18n:name="license_name_full"
+	        tal:content="context/license/name">
+	    GNU General Public License</span>
+        </li>
+      </ul>
 
-     <li class="license src" i18n:translate="deed.gpl_source">
-       <span i18n:name="license_name_full"
-	     tal:content="context/license/name">
-	 GNU General Public License</span>
-     </li>
-   </ul>
-     
-</div>
+    </div>
 
-<p i18n:translate="deed.permission"><%=[ccommons::istr $lang deed.permission]%></p> 
-
-</div>
-
+    <p i18n:translate="deed.permission"><%=[ccommons::istr $lang deed.permission]%></p> 
+  </div>
 
 </body>
 </html>
