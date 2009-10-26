@@ -100,6 +100,14 @@ def specific_licenses_router(context, request):
             license_code, license_version, license_jurisdiction)
 
 
+DEED_TEMPLATE_MAPPING = {
+    'sampling': 'licenses/sampling_templates/deed.pt',
+    'sampling+': 'licenses/sampling_templates/deed.pt',
+    'nc-sampling+': 'licenses/sampling_templates/deed.pt',
+    'GPL': 'licenses/fsf_templates/deed.pt',
+    'LGPL': 'licenses/fsf_templates/deed.pt',
+    'devnations': 'licenses/devnations_templates/deed.pt'}
+
 def license_deed_view(context, request, license,
                       license_code, license_version, license_jurisdiction):
     text_orientation = util.get_locale_text_orientation(request)
@@ -139,6 +147,8 @@ def license_deed_view(context, request, license,
     identity_data = util.get_locale_identity_data(request)
 
     target_lang = request.accept_language.best_matches()[0]
+
+    license_title = None
     try:
         license_title = license.title(target_lang.lower())
     except KeyError:
@@ -149,11 +159,17 @@ def license_deed_view(context, request, license,
 
     active_languages = util.active_languages()
 
-    template = util.get_zpt_template('licenses/standard_templates/deed.pt')
     deed_template = util.get_zpt_template(
         'macros_templates/deed.pt')
     support_template = util.get_zpt_template(
         'macros_templates/support.pt')
+
+    if DEED_TEMPLATE_MAPPING.has_key(license.license_code):
+        main_template = util.get_zpt_template(
+            DEED_TEMPLATE_MAPPING[license.license_code])
+    else:
+        main_template = util.get_zpt_template(
+            'licenses/standard_templates/deed.pt')
 
     context = {
             'license_code': license_code,
@@ -171,7 +187,7 @@ def license_deed_view(context, request, license,
             'support_template': support_template,
             'target_lang': target_lang}
 
-    return Response(template.pt_render(context))
+    return Response(main_template.pt_render(context))
 
 
 def license_rdf_view(context, request, license,

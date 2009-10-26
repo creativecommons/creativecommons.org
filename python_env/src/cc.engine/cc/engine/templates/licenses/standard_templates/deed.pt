@@ -17,7 +17,7 @@ ${license/rdf} -->" />
   <h2 metal:fill-slot="license-name"
       property="dc:title">
     <span tal:omit-tag="" tal:content="structure
-                                       string:${license/title}"/>
+                                       string:${license_title}"/>
   </h2>
 
   <div metal:fill-slot="body" tal:omit-tag="">
