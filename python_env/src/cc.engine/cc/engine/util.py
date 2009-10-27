@@ -30,10 +30,11 @@ def locale_to_cclicense_style(locale):
     return new_locale
 
 
-def get_zpt_template(template_path):
+def get_zpt_template(template_path, target_lang=None):
     setup_i18n_if_necessary()
     full_template_path = os.path.join(BASE_TEMPLATE_DIR, template_path)
-    return CCLPageTemplateFile(full_template_path)
+    return CCLPageTemplateFile(
+        full_template_path, target_language=target_lang)
     
 
 def setup_i18n_if_necessary():

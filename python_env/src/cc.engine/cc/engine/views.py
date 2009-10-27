@@ -157,16 +157,20 @@ def license_deed_view(context, request, license,
     active_languages = util.active_languages()
 
     deed_template = util.get_zpt_template(
-        'macros_templates/deed.pt')
+        'macros_templates/deed.pt',
+        target_lang=target_lang)
     support_template = util.get_zpt_template(
-        'macros_templates/support.pt')
+        'macros_templates/support.pt',
+        target_lang=target_lang)
 
     if DEED_TEMPLATE_MAPPING.has_key(license.license_code):
         main_template = util.get_zpt_template(
-            DEED_TEMPLATE_MAPPING[license.license_code])
+            DEED_TEMPLATE_MAPPING[license.license_code],
+            target_lang=target_lang)
     else:
         main_template = util.get_zpt_template(
-            'licenses/standard_templates/deed.pt')
+            'licenses/standard_templates/deed.pt',
+            target_lang=target_lang)
 
     context = {
             'license_code': license_code,
