@@ -3,21 +3,21 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@deed/page"
+      metal:use-macro="deed_template/macros/page"
       i18n:domain="cc_org">
 
 <body>
   <h2 metal:fill-slot="license-name"
       property="dc:title">
     <span tal:omit-tag="" 
-	  tal:content="structure string:${view/license/name}"/>
+	  tal:content="structure string:${license_title}"/>
   </h2>
 
   <div metal:fill-slot="body" tal:define="lang string:en;">
-    <div id="deed-rights" tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
+    <div id="deed-rights" tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
       <div id="deed-newer"
            style="text-align:center"
-           tal:condition="context/license/deprecated">
+           tal:condition="license/deprecated">
         <h3 i18n:translate="deed.retired">
           This license is <a href="/retiredlicenses">retired</a>. Do
           not use for new works.
@@ -27,31 +27,31 @@
       <h3 i18n:translate="deed.You_are_free"></h3>
       <ul class="license-properties">
     	<li class="license samplingplus"
-            tal:condition="python: context.license.code == 'nc-sampling+'"
+            tal:condition="python: license.license_code == 'nc-sampling+'"
             i18n:translate="deed.free_sample_nc"></li>
     	<li class="license sampling"
-            tal:condition="python: context.license.code != 'nc-sampling+'"
+            tal:condition="python: license.license_code != 'nc-sampling+'"
             i18n:translate="deed.free_sample"></li>
     	<li class="license samplingplus"
-            tal:condition="python: context.license.code in ('nc-sampling+', 'sampling+')"
+            tal:condition="python: license.license_code in ('nc-sampling+', 'sampling+')"
             i18n:translate="deed.free_copy_distribute_noncommercial"></li>
       </ul>
 
     </div>
     <div id="deed-conditions">
       <h3 i18n:translate="deed.under_conditions"></h3>
-      <ul tal:attributes="dir view/get_ltr_rtl; style
-			  view/is_rtl_align;"
+      <ul tal:attributes="dir get_ltr_rtl; style
+			  is_rtl_align;"
 	  class="license-properties">
     	<li class="license by" i18n:translate="char.by_brief">
           <%=[ccommons::istr $lang char.by_brief]%></li>
     	<li i18n:translate="char.na_brief">
           <%=[ccommons::istr $lang char.na_brief]%></li>
-    	<li tal:condition="python: context.license.code in ('nc-sampling+', 'sampling+')"
+    	<li tal:condition="python: license.license_code in ('nc-sampling+', 'sampling+')"
             i18n:translate="deed.notice"></li>
-    	<li tal:condition="python: context.license.code not in ('nc-sampling+', 'sampling+')"
+    	<li tal:condition="python: license.license_code not in ('nc-sampling+', 'sampling+')"
             i18n:translate="deed.notice_withoutdistribution" ></li>
-    	<li tal:condition="python: context.license.code not in ('nc-sampling+', 'sampling+')"
+    	<li tal:condition="python: license.license_code not in ('nc-sampling+', 'sampling+')"
             i18n:translate="char.no_brief" ></li>
 	<li>
           In no way are any of the following rights affected by
