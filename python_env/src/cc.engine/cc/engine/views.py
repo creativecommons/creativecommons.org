@@ -1,7 +1,6 @@
 from lxml import etree
 from lxml.cssselect import CSSSelector
 from webob import Response
-from repoze.bfg.chameleon_zpt import render_template_to_response
 
 from cc.engine import util
 from cc.engine import cc_org_i18n
@@ -22,8 +21,6 @@ def licenses_view(context, request):
         'catalog_pages/licenses-index.pt')
     engine_template = util.get_zpt_template(
         'macros_templates/engine.pt')
-
-    fake_view = FakeView()
 
     ### TODO: Redo templates so we don't have to put this in every view.
     text_orientation = util.get_locale_text_orientation(request)
