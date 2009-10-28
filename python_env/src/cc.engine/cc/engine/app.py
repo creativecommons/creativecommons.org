@@ -1,4 +1,5 @@
 import sys
+import urllib
 
 from webob import Request, exc
 
@@ -21,9 +22,15 @@ def ccengine_app(environ, start_response):
     path_info = request.path_info
     route_match = routing.mapping.match(path_info)
     if route_match is None:
-        # # Let's see if we can get a match by appending a slash..
-        # # If so, redirect to that.
-        # if not path_info.endswith('/') and routing.mapping.match(path_info + '/'):
+        if not path_info.endswith('/') \
+                and request.method == 'GET' \
+                and routing.mapping.match(path_info + '/'):
+            new_path_info = path_info + '/'
+            if request.GET:
+                new_path_info = '%s?%s' % (
+                    new_path_info, urllib.urlencode(request.GET))
+            redirect = exc.HTTPTemporaryRedirect(location=new_path_info)
+            return request.get_response(redirect)(environ, start_response)
         return exc.HTTPNotFound()(environ, start_response)
     controller = load_controller(route_match['controller'])
     request.start_response = start_response
