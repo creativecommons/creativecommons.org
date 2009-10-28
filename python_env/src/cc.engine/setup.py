@@ -25,7 +25,7 @@ import sys
 
 setup(
     name = "cc.engine",
-    version = "9.0-dev",
+    version = "9.1-dev",
     packages = ['cc.engine'],
     namespace_packages = ['cc',],
     
@@ -35,7 +35,10 @@ setup(
         'cc.license',
         'zope.interface',
         'PasteScript',
-        'repoze.bfg'],
+        #'repoze.bfg',
+        'WebOb',
+        'routes',
+        ],
 
     # author metadata
     author = 'Christopher Webber',
@@ -45,6 +48,6 @@ setup(
     url = 'http://creativecommons.org',
     entry_points = """\
       [paste.app_factory]
-      app = cc.engine.run:app
+      app = cc.engine.app:ccengine_app_factory
       """
     )

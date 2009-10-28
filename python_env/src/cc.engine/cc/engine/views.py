@@ -12,11 +12,11 @@ LICENSE_ACTIONS = ('rdf', 'legalcode',
                    'legalcode-plain')
 
 
-def root_view(context, request):
+def root_view(request):
     return Response("This is the root")
 
 
-def licenses_view(context, request):
+def licenses_view(request):
     template = util.get_zpt_template(
         'catalog_pages/licenses-index.pt')
     engine_template = util.get_zpt_template(
@@ -43,11 +43,10 @@ def licenses_view(context, request):
              'engine_template': engine_template,
              'text_orientation': text_orientation,
              'is_rtl': is_rtl,
-             'is_rtl_align': is_rtl_align,
-             'context': context}))
+             'is_rtl_align': is_rtl_align}))
 
 
-def specific_licenses_router(context, request):
+def specific_licenses_router(request):
     """
     """
     # Router isn't the right name here.  But I can't think fo a better
@@ -78,22 +77,22 @@ def specific_licenses_router(context, request):
     if license_action:
         if license_action == 'rdf':
             return license_rdf_view(
-                context, request, license,
+                request, license,
                 license_code, license_version, license_jurisdiction)
         elif license_action == 'legalcode':
             return license_legalcode_view(
-                context, request, license,
+                request, license,
                 license_code, license_version, license_jurisdiction)
         elif license_action == 'legalcode-plain':
             return license_legalcode_plain_view(
-                context, request, license,
+                request, license,
                 license_code, license_version, license_jurisdiction)
         else:
             # TODO: This isn't the right thing to do, obviously.
             return Response("No such action :(")
     else:
         return license_deed_view(
-            context, request, license,
+            request, license,
             license_code, license_version, license_jurisdiction)
 
 
@@ -105,7 +104,7 @@ DEED_TEMPLATE_MAPPING = {
     'LGPL': 'licenses/fsf_templates/deed.pt',
     'devnations': 'licenses/devnations_templates/deed.pt'}
 
-def license_deed_view(context, request, license,
+def license_deed_view(request, license,
                       license_code, license_version, license_jurisdiction):
     text_orientation = util.get_locale_text_orientation(request)
 
@@ -191,19 +190,19 @@ def license_deed_view(context, request, license,
     return Response(main_template.pt_render(context))
 
 
-def license_rdf_view(context, request, license,
+def license_rdf_view(request, license,
                      license_code, license_version, license_jurisdiction):
     rdf_response = Response(file(license_rdf_filename(license.uri)).read())
     rdf_response.headers['Content-Type'] = 'application/rdf+xml; charset=UTF-8'
     return rdf_response
 
 
-def license_legalcode_view(context, request, license,
+def license_legalcode_view(request, license,
                            license_code, license_version, license_jurisdiction):
     return Response('license legalcode')
 
 
-def license_legalcode_plain_view(context, request, license,
+def license_legalcode_plain_view(request, license,
                                  license_code, license_version,
                                  license_jurisdiction):
     parser = etree.HTMLParser()
