@@ -8,4 +8,4 @@ mapping.connect(
     "licenses_index", "/licenses/", controller="cc.engine.views:licenses_view")
 mapping.connect(
     "specific_license", "/licenses/{code}/{version}/",
-    controller="cc.engine.views:specific_licenses_router_basic")
+    controller="cc.engine.views:specific_licenses_router")

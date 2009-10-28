@@ -54,7 +54,7 @@ def specific_licenses_router(request):
     license_code = request.matchdict['code']
     license_version = request.matchdict['version']
     license_jurisdiction = request.matchdict.get('jurisdiction')
-    license_action = request.matchdict.get('action')
+    license_action = request.matchdict.get('license_action')
 
     ambiguous_jurisdiction_or_action = request.matchdict.get(
         'jurisdiction_or_action')
