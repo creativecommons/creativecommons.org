@@ -2,14 +2,11 @@ from lxml import etree
 from lxml.cssselect import CSSSelector
 from webob import Response
 
+from cc.engine.decorators import get_license
 from cc.engine import util
 from cc.engine import cc_org_i18n
 from cc.license import by_code, CCLicenseError
 from cc.licenserdf.tools.license import license_rdf_filename
-
-
-LICENSE_ACTIONS = ('rdf', 'legalcode',
-                   'legalcode-plain')
 
 
 def root_view(request):
@@ -46,56 +43,6 @@ def licenses_view(request):
              'is_rtl_align': is_rtl_align}))
 
 
-def specific_licenses_router(request):
-    """
-    """
-    # Router isn't the right name here.  But I can't think fo a better
-    # name :\
-    license_code = request.matchdict['code']
-    license_version = request.matchdict['version']
-    license_jurisdiction = request.matchdict.get('jurisdiction')
-    license_action = request.matchdict.get('license_action')
-
-    ambiguous_jurisdiction_or_action = request.matchdict.get(
-        'jurisdiction_or_action')
-    if ambiguous_jurisdiction_or_action:
-        if ambiguous_jurisdiction_or_action in LICENSE_ACTIONS:
-            license_action = ambiguous_jurisdiction_or_action
-        else:
-            license_jurisdiction = str(ambiguous_jurisdiction_or_action)
-
-    try:
-        license = by_code(
-            license_code,
-            jurisdiction=license_jurisdiction,
-            version=license_version)
-    except CCLicenseError:
-        ### give a proper errored httpresponse
-        return Response(
-            "No such license.")
-
-    if license_action:
-        if license_action == 'rdf':
-            return license_rdf_view(
-                request, license,
-                license_code, license_version, license_jurisdiction)
-        elif license_action == 'legalcode':
-            return license_legalcode_view(
-                request, license,
-                license_code, license_version, license_jurisdiction)
-        elif license_action == 'legalcode-plain':
-            return license_legalcode_plain_view(
-                request, license,
-                license_code, license_version, license_jurisdiction)
-        else:
-            # TODO: This isn't the right thing to do, obviously.
-            return Response("No such action :(")
-    else:
-        return license_deed_view(
-            request, license,
-            license_code, license_version, license_jurisdiction)
-
-
 DEED_TEMPLATE_MAPPING = {
     'sampling': 'licenses/sampling_templates/deed.pt',
     'sampling+': 'licenses/sampling_templates/deed.pt',
@@ -104,8 +51,9 @@ DEED_TEMPLATE_MAPPING = {
     'LGPL': 'licenses/fsf_templates/deed.pt',
     'devnations': 'licenses/devnations_templates/deed.pt'}
 
-def license_deed_view(request, license,
-                      license_code, license_version, license_jurisdiction):
+
+@get_license
+def license_deed_view(request, license):
     text_orientation = util.get_locale_text_orientation(request)
 
     # 'rtl' if the request locale is represented right-to-left;
@@ -131,11 +79,11 @@ def license_deed_view(request, license,
 
     # "color" of the license; the color reflects the relative amount
     # of freedom.
-    if license_code in ('devnations', 'sampling'):
+    if license.license_code in ('devnations', 'sampling'):
        color = 'red'
-    elif license_code.find('sampling') > -1 or \
-             license_code.find('nc') > -1 or \
-             license_code.find('nd') > -1:
+    elif license.license_code.find('sampling') > -1 or \
+             license.license_code.find('nc') > -1 or \
+             license.license_code.find('nd') > -1:
        color = 'yellow'
     else:
        color = 'green'
@@ -172,9 +120,8 @@ def license_deed_view(request, license,
             target_lang=target_lang)
 
     context = {
-            'license_code': license_code,
+            'license_code': license.license_code,
             'license_title': license_title,
-            'license_version': license_version,
             'license': license,
             'get_ltr_rtl': text_orientation,
             'is_rtl_align': is_rtl_align,
@@ -190,21 +137,20 @@ def license_deed_view(request, license,
     return Response(main_template.pt_render(context))
 
 
-def license_rdf_view(request, license,
-                     license_code, license_version, license_jurisdiction):
+@get_license
+def license_rdf_view(request, license):
     rdf_response = Response(file(license_rdf_filename(license.uri)).read())
     rdf_response.headers['Content-Type'] = 'application/rdf+xml; charset=UTF-8'
     return rdf_response
 
 
-def license_legalcode_view(request, license,
-                           license_code, license_version, license_jurisdiction):
+@get_license
+def license_legalcode_view(request, license):
     return Response('license legalcode')
 
 
-def license_legalcode_plain_view(request, license,
-                                 license_code, license_version,
-                                 license_jurisdiction):
+@get_license
+def license_legalcode_plain_view(request, license):
     parser = etree.HTMLParser()
     legalcode = etree.parse(
         license.uri + "legalcode", parser)
