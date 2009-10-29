@@ -153,14 +153,16 @@ def get_license_conditions(license, target_language="en_US"):
             continue
         
         # Go through the chars and build up the HTML and such
-        char_title = translate(
-            'char.%s_title' % lic,
-            domain=cc_org_i18n.I18N_DOMAIN,
-            target_language=target_language)
-        char_brief = translate(
-            'char.%s_brief' % lic,
-            domain=cc_org_i18n.I18N_DOMAIN,
-            target_language=target_language)
+        char_title = unicode_cleaner(
+            translate(
+                'char.%s_title' % lic,
+                domain=cc_org_i18n.I18N_DOMAIN,
+                target_language=target_language))
+        char_brief = unicode_cleaner(
+            translate(
+                'char.%s_brief' % lic,
+                domain=cc_org_i18n.I18N_DOMAIN,
+                target_language=target_language))
 
         icon_name = lic
         predicate = 'cc:requires'
@@ -172,10 +174,11 @@ def get_license_conditions(license, target_language="en_US"):
         elif lic == 'sa':
             object = 'http://creativecommons.org/ns#ShareAlike'
             if license.version == 3.0 and license.code == 'by-sa':
-                char_brief = translate(
-                    'char.sa_bysa30_brief',
-                    domain=cc_org_i18n.I18N_DOMAIN,
-                    target_language=target_language)
+                char_brief = unicode_cleaner(
+                    translate(
+                        'char.sa_bysa30_brief',
+                        domain=cc_org_i18n.I18N_DOMAIN,
+                        target_language=target_language))
         elif lic == 'nd':
             predicate = ''
             object = ''
@@ -258,4 +261,17 @@ def active_languages():
             result.append(dict(code=code, name=name))
 
     return result
+
+
+def unicode_cleaner(string):
+    if isinstance(string, unicode):
+        return string
+
+    try:
+        return string.decode('utf-8')
+    except UnicodeError:
+        try:
+            return string.decode('latin-1')
+        except UnicodeError:
+            return string.decode('utf-8', 'ignore')
 
