@@ -90,7 +90,9 @@ def license_deed_view(request, license):
 
     identity_data = util.get_locale_identity_data(request)
 
-    target_lang = request.accept_language.best_matches()[0]
+    target_lang = (
+        request.matchdict.get('target_lang')
+        or request.accept_language.best_matches()[0])
 
     license_title = None
     try:
