@@ -33,6 +33,8 @@ setup(
     install_requires = [
         'setuptools',
         'cc.license',
+        'cc.licenserdf',
+        'python-gettext',
         'zope.interface',
         'PasteScript',
         #'repoze.bfg',
