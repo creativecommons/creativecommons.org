@@ -30,8 +30,12 @@ ZPT_TEST_ENABLED = False
 ZPT_TEST_TEMPLATES = {}
 class CCLPageTemplateFileTester(CCLPageTemplateFile):
     def pt_render(self, namespace, *args, **kwargs):
-        ZPT_TEST_TEMPLATES[self.filename] = namespace
+        ZPT_TEST_TEMPLATES[self] = namespace
         CCLPageTemplateFile.pt_render(self, namespace, *args, **kwargs)
+
+def _activate_zpt_testing():
+    global ZPT_TEST_ENABLED
+    ZPT_TEST_ENABLED = True
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ### </Special ZPT unit test hackery>
