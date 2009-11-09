@@ -12,6 +12,7 @@ from cc.license._lib import rdf_helper
 from cc.license.formatters.pagetemplate import CCLPageTemplateFile
 from cc.engine import cc_org_i18n
 
+
 BASE_TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
 
 PERMITS_NAME_MAP = {
@@ -19,6 +20,22 @@ PERMITS_NAME_MAP = {
     }
 
 _I18N_SETUP = False
+
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Special ZPT unit test hackery begins HERE
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ZPT_TEST_ENABLED = False
+ZPT_TEST_TEMPLATES = {}
+class CCLPageTemplateFileTester(CCLPageTemplateFile):
+    def pt_render(self, namespace, *args, **kwargs):
+        ZPT_TEST_TEMPLATES[self.filename] = namespace
+        CCLPageTemplateFile.pt_render(self, namespace, *args, **kwargs)
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### </Special ZPT unit test hackery>
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 def locale_to_cclicense_style(locale):
@@ -33,7 +50,13 @@ def locale_to_cclicense_style(locale):
 def get_zpt_template(template_path, target_lang=None):
     setup_i18n_if_necessary()
     full_template_path = os.path.join(BASE_TEMPLATE_DIR, template_path)
-    return CCLPageTemplateFile(
+
+    if ZPT_TEST_ENABLED:
+        ptf_class = CCLPageTemplateFileTester
+    else:
+        ptf_class = CCLPageTemplateFile
+
+    return ptf_class(
         full_template_path, target_language=target_lang)
     
 
