@@ -24,7 +24,6 @@ def licenses_view(request):
 
     # 'rtl' if the request locale is represented right-to-left;
     # otherwise an empty string.
-
     is_rtl = text_orientation == 'rtl'
 
     # Return the appropriate alignment for the request locale:
@@ -58,7 +57,6 @@ def license_deed_view(request, license):
 
     # 'rtl' if the request locale is represented right-to-left;
     # otherwise an empty string.
-
     is_rtl = text_orientation == 'rtl'
 
     # Return the appropriate alignment for the request locale:
