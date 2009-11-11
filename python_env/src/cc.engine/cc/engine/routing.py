@@ -46,3 +46,15 @@ mapping.connect(
     "license_legalcode_plain_jurisdiction",
     "/licenses/{code}/{version}/jurisdiction}/legalcode-plain",
     controller="cc.engine.views:license_legalcode_plain_view")
+
+# CC0
+mapping.connect(
+    "cc0_deed",
+    "/publicdomain/zero/{version}/",
+    code='CC0',
+    controller="cc.engine.views:license_deed_view")
+mapping.connect(
+    "cc0_deed_lang",
+    "/publicdomain/zero/{version}/deed.{target_lang}",
+    code='CC0',
+    controller="cc.engine.views:license_deed_view")
