@@ -55,7 +55,9 @@ class BaseViewTests(object):
 
 class BaseTestLicenseRdfView(BaseViewTests):
     def _read_rdf_file_contents(self):
-        return file(self.rdf_file).read()
+        return file(
+            pkg_resources.resource_filename(
+                'cc.licenserdf', self.rdf_file)).read()
 
     def test_has_rdf(self):
         rdf_contents = util.unicode_cleaner(self._read_rdf_file_contents())
@@ -72,8 +74,7 @@ class TestBySaRDFView(BaseTestLicenseRdfView):
         'code': 'by-sa',
         'version': '2.0',
         'controller': 'cc.engine.views:license_rdf_view'}
-    rdf_file = pkg_resources.resource_filename(
-        'cc.licenserdf', 'licenses/creativecommons.org_licenses_by-sa_2.0_.rdf')
+    rdf_file = 'licenses/creativecommons.org_licenses_by-sa_2.0_.rdf'
 
 
 def test_license_deeds():
