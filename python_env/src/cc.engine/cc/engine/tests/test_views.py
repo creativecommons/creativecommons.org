@@ -53,6 +53,36 @@ class BaseViewTests(object):
         self.response = self.controller(self.request)
 
 
+## Deed view tests
+
+class BaseDeedView(BaseViewTests):
+    def test_template_namespace_matching(self):
+        """
+        Make sure that the elements in our expected_namespace match
+        the elements in the actual namespace passed in.
+
+        As a side effect, this also checks that the template used is
+        the one we expected :)
+        """
+        namespace = util.ZPT_TEST_TEMPLATES.pop(
+            util.full_zpt_filename('licenses/standard_templates/deed.pt'))
+        for key, value in self.expected_namespace.iteritems():
+            assert namespace[key] == value
+
+
+class TestByNdDeedThreeOhView(BaseDeedView):
+    url = '/licenses/by-nd/3.0/'
+    matchdict = {
+        'code': 'by-nd',
+        'version': '3.0',
+        'controller': 'cc.engine.views:license_deed_view'}
+    expected_namespace = {
+        'license': cc.license.by_code('by-nd', '3.0'),
+        }
+
+
+## RDF view tests
+
 class BaseTestLicenseRdfView(BaseViewTests):
     def _read_rdf_file_contents(self):
         return file(
@@ -75,6 +105,8 @@ class TestBySaRDFView(BaseTestLicenseRdfView):
         'version': '2.0',
         'controller': 'cc.engine.views:license_rdf_view'}
     rdf_file = 'licenses/creativecommons.org_licenses_by-sa_2.0_.rdf'
+
+
 
 
 def test_license_deeds():
