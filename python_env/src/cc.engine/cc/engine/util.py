@@ -30,7 +30,7 @@ ZPT_TEST_ENABLED = False
 ZPT_TEST_TEMPLATES = {}
 class CCLPageTemplateFileTester(CCLPageTemplateFile):
     def pt_render(self, namespace, *args, **kwargs):
-        ZPT_TEST_TEMPLATES[self] = namespace
+        ZPT_TEST_TEMPLATES[self.filename] = namespace
         CCLPageTemplateFile.pt_render(self, namespace, *args, **kwargs)
 
 def _activate_zpt_testing():
@@ -51,9 +51,13 @@ def locale_to_cclicense_style(locale):
     return new_locale
 
 
+def full_zpt_filename(template_path):
+    return os.path.join(BASE_TEMPLATE_DIR, template_path)
+
+
 def get_zpt_template(template_path, target_lang=None):
     setup_i18n_if_necessary()
-    full_template_path = os.path.join(BASE_TEMPLATE_DIR, template_path)
+    full_template_path = full_zpt_filename(template_path)
 
     if ZPT_TEST_ENABLED:
         ptf_class = CCLPageTemplateFileTester

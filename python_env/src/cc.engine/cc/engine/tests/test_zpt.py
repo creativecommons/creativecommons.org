@@ -1,8 +1,9 @@
 from cc.engine import util
 
+util._activate_zpt_testing()
+
 
 def test_zpt():
-    util._activate_zpt_testing()
     template = util.get_zpt_template(
         'test/bunnies.pt')
     bunnies = [{'name': 'Lilian', 'description': 'lazy'},
@@ -10,5 +11,5 @@ def test_zpt():
                {'name': 'Frank', 'description': 'grouch'}]
     template.pt_render({'bunnies': bunnies})
 
-    test_results = util.ZPT_TEST_TEMPLATES.pop(template)
+    test_results = util.ZPT_TEST_TEMPLATES.pop(template.filename)
     assert test_results['bunnies'] is bunnies
