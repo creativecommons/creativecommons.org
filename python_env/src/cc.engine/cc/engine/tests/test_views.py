@@ -82,6 +82,39 @@ class TestByNdDeedThreeOhView(BaseDeedView):
         }
 
 
+#####
+### BSD/MIT license checks: We know these fail currently :(
+#####
+
+class FakeBSDLicense(object): pass
+class FakeMITLicense(object): pass
+
+class TestBSDView(BaseDeedView):
+    url = '/licenses/BSD/'
+    matchdict = {
+        # Code??? version???
+        'controller': 'cc.engine.licenses.views:license_deed_view'}
+    expected_namespace = {
+        'license': FakeBSDLicense()}
+
+    def test_title(self):
+        # This test totally sucks
+        'BSD License' in self.unicode_body
+
+
+class TestMITView(BaseDeedView):
+    url = '/licenses/MIT/'
+    matchdict = {
+        # Code??? version???
+        'controller': 'cc.engine.licenses.views:license_deed_view'}
+    expected_namespace = {
+        'license': FakeMITLicense()}
+
+    def test_title(self):
+        # This test totally sucks
+        'MIT License' in self.unicode_body
+
+
 ## RDF view tests
 
 class BaseTestLicenseRdfView(BaseViewTests):
