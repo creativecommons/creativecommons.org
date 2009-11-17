@@ -19,8 +19,6 @@ PERMITS_NAME_MAP = {
     "http://creativecommons.org/ns#DerivativeWorks": "nd",
     }
 
-_I18N_SETUP = False
-
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ### Special ZPT unit test hackery begins HERE
@@ -56,7 +54,6 @@ def full_zpt_filename(template_path):
 
 
 def get_zpt_template(template_path, target_lang=None):
-    setup_i18n_if_necessary()
     full_template_path = full_zpt_filename(template_path)
 
     if ZPT_TEST_ENABLED:
@@ -67,30 +64,6 @@ def get_zpt_template(template_path, target_lang=None):
     return ptf_class(
         full_template_path, target_language=target_lang)
     
-
-def setup_i18n_if_necessary():
-    global _I18N_SETUP
-    if _I18N_SETUP:
-        return
-
-    domain = TranslationDomain('cc.engine')
-    # for catalog in os.listdir(I18N_PATH):
-
-    #     catalog_path = os.path.join(I18N_PATH, catalog)
-
-    #     po_path = os.path.join(catalog_path, 'cc.engine.po')
-    #     mo_path = os.path.join(catalog_path, 'cc.engine.mo')
-    #     if not os.path.isdir(catalog_path) or not os.path.exists(po_path):
-    #         continue
-
-    #     compile_mo_file('cc.engine', catalog_path)
-        
-    #     domain.addCatalog(GettextMessageCatalog(
-    #             catalog, 'cc.engine', mo_path))
-
-    # component.provideUtility(domain, ITranslationDomain, name='cc.engine')
-    _I18N_SETUP = True
-
 
 def get_locale_file_from_lang_matches(lang_matches):
     """
