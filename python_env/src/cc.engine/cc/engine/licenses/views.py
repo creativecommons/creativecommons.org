@@ -38,6 +38,38 @@ def licenses_view(request):
              'is_rtl_align': is_rtl_align}))
 
 
+def publicdomain_view(request):
+    ### D: This is like, the same view as licenses view!  I need to
+    ### fix this grossness D:
+
+    template = util.get_zpt_template(
+        'publicdomain/index.pt')
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine.pt')
+
+    ### TODO: Redo templates so we don't have to put this in every view.
+    text_orientation = util.get_locale_text_orientation(request)
+
+    # 'rtl' if the request locale is represented right-to-left;
+    # otherwise an empty string.
+    is_rtl = text_orientation == 'rtl'
+
+    # Return the appropriate alignment for the request locale:
+    # 'text-align:right' or 'text-align:left'.
+    if text_orientation == 'rtl':
+        is_rtl_align = 'text-align: right'
+    else:
+        is_rtl_align = 'text-align: left'
+
+    return Response(
+        template.pt_render(
+            {'request': request,
+             'engine_template': engine_template,
+             'text_orientation': text_orientation,
+             'is_rtl': is_rtl,
+             'is_rtl_align': is_rtl_align}))
+
+
 DEED_TEMPLATE_MAPPING = {
     'sampling': 'licenses/sampling_templates/deed.pt',
     'sampling+': 'licenses/sampling_templates/deed.pt',

@@ -7,5 +7,8 @@ mapping.minimization = False
 mapping.connect(
     "index", "/", controller="cc.engine.views:root_view")
 
+mapping.connect(
+    '/publicdomain/', controller="cc.engine.licenses.views:publicdomain_view")
+
 mapping.extend(licenses_routing.licenses_routes, '/licenses')
 mapping.extend(licenses_routing.cc0_routes, '/publicdomain/zero')
