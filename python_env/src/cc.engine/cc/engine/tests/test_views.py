@@ -6,6 +6,7 @@ from webob import Request
 from cc.engine.app import load_controller
 from cc.engine import util
 from cc.engine import views
+from cc.engine.licenses import views as license_views
 import cc.license
 
 util._activate_zpt_testing()
@@ -30,7 +31,7 @@ def test_root_view():
 
 def test_licenses_view():
     request = Request.blank('/licenses/')
-    response = views.licenses_view(request)
+    response = license_views.licenses_view(request)
     namespace = util.ZPT_TEST_TEMPLATES.pop(
         util.full_zpt_filename('catalog_pages/licenses-index.pt'))
     namespace['request'] == request
@@ -75,7 +76,7 @@ class TestByNdDeedThreeOhView(BaseDeedView):
     matchdict = {
         'code': 'by-nd',
         'version': '3.0',
-        'controller': 'cc.engine.views:license_deed_view'}
+        'controller': 'cc.engine.licenses.views:license_deed_view'}
     expected_namespace = {
         'license': cc.license.by_code('by-nd', '3.0'),
         }
@@ -103,7 +104,7 @@ class TestBySaRDFView(BaseTestLicenseRdfView):
     matchdict = {
         'code': 'by-sa',
         'version': '2.0',
-        'controller': 'cc.engine.views:license_rdf_view'}
+        'controller': 'cc.engine.licenses.views:license_rdf_view'}
     rdf_file = 'licenses/creativecommons.org_licenses_by-sa_2.0_.rdf'
 
 
