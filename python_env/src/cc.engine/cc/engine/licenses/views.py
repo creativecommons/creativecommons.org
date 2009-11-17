@@ -44,7 +44,8 @@ DEED_TEMPLATE_MAPPING = {
     'nc-sampling+': 'licenses/sampling_templates/deed.pt',
     'GPL': 'licenses/fsf_templates/deed.pt',
     'LGPL': 'licenses/fsf_templates/deed.pt',
-    'devnations': 'licenses/devnations_templates/deed.pt'}
+    'devnations': 'licenses/devnations_templates/deed.pt',
+    'CC0': 'licenses/zero_templates/deed.pt'}
 
 
 @get_license
