@@ -10,7 +10,7 @@ from zope.i18n import translate
 
 from cc.license._lib import rdf_helper
 from cc.license.formatters.pagetemplate import CCLPageTemplateFile
-from cc.engine import cc_org_i18n
+from cc.i18npkg import ccorg_i18n_setup
 
 
 BASE_TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
@@ -187,12 +187,12 @@ def get_license_conditions(license, target_language="en_US"):
         char_title = unicode_cleaner(
             translate(
                 'char.%s_title' % lic,
-                domain=cc_org_i18n.I18N_DOMAIN,
+                domain=ccorg_i18n_setup.I18N_DOMAIN,
                 target_language=target_language))
         char_brief = unicode_cleaner(
             translate(
                 'char.%s_brief' % lic,
-                domain=cc_org_i18n.I18N_DOMAIN,
+                domain=ccorg_i18n_setup.I18N_DOMAIN,
                 target_language=target_language))
 
         icon_name = lic
@@ -208,7 +208,7 @@ def get_license_conditions(license, target_language="en_US"):
                 char_brief = unicode_cleaner(
                     translate(
                         'char.sa_bysa30_brief',
-                        domain=cc_org_i18n.I18N_DOMAIN,
+                        domain=ccorg_i18n_setup.I18N_DOMAIN,
                         target_language=target_language))
         elif lic == 'nd':
             predicate = ''
@@ -250,7 +250,7 @@ def active_languages():
 
     for each available language."""
     # get a list of avaialable translations
-    domain = base.queryUtility(ITranslationDomain, cc_org_i18n.I18N_DOMAIN)
+    domain = base.queryUtility(ITranslationDomain, ccorg_i18n_setup.I18N_DOMAIN)
     lang_codes = set(domain.getCatalogsInfo().keys())
 
     # determine the intersection of available translations and

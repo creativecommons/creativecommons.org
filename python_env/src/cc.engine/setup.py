@@ -34,6 +34,7 @@ setup(
         'setuptools',
         'cc.license',
         'cc.licenserdf',
+        'cc.i18npkg',
         'python-gettext',
         'zope.interface',
         'PasteScript',
