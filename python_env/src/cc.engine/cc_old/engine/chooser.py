@@ -36,60 +36,60 @@ class LicenseEngine(object):
         """Extract work information from the request and return it as a
         dict."""
 
-	result = {'title' : u'',
-		  'creator' : u'',
-		  'copyright_holder' : u'',
-		  'copyright_year' : u'',
-		  'description' : u'',
-		  'format' : u'',
+        result = {'title' : u'',
+                  'creator' : u'',
+                  'copyright_holder' : u'',
+                  'copyright_year' : u'',
+                  'description' : u'',
+                  'format' : u'',
                   'type' : u'',
-		  'work_url' : u'',
-		  'source_work_url' : u'',
+                  'work_url' : u'',
+                  'source_work_url' : u'',
                   'source_work_domain' : u'',
                   'attribution_name' : u'',
                   'attribution_url' : u'',
                   'more_permissions_url' : u'',
-		  }
+                  }
 
-	# look for keys that match the param names
-	for key in request.form:
-	    if key in result:
-	        result[key] = request.form[key]
+        # look for keys that match the param names
+        for key in request.form:
+            if key in result:
+                result[key] = request.form[key]
 
-	# look for keys from the license chooser interface
+        # look for keys from the license chooser interface
 
-	# work title
-	if request.form.has_key('field_worktitle'):
-	    result['title'] = request['field_worktitle']
+        # work title
+        if request.form.has_key('field_worktitle'):
+            result['title'] = request['field_worktitle']
 
-	# creator
-	if request.form.has_key('field_creator'):
-	    result['creator'] = request['field_creator']
+        # creator
+        if request.form.has_key('field_creator'):
+            result['creator'] = request['field_creator']
 
-	# copyright holder
-	if request.form.has_key('field_copyrightholder'):
-	    result['copyright_holder'] = result['holder'] = \
+        # copyright holder
+        if request.form.has_key('field_copyrightholder'):
+            result['copyright_holder'] = result['holder'] = \
                 request['field_copyrightholder']
         if request.form.has_key('copyright_holder'):
             result['holder'] = request.form['copyright_holder']
             
-	# copyright year
-	if request.form.has_key('field_year'):
-	    result['copyright_year'] = result['year'] = request['field_year']
+        # copyright year
+        if request.form.has_key('field_year'):
+            result['copyright_year'] = result['year'] = request['field_year']
         if request.form.has_key('copyright_year'):
             result['year'] = request.form['copyright_year']
             
-	# description
-	if request.form.has_key('field_description'):
-	    result['description'] = request['field_description']
+        # description
+        if request.form.has_key('field_description'):
+            result['description'] = request['field_description']
 
-	# format
-	if request.form.has_key('field_format'):
-	    result['format'] = result['type'] = request['field_format']
+        # format
+        if request.form.has_key('field_format'):
+            result['format'] = result['type'] = request['field_format']
 
-	# source url
-	if request.form.has_key('field_sourceurl'):
-	    result['source_work_url'] = result['source-url'] = \
+        # source url
+        if request.form.has_key('field_sourceurl'):
+            result['source_work_url'] = result['source-url'] = \
                 request['field_sourceurl']
 
             # extract the domain from the URL
@@ -111,7 +111,7 @@ class LicenseEngine(object):
         if request.form.has_key('field_morepermissionsurl'):
             result['more_permissions_url'] = request['field_morepermissionsurl']
 
-	return result
+        return result
 
     def license_class(self, class_name = cc.license.classes.STANDARD):
 
@@ -121,23 +121,23 @@ class LicenseEngine(object):
         """Extract the license engine fields from the request and return a
         License object."""
 
-	jurisdiction = ''
-	locale = request.locale.getLocaleID()
-	code = ''
+        jurisdiction = ''
+        locale = request.locale.getLocaleID()
+        code = ''
 
         license_class = 'standard'
         answers = {}
         
-	if request.form.has_key('pd') or \
+        if request.form.has_key('pd') or \
                 request.form.has_key('publicdomain') or \
                 request.form.get('license_code', None)  == 'publicdomain':
 
-	   # this is public domain
+           # this is public domain
            license_class = 'publicdomain'
 
-	# check for license_code
-	elif request.form.has_key('license_code'):
-	   jurisdiction = request.form.get('jurisdiction',
+        # check for license_code
+        elif request.form.has_key('license_code'):
+           jurisdiction = request.form.get('jurisdiction',
                                 request.form.get('field_jurisdiction',
                                                  '')
                                            )
@@ -159,8 +159,8 @@ class LicenseEngine(object):
 
             answers['version'] = version
         
-	else:
-	   jurisdiction = request.form.get('field_jurisdiction',
+        else:
+           jurisdiction = request.form.get('field_jurisdiction',
                                            jurisdiction)
 
            answers.update(dict(
@@ -178,7 +178,7 @@ class LicenseEngine(object):
         # add the work to the answers block
         answers.update(self._work_info(request))
 
-	# return the license object
+        # return the license object
         return cc.license.LicenseFactory().get_class(license_class).issue(
             **answers)
 
