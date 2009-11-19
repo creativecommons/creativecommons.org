@@ -3,6 +3,7 @@ import pkg_resources
 
 import RDF
 from lxml import etree
+from webob import Response
 from zope.component.globalregistry import base
 from zope.i18n.interfaces import ITranslationDomain
 from zope.i18n.translationdomain import TranslationDomain
@@ -278,4 +279,50 @@ def unicode_cleaner(string):
             return string.decode('latin-1')
         except UnicodeError:
             return string.decode('utf-8', 'ignore')
+
+
+def rtl_context_stuff(request):
+    """
+    This is to accomodate the old templating stuff, which requires:
+     - text_orientation
+     - is_rtl
+     - is_rtl_align
+
+    We could probably adjust the templates to just use
+    text_orientation but maybe we'll do that later.
+    """
+    ### TODO: Redo templates so we don't have to put this in every view.
+    text_orientation = get_locale_text_orientation(request)
+
+    # 'rtl' if the request locale is represented right-to-left;
+    # otherwise an empty string.
+    is_rtl = text_orientation == 'rtl'
+
+    # Return the appropriate alignment for the request locale:
+    # 'text-align:right' or 'text-align:left'.
+    if text_orientation == 'rtl':
+        is_rtl_align = 'text-align: right'
+    else:
+        is_rtl_align = 'text-align: left'
+
+    return {'text_orientation': text_orientation,
+            'is_rtl': is_rtl,
+            'is_rtl_align': is_rtl_align}
+    
+    
+def plain_template_view(template_name, request):
+    """
+    Not an actual view, but used to build these more tedious views
+    """
+    template = get_zpt_template(template_name)
+    engine_template = get_zpt_template(
+        'macros_templates/engine.pt')
+
+    context = {'request': request,
+               'engine_template': engine_template}
+    context.update(rtl_context_stuff(request))
+
+    return Response(
+        template.pt_render(context))
+
 
