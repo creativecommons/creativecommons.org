@@ -31,17 +31,6 @@ DEED_TEMPLATE_MAPPING = {
 def license_deed_view(request, license):
     text_orientation = util.get_locale_text_orientation(request)
 
-    # 'rtl' if the request locale is represented right-to-left;
-    # otherwise an empty string.
-    is_rtl = text_orientation == 'rtl'
-
-    # Return the appropriate alignment for the request locale:
-    # 'text-align:right' or 'text-align:left'.
-    if text_orientation == 'rtl':
-        is_rtl_align = 'text-align: right'
-    else:
-        is_rtl_align = 'text-align: left'
-
     # True if the legalcode for this license is available in
     # multiple languages (or a single language with a language code different
     # than that of the jurisdiction.
@@ -99,9 +88,6 @@ def license_deed_view(request, license):
             'license_code': license.license_code,
             'license_title': license_title,
             'license': license,
-            'get_ltr_rtl': text_orientation,
-            'is_rtl_align': is_rtl_align,
-            'is_rtl': is_rtl,
             'multi_language': multi_language,
             'color': color,
             'conditions': conditions,
@@ -109,6 +95,7 @@ def license_deed_view(request, license):
             'active_languages': active_languages,
             'support_template': support_template,
             'target_lang': target_lang}
+    context.update(util.rtl_context_stuff(request))
 
     return Response(main_template.pt_render(context))
 

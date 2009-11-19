@@ -291,7 +291,6 @@ def rtl_context_stuff(request):
     We could probably adjust the templates to just use
     text_orientation but maybe we'll do that later.
     """
-    ### TODO: Redo templates so we don't have to put this in every view.
     text_orientation = get_locale_text_orientation(request)
 
     # 'rtl' if the request locale is represented right-to-left;
@@ -305,7 +304,7 @@ def rtl_context_stuff(request):
     else:
         is_rtl_align = 'text-align: left'
 
-    return {'text_orientation': text_orientation,
+    return {'get_ltr_rtl': text_orientation,
             'is_rtl': is_rtl,
             'is_rtl_align': is_rtl_align}
     
