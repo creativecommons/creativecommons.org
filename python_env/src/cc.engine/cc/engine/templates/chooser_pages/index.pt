@@ -170,7 +170,7 @@
           </select>
         </p>
 
-        <div metal:use-macro="context/@@metadata/more-metadata" />
+        <div metal:use-macro="metadata_template/macros/more-metadata" />
 
         <div>
           <input type="hidden" name="lang" value="en"
@@ -191,7 +191,7 @@
     </div>
     <br />
 
-    <div metal:use-macro="context/@@support/engine_languages"></div>
+    <div metal:use-macro="support_template/macros/engine_languages"></div>
 
   </div>
 
