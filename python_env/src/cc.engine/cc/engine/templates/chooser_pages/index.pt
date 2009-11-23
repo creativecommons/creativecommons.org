@@ -140,7 +140,7 @@
           <select name="field_jurisdiction"
                   tal:define="selected selected_jurisdiction">
             <span tal:omit-tag=""
-                  tal:repeat="j python:license_class().jurisdictions()">
+                  tal:repeat="j available_jurisdiction_codes">
               <option value="" selected="selected"
                       tal:condition="python: j != '-' and selected == j"
                       tal:attributes="value j;" >
