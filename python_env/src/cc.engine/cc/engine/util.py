@@ -377,7 +377,7 @@ def get_language_jurisdiction_map():
     return LANGUAGE_JURISDICTION_MAPPING
 
 
-def get_selector_jurisdictions(selector_name):
+def get_selector_jurisdictions(selector_name='standard'):
     """
 
     """
