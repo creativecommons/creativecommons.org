@@ -2,6 +2,7 @@ from webob import Response
 
 from cc.engine import util
 from cc.i18npkg import ccorg_i18n_setup
+import cc.license
 
 
 def _base_context(request):
@@ -38,24 +39,18 @@ def _issue_license(request):
 
     # check for license_code
     elif request_form.has_key('license_code'):
-       jurisdiction = request_form.get(
-           'jurisdiction',
-           request_form.get('field_jurisdiction', ''))
+        jurisdiction = request_form.get(
+            'jurisdiction',
+            request_form.get('field_jurisdiction', None))
 
-       license_class, answers = cc.license.support.expandLicenseCode(
-           request_form.get('license_code'),
-           jurisdiction = jurisdiction,
-           version = request_form.get('version', None))
+        return cc.license.by_code(
+            request_form['license_code'],
+            jurisdiction=jurisdiction,
+            version=request_form.get('version', None))
 
     # check for license_url
     elif request_form.has_key('license_url'):
-        # work backwards, generating the answers from the license code
-        code, jurisdiction, version = cc.license.support.expand_license_uri(
-            request_form['license_url'])
-        license_class, answers = cc.license.support.expandLicenseCode(
-            code, jurisdiction)
-
-        answers['version'] = version
+        return cc.license.by_url(request_form['license_url'])
 
     else:
        jurisdiction = request_form.get(
