@@ -107,34 +107,29 @@ def _issue_license(request):
 
     request_form = request.GET or request.POST
 
-    # if request_form.has_key('pd') or \
-    #         request_form.has_key('publicdomain') or \
-    #         request_form.get('license_code', None)  == 'publicdomain':
-    #    # this is public domain
-    #    license_class = 'publicdomain'
+    jurisdiction = request_form.get(
+        'field_jurisdiction', jurisdiction)
+    version = request_form.get('version', None)
+
+    # Handle public domain class
+    if request_form.has_key('pd') or \
+            request_form.has_key('publicdomain') or \
+            request_form.get('license_code', None) == 'publicdomain':
+        return cc.license.by_code('publicdomain')
 
     # check for license_code
-    if request_form.has_key('license_code'):
-        jurisdiction = request_form.get(
-            'jurisdiction',
-            request_form.get('field_jurisdiction', None))
-
+    elif request_form.has_key('license_code'):
         return cc.license.by_code(
             request_form['license_code'],
             jurisdiction=jurisdiction,
-            version=request_form.get('version', None))
+            version=version)
 
     # check for license_url
     elif request_form.has_key('license_url'):
         return cc.license.by_url(request_form['license_url'])
 
     else:
-        jurisdiction = request_form.get(
-            'field_jurisdiction', jurisdiction)
-        version = request_form.get('version', None)
-
         ## Construct the license code for a "standard" license
-        ## TODO: add a check that this is really standard here?
         attribution = answers.get('attribution')
         commercial = answers.get('commercial')
         derivatives = answers.get('derivatives')
@@ -156,14 +151,6 @@ def _issue_license(request):
             license_code,
             jurisdiction=jurisdiction,
             version=version)
-
-    # add the work to the answers block
-    answers.update(_work_info(request_form))
-
-    # return the license object
-    return cc.license.LicenseFactory().get_class(license_class).issue(
-        **answers)
-
 
 
 def chooser_view(request):
