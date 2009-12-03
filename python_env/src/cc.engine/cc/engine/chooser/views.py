@@ -107,14 +107,14 @@ def _issue_license(request):
 
     request_form = request.GET or request.POST
 
-    if request_form.has_key('pd') or \
-            request_form.has_key('publicdomain') or \
-            request_form.get('license_code', None)  == 'publicdomain':
-       # this is public domain
-       license_class = 'publicdomain'
+    # if request_form.has_key('pd') or \
+    #         request_form.has_key('publicdomain') or \
+    #         request_form.get('license_code', None)  == 'publicdomain':
+    #    # this is public domain
+    #    license_class = 'publicdomain'
 
     # check for license_code
-    elif request_form.has_key('license_code'):
+    if request_form.has_key('license_code'):
         jurisdiction = request_form.get(
             'jurisdiction',
             request_form.get('field_jurisdiction', None))
@@ -129,13 +129,33 @@ def _issue_license(request):
         return cc.license.by_url(request_form['license_url'])
 
     else:
-       jurisdiction = request_form.get(
-           'field_jurisdiction', jurisdiction)
+        jurisdiction = request_form.get(
+            'field_jurisdiction', jurisdiction)
+        version = request_form.get('version', None)
 
-       commercial = request_form.get('field_commercial', '')
-       derivatives = request_form.get('field_derivatives', '')
+        ## Construct the license code for a "standard" license
+        ## TODO: add a check that this is really standard here?
+        attribution = answers.get('attribution')
+        commercial = answers.get('commercial')
+        derivatives = answers.get('derivatives')
 
-       answers['version'] = request_form.get('version', None)
+        license_code_bits = []
+        if not attribution == 'n':
+            license_code_bits.append('by')
+
+        if commercial == 'n':
+            license_code_bits.append('nc')
+
+        if derivatives == 'n':
+            license_code_bits.append('nd')
+        elif derivatives == 'sa':
+            license_code_bits.append('sa')
+
+        license_code = license_code_bits.join('-')
+        return cc.license.by_code(
+            license_code,
+            jurisdiction=jurisdiction,
+            version=version)
 
     # add the work to the answers block
     answers.update(_work_info(request_form))
