@@ -1,4 +1,4 @@
-cfrom routes.route import Route
+from routes.route import Route
 
 chooser_routes = [
     Route("choose_index", "/",
