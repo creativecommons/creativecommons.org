@@ -101,14 +101,10 @@ def _work_info(self, request_form):
     return result
 
 
-def _issue_license(request):
+def _issue_license(request_form):
     """Extract the license engine fields from the request and return a
     License object."""
-
-    request_form = request.GET or request.POST
-
-    jurisdiction = request_form.get(
-        'field_jurisdiction', jurisdiction)
+    jurisdiction = request_form.get('field_jurisdiction')
     version = request_form.get('version', None)
 
     # Handle public domain class
@@ -130,9 +126,9 @@ def _issue_license(request):
 
     else:
         ## Construct the license code for a "standard" license
-        attribution = answers.get('attribution')
-        commercial = answers.get('commercial')
-        derivatives = answers.get('derivatives')
+        attribution = request_form.get('field_attribution')
+        commercial = request_form.get('field_commercial')
+        derivatives = request_form.get('field_derivatives')
 
         license_code_bits = []
         if not attribution == 'n':
@@ -146,7 +142,7 @@ def _issue_license(request):
         elif derivatives == 'sa':
             license_code_bits.append('sa')
 
-        license_code = license_code_bits.join('-')
+        license_code = '-'.join(license_code_bits)
         return cc.license.by_code(
             license_code,
             jurisdiction=jurisdiction,
@@ -166,6 +162,7 @@ def chooser_view(request):
         j.code for j in util.get_selector_jurisdictions('standard')]
     
     context = _base_context(request)
+
     context.update(
         {'engine_template': engine_template,
          'metadata_template': metadata_template,
@@ -181,7 +178,9 @@ def choose_results_view(request):
         'macros_templates/engine.pt')
 
     context = _base_context(request)
+    request_form = request.GET or request.POST
     context.update(
-        {'engine_template': engine_template})
+        {'engine_template': engine_template,
+         'license': _issue_license(request_form)})
 
     return Response(template.pt_render(context))
