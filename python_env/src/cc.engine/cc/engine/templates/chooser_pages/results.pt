@@ -5,141 +5,175 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="context/@@engine/page"
       i18n:domain="cc_org">
-<head>
-  <title metal:fill-slot="title">Choose a License</title>
+  <head>
+    <title metal:fill-slot="title">Choose a License</title>
+    <metal:style fill-slot="headers">
+      <style>
+        #beta h4 {
+          margin-bottom: 0.25em;
+          margin-top: 0.5em;
+          padding-left: 0;
+        }
+      </style>
+    </metal:style>
+  </head>
+  <body>
+    <metal:title metal:fill-slot="page-header-title"
+                 i18n:translate="license.here_chosen">
+      Here is the license you've chosen
+    </metal:title>
 
-  <metal:style fill-slot="headers">
-    <style>
-      
-      #beta h4 {
-        margin-bottom: 0.25em;
-        margin-top: 0.5em;
-        padding-left: 0;
-      }
+    <div metal:fill-slot="body"
+         tal:define="target_lang string:en;">
 
-    </style>
-  </metal:style>
-</head>
-<body>
+      <div class="licensebox">
+        <div tal:omit-tag="" i18n:translate="license.selected">
+          <span tal:omit-tag="" i18n:name="license_url" tal:content="view/license/uri" />
+          <span tal:omit-tag="" i18n:name="country_name" tal:content="python: '' " />
+          You have selected the
+          <span i18n:name="license_pretty_name"
+                tal:replace="python: view.license.name" />.
+          <a href="#"
+             tal:attributes="href view/license/uri">See how the license will look</a>
+          to your site's visitors.
+        </div>
 
+        <div style="margin-top:10px; text-align:center;">
+          <table tal:attributes="dir view/get_ltr_rtl;"><tr>
+              <td style="text-align:center">
+                <a tal:attributes="href view/license/uri"
+                   href="#">
+                  <img id="licensebutton"
+                       alt="Creative Commons License"
+                       tal:attributes="src view/license/imageurl"
+                       src="" style="margin-right:10px;margin-bottom:4px; border: 0;" />
+                </a>
+                <br/>
+                <input type="radio" name="button"
+                       checked="checked" onclick=""
+                       tal:attributes="onclick python: 'swapbutton(\''+view.license.imageurl+'\')'"/>
+              </td>
+              <td style="text-align:center">
+                <a tal:attributes="href view/license/uri"
+                   href="#"><img id="licensebutton_some"
+                                 alt="Creative Commons License"
+                                 src="http://creativecommons.org/images/public/somerights20.png"
+                                 style="margin-right:10px;margin-bottom:4px;" /></a>
+                <br/>
+                <input type="radio" name="button"
+                       onclick="swapbutton('http://creativecommons.org/images/public/somerights20.png')"/>
+              </td>
+              <td style="text-align:center"
+                  valign="bottom" tal:condition="not:request/wiki|nothing">
+                <a tal:attributes="href view/license/uri"
+                   href="#"><img id="licensebutton_slim"
+                                 alt="Creative Commons License"
+                                 tal:attributes="src view/license/slim_image"
+                                 src="" style="margin-right:10px;margin-bottom:4px; border: 0;" /></a>
+                <br/>
+                <input type="radio" name="button" onclick="" tal:attributes="onclick python: 'swapbutton(\''+view.license.slim_image+'\')'"/>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div style="margin-top:20px;margin-bottom:30px;">
+        <h4 i18n:translate="license.have_your_own_website">Have your own website?</h4>
 
-  <metal:title metal:fill-slot="page-header-title"
-	       i18n:translate="license.here_chosen">
-    Here is the license you've chosen
-  </metal:title>
+        <p i18n:translate="license.copy_text">
+          Copy the text below to your Web site to let your visitors
+          know what license applies to your works.
+        </p>
 
-<div metal:fill-slot="body"
-      tal:define="target_lang string:en;">
+        <form action="">
+          <div>
+            <textarea id="codetocopy" name="html"
+                      style="width:90%;height:150px;" rows="8" cols="20"
+                      tal:content="structure view/license/escapehtml"/>
+          </div>
+        </form>
 
-<div class="licensebox">
-<div tal:omit-tag="" i18n:translate="license.selected">
-<span tal:omit-tag="" i18n:name="license_url" tal:content="view/license/uri" />
-<span tal:omit-tag="" i18n:name="country_name" tal:content="python: '' " />
-You have selected the <span i18n:name="license_pretty_name" tal:replace="python: view.license.name" />.  <a href="#" tal:attributes="href view/license/uri">See how the license will look</a> to your site's visitors.
-</div>
+        <p i18n:translate="license.select_text">
+          <span tal:content="request/QUERY_STRING"
+                tal:omit-tag=""
+                i18n:name="url_vars" >
+            Select the contents of the box above and copy it. Or, have it
+            <a href="/choose/work-html-popup?lang=en&amp;license_code=by-nc-nd&amp;title=efwefewf"
+               onclick="window.open('http://creativecommons.org/choose/work-html-popup?lang=en&amp;license_code=by-nc-nd&amp;title=efwefewf', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">emailed to yourself.</a>
+          </span>
+        </p>
 
-<div style="margin-top:10px; text-align:center;">
-<table tal:attributes="dir view/get_ltr_rtl;"><tr>
-<td style="text-align:center">
-<a tal:attributes="href view/license/uri"
-   href="#"><img id="licensebutton" alt="Creative Commons License" tal:attributes="src view/license/imageurl" src="" style="margin-right:10px;margin-bottom:4px; border: 0;" /></a>
-<br/><input type="radio" name="button" checked="checked" onclick="" tal:attributes="onclick python: 'swapbutton(\''+view.license.imageurl+'\')'"/>
-</td>
-<td style="text-align:center">
-<a tal:attributes="href view/license/uri"
-   href="#"><img id="licensebutton_some" alt="Creative Commons License" src="http://creativecommons.org/images/public/somerights20.png" style="margin-right:10px;margin-bottom:4px;" /></a>
-<br/><input type="radio" name="button" onclick="swapbutton('http://creativecommons.org/images/public/somerights20.png')"/>
-</td>
-<td style="text-align:center" valign="bottom" tal:condition="not:request/wiki|nothing">
-<a tal:attributes="href view/license/uri"
-   href="#"><img id="licensebutton_slim" alt="Creative Commons License" tal:attributes="src view/license/slim_image" src="" style="margin-right:10px;margin-bottom:4px; border: 0;" /></a>
-<br/><input type="radio" name="button" onclick="" tal:attributes="onclick python: 'swapbutton(\''+view.license.slim_image+'\')'"/>
-</td>
-</tr></table>
-</div>
-</div>
+        <p>
+          <strong i18n:translate="license.read_tutorial">
+            Need more help?
+            <a href="http://creativecommons.org/Website/Publish">Read our tutorial</a>.
+          </strong>
+        </p>
 
-<div style="margin-top:20px;margin-bottom:30px;">
-	<h4 i18n:translate="license.have_your_own_website">Have your own website?</h4>
-
-	<p i18n:translate="license.copy_text">Copy the text below to your Web site to let your visitors know what license applies to your works.</p>
-
-	<form action="">
-    <div>
-	    <textarea id="codetocopy" name="html" style="width:90%;height:150px;" rows="8" cols="20" tal:content="structure view/license/escapehtml"/>
+        <p i18n:translate="license.after_support_cc">
+          After publishing your license, please consider
+          <a href="https://support.creativecommons.org/donate/">supporting Creative Commons</a>.
+        </p>
+      </div>
+      <!-- <div metal:use-macro="here/license_macros/macros/languages">
+           language box
+           </div>
+      -->
     </div>
-	</form>
 
+    <metal:sidebar fill-slot="sidebar">
+      <p i18n:translate="license.learn_host">
+        Learn about other places you can host your licensed files. These
+        sites work with your Creative Commons license.
+      </p>
 
-<p i18n:translate="license.select_text">
-<span tal:content="request/QUERY_STRING" 
-      tal:omit-tag=""
-      i18n:name="url_vars" >
-Select the contents of the box above and copy it. Or, have it <a href="/choose/work-html-popup?lang=en&amp;license_code=by-nc-nd&amp;title=efwefewf" onclick="window.open('http://creativecommons.org/choose/work-html-popup?lang=en&amp;license_code=by-nc-nd&amp;title=efwefewf', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">emailed to yourself.</a>
-</span>
-</p>
+      <ul>
+        <li>
+          <a href="http://wiki.creativecommons.org/Internet_Archive/Publish"
+             i18n:translate="license.publish_ia"
+             class="publish-links">
+            Publish your licensed music or video to the Internet Archive
+          </a>
+        </li>
 
-<p><strong i18n:translate="license.read_tutorial">Need more help? <a href="http://creativecommons.org/Website/Publish">Read our tutorial</a>.</strong></p>
+        <li>
+          <a href="http://wiki.creativecommons.org/Flickr/Publish"
+             i18n:translate="license.publish_flickr"
+             class="publish-links">Post your licensed images at Flickr</a>
+        </li>
 
-<p i18n:translate="license.after_support_cc">After publishing your license, please consider <a href="https://support.creativecommons.org/donate/">supporting Creative Commons</a>.</p>
-	
-</div>
+        <li>
+          <a href="http://wiki.creativecommons.org/Blog/Publish"
+             i18n:translate="license.publish_blog"
+             class="publish-link">Add a Creative Commons license to your blog</a>
+        </li>
+      </ul>
 
+      <h4 i18n:translate="license.offline_work">Offline Work?</h4>
 
-		
-<!-- <div metal:use-macro="here/license_macros/macros/languages">
-  language box
-</div>
--->
+      <ul>
+        <li i18n:translate="license.mark_nonweb">
+          <%=[ccommons::istr $lang license.mark_nonweb]%>
+          <span tal:omit-tag="" i18n:name="url_vars"
+                tal:content="request/QUERY_STRING" />
+        </li>
+      </ul>
 
-</div>
+      <h4 i18n:translate="license.option_next_steps">Optional next steps</h4>
 
-<metal:sidebar fill-slot="sidebar">
-
-<p i18n:translate="license.learn_host">Learn about other places you can host your licensed files. These
-sites work with your Creative Commons license.</p>
-
-<ul>
-	<li><a href="http://wiki.creativecommons.org/Internet_Archive/Publish" 
-	       i18n:translate="license.publish_ia"
-	       class="publish-links">Publish your licensed music or video to
-	       the Internet Archive</a></li>
-
-	<li><a href="http://wiki.creativecommons.org/Flickr/Publish" 
-	       i18n:translate="license.publish_flickr"
-	       class="publish-links">Post your licensed images at Flickr</a></li>
-
-	<li><a href="http://wiki.creativecommons.org/Blog/Publish"
-	       i18n:translate="license.publish_blog"
-	       class="publish-link">Add a Creative Commons license to your blog</a>
-	</li>	
-
-</ul>
-
-<h4 i18n:translate="license.offline_work">Offline Work?</h4>
-
-<ul>
-       <li i18n:translate="license.mark_nonweb">
-	<%=[ccommons::istr $lang license.mark_nonweb]%>	
-	<span tal:omit-tag="" i18n:name="url_vars" 
-	      tal:content="request/QUERY_STRING" />
-	</li>
-</ul>	
-
-<h4 i18n:translate="license.option_next_steps">Optional next steps</h4>
-
-<ul>
-  <li><a href="https://creativecommons.net/r/add/"
-	 i18n:translate="license.register_with_cc_network"
-	 >Register your work with the CC Network</a>
-  </li>
-  <li><a href="http://beta.fairshare.cc/fairshare/homepage?company=cc&license=$license_url"
-	 tal:attributes="href string: http://beta.fairshare.cc/fairshare/homepage?company=cc&license=${view/license/uri}"
-	 i18n:translate="license.track_with_fairshare"
-	 >Track use of your work with FairShare</a></li>
-</ul>
-
-</metal:sidebar>
-
-</body>
+      <ul>
+        <li>
+          <a href="https://creativecommons.net/r/add/"
+             i18n:translate="license.register_with_cc_network"
+             >Register your work with the CC Network</a>
+        </li>
+        <li>
+          <a href="http://beta.fairshare.cc/fairshare/homepage?company=cc&license=$license_url"
+             tal:attributes="href string: http://beta.fairshare.cc/fairshare/homepage?company=cc&license=${view/license/uri}"
+             i18n:translate="license.track_with_fairshare"
+             >Track use of your work with FairShare</a>
+        </li>
+      </ul>
+    </metal:sidebar>
+  </body>
 </html>
