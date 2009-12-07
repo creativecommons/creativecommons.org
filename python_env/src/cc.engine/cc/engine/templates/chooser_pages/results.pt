@@ -90,7 +90,7 @@
           <div>
             <textarea id="codetocopy" name="html"
                       style="width:90%;height:150px;" rows="8" cols="20"
-                      tal:content="structure license/escapehtml"/>
+                      tal:content="structure license_html"/>
           </div>
         </form>
 

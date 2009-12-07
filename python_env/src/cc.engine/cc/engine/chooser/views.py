@@ -1,3 +1,5 @@
+from urlparse import urlparse, urljoin
+
 from webob import Response
 
 from cc.engine import util
@@ -184,12 +186,13 @@ def choose_results_view(request):
     work_info = _work_info(request_form)
     license_slim_logo = license.logo_method('80x15')
 
-    # html_formatter = HTMLFormatter()
-    # license_html = format(license, work_info)
+    html_formatter = HTMLFormatter()
+    license_html = html_formatter.format(license, work_info)
 
     context.update(
         {'engine_template': engine_template,
          'license': license,
-         'license_slim_logo': license_slim_logo})
+         'license_slim_logo': license_slim_logo,
+         'license_html': license_html})
 
     return Response(template.pt_render(context))
