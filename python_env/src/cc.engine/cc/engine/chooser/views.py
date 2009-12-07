@@ -3,6 +3,7 @@ from webob import Response
 from cc.engine import util
 from cc.i18npkg import ccorg_i18n_setup
 import cc.license
+from cc.license.formatters.classes import HTMLFormatter
 
 
 def _base_context(request):
@@ -19,7 +20,7 @@ def _base_context(request):
     return context
 
 
-def _work_info(self, request_form):
+def _work_info(request_form):
     """Extract work information from the request and return it as a
     dict."""
 
@@ -179,8 +180,16 @@ def choose_results_view(request):
 
     context = _base_context(request)
     request_form = request.GET or request.POST
+    license = _issue_license(request_form)
+    work_info = _work_info(request_form)
+    license_slim_logo = license.logo_method('80x15')
+
+    # html_formatter = HTMLFormatter()
+    # license_html = format(license, work_info)
+
     context.update(
         {'engine_template': engine_template,
-         'license': _issue_license(request_form)})
+         'license': license,
+         'license_slim_logo': license_slim_logo})
 
     return Response(template.pt_render(context))

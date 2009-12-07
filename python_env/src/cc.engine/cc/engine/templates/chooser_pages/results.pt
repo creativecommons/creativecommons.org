@@ -46,13 +46,13 @@
                    href="#">
                   <img id="licensebutton"
                        alt="Creative Commons License"
-                       tal:attributes="src license/imageurl"
+                       tal:attributes="src license/logo"
                        src="" style="margin-right:10px;margin-bottom:4px; border: 0;" />
                 </a>
                 <br/>
                 <input type="radio" name="button"
                        checked="checked" onclick=""
-                       tal:attributes="onclick python: 'swapbutton(\''+license.imageurl+'\')'"/>
+                       tal:attributes="onclick python: 'swapbutton(\''+license.logo+'\')'"/>
               </td>
               <td style="text-align:center">
                 <a tal:attributes="href license/uri"
@@ -69,10 +69,10 @@
                 <a tal:attributes="href license/uri"
                    href="#"><img id="licensebutton_slim"
                                  alt="Creative Commons License"
-                                 tal:attributes="src license/slim_image"
+                                 tal:attributes="src license_slim_logo"
                                  src="" style="margin-right:10px;margin-bottom:4px; border: 0;" /></a>
                 <br/>
-                <input type="radio" name="button" onclick="" tal:attributes="onclick python: 'swapbutton(\''+license.slim_image+'\')'"/>
+                <input type="radio" name="button" onclick="" tal:attributes="onclick python: 'swapbutton(\''+license_slim_logo+'\')'"/>
               </td>
             </tr>
           </table>
