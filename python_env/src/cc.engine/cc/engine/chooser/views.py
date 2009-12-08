@@ -1,6 +1,6 @@
 from urlparse import urlparse, urljoin
 
-from webob import Response
+from webob import Response, exc
 
 from cc.engine import util
 from cc.i18npkg import ccorg_i18n_setup
@@ -196,3 +196,8 @@ def choose_results_view(request):
          'license_html': license_html})
 
     return Response(template.pt_render(context))
+
+
+def choose_wiki_redirect(request):
+    return exc.HTTPTemporaryRedirect(
+        location='/choose/results-one?license_code=by-sa')

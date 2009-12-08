@@ -5,4 +5,6 @@ chooser_routes = [
           controller="cc.engine.chooser.views:chooser_view"),
     Route("choose_results_one", "/results-one",
           controller="cc.engine.chooser.views:choose_results_view"),
+    Route("choose_wiki", "/wiki",
+          controller="cc.engine.chooser.views:choose_wiki_redirect"),
     ]
