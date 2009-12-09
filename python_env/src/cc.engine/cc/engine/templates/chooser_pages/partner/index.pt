@@ -42,7 +42,7 @@
       <form method="get" action="results-one">
         <input type="hidden" name="lang" value="en" tal:attributes="value target_lang"/>
         <input type="hidden" name="language" value="en" tal:attributes="value target_lang"/>
-        <input type="hidden" name="referrer" value="en" tal:attributes="value view/referrer"/>
+        <input type="hidden" name="referrer" value="en" tal:attributes="value referrer "/>
 
         <input type="hidden" name="partner" value="" tal:attributes="value partner" />
         <input type="hidden" name="exit_url" value="" tal:attributes="value exiturl" />
@@ -110,9 +110,9 @@
                  value="n" i18n:translate="util.No" />
           <br />
 
-          <span tal:condition="python: request.has_key('jurisdiction_choose')==False and request.has_key('jurisdiction')">
+          <span tal:condition="python: request.GET.has_key('jurisdiction_choose')==False and request.GET.has_key('jurisdiction')">
             <input type="hidden" name="field_jurisdiction"
-                   value="" tal:attributes="value request/jurisdiction"/>
+                   value="" tal:attributes="value request/GET/jurisdiction"/>
           </span>
         </p>
 
@@ -131,7 +131,7 @@
           <br />
 
           <select name="field_jurisdiction"
-                  tal:define="selected view/selected_jurisdiction">
+                  tal:define="selected selected_jurisdiction">
             <option value=""  
                     tal:condition="python: selected is None"
                     i18n:translate="util.Generic" selected="selected">Generic</option>
@@ -140,7 +140,7 @@
                     i18n:translate="util.Generic">Generic</option>
 
             <span tal:omit-tag=""
-                  tal:repeat="j python:license_class().jurisdictions()">
+                  tal:repeat="j available_jurisdiction_codes">
               <option value="" selected="selected"
                       tal:condition="python: j != '-' and selected == j"
                       tal:attributes="value j;" >
