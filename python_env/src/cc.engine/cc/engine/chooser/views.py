@@ -153,9 +153,15 @@ def _issue_license(request_form):
 
 
 def chooser_view(request):
-    template = util.get_zpt_template('chooser_pages/index.pt')
+    if request.GET.get('partner'):
+        template = util.get_zpt_template('chooser_pages/partner/index.pt')
+    else:
+        template = util.get_zpt_template('chooser_pages/index.pt')
+
     engine_template = util.get_zpt_template(
         'macros_templates/engine.pt')
+    partner_template = util.get_zpt_template(
+        'macros_templates/partner.pt')
     metadata_template = util.get_zpt_template(
         'macros_templates/metadata.pt')
     support_template = util.get_zpt_template(
@@ -168,6 +174,7 @@ def chooser_view(request):
 
     context.update(
         {'engine_template': engine_template,
+         'partner_template': partner_template,
          'metadata_template': metadata_template,
          'support_template': support_template,
          'available_jurisdiction_codes': available_jurisdiction_codes})
