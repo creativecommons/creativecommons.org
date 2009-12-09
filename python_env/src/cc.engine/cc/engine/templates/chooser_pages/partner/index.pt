@@ -11,12 +11,12 @@
   <body>
     <div metal:fill-slot="body"
          tal:define="target_lang string:en;
-                     stylesheet request/stylesheet | nothing;
-                     exiturl    request/exit_url;
+                     stylesheet request/GET/stylesheet | nothing;
+                     exiturl    request/GET/exit_url;
                      pd_exiturl python:exiturl.replace('&', '%26');
-                     partner    request/partner;
-                     show_jurisdiction request/jurisdiction_chooser | nothing;
-                     def_juris request/jurisdiction | nothing;
+                     partner    request/GET/partner;
+                     show_jurisdiction request/GET/jurisdiction_chooser | nothing;
+                     def_juris request/GET/jurisdiction | nothing;
                      ">
       <p i18n:translate="license.partner_what">
         Creative Commons licenses help you share your work while keeping
