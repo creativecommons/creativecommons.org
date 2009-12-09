@@ -195,7 +195,8 @@ def chooser_view(request):
          'partner_template': partner_template,
          'metadata_template': metadata_template,
          'support_template': support_template,
-         'available_jurisdiction_codes': available_jurisdiction_codes})
+         'available_jurisdiction_codes': available_jurisdiction_codes,
+         'referrer': request.headers.get('REFERER','')})
 
     return Response(template.pt_render(context))
 
