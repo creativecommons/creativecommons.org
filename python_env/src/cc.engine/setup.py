@@ -41,6 +41,7 @@ setup(
         #'repoze.bfg',
         'WebOb',
         'routes',
+        'sphinx',
         ],
 
     # author metadata
