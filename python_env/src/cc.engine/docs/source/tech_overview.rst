@@ -5,7 +5,10 @@ cc.engine uses a very minimalist "web framework"... perhaps more
 correctly, it does not use a framework at all, and instead provides a
 very minimal WSGI application that pulls together several generic
 libraries.  Despite this, the structure of the system is very similar
-to a Pylons or a Django application.
+to a Pylons or a Django application.  If you have written a Pylons of
+Django application before, all of this should look fairly familiar
+with little extra information.
+
 
 Components used
 ---------------
@@ -23,7 +26,11 @@ The components that are used are:
 How the app is structured
 -------------------------
 
-The meat of the application is all housed in cc/engine/.
+The meat of the application is all housed in cc/engine/.  Several
+parts of the application are broken into "subapplications", such as
+cc/engine/licenses/, which houses the routing information and views
+for the actual licenses and their deeds, and cc/engine/chooser/, which
+houses the views and routing information for the license chooser.
 
 
 WSGI Application
@@ -33,18 +40,44 @@ The WSGI application is housed in cc/engine/app.py.
 
 It is a very minimalist WSGI application... it simply takes an
 incoming request, passes the path to the routing system and sees if it
-can find a result.  If it does find such a result
+can find a result.  If it can't find a result at that URL, but can
+find one if it appends a slash, it'll redirect to that url (thus
+adding Django-style APPEND_SLASH=True functionality).  The application
+will then pass a WebOb Request object to the view/controller specified
+by the matching route's "controller" field.
 
 
-Routes
-~~~~~~
+URL Dispatching / Routing
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
+The root mapper for routes is set up in the cc.engine.routing module
+as the "mapping" global variable.  Some routes may be provided here,
+but the majority are actually housed in the "subapplication"
+routing.py files.  For example, routing for the chooser is provided in
+cc/engine/chooser/routing.py and routing for the license is provided
+in cc/engine/chooser/license.py.  These are then "pulled in" to the
+global routing mapper via the mapping.extend() method.  The "results"
+of the routing match will then be appended to the WebOb.Request object
+that is passed to the view as the "matchdict" attribute.  See the
+`documentation for the Routes library
+<http://routes.groovie.org/manual.html>`_ to find out more about how
+this works.
+
+Generally, you can provide any information here, but there is one
+attribute which is *required* as part of cc.engine's WSGI application:
+"controller".  This field should be structured as:
+"module.path.to:controller_name", where the portion before the colon
+is the module and the portion after the colon is the
+function/method/callable object instance that is to process this
+method.
 
 
 Views / Controllers
 ~~~~~~~~~~~~~~~~~~~
 
-Views / controllers are simply methods.
+Views / controllers are simply methods.  They must accept a single
+method, "request", which will be the WebOb.Request method passed from
+the WSGI application.
 
 Generally kept in a component like 
 
@@ -53,8 +86,16 @@ Templates
 ~~~~~~~~~
 
 
+I18N
+~~~~
 
 
+Models
+~~~~~~
+
+Surprise!  Cc.engine is not (at least presently) a database-driven
+application.  The only "models" used are actually the licenses pulled
+from the RDF files via cc.license.
 
 
 Tests
