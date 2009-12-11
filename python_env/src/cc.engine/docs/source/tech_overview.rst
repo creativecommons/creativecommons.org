@@ -9,6 +9,11 @@ to a Pylons or a Django application.  If you have written a Pylons of
 Django application before, all of this should look fairly familiar
 with little extra information.
 
+(However, if you are really curious about how this works, or would
+like to try writing your own framework or minimalist un-framework web
+application, I recommend reading `Another Do-It-Yourself Framework
+<http://pythonpaste.org/webob/do-it-yourself.html>`_)
+
 
 Components used
 ---------------
@@ -22,6 +27,7 @@ The components that are used are:
   within WSGI pleasant.
 * `Nose <http://somethingaboutorange.com/mrl/projects/nose/0.11.1/>`_
   for nice unit testing
+
 
 How the app is structured
 -------------------------
@@ -57,7 +63,7 @@ routing.py files.  For example, routing for the chooser is provided in
 cc/engine/chooser/routing.py and routing for the license is provided
 in cc/engine/chooser/license.py.  These are then "pulled in" to the
 global routing mapper via the mapping.extend() method.  The "results"
-of the routing match will then be appended to the WebOb.Request object
+of the routing match will then be appended to the webob.Request object
 that is passed to the view as the "matchdict" attribute.  See the
 `documentation for the Routes library
 <http://routes.groovie.org/manual.html>`_ to find out more about how
@@ -76,14 +82,20 @@ Views / Controllers
 ~~~~~~~~~~~~~~~~~~~
 
 Views / controllers are simply methods.  They must accept a single
-method, "request", which will be the WebOb.Request method passed from
-the WSGI application.
+method, "request", which will be the webob.Request method passed from
+the WSGI application.  In turn, they are expected to return a
+webob.Response object.  (Or, in the case of an redirect or error,
+webob.exc.HTTPTemporaryRedirect or something else from webob.exc.)
 
-Generally kept in a component like 
+Views technically *can* be placed anywhere, but by convention you
+should probably put them in a 'views' file (ie,
+cc.engine.license.views, or cc.engine.chooser.views).
 
 
 Templates
 ~~~~~~~~~
+
+Templates are kept in cc/engine/templates/.
 
 
 I18N
@@ -100,4 +112,3 @@ from the RDF files via cc.license.
 
 Tests
 ~~~~~
-
