@@ -95,11 +95,56 @@ cc.engine.license.views, or cc.engine.chooser.views).
 Templates
 ~~~~~~~~~
 
-Templates are kept in cc/engine/templates/.
+Templates are kept in cc/engine/templates/.  All templates are
+currently Zope Page Template based.
+
+To load a template, use the cc.engine.util.get_zpt_template() method.
+Pass in a filename that is relative to cc/engine/templates/.  For
+example, to import the template at
+cc/engine/templates/myth_profiles/phoenix.zpt run:
+
+  phoenix_template = util.get_zpt_template('myth_profiles/phoenix.zpt')
+
+If you know the target language that your template should render to,
+pass that in as the second argument (see I18N below).
+
+To render, use:
+
+  context = {
+      'request': request,
+      'some_other_context_var': 'bla bla bla'}
+  phoenix_template.pt_render(context)
+
+
+cc.engine tries to be fairly minimal in the amount of Zope machinery
+it pulls in (ie, currently it does not use the zope component system),
+so currently if your template relies on metal macros, you should
+provide those in the context like so:
+
+  context = {
+      'request': request,
+      'base_template': util.get_zpt_template(
+          'myth_profiles/base.pt')}
+
+Then in your template, use metal:use-macro like:
+
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:tal="http://xml.zope.org/namespaces/tal"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        xmlns:metal="http://xml.zope.org/namespaces/metal"
+        metal:use-macro="base_template/macros/page"
+        i18n:domain="cc_org">
+
+Obviously replacing "page" with whatever macro is appropriate.
+
+TODO: explain how to use assets like javascript/css/images.  Guess we
+should implement this first!
 
 
 I18N
 ~~~~
+
+Internationalization
 
 
 Models
