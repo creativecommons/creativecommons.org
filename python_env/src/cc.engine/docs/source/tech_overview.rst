@@ -157,3 +157,7 @@ from the RDF files via cc.license.
 
 Tests
 ~~~~~
+
+Tests go in the cc/engine/tests/ directory.  Either add to an existing
+test_*.py module or add your own if appropriate.  Tests are set up in
+the usual Nose tests fashion.
