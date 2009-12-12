@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tech Overview &mdash; CC.Engine v9.1-dev documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '9.1-dev',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="CC.Engine v9.1-dev documentation" href="index.html" />
+    <link rel="prev" title="Welcome to CC.Engine’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to CC.Engine’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CC.Engine v9.1-dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tech-overview">
+<h1>Tech Overview<a class="headerlink" href="#tech-overview" title="Permalink to this headline">¶</a></h1>
+<p>cc.engine uses a very minimalist &#8220;web framework&#8221;... perhaps more
+correctly, it does not use a framework at all, and instead provides a
+very minimal WSGI application that pulls together several generic
+libraries.  Despite this, the structure of the system is very similar
+to a Pylons or a Django application.  If you have written a Pylons of
+Django application before, all of this should look fairly familiar
+with little extra information.</p>
+<p>(However, if you are really curious about how this works, or would
+like to try writing your own framework or minimalist un-framework web
+application, I recommend reading <a class="reference external" href="http://pythonpaste.org/webob/do-it-yourself.html">Another Do-It-Yourself Framework</a>)</p>
+<div class="section" id="components-used">
+<h2>Components used<a class="headerlink" href="#components-used" title="Permalink to this headline">¶</a></h2>
+<p>The components that are used are:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://pypi.python.org/pypi/zope.pagetemplate/3.5.0">Zope Page Templates</a>
+for templating</li>
+<li><a class="reference external" href="http://routes.groovie.org/">Routes</a> for url dispatching</li>
+<li><a class="reference external" href="http://pythonpaste.org/webob/">WebOb</a> for making request objecst
+within WSGI pleasant.</li>
+<li><a class="reference external" href="http://somethingaboutorange.com/mrl/projects/nose/0.11.1/">Nose</a>
+for nice unit testing</li>
+</ul>
+</div>
+<div class="section" id="how-the-app-is-structured">
+<h2>How the app is structured<a class="headerlink" href="#how-the-app-is-structured" title="Permalink to this headline">¶</a></h2>
+<p>The meat of the application is all housed in cc/engine/.  Several
+parts of the application are broken into &#8220;subapplications&#8221;, such as
+cc/engine/licenses/, which houses the routing information and views
+for the actual licenses and their deeds, and cc/engine/chooser/, which
+houses the views and routing information for the license chooser.</p>
+<div class="section" id="wsgi-application">
+<h3>WSGI Application<a class="headerlink" href="#wsgi-application" title="Permalink to this headline">¶</a></h3>
+<p>The WSGI application is housed in cc/engine/app.py.</p>
+<p>It is a very minimalist WSGI application... it simply takes an
+incoming request, passes the path to the routing system and sees if it
+can find a result.  If it can&#8217;t find a result at that URL, but can
+find one if it appends a slash, it&#8217;ll redirect to that url (thus
+adding Django-style APPEND_SLASH=True functionality).  The application
+will then pass a WebOb Request object to the view/controller specified
+by the matching route&#8217;s &#8220;controller&#8221; field.</p>
+</div>
+<div class="section" id="url-dispatching-routing">
+<h3>URL Dispatching / Routing<a class="headerlink" href="#url-dispatching-routing" title="Permalink to this headline">¶</a></h3>
+<p>The root mapper for routes is set up in the cc.engine.routing module
+as the &#8220;mapping&#8221; global variable.  Some routes may be provided here,
+but the majority are actually housed in the &#8220;subapplication&#8221;
+routing.py files.  For example, routing for the chooser is provided in
+cc/engine/chooser/routing.py and routing for the license is provided
+in cc/engine/chooser/license.py.  These are then &#8220;pulled in&#8221; to the
+global routing mapper via the mapping.extend() method.  The &#8220;results&#8221;
+of the routing match will then be appended to the webob.Request object
+that is passed to the view as the &#8220;matchdict&#8221; attribute.  See the
+<a class="reference external" href="http://routes.groovie.org/manual.html">documentation for the Routes library</a> to find out more about how
+this works.</p>
+<p>Generally, you can provide any information here, but there is one
+attribute which is <em>required</em> as part of cc.engine&#8217;s WSGI application:
+&#8220;controller&#8221;.  This field should be structured as:
+&#8220;module.path.to:controller_name&#8221;, where the portion before the colon
+is the module and the portion after the colon is the
+function/method/callable object instance that is to process this
+method.</p>
+</div>
+<div class="section" id="views-controllers">
+<h3>Views / Controllers<a class="headerlink" href="#views-controllers" title="Permalink to this headline">¶</a></h3>
+<p>Views / controllers are simply methods.  They must accept a single
+method, &#8220;request&#8221;, which will be the webob.Request method passed from
+the WSGI application.  In turn, they are expected to return a
+webob.Response object.  (Or, in the case of an redirect or error,
+webob.exc.HTTPTemporaryRedirect or something else from webob.exc.)</p>
+<p>Views technically <em>can</em> be placed anywhere, but by convention you
+should probably put them in a &#8216;views&#8217; file (ie,
+cc.engine.license.views, or cc.engine.chooser.views).</p>
+</div>
+<div class="section" id="templates">
+<h3>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h3>
+<p>Templates are kept in cc/engine/templates/.  All templates are
+currently Zope Page Template based.</p>
+<p>To load a template, use the cc.engine.util.get_zpt_template() method.
+Pass in a filename that is relative to cc/engine/templates/.  For
+example, to import the template at
+cc/engine/templates/myth_profiles/phoenix.zpt run:</p>
+<blockquote>
+phoenix_template = util.get_zpt_template(&#8216;myth_profiles/phoenix.zpt&#8217;)</blockquote>
+<p>If you know the target language that your template should render to,
+pass that in as the second argument (see I18N below).</p>
+<p>To render, use:</p>
+<blockquote>
+<dl class="docutils">
+<dt>context = {</dt>
+<dd>&#8216;request&#8217;: request,
+&#8216;some_other_context_var&#8217;: &#8216;bla bla bla&#8217;}</dd>
+</dl>
+<p>phoenix_template.pt_render(context)</p>
+</blockquote>
+<p>cc.engine tries to be fairly minimal in the amount of Zope machinery
+it pulls in (ie, currently it does not use the zope component system),
+so currently if your template relies on metal macros, you should
+provide those in the context like so:</p>
+<blockquote>
+<dl class="docutils">
+<dt>context = {</dt>
+<dd><p class="first">&#8216;request&#8217;: request,
+&#8216;base_template&#8217;: util.get_zpt_template(</p>
+<blockquote class="last">
+&#8216;myth_profiles/base.pt&#8217;)}</blockquote>
+</dd>
+</dl>
+</blockquote>
+<p>Then in your template, use metal:use-macro like:</p>
+<blockquote>
+<dl class="docutils">
+<dt>&lt;html xmlns=&#8221;<a class="reference external" href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</a>&#8220;</dt>
+<dd>xmlns:tal=&#8221;http://xml.zope.org/namespaces/tal&#8221;
+xmlns:i18n=&#8221;http://xml.zope.org/namespaces/i18n&#8221;
+xmlns:metal=&#8221;http://xml.zope.org/namespaces/metal&#8221;
+metal:use-macro=&#8221;base_template/macros/page&#8221;
+i18n:domain=&#8221;cc_org&#8221;&gt;</dd>
+</dl>
+</blockquote>
+<p>Obviously replacing &#8220;page&#8221; with whatever macro is appropriate.</p>
+<p>TODO: explain how to use assets like javascript/css/images.  Guess we
+should implement this first!</p>
+</div>
+<div class="section" id="i18n">
+<h3>I18N<a class="headerlink" href="#i18n" title="Permalink to this headline">¶</a></h3>
+<p>Internationalization</p>
+</div>
+<div class="section" id="models">
+<h3>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h3>
+<p>Surprise!  Cc.engine is not (at least presently) a database-driven
+application.  The only &#8220;models&#8221; used are actually the licenses pulled
+from the RDF files via cc.license.</p>
+</div>
+<div class="section" id="tests">
+<h3>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h3>
+<p>Tests go in the cc/engine/tests/ directory.  Either add to an existing
+test_*.py module or add your own if appropriate.  Tests are set up in
+the usual Nose tests fashion.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="">Tech Overview</a><ul>
+<li><a class="reference external" href="#components-used">Components used</a></li>
+<li><a class="reference external" href="#how-the-app-is-structured">How the app is structured</a><ul>
+<li><a class="reference external" href="#wsgi-application">WSGI Application</a></li>
+<li><a class="reference external" href="#url-dispatching-routing">URL Dispatching / Routing</a></li>
+<li><a class="reference external" href="#views-controllers">Views / Controllers</a></li>
+<li><a class="reference external" href="#templates">Templates</a></li>
+<li><a class="reference external" href="#i18n">I18N</a></li>
+<li><a class="reference external" href="#models">Models</a></li>
+<li><a class="reference external" href="#tests">Tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="index.html"
+                                  title="previous chapter">Welcome to CC.Engine&#8217;s documentation!</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/tech_overview.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to CC.Engine’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">CC.Engine v9.1-dev documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2009, Creative Commons.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.3.
+    </div>
+  </body>
+</html>
