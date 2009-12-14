@@ -192,3 +192,21 @@ Tests
 Tests go in the cc/engine/tests/ directory.  Either add to an existing
 test_*.py module or add your own if appropriate.  Tests are set up in
 the usual Nose tests fashion.
+
+
+Checking ZPT context with unit tests
+++++++++++++++++++++++++++++++++++++
+
+If you want to look at the context of a request, make sure at the top
+of your tests module that you set::
+
+  from cc.engine import util
+  util._activate_zpt_testing()
+
+Next, after you render your test, you should do the following::
+
+  context = util.ZPT_TEST_TEMPLATES.pop(
+      util.full_zpt_filename('path/to/mytemplate.pt'))
+
+This will give you access to the same dictionary that was last passed
+into a a template the last time it was rendered with .pt_render.
