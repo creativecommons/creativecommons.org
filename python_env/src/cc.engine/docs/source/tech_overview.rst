@@ -137,6 +137,9 @@ Then in your template, use metal:use-macro like:
 
 Obviously replacing "page" with whatever macro is appropriate.
 
+Assets
+~~~~~~
+
 TODO: explain how to use assets like javascript/css/images.  Guess we
 should implement this first!
 
@@ -144,7 +147,28 @@ should implement this first!
 I18N
 ~~~~
 
-Internationalization
+Internationalization is handled inside of the cc.i18npkg package.
+This package does two things:
+
+* It pulls in the i18n.git package as a submodule and makes it
+  accessible via package_resources so that other python modules don't
+  have to include that submodule redundancy
+* Provides a module that you can import which "sets up"
+  internationalization: cc.i18npkg.ccorg_i18n_setup
+
+As for ZPT, If you use util.get_zpt_template to fetch templates, you
+don't need to think about it except for passing in the target language
+as the second argument in the .pt_render method.
+
+Under the hood, due to the way ZPT is implemented, some manual
+subclassing was necessary to get ZPT working with
+internationalization.  Unfortunately, while ZPT is fairly decoupled
+from Zope in most ways, as in terms of i18n the functionality inside
+of ZPT is not provided "out of the box"... when you use the entire
+framework of Zope itself, Zope does somesubclassing and adds the
+translation feature manually.  And so, we must also do the same.
+Since cc.license also does this, these subclasses are actually
+implemented in cc.license.formatters.pagetemplate for now.
 
 
 Models
@@ -152,7 +176,14 @@ Models
 
 Surprise!  Cc.engine is not (at least presently) a database-driven
 application.  The only "models" used are actually the licenses pulled
-from the RDF files via cc.license.
+from the RDF files via cc.license.  See the cc.license docs to figure
+out how this works.
+
+The one thing that may be interesting is that there is a decorator in
+cc.engine.decorators called get_license.  If you pass in "code",
+"jursidiction" and "version" to the request's matchdict via your
+routes or whatever, this decorator will automatically retreive that
+license for you and pass it in as the first argument of your view.
 
 
 Tests
