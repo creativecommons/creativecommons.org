@@ -24,10 +24,20 @@ fairly minimal: it serves licenses and their rdf files and has a
 license chooser.  It doesn't have a database in the SQL sense, but it
 does have one in the RDF sense..
 
-
-
-
 cc.engine was rewritten during the "sanity" overhaul.  During this
-period, many pieces of CC infrastructure were being rewritten to
-accomodate cc.engine.
+period, many pieces of CC infrastructure were being rewritten.  The
+prior cc.engine was written in Zope 2, and we knew we wanted to move
+away from that.  Deciding that Django provided a lot of things but
+very few that were relevant to our needs, the original option that was
+considered was repoze.bfg, a minimalist framework that makes use of
+some zope components.  However, partway through implementing that it
+was discovered that even the bits that were provided by repoze.bfg
+were not really necessary and lead to a lot of code bloat just to try
+to get them from interfering with what we did need, and that the
+entire system could be constructed in a very minimal wsgi application.
+And so, understanding what components were used and useful and what
+components weren't, reducing the application to a very minimal wsgi
+app wasn't so hard, and the end results were much cleaner.
 
+And that's why things are the way they are, in case someone in the
+future ever wants to know (or I forget!).

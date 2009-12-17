@@ -163,24 +163,69 @@ i18n:domain=&#8221;cc_org&#8221;&gt;</dd>
 </dl>
 </blockquote>
 <p>Obviously replacing &#8220;page&#8221; with whatever macro is appropriate.</p>
+</div>
+<div class="section" id="assets">
+<h3>Assets<a class="headerlink" href="#assets" title="Permalink to this headline">¶</a></h3>
 <p>TODO: explain how to use assets like javascript/css/images.  Guess we
 should implement this first!</p>
 </div>
 <div class="section" id="i18n">
 <h3>I18N<a class="headerlink" href="#i18n" title="Permalink to this headline">¶</a></h3>
-<p>Internationalization</p>
+<p>Internationalization is handled inside of the cc.i18npkg package.
+This package does two things:</p>
+<ul class="simple">
+<li>It pulls in the i18n.git package as a submodule and makes it
+accessible via package_resources so that other python modules don&#8217;t
+have to include that submodule redundancy</li>
+<li>Provides a module that you can import which &#8220;sets up&#8221;
+internationalization: cc.i18npkg.ccorg_i18n_setup</li>
+</ul>
+<p>As for ZPT, If you use util.get_zpt_template to fetch templates, you
+don&#8217;t need to think about it except for passing in the target language
+as the second argument in the .pt_render method.</p>
+<p>Under the hood, due to the way ZPT is implemented, some manual
+subclassing was necessary to get ZPT working with
+internationalization.  Unfortunately, while ZPT is fairly decoupled
+from Zope in most ways, as in terms of i18n the functionality inside
+of ZPT is not provided &#8220;out of the box&#8221;... when you use the entire
+framework of Zope itself, Zope does somesubclassing and adds the
+translation feature manually.  And so, we must also do the same.
+Since cc.license also does this, these subclasses are actually
+implemented in cc.license.formatters.pagetemplate for now.</p>
 </div>
 <div class="section" id="models">
 <h3>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h3>
 <p>Surprise!  Cc.engine is not (at least presently) a database-driven
 application.  The only &#8220;models&#8221; used are actually the licenses pulled
-from the RDF files via cc.license.</p>
+from the RDF files via cc.license.  See the cc.license docs to figure
+out how this works.</p>
+<p>The one thing that may be interesting is that there is a decorator in
+cc.engine.decorators called get_license.  If you pass in &#8220;code&#8221;,
+&#8220;jursidiction&#8221; and &#8220;version&#8221; to the request&#8217;s matchdict via your
+routes or whatever, this decorator will automatically retreive that
+license for you and pass it in as the first argument of your view.</p>
 </div>
 <div class="section" id="tests">
 <h3>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h3>
 <p>Tests go in the cc/engine/tests/ directory.  Either add to an existing
 test_*.py module or add your own if appropriate.  Tests are set up in
 the usual Nose tests fashion.</p>
+<div class="section" id="checking-zpt-context-with-unit-tests">
+<h4>Checking ZPT context with unit tests<a class="headerlink" href="#checking-zpt-context-with-unit-tests" title="Permalink to this headline">¶</a></h4>
+<p>If you want to look at the context of a request, make sure at the top
+of your tests module that you set:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">cc.engine</span> <span class="kn">import</span> <span class="n">util</span>
+<span class="n">util</span><span class="o">.</span><span class="n">_activate_zpt_testing</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Next, after you render your test, you should do the following:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">context</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">ZPT_TEST_TEMPLATES</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span>
+    <span class="n">util</span><span class="o">.</span><span class="n">full_zpt_filename</span><span class="p">(</span><span class="s">&#39;path/to/mytemplate.pt&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This will give you access to the same dictionary that was last passed
+into a a template the last time it was rendered with .pt_render.</p>
+</div>
 </div>
 </div>
 </div>
@@ -200,9 +245,13 @@ the usual Nose tests fashion.</p>
 <li><a class="reference external" href="#url-dispatching-routing">URL Dispatching / Routing</a></li>
 <li><a class="reference external" href="#views-controllers">Views / Controllers</a></li>
 <li><a class="reference external" href="#templates">Templates</a></li>
+<li><a class="reference external" href="#assets">Assets</a></li>
 <li><a class="reference external" href="#i18n">I18N</a></li>
 <li><a class="reference external" href="#models">Models</a></li>
-<li><a class="reference external" href="#tests">Tests</a></li>
+<li><a class="reference external" href="#tests">Tests</a><ul>
+<li><a class="reference external" href="#checking-zpt-context-with-unit-tests">Checking ZPT context with unit tests</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
