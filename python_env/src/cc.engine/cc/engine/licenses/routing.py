@@ -48,7 +48,15 @@ licenses_routes = [
     Route("license_legalcode_bsd_redirect", "/BSD/legalcode",
           controller="cc.engine.licenses.views:license_legalcode_redirect",
           code="BSD"),
+    Route("license_rdf_mit", "/MIT/rdf",
+          controller="cc.engine.licenses.views:license_rdf_view",
+          code="MIT"),
+    Route("license_rdf_bsd", "/BSD/rdf",
+          controller="cc.engine.licenses.views:license_rdf_view",
+          code="BSD"),
 ]
+
+
 
 cc0_routes = [
     Route("cc0_deed", "/{version}/",
