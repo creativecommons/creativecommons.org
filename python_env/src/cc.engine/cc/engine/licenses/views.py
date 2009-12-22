@@ -1,3 +1,5 @@
+from webob import exc
+
 from lxml import etree
 from lxml.cssselect import CSSSelector
 from webob import Response
@@ -147,3 +149,12 @@ def license_legalcode_plain_view(request, license):
     # return the serialized document
     return Response(etree.tostring(legalcode.getroot()))
 
+
+def license_legalcode_redirect(request):
+    # TODO: Use the legal code from the RDF instead of this hackery.
+    if request.matchdict['code'] == 'MIT':
+        return exc.HTTPTemporaryRedirect(
+            location='http://opensource.org/licenses/mit-license.php')
+    elif request.matchdict['code'] == 'BSD':
+        return exc.HTTPTemporaryRedirect(
+            location='http://opensource.org/licenses/bsd-license.php')

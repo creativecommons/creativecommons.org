@@ -9,12 +9,6 @@ licenses_routes = [
     Route("license_deed_lang",
           "/{code}/{version}/deed.{target_lang}",
           controller="cc.engine.licenses.views:license_deed_view"),
-    Route("license_deed_mit", "/MIT/",
-          controller="cc.engine.licenses.views:license_deed_view",
-          code="MIT"),
-    Route("license_deed_bsd", "/BSD/",
-          controller="cc.engine.licenses.views:license_deed_view",
-          code="BSD"),
     Route("license_rdf",
           "/{code}/{version}/rdf",
           controller="cc.engine.licenses.views:license_rdf_view"),
@@ -38,7 +32,23 @@ licenses_routes = [
           controller="cc.engine.licenses.views:license_legalcode_view"),
     Route("license_legalcode_plain_jurisdiction",
           "/{code}/{version}/jurisdiction}/legalcode-plain",
-          controller="cc.engine.licenses.views:license_legalcode_plain_view")]
+          controller="cc.engine.licenses.views:license_legalcode_plain_view"),
+
+    # MIT / BSD routing
+    Route("license_deed_mit", "/MIT/",
+          controller="cc.engine.licenses.views:license_deed_view",
+          code="MIT"),
+    Route("license_deed_bsd", "/BSD/",
+          controller="cc.engine.licenses.views:license_deed_view",
+          code="BSD"),
+
+    Route("license_legalcode_mit_redirect", "/MIT/legalcode",
+          controller="cc.engine.licenses.views:license_legalcode_redirect",
+          code="MIT"),
+    Route("license_legalcode_bsd_redirect", "/BSD/legalcode",
+          controller="cc.engine.licenses.views:license_legalcode_redirect",
+          code="BSD"),
+]
 
 cc0_routes = [
     Route("cc0_deed", "/{version}/",
