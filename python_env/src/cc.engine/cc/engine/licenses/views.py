@@ -60,10 +60,11 @@ def license_deed_view(request, license):
     target_lang = (
         request.matchdict.get('target_lang')
         or request.accept_language.best_matches()[0])
+    rdf_style_target_lang = target_lang.replace('_', '-').lower()
 
     license_title = None
     try:
-        license_title = license.title(target_lang.lower())
+        license_title = license.title(rdf_style_target_lang)
     except KeyError:
         # don't have one for that language, use default
         license_title = license.title()
