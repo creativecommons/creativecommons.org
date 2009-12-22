@@ -18,7 +18,7 @@ def get_license(controller):
             license = by_code(
                 request.matchdict['code'],
                 jurisdiction=request.matchdict.get('jurisdiction'),
-                version=request.matchdict['version'])
+                version=request.matchdict.get('version'))
         except CCLicenseError:
             return Response("No such license.")
 
