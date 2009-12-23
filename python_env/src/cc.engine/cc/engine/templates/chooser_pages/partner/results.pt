@@ -2,32 +2,33 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@partner/page"
+      metal:use-macro="partner_template/macros/page"
       i18n:domain="cc_org">
-<head>
-  <title metal:fill-slot="title">Choose a License</title>
-</head>
-<body>
+  <head>
+    <title metal:fill-slot="title">Choose a License</title>
+  </head>
 
-<div metal:fill-slot="body"
-      tal:define="target_lang string:en;">
+  <body>
+    <div metal:fill-slot="body"
+         tal:define="target_lang string:en;">
+      <p i18n:translate="license.partner_selected">
+        <span i18n:name="license_deed_url"
+              tal:content="license/uri" tal:omit-tag="" />
+        You have selected the 
+        <a target="cc_other" href="#"
+           tal:attributes="href license/uri"
+           ><b i18n:name="license_pretty_name"
+               tal:content="license/title" /></a>.
+        <br>
+        This license is permanently located at<br>
+        <b><tt tal:content="license/uri" i18n:name="license_url"/></b>.
+      </p>
 
-<p i18n:translate="license.partner_selected">
-<span i18n:name="license_deed_url" tal:content="view/license/uri" tal:omit-tag="" />
-You have selected the 
-<a target="cc_other" href="#" tal:attributes="href view/license/uri"><b i18n:name="license_pretty_name" tal:content="view/license/name" /></a>.<br>
-This license is permanently located at<br>
-<b><tt tal:content="view/license/uri" i18n:name="license_url"/></b>.
-</p>
-
-<p i18n:translate="license.you_may_proceed">
-<span tal:omit-tag=""
-      i18n:name="processed_exit_url" tal:content="view/exit_url" />
-You may now <a href="#" tal:attributes="href view/exit_url">proceed</a>
-</p>
-
-
-</div>
-
-</body>
+      <p i18n:translate="license.you_may_proceed">
+        <span tal:omit-tag=""
+              i18n:name="processed_exit_url" tal:content="exit_url" />
+        You may now <a href="#" tal:attributes="href exit_url">proceed</a>
+      </p>
+    </div>
+  </body>
 </html>

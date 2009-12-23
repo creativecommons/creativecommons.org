@@ -1,4 +1,5 @@
 from urlparse import urlparse, urljoin
+from urllib import quote, unquote_plus
 
 from webob import Response, exc
 
@@ -163,8 +164,8 @@ def _generate_exit_url(url, referrer, license):
         url = urljoin(referrer, url)
 
     url = url.replace('[license_url]', quote(license.uri))
-    url = url.replace('[license_name]', quote(license.name))
-    url = url.replace('[license_button]', quote(license.imageurl))
+    url = url.replace('[license_name]', quote(license.title()))
+    url = url.replace('[license_button]', quote(license.logo))
     url = url.replace('[deed_url]', quote(license.uri))
 
     return url
@@ -202,7 +203,11 @@ def chooser_view(request):
 
 
 def choose_results_view(request):
-    template = util.get_zpt_template('chooser_pages/results.pt')
+    if request.GET.get('partner'):
+        template = util.get_zpt_template('chooser_pages/partner/results.pt')
+    else:
+        template = util.get_zpt_template('chooser_pages/results.pt')
+
     engine_template = util.get_zpt_template(
         'macros_templates/engine.pt')
 
@@ -220,6 +225,15 @@ def choose_results_view(request):
          'license': license,
          'license_slim_logo': license_slim_logo,
          'license_html': license_html})
+
+    if request.GET.get('partner'):
+        context.update(
+            {'partner_template': util.get_zpt_template(
+                    'macros_templates/partner.pt'),
+             'exit_url': _generate_exit_url(
+                    request_form.get('exit_url', ''),
+                    request_form.get('referrer', ''),
+                    license)})
 
     return Response(template.pt_render(context))
 
