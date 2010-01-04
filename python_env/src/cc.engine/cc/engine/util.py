@@ -26,6 +26,9 @@ PERMITS_NAME_MAP = {
 LANGUAGE_JURISDICTION_MAPPING = {}
 
 
+class Error(Exception): pass
+
+
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ### Special ZPT unit test hackery begins HERE
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -397,3 +400,17 @@ def get_selector_jurisdictions(selector_name='standard'):
     jurisdictions = set([license.jurisdiction for license in licenses])
     jurisdictions = [juri for juri in jurisdictions if juri.launched]
     return jurisdictions
+
+
+class UnsafeResource(Error): pass
+
+def safer_resource_filename(package, resource):
+    """
+    Prevent "../../../../etc/passwd"-like resource_filename attempts
+    """
+    filename = os.path.abspath(
+        pkg_resources.resource_filename(package, resource))
+    if not filename.startswith(pkg_resources.resource_filename(package, '')):
+        raise UnsafeResource("Resource resolves outside of package")
+
+    return filename
