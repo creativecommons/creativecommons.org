@@ -90,16 +90,16 @@ def license_deed_view(request, license):
             target_lang=target_lang)
 
     context = {
-            'license_code': license.license_code,
-            'license_title': license_title,
-            'license': license,
-            'multi_language': multi_language,
-            'color': color,
-            'conditions': conditions,
-            'deed_template': deed_template,
-            'active_languages': active_languages,
-            'support_template': support_template,
-            'target_lang': target_lang}
+        'license_code': license.license_code,
+        'license_title': license_title,
+        'license': license,
+        'multi_language': multi_language,
+        'color': color,
+        'conditions': conditions,
+        'deed_template': deed_template,
+        'active_languages': active_languages,
+        'support_template': support_template,
+        'target_lang': target_lang}
     context.update(util.rtl_context_stuff(request))
 
     return Response(main_template.pt_render(context))
