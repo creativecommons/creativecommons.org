@@ -1,4 +1,8 @@
-cc/engine/resources/svn
+cc/engine/resources/cc3
+cc/engine/resources/cc4
+cc/engine/resources/cc5
+cc/engine/resources/images
+cc/engine/resources/includes
 dist/
 bin/
 develop-eggs/
