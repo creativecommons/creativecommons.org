@@ -1,6 +1,7 @@
 import sys
 import urllib
 
+import routes
 from webob import Request, exc
 
 from cc.engine import routing
@@ -35,6 +36,7 @@ def ccengine_app(environ, start_response):
     controller = load_controller(route_match['controller'])
     request.start_response = start_response
     request.matchdict = route_match
+    request.urlgen = routes.URLGenerator(routing.mapping, environ)
     return controller(request)(environ, start_response)
 
 
