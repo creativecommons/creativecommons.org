@@ -1,5 +1,6 @@
 import StringIO
 
+from nose.tools import assert_raises
 from lxml import etree
 
 import cc.license
@@ -93,3 +94,13 @@ def test_locale_to_cclicense_style():
     assert util.locale_to_cclicense_style('en-US') == 'en_US'
     assert util.locale_to_cclicense_style('en') == 'en'
     assert util.locale_to_cclicense_style('EN-us') == 'en_US'
+
+
+def test_safer_resource_filename():
+    assert util.safer_resource_filename(
+        'cc.engine', 'templates/test/bunnies.pt').endswith(
+        'templates/test/bunnies.pt')
+    assert_raises(
+        util.UnsafeResource,
+        util.safer_resource_filename,
+        'cc.engine', '../../templates/test/bunnies.pt')
