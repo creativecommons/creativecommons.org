@@ -90,6 +90,7 @@ def license_deed_view(request, license):
             target_lang=target_lang)
 
     context = {
+        'request': request,
         'license_code': license.license_code,
         'license_title': license_title,
         'license': license,
