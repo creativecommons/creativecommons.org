@@ -38,7 +38,7 @@ class RemoteStaticDirect(StaticDirect):
 class MultiRemoteStaticDirect(StaticDirect):
     """
     """
-    def __init__(self, remotepath):
+    def __init__(self, remotepaths):
         self.remotepaths = remotepaths
 
     def get(self, request, filepath):
