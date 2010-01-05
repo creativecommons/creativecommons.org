@@ -13,27 +13,41 @@
 	  /> 
 
     <link rel="stylesheet" type="text/css" 
-          href="/@@/cc/cc5/style.css" />
-	 <link rel="stylesheet" type="text/css" media="print"
-	       href="/@@/cc/cc5/print.css" />
-	<link href="http://creativecommons.org/includes/progress.css" 
+          href="/@@/cc/cc5/style.css"
+          tal:attributes="href python:request.staticdirect('cc5/style.css')" />
+    <link rel="stylesheet" type="text/css" media="print"
+	  href="/@@/cc/cc5/print.css"
+          tal:attributes="href python:request.staticdirect('cc5/print.css')" />
+    <link href="http://creativecommons.org/includes/progress.css" 
 	  rel="stylesheet" type="text/css" />
-    <link href="http://creativecommons.org/wp-content/themes/cc4/support.css" rel="stylesheet" type="text/css" />
+    <link href="http://creativecommons.org/wp-content/themes/cc4/support.css"
+          tal:attributes="href python:request.staticdirect('cc4/support.css')"
+          rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css"
+          tal:attributes="href python:request.staticdirect('cc5/engine.css')"
           href="/@@/cc/cc5/engine.css" />
     <link rel="stylesheet" type="text/css"
           href="/@@/cc/cc5/engine-rtl.css"
+          tal:attributes="href python:request.staticdirect('cc5/engine-rtl.css')"
 	  tal:condition="is_rtl"/>
 
-    <!--[if IE]><link rel="stylesheet" type="text/css" media="screen" href=/@@/cc/includes/style-ie.css" />
+    <!--[if IE]>
+      <link rel="stylesheet" type="text/css"
+            media="screen" href=/@@/cc/includes/style-ie.css"
+            tal:attributes="href python:request.staticdirect('includes/style-ie.css')" />
     <![endif]-->
 
     <script type="text/javascript" 
 	    src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
     <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/animation/animation-min.js"></script> 
     <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script>
-    <script type="text/javascript" src="/@@/cc/includes/license-results.js" ></script>
-    <script type="text/javascript" src="/@@/cc/cc5/site.js" ></script>
+    <script type="text/javascript"
+            tal:attributes="src python:request.staticdirect('includes/license-results.js')"
+            src="/@@/cc/includes/license-results.js" >
+    </script>
+    <script type="text/javascript"
+            tal:attributes="src python:request.staticdirect('cc5/site.js')"
+            src="/@@/cc/cc5/site.js" ></script>
 
    <metal:headers define-slot="headers" />
 
@@ -101,11 +115,14 @@
           <div class="sideitem">
             <ul>
               <li><img src="/@@/cc/cc5/images/license-alt.png" 
-                        alt="License your work" />&nbsp;&nbsp;
+                       tal:attributes="src python:request.staticdirect('images/license-alt.png')"
+                       alt="License your work" />&nbsp;&nbsp;
                   <a href="/choose/">License your work</a>
               </li>
-              <li><img src="/@@/cc/cc5/images/find-alt.png" 
-                        alt="Find licensed works" width="12" height="12" />&nbsp;&nbsp;
+              <li>
+                <img src="/@@/cc/cc5/images/find-alt.png" 
+                     tal:attributes="src python:request.staticdirect('images/find-alt.png')"
+                     alt="Find licensed works" width="12" height="12" />&nbsp;&nbsp;
                   <a href="http://search.creativecommons.org/">Find licensed works</a>
               </li>
             </ul>

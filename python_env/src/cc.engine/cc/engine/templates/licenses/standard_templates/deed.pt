@@ -111,6 +111,7 @@ ${license/rdf} -->" />
                      tal:attributes="value license/uri" />
               <a href="" id="attribution_help" class="helpLink">
                 <img src="/@@/cc/images/information.png"
+                     tal:attributes="src python:request.staticdirect('images/license-information.png')"
                      i18n:attributes="alt"
                      alt="Information" />
               </a>

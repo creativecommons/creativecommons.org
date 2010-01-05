@@ -15,7 +15,8 @@
             src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js">
     </script> 
 
-    <script src="/includes/help.js" type="text/javascript">
+    <script tal:attributes="src python:request.staticdirect('/includes/help.js')"
+            type="text/javascript">
     </script>
   </metal:headers>
 </head>
@@ -70,6 +71,7 @@
                    i18n:translate="util.Yes">Yes</label> 
             <a href="" id="commercial" class="helpLink">
               <img src="images/information.png"
+                   tal:attributes="src python:request.staticdirect('images/information.png')"
                    i18n:attributes="alt" alt="Information"/>
             </a>
           </li>
@@ -81,6 +83,7 @@
                    i18n:translate="util.No">No</label>
             <a href="" id="noncommercial" class="helpLink">
               <img src="images/information.png"
+                   tal:attributes="src python:request.staticdirect('images/information.png')"
                    i18n:attributes="alt" alt="Information"/>
             </a>
           </li>
@@ -100,6 +103,7 @@
             <label for="question_3-5" i18n:translate="util.Yes">Yes</label>
             <a href="" id="derivatives" class="helpLink">
               <img src="images/information.png"
+                   tal:attributes="src python:request.staticdirect('images/information.png')"
                    i18n:attributes="alt" alt="Information" />
             </a>
           </li>
@@ -111,6 +115,7 @@
               <span i18n:translate="">Yes, as long as others share alike</span>
               <a href="" class="helpLink" id="sharealike">
                 <img src="images/information.png"
+                     tal:attributes="src python:request.staticdirect('images/information.png')"
                      i18n:attributes="alt" alt="Information" />
               </a>
             </label>
@@ -122,6 +127,7 @@
             <label for="question_3-7" i18n:translate="util.No">No</label>
             <a href="" id="noderivatives" class="helpLink">
               <img src="images/information.png"
+                   tal:attributes="src python:request.staticdirect('images/information.png')"
                    i18n:attributes="alt" alt="Information" />
             </a>
           </li>
@@ -133,6 +139,7 @@
           </span> 
           <a href="" class="helpLink" id="jurisdiction">
             <img src="images/information.png"
+                 tal:attributes="src python:request.staticdirect('images/information.png')"
                  i18n:attributes="alt" alt="Information" />
           </a>
           <br />

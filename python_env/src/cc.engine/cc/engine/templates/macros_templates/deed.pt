@@ -15,21 +15,29 @@
 
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
-<link rel="stylesheet" type="text/css"
-      href="http://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css"/> 
+    <link rel="stylesheet" type="text/css"
+          href="http://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css"/> 
 
     <link rel="stylesheet" type="text/css" 
+          tal:attributes="href python: request.staticdirect('includes/deed3.css')"
           href="/@@/cc/includes/deed3.css" media="screen" />
     <link rel="stylesheet" type="text/css" 
           href="/@@/cc/includes/deed3-rtl.css" media="screen" 
+          tal:attributes="href python: request.staticdirect('includes/deed3-rtl.css')"
           tal:condition="is_rtl" />
     <link rel="stylesheet" type="text/css" 
           href="/includes/deed3-print.css" media="print" 
+          tal:attributes="href python: request.staticdirect('includes/deed3-print.css')"
           />
     <link rel="stylesheet" type="text/css" 
+          tal:attributes="href python: request.staticdirect('includes/jurisdictions.css')"
           href="/includes/jurisdictions.css" media="screen" />
 
-    <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="/includes/deed3-ie.css" media="screen" tal:attributes="href /@@/cc/includes/deed3-ie.css" /><![endif]-->
+    <!--[if lt IE 7]>
+      <link rel="stylesheet" type="text/css" href="/includes/deed3-ie.css"
+            media="screen"
+            tal:attributes="href python:request.staticdirect('includes/deed3-ie.css')" />
+    <![endif]-->
 
     <link rel="alternate" type="application/rdf+xml" href="rdf" /> 
     <script metal:use-macro="support_template/macros/language_javascript" />
@@ -44,7 +52,9 @@
 	    src="http://yui.yahooapis.com/2.6.0/build/json/json-min.js">
     </script>
 
-    <script type="text/javascript" src="/includes/referrer/deed.js">
+    <script type="text/javascript"
+            tal:attributes="src python:request.staticdirect('includes/referrer/deed.js')"
+            src="/includes/referrer/deed.js">
     </script>
 
     <script type="text/javascript" 
@@ -52,6 +62,7 @@
     </script>
 
     <script type="text/javascript"
+            tal:attributes="src python:request.staticdirect('includes/help.js')"
 	    src="/includes/help.js">
     </script>
 
