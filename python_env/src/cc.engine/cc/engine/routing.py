@@ -15,5 +15,5 @@ mapping.extend(licenses_routing.licenses_routes, '/licenses')
 mapping.extend(licenses_routing.cc0_routes, '/publicdomain/zero')
 mapping.extend(chooser_routing.chooser_routes, '/choose')
 mapping.connect(
-    '/static/{filename:.*?}',
+    'staticserve', '/static/{filename:.*?}',
     controller="cc.engine.views:staticserve_view")
