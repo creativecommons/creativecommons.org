@@ -19,8 +19,8 @@ class CCEngineApp(object):
     """
     Really basic wsgi app using routes and WebOb.
     """
-    def __init__(self):
-        self.staticdirect = static.LocalStaticDirect()
+    def __init__(self, staticdirect):
+        self.staticdirect = staticdirect
 
     def __call__(self, environ, start_response):
         request = Request(environ)
@@ -47,4 +47,14 @@ class CCEngineApp(object):
 
 
 def ccengine_app_factory(global_config, **kw):
-    return CCEngineApp()
+    if kw.has_key('direct_remote_path'):
+        staticdirect = static.RemoteStaticDirect(
+            kw['direct_remote_path'].strip())
+    elif kw.has_key('direct_remote_paths'):
+        staticdirect = static.MultiRemoteStaticDirect(
+            dict([line.strip().split(' ', 1)
+                  for line in kw['direct_remote_paths'].strip().splitlines()]))
+    else:
+        staticdirect = static.LocalStaticDirect()
+
+    return CCEngineApp(staticdirect)
