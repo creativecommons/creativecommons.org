@@ -4,68 +4,115 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="engine_template/macros/page"
       i18n:domain="cc_org">
-<head>
-  <title metal:fill-slot="title">Creative Commons Licenses</title>
-</head>
+  <head>
+    <title metal:fill-slot="title">Creative Commons Licenses</title>
+  </head>
 
-<body>
-<div metal:fill-slot="body">
-     <h1>Creative Commons Licenses</h1>
+  <body>
+    <div metal:fill-slot="body">
+      <h1>Creative Commons Licenses</h1>
 
-<p>The following are the six current license choices available from our <a href="/choose/">choose a license</a> application, along with previous versions that have been phased out. They are shown by name along the license characteristics that accompany them. <a href="http://creativecommons.org/about/licenses/">This page explains what each icon represents</a>.</p>
+      <p>
+        The following are the six current license choices available
+        from our <a href="/choose/">choose a license</a> application,
+        along with previous versions that have been phased out. They
+        are shown by name along the license characteristics that
+        accompany them.
+        <a href="http://creativecommons.org/about/licenses/">This
+        page explains what each icon represents</a>.
+      </p>
 
-<table border="0" style="margin-left:14px;margin-bottom:30px;" cellpadding="3">
+      <table border="0" style="margin-left:14px;margin-bottom:30px;" cellpadding="3">
 	<tr>
-		<th align="left">Name</th>
-	    <th align="left" colspan="3">Characteristics</th>
+	  <th align="left">Name</th>
+	  <th align="left" colspan="3">Characteristics</th>
 	</tr>
-<tr>
-	<th colspan="4" style="background:#dedede;color:#333;" align="left">Version 3.0 Licenses:</th>
-</tr>
+        <tr>
+	  <th colspan="4" style="background:#dedede;color:#333;"
+              align="left">Version 3.0 Licenses:</th>
+        </tr>
 
-<tr>
-		<td width="250"><a href="/licenses/by/3.0/">Attribution</a></td>
-		<td><img border="0" src="/icons/by/standard.gif" alt="by" align="left" /></td>
-		<td width="32">&nbsp;</td>
-		<td width="32">&nbsp;</td>
-	</tr>
-
-	<tr>
-		<td><a href="/licenses/by-nd/3.0/">Attribution-NoDerivs</a></td>
-
-		<td><img border="0" src="/icons/by/standard.gif" alt="by" align="left" /></td><td width="32">&nbsp;</td><td><img border="0" src="/icons/nd/standard.gif" alt="nd" align="left" /></td>
+        <tr>
+	  <td width="250"><a href="/licenses/by/3.0/">Attribution</a></td>
+	  <td>
+            <img border="0" src="/icons/by/standard.gif"
+                 alt="by" align="left" />
+          </td>
+	  <td width="32">&nbsp;</td>
+	  <td width="32">&nbsp;</td>
 	</tr>
 
 	<tr>
-		<td><a href="/licenses/by-nc-nd/3.0/">Attribution-NonCommercial-NoDerivs</a></td>
-		<td><img border="0" src="/icons/by/standard.gif" alt="by" align="left" /></td><td><img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" /></td><td><img border="0" src="/icons/nd/standard.gif" alt="nd" align="left" /></td>
+	  <td><a href="/licenses/by-nd/3.0/">Attribution-NoDerivs</a></td>
+
+	  <td>
+            <img border="0" src="/icons/by/standard.gif" alt="by" align="left" />
+          </td>
+          <td width="32">&nbsp;</td>
+          <td><img border="0" src="/icons/nd/standard.gif" alt="nd" align="left" /></td>
+	</tr>
+
+	<tr>
+	  <td>
+            <a href="/licenses/by-nc-nd/3.0/">Attribution-NonCommercial-NoDerivs</a>
+          </td>
+	  <td>
+            <img border="0" src="/icons/by/standard.gif" alt="by" align="left" />
+          </td>
+          <td>
+            <img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" />
+          </td>
+          <td>
+            <img border="0" src="/icons/nd/standard.gif" alt="nd" align="left" />
+          </td>
 	</tr>
 	
 	<tr>
-		<td><a href="/licenses/by-nc/3.0/">Attribution-NonCommercial</a></td>
+	  <td><a href="/licenses/by-nc/3.0/">Attribution-NonCommercial</a></td>
 
-		<td><img border="0" src="/icons/by/standard.gif" alt="by" align="left" /></td><td><img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" /></td><td width="32">&nbsp;</td>
+	  <td>
+            <img border="0" src="/icons/by/standard.gif" alt="by" align="left" />
+          </td>
+          <td>
+            <img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" />
+          </td>
+          <td width="32">&nbsp;</td>
 	</tr>
 
 	<tr>
-		<td><a href="/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike</a></td>
-		<td><img border="0" src="/icons/by/standard.gif" alt="by" align="left" /></td><td><img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" /></td><td><img border="0" src="/icons/sa/standard.gif" alt="sa" align="left" /></td>
+	  <td>
+            <a href="/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike</a>
+          </td>
+	  <td>
+            <img border="0" src="/icons/by/standard.gif" alt="by" align="left" />
+          </td>
+          <td>
+            <img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" />
+          </td>
+          <td>
+            <img border="0" src="/icons/sa/standard.gif" alt="sa" align="left" />
+          </td>
 	</tr>
 
 	<tr>
-
-		<td><a href="/licenses/by-sa/3.0/">Attribution-ShareAlike</a></td>
-		<td><img border="0" src="/icons/by/standard.gif" alt="by" align="left" /></td><td width="32">&nbsp;</td><td><img border="0" src="/icons/sa/standard.gif" alt="sa" align="left" /></td>
+	  <td><a href="/licenses/by-sa/3.0/">Attribution-ShareAlike</a></td>
+	  <td>
+            <img border="0" src="/icons/by/standard.gif"
+                 alt="by" align="left" />
+          </td>
+          <td width="32">&nbsp;</td>
+          <td>
+            <img border="0" src="/icons/sa/standard.gif" alt="sa" align="left" />
+          </td>
 	</tr>
-</table>
+      </table>
 
-<p>
-With Creative Commons licenses creators keep their copyright. If you
-want to waive all restrictions on your work or certify that a work is
-already in the public domain, see our <a href="/publicdomain">public
-domain tools</a>.
-</p>
-
-</div>
-</body>
+      <p>
+        With Creative Commons licenses creators keep their copyright. If you
+        want to waive all restrictions on your work or certify that a work is
+        already in the public domain, see our <a href="/publicdomain">public
+        domain tools</a>.
+      </p>
+    </div>
+  </body>
 </html>
