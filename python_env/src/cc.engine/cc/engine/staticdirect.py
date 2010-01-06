@@ -24,11 +24,11 @@ class StaticDirect(object):
 class RemoteStaticDirect(StaticDirect):
     def __init__(self, remotepath):
         StaticDirect.__init__(self)
-        self.remotepath = remotepath
+        self.remotepath = remotepath.rstrip('/')
 
     def get(self, request, filepath):
         return '%s/%s' % (
-            self.remotepath, rest.lstrip('/'))
+            self.remotepath, filepath.lstrip('/'))
 
 
 class MultiRemoteStaticDirect(StaticDirect):
