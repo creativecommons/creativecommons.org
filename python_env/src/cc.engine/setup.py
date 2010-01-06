@@ -43,6 +43,7 @@ setup(
         'WebOb',
         'routes',
         'sphinx',
+        'webtest',
         ],
 
     # author metadata
