@@ -39,49 +39,17 @@ def test_licenses_view():
     assert '<h1>Creative Commons Licenses</h1>' in response.body
 
 
-def _lc_tester():
-    pass
-
-
-#    expected_license = cc.license.by_code(
-
-
-### Basic view testing class
-
-class BaseViewTests(object):
-    def setUp(self):
-        self.request = Request.blank(self.url)
-        self.request.matchdict = self.matchdict
-        self.controller = app.load_controller(self.matchdict['controller'])
-        self.response = self.controller(self.request)
-
-
 ## Deed view tests
 
-class BaseDeedView(BaseViewTests):
-    def test_template_namespace_matching(self):
-        """
-        Make sure that the elements in our expected_namespace match
-        the elements in the actual namespace passed in.
 
-        As a side effect, this also checks that the template used is
-        the one we expected :)
-        """
-        namespace = util.ZPT_TEST_TEMPLATES.pop(
+def test_standard_deeds():
+    response = TESTAPP.get('/licenses/by/3.0/')
+    namespace = util.ZPT_TEST_TEMPLATES.pop(
             util.full_zpt_filename('licenses/standard_templates/deed.pt'))
-        for key, value in self.expected_namespace.iteritems():
-            assert namespace[key] == value
-
-
-class TestByNdDeedThreeOhView(BaseDeedView):
-    url = '/licenses/by-nd/3.0/'
-    matchdict = {
-        'code': 'by-nd',
-        'version': '3.0',
-        'controller': 'cc.engine.licenses.views:license_deed_view'}
-    expected_namespace = {
-        'license': cc.license.by_code('by-nd', '3.0'),
-        }
+    assert namespace['license'] == cc.license.by_code('by', '3.0')
+    request = namespace['request']
+    assert request.matchdict['code'] == 'by'
+    assert request.matchdict['version'] == '3.0'
 
 
 #####
