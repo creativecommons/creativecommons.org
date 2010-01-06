@@ -7,6 +7,7 @@
   <head>
     <title metal:define-slot="title">Page Title</title>
     <link rel="stylesheet" type="text/css" 
+          tal:attributes="href python:request.staticdirect('includes/ccliss.css')"
           href="/includes/ccliss.css" />
     <link rel="stylesheet" type="text/css" href="#"
           tal:attributes="href request/stylesheet|nothing" />

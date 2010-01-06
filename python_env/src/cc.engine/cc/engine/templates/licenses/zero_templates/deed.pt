@@ -57,6 +57,7 @@
                  tal:attributes="value license/uri" />
           <a href="" id="attribution_help">
             <img src="images/information.png"
+                 tal:attributes="src python:request.staticdirect('images/information.png')"
                  i18n:attributes="alt"
                  alt="Information" />
           </a>

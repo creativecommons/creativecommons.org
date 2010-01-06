@@ -22,7 +22,8 @@
         </span>
         <a href="" id="embedded_metadata" class="helpLink">
           <img src="images/information.png"
-            i18n:attributes="alt" alt="Information" />
+               tal:attributes="src python:request.staticdirect('images/information.png')"
+               i18n:attributes="alt" alt="Information" />
         </a>
       </p>
 
@@ -55,8 +56,8 @@
       <input type="text" name="field_worktitle" value="" /> 
       <a href="" id="worktitle" class="helpLink">
 	<img src="images/information.png"
-            i18n:attributes="alt" alt="Information"
-	     /></a>
+             tal:attributes="src python:request.staticdirect('images/information.png')"
+             i18n:attributes="alt" alt="Information" /></a>
     </div>
 
     <div class="more-metadata">
@@ -66,6 +67,7 @@
       <input type="text" name="field_attribute_to_name" /> 
       <a href="" id="attribution_name" class="helpLink">
 	<img src="images/information.png"
+             tal:attributes="src python:request.staticdirect('images/information.png')"
              i18n:attributes="alt" alt="Information" /></a>
     </div>
 
@@ -77,6 +79,7 @@
       <input type="text" name="field_attribute_to_url" value="" />
       <a href="" id="attribution_url" class="helpLink">
 	<img src="images/information.png"
+             tal:attributes="src python:request.staticdirect('images/information.png')"
              i18n:attributes="alt" alt="Information" />
       </a>
     </div>
@@ -87,6 +90,7 @@
       <input type="text" name="field_sourceurl" value=""/>
       <a href="" id="source_work" class="helpLink">
 	<img src="images/information.png"
+             tal:attributes="src python:request.staticdirect('images/information.png')"
              i18n:attributes="alt" alt="Information" /></a>
     </div>
 
@@ -97,6 +101,7 @@
       <input type="text" name="field_morepermissionsurl" value=""/>
       <a href="" id="more_permissions_url" class="helpLink">
 	<img src="images/information.png"
+             tal:attributes="src python:request.staticdirect('images/information.png')"
              i18n:attributes="alt" alt="Information" /></a>
     </div>
 
