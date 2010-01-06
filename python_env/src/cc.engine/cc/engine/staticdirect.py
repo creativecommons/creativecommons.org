@@ -21,15 +21,6 @@ class StaticDirect(object):
         pass
 
 
-class LocalStaticDirect(StaticDirect):
-    """
-    Static serving handled by cc.engine.  Generally not a good idea,
-    except for development!
-    """
-    def get(self, request, filepath):
-        return request.urlgen('staticserve', filename=filepath.lstrip('/'))
-
-
 class RemoteStaticDirect(StaticDirect):
     def __init__(self, remotepath):
         StaticDirect.__init__(self)
@@ -42,6 +33,8 @@ class RemoteStaticDirect(StaticDirect):
 
 class MultiRemoteStaticDirect(StaticDirect):
     """
+    For whene separate sections of the static data is served under
+    separate urls.
     """
     def __init__(self, remotepaths):
         StaticDirect.__init__(self)
