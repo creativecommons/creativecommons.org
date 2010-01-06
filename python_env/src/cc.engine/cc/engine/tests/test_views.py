@@ -59,7 +59,8 @@ def test_standard_deeds():
 class FakeBSDLicense(object): pass
 class FakeMITLicense(object): pass
 
-class TestBSDView(BaseDeedView):
+
+class TestBSDView(object):
     url = '/licenses/BSD/'
     matchdict = {
         # Code??? version???
@@ -72,7 +73,7 @@ class TestBSDView(BaseDeedView):
         'BSD License' in self.unicode_body
 
 
-class TestMITView(BaseDeedView):
+class TestMITView(object):
     url = '/licenses/MIT/'
     matchdict = {
         # Code??? version???
@@ -87,7 +88,7 @@ class TestMITView(BaseDeedView):
 
 ## RDF view tests
 
-class BaseTestLicenseRdfView(BaseViewTests):
+class BaseTestLicenseRdfView(object):
     def _read_rdf_file_contents(self):
         return file(
             pkg_resources.resource_filename(
@@ -102,7 +103,7 @@ class BaseTestLicenseRdfView(BaseViewTests):
         assert self.response.headers['Content-Type'] == expected_header
 
 
-class TestBySaRDFView(BaseTestLicenseRdfView):
+class TestBySaRDFView(object):
     url = '/licenses/by-sa/2.0/rdf'
     matchdict = {
         'code': 'by-sa',
