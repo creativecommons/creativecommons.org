@@ -50,8 +50,8 @@ def _deed_tester(url, template_path,
             util.full_zpt_filename(template_path))
     request = namespace['request']
     assert namespace['license'] == expected_license
-    assert request.matchdict['code'] == expected_code
-    assert request.matchdict['version'] == expected_version
+    assert request.matchdict.get('code') == expected_code
+    assert request.matchdict.get('version') == expected_version
     assert request.matchdict.get('jurisdiction') == expected_jurisdiction
 
 
@@ -68,66 +68,40 @@ def test_standard_deeds_licenses():
         'by-sa', '3.0', None,
         cc.license.by_code('by-sa'))
 
-
-#####
-### BSD/MIT license checks: We know these fail currently :(
-#####
-
-class FakeBSDLicense(object): pass
-class FakeMITLicense(object): pass
-
-
-class TestBSDView(object):
-    url = '/licenses/BSD/'
-    matchdict = {
-        # Code??? version???
-        'controller': 'cc.engine.licenses.views:license_deed_view'}
-    expected_namespace = {
-        'license': FakeBSDLicense()}
-
-    def test_title(self):
-        # This test totally sucks
-        'BSD License' in self.unicode_body
-
-
-class TestMITView(object):
-    url = '/licenses/MIT/'
-    matchdict = {
-        # Code??? version???
-        'controller': 'cc.engine.licenses.views:license_deed_view'}
-    expected_namespace = {
-        'license': FakeMITLicense()}
-
-    def test_title(self):
-        # This test totally sucks
-        'MIT License' in self.unicode_body
+    # MIT and BSD, the only ones which are called without version
+    # codes in the URL
+    _deed_tester(
+        '/licenses/MIT/', 'licenses/mitbsd_templates/deed.pt',
+        'MIT', None, None,
+        cc.license.by_code('MIT'))
+    _deed_tester(
+        '/licenses/BSD/', 'licenses/mitbsd_templates/deed.pt',
+        'BSD', None, None,
+        cc.license.by_code('BSD'))
 
 
 ## RDF view tests
+RDF_HEADER = 'application/rdf+xml; charset=UTF-8'
 
-class BaseTestLicenseRdfView(object):
-    def _read_rdf_file_contents(self):
-        return file(
-            pkg_resources.resource_filename(
-                'cc.licenserdf', self.rdf_file)).read()
+def _rdf_tester(url, rdf_file):
+    response = TESTAPP.get(url)
+    rdf_file_contents = util.unicode_cleaner(
+        file(pkg_resources.resource_filename(
+                'cc.licenserdf', rdf_file)).read())
+    assert response.headers['Content-Type'] == RDF_HEADER
+    assert response.unicode_body == rdf_file_contents
 
-    def test_has_rdf(self):
-        rdf_contents = util.unicode_cleaner(self._read_rdf_file_contents())
-        assert rdf_contents == self.response.unicode_body
-        
-    def test_headers(self):
-        expected_header = 'application/rdf+xml; charset=UTF-8'
-        assert self.response.headers['Content-Type'] == expected_header
+def test_rdf_views():
+    _rdf_tester(
+        '/licenses/by-sa/2.0/rdf',
+        'licenses/creativecommons.org_licenses_by-sa_2.0_.rdf')
+    _rdf_tester(
+        '/licenses/by/3.0/rdf',
+        'licenses/creativecommons.org_licenses_by_3.0_.rdf')
 
-
-class TestBySaRDFView(object):
-    url = '/licenses/by-sa/2.0/rdf'
-    matchdict = {
-        'code': 'by-sa',
-        'version': '2.0',
-        'controller': 'cc.engine.licenses.views:license_rdf_view'}
-    rdf_file = 'licenses/creativecommons.org_licenses_by-sa_2.0_.rdf'
-
-
-def test_license_deeds():
-    pass
+    _rdf_tester(
+        '/licenses/MIT/rdf',
+        'licenses/creativecommons.org_licenses_MIT_.rdf')
+    _rdf_tester(
+        '/licenses/BSD/rdf',
+        'licenses/creativecommons.org_licenses_BSD_.rdf')
