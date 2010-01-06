@@ -42,14 +42,31 @@ def test_licenses_view():
 ## Deed view tests
 
 
-def test_standard_deeds():
-    response = TESTAPP.get('/licenses/by/3.0/')
+def _deed_tester(url, template_path,
+                 expected_code, expected_version, expected_jurisdiction,
+                 expected_license):
+    response = TESTAPP.get(url)
     namespace = util.ZPT_TEST_TEMPLATES.pop(
-            util.full_zpt_filename('licenses/standard_templates/deed.pt'))
-    assert namespace['license'] == cc.license.by_code('by', '3.0')
+            util.full_zpt_filename(template_path))
     request = namespace['request']
-    assert request.matchdict['code'] == 'by'
-    assert request.matchdict['version'] == '3.0'
+    assert namespace['license'] == expected_license
+    assert request.matchdict['code'] == expected_code
+    assert request.matchdict['version'] == expected_version
+    assert request.matchdict.get('jurisdiction') == expected_jurisdiction
+
+
+def test_standard_deeds_licenses():
+    """
+    Make sure the correct licenses get selected from the deeds
+    """
+    _deed_tester(
+        '/licenses/by/3.0/', 'licenses/standard_templates/deed.pt',
+        'by', '3.0', None,
+        cc.license.by_code('by', '3.0'))
+    _deed_tester(
+        '/licenses/by-sa/3.0/', 'licenses/standard_templates/deed.pt',
+        'by-sa', '3.0', None,
+        cc.license.by_code('by-sa'))
 
 
 #####
