@@ -4,7 +4,7 @@ import urllib
 import routes
 from webob import Request, exc
 
-from cc.engine import routing, static
+from cc.engine import routing, staticdirect
 
 
 def load_controller(string):
@@ -19,8 +19,8 @@ class CCEngineApp(object):
     """
     Really basic wsgi app using routes and WebOb.
     """
-    def __init__(self, staticdirect):
-        self.staticdirect = staticdirect
+    def __init__(self, staticdirector):
+        self.staticdirector = staticdirector
 
     def __call__(self, environ, start_response):
         request = Request(environ)
@@ -41,20 +41,20 @@ class CCEngineApp(object):
         request.start_response = start_response
         request.matchdict = route_match
         request.urlgen = routes.URLGenerator(routing.mapping, environ)
-        request.staticdirect = lambda filepath: self.staticdirect(
+        request.staticdirect = lambda filepath: self.staticdirector(
             request, filepath)
         return controller(request)(environ, start_response)
 
 
 def ccengine_app_factory(global_config, **kw):
     if kw.has_key('direct_remote_path'):
-        staticdirect = static.RemoteStaticDirect(
+        staticdirector = staticdirect.RemoteStaticDirect(
             kw['direct_remote_path'].strip())
     elif kw.has_key('direct_remote_paths'):
-        staticdirect = static.MultiRemoteStaticDirect(
+        staticdirector = staticdirect.MultiRemoteStaticDirect(
             dict([line.strip().split(' ', 1)
                   for line in kw['direct_remote_paths'].strip().splitlines()]))
     else:
-        staticdirect = static.LocalStaticDirect()
+        staticdirector = staticdirect.LocalStaticDirect()
 
-    return CCEngineApp(staticdirect)
+    return CCEngineApp(staticdirector)

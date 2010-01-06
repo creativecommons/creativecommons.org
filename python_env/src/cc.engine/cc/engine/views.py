@@ -6,7 +6,9 @@ from cc.engine import util
 
 
 def root_view(request):
-    return Response("This is the root")
+    return Response("/foo/what is at %s, /blah/bar is at %s" % (
+            request.staticdirect('/foo/what/'),
+            request.staticdirect('/blah/bar/')))
 
 
 def staticserve_view(request):
@@ -16,7 +18,7 @@ def staticserve_view(request):
     response = Response(content_type=mimetype)
     content_file = file(
         util.safer_resource_filename(
-            'cc.engine.resources', filename))
+            'cc.engine', 'resources/' + filename.lstrip('/')))
 
     response.body_file.write(content_file.read())
     return response

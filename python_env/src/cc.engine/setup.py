@@ -39,6 +39,7 @@ setup(
         'zope.interface',
         'PasteScript',
         #'repoze.bfg',
+        'static',
         'WebOb',
         'routes',
         'sphinx',
@@ -52,6 +53,7 @@ setup(
     url = 'http://creativecommons.org',
     entry_points = """\
       [paste.app_factory]
-      app = cc.engine.app:ccengine_app_factory
+      ccengine_app = cc.engine.app:ccengine_app_factory
+      static_app = cc.engine.staticdirect:static_app_factory
       """
     )
