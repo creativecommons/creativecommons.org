@@ -1,11 +1,10 @@
 import pkg_resources
 import lxml
 
+import webtest
 from webob import Request
 
-from cc.engine.app import load_controller
-from cc.engine import util
-from cc.engine import views
+from cc.engine import app, staticdirect, util, views
 from cc.engine.licenses import views as license_views
 import cc.license
 
@@ -24,17 +23,20 @@ def test_routing():
 ### view testing
 ### ------------
 
+
+TESTAPP = webtest.TestApp(
+    app.CCEngineApp(
+        staticdirect.RemoteStaticDirect('/static/')))
+
+
 def test_root_view():
-    response = views.root_view(Request.blank('/'))
-    assert response.unicode_body == 'This is the root'
+    response = TESTAPP.get('/')
+    assert response.body == 'This is the root'
 
 
 def test_licenses_view():
-    request = Request.blank('/licenses/')
-    response = license_views.licenses_view(request)
-    namespace = util.ZPT_TEST_TEMPLATES.pop(
-        util.full_zpt_filename('catalog_pages/licenses-index.pt'))
-    namespace['request'] == request
+    response = TESTAPP.get('/licenses/')
+    assert '<h1>Creative Commons Licenses</h1>' in response.body
 
 
 def _lc_tester():
@@ -50,7 +52,7 @@ class BaseViewTests(object):
     def setUp(self):
         self.request = Request.blank(self.url)
         self.request.matchdict = self.matchdict
-        self.controller = load_controller(self.matchdict['controller'])
+        self.controller = app.load_controller(self.matchdict['controller'])
         self.response = self.controller(self.request)
 
 
@@ -139,8 +141,6 @@ class TestBySaRDFView(BaseTestLicenseRdfView):
         'version': '2.0',
         'controller': 'cc.engine.licenses.views:license_rdf_view'}
     rdf_file = 'licenses/creativecommons.org_licenses_by-sa_2.0_.rdf'
-
-
 
 
 def test_license_deeds():
