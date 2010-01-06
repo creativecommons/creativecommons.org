@@ -7,6 +7,10 @@ from webob import Request, exc
 from cc.engine import routing, staticdirect
 
 
+class Error(object): pass
+class ImproperlyConfigured(Error): pass
+
+
 def load_controller(string):
     module_name, func_name = string.split(':', 1)
     __import__(module_name)
@@ -55,6 +59,7 @@ def ccengine_app_factory(global_config, **kw):
             dict([line.strip().split(' ', 1)
                   for line in kw['direct_remote_paths'].strip().splitlines()]))
     else:
-        staticdirector = staticdirect.LocalStaticDirect()
+        raise ImproperlyConfigured(
+            "One of direct_remote_path or direct_remote_paths must be provided")
 
     return CCEngineApp(staticdirector)
