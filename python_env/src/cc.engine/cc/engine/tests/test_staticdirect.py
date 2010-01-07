@@ -31,4 +31,8 @@ def test_request_dot_staticdirect():
 
 
 def test_static_app_factory():
-    assert 0
+    testapp = webtest.TestApp(
+        staticdirect.static_app_factory(
+            None, resource_path='cc.engine:templates'))
+    response = testapp.get('/test/bunnies.pt')
+    assert u'Welcome to the bunny field!' in response.body
