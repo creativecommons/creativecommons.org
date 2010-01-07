@@ -200,6 +200,56 @@ don't all fall under the same parent URL.  (This is what the default
 development INI file does.)
 
 
+Static serving for development
+++++++++++++++++++++++++++++++
+
+If you're in development mode and using the development paste config
+file, this should be handled for you, but for the sake of
+thoroughness, here is part of the config file::
+
+  [composite:main]
+  use = egg:Paste#urlmap
+  / = ccengine
+  /images = images_serve
+  /includes = includes_serve
+  /wp-content/themes/cc3 = cc3_serve
+  /wp-content/themes/cc4 = cc4_serve
+  /wp-content/themes/cc5 = cc5_serve
+
+  [app:ccengine]
+  use = egg:cc.engine#ccengine_app
+  direct_remote_paths =
+     images /images/                    
+     includes /includes/
+     cc3 /wp-content/themes/cc3
+     cc4 /wp-content/themes/cc4
+     cc5 /wp-content/themes/cc5
+
+  [app:images_serve]
+  use = egg:cc.engine#static_app
+  resource_path = cc.engine:resources/images
+
+  [app:includes_serve]
+  use = egg:cc.engine#static_app
+  resource_path = cc.engine:resources/includes
+
+  [app:cc3_serve]
+  use = egg:cc.engine#static_app
+  resource_path = cc.engine:resources/cc3
+
+  [... cut off here ...]
+
+(Note that this may make more sense if you read the `Paste Deploy
+<http://pythonpaste.org/deploy/>`_ documentation.)
+
+What we are doing here is using Paste's composite application setup
+stuff to mount things under different URLs.  In this case, we are
+mounting the main app under /, and then are setting up separate serve
+points for the separate sections of the site.  We then use a wrapper
+for serving static content via the `static package
+<http://lukearno.com/projects/static/>`_.
+
+
 I18N
 ~~~~
 
