@@ -140,8 +140,64 @@ Obviously replacing "page" with whatever macro is appropriate.
 Assets
 ~~~~~~
 
-TODO: explain how to use assets like javascript/css/images.  Guess we
-should implement this first!
+Staticdirect: finding static files dynamically
+++++++++++++++++++++++++++++++++++++++++++++++
+
+To pull in an asset (such as javascript, images, css), you just need
+to use request.staticdirect.  For example, in
+templates/licenses/standard_deed.pt::
+
+  <img tal:attributes="src python:request.staticdirect('images/information.png')"
+       i18n:attributes="alt"
+       alt="Information" />
+
+Provided you're somewhat familiar with zpt, what's happening here
+should be very clear: the src attribute is being set with the value
+returned by request.staticdirect('images/information.png').
+
+For CC, in general you can look for the resources you might need in
+cc/engine/resources.
+
+If you are setting up an install or development version of cc.engine,
+you may need/want to configure the staticdirector as part of the paste
+config file (assuming you are using paste).  (Note: you probably don't
+*need* to read this section, this package comes with both a deployment
+and development config file that probably solves this for you.)  There
+are two configuration options you can set.  The first one is
+"direct_remote_path"::
+
+  [app:ccengine]
+  use = egg:cc.engine#ccengine_app
+  direct_remote_path = /statik/
+
+In that example, request.staticdirect('images/information.png') will
+resolve to "/statik/images/information.png".  You can also use a full
+domain name here if you like; setting direct_remote_path to
+http://assets.example.org/statik/ would resolve to
+"http://assets.example.org/statik/images/information.png".
+
+However, you may need to be able to handle multiple urls for the
+different primary "sections" of media that are hosted under separate
+parent urls, you may wish to use direct_remote_paths::
+
+  [app:ccengine]
+  use = egg:cc.engine#ccengine_app
+  direct_remote_paths =
+     images /images/                    
+     includes /includes/
+     cc3 /wp-content/themes/cc3
+     cc4 /wp-content/themes/cc4
+     cc5 /wp-content/themes/cc5
+
+Now the URL returned is dependent on the first directory of the
+requested URL.  Eg: request.staticdirect('images/information.png')
+will now return "/images/information.png" but
+request.staticdirect('cc5/style.css') will yield
+"/wp-content/themes/cc5/style.css".  You might want to do this, for
+example, if you are trying to mirror the creativecommons.org setup,
+where the stylesheets used point at very specific directories that
+don't all fall under the same parent URL.  (This is what the default
+development INI file does.)
 
 
 I18N
