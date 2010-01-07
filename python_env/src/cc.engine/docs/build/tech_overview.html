@@ -124,50 +124,136 @@ currently Zope Page Template based.</p>
 Pass in a filename that is relative to cc/engine/templates/.  For
 example, to import the template at
 cc/engine/templates/myth_profiles/phoenix.zpt run:</p>
-<blockquote>
-phoenix_template = util.get_zpt_template(&#8216;myth_profiles/phoenix.zpt&#8217;)</blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">phoenix_template</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">get_zpt_template</span><span class="p">(</span><span class="s">&#39;myth_profiles/phoenix.zpt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>If you know the target language that your template should render to,
 pass that in as the second argument (see I18N below).</p>
 <p>To render, use:</p>
-<blockquote>
-<dl class="docutils">
-<dt>context = {</dt>
-<dd>&#8216;request&#8217;: request,
-&#8216;some_other_context_var&#8217;: &#8216;bla bla bla&#8217;}</dd>
-</dl>
-<p>phoenix_template.pt_render(context)</p>
-</blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;request&#39;</span><span class="p">:</span> <span class="n">request</span><span class="p">,</span>
+    <span class="s">&#39;some_other_context_var&#39;</span><span class="p">:</span> <span class="s">&#39;bla bla bla&#39;</span><span class="p">}</span>
+<span class="n">phoenix_template</span><span class="o">.</span><span class="n">pt_render</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>cc.engine tries to be fairly minimal in the amount of Zope machinery
 it pulls in (ie, currently it does not use the zope component system),
 so currently if your template relies on metal macros, you should
 provide those in the context like so:</p>
-<blockquote>
-<dl class="docutils">
-<dt>context = {</dt>
-<dd><p class="first">&#8216;request&#8217;: request,
-&#8216;base_template&#8217;: util.get_zpt_template(</p>
-<blockquote class="last">
-&#8216;myth_profiles/base.pt&#8217;)}</blockquote>
-</dd>
-</dl>
-</blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;request&#39;</span><span class="p">:</span> <span class="n">request</span><span class="p">,</span>
+    <span class="s">&#39;base_template&#39;</span><span class="p">:</span> <span class="n">util</span><span class="o">.</span><span class="n">get_zpt_template</span><span class="p">(</span>
+        <span class="s">&#39;myth_profiles/base.pt&#39;</span><span class="p">)}</span>
+</pre></div>
+</div>
 <p>Then in your template, use metal:use-macro like:</p>
-<blockquote>
-<dl class="docutils">
-<dt>&lt;html xmlns=&#8221;<a class="reference external" href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</a>&#8220;</dt>
-<dd>xmlns:tal=&#8221;http://xml.zope.org/namespaces/tal&#8221;
-xmlns:i18n=&#8221;http://xml.zope.org/namespaces/i18n&#8221;
-xmlns:metal=&#8221;http://xml.zope.org/namespaces/metal&#8221;
-metal:use-macro=&#8221;base_template/macros/page&#8221;
-i18n:domain=&#8221;cc_org&#8221;&gt;</dd>
-</dl>
-</blockquote>
+<div class="highlight-python"><pre>&lt;html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="base_template/macros/page"
+      i18n:domain="cc_org"&gt;</pre>
+</div>
 <p>Obviously replacing &#8220;page&#8221; with whatever macro is appropriate.</p>
 </div>
 <div class="section" id="assets">
 <h3>Assets<a class="headerlink" href="#assets" title="Permalink to this headline">¶</a></h3>
-<p>TODO: explain how to use assets like javascript/css/images.  Guess we
-should implement this first!</p>
+<div class="section" id="staticdirect-finding-static-files-dynamically">
+<h4>Staticdirect: finding static files dynamically<a class="headerlink" href="#staticdirect-finding-static-files-dynamically" title="Permalink to this headline">¶</a></h4>
+<p>To pull in an asset (such as javascript, images, css), you just need
+to use request.staticdirect.  For example, in
+templates/licenses/standard_deed.pt:</p>
+<div class="highlight-python"><pre>&lt;img tal:attributes="src python:request.staticdirect('images/information.png')"
+     i18n:attributes="alt"
+     alt="Information" /&gt;</pre>
+</div>
+<p>Provided you&#8217;re somewhat familiar with zpt, what&#8217;s happening here
+should be very clear: the src attribute is being set with the value
+returned by request.staticdirect(&#8216;images/information.png&#8217;).</p>
+<p>For CC, in general you can look for the resources you might need in
+cc/engine/resources.</p>
+<p>If you are setting up an install or development version of cc.engine,
+you may need/want to configure the staticdirector as part of the paste
+config file (assuming you are using paste).  (Note: you probably don&#8217;t
+<em>need</em> to read this section, this package comes with both a deployment
+and development config file that probably solves this for you.)  There
+are two configuration options you can set.  The first one is
+&#8220;direct_remote_path&#8221;:</p>
+<div class="highlight-python"><pre>[app:ccengine]
+use = egg:cc.engine#ccengine_app
+direct_remote_path = /statik/</pre>
+</div>
+<p>In that example, request.staticdirect(&#8216;images/information.png&#8217;) will
+resolve to &#8220;/statik/images/information.png&#8221;.  You can also use a full
+domain name here if you like; setting direct_remote_path to
+<a class="reference external" href="http://assets.example.org/statik/">http://assets.example.org/statik/</a> would resolve to
+&#8220;<a class="reference external" href="http://assets.example.org/statik/images/information.png">http://assets.example.org/statik/images/information.png</a>&#8220;.</p>
+<p>However, you may need to be able to handle multiple urls for the
+different primary &#8220;sections&#8221; of media that are hosted under separate
+parent urls, you may wish to use direct_remote_paths:</p>
+<div class="highlight-python"><pre>[app:ccengine]
+use = egg:cc.engine#ccengine_app
+direct_remote_paths =
+   images /images/
+   includes /includes/
+   cc3 /wp-content/themes/cc3
+   cc4 /wp-content/themes/cc4
+   cc5 /wp-content/themes/cc5</pre>
+</div>
+<p>Now the URL returned is dependent on the first directory of the
+requested URL.  Eg: request.staticdirect(&#8216;images/information.png&#8217;)
+will now return &#8220;/images/information.png&#8221; but
+request.staticdirect(&#8216;cc5/style.css&#8217;) will yield
+&#8220;/wp-content/themes/cc5/style.css&#8221;.  You might want to do this, for
+example, if you are trying to mirror the creativecommons.org setup,
+where the stylesheets used point at very specific directories that
+don&#8217;t all fall under the same parent URL.  (This is what the default
+development INI file does.)</p>
+</div>
+<div class="section" id="static-serving-for-development">
+<h4>Static serving for development<a class="headerlink" href="#static-serving-for-development" title="Permalink to this headline">¶</a></h4>
+<p>If you&#8217;re in development mode and using the development paste config
+file, this should be handled for you, but for the sake of
+thoroughness, here is part of the config file:</p>
+<div class="highlight-python"><pre>[composite:main]
+use = egg:Paste#urlmap
+/ = ccengine
+/images = images_serve
+/includes = includes_serve
+/wp-content/themes/cc3 = cc3_serve
+/wp-content/themes/cc4 = cc4_serve
+/wp-content/themes/cc5 = cc5_serve
+
+[app:ccengine]
+use = egg:cc.engine#ccengine_app
+direct_remote_paths =
+   images /images/
+   includes /includes/
+   cc3 /wp-content/themes/cc3
+   cc4 /wp-content/themes/cc4
+   cc5 /wp-content/themes/cc5
+
+[app:images_serve]
+use = egg:cc.engine#static_app
+resource_path = cc.engine:resources/images
+
+[app:includes_serve]
+use = egg:cc.engine#static_app
+resource_path = cc.engine:resources/includes
+
+[app:cc3_serve]
+use = egg:cc.engine#static_app
+resource_path = cc.engine:resources/cc3
+
+[... cut off here ...]</pre>
+</div>
+<p>(Note that this may make more sense if you read the <a class="reference external" href="http://pythonpaste.org/deploy/">Paste Deploy</a> documentation.)</p>
+<p>What we are doing here is using Paste&#8217;s composite application setup
+stuff to mount things under different URLs.  In this case, we are
+mounting the main app under /, and then are setting up separate serve
+points for the separate sections of the site.  We then use a wrapper
+for serving static content via the <a class="reference external" href="http://lukearno.com/projects/static/">static package</a>.</p>
+</div>
 </div>
 <div class="section" id="i18n">
 <h3>I18N<a class="headerlink" href="#i18n" title="Permalink to this headline">¶</a></h3>
@@ -245,7 +331,11 @@ into a a template the last time it was rendered with .pt_render.</p>
 <li><a class="reference external" href="#url-dispatching-routing">URL Dispatching / Routing</a></li>
 <li><a class="reference external" href="#views-controllers">Views / Controllers</a></li>
 <li><a class="reference external" href="#templates">Templates</a></li>
-<li><a class="reference external" href="#assets">Assets</a></li>
+<li><a class="reference external" href="#assets">Assets</a><ul>
+<li><a class="reference external" href="#staticdirect-finding-static-files-dynamically">Staticdirect: finding static files dynamically</a></li>
+<li><a class="reference external" href="#static-serving-for-development">Static serving for development</a></li>
+</ul>
+</li>
 <li><a class="reference external" href="#i18n">I18N</a></li>
 <li><a class="reference external" href="#models">Models</a></li>
 <li><a class="reference external" href="#tests">Tests</a><ul>
