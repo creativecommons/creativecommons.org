@@ -1,4 +1,6 @@
-from cc.engine import staticdirect
+import webtest
+
+from cc.engine import app, staticdirect
 
 
 def test_remote_staticdirect():
@@ -20,7 +22,12 @@ def test_multi_remote_staticdirect():
 
 
 def test_request_dot_staticdirect():
-    assert 0
+    testapp = webtest.TestApp(
+        app.CCEngineApp(
+            staticdirect.RemoteStaticDirect('/statik/')))
+    response = testapp.get('/licenses/by/3.0/')
+    assert u'/statik/images/information.png' in response.unicode_body
+    assert u'/statik/includes/deed3.css' in response.unicode_body
 
 
 def test_static_app_factory():
