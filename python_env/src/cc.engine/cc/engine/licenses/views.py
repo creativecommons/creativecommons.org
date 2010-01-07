@@ -20,15 +20,15 @@ def publicdomain_view(request):
 
 
 DEED_TEMPLATE_MAPPING = {
-    'sampling': 'licenses/sampling_templates/deed.pt',
-    'sampling+': 'licenses/sampling_templates/deed.pt',
-    'nc-sampling+': 'licenses/sampling_templates/deed.pt',
-    'GPL': 'licenses/fsf_templates/deed.pt',
-    'LGPL': 'licenses/fsf_templates/deed.pt',
-    'MIT': 'licenses/mitbsd_templates/deed.pt',
-    'BSD': 'licenses/mitbsd_templates/deed.pt',
-    'devnations': 'licenses/devnations_templates/deed.pt',
-    'CC0': 'licenses/zero_templates/deed.pt'}
+    'sampling': 'licenses/sampling_deed.pt',
+    'sampling+': 'licenses/sampling_deed.pt',
+    'nc-sampling+': 'licenses/sampling_deed.pt',
+    'GPL': 'licenses/fsf_deed.pt',
+    'LGPL': 'licenses/fsf_deed.pt',
+    'MIT': 'licenses/mitbsd_deed.pt',
+    'BSD': 'licenses/mitbsd_deed.pt',
+    'devnations': 'licenses/devnations_deed.pt',
+    'CC0': 'licenses/zero_deed.pt'}
 
 
 @get_license
@@ -92,7 +92,7 @@ def license_deed_view(request, license):
             target_lang=target_lang)
     else:
         main_template = util.get_zpt_template(
-            'licenses/standard_templates/deed.pt',
+            'licenses/standard_deed.pt',
             target_lang=target_lang)
 
     context = {

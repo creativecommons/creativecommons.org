@@ -60,22 +60,22 @@ def test_standard_deeds_licenses():
     Make sure the correct licenses get selected from the deeds
     """
     _deed_tester(
-        '/licenses/by/3.0/', 'licenses/standard_templates/deed.pt',
+        '/licenses/by/3.0/', 'licenses/standard_deed.pt',
         'by', '3.0', None,
         cc.license.by_code('by', '3.0'))
     _deed_tester(
-        '/licenses/by-sa/3.0/', 'licenses/standard_templates/deed.pt',
+        '/licenses/by-sa/3.0/', 'licenses/standard_deed.pt',
         'by-sa', '3.0', None,
         cc.license.by_code('by-sa'))
 
     # MIT and BSD, the only ones which are called without version
     # codes in the URL
     _deed_tester(
-        '/licenses/MIT/', 'licenses/mitbsd_templates/deed.pt',
+        '/licenses/MIT/', 'licenses/mitbsd_deed.pt',
         'MIT', None, None,
         cc.license.by_code('MIT'))
     _deed_tester(
-        '/licenses/BSD/', 'licenses/mitbsd_templates/deed.pt',
+        '/licenses/BSD/', 'licenses/mitbsd_deed.pt',
         'BSD', None, None,
         cc.license.by_code('BSD'))
 
