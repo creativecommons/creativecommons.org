@@ -45,8 +45,7 @@ class CCEngineApp(object):
         request.start_response = start_response
         request.matchdict = route_match
         request.urlgen = routes.URLGenerator(routing.mapping, environ)
-        request.staticdirect = lambda filepath: self.staticdirector(
-            request, filepath)
+        request.staticdirect = self.staticdirector
         return controller(request)(environ, start_response)
 
 
