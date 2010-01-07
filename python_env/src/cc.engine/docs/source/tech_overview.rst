@@ -101,14 +101,14 @@ currently Zope Page Template based.
 To load a template, use the cc.engine.util.get_zpt_template() method.
 Pass in a filename that is relative to cc/engine/templates/.  For
 example, to import the template at
-cc/engine/templates/myth_profiles/phoenix.zpt run:
+cc/engine/templates/myth_profiles/phoenix.zpt run::
 
   phoenix_template = util.get_zpt_template('myth_profiles/phoenix.zpt')
 
 If you know the target language that your template should render to,
 pass that in as the second argument (see I18N below).
 
-To render, use:
+To render, use::
 
   context = {
       'request': request,
@@ -119,14 +119,14 @@ To render, use:
 cc.engine tries to be fairly minimal in the amount of Zope machinery
 it pulls in (ie, currently it does not use the zope component system),
 so currently if your template relies on metal macros, you should
-provide those in the context like so:
+provide those in the context like so::
 
   context = {
       'request': request,
       'base_template': util.get_zpt_template(
           'myth_profiles/base.pt')}
 
-Then in your template, use metal:use-macro like:
+Then in your template, use metal:use-macro like::
 
   <html xmlns="http://www.w3.org/1999/xhtml"
         xmlns:tal="http://xml.zope.org/namespaces/tal"
