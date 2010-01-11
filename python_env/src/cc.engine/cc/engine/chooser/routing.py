@@ -7,6 +7,8 @@ chooser_routes = [
           controller="cc.engine.chooser.views:choose_results_view"),
     Route("choose_get_html", "/get-html",
           controller="cc.engine.chooser.views:get_html"),
+    Route("choose_get_rdf", "/get-rdf",
+          controller="cc.engine.chooser.views:get_rdf"),
     Route("choose_wiki", "/wiki",
           controller="cc.engine.chooser.views:choose_wiki_redirect"),
     Route("non_web_popup", "/non-web-popup",

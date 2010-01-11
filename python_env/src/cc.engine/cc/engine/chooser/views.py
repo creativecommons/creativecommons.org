@@ -1,5 +1,7 @@
+from lxml import etree
 from urlparse import urlparse, urljoin
 from urllib import quote, unquote_plus
+from StringIO import StringIO
 
 from webob import Response, exc
 
@@ -171,6 +173,65 @@ def _generate_exit_url(url, referrer, license):
     return url
 
 
+NS_CC = 'http://creativecommons.org/ns#'
+NS_DC = 'http://purl.org/dc/elements/1.1/'
+NS_DCQ = 'http://purl.org/dc/terms/'
+NS_RDF = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+NS_RDFS = "http://www.w3.org/2000/01/rdf-schema#"
+LXML_PRE_CC, LXML_PRE_DC, LXML_PRE_DCQ, LXML_PRE_RDF, LXML_PRE_RDFS = map(
+    lambda ns: "{%s}" % ns,
+    (NS_CC, NS_DC, NS_DCQ, NS_RDF, NS_RDFS))
+
+NSMAP = {
+    None: NS_CC,
+    "dc": NS_DC,
+    "dcq": NS_DCQ,
+    "rdf": NS_RDF,
+    "rdfs": NS_RDFS}
+
+def _work_rdf(work_info, license):
+    rdf_tree = etree.Element(
+        LXML_PRE_RDF + 'rdf', nsmap = NSMAP)
+
+    # Work subtree
+    work = etree.SubElement(rdf_tree, LXML_PRE_CC + 'Work')
+    work.set(LXML_PRE_RDF + 'about', work_info.get('work-url', ''))
+    if work_info.get('title'):
+        work_title = etree.SubElement(work, LXML_PRE_DC + 'title')
+        work_title.text = work_info['title']
+    if work_info.get('type'):
+        work_type = etree.SubElement(work, LXML_PRE_DC + 'type')
+        work_type.set(
+            LXML_PRE_RDF + 'resource',
+            'http://purl.org/dc/dcmitype/' + work_info['type'])
+    if work_info.get('year'):
+        work_year = etree.SubElement(work, LXML_PRE_DC + 'date')
+        work_year.text = work_info['year']
+    if work_info.get('description'):
+        work_description = etree.SubElement(work, LXML_PRE_DC + 'description')
+        work_description.text = work_info['description']
+    if work_info.get('creator'):
+        work_creator = etree.SubElement(work, LXML_PRE_DC + 'creator')
+        work_creator_agent = etree.SubElement(
+            work_creator, LXML_PRE_CC + 'Agent')
+        work_creator_agent.text = work_info['creator']
+    if work_info.get('holder'):
+        work_rights = etree.SubElement(work, LXML_PRE_DC + 'rights')
+        work_rights_agent = etree.SubElement(
+            work_rights, LXML_PRE_CC + 'Agent')
+        work_rights_agent.text = work_info['holder']
+    if work_info.get('source-url'):
+        work_source = etree.SubElement(work, LXML_PRE_DC + 'source')
+        work_source.text = work_info['source']
+    work_license = etree.SubElement(work, LXML_PRE_CC + 'license')
+    work_license.set(LXML_PRE_RDF + 'resource', license.uri)
+    
+    license_element = etree.parse(StringIO(license.rdf)).getroot()
+    rdf_tree.append(license_element)
+
+    return etree.tostring(rdf_tree)
+
+
 def chooser_view(request):
     if request.GET.get('partner'):
         template = util.get_zpt_template('chooser_pages/partner/index.pt')
@@ -245,6 +306,15 @@ def get_html(request):
     html_formatter = HTMLFormatter()
     license_html = html_formatter.format(license, work_info)
     return Response(license_html, content_type='text/html; charset=UTF-8')
+
+
+def get_rdf(request):
+    request_form = request.GET or request.POST
+    license = _issue_license(request_form)
+    work_info = _work_info(request_form)
+    rdf = _work_rdf(work_info, license)
+
+    return Response(rdf, content_type='application/rdf+xml; charset=UTF-8')
 
 
 def non_web_popup(request):
