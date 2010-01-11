@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@popup/page"
+      metal:use-macro="popup_template/macros/page"
       i18n:domain="cc_org">
   <head>
     <title metal:fill-slot="title">Creative Commons</title>
@@ -10,14 +10,14 @@
 
   <body >
     <metal:body fill-slot="body" >
-      <p tal:attributes="dir view/get_ltr_rtl; align view/is_rtl_align;"
+      <p tal:attributes="dir get_ltr_rtl; align is_rtl_align;"
          i18n:translate="license.html_display">
         <%=[ccommons::istr $lang license.html_display]%>
       </p>
       <form action="">
         <textarea cols="30" rows="8" name="html" 
                   style="width:90%;height:150px;"
-                  tal:content="view/license/html">@html;noquote@</textarea>
+                  tal:content="license_html">@html;noquote@</textarea>
         <p>
           <input type="button" onclick="form.html.focus();form.html.select()"
                  value="Highlight Text to Copy" name="grab" 
@@ -25,26 +25,26 @@
         </p>
       </form>
 
-      <p tal:attributes="dir view/get_ltr_rtl; align view/is_rtl_align;"
+      <p tal:attributes="dir get_ltr_rtl; align is_rtl_align;"
          i18n:translate="license.html_directions">
         <%=[ccommons::istr $lang license.html_directions]%>
       </p>
 
       <form action="./work-email" method="post">
-        <p tal:attributes="dir view/get_ltr_rtl; align view/is_rtl_align;">
+        <p tal:attributes="dir get_ltr_rtl; align is_rtl_align;">
           <span tal:omit-tag="" i18n:translate="license.html_email"/>
           <input type="text" name="to_email" value="" /> 
           <input type="hidden" name="lang" value=""
-                 tal:attributes="value python:request.form.get('lang', '');" />
+                 tal:attributes="value python:request.GET.get('lang', '');" />
 
           <input type="hidden" name="license_html" value=""
-                 tal:attributes="value view/license/html" />
+                 tal:attributes="value license_html" />
 
           <input type="hidden" name="work_title" value=""
-                 tal:attributes="value request/field_worktitle|nothing" />
+                 tal:attributes="value request/GET/field_worktitle|nothing" />
 
           <input type="hidden" name="license_name" value=""
-                 tal:attributes="value view/license/name" />
+                 tal:attributes="value license/title" />
 
           <input type="submit" value="<%=[ccommons::istr $lang util.Send]%>" 
                  i18n:attributes="value util.Send"/>
@@ -52,7 +52,7 @@
       </form>
 
       <div align="center"
-           tal:attributes="dir view/get_ltr_rtl; align view/is_rtl_align;">
+           tal:attributes="dir get_ltr_rtl; align is_rtl_align;">
         <a href="javascript:window.close();"
            i18n:translate="util.Close_window">
           <%=[ccommons::istr $lang util.Close_window]%>

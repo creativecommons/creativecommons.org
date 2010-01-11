@@ -338,3 +338,25 @@ def choose_wiki_redirect(request):
     return exc.HTTPTemporaryRedirect(
         location='/choose/results-one?license_code=by-sa')
 
+
+def email_popup(request):
+    request_form = request.GET or request.POST
+    license = _issue_license(request_form)
+    work_info = _work_info(request_form)
+    html_formatter = HTMLFormatter()
+    license_html = html_formatter.format(license, work_info)
+
+    template = util.get_zpt_template('chooser_pages/htmlpopup.pt')
+    popup_template = util.get_zpt_template('macros_templates/popup.pt')
+    
+    context = _base_context(request)
+    context.update(
+        {'popup_template': popup_template,
+         'license': license,
+         'license_html': license_html})
+
+    return Response(template.pt_render(context))
+
+
+def email_sent(request):
+    pass
