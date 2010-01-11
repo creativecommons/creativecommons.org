@@ -6,21 +6,15 @@
 
   <head>
     <title metal:define-slot="title">Page Title</title>
-
     <link rel="stylesheet" type="text/css" href="/includes/popup.css" />
-
     <metal:headers define-slot="headers" />
-
   </head>
+
   <body>
-    
-<div class="bodybox">
-<div class="bodyfloat">
-
-<metal:body define-slot="body" />
-
-</div>
-</div>
-
+    <div class="bodybox">
+      <div class="bodyfloat">
+        <metal:body define-slot="body" />
+      </div>
+    </div>
   </body>
 </html>

@@ -238,6 +238,24 @@ def choose_results_view(request):
     return Response(template.pt_render(context))
 
 
+def non_web_popup(request):
+    request_form = request.GET or request.POST
+    license = _issue_license(request_form)
+    template = util.get_zpt_template('chooser_pages/nonweb_popup.pt')
+    popup_template = util.get_zpt_template('macros_templates/popup.pt')
+    is_publicdomain = request_form.get('publicdomain') or request_form.get('pd')
+    
+    context = _base_context(request)
+
+    context.update(
+        {'popup_template': popup_template,
+         'license': license,
+         'is_publicdomain': is_publicdomain})
+
+    return Response(template.pt_render(context))
+
+
 def choose_wiki_redirect(request):
     return exc.HTTPTemporaryRedirect(
         location='/choose/results-one?license_code=by-sa')
+
