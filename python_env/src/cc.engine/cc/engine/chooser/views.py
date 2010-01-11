@@ -238,6 +238,15 @@ def choose_results_view(request):
     return Response(template.pt_render(context))
 
 
+def get_html(request):
+    request_form = request.GET or request.POST
+    license = _issue_license(request_form)
+    work_info = _work_info(request_form)
+    html_formatter = HTMLFormatter()
+    license_html = html_formatter.format(license, work_info)
+    return Response(license_html, content_type='text/html; charset=UTF-8')
+
+
 def non_web_popup(request):
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
