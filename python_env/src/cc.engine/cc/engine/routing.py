@@ -15,4 +15,6 @@ mapping.extend(licenses_routing.licenses_routes, '/licenses')
 mapping.extend(licenses_routing.cc0_routes, '/publicdomain/zero')
 mapping.extend(chooser_routing.chooser_routes, '/choose')
 
-mapping.redirect('/license/work-html-popup', '/choose/work-html-popup')
+mapping.connect(
+    '/license/work-html-popup',
+    controller="cc.engine.views:work_html_redirect")
