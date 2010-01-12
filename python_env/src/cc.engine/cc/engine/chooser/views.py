@@ -339,7 +339,7 @@ def choose_wiki_redirect(request):
         location='/choose/results-one?license_code=by-sa')
 
 
-def email_popup(request):
+def work_email_popup(request):
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
     work_info = _work_info(request_form)
@@ -358,5 +358,46 @@ def email_popup(request):
     return Response(template.pt_render(context))
 
 
-def email_sent(request):
-    pass
+CC_WORK_EMAIL_MESSAGE_TEMPLATE = u"""
+
+Thank you for using a Creative Commons License for your work "%s"
+
+You have selected the %s License. You should include a
+reference to this license on the web page that includes the work in question.
+
+Here is the suggested HTML:
+
+%s
+
+Further tips for using the supplied HTML and RDF are here:
+http://creativecommons.org/learn/technology/usingmarkup
+
+Thank you!
+Creative Commons Support
+info@creativecommons.org
+"""
+
+def work_email_send(request):
+    request_form = request.GET or request.POST
+    email_addr = request_form.get('to_email', '')
+    work_title = request_form.get('work_title', '')
+    license_name = request_form.get('license_name')
+    license_html = request_form.get('license_html')
+
+    message_body = CC_WORK_EMAIL_MESSAGE_TEMPLATE % (
+        work_title, license_name, license_html)
+
+    util.send_email(
+        'info@creativecommons.org', [email_addr],
+        'Your Creative Commons License Information',
+        message_body)
+
+    template = util.get_zpt_template('chooser_pages/emailhtml.pt')
+    popup_template = util.get_zpt_template('macros_templates/popup.pt')
+
+    context = _base_context(request)
+    context.update(
+        {'request_form': request_form,
+         'popup_template': popup_template})
+
+    return Response(template.pt_render(context))

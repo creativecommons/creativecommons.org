@@ -1,6 +1,11 @@
-import re
 import os
 import pkg_resources
+import re
+import smtplib
+
+from email.MIMEText import MIMEText
+import email.Charset
+email.Charset.add_charset('utf-8', email.Charset.SHORTEST, None, None)
 
 import RDF
 from lxml import etree
@@ -414,3 +419,16 @@ def safer_resource_filename(package, resource):
         raise UnsafeResource("Resource resolves outside of package")
 
     return filename
+
+
+def send_email(from_addr, to_addrs, subject, message_body):
+    # TODO: make a mock mhost if testing is enabled
+    mhost = smtplib.SMTP()
+    mhost.connect()
+
+    message = MIMEText(message_body.encode('utf-8'), 'plain', 'utf-8')
+    message['Subject'] = 'Your Creative Commons License Information'
+    message['From'] = from_addr
+    message['To'] = ', '.join(to_addrs)
+
+    return mhost.sendmail(from_addr, to_addrs, message.as_string())

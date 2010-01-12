@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@popup/page"
+      metal:use-macro="popup_template/macros/page"
       i18n:domain="cc_org">
   <head>
     <title metal:fill-slot="title">Email Information</title>
@@ -11,7 +11,7 @@
   <body>
     <metal:body fill-slot="body" >
       <p i18n:translate="license.link_emailed" >
-        <span tal:omit-tag="" i18n:name="email" tal:content="request/to_email" />
+        <span tal:omit-tag="" i18n:name="email" tal:content="request_form/to_email" />
       </p>
 
       <div align="center">

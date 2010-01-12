@@ -14,5 +14,7 @@ chooser_routes = [
     Route("non_web_popup", "/non-web-popup",
           controller="cc.engine.chooser.views:non_web_popup"),
     Route("work_html_popup", "/work-html-popup",
-          controller="cc.engine.chooser.views:email_popup"),
+          controller="cc.engine.chooser.views:work_email_popup"),
+    Route("work_html_popup", "/work-email",
+          controller="cc.engine.chooser.views:work_email_send"),
     ]

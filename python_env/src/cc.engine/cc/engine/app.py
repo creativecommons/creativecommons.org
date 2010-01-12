@@ -23,8 +23,9 @@ class CCEngineApp(object):
     """
     Really basic wsgi app using routes and WebOb.
     """
-    def __init__(self, staticdirector):
+    def __init__(self, staticdirector, config):
         self.staticdirector = staticdirector
+        self.config = config
 
     def __call__(self, environ, start_response):
         request = Request(environ)
@@ -61,4 +62,4 @@ def ccengine_app_factory(global_config, **kw):
         raise ImproperlyConfigured(
             "One of direct_remote_path or direct_remote_paths must be provided")
 
-    return CCEngineApp(staticdirector)
+    return CCEngineApp(staticdirector, config=kw)
