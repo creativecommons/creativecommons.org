@@ -5,7 +5,8 @@
       xmlns:cc="http://creativecommons.org/ns#"
       xmlns:dc="http://purl.org/dc/elements/1.1/"
       metal:define-macro="page"
-      i18n:domain="cc_org">
+      i18n:domain="cc_org"
+      tal:attributes="lang target_lang">
   <head>
     <title metal:define-slot="title">Creative Commons &mdash;
       <span tal:omit-tag="" tal:content="license/title">
