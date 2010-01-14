@@ -11,10 +11,16 @@ chooser_routes = [
           controller="cc.engine.chooser.views:get_rdf"),
     Route("choose_wiki", "/wiki",
           controller="cc.engine.chooser.views:choose_wiki_redirect"),
-    Route("non_web_popup", "/non-web-popup",
+    Route("choose_non_web_popup", "/non-web-popup",
           controller="cc.engine.chooser.views:non_web_popup"),
-    Route("work_html_popup", "/work-html-popup",
+    Route("choose_work_html_popup", "/work-html-popup",
           controller="cc.engine.chooser.views:work_email_popup"),
-    Route("work_html_popup", "/work-email",
+    Route("choose_work_html_popup", "/work-email",
           controller="cc.engine.chooser.views:work_email_send"),
+
+    # "Special" FSF choosers
+    Route("choose_gpl", "/cc-gpl",
+          controller="cc.engine.chooser.views:gpl_chooser"),
+    Route("choose_gpl", "/cc-lgpl",
+          controller="cc.engine.chooser.views:lgpl_chooser"),
     ]
