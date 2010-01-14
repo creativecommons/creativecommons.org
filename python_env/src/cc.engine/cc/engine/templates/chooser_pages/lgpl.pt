@@ -4,113 +4,120 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="context/@@engine/page"
       i18n:domain="cc_org">
-<head>
-  <title metal:fill-slot="title">CC GNU LGPL</title>
-</head>
+  <head>
+    <title metal:fill-slot="title">CC GNU LGPL</title>
+  </head>
 
-<body>
+  <body>
+    <metal:block fill-slot="sidebar">
+      <p><a href="/choose/">&laquo; back to licenses</a></p>
+    </metal:block>
 
-<metal:block fill-slot="sidebar">
+    <metal:right fill-slot="body">
+      <p i18n:translate="license.fsf_explain">
+        <span i18n:name="license_code">LGPL</span>
+        <span i18n:name="license_url">
+          http://creativecommons.org/licenses/LGPL/2.1/
+        </span>
+        <span i18n:name="license_name_full">GNU Lesser General Public License</span>
+      </p>
 
-   <p><a href="/choose/">&laquo; back to licenses</a></p>
+      <p align="center" 
+         style="margin-top:20px; margin-bottom:20px; margin-left:14px; margin-right:14px;" class="licensebox">
 
-</metal:block>
+        <!-- Creative Commons License -->
+        <a href="http://creativecommons.org/licenses/LGPL/2.1/">
+          <img alt="CC-GNU LGPL" border="0" src="/images/public/cc-LGPL-a.png" /></a>
+        <br />
+        <span tal:omit-tag="" i18n:translate="license.fsf_software_licensed">
+          <span i18n:name="license_code" tal:omit-tag="">LGPL</span>
+          <span i18n:name="license_url"
+	        tal:omit-tag="">http://creativecommons.org/licenses/LGPL/2.1/</span> 
+          <span i18n:name="license_version" tal:omit-tag="">2.1</span>
+        </span>
+        <!-- /Creative Commons License -->
+      </p>
 
+      <div align="center" style="margin:14px;">
+        <table width="500" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th width="167" i18n:translate="license.human-readable_commons_deed"/>
+            <th width="167" i18n:translate="license.lawyer-readable_legal_code"/>
+            <th width="166" i18n:translate="license.machine-readable_digital_code"/>
+          </tr>
 
-<metal:right fill-slot="body">
+          <tr align="center">
+            <td>
+              <a href="http://creativecommons.org/licenses/LGPL/2.1/"><img src="/images/licensedeeds/deed-gpl.gif" alt="" border="0" /></a>
+            </td>
+            <td>
+              <a href="http://creativecommons.org/licenses/LGPL/2.1/legalcode"><img src="/images/licensedeeds/legalcode-gpl.gif" border="0" alt="" /></a>
+            </td>
+            <td>
+              <a href="/choose/work-html-popup?license_code=LGPL" 
+                 onclick="window.open('work-html-popup?lang=en&license_code=LGPL"
+                 onclick="window.open('work-html-popup?license_code=LGPL" 
+                 onclick="window.open('work-html-popup?lang=en&license_code=LGPL', 'html_help', width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="/images/licensedeeds/code.gif" border="0" alt="" /></a>
+            </td>
+          </tr>
+      </table></div>
 
+      <p i18n:translate="license.fsf_how_it_works">
+        <span i18n:name="license_code" tal:omit-tag="">LGPL</span>
+        <span i18n:name="license_name_lower" tal:omit-tag="">lgpl-2.1</span>
+        <span i18n:name="version_title" tal:omit-tag="">2.1</span>
+        <span i18n:name="license_url" tal:omit-tag="">
+          http://creativecommons.org/licenses/LGPL/2.1/
+        </span>
+      </p>
 
-<p i18n:translate="license.fsf_explain">
-  <span i18n:name="license_code">LGPL</span>
-  <span i18n:name="license_url">http://creativecommons.org/licenses/LGPL/2.1/</span>
-  <span i18n:name="license_name_full">GNU Lesser General Public License</span>
-</p>
+      <h1 i18n:translate="license.mark_software">Mark Software</h1>
 
-<p align="center" 
-   style="margin-top:20px; margin-bottom:20px; margin-left:14px; margin-right:14px;" class="licensebox">
+      <p i18n:translate="license.fsf_instructions">
+        Read the <a href="http://www.gnu.org/licenses/gpl-howto.html">FSF's
+        instructions for including the license with your software</a>.
+      </p> 
 
-<!-- Creative Commons License -->
-<a href="http://creativecommons.org/licenses/LGPL/2.1/">
-<img alt="CC-GNU LGPL" border="0" src="/images/public/cc-LGPL-a.png" /></a><br />
-<span tal:omit-tag="" i18n:translate="license.fsf_software_licensed">
+      <p i18n:translate="license.display_software_icon">
+        You can display the icon on any site you offer your software
+        for download using the following markup:
+      </p>
 
-  <span i18n:name="license_code" tal:omit-tag="">LGPL</span>
-  <span i18n:name="license_url"
-	tal:omit-tag="">http://creativecommons.org/licenses/LGPL/2.1/</span> 
-  <span i18n:name="license_version" tal:omit-tag="">2.1</span>
+      <div class="textbox">
+        <div align="center">
+          <form action="">
+            <textarea cols="30" rows="8" name="html" style="width:90%;height:150px;">
+              <!-- Creative Commons License -->
+              <a href="http://creativecommons.org/licenses/LGPL/2.1/">
+                <img alt="CC-GNU LGPL" border="0" 
+                     src="http://creativecommons.org/images/public/cc-LGPL-a.png" />
+              </a>
+              <br />
+              <span tal:omit-tag="" i18n:translate="license.fsf_software_licensed">
+                <span i18n:name="license_code" tal:omit-tag="">LGPL</span>
+                <span i18n:name="license_url"
+	              tal:omit-tag="">http://creativecommons.org/licenses/LGPL/2.1/</span> 
+                <span i18n:name="license_version" tal:omit-tag="">2.1</span>
+              </span>
+              <!-- /Creative Commons License -->
+            </textarea>
+            
+            <p>
+              <input type="button" 
+                     onclick="form.html.focus();form.html.select()" 
+                     value="" name="grab"
+                     i18n:attributes="value util.Highlight_Text;" />
+              [<a href="work-html-popup?license_code=LGPL&lang=en"
+                  onclick="window.open('work-html-popup?license_code=LGPL&lang=en', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;" i18n:translate="license.get_html_email">
+              </a>]
+            </p>
+          </form>
+        </div>
+      </div>
 
-</span>
-<!-- /Creative Commons License -->
-</p>
+      <p>&nbsp;</p>
 
-<div align="center" style="margin:14px;"><table width="500" border="0" cellspaci
-ng="0" cellpadding="0">
-<tr>
-        <th width="167" i18n:translate="license.human-readable_commons_deed"/>
-        <th width="167" i18n:translate="license.lawyer-readable_legal_code"/>
-        <th width="166" i18n:translate="license.machine-readable_digital_code"/>
-</tr>
-
-<tr align="center">
-        <td><a href="http://creativecommons.org/licenses/LGPL/2.1/"><img src="/images/licensedeeds/deed-gpl.gif" alt="" border="0" /></a></td>
-        <td><a href="http://creativecommons.org/licenses/LGPL/2.1/legalcode"><img src="/images/licensedeeds/legalcode-gpl.gif" border="0" alt="" /></a></td>
-        <td><a href="/choose/work-html-popup?license_code=LGPL" 
-                onclick="window.open('work-html-popup?lang=en&license_code=LGPL"
-                onclick="window.open('work-html-popup?license_code=LGPL" 
-                onclick="window.open('work-html-popup?lang=en&license_code=LGPL', 'html_help', width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="/images/licensedeeds/code.gif" border="0" alt="" /></a></td>
-</tr>
-</table></div>
-
-<p i18n:translate="license.fsf_how_it_works">
-  <span i18n:name="license_code" tal:omit-tag="">LGPL</span>
-  <span i18n:name="license_name_lower" tal:omit-tag="">lgpl-2.1</span>
-  <span i18n:name="version_title" tal:omit-tag="">2.1</span>
-  <span i18n:name="license_url" tal:omit-tag="">http://creativecommons.org/licenses/LGPL/2.1/</span>
-</p>
-
-
-<h1 i18n:translate="license.mark_software">Mark Software</h1>
-
-<p i18n:translate="license.fsf_instructions">Read
-  the <a href="http://www.gnu.org/licenses/gpl-howto.html">FSF's
-  instructions for including the license with your software</a>.</p> 
-
-<p i18n:translate="license.display_software_icon">You can display the icon on
-  any site you offer your software for download using the following
-  markup:</p>
-
-<div class="textbox">
-<div align="center">
-<form action="">
-<textarea cols="30" rows="8" name="html" style="width:90%;height:150px;">
-
-<!-- Creative Commons License -->
-<a href="http://creativecommons.org/licenses/LGPL/2.1/">
-<img alt="CC-GNU LGPL" border="0" 
-     src="http://creativecommons.org/images/public/cc-LGPL-a.png" />
-</a><br />
-<span tal:omit-tag="" i18n:translate="license.fsf_software_licensed">
-  <span i18n:name="license_code" tal:omit-tag="">LGPL</span>
-  <span i18n:name="license_url"
-	tal:omit-tag="">http://creativecommons.org/licenses/LGPL/2.1/</span> 
-  <span i18n:name="license_version" tal:omit-tag="">2.1</span>
-</span>
-<!-- /Creative Commons License -->
-</textarea>
-                                                                                
-<p><input type="button" 
-    onclick="form.html.focus();form.html.select()" 
-    value="" name="grab"
-    i18n:attributes="value util.Highlight_Text;" />    [<a href="work-html-popup?license_code=LGPL&lang=en"
-       onclick="window.open('work-html-popup?license_code=LGPL&lang=en', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;" i18n:translate="license.get_html_email">
-</a>]</p>
-</form>
-</div></div>
-
-<p>&nbsp;</p>
-
-<p i18n:translate="license.fsf_more_info" />
-
-</metal:right>
-</body>
+      <p i18n:translate="license.fsf_more_info" />
+    </metal:right>
+  </body>
 </html>
