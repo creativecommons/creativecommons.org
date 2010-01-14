@@ -401,3 +401,11 @@ def work_email_send(request):
          'popup_template': popup_template})
 
     return Response(template.pt_render(context))
+
+
+def gpl_chooser(request):
+    return Response("GPL")
+
+
+def lgpl_chooser(request):
+    return Response("LGPL")
