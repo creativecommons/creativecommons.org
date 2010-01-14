@@ -404,8 +404,8 @@ def work_email_send(request):
 
 
 def gpl_chooser(request):
-    return Response("GPL")
+    return util.plain_template_view('chooser_pages/gpl.pt', request)
 
 
 def lgpl_chooser(request):
-    return Response("LGPL")
+    return util.plain_template_view('chooser_pages/lgpl.pt', request)
