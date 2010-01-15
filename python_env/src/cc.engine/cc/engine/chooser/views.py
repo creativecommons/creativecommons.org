@@ -419,10 +419,25 @@ def lgpl_chooser(request):
 ### Public domain
 
 def publicdomain_landing(request):
-    pass
+    template = util.get_zpt_template(
+        'chooser_pages/publicdomain/publicdomain-2.pt')
+
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine.pt')
+    support_template = util.get_zpt_template(
+        'macros_templates/support.pt')
+
+    context = _base_context(request)
+    context.update({
+            'support_template': support_template,
+            'engine_template': engine_template})
+
+    return Response(template.pt_render(context))
+
 
 def publicdomain_confirm(request):
     pass
+
 
 def publicdomain_result(request):
     pass
