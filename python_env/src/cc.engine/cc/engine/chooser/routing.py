@@ -36,7 +36,7 @@ chooser_routes = [
     ## CC0 chooser
     Route("choose_cc0_landing", "/choose/zero/",
           controller="cc.engine.chooser.views:cc0_landing"),
-    Route("choose_cc0_landing", "/choose/zero/waiver",
+    Route("choose_cc0_waiver", "/choose/zero/waiver",
           controller="cc.engine.chooser.views:cc0_waiver"),
     Route("choose_cc0_confirm", "/choose/zero/confirm",
           controller="cc.engine.chooser.views:cc0_confirm"),
