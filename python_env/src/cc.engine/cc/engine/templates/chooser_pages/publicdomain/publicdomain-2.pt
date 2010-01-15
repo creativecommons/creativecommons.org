@@ -4,77 +4,77 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="context/@@engine/page"
       i18n:domain="cc_org">
-<head>
-  <title metal:fill-slot="title"
-	 i18n:translate="util.public_domain_certification">Public Domain Certification</title>
-</head>
+  <head>
+    <title metal:fill-slot="title"
+	   i18n:translate="util.public_domain_certification">
+      Public Domain Certification
+    </title>
+  </head>
 
-<body>
+  <body>
+    <metal:title metal:fill-slot="page-header-title"
+	         i18n:translate="license.pd.identify_a_pd_work">
+      Identify a Public Domain Work
+    </metal:title>
 
-  <metal:title metal:fill-slot="page-header-title"
-	       i18n:translate="license.pd.identify_a_pd_work">
-    Identify a Public Domain Work
-  </metal:title>
+    <metal:body fill-slot="body">
+      <p i18n:translate="license.pd.intro_1">
+        You have selected the Public Domain Certification.  The Public
+        Domain Certification should only be used to certify a work that is
+        already in the public domain.  Creative Commons does not recommend
+        you use the Public Domain Certification for dedicating a work
+        still protected by copyright to the public domain.  To dedicate a
+        work to the public domain, consider
+        using <a href="/choose/zero/">CC0</a>.  Please note that if you
+        use the Public Domain Certification to dedicate a work to the
+        public domain, it may not be valid outside of the United States.
+      </p>
 
-<metal:body fill-slot="body">
+      <p i18n:translate="license.pd.intro_3">
+        Once you're done filling this out, you will still have the
+        opportunity to confirm your choice before the certification
+        happens.
+      </p>
 
-  <p i18n:translate="license.pd.intro_1">
-    You have selected the Public Domain Certification.  The Public
-    Domain Certification should only be used to certify a work that is
-    already in the public domain.  Creative Commons does not recommend
-    you use the Public Domain Certification for dedicating a work
-    still protected by copyright to the public domain.  To dedicate a
-    work to the public domain, consider
-    using <a href="/choose/zero/">CC0</a>.  Please note that if you
-    use the Public Domain Certification to dedicate a work to the
-    public domain, it may not be valid outside of the United States.
-  </p>
+      <h3 i18n:translate="license.pd.about_the_work">
+        About the work you are certifying
+      </h3>
 
-  <p i18n:translate="license.pd.intro_3">
-    Once you're done filling this out, you will still have the
-    opportunity to confirm your choice before the certification
-    happens.
-  </p>
+      <form id="publicdomain"
+	    action="./publicdomain-3">
+        <input type="hidden" name="lang" value=""
+	       tal:attributes="value python:request.form.get('lang','')" 
+	       tal:condition="python:request.form.get('lang', False)" 
+	       />
+        <table border="0" cellspacing="3" cellpadding="3">
+          <tbody>
+	    <tr>
+	      <td align="right" i18n:translate="util.title_of_work">
+	        Title of work
+	      </td>
+	      <td><input type="text" name="title" value="" />
+	      </td>
+	    </tr>
+	    <tr>
+	      <td align="right" i18n:translate="util.author">
+	        Author
+	      </td>
+	      <td><input type="text" name="copyright_holder" value="" />
+	      </td>
+	    </tr>
+	    <tr>
+	      <td align="right">&nbsp;</td>
+	      <td>
+	        <input type="submit" value="proceed" 
+		       i18n:attributes="value util.proceed"/></td>
+	    </tr>
+          </tbody>
+        </table>
+      </form>
 
-  <h3 i18n:translate="license.pd.about_the_work">
-    About the work you are certifying
-  </h3>
+      <div metal:use-macro="context/@@support/engine_languages"></div>
 
-  <form id="publicdomain"
-	action="./publicdomain-3">
-    <input type="hidden" name="lang" value=""
-	   tal:attributes="value python:request.form.get('lang','')" 
-	   tal:condition="python:request.form.get('lang', False)" 
-	   />
-    <table border="0" cellspacing="3" cellpadding="3">
-      <tbody>
-	<tr>
-	  <td align="right" i18n:translate="util.title_of_work">
-	    Title of work
-	  </td>
-	  <td><input type="text" name="title" value="" />
-	  </td>
-	</tr>
-	<tr>
-	  <td align="right" i18n:translate="util.author">
-	    Author
-	  </td>
-	  <td><input type="text" name="copyright_holder" value="" />
-	  </td>
-	</tr>
-	<tr>
-	  <td align="right">&nbsp;</td>
-	  <td>
-	    <input type="submit" value="proceed" 
-		   i18n:attributes="value util.proceed"/></td>
-	</tr>
-      </tbody>
-    </table>
-  </form>
+    </metal:body>
 
-    <div metal:use-macro="context/@@support/engine_languages"></div>
-
-</metal:body>
-
-</body>
+  </body>
 </html>
