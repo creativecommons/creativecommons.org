@@ -436,7 +436,23 @@ def publicdomain_landing(request):
 
 
 def publicdomain_confirm(request):
-    pass
+    template = util.get_zpt_template(
+        'chooser_pages/publicdomain/publicdomain-3.pt')
+
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine.pt')
+    support_template = util.get_zpt_template(
+        'macros_templates/support.pt')
+
+    request_form = request.GET or request.POST
+
+    context = _base_context(request)
+    context.update({
+            'support_template': support_template,
+            'engine_template': engine_template,
+            'request_form': request_form})
+
+    return Response(template.pt_render(context))
 
 
 def publicdomain_result(request):
