@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@engine/page"
+      metal:use-macro="engine_template/macros/page"
       i18n:domain="cc_org">
   <head>
     <title metal:fill-slot="title"
@@ -43,8 +43,8 @@
       <form id="publicdomain"
 	    action="./publicdomain-3">
         <input type="hidden" name="lang" value=""
-	       tal:attributes="value python:request.form.get('lang','')" 
-	       tal:condition="python:request.form.get('lang', False)" 
+	       tal:attributes="value python:request.GET.get('lang','')" 
+	       tal:condition="python:request.GET.get('lang', False)" 
 	       />
         <table border="0" cellspacing="3" cellpadding="3">
           <tbody>
@@ -72,7 +72,7 @@
         </table>
       </form>
 
-      <div metal:use-macro="context/@@support/engine_languages"></div>
+      <div metal:use-macro="support_template/macros/engine_languages"></div>
 
     </metal:body>
 
