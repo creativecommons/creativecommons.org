@@ -18,9 +18,28 @@ chooser_routes = [
     Route("choose_work_html_popup", "/work-email",
           controller="cc.engine.chooser.views:work_email_send"),
 
-    # "Special" FSF choosers
+    # "Special" choosers
+    ## FSF choosers
     Route("choose_gpl", "/cc-gpl",
           controller="cc.engine.chooser.views:gpl_chooser"),
     Route("choose_gpl", "/cc-lgpl",
           controller="cc.engine.chooser.views:lgpl_chooser"),
+
+    ## Public domain chooser
+    Route("choose_publicdomain_landing", "/publicdomain-2",
+          controller="cc.engine.chooser.views:publicdomain_landing"),
+    Route("choose_publicdomain_confirm", "/publicdomain-3",
+          controller="cc.engine.chooser.views:publicdomain_confirm"),
+    Route("choose_publicdomain_result", "/publicdomain-4",
+          controller="cc.engine.chooser.views:publicdomain_result"),
+
+    ## CC0 chooser
+    Route("choose_cc0_landing", "/choose/zero/",
+          controller="cc.engine.chooser.views:cc0_landing"),
+    Route("choose_cc0_landing", "/choose/zero/waiver",
+          controller="cc.engine.chooser.views:cc0_waiver"),
+    Route("choose_cc0_confirm", "/choose/zero/confirm",
+          controller="cc.engine.chooser.views:cc0_confirm"),
+    Route("choose_cc0_results", "/choose/zero/results",
+          controller="cc.engine.chooser.views:cc0_results"),
     ]
