@@ -403,9 +403,28 @@ def work_email_send(request):
     return Response(template.pt_render(context))
 
 
+## Special choosers
+## ----------------
+
+### FSF
+
 def gpl_chooser(request):
     return util.plain_template_view('chooser_pages/gpl.pt', request)
 
 
 def lgpl_chooser(request):
     return util.plain_template_view('chooser_pages/lgpl.pt', request)
+
+
+### Public domain
+
+def publicdomain_landing(request):
+    pass
+
+def publicdomain_confirm(request):
+    pass
+
+def publicdomain_result(request):
+    pass
+
+### CC0
