@@ -1,6 +1,6 @@
 from lxml import etree
 from urlparse import urlparse, urljoin
-from urllib import quote, unquote_plus
+from urllib import quote, unquote_plus, urlencode
 from StringIO import StringIO
 
 from webob import Response, exc
@@ -453,6 +453,31 @@ def publicdomain_confirm(request):
 
 
 def publicdomain_result(request):
-    pass
+    request_form = request.GET or request.POST
+
+    # make sure the user selected "confirm"
+    if request_form.get('understand', False) != 'confirm':
+        return exc.HTTPTemporaryRedirect(
+            location='%s?%s' % (
+                './publicdomain-3', urlencode(request.GET)))
+
+    work_info = _work_info(request_form)
+    html_formatter = HTMLFormatter()
+    license_html = html_formatter.format(
+        cc.license.by_code('publicdomain'),
+        work_info)
+
+    template = util.get_zpt_template(
+        'chooser_pages/publicdomain/publicdomain-4.pt')
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine.pt')
+
+    context = _base_context(request)
+    context.update({
+            'engine_template': engine_template,
+            'request_form': request_form,
+            'license_html': license_html})
+
+    return Response(template.pt_render(context))
 
 ### CC0

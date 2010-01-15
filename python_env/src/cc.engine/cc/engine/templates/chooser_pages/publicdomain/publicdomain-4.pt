@@ -2,11 +2,13 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@engine/page"
+      metal:use-macro="engine_template/macros/page"
       i18n:domain="cc_org">
   <head>
     <title metal:fill-slot="title"
-	   i18n:translate="util.public_domain_certification">Public Domain Certification</title>
+	   i18n:translate="util.public_domain_certification">
+      Public Domain Certification
+    </title>
   </head>
 
   <body>
@@ -39,7 +41,7 @@
               <form action="">
                 <textarea cols="30" rows="8" name="html" 
                           style="width:90%;height:150px;"
-                          tal:content="structure view/license/html">@html@</textarea>
+                          tal:content="structure license_html">@html@</textarea>
                 
                 <p>
                   <input type="button"
@@ -57,7 +59,7 @@
         </li>
         <li i18n:translate="license.mark_nonweb">
           <span tal:omit-tag="" i18n:name="url_vars" 
-	        tal:content="python:'pd=1&field_creator='+request['copyright_holder']+'&field_worktitle='+request['title']" />
+	        tal:content="python:'pd=1&field_creator='+request_form['copyright_holder']+'&field_worktitle='+request_form['title']" />
         </li>
       </ul>
 
