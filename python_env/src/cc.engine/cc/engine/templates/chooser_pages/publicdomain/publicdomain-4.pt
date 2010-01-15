@@ -4,56 +4,63 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="context/@@engine/page"
       i18n:domain="cc_org">
-<head>
-  <title metal:fill-slot="title"
-	 i18n:translate="util.public_domain_certification">Public Domain Certification</title>
-</head>
+  <head>
+    <title metal:fill-slot="title"
+	   i18n:translate="util.public_domain_certification">Public Domain Certification</title>
+  </head>
 
-<body>
+  <body>
+    <metal:title metal:fill-slot="page-header-title"
+	         i18n:translate="license.pd.identify_a_pd_work">
+      Identify a Public Domain Work
+    </metal:title>
 
-  <metal:title metal:fill-slot="page-header-title"
-	       i18n:translate="license.pd.identify_a_pd_work">
-    Identify a Public Domain Work
-  </metal:title>
+    <metal:body fill-slot="body">
+      <p i18n:translate="license.mark_pd">
+        Now that you've chosen the Public Domain Certification, you should
+        mark the work in the appropriate way.
+      </p>
 
-<metal:body fill-slot="body">
-
-  <p i18n:translate="license.mark_pd">
-    Now that you've chosen the Public Domain Certification, you should
-    mark the work in the appropriate way.
-  </p>
-  <p i18n:translate="license.in_order_to">
-    In order to:
-  </p>
-                                                                                
-  <ul>
-    <li>
-      <span tal:omit-tag="" i18n:translate="license.mark_web">
-	Mark content on a web page, the HTML to display the
-	button is as follows and be sure
-	to <a href="/technology/web">follow the guidelines here</a>:
-      </span>
-      <br /><br />
-                                                                                
-<div class="textbox">
-<div align="center">
-<form action="">
-<textarea cols="30" rows="8" name="html" 
-    style="width:90%;height:150px;"
-    tal:content="structure view/license/html">@html@</textarea>
-                                                                                
-<p><input type="button" onclick="form.html.focus();form.html.select()" value="highlight" name="grab" i18n:attributes="value util.Highlight_Text" /> 
-[<a href="work-html-popup?licensecode=pd&pd=true" 
-    onclick="window.open('work-html-popup?licensecode=pd&pd=true', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;" i18n:translate="license.get_html_email" >x</a>]</p>
-                                                                                
-</form>
-</div></div></li>
-        <li i18n:translate="license.mark_nonweb">
-        <span tal:omit-tag="" i18n:name="url_vars" 
-	      tal:content="python:'pd=1&field_creator='+request['copyright_holder']+'&field_worktitle='+request['title']" />
+      <p i18n:translate="license.in_order_to">
+        In order to:
+      </p>
+      
+      <ul>
+        <li>
+          <span tal:omit-tag="" i18n:translate="license.mark_web">
+	    Mark content on a web page, the HTML to display the
+	    button is as follows and be sure
+	    to <a href="/technology/web">follow the guidelines here</a>:
+          </span>
+          <br /><br />
+          
+          <div class="textbox">
+            <div align="center">
+              <form action="">
+                <textarea cols="30" rows="8" name="html" 
+                          style="width:90%;height:150px;"
+                          tal:content="structure view/license/html">@html@</textarea>
+                
+                <p>
+                  <input type="button"
+                         onclick="form.html.focus();form.html.select()"
+                         value="highlight" name="grab"
+                         i18n:attributes="value util.Highlight_Text" /> 
+                  [<a href="work-html-popup?licensecode=pd&pd=true" 
+                      onclick="window.open('work-html-popup?licensecode=pd&pd=true', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
+                      i18n:translate="license.get_html_email" >x</a>]
+                </p>
+                
+              </form>
+            </div>
+          </div>
         </li>
-</ul>
+        <li i18n:translate="license.mark_nonweb">
+          <span tal:omit-tag="" i18n:name="url_vars" 
+	        tal:content="python:'pd=1&field_creator='+request['copyright_holder']+'&field_worktitle='+request['title']" />
+        </li>
+      </ul>
 
-</metal:body>
-</body>
+    </metal:body>
+  </body>
 </html>
