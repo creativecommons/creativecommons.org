@@ -7,7 +7,7 @@ from webob import Request, exc
 from cc.engine import routing, staticdirect
 
 
-class Error(object): pass
+class Error(Exception): pass
 class ImproperlyConfigured(Error): pass
 
 
@@ -44,9 +44,11 @@ class CCEngineApp(object):
             return exc.HTTPNotFound()(environ, start_response)
         controller = load_controller(route_match['controller'])
         request.start_response = start_response
+
         request.matchdict = route_match
         request.urlgen = routes.URLGenerator(routing.mapping, environ)
         request.staticdirect = self.staticdirector
+
         return controller(request)(environ, start_response)
 
 
