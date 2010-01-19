@@ -2,13 +2,13 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@engine/page"
+      metal:use-macro="engine_template/macros/page"
       i18n:domain="cc_org">
   <head>
     <title metal:fill-slot="title">CC0</title>
 
     <metal:headers fill-slot="headers">
-      <base href="" tal:attributes="href string:${context/@@absolute_url}/zero/" />
+      <base href="" tal:attributes="href python:request.urlgen('choose_cc0_landing')" />
 
       <link rel="stylesheet" type="text/css" 
 	    href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
@@ -21,10 +21,10 @@
 	      src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
 
       <link rel="stylesheet" type="text/css" href="zero.css"
-	    tal:attributes="href context/++resource++cc/includes/zero.css" />
+	    tal:attributes="href python:request.staticdirect('includes/zero.css')" />
 
       <script src="help.js" type="text/javascript"
-              tal:attributes="src context/++resource++cc/includes/help.js" >
+              tal:attributes="src python:request.staticdirect('includes/help.js')" >
       </script>
 
       <script type="text/javascript">

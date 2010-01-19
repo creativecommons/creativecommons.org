@@ -480,4 +480,16 @@ def publicdomain_result(request):
 
     return Response(template.pt_render(context))
 
+
 ### CC0
+def cc0_landing(request):
+    template = util.get_zpt_template(
+        'chooser_pages/zero/index.pt')
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine.pt')
+
+    context = _base_context(request)
+    context.update({
+            'engine_template': engine_template})
+
+    return Response(template.pt_render(context))
