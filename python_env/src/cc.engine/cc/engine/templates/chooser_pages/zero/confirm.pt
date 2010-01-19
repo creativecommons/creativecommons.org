@@ -4,98 +4,88 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="context/@@engine/page"
       i18n:domain="cc_org">
-<head>
-  <title metal:fill-slot="title">CC0: Confirm Waiver</title>
+  <head>
+    <title metal:fill-slot="title">CC0: Confirm Waiver</title>
 
+    <metal:headers fill-slot="headers">
+      <link rel="stylesheet" type="text/css" 
+	    href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
+      <link rel="stylesheet" type="text/css"
+	    href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
+      <link rel="stylesheet" type="text/css" href="zero.css"
+	    tal:attributes="href context/++resource++cc/includes/zero.css" />
+    </metal:headers>
+  </head>
 
-  <metal:headers fill-slot="headers">
-    <link rel="stylesheet" type="text/css" 
-	  href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
-    <link rel="stylesheet" type="text/css"
-	  href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
+  <body>
+    <metal:left fill-slot="sidebar">
+    </metal:left>
 
-    <link rel="stylesheet" type="text/css" href="zero.css"
-	  tal:attributes="href context/++resource++cc/includes/zero.css" />
+    <metal:title fill-slot="page-header-title">CC0: 
+      <span tal:omit-tag="" 
+	    i18n:translate="license.zero.confirm_title">Confirm Waiver</span>
+    </metal:title>
 
-  </metal:headers>
+    <metal:body fill-slot="body">
+      <div class="yui-skin-sam">
+        <form action="results">
+          <metal:form-vals tal:repeat="key python:view.request.form.keys()">
+            <input type="hidden" name="key" value=""
+	           tal:attributes="name  key;
+			           value python:view.request.form[key]" />
+          </metal:form-vals>
 
-</head>
+          <div id="confirm-waiver" class="yui-module">
+	    <div class="bd">
+	      <p i18n:translate="license.zero.confirm_waiver_1">
+	        Are you certain you wish to waive all rights to your
+	        work?  Once these rights are waived, you cannot reclaim
+	        them. 
+	      </p>
 
-<body>
+	      <p i18n:translate="license.zero.confirm_waiver_2">
+	        In particular, if you are an artist or author who
+	        depends upon copyright for your income, Creative Commons
+	        <strong>does not recommend</strong> that you use this
+	        tool.
+	      </p>
 
-<metal:left fill-slot="sidebar">
-</metal:left>
+	      <p i18n:translate="license.zero.confirm_waiver_3">
+	        If you don't own the rights to this work, then do not
+	        use CC0.  If you believe that nobody owns rights to the
+	        work, then the <a href="/choose/publicdomain-2">Public
+	          Domain Certification</a> may be what you're looking for.
+	      </p>
 
-<metal:title fill-slot="page-header-title">CC0: 
-  <span tal:omit-tag="" 
-	i18n:translate="license.zero.confirm_title">Confirm Waiver</span>
-</metal:title>
+	      <div class="form-row yui-buttongroup">
+	        <span class="yui-button">
+	          <span class="first-child">
+		    <button type="submit" id="decline-submit"
+			    name="waiver-decline"
+			    i18n:translate="license.zero.confirm_waiver_no"
+			    value="decline">
+		      No, I Do Not Waive
+		    </button>
+	          </span>
+	        </span>
 
-<metal:body fill-slot="body">
-<div class="yui-skin-sam">
+	        <span class="yui-button">
+	          <span class="first-child">
+		    <button type="submit" id="confirm-submit" 
+			    name="waiver-affirm" class="alert" 
+			    value="affirm"
+			    i18n:translate="license.zero.confirm_waiver_yes">
+		      Yes, I Waive
+		    </button>
+	          </span>
+	        </span>
+	      </div>
 
-  <form action="results">
-
-    <metal:form-vals tal:repeat="key python:view.request.form.keys()">
-      <input type="hidden" name="key" value=""
-	     tal:attributes="name  key;
-			     value python:view.request.form[key]" />
-    </metal:form-vals>
-
-      <div id="confirm-waiver" class="yui-module">
-	<div class="bd">
-
-	  <p i18n:translate="license.zero.confirm_waiver_1">
-	    Are you certain you wish to waive all rights to your
-	    work?  Once these rights are waived, you cannot reclaim
-	    them. 
-	  </p>
-
-	  <p i18n:translate="license.zero.confirm_waiver_2">
-	    In particular, if you are an artist or author who
-	    depends upon copyright for your income, Creative Commons
-	    <strong>does not recommend</strong> that you use this
-	    tool.
-	  </p>
-
-	  <p i18n:translate="license.zero.confirm_waiver_3">
-	    If you don't own the rights to this work, then do not
-	    use CC0.  If you believe that nobody owns rights to the
-	    work, then the <a href="/choose/publicdomain-2">Public
-	      Domain Certification</a> may be what you're looking for.
-	  </p>
-
-	  <div class="form-row yui-buttongroup">
-	    <span class="yui-button">
-	      <span class="first-child">
-		<button type="submit" id="decline-submit"
-			name="waiver-decline"
-			i18n:translate="license.zero.confirm_waiver_no"
-			value="decline">
-		  No, I Do Not Waive
-		</button>
-	      </span>
-	    </span>
-
-	    <span class="yui-button">
-	      <span class="first-child">
-		<button type="submit" id="confirm-submit" 
-			name="waiver-affirm" class="alert" 
-			value="affirm"
-			i18n:translate="license.zero.confirm_waiver_yes">
-		  Yes, I Waive
-		</button>
-	      </span>
-	    </span>
-	  </div>
-
-	</div>
+	    </div>
+          </div>
+        </form>
       </div>
+    </metal:body>
 
-  </form>
-
-</div>
-</metal:body>
-
-</body>
+  </body>
 </html>
