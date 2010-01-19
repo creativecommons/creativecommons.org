@@ -34,12 +34,14 @@ chooser_routes = [
           controller="cc.engine.chooser.views:publicdomain_result"),
 
     ## CC0 chooser
-    Route("choose_cc0_landing", "/choose/zero/",
+    Route("choose_cc0_landing", "/zero/",
           controller="cc.engine.chooser.views:cc0_landing"),
-    Route("choose_cc0_waiver", "/choose/zero/waiver",
+    Route("choose_cc0_waiver", "/zero/waiver",
           controller="cc.engine.chooser.views:cc0_waiver"),
-    Route("choose_cc0_confirm", "/choose/zero/confirm",
+    Route("choose_cc0_confirm", "/zero/confirm",
           controller="cc.engine.chooser.views:cc0_confirm"),
-    Route("choose_cc0_results", "/choose/zero/results",
+    Route("choose_cc0_results", "/zero/results",
           controller="cc.engine.chooser.views:cc0_results"),
+    Route("choose_cc0_results", "/zero/partner",
+          controller="cc.engine.chooser.views:cc0_partner"),
     ]
