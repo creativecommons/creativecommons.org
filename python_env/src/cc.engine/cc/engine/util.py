@@ -1,3 +1,4 @@
+import csv
 import os
 import pkg_resources
 import re
@@ -432,3 +433,14 @@ def send_email(from_addr, to_addrs, subject, message_body):
     message['To'] = ', '.join(to_addrs)
 
     return mhost.sendmail(from_addr, to_addrs, message.as_string())
+
+
+###
+## ISO 3166 -- country names to country code utilities
+###
+
+CODE_COUNTRY_LIST = [
+    (unicode_cleaner(code), unicode_cleaner(country))
+    for code, country in csv.reader(
+        file(pkg_resources.resource_filename('cc.engine', 'iso3166.csv')))]
+CODE_COUNTRY_MAP = dict(CODE_COUNTRY_LIST)
