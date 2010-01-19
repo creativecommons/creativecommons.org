@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@engine/page"
+      metal:use-macro="engine_template/macros/page"
       i18n:domain="cc_org">
   <head>
     <title metal:fill-slot="title">CC0: Confirm Waiver</title>
@@ -13,7 +13,7 @@
       <link rel="stylesheet" type="text/css"
 	    href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
       <link rel="stylesheet" type="text/css" href="zero.css"
-	    tal:attributes="href context/++resource++cc/includes/zero.css" />
+	    tal:attributes="href python:request.staticdirect('/includes/zero.css')" />
     </metal:headers>
   </head>
 
@@ -29,10 +29,10 @@
     <metal:body fill-slot="body">
       <div class="yui-skin-sam">
         <form action="results">
-          <metal:form-vals tal:repeat="key python:view.request.form.keys()">
+          <metal:form-vals tal:repeat="key python:request_form.keys()">
             <input type="hidden" name="key" value=""
 	           tal:attributes="name  key;
-			           value python:view.request.form[key]" />
+			           value python:request_form[key]" />
           </metal:form-vals>
 
           <div id="confirm-waiver" class="yui-module">
