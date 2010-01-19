@@ -4,113 +4,98 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="context/@@engine/page"
       i18n:domain="cc_org">
-<head>
-  <title metal:fill-slot="title">CC0</title>
+  <head>
+    <title metal:fill-slot="title">CC0</title>
 
+    <metal:headers fill-slot="headers">
+      <base href="" tal:attributes="href string:${context/@@absolute_url}/zero/" />
 
-  <metal:headers fill-slot="headers">
-    <base href="" tal:attributes="href string:${context/@@absolute_url}/zero/" />
+      <link rel="stylesheet" type="text/css" 
+	    href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
+      <link rel="stylesheet" type="text/css"
+	    href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
 
-    <link rel="stylesheet" type="text/css" 
-	  href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
-    <link rel="stylesheet" type="text/css"
-	  href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
+      <script type="text/javascript" 
+	      src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+      <script type="text/javascript" 
+	      src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
 
-    <script type="text/javascript" 
-	    src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
-    <script type="text/javascript" 
-	    src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
+      <link rel="stylesheet" type="text/css" href="zero.css"
+	    tal:attributes="href context/++resource++cc/includes/zero.css" />
 
-    <link rel="stylesheet" type="text/css" href="zero.css"
-	  tal:attributes="href context/++resource++cc/includes/zero.css" />
+      <script src="help.js" type="text/javascript"
+              tal:attributes="src context/++resource++cc/includes/help.js" >
+      </script>
 
-    <script src="help.js" type="text/javascript"
-       tal:attributes="src context/++resource++cc/includes/help.js" >
-    </script>
+      <script type="text/javascript">
+        YAHOO.util.Event.onDOMReady(function() {
 
-    <script type="text/javascript">
+        // init the buttons
+        new YAHOO.widget.Button("do-begin");
+        new YAHOO.widget.Button("do-learn-more");
 
-YAHOO.util.Event.onDOMReady(function() {
+        });
+      </script>
+    </metal:headers>
+  </head>
 
-    // init the buttons
-    new YAHOO.widget.Button("do-begin");
-    new YAHOO.widget.Button("do-learn-more");
+  <body>
+    <metal:left fill-slot="sidebar">
+    </metal:left>
 
-});
+    <metal:title fill-slot="page-header-title">CC0</metal:title>
 
-    </script>
+    <metal:body fill-slot="body">
+      <div class="yui-content">
+        <div id="page-welcome" class="yui-module">
+          <div class="bd">
+	    <p i18n:translate="license.zero.intro_1">
+	      Using CC0, you can waive all copyrights and related or
+	      neighboring rights that you have over your work, such as
+	      your moral rights (to the extent waivable), your publicity
+	      or privacy rights, rights you have protecting against unfair
+	      competition, and database rights and rights protecting the
+	      extraction, dissemination and reuse of data.
+	    </p>
 
-  </metal:headers>
+	    <p i18n:translate="license.zero.intro_2">
+	      Keep in mind that you cannot waive rights to a work that you
+	      do not own unless you have permission from the owner.  To
+	      avoid infringing third party rights, you should consult with
+	      your legal advisor if you are unsure whether you have all
+	      the rights you need to distribute the work.
+	    </p>
 
-</head>
+	    <p i18n:translate="license.zero.intro_3">
+	      Please note that this is <strong>not a registration
+	        process</strong> and Creative Commons does not store or
+	      save any of the information you enter.  This tool
+	      guides you through the process of generating HTML with
+	      embedded metadata for marking your work as being available
+	      under CC0.  Your work will not be associated with CC0 or made
+	      available under CC0 until you publish it marked as being so.
+	    </p>
 
-<body>
+	    <p>
+	      <span id="mycheckbox" class="yui-button">
+	        <span class="first-child">
+	          <a id="do-learn-more" href="/about/cc0"
+		     i18n:translate="util.learn_more">learn more</a>
+	        </span>
+	      </span>
 
-<metal:left fill-slot="sidebar">
-</metal:left>
-
-<metal:title fill-slot="page-header-title">CC0</metal:title>
-
-<metal:body fill-slot="body">
-
-    <div class="yui-content">
-    <div id="page-welcome" class="yui-module">
-      <div class="bd">
-	<p i18n:translate="license.zero.intro_1">
-	  Using CC0, you can waive all copyrights and related or
-	  neighboring rights that you have over your work, such as
-	  your moral rights (to the extent waivable), your publicity
-	  or privacy rights, rights you have protecting against unfair
-	  competition, and database rights and rights protecting the
-	  extraction, dissemination and reuse of data.
-	</p>
-
-	<p i18n:translate="license.zero.intro_2">
-	  Keep in mind that you cannot waive rights to a work that you
-	  do not own unless you have permission from the owner.  To
-	  avoid infringing third party rights, you should consult with
-	  your legal advisor if you are unsure whether you have all
-	  the rights you need to distribute the work.
-	</p>
-
-	<p i18n:translate="license.zero.intro_3">
-	  Please note that this is <strong>not a registration
-	    process</strong> and Creative Commons does not store or
-	  save any of the information you enter.  This tool
-	  guides you through the process of generating HTML with
-	  embedded metadata for marking your work as being available
-	  under CC0.  Your work will not be associated with CC0 or made
-	  available under CC0 until you publish it marked as being so.
-	</p>
-
-	<p>
-	  <span id="mycheckbox" class="yui-button">
-	    <span class="first-child">
-	      <a id="do-learn-more" href="/about/cc0"
-		 i18n:translate="util.learn_more">learn more</a>
-	    </span>
-	  </span>
-
-	  <span id="mycheckbox" class="yui-button">
-	    <span class="first-child">
-
-	      <a id="do-begin" href="./waiver">
-		<span tal:omit-tag=""
-		     i18n:translate="util.begin">begin</span> &raquo;
-	      </a>
-	    </span>
-	  </span>
-
-	</p>
-
+	      <span id="mycheckbox" class="yui-button">
+	        <span class="first-child">
+	          <a id="do-begin" href="./waiver">
+		    <span tal:omit-tag=""
+		          i18n:translate="util.begin">begin</span> &raquo;
+	          </a>
+	        </span>
+	      </span>
+	    </p>
+          </div>
+        </div>
       </div>
-
-    </div>
-
-    </div>
-    
-
-</metal:body>
-
-</body>
+    </metal:body>
+  </body>
 </html>
