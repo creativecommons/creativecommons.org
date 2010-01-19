@@ -42,6 +42,6 @@ chooser_routes = [
           controller="cc.engine.chooser.views:cc0_confirm"),
     Route("choose_cc0_results", "/zero/results",
           controller="cc.engine.chooser.views:cc0_results"),
-    Route("choose_cc0_results", "/zero/partner",
+    Route("choose_cc0_partner", "/zero/partner",
           controller="cc.engine.chooser.views:cc0_partner"),
     ]
