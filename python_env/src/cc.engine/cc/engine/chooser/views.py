@@ -493,3 +493,17 @@ def cc0_landing(request):
             'engine_template': engine_template})
 
     return Response(template.pt_render(context))
+
+
+def cc0_waiver(request):
+    template = util.get_zpt_template(
+        'chooser_pages/zero/waiver.pt')
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine.pt')
+
+    context = _base_context(request)
+    context.update({
+            'engine_template': engine_template,
+            'country_list': util.CODE_COUNTRY_LIST})
+
+    return Response(template.pt_render(context))

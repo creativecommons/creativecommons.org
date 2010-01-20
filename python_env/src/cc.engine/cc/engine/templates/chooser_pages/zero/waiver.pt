@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@engine/page"
+      metal:use-macro="engine_template/macros/page"
       i18n:domain="cc_org">
   <head>
     <title metal:fill-slot="title">CC0: Waiver</title>
@@ -21,10 +21,10 @@
               src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script>
 
       <link rel="stylesheet" type="text/css" href="zero.css"
-	    tal:attributes="href context/++resource++cc/includes/zero.css" />
+	    tal:attributes="href python:request.staticdirect('/includes/zero.css')" />
 
       <script src="help.js" type="text/javascript"
-              tal:attributes="src context/++resource++cc/includes/help.js" >
+              tal:attributes="src python:request.staticdirect('/includes/help.js')" >
       </script>
 
       <script type="text/javascript">
@@ -73,11 +73,8 @@
               </span>
               <a href="" id="embedded_metadata" class="helpLink">
 	        <img src="images/information.png"
-	             tal:attributes="src 
-			             context/++resource++cc/images/information.png"
-	             i18n:attributes="alt" alt="Information"
-	             /></a>
-
+	             tal:attributes="src python:request.staticdirect('/images/information.png')"
+	             i18n:attributes="alt" alt="Information"/></a>
             </p>
 
             <div id="help_embedded_metadata" class="help_panel">
@@ -114,8 +111,7 @@
 					        class="form-field"/>
 	          <a href="" id="url" class="helpLink">
 	            <img src="images/information.png"
-		         tal:attributes="src 
-				         context/++resource++cc/images/information.png"
+		         tal:attributes="src python:request.staticdirect('/images/information.png')"
 		         i18n:attributes="alt" alt="Information"
 		         /></a>
 	        </div>
@@ -145,7 +141,7 @@
 	        <div class="form-answer">
 	          <select name="work_jurisdiction" class="form-field">
 	            <option value="-">---</option>
-	            <metal:country tal:repeat="c view/country_list">
+	            <metal:country tal:repeat="c country_list">
 	              <option value="code" tal:content="python: c[1]"
 		              tal:attributes="value python:c[0]">territory</option>
 
@@ -154,8 +150,7 @@
 
 	          <a href="" id="country" class="helpLink">
 	            <img src="images/information.png"
-		         tal:attributes="src 
-				         context/++resource++cc/images/information.png"
+		         tal:attributes="src python:request.staticdirect('/images/information.png')"
 		         i18n:attributes="alt" alt="Information"
 		         /></a>
 	        </div>
