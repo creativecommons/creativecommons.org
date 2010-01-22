@@ -158,7 +158,7 @@ YAHOO.util.Event.onDOMReady(function() {
 	  email address below.
 	</p>      
 
-	<form action="" tal:attributes="action request/URL">
+	<form action="" tal:attributes="action request/url">
 	  <metal:form-vals tal:repeat="key python:request_form.keys()">
 	    <input type="hidden" name="key" value=""
 		   tal:attributes="name  key;
