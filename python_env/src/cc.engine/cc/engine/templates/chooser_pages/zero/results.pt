@@ -20,7 +20,7 @@
 	    src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="zero.css"
-	  tal:attributes="href request.staticdirect('/includes/zero.css')" />
+	  tal:attributes="href python:request.staticdirect('/includes/zero.css')" />
 
     <script type="text/javascript">
 
