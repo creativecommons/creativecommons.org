@@ -533,18 +533,23 @@ def cc0_results(request):
 
     request_form = request.GET or request.POST
 
-    # Do we confirm, understand and accept the conditions of cc0?
+    ## Do we confirm, understand and accept the conditions of cc0?
     confirm = request_form.get('confirm', False)
     understand = request_form.get('understand', False)
     accept = request_form.get('waiver-affirm', False) and \
         request_form.get('waiver-decline', True)
-    
+
     can_issue = (confirm and understand and accept)
+
+    ## RDFA generation
+    work_info = _work_info(request_form)
+    rdfa = _work_rdf(work_info, cc.license.by_code('CC0'))
 
     context = _base_context(request)
     context.update({
             'engine_template': engine_template,
             'request_form': request_form,
-            'can_issue': can_issue})
+            'can_issue': can_issue,
+            'rdfa': rdfa})
 
     return Response(template.pt_render(context))
