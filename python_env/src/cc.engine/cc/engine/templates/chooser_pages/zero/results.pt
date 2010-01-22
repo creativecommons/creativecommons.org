@@ -2,11 +2,10 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@engine/page"
+      metal:use-macro="engine_template/macros/page"
       i18n:domain="cc_org">
 <head>
   <title metal:fill-slot="title">CC0: Results</title>
-
 
   <metal:headers fill-slot="headers">
 
@@ -15,12 +14,13 @@
     <link rel="stylesheet" type="text/css"
 	  href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
 
-    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script> 
+    <script type="text/javascript"
+            src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script> 
     <script type="text/javascript" 
 	    src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="zero.css"
-	  tal:attributes="href context/++resource++cc/includes/zero.css" />
+	  tal:attributes="href request.staticdirect('/includes/zero.css')" />
 
     <script type="text/javascript">
 
@@ -48,7 +48,7 @@ YAHOO.util.Event.onDOMReady(function() {
 <div class="yui-skin-sam">
 
   <div id="error" class="yui-module"
-       tal:condition="not:view/can_issue">
+       tal:condition="not:can_issue">
     <div class="bd">
       <p i18n:translate="license.zero.declined">
 	You did not affirm your decision to waive the rights
@@ -64,7 +64,7 @@ YAHOO.util.Event.onDOMReady(function() {
     </div>
   </div>
 
-  <div id="results" class="yui-module" tal:condition="view/can_issue">
+  <div id="results" class="yui-module" tal:condition="can_issue">
     <div class="bd" id="waiver-results">
 
       <p i18n:translate="license.choose_button">
@@ -76,16 +76,15 @@ YAHOO.util.Event.onDOMReady(function() {
 	  <tr>
 	    <td valign="bottom" align="center">
 	      <img src="http://i.creativecommons.org/l/zero/1.0/88x31.png"
-	      style="border:0px;" /><br/>
+	           style="border:0px;" /><br/>
 	      <input type="radio" name="button" checked
-             onclick="swapbutton('http://i.creativecommons.org/l/zero/1.0/88x31.png')"
-	      />
+                     onclick="swapbutton('http://i.creativecommons.org/l/zero/1.0/88x31.png')" />
 	    </td>
 	    <td valign="bottom" align="center">
 	      <img src="http://i.creativecommons.org/l/zero/1.0/80x15.png"
-	      style="border:0px;" /><br/>
+	           style="border:0px;" /><br/>
 	      <input type="radio" name="button"
-             onclick="swapbutton('http://i.creativecommons.org/l/zero/1.0/80x15.png')"
+                     onclick="swapbutton('http://i.creativecommons.org/l/zero/1.0/80x15.png')"
 	      />
 	    </td>
 
@@ -99,7 +98,7 @@ YAHOO.util.Event.onDOMReady(function() {
       </span>
 
       <div class="preview" id="results-preview" 
-	   tal:content="structure view/rdfa">
+	   tal:content="structure rdfa">
       </div>
 
       <h3 i18n:translate="license.have_your_own_website">Have a website?</h3>
@@ -113,16 +112,16 @@ YAHOO.util.Event.onDOMReady(function() {
 
       <textarea id="codetocopy" cols="70" rows="6"
 		onfocus="select()"
-		tal:content="structure view/rdfa">
+		tal:content="structure rdfa">
       </textarea>
 
       <div class="more-metadata-container">
       <h3 style="margin-top:0;" 
 	  i18n:translate="license.zero.send_email">Send Email</h3>
 
-      <metal:email_results tal:condition="view/email_requested">
+      <metal:email_results tal:condition="email_requested">
 	<metal:email_container
-			   tal:define="success view/send_email">
+			   tal:define="success send_email">
 	<div class="more-metadata-container error" 
 	     tal:condition="not:success"
 	     i18n:translate="license.zero.email_error">
@@ -135,8 +134,7 @@ YAHOO.util.Event.onDOMReady(function() {
 	</div>
 
 	<div class="more-metadata-container success"
-	     tal:condition="success"
-	     >
+	     tal:condition="success">
 	  <p i18n:translate="license.zero.email_sent">
 	    The suggested HTML has been sent to <span
 		tal:replace="request/form/email" 
@@ -150,12 +148,11 @@ YAHOO.util.Event.onDOMReady(function() {
 	    request has been sent on your behalf; you must click the link in
 	    the confirmation email to complete the sign-up process.
 	  </span>
-
 	</div>
 	</metal:email_container>
       </metal:email_results>
 
-      <metal:request_email tal:condition="not:view/email_requested">
+      <metal:request_email tal:condition="not:email_requested">
 	<p i18n:translate="license.zero.send_email_updates">
 	  If you'd like to get the HTML with embedded metadata via
 	  email and optionally receive updates about CC0, fill in your
@@ -163,11 +160,10 @@ YAHOO.util.Event.onDOMReady(function() {
 	</p>      
 
 	<form action="" tal:attributes="action request/URL">
-
-	  <metal:form-vals tal:repeat="key python:view.request.form.keys()">
+	  <metal:form-vals tal:repeat="key python:request_form.keys()">
 	    <input type="hidden" name="key" value=""
 		   tal:attributes="name  key;
-				   value python:view.request.form[key]" />
+				   value python:request_form[key]" />
 	  </metal:form-vals>
 
 	  <div class="more-metadata">
