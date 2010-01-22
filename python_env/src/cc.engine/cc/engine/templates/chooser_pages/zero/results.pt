@@ -84,8 +84,7 @@ YAHOO.util.Event.onDOMReady(function() {
 	      <img src="http://i.creativecommons.org/l/zero/1.0/80x15.png"
 	           style="border:0px;" /><br/>
 	      <input type="radio" name="button"
-                     onclick="swapbutton('http://i.creativecommons.org/l/zero/1.0/80x15.png')"
-	      />
+                     onclick="swapbutton('http://i.creativecommons.org/l/zero/1.0/80x15.png')"/>
 	    </td>
 
 	  </tr>
