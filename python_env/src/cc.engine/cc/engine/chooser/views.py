@@ -523,3 +523,28 @@ def cc0_confirm(request):
             'request_form': request_form})
 
     return Response(template.pt_render(context))
+
+
+def cc0_results(request):
+    template = util.get_zpt_template(
+        'chooser_pages/zero/results.pt')
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine.pt')
+
+    request_form = request.GET or request.POST
+
+    # Do we confirm, understand and accept the conditions of cc0?
+    confirm = request_form.get('confirm', False)
+    understand = request_form.get('understand', False)
+    accept = request_form.get('waiver-affirm', False) and \
+        request_form.get('waiver-decline', True)
+    
+    can_issue = (confirm and understand and accept)
+
+    context = _base_context(request)
+    context.update({
+            'engine_template': engine_template,
+            'request_form': request_form,
+            'can_issue': can_issue})
+
+    return Response(template.pt_render(context))
