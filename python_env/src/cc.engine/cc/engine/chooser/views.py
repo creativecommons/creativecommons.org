@@ -545,11 +545,16 @@ def cc0_results(request):
     work_info = _work_info(request_form)
     rdfa = _work_rdf(work_info, cc.license.by_code('CC0'))
 
+    ## Did the user request an email?
+    email_requested = request_form.has_key('email')
+    #### TODO send email here instead of doing it in the template...
+
     context = _base_context(request)
     context.update({
             'engine_template': engine_template,
             'request_form': request_form,
             'can_issue': can_issue,
-            'rdfa': rdfa})
+            'rdfa': rdfa,
+            'email_requested': email_requested})
 
     return Response(template.pt_render(context))
