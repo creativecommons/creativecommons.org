@@ -8,8 +8,10 @@ from webob import Response, exc
 from cc.engine import util
 from cc.i18npkg import ccorg_i18n_setup
 import cc.license
-from cc.license.formatters.classes import HTMLFormatter
+from cc.license.formatters.classes import HTMLFormatter, CC0HTMLFormatter
 
+HTML_FORMATTER = HTMLFormatter()
+CC0_HTML_FORMATTER = CC0HTMLFormatter()
 
 def _base_context(request):
     context = {
@@ -278,8 +280,7 @@ def choose_results_view(request):
     work_info = _work_info(request_form)
     license_slim_logo = license.logo_method('80x15')
 
-    html_formatter = HTMLFormatter()
-    license_html = html_formatter.format(license, work_info)
+    license_html = HTML_FORMATTER.format(license, work_info)
 
     context.update(
         {'engine_template': engine_template,
@@ -303,8 +304,7 @@ def get_html(request):
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
     work_info = _work_info(request_form)
-    html_formatter = HTMLFormatter()
-    license_html = html_formatter.format(license, work_info)
+    license_html = HTML_FORMATTER.format(license, work_info)
     return Response(license_html, content_type='text/html; charset=UTF-8')
 
 
@@ -343,8 +343,7 @@ def work_email_popup(request):
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
     work_info = _work_info(request_form)
-    html_formatter = HTMLFormatter()
-    license_html = html_formatter.format(license, work_info)
+    license_html = HTML_FORMATTER.format(license, work_info)
 
     template = util.get_zpt_template('chooser_pages/htmlpopup.pt')
     popup_template = util.get_zpt_template('macros_templates/popup.pt')
@@ -462,8 +461,7 @@ def publicdomain_result(request):
                 './publicdomain-3', urlencode(request.GET)))
 
     work_info = _work_info(request_form)
-    html_formatter = HTMLFormatter()
-    license_html = html_formatter.format(
+    license_html = HTML_FORMATTER.format(
         cc.license.by_code('publicdomain'),
         work_info)
 
@@ -543,7 +541,8 @@ def cc0_results(request):
 
     ## RDFA generation
     work_info = _work_info(request_form)
-    rdfa = _work_rdf(work_info, cc.license.by_code('CC0'))
+    license_html = CC0_HTML_FORMATTER.format(
+        cc.license.by_code('CC0'), work_info).strip()
 
     ## Did the user request an email?
     email_requested = request_form.has_key('email')
@@ -554,7 +553,9 @@ def cc0_results(request):
             'engine_template': engine_template,
             'request_form': request_form,
             'can_issue': can_issue,
-            'rdfa': rdfa,
+            'rdfa': license_html,
             'email_requested': email_requested})
 
     return Response(template.pt_render(context))
+
+
