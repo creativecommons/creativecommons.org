@@ -541,9 +541,8 @@ def cc0_results(request):
     can_issue = (confirm and understand and accept)
 
     ## RDFA generation
-    work_info = _work_info(request_form)
     license_html = CC0_HTML_FORMATTER.format(
-        cc.license.by_code('CC0'), work_info).strip()
+        cc.license.by_code('CC0'), request_form).strip()
 
     ## Did the user request an email?
     email_requested = request_form.has_key('email')
