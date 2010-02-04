@@ -16,8 +16,6 @@ from zope.i18n.interfaces import ITranslationDomain
 from zope.i18n.translationdomain import TranslationDomain
 from zope.i18n import translate
 
-import cc.license
-from cc.license import selectors
 from cc.license._lib import rdf_helper
 from cc.license.formatters.pagetemplate import CCLPageTemplateFile
 from cc.i18npkg import ccorg_i18n_setup
@@ -384,28 +382,6 @@ def get_language_jurisdiction_map():
         LANGUAGE_JURISDICTION_MAPPING[lang] = juri
 
     return LANGUAGE_JURISDICTION_MAPPING
-
-
-def get_selector_jurisdictions(selector_name='standard'):
-    """
-
-    """
-    selector = selectors.choose(selector_name)
-    qstring = "\n".join(
-        ["SELECT ?license",
-         "WHERE (?license cc:licenseClass <%s>)" % str(selector.uri),
-         "USING cc FOR <http://creativecommons.org/ns#>"])
-    query = RDF.Query(qstring, query_language="rdql")
-
-    # This is so stupid, but if we add a WHERE clause for
-    # jurisdictions in the query string it takes approximately 5
-    # million years.
-    licenses = [
-        cc.license.by_uri(str(result['license'].uri))
-        for result in query.execute(rdf_helper.ALL_MODEL)]
-    jurisdictions = set([license.jurisdiction for license in licenses])
-    jurisdictions = [juri for juri in jurisdictions if juri.launched]
-    return jurisdictions
 
 
 class UnsafeResource(Error): pass

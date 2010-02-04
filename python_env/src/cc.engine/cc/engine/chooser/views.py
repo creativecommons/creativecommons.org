@@ -6,6 +6,7 @@ from StringIO import StringIO
 from webob import Response, exc
 
 from cc.engine import util
+from cc.license import util as license_util
 from cc.i18npkg import ccorg_i18n_setup
 import cc.license
 from cc.license.formatters.classes import HTMLFormatter, CC0HTMLFormatter
@@ -250,7 +251,7 @@ def chooser_view(request):
         'macros_templates/support.pt')
 
     available_jurisdiction_codes = [
-        j.code for j in util.get_selector_jurisdictions('standard')]
+        j.code for j in license_util.get_selector_jurisdictions('standard')]
     
     context = _base_context(request)
 
