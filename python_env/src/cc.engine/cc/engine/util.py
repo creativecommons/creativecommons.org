@@ -404,7 +404,7 @@ def send_email(from_addr, to_addrs, subject, message_body):
     mhost.connect()
 
     message = MIMEText(message_body.encode('utf-8'), 'plain', 'utf-8')
-    message['Subject'] = 'Your Creative Commons License Information'
+    message['Subject'] = subject
     message['From'] = from_addr
     message['To'] = ', '.join(to_addrs)
 

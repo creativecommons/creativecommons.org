@@ -133,13 +133,13 @@ YAHOO.util.Event.onDOMReady(function() {
 
             <div tal:condition="successful_send">
               <p i18n:translate="license.zero.email_sent">
-                The suggested HTML has been sent to <span
-                                                       tal:replace="request/form/email" 
-                                                       i18n:name="email_addr">foo@example.com</span>.
+                The suggested HTML has been sent to
+                <span tal:replace="email_addr" i18n:name="email_addr">
+                  foo@example.com</span>.
               </p>
 
               <span tal:omit-tag="" 
-                    tal:condition="request/send_updates|nothing"
+                    tal:condition="requested_send_updates"
                     i18n:translate="license.zero.subscribed_to_updates">
                 You have asked to be notified of updates to CC0.  A subscription
                 request has been sent on your behalf; you must click the link in

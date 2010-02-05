@@ -2,6 +2,7 @@ from lxml import etree
 from urlparse import urlparse, urljoin
 from urllib import quote, unquote_plus, urlencode
 from StringIO import StringIO
+from smtplib import SMTPException
 
 from webob import Response, exc
 
@@ -524,6 +525,26 @@ def cc0_confirm(request):
     return Response(template.pt_render(context))
 
 
+CC0_EMAIL_MESSAGE_TEMPLATE = u"""
+
+Thank you for using a Creative Commons License for your work.
+
+You have selected %s. You should include a reference to this
+license on the webp age that includes the work in question.
+
+Here is the suggested HTML:
+
+%s
+
+Further tips for using the supplied HTML and RDF are here:
+http://creativecommons.org/learn/technology/usingmarkup
+
+Thank you!
+Creative Commons Support
+info@creativecommons.org
+"""
+
+
 def cc0_results(request):
     template = util.get_zpt_template(
         'chooser_pages/zero/results.pt')
@@ -541,12 +562,30 @@ def cc0_results(request):
     can_issue = (confirm and understand and accept)
 
     ## RDFA generation
+    cc0_license = cc.license.by_code('CC0')
     license_html = CC0_HTML_FORMATTER.format(
-        cc.license.by_code('CC0'), request_form).strip()
+        cc0_license, request_form).strip()
 
     ## Did the user request an email?
-    email_requested = request_form.has_key('email')
-    #### TODO send email here instead of doing it in the template...
+    email_addr = request_form.get('email')
+    successful_send = False
+    if email_addr:
+        try:
+            util.send_email(
+                'info@creativecommons.org', [email_addr],
+                'Your Creative Commons License Information',
+                CC0_EMAIL_MESSAGE_TEMPLATE % (
+                    cc0_license.title, license_html))
+
+            if request_form.get('send_updates', False):
+                util.send_email(
+                    email_addr, ["cc-zero-announce-request@lists.ibiblio.org"],
+                    'subscribe', '')
+
+            successful_send = True
+
+        except SMTPException:
+            successful_send = False
 
     context = _base_context(request)
     context.update({
@@ -554,8 +593,9 @@ def cc0_results(request):
             'request_form': request_form,
             'can_issue': can_issue,
             'rdfa': license_html,
-            'email_requested': email_requested})
+            'email_requested': bool(email_addr),
+            'email_addr': email_addr,
+            'requested_send_updates': request_form.get('send_updates', False),
+            'successful_send': successful_send})
 
     return Response(template.pt_render(context))
-
-
