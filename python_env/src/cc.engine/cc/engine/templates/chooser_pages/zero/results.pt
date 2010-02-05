@@ -115,72 +115,72 @@ YAHOO.util.Event.onDOMReady(function() {
       </textarea>
 
       <div class="more-metadata-container">
-      <h3 style="margin-top:0;" 
-	  i18n:translate="license.zero.send_email">Send Email</h3>
+        <h3 style="margin-top:0;" 
+	    i18n:translate="license.zero.send_email">Send Email</h3>
 
-      <metal:email_results tal:condition="email_requested">
-	<metal:email_container
-			   tal:define="success send_email">
-	<div class="more-metadata-container error" 
-	     tal:condition="not:success"
-	     i18n:translate="license.zero.email_error">
-	  An error occurred when we tried to send the email message;
-	  you can try clicking the Back button and double checking your 
-	  email address.  If the address you used (
-	  <span	i18n:name="email_addr" 
-		tal:replace="request/form/email"></span>) was correct you can 
-	  <a href="/about/contact">contact us</a>.
-	</div>
-
-	<div class="more-metadata-container success"
-	     tal:condition="success">
-	  <p i18n:translate="license.zero.email_sent">
-	    The suggested HTML has been sent to <span
-		tal:replace="request/form/email" 
-		i18n:name="email_addr">foo@example.com</span>.
-	  </p>
-
-	  <span tal:omit-tag="" 
-		tal:condition="request/send_updates|nothing"
-		i18n:translate="license.zero.subscribed_to_updates">
-	    You have asked to be notified of updates to CC0.  A subscription
-	    request has been sent on your behalf; you must click the link in
-	    the confirmation email to complete the sign-up process.
-	  </span>
-	</div>
-	</metal:email_container>
-      </metal:email_results>
-
-      <metal:request_email tal:condition="not:email_requested">
-	<p i18n:translate="license.zero.send_email_updates">
-	  If you'd like to get the HTML with embedded metadata via
-	  email and optionally receive updates about CC0, fill in your
-	  email address below.
-	</p>      
-
-	<form action="" tal:attributes="action request/url">
-	  <metal:form-vals tal:repeat="key python:request_form.keys()">
-	    <input type="hidden" name="key" value=""
-		   tal:attributes="name  key;
-				   value python:request_form[key]" />
-	  </metal:form-vals>
-
-	  <div class="more-metadata">
-	    <div i18n:translate="util.your_email">Your email:</div>
-	    <input type="textbox" name="email" />
-	  </div>
-
-	  <div class="more-metadata">
-	    <div i18n:translate="license.zero.update_opt_in">
-	      Send me updates about CC0:
+        <metal:email_results tal:condition="email_requested">
+	  <metal:email_container
+	     tal:define="success send_email">
+	    <div class="more-metadata-container error" 
+	         tal:condition="not:success"
+	         i18n:translate="license.zero.email_error">
+	      An error occurred when we tried to send the email message;
+	      you can try clicking the Back button and double checking your 
+	      email address.  If the address you used (
+	      <span	i18n:name="email_addr" 
+		        tal:replace="request/form/email"></span>) was correct you can 
+	      <a href="/about/contact">contact us</a>.
 	    </div>
-	    <input type="checkbox" name="send_updates" value="1" /><br/>
-	  </div>
 
-	  <input id="do-send-email" type="submit" value="Send" 
-		 i18n:attributes="value util.Send" />
-	</form>
-      </metal:request_email>
+	    <div class="more-metadata-container success"
+	         tal:condition="success">
+	      <p i18n:translate="license.zero.email_sent">
+	        The suggested HTML has been sent to <span
+		                                       tal:replace="request/form/email" 
+		                                       i18n:name="email_addr">foo@example.com</span>.
+	      </p>
+
+	      <span tal:omit-tag="" 
+		    tal:condition="request/send_updates|nothing"
+		    i18n:translate="license.zero.subscribed_to_updates">
+	        You have asked to be notified of updates to CC0.  A subscription
+	        request has been sent on your behalf; you must click the link in
+	        the confirmation email to complete the sign-up process.
+	      </span>
+	    </div>
+	  </metal:email_container>
+        </metal:email_results>
+
+        <metal:request_email tal:condition="not:email_requested">
+	  <p i18n:translate="license.zero.send_email_updates">
+	    If you'd like to get the HTML with embedded metadata via
+	    email and optionally receive updates about CC0, fill in your
+	    email address below.
+	  </p>      
+
+	  <form action="" tal:attributes="action request/url">
+	    <metal:form-vals tal:repeat="key python:request_form.keys()">
+	      <input type="hidden" name="key" value=""
+		     tal:attributes="name  key;
+				     value python:request_form[key]" />
+	    </metal:form-vals>
+
+	    <div class="more-metadata">
+	      <div i18n:translate="util.your_email">Your email:</div>
+	      <input type="textbox" name="email" />
+	    </div>
+
+	    <div class="more-metadata">
+	      <div i18n:translate="license.zero.update_opt_in">
+	        Send me updates about CC0:
+	      </div>
+	      <input type="checkbox" name="send_updates" value="1" /><br/>
+	    </div>
+
+	    <input id="do-send-email" type="submit" value="Send" 
+		   i18n:attributes="value util.Send" />
+	  </form>
+        </metal:request_email>
 
       </div>
     </div>
