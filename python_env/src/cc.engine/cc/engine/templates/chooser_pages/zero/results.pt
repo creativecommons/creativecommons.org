@@ -10,17 +10,17 @@
   <metal:headers fill-slot="headers">
 
     <link rel="stylesheet" type="text/css" 
-	  href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
+          href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
     <link rel="stylesheet" type="text/css"
-	  href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
+          href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
 
     <script type="text/javascript"
             src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script> 
     <script type="text/javascript" 
-	    src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
+            src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="zero.css"
-	  tal:attributes="href python:request.staticdirect('/includes/zero.css')" />
+          tal:attributes="href python:request.staticdirect('/includes/zero.css')" />
 
     <script type="text/javascript">
 
@@ -51,15 +51,15 @@ YAHOO.util.Event.onDOMReady(function() {
        tal:condition="not:can_issue">
     <div class="bd">
       <p i18n:translate="license.zero.declined">
-	You did not affirm your decision to waive the rights
-	associated with your work. If you'd like to continue you can
-	click the Back button to review your choice.
+        You did not affirm your decision to waive the rights
+        associated with your work. If you'd like to continue you can
+        click the Back button to review your choice.
       </p>
       <ul>
-	<li><a href="/about/cc0" 
-	       i18n:translate="license.zero.about">About CC0</a></li>
-	<li><a href="http://wiki.creativecommons.org/CC0_FAQ"
-	       i18n:translate="util.FAQ">Frequently Asked Questions</a></li>
+        <li><a href="/about/cc0" 
+               i18n:translate="license.zero.about">About CC0</a></li>
+        <li><a href="http://wiki.creativecommons.org/CC0_FAQ"
+               i18n:translate="util.FAQ">Frequently Asked Questions</a></li>
       </ul>
     </div>
   </div>
@@ -68,116 +68,116 @@ YAHOO.util.Event.onDOMReady(function() {
     <div class="bd" id="waiver-results">
 
       <p i18n:translate="license.choose_button">
-	Choose which style of button you'd like on your webpage:
+        Choose which style of button you'd like on your webpage:
       </p>
 
       <div class="licensebox" align="center">
-	<table>
-	  <tr>
-	    <td valign="bottom" align="center">
-	      <img src="http://i.creativecommons.org/l/zero/1.0/88x31.png"
-	           style="border:0px;" /><br/>
-	      <input type="radio" name="button" checked
+        <table>
+          <tr>
+            <td valign="bottom" align="center">
+              <img src="http://i.creativecommons.org/l/zero/1.0/88x31.png"
+                   style="border:0px;" /><br/>
+              <input type="radio" name="button" checked
                      onclick="swapbutton('http://i.creativecommons.org/l/zero/1.0/88x31.png')" />
-	    </td>
-	    <td valign="bottom" align="center">
-	      <img src="http://i.creativecommons.org/l/zero/1.0/80x15.png"
-	           style="border:0px;" /><br/>
-	      <input type="radio" name="button"
+            </td>
+            <td valign="bottom" align="center">
+              <img src="http://i.creativecommons.org/l/zero/1.0/80x15.png"
+                   style="border:0px;" /><br/>
+              <input type="radio" name="button"
                      onclick="swapbutton('http://i.creativecommons.org/l/zero/1.0/80x15.png')"/>
-	    </td>
+            </td>
 
-	  </tr>
-	</table>
+          </tr>
+        </table>
       </div>
 
       <span id="waiver-results-leadin" 
-	    i18n:translate="license.zero.preview_waiver">
-	Here's a preview of how your waiver will appear on your site:
+            i18n:translate="license.zero.preview_waiver">
+        Here's a preview of how your waiver will appear on your site:
       </span>
 
       <div class="preview" id="results-preview" 
-	   tal:content="structure rdfa">
+           tal:content="structure rdfa">
       </div>
 
       <h3 i18n:translate="license.have_your_own_website">Have a website?</h3>
       <p i18n:translate="license.zero.copy_text">
-	Copy the text below to your Web site to let your visitors
-	know that you've waived the rights to your work.  Creative
-	Commons does not retain a record of your selection; as the
-	publisher it's up to you to let people know how they may use your
-	work.
+        Copy the text below to your Web site to let your visitors
+        know that you've waived the rights to your work.  Creative
+        Commons does not retain a record of your selection; as the
+        publisher it's up to you to let people know how they may use your
+        work.
       </p> 
 
       <textarea id="codetocopy" cols="70" rows="6"
-		onfocus="select()"
-		tal:content="structure rdfa">
+                onfocus="select()"
+                tal:content="structure rdfa">
       </textarea>
 
       <div class="more-metadata-container">
         <h3 style="margin-top:0;" 
-	    i18n:translate="license.zero.send_email">Send Email</h3>
+            i18n:translate="license.zero.send_email">Send Email</h3>
 
         <metal:email_results tal:condition="email_requested">
-	  <metal:email_container >
-	    <div class="more-metadata-container error" 
-	         tal:condition="not:successful_send"
-	         i18n:translate="license.zero.email_error">
-	      An error occurred when we tried to send the email message;
-	      you can try clicking the Back button and double checking your 
-	      email address.  If the address you used (
-	      <span i18n:name="email_addr" 
-		    tal:replace="email_addr"></span>) was correct you can 
-	      <a href="/about/contact">contact us</a>.
-	    </div>
+          <metal:email_container >
+            <div class="more-metadata-container error" 
+                 tal:condition="not:successful_send"
+                 i18n:translate="license.zero.email_error">
+              An error occurred when we tried to send the email message;
+              you can try clicking the Back button and double checking your 
+              email address.  If the address you used (
+              <span i18n:name="email_addr" 
+                    tal:replace="email_addr"></span>) was correct you can 
+              <a href="/about/contact">contact us</a>.
+            </div>
 
-	    <div tal:condition="successful_send">
-	      <p i18n:translate="license.zero.email_sent">
-	        The suggested HTML has been sent to <span
-		                                       tal:replace="request/form/email" 
-		                                       i18n:name="email_addr">foo@example.com</span>.
-	      </p>
+            <div tal:condition="successful_send">
+              <p i18n:translate="license.zero.email_sent">
+                The suggested HTML has been sent to <span
+                                                       tal:replace="request/form/email" 
+                                                       i18n:name="email_addr">foo@example.com</span>.
+              </p>
 
-	      <span tal:omit-tag="" 
-		    tal:condition="request/send_updates|nothing"
-		    i18n:translate="license.zero.subscribed_to_updates">
-	        You have asked to be notified of updates to CC0.  A subscription
-	        request has been sent on your behalf; you must click the link in
-	        the confirmation email to complete the sign-up process.
-	      </span>
-	    </div>
-	  </metal:email_container>
+              <span tal:omit-tag="" 
+                    tal:condition="request/send_updates|nothing"
+                    i18n:translate="license.zero.subscribed_to_updates">
+                You have asked to be notified of updates to CC0.  A subscription
+                request has been sent on your behalf; you must click the link in
+                the confirmation email to complete the sign-up process.
+              </span>
+            </div>
+          </metal:email_container>
         </metal:email_results>
 
         <metal:request_email tal:condition="not:email_requested">
-	  <p i18n:translate="license.zero.send_email_updates">
-	    If you'd like to get the HTML with embedded metadata via
-	    email and optionally receive updates about CC0, fill in your
-	    email address below.
-	  </p>      
+          <p i18n:translate="license.zero.send_email_updates">
+            If you'd like to get the HTML with embedded metadata via
+            email and optionally receive updates about CC0, fill in your
+            email address below.
+          </p>      
 
-	  <form action="" tal:attributes="action request/url">
-	    <metal:form-vals tal:repeat="key python:request_form.keys()">
-	      <input type="hidden" name="key" value=""
-		     tal:attributes="name  key;
-				     value python:request_form[key]" />
-	    </metal:form-vals>
+          <form action="" tal:attributes="action request/url">
+            <metal:form-vals tal:repeat="key python:request_form.keys()">
+              <input type="hidden" name="key" value=""
+                     tal:attributes="name  key;
+                                     value python:request_form[key]" />
+            </metal:form-vals>
 
-	    <div class="more-metadata">
-	      <div i18n:translate="util.your_email">Your email:</div>
-	      <input type="textbox" name="email" />
-	    </div>
+            <div class="more-metadata">
+              <div i18n:translate="util.your_email">Your email:</div>
+              <input type="textbox" name="email" />
+            </div>
 
-	    <div class="more-metadata">
-	      <div i18n:translate="license.zero.update_opt_in">
-	        Send me updates about CC0:
-	      </div>
-	      <input type="checkbox" name="send_updates" value="1" /><br/>
-	    </div>
+            <div class="more-metadata">
+              <div i18n:translate="license.zero.update_opt_in">
+                Send me updates about CC0:
+              </div>
+              <input type="checkbox" name="send_updates" value="1" /><br/>
+            </div>
 
-	    <input id="do-send-email" type="submit" value="Send" 
-		   i18n:attributes="value util.Send" />
-	  </form>
+            <input id="do-send-email" type="submit" value="Send" 
+                   i18n:attributes="value util.Send" />
+          </form>
         </metal:request_email>
 
       </div>
