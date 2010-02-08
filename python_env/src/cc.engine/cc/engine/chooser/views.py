@@ -268,7 +268,10 @@ def chooser_view(request):
 
 
 def choose_results_view(request):
-    if request.GET.get('partner'):
+    if request.matchdict.get('publicdomain', False):
+        template = util.get_zpt_template(
+            'chooser_pages/publicdomain/publicdomain-partner.pt')
+    elif request.GET.get('partner'):
         template = util.get_zpt_template('chooser_pages/partner/results.pt')
     else:
         template = util.get_zpt_template('chooser_pages/results.pt')
@@ -290,7 +293,7 @@ def choose_results_view(request):
          'license_slim_logo': license_slim_logo,
          'license_html': license_html})
 
-    if request.GET.get('partner'):
+    if request.GET.get('partner') or request.matchdict.get('publicdomain'):
         context.update(
             {'partner_template': util.get_zpt_template(
                     'macros_templates/partner.pt'),
