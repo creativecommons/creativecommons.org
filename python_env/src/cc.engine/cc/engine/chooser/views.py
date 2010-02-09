@@ -237,19 +237,22 @@ def _work_rdf(work_info, license):
 
 
 def chooser_view(request):
+    target_lang = util.get_target_lang_from_request(request)
+
     if request.GET.get('partner'):
-        template = util.get_zpt_template('chooser_pages/partner/index.pt')
+        template = util.get_zpt_template(
+            'chooser_pages/partner/index.pt', target_lang)
     else:
         template = util.get_zpt_template('chooser_pages/index.pt')
 
     engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt')
+        'macros_templates/engine.pt', target_lang)
     partner_template = util.get_zpt_template(
-        'macros_templates/partner.pt')
+        'macros_templates/partner.pt', target_lang)
     metadata_template = util.get_zpt_template(
-        'macros_templates/metadata.pt')
+        'macros_templates/metadata.pt', target_lang)
     support_template = util.get_zpt_template(
-        'macros_templates/support.pt')
+        'macros_templates/support.pt', target_lang)
 
     available_jurisdiction_codes = [
         j.code for j in license_util.get_selector_jurisdictions('standard')]
@@ -268,16 +271,21 @@ def chooser_view(request):
 
 
 def choose_results_view(request):
+    target_lang = util.get_target_lang_from_request(request)
+
     if request.matchdict.get('publicdomain', False):
         template = util.get_zpt_template(
-            'chooser_pages/publicdomain/publicdomain-partner.pt')
+            'chooser_pages/publicdomain/publicdomain-partner.pt',
+            target_lang)
     elif request.GET.get('partner'):
-        template = util.get_zpt_template('chooser_pages/partner/results.pt')
+        template = util.get_zpt_template(
+            'chooser_pages/partner/results.pt', target_lang)
     else:
-        template = util.get_zpt_template('chooser_pages/results.pt')
+        template = util.get_zpt_template(
+            'chooser_pages/results.pt', target_lang)
 
     engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt')
+        'macros_templates/engine.pt', target_lang)
 
     context = _base_context(request)
     request_form = request.GET or request.POST

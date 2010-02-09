@@ -271,8 +271,7 @@ def active_languages():
 
         if code == 'test': continue
 
-        name = domain.translate('lang.%s' % code, target_language=code).\
-            decode('utf-8')
+        name = domain.translate(u'lang.%s' % code, target_language=code)
         if name != u'lang.%s' % code:
             # we have a translation for this name...
             result.append(dict(code=code, name=name))
@@ -325,9 +324,14 @@ def plain_template_view(template_name, request):
     """
     Not an actual view, but used to build these more tedious views
     """
-    template = get_zpt_template(template_name)
+    target_lang = get_target_lang_from_request(request)
+
+    template = get_zpt_template(
+        template_name,
+        target_lang=target_lang)
     engine_template = get_zpt_template(
-        'macros_templates/engine.pt')
+        'macros_templates/engine.pt',
+        target_lang=target_lang)
 
     context = {'request': request,
                'engine_template': engine_template}
@@ -409,6 +413,18 @@ def send_email(from_addr, to_addrs, subject, message_body):
     message['To'] = ', '.join(to_addrs)
 
     return mhost.sendmail(from_addr, to_addrs, message.as_string())
+
+
+def get_target_lang_from_request(request):
+    accept_lang_matches = request.accept_language.best_matches()
+    if request.matchdict.has_key('target_lang'):
+        target_lang = request.matchdict['target_lang']
+    elif accept_lang_matches:
+        target_lang = accept_lang_matches[0]
+    else:
+        target_lang = 'en'
+
+    return target_lang
 
 
 ###
