@@ -293,7 +293,7 @@ def choose_results_view(request):
     work_info = _work_info(request_form)
     license_slim_logo = license.logo_method('80x15')
 
-    lang_bits = target_lang.split('_', 1)
+    lang_bits = target_lang.split('-', 1)
     locale = lang_bits[0]
     country = None
     if len(lang_bits) == 2:
@@ -327,7 +327,7 @@ def get_html(request):
     license = _issue_license(request_form)
     work_info = _work_info(request_form)
 
-    lang_bits = target_lang.split('_', 1)
+    lang_bits = target_lang.split('-', 1)
     locale = lang_bits[0]
     country = None
     if len(lang_bits) == 2:
@@ -375,7 +375,7 @@ def work_email_popup(request):
     license = _issue_license(request_form)
     work_info = _work_info(request_form)
 
-    lang_bits = target_lang.split('_', 1)
+    lang_bits = target_lang.split('-', 1)
     locale = lang_bits[0]
     country = None
     if len(lang_bits) == 2:
