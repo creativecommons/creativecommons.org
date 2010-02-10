@@ -293,7 +293,14 @@ def choose_results_view(request):
     work_info = _work_info(request_form)
     license_slim_logo = license.logo_method('80x15')
 
-    license_html = HTML_FORMATTER.format(license, work_info)
+    lang_bits = target_lang.split('_', 1)
+    locale = lang_bits[0]
+    country = None
+    if len(lang_bits) == 2:
+        country = lang_bits[1]
+
+    license_html = HTML_FORMATTER.format(
+        license, work_info, locale, country)
 
     context.update(
         {'engine_template': engine_template,
@@ -314,10 +321,19 @@ def choose_results_view(request):
 
 
 def get_html(request):
+    target_lang = util.get_target_lang_from_request(request)
+
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
     work_info = _work_info(request_form)
-    license_html = HTML_FORMATTER.format(license, work_info)
+
+    lang_bits = target_lang.split('_', 1)
+    locale = lang_bits[0]
+    country = None
+    if len(lang_bits) == 2:
+        country = lang_bits[1]
+
+    license_html = HTML_FORMATTER.format(license, work_info, locale, country)
     return Response(license_html, content_type='text/html; charset=UTF-8')
 
 
@@ -353,13 +369,24 @@ def choose_wiki_redirect(request):
 
 
 def work_email_popup(request):
+    target_lang = util.get_target_lang_from_request(request)
+
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
     work_info = _work_info(request_form)
+
+    lang_bits = target_lang.split('_', 1)
+    locale = lang_bits[0]
+    country = None
+    if len(lang_bits) == 2:
+        country = lang_bits[1]
+
     license_html = HTML_FORMATTER.format(license, work_info)
 
-    template = util.get_zpt_template('chooser_pages/htmlpopup.pt')
-    popup_template = util.get_zpt_template('macros_templates/popup.pt')
+    template = util.get_zpt_template(
+        'chooser_pages/htmlpopup.pt', target_lang)
+    popup_template = util.get_zpt_template(
+        'macros_templates/popup.pt', target_lang)
     
     context = _base_context(request)
     context.update(
