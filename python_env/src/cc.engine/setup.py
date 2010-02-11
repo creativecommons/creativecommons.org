@@ -44,6 +44,7 @@ setup(
         'routes',
         'sphinx',
         'webtest',
+        'flup',
         ],
 
     # author metadata
