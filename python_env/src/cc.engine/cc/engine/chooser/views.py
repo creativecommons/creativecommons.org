@@ -18,9 +18,7 @@ CC0_HTML_FORMATTER = CC0HTMLFormatter()
 def _base_context(request):
     context = {
         'request': request,
-        'target_lang': (
-            request.matchdict.get('target_lang')
-            or request.accept_language.best_matches()[0]),
+        'target_lang': util.get_target_lang_from_request(request),
         'active_languages': util.active_languages(),
         'selected_jurisdiction': util.get_selected_jurisdiction(request),
         }
