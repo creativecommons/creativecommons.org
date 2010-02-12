@@ -415,6 +415,17 @@ def send_email(from_addr, to_addrs, subject, message_body):
     return mhost.sendmail(from_addr, to_addrs, message.as_string())
 
 
+def make_locale_lower_upper_style(locale):
+    if '-' in locale:
+        lang, country = locale.split('-', 1)
+        return '%s_%s' % (lang.lower(), country.upper())
+    elif '_' in locale:
+        lang, country = locale.split('_', 1)
+        return '%s_%s' % (lang.lower(), country.upper())
+    else:
+        return locale.lower()
+
+
 def get_target_lang_from_request(request):
     accept_lang_matches = request.accept_language.best_matches()
     if request.matchdict.has_key('target_lang'):
@@ -424,7 +435,7 @@ def get_target_lang_from_request(request):
     else:
         target_lang = 'en'
 
-    return target_lang
+    return make_locale_lower_upper_style(target_lang)
 
 
 ###
