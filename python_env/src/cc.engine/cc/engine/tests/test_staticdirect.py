@@ -24,7 +24,7 @@ def test_multi_remote_staticdirect():
 def test_request_dot_staticdirect():
     testapp = webtest.TestApp(
         app.CCEngineApp(
-            staticdirect.RemoteStaticDirect('/statik/')))
+            staticdirect.RemoteStaticDirect('/statik/'), {}))
     response = testapp.get('/licenses/by/3.0/')
     assert u'/statik/images/information.png' in response.unicode_body
     assert u'/statik/includes/deed3.css' in response.unicode_body

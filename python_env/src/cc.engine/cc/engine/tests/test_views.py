@@ -26,7 +26,7 @@ def test_routing():
 
 TESTAPP = webtest.TestApp(
     app.CCEngineApp(
-        staticdirect.RemoteStaticDirect('/static/')))
+        staticdirect.RemoteStaticDirect('/static/'), {}))
 
 
 def test_root_view():
