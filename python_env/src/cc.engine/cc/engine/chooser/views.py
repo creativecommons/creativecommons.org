@@ -291,14 +291,8 @@ def choose_results_view(request):
     work_info = _work_info(request_form)
     license_slim_logo = license.logo_method('80x15')
 
-    lang_bits = target_lang.split('-', 1)
-    locale = lang_bits[0]
-    country = None
-    if len(lang_bits) == 2:
-        country = lang_bits[1]
-
     license_html = HTML_FORMATTER.format(
-        license, work_info, locale, country)
+        license, work_info, target_lang)
 
     context.update(
         {'engine_template': engine_template,
@@ -331,7 +325,7 @@ def get_html(request):
     if len(lang_bits) == 2:
         country = lang_bits[1]
 
-    license_html = HTML_FORMATTER.format(license, work_info, locale, country)
+    license_html = HTML_FORMATTER.format(license, work_info, target_lang)
     return Response(license_html, content_type='text/html; charset=UTF-8')
 
 
@@ -373,13 +367,7 @@ def work_email_popup(request):
     license = _issue_license(request_form)
     work_info = _work_info(request_form)
 
-    lang_bits = target_lang.split('-', 1)
-    locale = lang_bits[0]
-    country = None
-    if len(lang_bits) == 2:
-        country = lang_bits[1]
-
-    license_html = HTML_FORMATTER.format(license, work_info)
+    license_html = HTML_FORMATTER.format(license, work_info, target_lang)
 
     template = util.get_zpt_template(
         'chooser_pages/htmlpopup.pt', target_lang)
@@ -490,6 +478,8 @@ def publicdomain_confirm(request):
 
 
 def publicdomain_result(request):
+    target_lang = util.get_target_lang_from_request(request)
+
     request_form = request.GET or request.POST
 
     # make sure the user selected "confirm"
@@ -501,7 +491,7 @@ def publicdomain_result(request):
     work_info = _work_info(request_form)
     license_html = HTML_FORMATTER.format(
         cc.license.by_code('publicdomain'),
-        work_info)
+        work_info, target_lang)
 
     template = util.get_zpt_template(
         'chooser_pages/publicdomain/publicdomain-4.pt')
@@ -600,7 +590,7 @@ def cc0_results(request):
     ## RDFA generation
     cc0_license = cc.license.by_code('CC0')
     license_html = CC0_HTML_FORMATTER.format(
-        cc0_license, request_form).strip()
+        cc0_license, request_form, target_lang).strip()
 
     ## Did the user request an email?
     email_addr = request_form.get('email')
