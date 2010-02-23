@@ -44,6 +44,7 @@ setup(
         'routes',
         'sphinx',
         'webtest',
+        'wsgi_cache',
         'flup==1.0.2',
         ],
 
