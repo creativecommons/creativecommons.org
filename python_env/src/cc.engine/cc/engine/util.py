@@ -17,6 +17,7 @@ from zope.i18n.translationdomain import TranslationDomain
 from zope.i18n import translate
 
 from cc.license._lib import rdf_helper
+from cc.license._lib import functions as cclicense_functions
 from cc.license.formatters.pagetemplate import CCLPageTemplateFile
 from cc.i18npkg import ccorg_i18n_setup
 
@@ -211,22 +212,6 @@ def get_license_conditions(license, target_language="en_US"):
     return attrs
 
 
-def get_valid_jurisdictions(license_class='standard'):
-    # TODO: use license_class here
-    query = RDF.Query(
-        str('PREFIX cc: <http://creativecommons.org/ns#> '
-            'SELECT ?jurisdiction WHERE '
-            '{ ?license cc:licenseClass <http://creativecommons.org/license/> .'
-            '  ?license cc:jurisdiction ?jurisdiction }'),
-        query_language="sparql")
-
-    jurisdictions = set(
-        [unicode(result['jurisdiction'].uri)
-         for result in query.execute(rdf_helper.ALL_MODEL)])
-
-    return jurisdictions
-
-
 def active_languages():
     """Return a sequence of dicts, where each element consists of the
     following keys:
@@ -242,7 +227,7 @@ def active_languages():
     # determine the intersection of available translations and
     # launched jurisdiction locales
     launched_locales = set()
-    jurisdictions = get_valid_jurisdictions()
+    jurisdictions = cclicense_functions.get_valid_jurisdictions()
 
     for jurisdiction in jurisdictions:
         query_string = (
