@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@popup/page"
+      metal:use-macro="popup_template/macros/page"
       i18n:domain="cc_org">
 <head>
   <title metal:fill-slot="title" i18n:translate="char.by_title">
@@ -11,28 +11,27 @@
 </head>
 
 <body>
+  <metal:body fill-slot="body" >
 
-<metal:body fill-slot="body" >
+    <p tal:attributes="dir get_ltr_rtl; style is_rtl_align;" >
+      <img src="/icon/by/standard.gif" alt="by" style="text-align:left" hspace="4"        
+           tal:attributes="style is_rtl_align;" />
+    </p>
 
-<p tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;" >
-  <img src="/icon/by/standard.gif" alt="by" style="text-align:left" hspace="4"        
-       tal:attributes="style view/is_rtl_align;" />
-</p>
+    <p tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
+      <strong i18n:translate="">char.by_title</strong></p>
 
-<p tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
-  <strong i18n:translate="">char.by_title</strong></p>
+    <p i18n:translate="" 
+       tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
+      char.by_description
+    </p>
 
-<p i18n:translate="" 
-   tal:attributes="dir view/get_ltr_rtl; style view/is_rtl_align;">
-  char.by_description
-</p>
+    <div style="text-align:center">
+      <a href="javascript:window.close();"
+         i18n:translate="util.Close_window">(close window)</a>
+    </div>
 
-<div style="text-align:center">
-  <a href="javascript:window.close();"
-     i18n:translate="util.Close_window">(close window)</a>
-</div>
-
-</metal:body>
+  </metal:body>
 </body>
 </html>
 
