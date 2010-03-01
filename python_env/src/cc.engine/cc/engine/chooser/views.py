@@ -572,6 +572,8 @@ info@creativecommons.org
 
 
 def cc0_results(request):
+    target_lang = util.get_target_lang_from_request(request)
+
     template = util.get_zpt_template(
         'chooser_pages/zero/results.pt')
     engine_template = util.get_zpt_template(
