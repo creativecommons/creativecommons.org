@@ -39,7 +39,6 @@ setup(
         'zope.interface',
         'PasteScript',
         #'repoze.bfg',
-        'static',
         'WebOb',
         'routes',
         'sphinx',

@@ -1,8 +1,6 @@
 import pkg_resources
 import urlparse
 
-import static
-
 
 class StaticDirect(object):
     def __init__(self):
@@ -46,8 +44,3 @@ class MultiRemoteStaticDirect(StaticDirect):
         return '%s/%s' % (
             self.remotepaths[section].rstrip('/'),
             rest.lstrip('/'))
-
-
-def static_app_factory(global_config, **kw):
-    resource, path = kw['resource_path'].split(':', 1)
-    return static.Cling(pkg_resources.resource_filename(resource, path))
