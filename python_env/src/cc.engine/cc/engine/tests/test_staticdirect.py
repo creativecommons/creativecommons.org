@@ -28,11 +28,3 @@ def test_request_dot_staticdirect():
     response = testapp.get('/licenses/by/3.0/')
     assert u'/statik/images/information.png' in response.unicode_body
     assert u'/statik/includes/deed3.css' in response.unicode_body
-
-
-def test_static_app_factory():
-    testapp = webtest.TestApp(
-        staticdirect.static_app_factory(
-            None, resource_path='cc.engine:templates'))
-    response = testapp.get('/test/bunnies.pt')
-    assert u'Welcome to the bunny field!' in response.body
