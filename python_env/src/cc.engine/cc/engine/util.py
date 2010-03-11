@@ -18,8 +18,9 @@ from zope.i18n import translate
 
 from cc.license._lib import rdf_helper
 from cc.license._lib import functions as cclicense_functions
-from cc.license.formatters.pagetemplate import CCLPageTemplateFile
 from cc.i18npkg import ccorg_i18n_setup
+
+from cc.engine.pagetemplate import CCLPageTemplateFile
 
 
 BASE_TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
