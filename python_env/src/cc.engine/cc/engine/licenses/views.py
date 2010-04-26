@@ -57,12 +57,8 @@ def license_deed_view(request, license):
 
     identity_data = util.get_locale_identity_data(request)
 
-    # TODO: Adjust this target_lang stuff!
-    accept_lang_matches = request.accept_language.best_matches()
     if request.matchdict.has_key('target_lang'):
         target_lang = request.matchdict.get('target_lang')
-    elif accept_lang_matches:
-        target_lang = accept_lang_matches[0]
     else:
         target_lang = 'en'
 
