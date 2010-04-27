@@ -235,13 +235,16 @@ def _work_rdf(work_info, license):
 
 
 def chooser_view(request):
-    target_lang = util.get_target_lang_from_request(request)
+    target_lang = (
+        request.GET.get('lang')
+        or util.get_target_lang_from_request(request))
 
     if request.GET.get('partner'):
         template = util.get_zpt_template(
             'chooser_pages/partner/index.pt', target_lang)
     else:
-        template = util.get_zpt_template('chooser_pages/index.pt')
+        template = util.get_zpt_template(
+            'chooser_pages/index.pt', target_lang)
 
     engine_template = util.get_zpt_template(
         'macros_templates/engine.pt', target_lang)
@@ -269,7 +272,9 @@ def chooser_view(request):
 
 
 def choose_results_view(request):
-    target_lang = util.get_target_lang_from_request(request)
+    target_lang = (
+        request.GET.get('lang')
+        or util.get_target_lang_from_request(request))
 
     if request.matchdict.get('publicdomain', False):
         template = util.get_zpt_template(
