@@ -102,7 +102,16 @@
   <div class="hd">
     <span i18n:translate="util.Jurisdiction">Jurisdiction</span>
   </div>
-  <div class="bd"><p i18n:translate="license.jurisdiction_help"></p></div>
+  <div class="bd">
+    <p i18n:translate="">
+      Use the option "International" if you desire a license using language
+      and terminology from international treaties.  If the licenses have
+      been ported to your jurisdiction and you feel that your jurisdiction's
+      ported licenses account for some aspect of local legislation that the
+      international licenses do not, then you may want to consider <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Should_I_choose_an_international_license_or_a_ported_license.3F">which
+        license is better suited for your needs</a>.
+    </p>
+  </div>
 </div>
 			
 <div metal:use-macro="context/@@metadata/more-metadata" />
