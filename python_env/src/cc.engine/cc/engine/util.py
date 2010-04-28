@@ -327,53 +327,6 @@ def plain_template_view(template_name, request):
         template.pt_render(context))
 
 
-def get_selected_jurisdiction(request):
-    try:
-        lang = request.accept_language.best_matches()[0]
-    except IndexError:
-        return '-'
-
-    lang_country = re.split('[-_]', lang)
-
-    if len(lang_country) == 2:
-        lang = (lang_country[0] + '-' + lang_country[1]).lower()
-
-    lang_jurisdiction_map = get_language_jurisdiction_map()
-
-    # see if we have a result with the entire lang
-    result = lang_jurisdiction_map.get(lang)
-    if result:
-        return result
-
-    # if not, see if we have a result with just the first half of the
-    # lang-country split, and if not that, return '-'
-    return lang_jurisdiction_map.get(lang_country[0].lower()) or '-'
-
-
-def get_language_jurisdiction_map():
-    global LANGUAGE_JURISDICTION_MAPPING
-    if LANGUAGE_JURISDICTION_MAPPING:
-        return LANGUAGE_JURISDICTION_MAPPING
-    
-    qstring = "\n".join(
-        ["PREFIX cc: <http://creativecommons.org/ns#>",
-         "PREFIX dc: <http://purl.org/dc/elements/1.1/>",
-         "SELECT ?jurisdiction ?language",
-         "WHERE {?jurisdiction dc:language ?language}"])
-
-    query = RDF.Query(qstring, query_language="sparql")
-
-    juri_lang_data = [
-        (unicode(r['jurisdiction']).rstrip(']/').split('/')[-1],
-         unicode(r['language']))
-        for r in query.execute(rdf_helper.JURI_MODEL)]
-
-    for juri, lang in juri_lang_data:
-        LANGUAGE_JURISDICTION_MAPPING[lang] = juri
-
-    return LANGUAGE_JURISDICTION_MAPPING
-
-
 class UnsafeResource(Error): pass
 
 def safer_resource_filename(package, resource):

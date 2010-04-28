@@ -20,7 +20,6 @@ def _base_context(request):
         'request': request,
         'target_lang': util.get_target_lang_from_request(request),
         'active_languages': util.active_languages(),
-        'selected_jurisdiction': util.get_selected_jurisdiction(request),
         }
     
     context.update(util.rtl_context_stuff(request))
