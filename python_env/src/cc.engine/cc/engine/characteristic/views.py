@@ -6,7 +6,8 @@ def characteristic_view(request):
     """
     Return one of the characteristic description pages.
     """
-    target_lang = util.get_target_lang_from_request(request)
+    target_lang = (
+        request.GET.get('lang') or util.get_target_lang_from_request(request))
 
     template_name = 'characteristic/%s.pt' % (
         request.matchdict['characteristic'])
