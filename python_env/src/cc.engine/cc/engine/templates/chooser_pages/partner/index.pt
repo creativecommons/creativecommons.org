@@ -130,8 +130,7 @@
           </a>)
           <br />
 
-          <select name="field_jurisdiction"
-                  tal:define="selected selected_jurisdiction">
+          <select name="field_jurisdiction">
             <option value=""  
                     i18n:translate="" selected="selected">International</option>
 
