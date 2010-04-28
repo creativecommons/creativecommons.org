@@ -133,23 +133,11 @@
           <select name="field_jurisdiction"
                   tal:define="selected selected_jurisdiction">
             <option value=""  
-                    tal:condition="python: selected is None"
-                    i18n:translate="util.Generic" selected="selected">Generic</option>
-            <option value=""  
-                    tal:condition="python: selected is not None"
-                    i18n:translate="util.Generic">Generic</option>
+                    i18n:translate="" selected="selected">International</option>
 
             <span tal:omit-tag=""
                   tal:repeat="j available_jurisdiction_codes">
-              <option value="" selected="selected"
-                      tal:condition="python: j != '-' and selected == j"
-                      tal:attributes="value j;" >
-                <span tal:content="string:country.${j}"
-                      tal:omit-tag=""
-                      i18n:translate="" />
-              </option>
               <option value=""
-                      tal:condition="python: j != '-' and selected != j"
                       tal:attributes="value j;">
                 <span tal:content="string:country.${j}"
                       tal:omit-tag=""
