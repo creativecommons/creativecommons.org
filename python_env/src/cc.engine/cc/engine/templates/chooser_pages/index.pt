@@ -194,7 +194,7 @@
         <span i18n:translate="util.Jurisdiction">Jurisdiction</span>
       </div>
       <div class="bd">
-        <p i18n:translate="">
+        <p i18n:translate="license.jurisdiction_help">
           Use the option "International" if you desire a license using language
           and terminology from international treaties.  If the licenses have
           been ported to your jurisdiction and you feel that your jurisdiction's
