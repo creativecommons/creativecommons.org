@@ -255,7 +255,9 @@ def chooser_view(request):
         'macros_templates/support.pt', target_lang)
 
     available_jurisdiction_codes = [
-        j.code for j in get_selector_jurisdictions('standard')]
+        j.code for j in get_selector_jurisdictions('standard')
+        if j.code != '']
+    available_jurisdiction_codes.sort()
     
     context = _base_context(request)
 
