@@ -115,13 +115,13 @@
           <div class="sideitem">
             <ul>
               <li><img src="/@@/cc/cc5/images/license-alt.png" 
-                       tal:attributes="src python:request.staticdirect('images/license-alt.png')"
+                       tal:attributes="src python:request.staticdirect('cc5/images/license-alt.png')"
                        alt="License your work" />&nbsp;&nbsp;
                   <a href="/choose/">License your work</a>
               </li>
               <li>
                 <img src="/@@/cc/cc5/images/find-alt.png" 
-                     tal:attributes="src python:request.staticdirect('images/find-alt.png')"
+                     tal:attributes="src python:request.staticdirect('cc5/images/find-alt.png')"
                      alt="Find licensed works" width="12" height="12" />&nbsp;&nbsp;
                   <a href="http://search.creativecommons.org/">Find licensed works</a>
               </li>
