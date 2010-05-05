@@ -38,7 +38,7 @@ ${license/rdf} -->" />
       </div>
 
       <span tal:omit-tag=""
-            tal:condition="python: license.jurisdiction.code not in ['-', 'es']">
+            tal:condition="python: license.jurisdiction.code not in ['', 'es']">
         <a tal:attributes="href python: '/worldwide/'+license.jurisdiction.code+'/'"
            href=''>
           <img tal:attributes="src python: '/images/international/'+license.jurisdiction.code+'.png'; alt python: license.jurisdiction.code;"
