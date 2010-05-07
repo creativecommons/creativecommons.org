@@ -343,12 +343,6 @@ def get_html(request):
     license = _issue_license(request_form)
     work_info = _work_info(request_form)
 
-    lang_bits = target_lang.split('-', 1)
-    locale = lang_bits[0]
-    country = None
-    if len(lang_bits) == 2:
-        country = lang_bits[1]
-
     license_html = HTML_FORMATTER.format(license, work_info, target_lang)
     return Response(license_html, content_type='text/html; charset=UTF-8')
 
