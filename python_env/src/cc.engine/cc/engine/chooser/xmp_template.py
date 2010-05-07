@@ -12,11 +12,13 @@ WORK_FORMATS = {
     'Interactive': 'InteractiveResource'}
 
 
+ANCHOR_START_RE = re.compile("""\<a .+ href=["'].+["']\>""", re.I)
+ANCHOR_END_RE = re.compile("""</a>""", re.I)
+
 def strip_href(input_str):
     """Take input_str and strip out the <a href='...'></a> tags."""
-
-    result = re.compile("""\<a .+ href=["'].+["']\>""", re.I).sub("", input_str)
-    result = re.compile("""</a>""", re.I).sub("", result)
+    result = ANCHOR_START_RE.sub("", input_str)
+    result = ANCHOR_END_RE.sub("", result)
 
     return result
 
