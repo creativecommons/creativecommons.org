@@ -1,14 +1,7 @@
 import re
 from tempfile import TemporaryFile
 
-from zope.interface import implementer
-from zope.component import adapter
-from zope.publisher.interfaces import IRequest
-from zope.i18n import translate
-
-import cc.engine.i18n
-from cc.engine.interfaces import ILicenseEngine
-from cc.engine.xmp.interfaces import IXMPPresentation
+from cc.i18npkg.ccgettext_i18n import ugettext_for_locale, I18N_DOMAIN
 
 
 WORK_FORMATS = {
@@ -28,7 +21,7 @@ def strip_href(input_str):
     return result
 
 
-def work_type(format):
+def workType(format):
     if format == "":
         return "work"
 
@@ -38,16 +31,18 @@ def work_type(format):
     return WORK_FORMATS[format] 
 
 
-def get_xmp_info(request, license):
+def get_xmp_info(request_form, license, locale):
+    ugettext = ugettext_for_locale(locale)
+
     # assemble the necessary information for the XMP file before rendering
-    year = ('field_year' in request.form and
-            request['field_year']) or ""
-    creator = ('field_creator' in request.form and
-               request['field_creator']) or None
-    work_type = work_type(('field_format' in request.form and
-                          request['field_format']) or "")
-    work_url = ('field_url' in request.form and
-                request['field_url']) or None
+    year = ('field_year' in request_form and
+            request_form['field_year']) or ""
+    creator = ('field_creator' in request_form and
+               request_form['field_creator']) or None
+    work_type = workType(('field_format' in request_form and
+                          request_form['field_format']) or "")
+    work_url = ('field_url' in request_form and
+                request_form['field_url']) or None
 
     # determine the license notice
     if ('publicdomain' in license.uri):
@@ -59,10 +54,9 @@ def get_xmp_info(request, license):
         else:
             notice = ""
 
-        i18n_work = translate('util.work', domain=cc.engine.i18n.I18N_DOMAIN)
+        i18n_work = ugettext('util.work')
         work_notice = strip_href(
-            translate('license.work_type_licensed',
-                      domain=cc.engine.i18n.I18N_DOMAIN,
+            ugettext('license.work_type_licensed'
                       mapping={'license_name':license.name,
                                'license_url':license.uri,
                                'work_type':i18n_work}))
@@ -79,10 +73,8 @@ def get_xmp_info(request, license):
         'work_url':work_url}
 
 
-@adapter(ILicenseEngine, IRequest)
-@implementer(IXMPPresentation)
-def license_xmp_template(context, request):
-    xmp_info = get_xmp_info(request, context.issue(request))
+def license_xmp_template(request_form, license, locale):
+    xmp_info = get_xmp_info(request_form, license, locale)
     temp_file = TemporaryFile()
     
     # assemble the XMP
