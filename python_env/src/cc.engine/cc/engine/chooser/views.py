@@ -322,6 +322,13 @@ def choose_xmp_view(request):
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
 
+    return Response(
+        xmp_data,
+        content_type='application/xmp; charset=UTF-8',
+        content_disposition='attachment; filename="CC_%s.xmp' % (
+            license.title().strip().replace(' ', '_')))
+
+
 
 def get_html(request):
     target_lang = util.get_target_lang_from_request(request)
