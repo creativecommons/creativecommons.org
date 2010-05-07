@@ -318,6 +318,11 @@ def choose_results_view(request):
     return Response(template.pt_render(context))
 
 
+def choose_xmp_view(request):
+    request_form = request.GET or request.POST
+    license = _issue_license(request_form)
+
+
 def get_html(request):
     target_lang = util.get_target_lang_from_request(request)
 

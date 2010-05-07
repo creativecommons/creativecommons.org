@@ -5,6 +5,8 @@ chooser_routes = [
           controller="cc.engine.chooser.views:chooser_view"),
     Route("choose_results_one", "/results-one",
           controller="cc.engine.chooser.views:choose_results_view"),
+    Route("choose_results_one", "/xmp",
+          controller="cc.engine.chooser.views:choose_xmp_view"),
     Route("choose_get_html", "/get-html",
           controller="cc.engine.chooser.views:get_html"),
     Route("choose_get_rdf", "/get-rdf",
