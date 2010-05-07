@@ -77,21 +77,20 @@ def get_xmp_info(request_form, license, locale):
 
 def license_xmp_template(request_form, license, locale):
     xmp_info = get_xmp_info(request_form, license, locale)
-    temp_file = TemporaryFile()
+    xmp_output = u""
     
     # assemble the XMP
-    temp_file.write(u"""<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>
+    xmp_output += u"""<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>
     <rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
 
      <rdf:Description rdf:about=''
       xmlns:xapRights='http://ns.adobe.com/xap/1.0/rights/'>
-      <xapRights:Marked>%(copyrighted)s</xapRights:Marked>""" % xmp_info)
+      <xapRights:Marked>%(copyrighted)s</xapRights:Marked>""" % xmp_info
 
     if xmp_info['work_url'] != None:
-        temp_file.write(
-            """  <xapRights:WebStatement rdf:resource='%(work_url)s'/>""" % xmp_info)
+        xmp_output += """  <xapRights:WebStatement rdf:resource='%(work_url)s'/>""" % xmp_info
         
-    temp_file.write(""" </rdf:Description>
+    xmp_output += """ </rdf:Description>
 
      <rdf:Description rdf:about=''
       xmlns:dc='http://purl.org/dc/elements/1.1/'>
@@ -110,6 +109,6 @@ def license_xmp_template(request_form, license, locale):
     </rdf:RDF>
     </x:xmpmeta>
     <?xpacket end='r'?>
-    """ % xmp_info)
+    """ % xmp_info
 
-    return temp_file
+    return xmp_output
