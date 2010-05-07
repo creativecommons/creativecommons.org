@@ -335,7 +335,6 @@ def choose_xmp_view(request):
             license.title().strip().replace(' ', '_')))
 
 
-
 def get_html(request):
     target_lang = util.get_target_lang_from_request(request)
 
