@@ -10,6 +10,15 @@ import cc.engine.i18n
 from cc.engine.interfaces import ILicenseEngine
 from cc.engine.xmp.interfaces import IXMPPresentation
 
+
+WORK_FORMATS = {
+    'Other': None,
+    'Audio': 'Sound',
+    'Video': 'MovingImage',
+    'Image': 'StillImage',
+    'Interactive': 'InteractiveResource'}
+
+
 def strip_href(input_str):
     """Take input_str and strip out the <a href='...'></a> tags."""
 
@@ -18,15 +27,8 @@ def strip_href(input_str):
 
     return result
 
-def workType(format):
 
-    WORK_FORMATS = {'Other':None,
-                    'Audio':'Sound',
-                    'Video':'MovingImage',
-                    'Image':'StillImage',
-                    'Interactive':'InteractiveResource'
-                    }
-
+def work_type(format):
     if format == "":
         return "work"
 
@@ -35,15 +37,14 @@ def workType(format):
 
     return WORK_FORMATS[format] 
 
+
 def get_xmp_info(request, license):
     # assemble the necessary information for the XMP file before rendering
-
-
     year = ('field_year' in request.form and
             request['field_year']) or ""
     creator = ('field_creator' in request.form and
                request['field_creator']) or None
-    work_type = workType(('field_format' in request.form and
+    work_type = work_type(('field_format' in request.form and
                           request['field_format']) or "")
     work_url = ('field_url' in request.form and
                 request['field_url']) or None
@@ -53,7 +54,6 @@ def get_xmp_info(request, license):
         notice = "This %s is dedicated to the public domain." % (work_type)
         copyrighted = False
     else:
-
         if creator:
             notice = "Copyright %s %s.  " % (year, creator,)
         else:
@@ -65,8 +65,7 @@ def get_xmp_info(request, license):
                       domain=cc.engine.i18n.I18N_DOMAIN,
                       mapping={'license_name':license.name,
                                'license_url':license.uri,
-                               'work_type':i18n_work}
-            ) )
+                               'work_type':i18n_work}))
 
         notice = notice + work_notice
 
@@ -77,15 +76,12 @@ def get_xmp_info(request, license):
         'notice':notice,
         'license_url':license.uri,
         'license':license,
-        'work_url':work_url
-        }
-
+        'work_url':work_url}
 
 
 @adapter(ILicenseEngine, IRequest)
 @implementer(IXMPPresentation)
 def license_xmp_template(context, request):
-
     xmp_info = get_xmp_info(request, context.issue(request))
     temp_file = TemporaryFile()
     
@@ -95,12 +91,11 @@ def license_xmp_template(context, request):
 
      <rdf:Description rdf:about=''
       xmlns:xapRights='http://ns.adobe.com/xap/1.0/rights/'>
-      <xapRights:Marked>%(copyrighted)s</xapRights:Marked>""" % xmp_info
-                    )
+      <xapRights:Marked>%(copyrighted)s</xapRights:Marked>""" % xmp_info)
 
-    
     if xmp_info['work_url'] != None:
-        temp_file.write("""  <xapRights:WebStatement rdf:resource='%(work_url)s'/>""" % xmp_info)
+        temp_file.write(
+            """  <xapRights:WebStatement rdf:resource='%(work_url)s'/>""" % xmp_info)
         
     temp_file.write(""" </rdf:Description>
 
