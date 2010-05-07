@@ -1,7 +1,8 @@
 import string
 import re
 
-from cc.i18npkg.ccgettext_i18n import ugettext_for_locale
+from cc.i18npkg.gettext_i18n import ugettext_for_locale
+from cc.license.util import locale_to_dash_style
 
 
 WORK_FORMATS = {
@@ -11,9 +12,9 @@ WORK_FORMATS = {
     'Image': 'StillImage',
     'Interactive': 'InteractiveResource'}
 
-
 ANCHOR_START_RE = re.compile("""\<a .+ href=["'].+["']\>""", re.I)
 ANCHOR_END_RE = re.compile("""</a>""", re.I)
+
 
 def strip_href(input_str):
     """Take input_str and strip out the <a href='...'></a> tags."""
@@ -60,7 +61,7 @@ def get_xmp_info(request_form, license, locale):
         work_notice_template = string.Template(
             ugettext('license.work_type_licensed'))
         work_notice = work_notice_template.substitute(
-            {'license_name': license.name,
+            {'license_name': license.title(locale_to_dash_style(locale)),
              'license_url': license.uri,
              'work_type': i18n_work})
 
