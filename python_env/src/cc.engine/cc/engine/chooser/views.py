@@ -330,7 +330,7 @@ def choose_xmp_view(request):
 
     return Response(
         xmp_data,
-        content_type='application/xmp',
+        content_type='application/xmp; charset=UTF-8',
         charset='UTF-8',
         content_disposition='attachment; filename="CC_%s.xmp' % (
             license.title().strip().replace(' ', '_')))
