@@ -1,6 +1,5 @@
 import string
 import re
-from tempfile import TemporaryFile
 
 from cc.i18npkg.ccgettext_i18n import ugettext_for_locale
 
