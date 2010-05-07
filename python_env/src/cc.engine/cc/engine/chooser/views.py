@@ -7,10 +7,12 @@ from smtplib import SMTPException
 from webob import Response, exc
 
 from cc.engine import util
+from cc.engine.chooser.xmp_template import license_xmp_template
 from cc.license._lib.functions import get_selector_jurisdictions
 from cc.i18npkg import ccorg_i18n_setup
 import cc.license
 from cc.license.formatters.classes import HTMLFormatter, CC0HTMLFormatter
+
 
 HTML_FORMATTER = HTMLFormatter()
 CC0_HTML_FORMATTER = CC0HTMLFormatter()
@@ -321,6 +323,10 @@ def choose_results_view(request):
 def choose_xmp_view(request):
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
+    target_lang = util.get_target_lang_from_request(request)
+
+    xmp_data = license_xmp_template(
+        request_form, license, target_lang)
 
     return Response(
         xmp_data,
