@@ -25,7 +25,7 @@ import sys
 
 setup(
     name = "cc.engine",
-    version = "9.1-dev",
+    version = "10.0",
     packages = ['cc.engine'],
     namespace_packages = ['cc',],
     
