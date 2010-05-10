@@ -29,6 +29,8 @@ setup(
     namespace_packages = ['cc',],
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     
+    include_package_data = True,
+
     # scripts and dependencies
     install_requires = [
         'setuptools',
