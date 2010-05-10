@@ -26,8 +26,8 @@ import sys
 setup(
     name = "cc.engine",
     version = "10.0",
-    packages = ['cc.engine'],
     namespace_packages = ['cc',],
+    packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     
     # scripts and dependencies
     install_requires = [
