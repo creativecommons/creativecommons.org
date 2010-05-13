@@ -10,6 +10,16 @@ def root_view(request):
     return Response("This is the root")
 
 
+def license_redirect(request):
+    new_url = '/choose/'
+
+    request_form = request.GET or request.POST
+    if request_form:
+        new_url = '%s?%s' % (
+            new_url, urllib.urlencode(request_form))
+    return exc.HTTPTemporaryRedirect(location=new_url)
+
+
 def work_html_redirect(request):
     new_url = '/choose/work-html-popup'
     if request.GET:
