@@ -6,7 +6,7 @@ licenses_routes = [
     Route("license_deed",
           "/{code}/{version}/",
           controller="cc.engine.licenses.views:license_deed_view"),
-    Route("license_deed_lang",
+    Route("license_deed_explicit",
           "/{code}/{version}/deed",
           controller="cc.engine.licenses.views:license_deed_view"),
     Route("license_deed_lang",
