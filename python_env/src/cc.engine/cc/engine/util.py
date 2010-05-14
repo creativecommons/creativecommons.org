@@ -213,6 +213,8 @@ def get_license_conditions(license, target_language="en_US"):
     return attrs
 
 
+_ACTIVE_LANGUAGES = None
+
 def active_languages():
     """Return a sequence of dicts, where each element consists of the
     following keys:
@@ -221,6 +223,10 @@ def active_languages():
     * name: the translated name of this language
 
     for each available language."""
+    global _ACTIVE_LANGUAGES
+    if _ACTIVE_LANGUAGES:
+        return _ACTIVE_LANGUAGES
+
     # get a list of avaialable translations
     domain = base.queryUtility(ITranslationDomain, ccorg_i18n_setup.I18N_DOMAIN)
     lang_codes = set(domain.getCatalogsInfo().keys())
@@ -261,6 +267,8 @@ def active_languages():
         if name != u'lang.%s' % code:
             # we have a translation for this name...
             result.append(dict(code=code, name=name))
+
+    _ACTIVE_LANGUAGES = result
 
     return result
 
