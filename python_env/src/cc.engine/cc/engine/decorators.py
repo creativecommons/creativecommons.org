@@ -1,4 +1,4 @@
-from webob import Response
+from webob.exc import HTTPNotFound
 
 from cc.license import by_code, CCLicenseError
 
@@ -20,7 +20,7 @@ def get_license(controller):
                 jurisdiction=request.matchdict.get('jurisdiction'),
                 version=request.matchdict.get('version'))
         except CCLicenseError:
-            return Response("No such license.")
+            return HTTPNotFound()
 
         return controller(request, license=license, *args, **kwargs)
 
