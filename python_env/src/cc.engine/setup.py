@@ -33,9 +33,10 @@ setup(
 
     # scripts and dependencies
     install_requires = [
+        'rdflib<3.0',
         'setuptools',
-        'cc.license',
         'cc.licenserdf',
+        'cc.license',
         'cc.i18npkg',
         'python-gettext',
         'zope.interface',
