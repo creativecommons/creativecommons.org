@@ -1,3 +1,12 @@
+"""
+Kind of a hacky series of tests to make sure that:
+ - All the launched jurisdictions that show up on
+   http://creativecommons.org/international/ also show up on our
+   dropdown
+ - All the license deeds mentioned on the individual jurisdiction
+   pages are GET'able with a 200 response code
+"""
+
 import re
 
 from lxml import html
@@ -77,6 +86,10 @@ def test_jurisdiction_dropdown_contains_jurisdictions():
 
 
 def test_licenses_exist():
+    """
+    Make sure that all the deeds mentioned on jurisdiction pages such as 
+    http://creativecommons.org/international/br/ are actually GET'able
+    """
     for jurisdiction in scraped_launched_jurisdictions():
         deed_urls = scraped_expected_licenses(jurisdiction)
         for url in deed_urls:
