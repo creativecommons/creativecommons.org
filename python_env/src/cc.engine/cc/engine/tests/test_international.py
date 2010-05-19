@@ -41,4 +41,16 @@ def test_jurisdiction_dropdown_contains_jurisdictions():
     dropdown.
     """
     response = TESTAPP.get('/choose/')
-    html.fromstring(response.body)
+    body_etree = html.fromstring(response.body)
+    dropdown_jurisdictions = [
+        o.attrib['value']
+        for o in body_etree.xpath(
+            "//select[@name='field_jurisdiction']/option")]
+
+    # make sure unported/international jursidiction is there, but
+    # remove it for comparison
+    dropdown_jurisdictions.remove('')
+
+    scraped_jurisdictions = scraped_launched_jurisdictions()
+
+    assert set(scraped_jurisdictions) == set(dropdown_jurisdictions)
