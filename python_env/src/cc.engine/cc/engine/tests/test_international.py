@@ -1,3 +1,5 @@
+import re
+
 from lxml import html
 import webtest
 
@@ -19,6 +21,24 @@ def scraped_launched_jurisdictions():
 
     return jurisdictions
     
+
+def scraped_expected_licenses(jurisdiction):
+    juris_deed_re = re.compile(
+        '^(?:http://creativecommons.org)?(/licenses/[^/]+/[^/]+/%s/)$' % (
+            jurisdiction))
+
+    url = 'http://creativecommons.org/international/%s/' % jurisdiction
+    jurisdiction_etree = html.parse(url)
+
+    deed_urls = []
+
+    for a in jurisdiction_etree.xpath('//a'):
+        deed_match = juris_deed_re.match(a.attrib['href'])
+        if deed_match:
+            deed_urls.append(deed_match.groups()[0])
+
+    return deed_urls
+
 
 def test_scraped_launched_jurisdictions():
     """
@@ -54,3 +74,11 @@ def test_jurisdiction_dropdown_contains_jurisdictions():
     scraped_jurisdictions = scraped_launched_jurisdictions()
 
     assert set(scraped_jurisdictions) == set(dropdown_jurisdictions)
+
+
+def test_licenses_exist():
+    for jurisdiction in scraped_launched_jurisdictions():
+        deed_urls = scraped_expected_licenses(jurisdiction)
+        for url in deed_urls:
+            response = TESTAPP.get(url)
+        
