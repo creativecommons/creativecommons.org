@@ -11,7 +11,7 @@ def root_view(request):
 
 
 def license_redirect(request):
-    new_url = '/choose/'
+    new_url = '/choose/' + request.matchdict.get('remaining_url', '')
 
     request_form = request.GET or request.POST
     if request_form:

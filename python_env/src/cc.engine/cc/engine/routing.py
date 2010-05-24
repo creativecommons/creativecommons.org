@@ -18,12 +18,11 @@ mapping.extend(chooser_routing.chooser_routes, '/choose')
 mapping.extend(characteristic_routing.characteristic_routes, '/characteristic')
 
 mapping.connect(
-    '/license/',
-    controller="cc.engine.views:license_redirect")
-
-
-mapping.connect(
     '/license/work-html-popup',
     controller="cc.engine.views:work_html_redirect")
+
+mapping.connect(
+    '/license/{remaining_url:.*}',
+    controller="cc.engine.views:license_redirect")
 
 
