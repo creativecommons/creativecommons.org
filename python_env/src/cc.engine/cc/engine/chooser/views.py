@@ -263,12 +263,18 @@ def chooser_view(request):
     
     context = _base_context(request)
 
+    requested_jurisdiction = None
+    if request.GET.has_key('jurisdiction') and \
+            request.GET['jurisdiction'] in available_jurisdiction_codes:
+        requested_jurisdiction = request.GET['jurisdiction']        
+
     context.update(
         {'engine_template': engine_template,
          'partner_template': partner_template,
          'metadata_template': metadata_template,
          'support_template': support_template,
          'available_jurisdiction_codes': available_jurisdiction_codes,
+         'requested_jurisdiction': requested_jurisdiction,
          'referrer': request.headers.get('REFERER','')})
 
     return Response(template.pt_render(context))

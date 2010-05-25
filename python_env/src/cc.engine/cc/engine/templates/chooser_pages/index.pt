@@ -144,7 +144,7 @@
           </a>
           <br />
 
-          <select name="field_jurisdiction">
+          <select name="field_jurisdiction" tal:condition="not: requested_jurisdiction">
             <option value=""  
                     i18n:translate="" selected="selected">
               International
@@ -153,6 +153,30 @@
             <span tal:omit-tag=""
                   tal:repeat="j available_jurisdiction_codes">
               <option value=""
+                      tal:attributes="value j;">
+                <span tal:content="string:country.${j}"
+                      tal:omit-tag=""
+                      i18n:translate="" />
+              </option>
+            </span>
+          </select>
+
+          <select name="field_jurisdiction" tal:condition="requested_jurisdiction">
+            <option value="" i18n:translate="">
+              International
+            </option> 
+
+            <span tal:omit-tag=""
+                  tal:repeat="j available_jurisdiction_codes">
+              <option value="" selected="selected"
+                      tal:condition="python: j == requested_jurisdiction"
+                      tal:attributes="value j;">
+                <span tal:content="string:country.${j}"
+                      tal:omit-tag=""
+                      i18n:translate="" />
+              </option>
+              <option value=""
+                      tal:condition="python: j != requested_jurisdiction"
                       tal:attributes="value j;">
                 <span tal:content="string:country.${j}"
                       tal:omit-tag=""
