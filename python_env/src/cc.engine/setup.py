@@ -25,7 +25,7 @@ import sys
 
 setup(
     name = "cc.engine",
-    version = "10.0.6",
+    version = "10.0.7",
     namespace_packages = ['cc',],
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     
