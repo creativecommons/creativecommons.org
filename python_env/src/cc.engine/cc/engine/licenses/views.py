@@ -59,6 +59,9 @@ def license_deed_view(request, license):
 
     if request.matchdict.has_key('target_lang'):
         target_lang = request.matchdict.get('target_lang')
+    elif license.jurisdiction.default_language:
+        target_lang = util.locale_to_cclicense_style(
+            license.jurisdiction.default_language)
     else:
         target_lang = 'en'
 
