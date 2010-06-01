@@ -17,10 +17,12 @@ from cc.license.formatters.classes import HTMLFormatter, CC0HTMLFormatter
 HTML_FORMATTER = HTMLFormatter()
 CC0_HTML_FORMATTER = CC0HTMLFormatter()
 
-def _base_context(request):
+def _base_context(request, target_lang=None):
     context = {
         'request': request,
-        'target_lang': util.get_target_lang_from_request(request),
+        'target_lang': (
+            target_lang
+            or util.get_target_lang_from_request(request)),
         'active_languages': util.active_languages(),
         }
     
@@ -261,7 +263,7 @@ def chooser_view(request):
         if j.code != '']
     available_jurisdiction_codes.sort()
     
-    context = _base_context(request)
+    context = _base_context(request, target_lang)
 
     requested_jurisdiction = None
     if request.GET.has_key('jurisdiction') and \
@@ -299,7 +301,7 @@ def choose_results_view(request):
     engine_template = util.get_zpt_template(
         'macros_templates/engine.pt', target_lang)
 
-    context = _base_context(request)
+    context = _base_context(request, target_lang)
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
     work_info = _work_info(request_form)
@@ -398,7 +400,7 @@ def work_email_popup(request):
     popup_template = util.get_zpt_template(
         'macros_templates/popup.pt', target_lang)
     
-    context = _base_context(request)
+    context = _base_context(request, target_lang)
     context.update(
         {'popup_template': popup_template,
          'license': license,
@@ -522,7 +524,7 @@ def publicdomain_result(request):
     engine_template = util.get_zpt_template(
         'macros_templates/engine.pt')
 
-    context = _base_context(request)
+    context = _base_context(request, target_lang)
     context.update({
             'engine_template': engine_template,
             'request_form': request_form,
@@ -639,7 +641,7 @@ def cc0_results(request):
         except SMTPException:
             successful_send = False
 
-    context = _base_context(request)
+    context = _base_context(request, target_lang)
     context.update({
             'engine_template': engine_template,
             'request_form': request_form,
