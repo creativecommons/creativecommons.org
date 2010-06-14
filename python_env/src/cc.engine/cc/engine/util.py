@@ -374,6 +374,9 @@ def make_locale_lower_upper_style(locale):
 
 
 def get_target_lang_from_request(request):
+    if request.GET.has_key('lang'):
+        return make_locale_lower_upper_style(request.GET['lang'])
+
     accept_lang_matches = request.accept_language.best_matches()
     if request.matchdict.has_key('target_lang'):
         target_lang = request.matchdict['target_lang']
