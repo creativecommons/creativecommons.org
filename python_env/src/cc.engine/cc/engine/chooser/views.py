@@ -238,9 +238,7 @@ def _work_rdf(work_info, license):
 
 
 def chooser_view(request):
-    target_lang = (
-        request.GET.get('lang')
-        or util.get_target_lang_from_request(request))
+    target_lang = util.get_target_lang_from_request(request)
 
     if request.GET.get('partner'):
         template = util.get_zpt_template(
@@ -283,9 +281,7 @@ def chooser_view(request):
 
 
 def choose_results_view(request):
-    target_lang = (
-        request.GET.get('lang')
-        or util.get_target_lang_from_request(request))
+    target_lang = util.get_target_lang_from_request(request)
 
     if request.matchdict.get('publicdomain', False):
         template = util.get_zpt_template(
