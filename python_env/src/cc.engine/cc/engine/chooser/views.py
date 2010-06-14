@@ -315,7 +315,7 @@ def choose_results_view(request):
     if request.GET.get('partner') or request.matchdict.get('publicdomain'):
         context.update(
             {'partner_template': util.get_zpt_template(
-                    'macros_templates/partner.pt'),
+                    'macros_templates/partner.pt', target_lang),
              'exit_url': _generate_exit_url(
                     request_form.get('exit_url', ''),
                     request_form.get('referrer', ''),
@@ -361,13 +361,17 @@ def get_rdf(request):
 
 
 def non_web_popup(request):
+    target_lang = util.get_target_lang_from_request(request)
+
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
-    template = util.get_zpt_template('chooser_pages/nonweb_popup.pt')
-    popup_template = util.get_zpt_template('macros_templates/popup.pt')
+    template = util.get_zpt_template(
+        'chooser_pages/nonweb_popup.pt', target_lang)
+    popup_template = util.get_zpt_template(
+        'macros_templates/popup.pt', target_lang)
     is_publicdomain = request_form.get('publicdomain') or request_form.get('pd')
     
-    context = _base_context(request)
+    context = _base_context(request, target_lang)
 
     context.update(
         {'popup_template': popup_template,
@@ -425,6 +429,8 @@ info@creativecommons.org
 """
 
 def work_email_send(request):
+    target_lang = util.get_target_lang_from_request(request)
+
     request_form = request.GET or request.POST
     email_addr = request_form.get('to_email', '')
     work_title = request_form.get('work_title', '')
@@ -439,10 +445,12 @@ def work_email_send(request):
         'Your Creative Commons License Information',
         message_body)
 
-    template = util.get_zpt_template('chooser_pages/emailhtml.pt')
-    popup_template = util.get_zpt_template('macros_templates/popup.pt')
+    template = util.get_zpt_template(
+        'chooser_pages/emailhtml.pt', target_lang)
+    popup_template = util.get_zpt_template(
+        'macros_templates/popup.pt', target_lang)
 
-    context = _base_context(request)
+    context = _base_context(request, target_lang)
     context.update(
         {'request_form': request_form,
          'popup_template': popup_template})
@@ -466,15 +474,18 @@ def lgpl_chooser(request):
 ### Public domain
 
 def publicdomain_landing(request):
+    target_lang = util.get_target_lang_from_request(request)
+
     template = util.get_zpt_template(
-        'chooser_pages/publicdomain/publicdomain-2.pt')
+        'chooser_pages/publicdomain/publicdomain-2.pt',
+        target_lang)
 
     engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt')
+        'macros_templates/engine.pt', target_lang)
     support_template = util.get_zpt_template(
-        'macros_templates/support.pt')
+        'macros_templates/support.pt', target_lang)
 
-    context = _base_context(request)
+    context = _base_context(request, target_lang)
     context.update({
             'support_template': support_template,
             'engine_template': engine_template})
@@ -483,15 +494,18 @@ def publicdomain_landing(request):
 
 
 def publicdomain_confirm(request):
+    target_lang = util.get_target_lang_from_request(request)
+
     template = util.get_zpt_template(
-        'chooser_pages/publicdomain/publicdomain-3.pt')
+        'chooser_pages/publicdomain/publicdomain-3.pt',
+        target_lang)
 
     engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt')
+        'macros_templates/engine.pt', target_lang)
 
     request_form = request.GET or request.POST
 
-    context = _base_context(request)
+    context = _base_context(request, target_lang)
     context.update({
             'engine_template': engine_template,
             'request_form': request_form})
@@ -531,12 +545,14 @@ def publicdomain_result(request):
 
 ### CC0
 def cc0_landing(request):
-    template = util.get_zpt_template(
-        'chooser_pages/zero/index.pt')
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt')
+    target_lang = util.get_target_lang_from_request(request)
 
-    context = _base_context(request)
+    template = util.get_zpt_template(
+        'chooser_pages/zero/index.pt', target_lang)
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine.pt', target_lang)
+
+    context = _base_context(request, target_lang)
     context.update({
             'engine_template': engine_template})
 
@@ -544,12 +560,14 @@ def cc0_landing(request):
 
 
 def cc0_waiver(request):
-    template = util.get_zpt_template(
-        'chooser_pages/zero/waiver.pt')
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt')
+    target_lang = util.get_target_lang_from_request(request)
 
-    context = _base_context(request)
+    template = util.get_zpt_template(
+        'chooser_pages/zero/waiver.pt', target_lang)
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine.pt', target_lang)
+
+    context = _base_context(request, target_lang)
     context.update({
             'engine_template': engine_template,
             'country_list': util.CODE_COUNTRY_LIST})
@@ -558,14 +576,16 @@ def cc0_waiver(request):
 
 
 def cc0_confirm(request):
+    target_lang = util.get_target_lang_from_request(request)
+
     template = util.get_zpt_template(
-        'chooser_pages/zero/confirm.pt')
+        'chooser_pages/zero/confirm.pt', target_lang)
     engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt')
+        'macros_templates/engine.pt', target_lang)
 
     request_form = request.GET or request.POST
 
-    context = _base_context(request)
+    context = _base_context(request, target_lang)
     context.update({
             'engine_template': engine_template,
             'request_form': request_form})
