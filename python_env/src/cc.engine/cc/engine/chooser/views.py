@@ -432,10 +432,10 @@ def work_email_send(request):
     target_lang = util.get_target_lang_from_request(request)
 
     request_form = request.GET or request.POST
-    email_addr = request_form.get('to_email', '')
-    work_title = request_form.get('work_title', '')
-    license_name = request_form.get('license_name')
-    license_html = request_form.get('license_html')
+    email_addr = request_form.get('to_email', '').decode('utf-8')
+    work_title = request_form.get('work_title', '').decode('utf-8')
+    license_name = request_form.get('license_name').decode('utf-8')
+    license_html = request_form.get('license_html').decode('utf-8')
 
     message_body = CC_WORK_EMAIL_MESSAGE_TEMPLATE % (
         work_title, license_name, license_html)
