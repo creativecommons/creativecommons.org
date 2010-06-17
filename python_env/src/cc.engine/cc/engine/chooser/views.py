@@ -617,9 +617,9 @@ def cc0_results(request):
     target_lang = util.get_target_lang_from_request(request)
 
     template = util.get_zpt_template(
-        'chooser_pages/zero/results.pt')
+        'chooser_pages/zero/results.pt', target_lang)
     engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt')
+        'macros_templates/engine.pt', target_lang)
 
     request_form = request.GET or request.POST
 
