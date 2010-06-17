@@ -645,7 +645,7 @@ def cc0_results(request):
                 'info@creativecommons.org', [email_addr],
                 'Your Creative Commons License Information',
                 CC0_EMAIL_MESSAGE_TEMPLATE % (
-                    cc0_license.title, license_html))
+                    cc0_license.title(target_lang), license_html))
 
             if request_form.get('send_updates', False):
                 util.send_email(
