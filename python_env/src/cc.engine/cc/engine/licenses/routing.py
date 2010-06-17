@@ -34,10 +34,10 @@ licenses_routes = [
           "/{code}/{version}/{jurisdiction}/rdf",
           controller="cc.engine.licenses.views:license_rdf_view"),
     Route("license_legalcode_jurisdiction",
-          "/{code}/{version}/jurisdiction}/legalcode",
+          "/{code}/{version}/{jurisdiction}/legalcode",
           controller="cc.engine.licenses.views:license_legalcode_view"),
     Route("license_legalcode_plain_jurisdiction",
-          "/{code}/{version}/jurisdiction}/legalcode-plain",
+          "/{code}/{version}/{jurisdiction}/legalcode-plain",
           controller="cc.engine.licenses.views:license_legalcode_plain_view"),
 
     # MIT / BSD routing
