@@ -67,6 +67,8 @@ licenses_routes = [
 cc0_routes = [
     Route("cc0_deed", "/{version}/",
           code='CC0', controller="cc.engine.licenses.views:license_deed_view"),
+    Route("cc0_deed_explicit", "/{version}/deed",
+          code='CC0', controller="cc.engine.licenses.views:license_deed_view"),
     Route("cc0_deed_lang", "/{version}/deed.{target_lang}",
           code='CC0', controller="cc.engine.licenses.views:license_deed_view"),
     Route("cc0_rdf", "/{version}/rdf",
