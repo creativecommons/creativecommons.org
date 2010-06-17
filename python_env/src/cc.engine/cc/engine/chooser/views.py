@@ -598,7 +598,7 @@ CC0_EMAIL_MESSAGE_TEMPLATE = u"""
 Thank you for using a Creative Commons License for your work.
 
 You have selected %s. You should include a reference to this
-license on the webp age that includes the work in question.
+license on the web page that includes the work in question.
 
 Here is the suggested HTML:
 
