@@ -669,3 +669,26 @@ def cc0_results(request):
             'successful_send': successful_send})
 
     return Response(template.pt_render(context))
+
+
+def cc0_partner(request):
+    target_lang = util.get_target_lang_from_request(request)
+
+    template = util.get_zpt_template(
+        'chooser_pages/zero/partner.pt', target_lang)
+
+    request_form = request.GET or request.POST
+
+    cc0_license = cc.license.by_code('CC0')
+
+    context = _base_context(request, target_lang)
+    context.update(
+        {'partner_template': util.get_zpt_template(
+                'macros_templates/partner.pt', target_lang),
+         'request_form': request_form,
+         'exit_url': _generate_exit_url(
+                request_form.get('exit_url', ''),
+                request_form.get('referrer', ''),
+                cc0_license)})
+
+    return Response(template.pt_render(context))
