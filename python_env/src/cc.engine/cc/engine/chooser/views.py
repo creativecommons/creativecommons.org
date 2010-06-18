@@ -112,6 +112,22 @@ def _work_info(request_form):
     return result
 
 
+def _formatter_work_dict(request_form):
+    """
+    Just pull out the very simple fields we need for the HTMLFormatter
+
+    (Note this isn't the same as CC0HTMLFormatter)
+    """
+    return {
+        'format': request_form.get('field_format', u''),
+        'attribution_name': request_form.get('field_attribute_to_name', u''),
+        'attribution_url': request_form.get('field_attribute_to_url', u''),
+        'more_permissions_url': request_form.get(
+            'field_morepermissionsurl', u''),
+        'worktitle': request_form.get('field_worktitle', u''),
+        'source_work': request_form.get('field_sourceurl', u'')}
+
+
 def _issue_license(request_form):
     """Extract the license engine fields from the request and return a
     License object."""
@@ -300,11 +316,11 @@ def choose_results_view(request):
     context = _base_context(request, target_lang)
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
-    work_info = _work_info(request_form)
+    work_dict = _formatter_work_dict(request_form)
     license_slim_logo = license.logo_method('80x15')
 
     license_html = HTML_FORMATTER.format(
-        license, work_info, target_lang)
+        license, work_dict, target_lang)
 
     context.update(
         {'engine_template': engine_template,
@@ -345,7 +361,7 @@ def get_html(request):
 
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
-    work_info = _work_info(request_form)
+    work_dict = _formatter_work_dict(request_form)
 
     license_html = HTML_FORMATTER.format(license, work_info, target_lang)
     return Response(license_html, content_type='text/html; charset=UTF-8')
@@ -391,9 +407,9 @@ def work_email_popup(request):
 
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
-    work_info = _work_info(request_form)
+    work_info = _formatter_work_dict(request_form)
 
-    license_html = HTML_FORMATTER.format(license, work_info, target_lang)
+    license_html = HTML_FORMATTER.format(license, work_dict, target_lang)
 
     template = util.get_zpt_template(
         'chooser_pages/htmlpopup.pt', target_lang)
