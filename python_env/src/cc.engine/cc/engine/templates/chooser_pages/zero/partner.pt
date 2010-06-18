@@ -2,7 +2,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
-      metal:use-macro="context/@@partner/page"
+      metal:use-macro="partner_template/macros/page"
       i18n:domain="cc_org">
   <head>
     <title metal:fill-slot="title">Choose a License</title>
@@ -10,13 +10,13 @@
   <body>
     <div metal:fill-slot="body"
          tal:define="target_lang string:en;
-                     stylesheet request/stylesheet | nothing;
-                     exiturl    request/exit_url | string:'';
+                     stylesheet request_form/stylesheet | nothing;
+                     exiturl    request_form/exit_url | string:'';
                      pd_exiturl python:exiturl.replace('&', '%26');
-                     partner    request/partner | nothing;
-                     partner_icon_url python: request.form.get('partner_icon_url','/images/remote_logo.gif');
-                     show_jurisdiction request/jurisdiction_chooser | nothing;
-                     def_juris request/jurisdiction | nothing;">
+                     partner    request_form/partner | nothing;
+                     partner_icon_url python: request_form.get('partner_icon_url','/images/remote_logo.gif');
+                     show_jurisdiction request_form/jurisdiction_chooser | nothing;
+                     def_juris request_form/jurisdiction | nothing;">
 
       <h1 i18n:translate="license.confirm_choice">Confirm Choice</h1>
 
@@ -47,8 +47,8 @@
 
       <p i18n:translate="license.you_may_proceed">
         <span tal:omit-tag=""
-              i18n:name="processed_exit_url" tal:content="view/exit_url" />
-You may now <a href="#" tal:attributes="href view/exit_url">proceed</a>
+              i18n:name="processed_exit_url" tal:content="exit_url" />
+You may now <a href="#" tal:attributes="href exit_url">proceed</a>
       </p>
     </div>
   </body>
