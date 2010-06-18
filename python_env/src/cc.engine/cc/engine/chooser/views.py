@@ -363,7 +363,7 @@ def get_html(request):
     license = _issue_license(request_form)
     work_dict = _formatter_work_dict(request_form)
 
-    license_html = HTML_FORMATTER.format(license, work_info, target_lang)
+    license_html = HTML_FORMATTER.format(license, work_dict, target_lang)
     return Response(license_html, content_type='text/html; charset=UTF-8')
 
 
