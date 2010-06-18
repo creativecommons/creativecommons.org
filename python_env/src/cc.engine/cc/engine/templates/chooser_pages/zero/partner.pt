@@ -4,55 +4,52 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       metal:use-macro="context/@@partner/page"
       i18n:domain="cc_org">
-<head>
-  <title metal:fill-slot="title">Choose a License</title>
-</head>
-<body>
-<div metal:fill-slot="body"
-     tal:define="target_lang string:en;
-                 stylesheet request/stylesheet | nothing;
-                 exiturl    request/exit_url | string:'';
-                 pd_exiturl python:exiturl.replace('&', '%26');
-                 partner    request/partner | nothing;
-                 partner_icon_url python: request.form.get('partner_icon_url','/images/remote_logo.gif');
-                 show_jurisdiction request/jurisdiction_chooser | nothing;
-                 def_juris request/jurisdiction | nothing;
-                ">
+  <head>
+    <title metal:fill-slot="title">Choose a License</title>
+  </head>
+  <body>
+    <div metal:fill-slot="body"
+         tal:define="target_lang string:en;
+                     stylesheet request/stylesheet | nothing;
+                     exiturl    request/exit_url | string:'';
+                     pd_exiturl python:exiturl.replace('&', '%26');
+                     partner    request/partner | nothing;
+                     partner_icon_url python: request.form.get('partner_icon_url','/images/remote_logo.gif');
+                     show_jurisdiction request/jurisdiction_chooser | nothing;
+                     def_juris request/jurisdiction | nothing;">
 
-<h1 i18n:translate="license.confirm_choice">Confirm Choice</h1>
+      <h1 i18n:translate="license.confirm_choice">Confirm Choice</h1>
 
-	<p i18n:translate="license.zero.intro_1">
+      <p i18n:translate="license.zero.intro_1">
 	  Using CC0, you can waive all copyrights and related or
 	  neighboring rights that you have over your work, such as
 	  your moral rights (to the extent waivable), your publicity
 	  or privacy rights, rights you have protecting against unfair
 	  competition, and database rights and rights protecting the
 	  extraction, dissemination and reuse of data.
-	</p>
+      </p>
 
-	<p i18n:translate="license.zero.intro_2">
+      <p i18n:translate="license.zero.intro_2">
 	  Keep in mind that you cannot waive rights to a work that you
 	  do not own unless you have permission from the owner.  To
 	  avoid infringing third party rights, you should consult with
 	  your legal advisor if you are unsure whether you have all
 	  the rights you need to distribute the work.
-	</p>
+      </p>
 
-	<p i18n:translate="license.partner.zero.use_pdc_instead">If
+      <p i18n:translate="license.partner.zero.use_pdc_instead">If
 	instead you want to certify that a work is <em>already in the
 	public domain</em>, use
 	the
 <span tal:omit-tag="" i18n:name="pd_url" tal:content="string:/choose/publicdomain-direct?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
 <a href="${pd_url}">Public Domain Certification</a>.
-	</p>
+      </p>
 
-<p i18n:translate="license.you_may_proceed">
-<span tal:omit-tag=""
-      i18n:name="processed_exit_url" tal:content="view/exit_url" />
+      <p i18n:translate="license.you_may_proceed">
+        <span tal:omit-tag=""
+              i18n:name="processed_exit_url" tal:content="view/exit_url" />
 You may now <a href="#" tal:attributes="href view/exit_url">proceed</a>
-</p>
-
-</div>
-
-</body>
+      </p>
+    </div>
+  </body>
 </html>
