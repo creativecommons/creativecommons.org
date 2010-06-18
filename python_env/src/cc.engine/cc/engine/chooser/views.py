@@ -407,7 +407,7 @@ def work_email_popup(request):
 
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
-    work_info = _formatter_work_dict(request_form)
+    work_dict = _formatter_work_dict(request_form)
 
     license_html = HTML_FORMATTER.format(license, work_dict, target_lang)
 
