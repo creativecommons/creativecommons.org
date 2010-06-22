@@ -80,25 +80,21 @@ def get_zpt_template(template_path, target_lang=None):
         full_template_path, target_language=target_lang)
     
 
-def get_locale_file_from_lang_matches(lang_matches):
+def get_locale_file_from_locale(locale):
     """
-    Iterate through a series of language matches and pick the first
-    one that has a file associated with it, if any
-
-    Returns a tuple of (lang, locale_filename) or (None, None) if
-    nothing found
+    Returns the path to the locale file as a string or None if
+    that file does not exist.
     """
-    for lang in lang_matches:
-        language = locale_to_cclicense_style(lang)
+    language = locale_to_cclicense_style(locale)
 
-        this_locale_filename = pkg_resources.resource_filename(
-            u'zope.i18n.locales', u'data/%s.xml' % language)
+    this_locale_filename = pkg_resources.resource_filename(
+        u'zope.i18n.locales', u'data/%s.xml' % language)
 
-        if os.path.exists(this_locale_filename):
-            return lang, this_locale_filename
-
-    return None, None
-
+    if os.path.exists(this_locale_filename):
+        return this_locale_filename
+    else:
+        return None
+        
 
 def _get_xpath_attribute(etree, path, attribute):
     """
@@ -111,12 +107,11 @@ def _get_xpath_attribute(etree, path, attribute):
         return None
 
 
-def get_locale_identity_data(request):
+def get_locale_identity_data(locale):
     """
     Get the identity data for a locale
     """
-    lang, locale_filename = get_locale_file_from_lang_matches(
-        request.accept_language.best_matches())
+    locale_filename = get_locale_file_from_lang_matches(locale)
     
     if not locale_filename:
         return {}
@@ -135,12 +130,11 @@ def get_locale_identity_data(request):
     return identity_data
 
 
-def get_locale_text_orientation(request):
+def get_locale_text_orientation(locale):
     """
     Find out whether the locale is ltr or rtl
     """
-    lang, locale_filename = get_locale_file_from_lang_matches(
-        request.accept_language.best_matches())
+    locale_filename = get_locale_file_from_locale(locale)
 
     if not locale_filename:
         return u'ltr'
@@ -286,7 +280,7 @@ def unicode_cleaner(string):
             return string.decode('utf-8', 'ignore')
 
 
-def rtl_context_stuff(request):
+def rtl_context_stuff(locale):
     """
     This is to accomodate the old templating stuff, which requires:
      - text_orientation
@@ -296,7 +290,7 @@ def rtl_context_stuff(request):
     We could probably adjust the templates to just use
     text_orientation but maybe we'll do that later.
     """
-    text_orientation = get_locale_text_orientation(request)
+    text_orientation = get_locale_text_orientation(locale)
 
     # 'rtl' if the request locale is represented right-to-left;
     # otherwise an empty string.
