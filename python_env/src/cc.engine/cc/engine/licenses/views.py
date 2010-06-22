@@ -102,7 +102,7 @@ def license_deed_view(request, license):
         'active_languages': active_languages,
         'support_template': support_template,
         'target_lang': target_lang}
-    context.update(util.rtl_context_stuff(request))
+    context.update(util.rtl_context_stuff(target_lang))
 
     return Response(main_template.pt_render(context))
 

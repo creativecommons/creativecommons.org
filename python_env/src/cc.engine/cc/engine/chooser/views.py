@@ -26,7 +26,7 @@ def _base_context(request, target_lang=None):
         'active_languages': util.active_languages(),
         }
     
-    context.update(util.rtl_context_stuff(request))
+    context.update(util.rtl_context_stuff(target_lang))
     return context
 
 

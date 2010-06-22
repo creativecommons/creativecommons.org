@@ -19,7 +19,7 @@ def characteristic_view(request):
 
     context = {'request': request,
                'popup_template': popup_template}
-    context.update(util.rtl_context_stuff(request))
+    context.update(util.rtl_context_stuff(target_lang))
 
     return Response(
         template.pt_render(context))

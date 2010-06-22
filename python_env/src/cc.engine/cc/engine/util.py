@@ -325,7 +325,7 @@ def plain_template_view(template_name, request):
 
     context = {'request': request,
                'engine_template': engine_template}
-    context.update(rtl_context_stuff(request))
+    context.update(rtl_context_stuff(target_lang))
 
     return Response(
         template.pt_render(context))
