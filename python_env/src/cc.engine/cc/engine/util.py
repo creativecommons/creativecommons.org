@@ -111,7 +111,7 @@ def get_locale_identity_data(locale):
     """
     Get the identity data for a locale
     """
-    locale_filename = get_locale_file_from_lang_matches(locale)
+    locale_filename = get_locale_file_from_locale(locale)
     
     if not locale_filename:
         return {}
