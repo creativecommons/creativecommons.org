@@ -107,6 +107,8 @@ def _get_xpath_attribute(etree, path, attribute):
         return None
 
 
+# XXX: Apparently this is deprecated, I guess?  Keeping for now until
+#   we're sure we don't need it.
 def get_locale_identity_data(locale):
     """
     Get the identity data for a locale
