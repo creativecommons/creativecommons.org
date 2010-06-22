@@ -11,11 +11,14 @@ from cc.engine.chooser.xmp_template import license_xmp_template
 from cc.license._lib.functions import get_selector_jurisdictions
 from cc.i18npkg import ccorg_i18n_setup
 import cc.license
-from cc.license.formatters.classes import HTMLFormatter, CC0HTMLFormatter
+from cc.license.formatters.classes import (
+    HTMLFormatter, CC0HTMLFormatter, PublicDomainHTMLFormatter)
 
 
 HTML_FORMATTER = HTMLFormatter()
 CC0_HTML_FORMATTER = CC0HTMLFormatter()
+PUBLICDOMAIN_HTML_FORMATTER = PublicDomainHTMLFormatter()
+
 
 def _base_context(request, target_lang=None):
     context = {
@@ -541,7 +544,7 @@ def publicdomain_result(request):
                 './publicdomain-3', urlencode(request.GET)))
 
     work_info = _work_info(request_form)
-    license_html = HTML_FORMATTER.format(
+    license_html = PUBLICDOMAIN_HTML_FORMATTER.format(
         cc.license.by_code('publicdomain'),
         work_info, target_lang)
 
