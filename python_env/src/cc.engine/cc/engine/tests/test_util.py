@@ -26,8 +26,7 @@ def test_get_xpath_attribute():
 
 
 def test_get_locale_identity_data():
-    identity_data = util.get_locale_identity_data(
-        FakeRequest(['en-US_POSIX']))
+    identity_data = util.get_locale_identity_data('en-US_POSIX')
 
     assert identity_data['language'] == 'en'
     assert identity_data['territory'] == 'US'
