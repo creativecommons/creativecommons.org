@@ -33,8 +33,6 @@ DEED_TEMPLATE_MAPPING = {
 
 @get_license
 def license_deed_view(request, license):
-    text_orientation = util.get_locale_text_orientation(request)
-
     # True if the legalcode for this license is available in
     # multiple languages (or a single language with a language code different
     # than that of the jurisdiction.
