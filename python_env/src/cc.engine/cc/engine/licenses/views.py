@@ -55,8 +55,6 @@ def license_deed_view(request, license):
     else:
        color = 'green'
 
-    identity_data = util.get_locale_identity_data(request)
-
     if request.matchdict.has_key('target_lang'):
         target_lang = request.matchdict.get('target_lang')
     elif license.jurisdiction.default_language:
