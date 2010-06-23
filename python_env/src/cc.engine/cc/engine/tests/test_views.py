@@ -1,4 +1,6 @@
+import cgi
 import pkg_resources
+import urlparse
 import lxml
 
 import webtest
@@ -162,3 +164,32 @@ def test_all_views_up_simple():
     """
     for view in ALL_VIEWS_LIST:
         TESTAPP.get(view)
+
+
+def test_license_to_choose_redirect():
+    # Make sure we redirect from /license/* to /choose/ and keep the
+    # GET parameters
+    response = TESTAPP.get(
+        '/license/zero/results?'
+        'license-class=zero&name=ZeroMan&work_title=SubZero')
+    redirected_response = response.follow()
+    assert urlparse.urlsplit(response.location)[2] == '/choose/zero/results'
+    qs = cgi.parse_qs(urlparse.urlsplit(response.location)[3])
+    assert qs == {
+        'license-class': ['zero'],
+        'name': ['ZeroMan'],
+        'work_title': ['SubZero']}
+
+    # Also make sure that POST redirects work
+    response = TESTAPP.post(
+        '/license/zero/results',
+        {'license-class': 'zero',
+         'name': 'ZeroMan',
+         'work_title': 'SubZero'})
+    redirected_response = response.follow()
+    assert urlparse.urlsplit(response.location)[2] == '/choose/zero/results'
+    qs = cgi.parse_qs(urlparse.urlsplit(response.location)[3])
+    assert qs == {
+        'license-class': ['zero'],
+        'name': ['ZeroMan'],
+        'work_title': ['SubZero']}
