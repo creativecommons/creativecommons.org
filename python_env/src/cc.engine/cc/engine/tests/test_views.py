@@ -105,3 +105,60 @@ def test_rdf_views():
     _rdf_tester(
         '/licenses/BSD/rdf',
         'licenses/creativecommons.org_licenses_BSD_.rdf')
+
+
+ALL_VIEWS_LIST = [
+    '/publicdomain/',
+    '/licenses/',
+
+    # license deeds
+    '/licenses/by/3.0/', '/licenses/by/3.0/deed', '/licenses/by/3.0/deed.es',
+    '/licenses/by/3.0/rdf', '/licenses/by/3.0/legalcode',
+    '/licenses/by/3.0/legalcode-plain',
+
+    # jurisdiction license deeds
+    '/licenses/by/3.0/us/', '/licenses/by/3.0/us/deed',
+    '/licenses/by/3.0/us/deed.es', '/licenses/by/3.0/us/rdf',
+    '/licenses/by/3.0/us/legalcode', '/licenses/by/3.0/us/legalcode-plain',
+
+    # MIT / BSD
+    '/licenses/MIT/', '/licenses/BSD/',
+    '/licenses/MIT/rdf', '/licenses/BSD/rdf',
+    # these should redirect..
+    '/licenses/MIT/legalcode', '/licenses/BSD/legalcode',
+
+    # CC0
+    '/publicdomain/zero/1.0/', '/publicdomain/zero/1.0/deed',
+    '/publicdomain/zero/1.0/deed.es', '/publicdomain/zero/1.0/legalcode',
+    '/publicdomain/zero/1.0/legalcode-plain',
+
+    # CC license chooser
+    '/choose/', '/choose/results-one', '/choose/xmp',
+    '/choose/get-html', '/choose/get-rdf', '/choose/wiki',
+    '/choose/non-web-popup', '/choose/work-html-popup',
+    ### We should test this one with a "real" unit test.
+    ##'/choose/work-email'
+
+    # FSF choosers
+    '/choose/cc-gpl', '/choose/cc-lgpl',
+
+    # Public domain chooser
+    '/choose/publicdomain-2', '/choose/publicdomain-3',
+    '/choose/publicdomain-4', '/choose/publicdomain-direct',
+
+    # CC0 chooser
+    '/choose/zero/', '/choose/zero/waiver', '/choose/zero/confirm',
+    '/choose/zero/results', '/choose/zero/partner',
+
+    # Characteristics
+    '/characteristic/by', '/characteristic/nc', '/characteristic/nd',
+    '/characteristic/sa']
+    
+
+def test_all_views_up_simple():
+    """
+    Super simple test to make sure all GET'able views are up & return
+    200 OK or redirect
+    """
+    for view in ALL_VIEWS_LIST:
+        TESTAPP.get(view)
