@@ -28,6 +28,7 @@ setup(
     version = "10.1.1",
     namespace_packages = ['cc',],
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
+    zip_safe=False,
     
     include_package_data = True,
 
