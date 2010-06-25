@@ -59,7 +59,7 @@
         </li>
         <li i18n:translate="license.mark_nonweb">
           <span tal:omit-tag="" i18n:name="url_vars" 
-	        tal:content="python:'pd=1&field_creator='+request_form['copyright_holder']+'&field_worktitle='+request_form['title']" />
+	        tal:content="python:'pd=1&field_creator='+request_form.get('copyright_holder', '')+'&field_worktitle='+request_form.get('title', '')" />
         </li>
       </ul>
 
