@@ -146,7 +146,10 @@ ALL_VIEWS_LIST = [
 
     # Public domain chooser
     '/choose/publicdomain-2', '/choose/publicdomain-3',
-    '/choose/publicdomain-4', '/choose/publicdomain-direct',
+    '/choose/publicdomain-4',
+    '/choose/publicdomain-4?understand=confirm&field1=continue',
+    '/choose/publicdomain-4?understand=confirm&field1=continue&title=&foocopyright_holder=bar',
+    '/choose/publicdomain-direct',
 
     # CC0 chooser
     '/choose/zero/', '/choose/zero/waiver', '/choose/zero/confirm',
