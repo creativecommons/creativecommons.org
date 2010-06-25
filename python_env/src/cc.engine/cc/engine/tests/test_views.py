@@ -153,7 +153,12 @@ ALL_VIEWS_LIST = [
 
     # CC0 chooser
     '/choose/zero/', '/choose/zero/waiver', '/choose/zero/confirm',
-    '/choose/zero/results', '/choose/zero/partner',
+    '/choose/zero/results',
+    '/choose/zero/confirm?license-class=zero&name=&actor_href=&work_title=&work_jurisdiction=-&confirm=confirm&understand=confirm&field1=continue',
+    '/choose/zero/results?license-class=zero&name=&actor_href=&work_title=&work_jurisdiction=-&confirm=confirm&understand=confirm&field1=continue&waiver-affirm=affirm',
+    '/choose/zero/confirm?license-class=zero&name=foo&actor_href=bar&work_title=baz&work_jurisdiction=BA&confirm=confirm&understand=confirm&field1=continue',
+    '/choose/zero/results?license-class=zero&name=foo&actor_href=bar&work_title=baz&work_jurisdiction=BA&confirm=confirm&understand=confirm&field1=continue&waiver-affirm=affirm',
+    '/choose/zero/partner',
 
     # Characteristics
     '/characteristic/by', '/characteristic/nc', '/characteristic/nd',
