@@ -125,6 +125,8 @@ ALL_VIEWS_LIST = [
 
     # MIT / BSD
     '/licenses/MIT/', '/licenses/BSD/',
+    '/licenses/MIT/deed', '/licenses/BSD/deed',
+    '/licenses/MIT/deed.es', '/licenses/BSD/deed.es',
     '/licenses/MIT/rdf', '/licenses/BSD/rdf',
     # these should redirect..
     '/licenses/MIT/legalcode', '/licenses/BSD/legalcode',
