@@ -4,6 +4,27 @@ licenses_routes = [
     Route("licenses_index", "/",
           controller="cc.engine.licenses.views:licenses_view"),
 
+    # MIT / BSD routing
+    Route("license_deed_mit", "/MIT/",
+          controller="cc.engine.licenses.views:license_deed_view",
+          code="MIT"),
+    Route("license_deed_bsd", "/BSD/",
+          controller="cc.engine.licenses.views:license_deed_view",
+          code="BSD"),
+
+    Route("license_legalcode_mit_redirect", "/MIT/legalcode",
+          controller="cc.engine.licenses.views:license_legalcode_redirect",
+          code="MIT"),
+    Route("license_legalcode_bsd_redirect", "/BSD/legalcode",
+          controller="cc.engine.licenses.views:license_legalcode_redirect",
+          code="BSD"),
+    Route("license_rdf_mit", "/MIT/rdf",
+          controller="cc.engine.licenses.views:license_rdf_view",
+          code="MIT"),
+    Route("license_rdf_bsd", "/BSD/rdf",
+          controller="cc.engine.licenses.views:license_rdf_view",
+          code="BSD"),
+
     # publicdomain routing
     Route("license_deed_publicdomain", "/publicdomain/",
           controller="cc.engine.licenses.views:license_deed_view",
@@ -18,6 +39,7 @@ licenses_routes = [
           "/publicdomain/deed.{target_lang}", code="publicdomain",
           controller="cc.engine.licenses.views:license_deed_view"),
 
+    # Normal license routing 
     Route("license_deed",
           "/{code}/{version}/",
           controller="cc.engine.licenses.views:license_deed_view"),
@@ -54,27 +76,6 @@ licenses_routes = [
     Route("license_legalcode_plain_jurisdiction",
           "/{code}/{version}/{jurisdiction}/legalcode-plain",
           controller="cc.engine.licenses.views:license_legalcode_plain_view"),
-
-    # MIT / BSD routing
-    Route("license_deed_mit", "/MIT/",
-          controller="cc.engine.licenses.views:license_deed_view",
-          code="MIT"),
-    Route("license_deed_bsd", "/BSD/",
-          controller="cc.engine.licenses.views:license_deed_view",
-          code="BSD"),
-
-    Route("license_legalcode_mit_redirect", "/MIT/legalcode",
-          controller="cc.engine.licenses.views:license_legalcode_redirect",
-          code="MIT"),
-    Route("license_legalcode_bsd_redirect", "/BSD/legalcode",
-          controller="cc.engine.licenses.views:license_legalcode_redirect",
-          code="BSD"),
-    Route("license_rdf_mit", "/MIT/rdf",
-          controller="cc.engine.licenses.views:license_rdf_view",
-          code="MIT"),
-    Route("license_rdf_bsd", "/BSD/rdf",
-          controller="cc.engine.licenses.views:license_rdf_view",
-          code="BSD"),
 ]
 
 
