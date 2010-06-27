@@ -129,6 +129,10 @@ ALL_VIEWS_LIST = [
     # these should redirect..
     '/licenses/MIT/legalcode', '/licenses/BSD/legalcode',
 
+    # Publicdomain
+    '/licenses/publicdomain/', '/licenses/publicdomain/deed',
+    '/licenses/publicdomain/deed.ru', '/licenses/publicdomain/rdf',
+
     # CC0
     '/publicdomain/zero/1.0/', '/publicdomain/zero/1.0/deed',
     '/publicdomain/zero/1.0/deed.es', '/publicdomain/zero/1.0/legalcode',
