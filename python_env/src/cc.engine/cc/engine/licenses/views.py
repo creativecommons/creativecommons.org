@@ -28,7 +28,8 @@ DEED_TEMPLATE_MAPPING = {
     'MIT': 'licenses/mitbsd_deed.pt',
     'BSD': 'licenses/mitbsd_deed.pt',
     'devnations': 'licenses/devnations_deed.pt',
-    'CC0': 'licenses/zero_deed.pt'}
+    'CC0': 'licenses/zero_deed.pt',
+    'publicdomain': 'licenses/publicdomain_deed.pt'}
 
 
 @get_license
