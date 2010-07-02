@@ -217,7 +217,7 @@ also available.
       <a id="get_this" href="" 
 	 i18n:translate="deed.use_this_license"
 	 tal:attributes="href
-			 string:/choose/results-one?license_code=${license_code}&jurisdiction=${license/jurisdiction}&version=${license/version|nothing}&lang=${target_lang}">
+			 string:/choose/results-one?license_code=${license_code}&jurisdiction=${license/jurisdiction/code}&version=${license/version|nothing}&lang=${target_lang}">
       Use this license for your own work.</a>
       </metal:use-this-license>
     </p>
