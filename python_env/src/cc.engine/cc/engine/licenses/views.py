@@ -41,7 +41,7 @@ def license_deed_view(request, license):
     # ZZZ i18n information like this should really be stored outside of
     # the presentation layer; we don't maintain it anywhere right now, so
     # here it is.
-    multi_language = license.jurisdiction in ('es', 'ca', 'be', 'ch', 'rs')
+    multi_language = license.jurisdiction.code in ('es', 'ca', 'be', 'ch', 'rs')
 
     # "color" of the license; the color reflects the relative amount
     # of freedom.
