@@ -117,11 +117,11 @@
         <div tal:omit-tag="" metal:define-slot="footer">
 
           <p id="disclaimer"
-	     tal:condition="python: license.jurisdiction == 'jp'"
+	     tal:condition="python: license.jurisdiction.code == 'jp'"
 	     i18n:translate="deed.disclaimer.jp"></p>
 
 	  <metal:disclaimer 
-	     tal:condition="python: license.jurisdiction != 'jp'">
+	     tal:condition="python: license.jurisdiction.code != 'jp'">
 	    <a href="#" id="disclaimer" class="helpLink" i18n:translate="util.Disclaimer">
 	      Disclaimer
 	    </a>
@@ -141,7 +141,7 @@
      <span tal:omit-tag="" i18n:translate="deed.human_summary_multilanguage" />
        <br/>
 
-     <span tal:condition="python: license.jurisdiction == 'es'"
+     <span tal:condition="python: license.jurisdiction.code == 'es'"
            tal:omit-tag="">
          <a href="legalcode.ca" i18n:translate="">lang.ca</a> 
          <a href="legalcode.es" i18n:translate="">lang.es</a>
@@ -161,25 +161,25 @@
          </span>
      </span>
 
-     <span tal:condition="python: license.jurisdiction == 'ca'"
+     <span tal:condition="python: license.jurisdiction.code == 'ca'"
            tal:omit-tag="">
          <a href="legalcode.en" i18n:translate="">lang.en</a> 
          <a href="legalcode.fr" i18n:translate="">lang.fr</a>
      </span>
 
-     <span tal:condition="python: license.jurisdiction == 'be'"
+     <span tal:condition="python: license.jurisdiction.code == 'be'"
            tal:omit-tag="">
          <a href="legalcode.fr" i18n:translate="">lang.fr</a> 
          <a href="legalcode.nl" i18n:translate="">lang.nl</a>
      </span>
 
-     <span tal:condition="python: license.jurisdiction == 'rs'"
+     <span tal:condition="python: license.jurisdiction.code == 'rs'"
            tal:omit-tag="">
          <a href="legalcode.sr-Cyrl" i18n:translate="">lang.sr</a> 
          <a href="legalcode.sr-Latn">srpski (latinica)</a>
      </span>
 
-     <span tal:condition="python: license.jurisdiction == 'ch'"
+     <span tal:condition="python: license.jurisdiction.code == 'ch'"
            tal:omit-tag="">
          <a href="legalcode.de" i18n:translate="">lang.de</a> 
      </span>
