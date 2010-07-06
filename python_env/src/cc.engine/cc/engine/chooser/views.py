@@ -134,7 +134,8 @@ def _formatter_work_dict(request_form):
 def _issue_license(request_form):
     """Extract the license engine fields from the request and return a
     License object."""
-    jurisdiction = request_form.get('field_jurisdiction')
+    jurisdiction = request_form.get('field_jurisdiction',
+                                    request_form.get('jurisdiction'))
     version = request_form.get('version', None)
 
     # Handle public domain class
