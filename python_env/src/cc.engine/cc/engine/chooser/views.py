@@ -5,6 +5,7 @@ from StringIO import StringIO
 from smtplib import SMTPException
 
 from webob import Response, exc
+from zope.i18n import translate
 
 from cc.engine import util
 from cc.engine.chooser.xmp_template import license_xmp_template
@@ -288,12 +289,24 @@ def chooser_view(request):
             request.GET['jurisdiction'] in available_jurisdiction_codes:
         requested_jurisdiction = request.GET['jurisdiction']        
 
+    # Sort the jurisdictions for the dropdown via the translated name
+    jurisdictions_names = [
+        (juris,
+         util.unicode_cleaner(
+                translate("country.%s" % juris,
+                          domain=ccorg_i18n_setup.I18N_DOMAIN,
+                          target_language=target_lang)))
+        for juris in available_jurisdiction_codes]
+    jurisdictions_names = sorted(
+        jurisdictions_names, key=lambda juris: juris[1])
+
     context.update(
         {'engine_template': engine_template,
          'partner_template': partner_template,
          'metadata_template': metadata_template,
          'support_template': support_template,
          'available_jurisdiction_codes': available_jurisdiction_codes,
+         'jurisdictions_names': jurisdictions_names,
          'requested_jurisdiction': requested_jurisdiction,
          'referrer': request.headers.get('REFERER','')})
 
