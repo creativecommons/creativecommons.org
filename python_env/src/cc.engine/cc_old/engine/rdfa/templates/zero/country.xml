@@ -1,5 +1,0 @@
-<html xmlns:py="http://genshi.edgewall.org/" py:strip="True">
-This work is published from 
-<span about="${publisher}" property="vcard:Country" datatype="dct:ISO3166" 
-      content="${country}">${country_name}</span>.
-</html>
