@@ -1,8 +1,6 @@
-from webob import exc
-
 from lxml import etree
 from lxml.cssselect import CSSSelector
-from webob import Response
+from webob import Response, exc
 
 from cc.engine.decorators import get_license
 from cc.engine import util
@@ -74,6 +72,10 @@ def license_deed_view(request, license):
     conditions = util.get_license_conditions(license, target_lang)
 
     active_languages = util.active_languages()
+    active_lang_codes = [lang['code'] for lang in active_languages]
+
+    if not target_lang in active_lang_codes:
+        return exc.HTTPNotFound()
 
     deed_template = util.get_zpt_template(
         'macros_templates/deed.pt',
