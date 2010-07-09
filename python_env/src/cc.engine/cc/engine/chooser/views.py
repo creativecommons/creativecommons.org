@@ -280,7 +280,6 @@ def chooser_view(request):
     available_jurisdiction_codes = [
         j.code for j in get_selector_jurisdictions('standard')
         if j.code != '']
-    available_jurisdiction_codes.sort()
     
     context = _base_context(request, target_lang)
 
@@ -305,7 +304,6 @@ def chooser_view(request):
          'partner_template': partner_template,
          'metadata_template': metadata_template,
          'support_template': support_template,
-         'available_jurisdiction_codes': available_jurisdiction_codes,
          'jurisdictions_names': jurisdictions_names,
          'requested_jurisdiction': requested_jurisdiction,
          'referrer': request.headers.get('REFERER','')})
