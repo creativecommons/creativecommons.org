@@ -135,10 +135,10 @@
                     i18n:translate="" selected="selected">International</option>
 
             <span tal:omit-tag=""
-                  tal:repeat="j available_jurisdiction_codes">
+                  tal:repeat="j jurisdictions_names">
               <option value=""
-                      tal:attributes="value j;">
-                <span tal:content="string:country.${j}"
+                      tal:attributes="value python: j[0];">
+                <span tal:content="python: j[1]"
                       tal:omit-tag=""
                       i18n:translate="" />
               </option>
