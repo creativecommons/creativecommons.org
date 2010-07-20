@@ -74,7 +74,10 @@ def license_deed_view(request, license):
     active_languages = util.active_languages()
     active_lang_codes = [lang['code'] for lang in active_languages]
 
-    if not target_lang in active_lang_codes:
+    # When the target_lang is determined by the url, we should make
+    # sure that's a real language to prevent caching bogus stuff
+    if not target_lang in active_lang_codes \
+            and request.matchdict.has_key('target_lang'):
         return exc.HTTPNotFound()
 
     deed_template = util.get_zpt_template(
