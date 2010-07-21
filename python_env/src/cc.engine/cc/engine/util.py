@@ -248,6 +248,11 @@ def active_languages():
         # Append those locales that are applicable to this domain
         launched_locales.update(lang_codes.intersection(this_juri_locales))
 
+    # XXX: Have to hack in Esperanto here because it's technically an
+    # "Unported" language but there is no unported RDF jurisdiction in
+    # jurisdictions.rdf..
+    launched_locales.add('eo')
+
     # make our sequence have a predictable order
     launched_locales = list(launched_locales)
     launched_locales.sort()
