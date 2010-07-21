@@ -235,14 +235,14 @@ def active_languages():
     for jurisdiction in jurisdictions:
         query_string = (
             'PREFIX dc: <http://purl.org/dc/elements/1.1/> '
-            'SELECT ?title WHERE {'
-            '  <%s> dc:title ?title}') % jurisdiction
+            'SELECT ?lang WHERE {'
+            '  <%s> dc:language ?lang}') % jurisdiction
 
         query = RDF.Query(
             str(query_string),
             query_language='sparql')
         this_juri_locales = set(
-            [result['title'].literal_value['language']
+            [make_locale_lower_upper_style(str(result['lang']))
              for result in query.execute(rdf_helper.JURI_MODEL)])
 
         # Append those locales that are applicable to this domain
@@ -255,7 +255,7 @@ def active_languages():
     # this loop is long hand for clarity; it's only done once, so
     # the additional performance cost should be negligible
     result = []
-    for code in lang_codes:
+    for code in launched_locales:
 
         if code == 'test': continue
 
