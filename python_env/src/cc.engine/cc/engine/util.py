@@ -255,7 +255,6 @@ def active_languages():
 
     # make our sequence have a predictable order
     launched_locales = list(launched_locales)
-    launched_locales.sort()
 
     # this loop is long hand for clarity; it's only done once, so
     # the additional performance cost should be negligible
@@ -268,6 +267,8 @@ def active_languages():
         if name != u'lang.%s' % code:
             # we have a translation for this name...
             result.append(dict(code=code, name=name))
+
+    result = sorted(result, key=lambda lang: lang['name'])
 
     _ACTIVE_LANGUAGES = result
 
