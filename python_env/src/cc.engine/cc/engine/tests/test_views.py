@@ -133,7 +133,7 @@ ALL_VIEWS_LIST = [
 
     # Publicdomain
     '/licenses/publicdomain/', '/licenses/publicdomain/deed',
-    '/licenses/publicdomain/deed.ru', '/licenses/publicdomain/rdf',
+    '/licenses/publicdomain/deed.es', '/licenses/publicdomain/rdf',
 
     # CC0
     '/publicdomain/zero/1.0/', '/publicdomain/zero/1.0/deed',
