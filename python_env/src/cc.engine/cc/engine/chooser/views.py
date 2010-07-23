@@ -417,6 +417,15 @@ def choose_wiki_redirect(request):
         location='/choose/results-one?license_code=by-sa')
 
 
+def outdated_choosers_redirect(request):
+    """
+    A couple of URLs (/choose/music and /choose/sampling) are outdated
+    and so should redirect to the old chooser.
+    """
+    return exc.HTTPTemporaryRedirect(
+        location='/choose/')
+
+
 def work_email_popup(request):
     target_lang = util.get_target_lang_from_request(request)
 

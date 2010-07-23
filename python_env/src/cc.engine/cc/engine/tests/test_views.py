@@ -143,6 +143,7 @@ ALL_VIEWS_LIST = [
     # CC license chooser
     '/choose/', '/choose/results-one', '/choose/xmp',
     '/choose/get-html', '/choose/get-rdf', '/choose/wiki',
+    '/choose/sampling', '/choose/music',
     '/choose/non-web-popup', '/choose/work-html-popup',
     '/choose/?partner=FreeMusicArchive&jurisdiction_choose=1&exit_url=http%3A%2F%2Ffreemusicarchive.org%2Fcontribute%2FccLicense%2FThe_Wild_Tape%3Flicense_url%3D[license_url]%26license_name%3D[license_name]%26license_button%3D[license_button]%26deed_url%3D[deed_url]',
     ### We should test this one with a "real" unit test.
