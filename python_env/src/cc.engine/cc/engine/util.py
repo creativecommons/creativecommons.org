@@ -268,7 +268,7 @@ def active_languages():
             # we have a translation for this name...
             result.append(dict(code=code, name=name))
 
-    result = sorted(result, key=lambda lang: lang['name'])
+    result = sorted(result, key=lambda lang: lang['name'].lower())
 
     _ACTIVE_LANGUAGES = result
 
