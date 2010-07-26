@@ -5,10 +5,12 @@ import lxml
 
 import webtest
 from webob import Request
+import RDF
 
 from cc.engine import app, staticdirect, util, views
 from cc.engine.licenses import views as license_views
 import cc.license
+from cc.license._lib import rdf_helper
 
 util._activate_zpt_testing()
 
@@ -209,3 +211,25 @@ def test_license_to_choose_redirect():
         'license-class': ['zero'],
         'name': ['ZeroMan'],
         'work_title': ['SubZero']}
+
+
+def test_deeds_up_for_licenses():
+    """
+    Make sure all licenses that the RDF claims exist show up with 200 OK
+    """
+    qstring = """
+              PREFIX cc: <http://creativecommons.org/ns#>
+              PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+              SELECT ?luri
+              WHERE {
+                     ?luri rdf:type cc:License .
+                    }
+              """
+    query = RDF.Query(qstring, query_language='sparql')
+    solns = list(query.execute(rdf_helper.ALL_MODEL))
+    license_uris = tuple( str(s['luri'].uri) for s in solns )
+
+    for license_uri in license_uris:
+        license_path = urlparse.urlsplit(license_uri)[2]
+        TESTAPP.get(license_path)
