@@ -18,7 +18,7 @@ from zope.i18n import translate
 
 from cc.license._lib import rdf_helper
 from cc.license._lib import functions as cclicense_functions
-from cc.i18npkg import ccorg_i18n_setup
+from cc.i18n import ccorg_i18n_setup
 
 from cc.engine.pagetemplate import CCLPageTemplateFile
 

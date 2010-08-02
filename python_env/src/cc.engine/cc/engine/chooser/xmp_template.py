@@ -1,7 +1,7 @@
 import string
 import re
 
-from cc.i18npkg.gettext_i18n import ugettext_for_locale
+from cc.i18n.gettext_i18n import ugettext_for_locale
 from cc.license.util import locale_to_dash_style
 
 

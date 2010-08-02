@@ -1,6 +1,6 @@
 from zope.i18n import translate
 
-from cc.i18npkg import ccorg_i18n_setup
+from cc.i18n import ccorg_i18n_setup
 
 def test_translate():
     assert translate(

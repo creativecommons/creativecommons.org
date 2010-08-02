@@ -4,7 +4,7 @@ from webob import Response, exc
 
 from cc.engine.decorators import get_license
 from cc.engine import util
-from cc.i18npkg import ccorg_i18n_setup
+from cc.i18n import ccorg_i18n_setup
 from cc.license import by_code, CCLicenseError
 from cc.licenserdf.tools.license import license_rdf_filename
 
