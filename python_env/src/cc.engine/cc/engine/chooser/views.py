@@ -154,7 +154,7 @@ def _issue_license(request_form):
 
     # check for license_url
     elif request_form.has_key('license_url'):
-        return cc.license.by_url(request_form['license_url'])
+        return cc.license.by_uri(request_form['license_url'])
 
     else:
         ## Construct the license code for a "standard" license
@@ -415,6 +415,15 @@ def non_web_popup(request):
 def choose_wiki_redirect(request):
     return exc.HTTPTemporaryRedirect(
         location='/choose/results-one?license_code=by-sa')
+
+
+def outdated_choosers_redirect(request):
+    """
+    A couple of URLs (/choose/music and /choose/sampling) are outdated
+    and so should redirect to the old chooser.
+    """
+    return exc.HTTPTemporaryRedirect(
+        location='/choose/')
 
 
 def work_email_popup(request):
