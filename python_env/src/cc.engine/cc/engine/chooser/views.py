@@ -154,7 +154,7 @@ def _issue_license(request_form):
 
     # check for license_url
     elif request_form.has_key('license_url'):
-        return cc.license.by_url(request_form['license_url'])
+        return cc.license.by_uri(request_form['license_url'])
 
     else:
         ## Construct the license code for a "standard" license
