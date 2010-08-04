@@ -137,6 +137,9 @@ def _issue_license(request_form):
     License object."""
     jurisdiction = request_form.get('field_jurisdiction',
                                     request_form.get('jurisdiction'))
+    if jurisdiction == '-':
+        jurisdiction = None
+
     version = request_form.get('version', None)
 
     # Handle public domain class
