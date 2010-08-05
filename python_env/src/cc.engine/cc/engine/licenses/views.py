@@ -1,3 +1,5 @@
+import urllib
+
 from lxml import etree
 from lxml.cssselect import CSSSelector
 from webob import Response, exc
@@ -99,6 +101,7 @@ def license_deed_view(request, license):
     context = {
         'request': request,
         'license_code': license.license_code,
+        'license_code_quoted': urllib.quote(license.license_code),
         'license_title': license_title,
         'license': license,
         'multi_language': multi_language,
