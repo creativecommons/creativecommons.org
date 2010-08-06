@@ -218,18 +218,7 @@ def test_deeds_up_for_licenses():
     """
     Make sure all licenses that the RDF claims exist show up with 200 OK
     """
-    qstring = """
-              PREFIX cc: <http://creativecommons.org/ns#>
-              PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-              SELECT ?luri
-              WHERE {
-                     ?luri rdf:type cc:License .
-                    }
-              """
-    query = RDF.Query(qstring, query_language='sparql')
-    solns = list(query.execute(rdf_helper.ALL_MODEL))
-    license_uris = tuple( str(s['luri'].uri) for s in solns )
+    license_uris = util.get_all_license_urls()
 
     for license_uri in license_uris:
         license_path = urlparse.urlsplit(license_uri)[2]

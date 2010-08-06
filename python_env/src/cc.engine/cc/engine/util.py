@@ -275,6 +275,21 @@ def active_languages():
     return result
 
 
+def get_all_license_urls():
+    qstring = """
+              PREFIX cc: <http://creativecommons.org/ns#>
+              PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+              SELECT ?luri
+              WHERE {
+                     ?luri rdf:type cc:License .
+                    }
+              """
+    query = RDF.Query(qstring, query_language='sparql')
+    solns = list(query.execute(rdf_helper.ALL_MODEL))
+    return tuple(str(s['luri'].uri) for s in solns)
+
+
 def unicode_cleaner(string):
     if isinstance(string, unicode):
         return string
