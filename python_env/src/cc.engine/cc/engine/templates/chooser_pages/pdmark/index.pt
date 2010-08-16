@@ -1,0 +1,172 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="engine_template/macros/page"
+      i18n:domain="cc_org">
+  <head>
+    <title metal:fill-slot="title">Public Domain Mark</title>
+
+    <metal:headers fill-slot="headers">
+      <link rel="stylesheet" type="text/css"
+            href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
+
+      <script type="text/javascript"
+              src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+      <script type="text/javascript"
+              src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script>
+      <script type="text/javascript"
+              src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
+      <script type="text/javascript"
+              src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script>
+
+      <link rel="stylesheet" type="text/css" href="zero.css"
+	    tal:attributes="href python:request.staticdirect('/includes/zero.css')" />
+
+      <script src="help.js" type="text/javascript"
+              tal:attributes="src python:request.staticdirect('/includes/help.js')" >
+      </script>
+
+      <script type="text/javascript">
+        YAHOO.namespace("cc.zero");
+
+        YAHOO.cc.zero.on_click = function(event) {
+
+        YAHOO.util.Dom.get("details-submit").disabled = !(
+        YAHOO.util.Dom.get("confirm_details").checked &&
+        YAHOO.util.Dom.get("confirm_understand").checked);
+
+        } // on_click
+
+        YAHOO.util.Event.onDOMReady(function() {
+
+        // connect event handlers for the check boxes
+        YAHOO.util.Event.addListener("confirm_details", "click", YAHOO.cc.zero.on_click);
+        YAHOO.util.Event.addListener("confirm_understand", "click", YAHOO.cc.zero.on_click);
+
+        });
+      </script>
+
+    </metal:headers>
+  </head>
+
+  <body>
+    <metal:left fill-slot="sidebar">
+    </metal:left>
+
+    <metal:title fill-slot="page-header-title">Public Domain Mark</metal:title>
+
+    <metal:body fill-slot="body">
+      <div class="yui-skin-sam">
+
+        <div id="waiver_ui" class="yui-module">
+          <div class="bd">
+            <div id="help_embedded_metadata" class="help_panel">
+              <div class="hd" i18n:translate="">Embedded Metadata</div>
+              <div class="bd" i18n:translate="license.zero.metadata_help">
+	        <p>
+	          The information is embedded in a software readable format.
+	          This allows search engines to index additional information
+	          about your work.
+	        </p>
+	        <p>
+	          <a href="http://wiki.creativecommons.org/Metadata">More
+	            information</a> on Creative Commons metadata is available if
+	          you want to find out more.
+	        </p>
+              </div>
+            </div>
+
+            <form id="form-details" action="./results">
+              <div class="form-row">
+	        <div class="form-question" 
+                     i18n:translate="util.work_name">Work name</div>
+	        <div class="form-answer">
+                  <input name="work_title" class="form-field"/>
+	        </div>
+              </div>
+
+              <div class="form-row">
+	        <div class="form-question" 
+                     i18n:translate="util.work_url">Work URL</div>
+	        <div class="form-answer">
+                  <input name="work_href" class="form-field"/>
+	        </div>
+              </div>
+
+            <form id="form-details" action="confirm">
+              <div class="form-row">
+	        <div class="form-question" 
+                     i18n:translate="util.creator_name">Creator name</div>
+	        <div class="form-answer">
+                  <input name="creator_title" class="form-field"/>
+	        </div>
+              </div>
+
+              <div class="form-row">
+	        <div class="form-question" 
+                     i18n:translate="util.creator_url">Creator URL</div>
+	        <div class="form-answer">
+                  <input name="creator_href" class="form-field"/>
+	        </div>
+              </div>
+
+            <form id="form-details" action="confirm">
+              <div class="form-row">
+	        <div class="form-question" 
+                     i18n:translate="util.curator_name">Curator name</div>
+	        <div class="form-answer">
+                  <input name="curator_title" class="form-field"/>
+	        </div>
+              </div>
+
+              <div class="form-row">
+	        <div class="form-question" 
+                     i18n:translate="util.curator_url">Curator URL</div>
+	        <div class="form-answer">
+                  <input name="curator_href" class="form-field"/>
+	        </div>
+              </div>
+
+              <div class="form-row">
+	        <div class="form-question" 
+                     i18n:translate="util.curator_url">Norms URL</div>
+	        <div class="form-answer">
+                  <input name="norms_href" class="form-field"/>
+	        </div>
+              </div>
+
+              <div class="form-row">
+	        <div class="form-question">
+	          <input name="waive_cc0" type="checkbox"
+	                 id="confirm_understand" class="form-field"
+	                 value="confirm" />
+	        </div>
+	        <div class="form-answer">
+	          <label for="waive_cc0" 
+		         i18n:translate="util.did_waive_cc0">
+                    Do you waive any incidental rights under CC0?
+	          </label>
+	        </div>
+              </div>
+
+              <div class="form-row">
+	        <div class="form-question">&nbsp;</div>
+	        <div class="form-answer">
+	          <input type="submit" id="submit"
+		         name="field1" value="continue"
+		         i18n:attributes="value util.continue;"> 
+	        </div>
+              </div>
+
+            </form>
+
+            <br clear="both"/>&nbsp;
+          </div>
+        </div>
+
+      </div>
+    </metal:body>
+
+  </body>
+</html>
