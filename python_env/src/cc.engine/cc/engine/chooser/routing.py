@@ -54,4 +54,11 @@ chooser_routes = [
           controller="cc.engine.chooser.views:cc0_results"),
     Route("choose_cc0_partner", "/zero/partner",
           controller="cc.engine.chooser.views:cc0_partner"),
+
+    ## Public Domain Mark chooser
+    Route("choose_pdmark_landing", "/mark/",
+          controller="cc.engine.chooser.views:pdmark_landing"),
+    Route("choose_pdmark_results", "/mark/results",
+          controller="cc.engine.chooser.views:pdmark_results"),
     ]
+
