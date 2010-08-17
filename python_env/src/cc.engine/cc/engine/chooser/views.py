@@ -13,12 +13,14 @@ from cc.license._lib.functions import get_selector_jurisdictions
 from cc.i18n import ccorg_i18n_setup
 import cc.license
 from cc.license.formatters.classes import (
-    HTMLFormatter, CC0HTMLFormatter, PublicDomainHTMLFormatter)
+    HTMLFormatter, CC0HTMLFormatter, PublicDomainHTMLFormatter,
+    PDMarkHTMLFormatter)
 
 
 HTML_FORMATTER = HTMLFormatter()
 CC0_HTML_FORMATTER = CC0HTMLFormatter()
 PUBLICDOMAIN_HTML_FORMATTER = PublicDomainHTMLFormatter()
+PDMARK_HTML_FORMATTER = PDMarkHTMLFormatter()
 
 
 def _base_context(request, target_lang=None):
@@ -586,7 +588,9 @@ def publicdomain_result(request):
     return Response(template.pt_render(context))
 
 
-### CC0
+### -----------
+### CC0 Chooser
+### -----------
 def cc0_landing(request):
     target_lang = util.get_target_lang_from_request(request)
 
@@ -737,6 +741,10 @@ def cc0_partner(request):
     return Response(template.pt_render(context))
 
 
+### --------------------------
+### Public Domain Mark Chooser
+### --------------------------
+
 def pdmark_landing(request):
     target_lang = util.get_target_lang_from_request(request)
 
@@ -748,5 +756,54 @@ def pdmark_landing(request):
     context = _base_context(request, target_lang)
     context.update({
             'engine_template': engine_template})
+
+    return Response(template.pt_render(context))
+
+
+def pdmark_results(request):
+    target_lang = util.get_target_lang_from_request(request)
+
+    template = util.get_zpt_template(
+        'chooser_pages/pdmark/results.pt', target_lang)
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine.pt', target_lang)
+
+    request_form = request.GET or request.POST
+
+    ## RDFA generation
+    license = cc.license.by_code('pdmark')
+    license_html = PDMARK_HTML_FORMATTER.format(
+        license, request_form, target_lang).strip()
+
+    ## Did the user request an email?
+    email_addr = request_form.get('email')
+    successful_send = False
+    if email_addr:
+        try:
+            util.send_email(
+                'info@creativecommons.org', [email_addr],
+                'Your Creative Commons License Information',
+                CC0_EMAIL_MESSAGE_TEMPLATE % (
+                    license.title(target_lang), license_html))
+    
+            if request_form.get('send_updates', False):
+                util.send_email(
+                    email_addr, ["cc-zero-announce-request@lists.ibiblio.org"],
+                    'subscribe', '')
+    
+            successful_send = True
+    
+        except SMTPException:
+            successful_send = False
+
+    context = _base_context(request, target_lang)
+    context.update({
+            'engine_template': engine_template,
+            'request_form': request_form,
+            'rdfa': license_html,
+            'email_requested': bool(email_addr),
+            'email_addr': email_addr,
+            'successful_send': successful_send,
+            'requested_send_updates': request_form.get('send_updates', False)})
 
     return Response(template.pt_render(context))
