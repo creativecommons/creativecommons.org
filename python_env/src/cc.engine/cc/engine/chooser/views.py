@@ -771,7 +771,7 @@ def pdmark_results(request):
     request_form = request.GET or request.POST
 
     ## RDFA generation
-    license = cc.license.by_code('pdmark')
+    license = cc.license.by_code('mark')
     license_html = PDMARK_HTML_FORMATTER.format(
         license, request_form, target_lang).strip()
 
