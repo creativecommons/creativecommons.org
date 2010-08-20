@@ -110,7 +110,6 @@
 	        </div>
               </div>
 
-            <form id="form-details" action="confirm">
               <div class="form-row">
 	        <div class="form-question" 
                      i18n:translate="util.curator_name">Curator name</div>
