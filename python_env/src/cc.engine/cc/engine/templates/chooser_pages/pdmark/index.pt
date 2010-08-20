@@ -61,6 +61,20 @@
 
         <div id="waiver_ui" class="yui-module">
           <div class="bd">
+            <p>
+              <span tal:omit-tag=""
+	            i18n:translate="license.mark.additional_metadata">
+                These fields are optional, but will be embedded in the HTML
+                generated for the work you are marking.  This allows users of
+                the work to locate the work online and find out where to go for
+                more information.
+              </span>
+              <a href="" id="embedded_metadata" class="helpLink">
+	        <img src="images/information.png"
+	             tal:attributes="src python:request.staticdirect('/images/information.png')"
+	             i18n:attributes="alt" alt="Information"/></a>
+            </p>
+
             <div id="help_embedded_metadata" class="help_panel">
               <div class="hd" i18n:translate="">Embedded Metadata</div>
               <div class="bd" i18n:translate="license.mark.metadata_help">
