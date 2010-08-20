@@ -63,11 +63,11 @@
           <div class="bd">
             <div id="help_embedded_metadata" class="help_panel">
               <div class="hd" i18n:translate="">Embedded Metadata</div>
-              <div class="bd" i18n:translate="license.zero.metadata_help">
+              <div class="bd" i18n:translate="license.mark.metadata_help">
 	        <p>
 	          The information is embedded in a software readable format.
 	          This allows search engines to index additional information
-	          about your work.
+	          about the marked work.
 	        </p>
 	        <p>
 	          <a href="http://wiki.creativecommons.org/Metadata">More
