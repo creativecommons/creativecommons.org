@@ -88,14 +88,6 @@
 
               <div class="form-row">
 	        <div class="form-question" 
-                     i18n:translate="util.work_url">Work URL</div>
-	        <div class="form-answer">
-                  <input name="work_href" class="form-field"/>
-	        </div>
-              </div>
-
-              <div class="form-row">
-	        <div class="form-question" 
                      i18n:translate="util.creator_name">Creator name</div>
 	        <div class="form-answer">
                   <input name="creator_title" class="form-field"/>
@@ -123,14 +115,6 @@
                      i18n:translate="util.curator_url">Curator URL</div>
 	        <div class="form-answer">
                   <input name="curator_href" class="form-field"/>
-	        </div>
-              </div>
-
-              <div class="form-row">
-	        <div class="form-question" 
-                     i18n:translate="util.curator_url">Norms URL</div>
-	        <div class="form-answer">
-                  <input name="norms_href" class="form-field"/>
 	        </div>
               </div>
 
