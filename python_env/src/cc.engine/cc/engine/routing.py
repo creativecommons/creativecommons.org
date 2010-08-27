@@ -14,6 +14,7 @@ mapping.connect(
 
 mapping.extend(licenses_routing.licenses_routes, '/licenses')
 mapping.extend(licenses_routing.cc0_routes, '/publicdomain/zero')
+mapping.extend(licenses_routing.mark_routes, '/publicdomain/mark')
 mapping.extend(chooser_routing.chooser_routes, '/choose')
 mapping.extend(characteristic_routing.characteristic_routes, '/characteristic')
 

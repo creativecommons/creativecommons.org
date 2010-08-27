@@ -29,6 +29,7 @@ DEED_TEMPLATE_MAPPING = {
     'BSD': 'licenses/mitbsd_deed.pt',
     'devnations': 'licenses/devnations_deed.pt',
     'CC0': 'licenses/zero_deed.pt',
+    'mark': 'licenses/pdmark_deed.pt',
     'publicdomain': 'licenses/publicdomain_deed.pt'}
 
 
@@ -82,9 +83,17 @@ def license_deed_view(request, license):
             and request.matchdict.has_key('target_lang'):
         return exc.HTTPNotFound()
 
-    deed_template = util.get_zpt_template(
-        'macros_templates/deed.pt',
-        target_lang=target_lang)
+    # Use the pdtools deed macros template if CC0 or PD Mark, else use
+    # standard deed macros template
+    if license.license_code in ('mark', 'CC0'):
+        deed_template = util.get_zpt_template(
+            'macros_templates/pdtool_deed.pt',
+            target_lang=target_lang)
+    else:
+        deed_template = util.get_zpt_template(
+            'macros_templates/deed.pt',
+            target_lang=target_lang)
+
     support_template = util.get_zpt_template(
         'macros_templates/support.pt',
         target_lang=target_lang)

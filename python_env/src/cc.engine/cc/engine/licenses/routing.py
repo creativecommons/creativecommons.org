@@ -106,3 +106,19 @@ cc0_routes = [
           controller="cc.engine.licenses.views:license_legalcode_view"),
     Route("cc0_legalcode_plain", "/{version:[0-9.]+}/legalcode-plain", code='CC0',
           controller="cc.engine.licenses.views:license_legalcode_plain_view")]
+
+
+mark_routes = [
+    Route("mark_deed", "/{version:[0-9.]+}/",
+          code='mark', controller="cc.engine.licenses.views:license_deed_view"),
+    Route("mark_deed_explicit", "/{version:[0-9.]+}/deed",
+          code='mark', controller="cc.engine.licenses.views:license_deed_view"),
+    Route("mark_deed_lang", "/{version:[0-9.]+}/deed.{target_lang}",
+          code='mark', controller="cc.engine.licenses.views:license_deed_view"),
+    Route("mark_rdf", "/{version:[0-9.]+}/rdf",
+          code='mark', controller="cc.engine.licenses.views:license_rdf_view"),
+    Route("mark_legalcode", "/{version:[0-9.]+}/legalcode", code='mark',
+          controller="cc.engine.licenses.views:license_legalcode_view"),
+    Route("mark_legalcode_plain",
+          "/{version:[0-9.]+}/legalcode-plain", code='mark',
+          controller="cc.engine.licenses.views:license_legalcode_plain_view")]
