@@ -63,7 +63,7 @@
       }
     </style>
 
-   <metal:headers define-slot="headers" />
+    <metal:headers define-slot="headers" />
   </head>
 
   <body class="yui-skin-sam">
@@ -142,34 +142,10 @@
 
               <li class="license">
                 <div style="margin-top: 0px; padding-top:15px; padding-bottom: 0px; border-top: 1px solid #ddd;">
-
-                  <p style="padding-bottom: 0.5em;"><strong>Work Details</strong></p>
-                  <p style="padding-bottom: 1em;" ><span style="display:inline-block; width: 6em; text-align: right; margin-right: 0.5em;">Work:</span> <a href="work.html">Boekdrukkerij in Amsterdam</a></p>
-                  <p style="padding-bottom: 1em;"><span style="display:inline-block; width: 6em; text-align: right; margin-right: 0.5em;">Author:</span> <a href="work.html">J.D. Filarski</a></p>
-                  <p style="padding-bottom: 1em;">
-                    <span style="display:inline-block; width: 6em; text-align: right; margin-right: 0.5em;">Identified by:</span>
-                    <a href="http://www.flickr.com/photos/nationaalarchief/">Nationaal Archief</a>
-                  </p>
-                  <p id="work-attribution-container" style="margin-top: 25px;">
-                    <strong>You can <a href="" class="helpLink" id="citation_help" name="citation_help">cite</a> this work with this HTML:</strong><br />
-                    <input id="work-attribution" value='<a rel="license" href="http://creativecommons.org/publicdomain/"><img alt="Creative Commons Public Domain Mark" style="border-width:0" src="http://i.creativecommons.org/l/publicdomain/88x31.png" /></a><br /><span xmlns:dc="http://purl.org/dc/elements/1.1/" property="dc:title">St Clements Press Building, c1959  </span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://www.flickr.com/photos/lselibrary/" property="cc:attributionName" rel="cc:attributionURL">LSE Library</a> is marked with a <a rel="license" href="http://creativecommons.org/publicdomain/0.5/">Creative Commons Public Domain Mark 0.5</a>.<br />Based on a work at <a xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://www.flickr.com/photos/lselibrary/3832932413/in/set-72157622500036123/" rel="dc:source">www.flickr.com</a>.' type="text" readonly="readonly" onclick="document.getElementById('work-attribution').select();" /> <input id="license-code" type="hidden" value="CC CC0 1.0" /> <input id="license-url" type="hidden" value="http://creativecommons.org/publicdomain/zero/1.0/" />
-                  </p>
+                  <!-- XXX: Work details stuff will go here. -->
                 </div>
               </li>
 
-              <div id="help_citation_help">
-                <div class="hd">
-                  Citation
-                </div>
-                <div class="bd">
-                  <p>
-                    Copy and paste the HTML provided into your webpage to easily cite this work.
-                  </p>
-                  <p>
-                    <a href="#">Learn more.</a> <small>[no link presently; by launch there will be.]</small>
-                  </p>
-                </div>
-              </div>
               <!--div id="help_rights_help">
               <div class="hd">
                 Using the Work
@@ -183,89 +159,89 @@
                 </p>
               </div>
               </div-->
-            </li>
-          </ul>
-        </div>
-        <div id="deed-understanding">
-          <ul class="license-properties">
-            <li class="license">
-              <strong>Other Information</strong>
-              <ul>
-                <li>The work may not be free of copyright restrictions
-                  in all <a href="" class="helpLink" id="all_jurisdictions" name="all_jurisdictions">jurisdictions</a>.
-                </li>
-                <li>Persons may have other rights in or related to the work, such as patent or trademark rights, and others may have rights in how the work is used, such as <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F" class="helpLink" id="publicity_rights" name="publicity_rights">publicity or privacy</a> rights.
-                </li>
-                <li>
-                  In some jurisdictions <a href="" class="helpLink" id="moral_rights" name="moral_rights">moral rights</a> of the author may persist beyond the term of copyright.  These rights may include the right to be identified as the author and the right to object to derogatory treatments.
-                </li>
-                <li>
-                  Unless expressly stated otherwise, the person who identified the work makes no warranties about the work, and disclaims liability for all uses of the work, to the fullest extent permitted by applicable law.
-                </li>
-                <li>When using or citing the work, you should not imply <a href="" class="helpLink" id="endorsement" name="endorsement">endorsement</a> by the author or the person who identified the work.
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <!-- <div id="help_usage_guidelines">
-               <div class="hd">
-                 Non-binding Usage Guidelines
-               </div>
-               <div class="bd">
-                 <p>
-                   <em>[Text to come]</em>
-                 </p>
-               </div>
-          </div> -->
-          <div id="help_endorsement">
-            <div class="hd">
-              Endorsement
-            </div>
-            <div class="bd">
-              <p>
-                In some jurisdictions, wrongfully implying that an author, publisher or anyone else endorses your use of a work may be unlawful. 
-              </p>
-              <p>
-                <a href="#">Learn more.</a>
-              </p>
-            </div>
+            </ul>
           </div>
-          <div id="help_moral_rights">
-            <div class="hd">
-              Moral Rights
-            </div>
-            <div class="bd">
-              <p>
-                Copyright laws in most jurisdictions around the world grant creators "moral rights" which may provide some redress if use of a work is considered "derogatory".
-              </p>
-              <p>
-                <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#What_are_moral_rights.2C_and_how_could_I_exercise_them_to_prevent_uses_of_my_work_that_I_don.E2.80.99t_like.3F">Learn more.</a>
-              </p>
-            </div>
-          </div>
-          <div id="help_publicity_rights">
-            <div class="hd">
-              Other Rights
-            </div>
-            <div class="bd">
-              <p>
-                The use of a work free of copyright restrictions may be otherwise regulated or limited.  The work or its use may be subject to personal data protection laws, publicity, image, or privacy rights that allow a person to control how their voice, image or likeness is used, or other restrictions or limitations under applicable law.
-              </p>
-              <p>
-                <a href="#">Learn more.</a>
-              </p>
-            </div>
-          </div>
-          <div id="help_all_jurisdictions">
-            <div class="hd">Term of Copyright
-            </div>
-            <div class="bd">
-              <p>Copyright terms vary jurisdiction to jurisdiction.  A work free of copyright restrictions in one jurisdiction may not be similarly free in other jurisdictions.</p>
-
-              <p><a href="#">Learn more.</a>
+          <div id="deed-understanding">
+            <ul class="license-properties">
+              <li class="license">
+                <strong>Other Information</strong>
+                <ul>
+                  <li>The work may not be free of copyright restrictions
+                    in all <a href="" class="helpLink" id="all_jurisdictions" name="all_jurisdictions">jurisdictions</a>.
+                  </li>
+                  <li>Persons may have other rights in or related to the work, such as patent or trademark rights, and others may have rights in how the work is used, such as <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F" class="helpLink" id="publicity_rights" name="publicity_rights">publicity or privacy</a> rights.
+                  </li>
+                  <li>
+                    In some jurisdictions <a href="" class="helpLink" id="moral_rights" name="moral_rights">moral rights</a> of the author may persist beyond the term of copyright.  These rights may include the right to be identified as the author and the right to object to derogatory treatments.
+                  </li>
+                  <li>
+                    Unless expressly stated otherwise, the person who identified the work makes no warranties about the work, and disclaims liability for all uses of the work, to the fullest extent permitted by applicable law.
+                  </li>
+                  <li>When using or citing the work, you should not imply <a href="" class="helpLink" id="endorsement" name="endorsement">endorsement</a> by the author or the person who identified the work.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <!-- <div id="help_usage_guidelines">
+                 <div class="hd">
+                   Non-binding Usage Guidelines
+                 </div>
+                 <div class="bd">
+                   <p>
+                     <em>[Text to come]</em>
+                   </p>
+                 </div>
+            </div> -->
+            <div id="help_endorsement">
+              <div class="hd">
+                Endorsement
+              </div>
+              <div class="bd">
+                <p>
+                  In some jurisdictions, wrongfully implying that an author, publisher or anyone else endorses your use of a work may be unlawful. 
+                </p>
+                <p>
+                  <a href="#">Learn more.</a>
+                </p>
               </div>
             </div>
-          </div><span id="referrer-metadata-container"></span>
+            <div id="help_moral_rights">
+              <div class="hd">
+                Moral Rights
+              </div>
+              <div class="bd">
+                <p>
+                  Copyright laws in most jurisdictions around the world grant creators "moral rights" which may provide some redress if use of a work is considered "derogatory".
+                </p>
+                <p>
+                  <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#What_are_moral_rights.2C_and_how_could_I_exercise_them_to_prevent_uses_of_my_work_that_I_don.E2.80.99t_like.3F">Learn more.</a>
+                </p>
+              </div>
+            </div>
+            <div id="help_publicity_rights">
+              <div class="hd">
+                Other Rights
+              </div>
+              <div class="bd">
+                <p>
+                  The use of a work free of copyright restrictions may be otherwise regulated or limited.  The work or its use may be subject to personal data protection laws, publicity, image, or privacy rights that allow a person to control how their voice, image or likeness is used, or other restrictions or limitations under applicable law.
+                </p>
+                <p>
+                  <a href="#">Learn more.</a>
+                </p>
+              </div>
+            </div>
+            <div id="help_all_jurisdictions">
+              <div class="hd">Term of Copyright
+              </div>
+              <div class="bd">
+                <p>Copyright terms vary jurisdiction to jurisdiction.  A work free of copyright restrictions in one jurisdiction may not be similarly free in other jurisdictions.</p>
+
+                <p><a href="#">Learn more.</a></p>
+              </div>
+            </div>
+          </div>
+          <span id="referrer-metadata-container"></span>
         </div>
       </div>
       <div id="deed-foot">
