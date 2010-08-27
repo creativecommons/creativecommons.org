@@ -10,12 +10,15 @@
     <title metal:define-slot="title">Public Domain Mark 0.8.5</title>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css" />
 
-    <link rel="stylesheet" href="includes/deed3.css" />
+    <link rel="stylesheet"
+          tal:attributes="href python: request.staticdirect('includes/deed3.css')" />
 
     <link rel="stylesheet" type="text/css"
-          href="http://creativecommns.org/includes/deed3-print.css" media="print" /> 
+          tal:attributes="href python: request.staticdirect('includes/deed3-print.css')"
+          media="print" /> 
     <link rel="stylesheet" type="text/css"
-          href="http://creativecommns.org/includes/jurisdictions.css" media="screen" /> 
+          tal:attributes="href python: request.staticdirect('includes/jurisdictions.css')"
+          media="screen" /> 
 
     <!--[if lt IE 7]>
     <link rel="stylesheet" type="text/css" href="/includes/deed3-ie.css"
@@ -48,13 +51,14 @@
     </script>
 
     <script type="text/javascript"
-            src="http://creativecommons.org/includes/referrer/deed.js">
+            tal:attributes="src python:request.staticdirect('includes/referrer/deed.js')">
+    </script>
+
+    <script type="text/javascript"
+            tal:attributes="src python:request.staticdirect('includes/help.js')">
     </script>
 
     <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js">
-    </script>
-
-    <script type="text/javascript" src="http://creativecommons.org/includes/help.js">
     </script>
 
     <style>
