@@ -1,9 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:define-macro="page"
       xmlns:cc="http://creativecommons.org/ns#"
       xmlns:dc="http://purl.org/dc/elements/1.1/" lang="en">
   <head>
-    <title>Public Domain Mark 0.8.5</title>
+    <title metal:define-slot="title">Public Domain Mark 0.8.5</title>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css" />
 
     <link rel="stylesheet" href="includes/deed3.css" />
@@ -34,6 +38,8 @@
       setCookie('lang','%s', expiry, '/');
     </script>
 
+    <script metal:use-macro="support_template/macros/language_javascript" />
+
     <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js">
     </script>
     <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/connection/connection-min.js">
@@ -56,9 +62,15 @@
       padding-left: 70px;
       }
     </style>
+
+   <metal:headers define-slot="headers" />
   </head>
 
   <body class="yui-skin-sam">
+    <metal:rdf metal:define-slot="page_top">
+    </metal:rdf>
+
+
     <!-- <rdf:RDF xmlns="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
          <License rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
            <permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
