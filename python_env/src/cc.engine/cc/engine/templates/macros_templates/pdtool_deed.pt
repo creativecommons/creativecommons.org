@@ -28,19 +28,6 @@
 
     <link rel="alternate" type="application/rdf+xml" href="rdf" />
 
-    <script type="text/javascript">
-      function setCookie(name, value, expires, path, domain, secure) {
-      document.cookie= name + "=" + escape(value) +
-      ((expires) ? "; expires=" + expires.toGMTString() : "") +
-      ((path) ? "; path=" + path : "") +
-      ((domain) ? "; domain=" + domain : "") +
-      ((secure) ? "; secure" : "");
-      }
-      var expiry = new Date();
-      expiry.setTime(expiry.getTime()+(5*365*24*60*60*1000));
-      setCookie('lang','%s', expiry, '/');
-    </script>
-
     <script metal:use-macro="support_template/macros/language_javascript" />
 
     <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js">
