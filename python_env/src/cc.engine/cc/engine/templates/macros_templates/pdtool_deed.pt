@@ -69,36 +69,8 @@
          </License>
     </rdf:RDF> -->
 
-    <div id="languages">
-      <span style="text-align:left" dir="ltr">This page is available in the following languages:</span>
-
-      <select>
-        <option> Afrikaans </option>
-        <option>   Ã˜Â§Ã™â€žÃ˜Â¹Ã˜Â±Ã˜Â¨Ã™Å Ã˜Â© </option>
-        <option>   ÃÂ±Ã‘Å ÃÂ»ÃÂ³ÃÂ°Ã‘â‚¬Ã‘ÂÃÂºÃ </option> 
-        <option>   CatalÃƒ  </option>
-        <option>   Ã„Å’esko </option>
-        <option>   Dansk </option>
-        <option>   Deutsch </option>
-        <option>   ÃŽâ€¢ÃŽÂ»ÃŽÂ»ÃŽÂ·ÃŽÂ½ÃŽÂ¹ÃŽÂºÃŽÂ¬ </option>
-        <option>   English </option>
-        <option>   English (CA) </option>
-        <option>   English (GB) </option>
-        <option>   English (Hong Kong) </option>
-        <option>   English (Singapore) </option>
-        <option>   English (US) </option>
-        <option>   Esperanto </option>
-        <option>   Castellano</option>
-        <option>   Castellano (AR) </option>
-        <option>   EspaÃƒÂ±ol (CL) </option>
-        <option>   Castellano (CO) </option>
-        <option>   EspaÃƒÂ±ol (Ecuador) </option>
-        <option>   EspaÃƒÂ±ol (Guatemala) </option>
-        <option>   Castellano (MX) </option>
-        <option>   Castellano (PE) </option>
-        <option>   Euskara </option>
-        <option>   Suomeksi </option>
-      </select>
+    <div id="header">
+      <div metal:use-macro="support_template/macros/translations"></div>
     </div>
 
     <div id="deed" style="text-align: left" class="pd pd-grey" dir="ltr">
