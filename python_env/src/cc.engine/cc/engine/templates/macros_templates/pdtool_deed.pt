@@ -104,7 +104,8 @@
     <div id="deed" style="text-align: left" class="pd pd-grey" dir="ltr">
       <div id="deed-head">
         <div id="cc-logo">
-          <img src="http://creativecommons.org/images/deed/cc-logo.jpg" alt="cc logo" />
+          <img tal:attributes="src python:request.staticdirect('images/deed/cc-logo.jpg')"
+               alt="cc logo" />
         </div>
         <h1>
           <span>Creative Commons Public Domain Mark 0.8.5</span>
