@@ -68,7 +68,9 @@
       <div metal:use-macro="support_template/macros/translations"></div>
     </div>
 
-    <div id="deed" style="text-align: left" class="pd pd-grey" dir="ltr">
+    <div id="deed" style="text-align: left" class="pd pd-grey"
+         tal:attributes="dir   get_ltr_rtl; 
+                         style is_rtl_align;">
       <div id="deed-head">
         <div id="cc-logo">
           <img tal:attributes="src python:request.staticdirect('images/deed/cc-logo.jpg')"
