@@ -17,9 +17,7 @@
 
     <div metal:fill-slot="body" tal:omit-tag="">
       <div id="deed-rights" style="text-align: left" dir="ltr">
-        <h3>
-          No Copyright<!-- Public Domain Work &mdash; Marked -->
-        </h3>
+        <h3 i18n:translate="deed.zero.no_copyright">No Copyright</h3>
         <ul class="license-properties" style="width: 550px;">
           <li class="license publicdomain" >
             <p id="nolaw-text">
