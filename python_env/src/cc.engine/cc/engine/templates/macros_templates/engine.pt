@@ -94,15 +94,6 @@
 				</div>	
  
         <div id="sidebar" class="content-box-right">
-          <div id="help_international_list" class="sideitem">
-           <div class="bd">
-             <select id="international" name="sortby" onchange="orderby(this)">    
-               <option value="">Select a jurisdiction</option>
-               <script type="text/javascript" src="http://api.creativecommons.org/rest/dev/support/jurisdictions.js"></script>
-             </select>
-           </div>
-          </div>
-
           <div class="sideitem">
             <form method="get" id="searchform" action="http://creativecommons.org/">
               <div>
