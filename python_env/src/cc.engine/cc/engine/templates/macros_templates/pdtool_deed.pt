@@ -7,7 +7,10 @@
       xmlns:cc="http://creativecommons.org/ns#"
       xmlns:dc="http://purl.org/dc/elements/1.1/" lang="en">
   <head>
-    <title metal:define-slot="title">Public Domain Mark 0.8.5</title>
+    <title metal:define-slot="title">Creative Commons &mdash;
+      <span tal:omit-tag="" tal:content="license/title">
+	LICENSE TITLE
+      </span></title>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css" />
 
     <link rel="stylesheet"
