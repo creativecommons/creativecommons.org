@@ -21,13 +21,11 @@
 
     <link rel="stylesheet" type="text/css" 
           tal:attributes="href python: request.staticdirect('includes/deed3.css')"
-          href="/@@/cc/includes/deed3.css" media="screen" />
-    <link rel="stylesheet" type="text/css" 
-          href="/@@/cc/includes/deed3-rtl.css" media="screen" 
+          media="screen" />
+    <link rel="stylesheet" type="text/css" media="screen" 
           tal:attributes="href python: request.staticdirect('includes/deed3-rtl.css')"
           tal:condition="is_rtl" />
-    <link rel="stylesheet" type="text/css" 
-          href="/includes/deed3-print.css" media="print" 
+    <link rel="stylesheet" type="text/css" media="print" 
           tal:attributes="href python: request.staticdirect('includes/deed3-print.css')"
           />
     <link rel="stylesheet" type="text/css" 
