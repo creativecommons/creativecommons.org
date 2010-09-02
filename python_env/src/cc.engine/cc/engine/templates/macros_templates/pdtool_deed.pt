@@ -82,9 +82,6 @@
           <img tal:attributes="src python:request.staticdirect('images/deed/cc-logo.jpg')"
                alt="cc logo" />
         </div>
-        <h1>
-          <span>Creative Commons Public Domain Mark 0.8.5</span>
-        </h1>
         <div id="deed-license">
           <h2 property="dc:title" metal:define-slot="license-name"></h2>
         </div>
