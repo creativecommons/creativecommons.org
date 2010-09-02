@@ -85,7 +85,8 @@
 
       <div id="deed-head">
 	<div id="cc-logo">
-	  <img src="/images/deed/cc-logo.jpg" alt="cc logo" />
+          <img tal:attributes="src python:request.staticdirect('images/deed/cc-logo.jpg')"
+               alt="cc logo" />
 	</div>
 	<div id="cc-link">
 	  <a rel="dc:creator" href="http://creativecommons.org/">
