@@ -170,6 +170,11 @@
         </div>
       </div>
       <span id="referrer-metadata-container"></span>
+
+      <span rel="cc:permits" resource="http://creativecommons.org/ns#Reproduction"></span>
+      <span rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks"></span>
+      <span rel="cc:permits" resource="http://creativecommons.org/ns#Distribution"></span>
+
     </div>
 
     <metal:footer fill-slot="footer">
