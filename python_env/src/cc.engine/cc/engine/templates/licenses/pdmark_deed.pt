@@ -213,7 +213,7 @@
     </metal:footer>
 
     <metal:use-this-license fill-slot="use-this-license">
-      <a id="get_this" href="http://creativecommons.org/publicdomain/"
+      <a id="get_this" href="/choose/mark/"
          i18n:translate="deed.mark.use_this_tool"
          name="get_this">Use this tool to mark other public domain works.</a>
     </metal:use-this-license>
