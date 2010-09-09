@@ -746,6 +746,9 @@ def cc0_partner(request):
 ### --------------------------
 
 def pdmark_landing(request):
+    """
+    Landing page for the Public Domain Mark chooser.
+    """
     target_lang = util.get_target_lang_from_request(request)
 
     template = util.get_zpt_template(
@@ -761,6 +764,12 @@ def pdmark_landing(request):
 
 
 def pdmark_results(request):
+    """
+    Results page for the Public Domain Mark chooser.
+
+    Includes the user's RDFa copy-paste html.
+    Also handles email sending if the user requests it.
+    """
     target_lang = util.get_target_lang_from_request(request)
 
     template = util.get_zpt_template(
