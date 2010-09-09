@@ -92,6 +92,8 @@
             </div>
 
             <form id="form-details" action="./results">
+              <h3 i18n:translate="util.work_information">Work Information</h3>
+
               <div class="form-row">
 	        <div class="form-question" 
                      i18n:translate="util.work_name">Work name</div>
@@ -99,6 +101,8 @@
                   <input name="work_title" class="form-field"/>
 	        </div>
               </div>
+
+              <h3 i18n:translate="util.creator">Creator</h3>
 
               <div class="form-row">
 	        <div class="form-question" 
@@ -115,6 +119,8 @@
                   <input name="creator_href" class="form-field"/>
 	        </div>
               </div>
+
+              <h3 i18n:translate="util.identifying_party">Identifying Individual or Organization</h3>
 
               <div class="form-row">
 	        <div class="form-question" 
