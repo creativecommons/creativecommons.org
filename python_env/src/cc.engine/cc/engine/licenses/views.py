@@ -35,6 +35,9 @@ DEED_TEMPLATE_MAPPING = {
 
 @get_license
 def license_deed_view(request, license):
+    """
+    The main and major deed generating view.
+    """
     # True if the legalcode for this license is available in
     # multiple languages (or a single language with a language code different
     # than that of the jurisdiction.
