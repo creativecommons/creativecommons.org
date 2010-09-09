@@ -139,20 +139,6 @@
               </div>
 
               <div class="form-row">
-	        <div class="form-question">
-	          <input name="waive_cc0" type="checkbox"
-	                 id="confirm_understand" class="form-field"
-	                 value="confirm" />
-	        </div>
-	        <div class="form-answer">
-	          <label for="waive_cc0" 
-		         i18n:translate="util.did_waive_cc0">
-                    Do you waive any incidental rights under CC0?
-	          </label>
-	        </div>
-              </div>
-
-              <div class="form-row">
 	        <div class="form-question">&nbsp;</div>
 	        <div class="form-answer">
 	          <input type="submit" id="submit"
