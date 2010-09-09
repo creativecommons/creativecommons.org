@@ -58,6 +58,11 @@ def license_deed_view(request, license):
     else:
        color = 'green'
 
+    # Get the language this view will be displayed in.
+    #  - First checks to see if the routing matchdict specifies the language
+    #  - Or, next gets the jurisdictions' default language if the jurisdiction
+    #    specifies one
+    #  - Otherwise it's english!
     if request.matchdict.has_key('target_lang'):
         target_lang = request.matchdict.get('target_lang')
     elif license.jurisdiction.default_language:
@@ -66,6 +71,7 @@ def license_deed_view(request, license):
     else:
         target_lang = 'en'
 
+    # Use the lower-dash style for all RDF-related locale stuff
     rdf_style_target_lang = target_lang.replace('_', '-').lower()
 
     license_title = None
@@ -77,6 +83,7 @@ def license_deed_view(request, license):
 
     conditions = util.get_license_conditions(license, target_lang)
 
+    # Find out all the active languages
     active_languages = util.active_languages()
     active_lang_codes = [lang['code'] for lang in active_languages]
 
