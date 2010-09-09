@@ -1,4 +1,6 @@
-[{"path": "/publicdomain/"},
+[{"path": "/publicdomain/",
+  "string_tests": [
+      "Our Public Domain Tools"]},
  {"path": "/licenses/"},
 
  {"path": "/licenses/by/3.0/"},

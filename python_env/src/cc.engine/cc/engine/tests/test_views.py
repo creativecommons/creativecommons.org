@@ -119,17 +119,24 @@ VIEWS_TEST_DATA = json.load(
     file(pkg_resources.resource_filename(
             'cc.engine.tests', 'view_tests.json')))
 
-ALL_VIEWS_LIST = [
-    viewdata['path'] for viewdata in VIEWS_TEST_DATA]
 
+def test_all_views_simple():
+    """
+    Test all views by checking with the JSON data.
 
-def test_all_views_up_simple():
+    Possible parameters for view data in the JSON file and what will
+    be tested if present:
+     - path: *required*.  Simple test that the page loads (or
+       redirects) will be done.
+     - string_tests: an array of strings that will be checked for
+       presence in the body of the response.
     """
-    Super simple test to make sure all GET'able views are up & return
-    200 OK or redirect
-    """
-    for view in ALL_VIEWS_LIST:
-        TESTAPP.get(view)
+    for view in VIEWS_TEST_DATA:
+        view_result = TESTAPP.get(view['path'])
+
+        if view.has_key('string_tests'):
+            for string_test in view['string_tests']:
+                assert string_test in view_result.body
 
 
 def test_license_to_choose_redirect():
