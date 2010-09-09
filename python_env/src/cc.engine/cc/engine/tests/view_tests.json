@@ -72,7 +72,13 @@
  {"path": "/choose/zero/results?license-class=zero&name=foo&actor_href=bar&work_title=baz&work_jurisdiction=BA&confirm=confirm&understand=confirm&field1=continue&waiver-affirm=affirm"},
  {"path": "/choose/zero/partner"},
 
+ {"path": "/publicdomain/mark/1.0/",
+  "string_tests": [
+      "Public Domain Mark 1.0",
+      "This work has been <b>identified</b>"]},
+
  {"path": "/characteristic/by"},
  {"path": "/characteristic/nc"},
  {"path": "/characteristic/nd"},
- {"path": "/characteristic/sa"}]
+ {"path": "/characteristic/sa"},
+]
