@@ -80,5 +80,4 @@
  {"path": "/characteristic/by"},
  {"path": "/characteristic/nc"},
  {"path": "/characteristic/nd"},
- {"path": "/characteristic/sa"},
-]
+ {"path": "/characteristic/sa"}]
