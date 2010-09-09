@@ -136,7 +136,7 @@ def test_all_views_simple():
 
         if view.has_key('string_tests'):
             for string_test in view['string_tests']:
-                assert string_test in view_result.body
+                assert string_test in view_result.unicode_body
 
 
 def test_license_to_choose_redirect():
