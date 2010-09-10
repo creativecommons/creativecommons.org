@@ -106,7 +106,7 @@
 
               <div class="form-row">
 	        <div class="form-question" 
-                     i18n:translate="util.creator">Creator name</div>
+                     i18n:translate="util.creator_name">Creator name</div>
 	        <div class="form-answer">
                   <input name="creator_title" class="form-field"/>
 	        </div>
@@ -124,7 +124,7 @@
 
               <div class="form-row">
 	        <div class="form-question" 
-                     i18n:translate="util.curator">Curator name</div>
+                     i18n:translate="util.curator_name">Curator name</div>
 	        <div class="form-answer">
                   <input name="curator_title" class="form-field"/>
 	        </div>
