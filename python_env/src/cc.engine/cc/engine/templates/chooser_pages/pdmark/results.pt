@@ -50,8 +50,9 @@ YAHOO.util.Event.onDOMReady(function() {
   <div id="results" class="yui-module">
     <div class="bd" id="waiver-results">
 
-      <p i18n:translate="license.choose_button">
-        Choose which style of button you'd like on your webpage:
+      <p i18n:translate="license.mark.choose_button">
+        Choose which style of button you would like to appear by the
+        work on your webpage:
       </p>
 
       <div class="licensebox" align="center">
