@@ -125,10 +125,11 @@ YAHOO.util.Event.onDOMReady(function() {
 
               <span tal:omit-tag="" 
                     tal:condition="requested_send_updates"
-                    i18n:translate="license.zero.subscribed_to_updates">
-                You have asked to be notified of updates to CC0.  A subscription
-                request has been sent on your behalf; you must click the link in
-                the confirmation email to complete the sign-up process.
+                    i18n:translate="license.mark.subscribed_to_updates">
+                You have asked to be notified of updates to Public Domain Mark.
+                A subscription request has been sent on your behalf; you must
+                click the link in the confirmation email to complete the sign-up
+                process.
               </span>
             </div>
           </metal:email_container>
