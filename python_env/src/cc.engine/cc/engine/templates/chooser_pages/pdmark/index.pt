@@ -106,7 +106,7 @@
 
               <div class="form-row">
 	        <div class="form-question" 
-                     i18n:translate="util.creator_name">Creator name</div>
+                     i18n:translate="util.creator_name">Author name</div>
 	        <div class="form-answer">
                   <input name="creator" class="form-field"/>
 	        </div>
@@ -114,7 +114,7 @@
 
               <div class="form-row">
 	        <div class="form-question" 
-                     i18n:translate="util.creator_url">Creator URL</div>
+                     i18n:translate="util.creator_url">Author URL</div>
 	        <div class="form-answer">
                   <input name="creator_href" class="form-field"/>
 	        </div>
@@ -124,7 +124,7 @@
 
               <div class="form-row">
 	        <div class="form-question" 
-                     i18n:translate="util.curator_name">Curator name</div>
+                     i18n:translate="util.curator_name">Name</div>
 	        <div class="form-answer">
                   <input name="curator" class="form-field"/>
 	        </div>
@@ -132,7 +132,7 @@
 
               <div class="form-row">
 	        <div class="form-question" 
-                     i18n:translate="util.curator_url">Curator URL</div>
+                     i18n:translate="util.curator_url">URL</div>
 	        <div class="form-answer">
                   <input name="curator_href" class="form-field"/>
 	        </div>
