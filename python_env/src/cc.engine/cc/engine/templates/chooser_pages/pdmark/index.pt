@@ -108,7 +108,7 @@
 	        <div class="form-question" 
                      i18n:translate="util.creator_name">Creator name</div>
 	        <div class="form-answer">
-                  <input name="creator_title" class="form-field"/>
+                  <input name="creator" class="form-field"/>
 	        </div>
               </div>
 
@@ -126,7 +126,7 @@
 	        <div class="form-question" 
                      i18n:translate="util.curator_name">Curator name</div>
 	        <div class="form-answer">
-                  <input name="curator_title" class="form-field"/>
+                  <input name="curator" class="form-field"/>
 	        </div>
               </div>
 
