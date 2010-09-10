@@ -81,16 +81,14 @@
       "Public Domain Mark",
       "This work is free of copyright restrictions.",
       "Have your own website?"]},
- {"path": "/choose/mark/results?work_title=work_name&creator_title=creator_name&creator_href=http%3A%2F%2Fexample.org%2Fcreator&curator_title=curator_name&curator_href=http%3A%2F%2Fexample.org%2Fcurator",
+ {"path": "/choose/mark/results?work_title=Work+name&creator=creator_name&creator_href=http%3A%2F%2Fexample.org%2Fcreator&curator=curator_name&curator_href=http%3A%2F%2Fexample.org%2Fcurator",
   "string_tests": [
       "Public Domain Mark",
       "is free of copyright restrictions.",
       "Have your own website?",
-      "work_name",
-      "creator_name",
-      "http://example.org/creator",
-      "curator_name",
-      "http://example.org/curator"]},
+      "<span property=\"dct:title\">Work name</span>",
+      "<a href=\"http://example.org/creator\" rel=\"dct:creator\"><span property=\"dct:title\">creator_name</span></a>",
+      "<a href=\"http://example.org/curator\" rel=\"dct:publisher\"><span property=\"dct:title\">curator_name</span></a>"]},
 
  {"path": "/publicdomain/mark/1.0/",
   "string_tests": [
