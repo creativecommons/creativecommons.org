@@ -168,12 +168,18 @@
                      i18n:translate="util.name">Name</div>
 	        <div class="form-answer">
                   <input name="curator" class="form-field"/>
-                  <br />
-                  <span class="form-help"
-                        i18n:translate="license.mark.curator_help">
-                    Identify yourself here.
-                  </span>
+	          <a href="" id="curator" class="helpLink">
+	            <img src="images/information.png"
+		         tal:attributes="src python:request.staticdirect('/images/information.png')"
+		         i18n:attributes="alt" alt="Information" /></a>
 	        </div>
+              </div>
+
+              <div id="help_curator" class="help_panel">
+                <div class="hd" i18n:translate="util.name">Name</div>
+                <div class="bd" i18n:translate="license.mark.curator_help">
+                  Identify yourself here.
+                </div>
               </div>
 
 
@@ -182,8 +188,22 @@
                      i18n:translate="util.url">URL</div>
 	        <div class="form-answer">
                   <input name="curator_href" class="form-field"/>
+	          <a href="" id="curator_href" class="helpLink">
+	            <img src="images/information.png"
+		         tal:attributes="src python:request.staticdirect('/images/information.png')"
+		         i18n:attributes="alt" alt="Information" /></a>
 	        </div>
               </div>
+
+              <div id="help_curator_href" class="help_panel">
+                <div class="hd" i18n:translate="util.url">Name</div>
+                <div class="bd" i18n:translate="license.mark.curator_href_help">
+                  This may be your main website or the information
+                  page about your on a hosting website, such as Flickr
+                  Commons.
+                </div>
+              </div>
+
 
               <div class="form-row">
 	        <div class="form-question">&nbsp;</div>
