@@ -108,7 +108,7 @@
 
               <div id="help_work_title" class="help_panel">
                 <div class="hd" i18n:translate="util.work_name">Work name</div>
-                <div class="bd" i18n:translate="license.zero.country_help">
+                <div class="bd" i18n:translate="license.mark.work_title">
                   This is usually the title of the work given by the
                   author, or if none the name associated with the work
                   by the person providing the work.
@@ -124,7 +124,20 @@
 	        <div class="form-answer">
                   <input name="creator" class="form-field"/>
 	        </div>
+	        <a href="" id="creator" class="helpLink">
+	          <img src="images/information.png"
+		       tal:attributes="src python:request.staticdirect('/images/information.png')"
+		       i18n:attributes="alt" alt="Information" /></a>
               </div>
+
+              <div id="help_creator" class="help_panel">
+                <div class="hd" i18n:translate="util.creator_name">Author name</div>
+                <div class="bd" i18n:translate="license.mark.creator_help">
+                  You may list multiple authors if more
+                  than one.  If unknown, you may wish to state 'unknown'.
+                </div>
+              </div>
+
 
               <div class="form-row">
 	        <div class="form-question" 
@@ -132,7 +145,21 @@
 	        <div class="form-answer">
                   <input name="creator_href" class="form-field"/>
 	        </div>
+	        <a href="" id="creator_href" class="helpLink">
+	          <img src="images/information.png"
+		       tal:attributes="src python:request.staticdirect('/images/information.png')"
+		       i18n:attributes="alt" alt="Information" /></a>
               </div>
+
+              <div id="help_creator_href" class="help_panel">
+                <div class="hd" i18n:translate="util.creator_url">Author URL</div>
+                <div class="bd" i18n:translate="license.mark.creator_url_help">
+                  This may be the URL where the author published the
+                  work online, or the URL where the work is published
+                  by the person providing the work.
+                </div>
+              </div>
+
 
               <h3 i18n:translate="util.identifying_party">Identifying Individual or Organization</h3>
 
