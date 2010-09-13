@@ -102,6 +102,16 @@
 	        </div>
               </div>
 
+              <div id="help_work_name" class="help_panel">
+                <div class="hd" i18n:translate="util.work_name">Work name</div>
+                <div class="bd" i18n:translate="license.zero.country_help">
+                  This is usually the title of the work given by the
+                  author, or if none the name associated with the work
+                  by the person providing the work.
+                </div>
+              </div>
+
+
               <h3 i18n:translate="util.creator">Creator</h3>
 
               <div class="form-row">
