@@ -1,6 +1,7 @@
 import csv
 import os
 import pkg_resources
+import string
 import re
 import smtplib
 
@@ -15,12 +16,16 @@ from zope.component.globalregistry import base
 from zope.i18n.interfaces import ITranslationDomain
 from zope.i18n.translationdomain import TranslationDomain
 from zope.i18n import translate
+from zope.i18nmessageid import MessageFactory
 
 from cc.license._lib import rdf_helper
 from cc.license._lib import functions as cclicense_functions
 from cc.i18n import ccorg_i18n_setup
 
 from cc.engine.pagetemplate import CCLPageTemplateFile
+
+
+z_gettext = MessageFactory('cc_org')
 
 
 BASE_TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
@@ -362,6 +367,61 @@ def send_email(from_addr, to_addrs, subject, message_body):
     message['To'] = ', '.join(to_addrs)
 
     return mhost.sendmail(from_addr, to_addrs, message.as_string())
+
+
+LICENSE_INFO_EMAIL_BODY = z_gettext(
+    'license.info_email_body',
+    """Thank you for using a Creative Commons legal tool for your work.
+
+You have selected ${license_name}.
+You should include a reference to this on the web page that includes
+the work in question.
+
+Here is the suggested HTML:
+
+${license_html}
+
+Tips for marking your work can be found at
+http://wiki.creativecommons.org/Marking.  Information on the supplied HTML and
+metadata can be found at http://wiki.creativecommons.org/CC_REL.
+
+Thank you!
+Creative Commons Support
+info@creativecommons.org""")
+
+LICENSE_INFO_EMAIL_SUBJECT = z_gettext(
+    'license.info_email_subject',
+    'Your Creative Commons License Information')
+
+
+def send_license_info_email(license_title, license_html,
+                            recipient_email, locale):
+    """
+    Send license information email to a user.
+
+    Arguments:
+     - license_title: title of the license
+     - license_html: copy-paste license HTML
+     - recipient_email: the user that is getting this email
+     - locale: language email should be sent in
+
+    Returns:
+      A boolean specifying whether or not the email sent successfully
+    """
+
+    email_body = string.Template(
+        translate(LICENSE_INFO_EMAIL_BODY, target_language=locale)).substitute(
+        {'license_title': license_title,
+         'license_html': license_html})
+
+    try:
+        send_email(
+            'info@creativecommons.org', [recipient_email],
+            translate(LICENSE_INFO_EMAIL_SUBJECT, target_language=locale),
+            email_body)
+        return True
+    except smtplib.SMTPException:
+        return False
 
 
 def make_locale_lower_upper_style(locale):
