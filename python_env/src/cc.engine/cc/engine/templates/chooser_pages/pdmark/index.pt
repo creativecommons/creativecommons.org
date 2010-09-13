@@ -100,9 +100,13 @@
 	        <div class="form-answer">
                   <input name="work_title" class="form-field"/>
 	        </div>
+	        <a href="" id="work_title" class="helpLink">
+	          <img src="images/information.png"
+		       tal:attributes="src python:request.staticdirect('/images/information.png')"
+		       i18n:attributes="alt" alt="Information" /></a>
               </div>
 
-              <div id="help_work_name" class="help_panel">
+              <div id="help_work_title" class="help_panel">
                 <div class="hd" i18n:translate="util.work_name">Work name</div>
                 <div class="bd" i18n:translate="license.zero.country_help">
                   This is usually the title of the work given by the
