@@ -99,11 +99,11 @@
                      i18n:translate="util.work_name">Work name</div>
 	        <div class="form-answer">
                   <input name="work_title" class="form-field"/>
+	          <a href="" id="work_title" class="helpLink">
+	            <img src="images/information.png"
+		         tal:attributes="src python:request.staticdirect('/images/information.png')"
+		         i18n:attributes="alt" alt="Information" /></a>
 	        </div>
-	        <a href="" id="work_title" class="helpLink">
-	          <img src="images/information.png"
-		       tal:attributes="src python:request.staticdirect('/images/information.png')"
-		       i18n:attributes="alt" alt="Information" /></a>
               </div>
 
               <div id="help_work_title" class="help_panel">
@@ -123,11 +123,11 @@
                      i18n:translate="util.creator_name">Author name</div>
 	        <div class="form-answer">
                   <input name="creator" class="form-field"/>
+	          <a href="" id="creator" class="helpLink">
+	            <img src="images/information.png"
+		         tal:attributes="src python:request.staticdirect('/images/information.png')"
+		         i18n:attributes="alt" alt="Information" /></a>
 	        </div>
-	        <a href="" id="creator" class="helpLink">
-	          <img src="images/information.png"
-		       tal:attributes="src python:request.staticdirect('/images/information.png')"
-		       i18n:attributes="alt" alt="Information" /></a>
               </div>
 
               <div id="help_creator" class="help_panel">
@@ -144,11 +144,11 @@
                      i18n:translate="util.creator_url">Author URL</div>
 	        <div class="form-answer">
                   <input name="creator_href" class="form-field"/>
+	          <a href="" id="creator_href" class="helpLink">
+	            <img src="images/information.png"
+		         tal:attributes="src python:request.staticdirect('/images/information.png')"
+		         i18n:attributes="alt" alt="Information" /></a>
 	        </div>
-	        <a href="" id="creator_href" class="helpLink">
-	          <img src="images/information.png"
-		       tal:attributes="src python:request.staticdirect('/images/information.png')"
-		       i18n:attributes="alt" alt="Information" /></a>
               </div>
 
               <div id="help_creator_href" class="help_panel">
@@ -165,15 +165,21 @@
 
               <div class="form-row">
 	        <div class="form-question" 
-                     i18n:translate="util.curator_name">Name</div>
+                     i18n:translate="util.name">Name</div>
 	        <div class="form-answer">
                   <input name="curator" class="form-field"/>
+                  <br />
+                  <span class="form-help"
+                        i18n:translate="license.mark.curator_help">
+                    Identify yourself here.
+                  </span>
 	        </div>
               </div>
 
+
               <div class="form-row">
 	        <div class="form-question" 
-                     i18n:translate="util.curator_url">URL</div>
+                     i18n:translate="util.url">URL</div>
 	        <div class="form-answer">
                   <input name="curator_href" class="form-field"/>
 	        </div>
