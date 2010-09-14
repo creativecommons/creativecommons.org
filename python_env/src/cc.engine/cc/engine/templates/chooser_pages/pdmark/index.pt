@@ -92,118 +92,123 @@
             </div>
 
             <form id="form-details" action="./results">
-              <h3 i18n:translate="util.work_information">Work Information</h3>
+              <div class="form-section">
+                <h3 i18n:translate="util.work_information">Work Information</h3>
 
-              <div class="form-row">
-	        <div class="form-question" 
-                     i18n:translate="util.work_name">Work name</div>
-	        <div class="form-answer">
-                  <input name="work_title" class="form-field"/>
-	          <a href="" id="work_title" class="helpLink">
-	            <img src="images/information.png"
-		         tal:attributes="src python:request.staticdirect('/images/information.png')"
-		         i18n:attributes="alt" alt="Information" /></a>
-	        </div>
-              </div>
+                <div class="form-row">
+	          <div class="form-question" 
+                       i18n:translate="util.work_name">Work name</div>
+	          <div class="form-answer">
+                    <input name="work_title" class="form-field"/>
+	            <a href="" id="work_title" class="helpLink">
+	              <img src="images/information.png"
+		           tal:attributes="src python:request.staticdirect('/images/information.png')"
+		           i18n:attributes="alt" alt="Information" /></a>
+	          </div>
+                </div>
 
-              <div id="help_work_title" class="help_panel">
-                <div class="hd" i18n:translate="util.work_name">Work name</div>
-                <div class="bd" i18n:translate="license.mark.work_title">
-                  This is usually the title of the work given by the
-                  author, or if none the name associated with the work
-                  by the person identifying the work.
+                <div id="help_work_title" class="help_panel">
+                  <div class="hd" i18n:translate="util.work_name">Work name</div>
+                  <div class="bd" i18n:translate="license.mark.work_title">
+                    This is usually the title of the work given by the
+                    author, or if none the name associated with the work
+                    by the person identifying the work.
+                  </div>
                 </div>
               </div>
 
 
-              <h3 i18n:translate="util.creator">Creator</h3>
+              <div class="form-section">
+                <h3 i18n:translate="util.creator">Creator</h3>
 
-              <div class="form-row">
-	        <div class="form-question" 
-                     i18n:translate="util.creator_name">Author name</div>
-	        <div class="form-answer">
-                  <input name="creator" class="form-field"/>
-	          <a href="" id="creator" class="helpLink">
-	            <img src="images/information.png"
-		         tal:attributes="src python:request.staticdirect('/images/information.png')"
-		         i18n:attributes="alt" alt="Information" /></a>
-	        </div>
-              </div>
+                <div class="form-row">
+	          <div class="form-question" 
+                       i18n:translate="util.creator_name">Author name</div>
+	          <div class="form-answer">
+                    <input name="creator" class="form-field"/>
+	            <a href="" id="creator" class="helpLink">
+	              <img src="images/information.png"
+		           tal:attributes="src python:request.staticdirect('/images/information.png')"
+		           i18n:attributes="alt" alt="Information" /></a>
+	          </div>
+                </div>
 
-              <div id="help_creator" class="help_panel">
-                <div class="hd" i18n:translate="util.creator_name">Author name</div>
-                <div class="bd" i18n:translate="license.mark.creator_help">
-                  You may list multiple authors if more
-                  than one.  If unknown, you may wish to state 'unknown'.
+                <div id="help_creator" class="help_panel">
+                  <div class="hd" i18n:translate="util.creator_name">Author name</div>
+                  <div class="bd" i18n:translate="license.mark.creator_help">
+                    You may list multiple authors if more
+                    than one.  If unknown, you may wish to state 'unknown'.
+                  </div>
+                </div>
+
+
+                <div class="form-row">
+	          <div class="form-question" 
+                       i18n:translate="util.creator_url">Author URL</div>
+	          <div class="form-answer">
+                    <input name="creator_href" class="form-field"/>
+	            <a href="" id="creator_href" class="helpLink">
+	              <img src="images/information.png"
+		           tal:attributes="src python:request.staticdirect('/images/information.png')"
+		           i18n:attributes="alt" alt="Information" /></a>
+	          </div>
+                </div>
+
+                <div id="help_creator_href" class="help_panel">
+                  <div class="hd" i18n:translate="util.creator_url">Author URL</div>
+                  <div class="bd" i18n:translate="license.mark.creator_url_help">
+                    This may be the URL where the author published the
+                    work online, or the URL where the work is published
+                    by the person identifying the work.
+                  </div>
                 </div>
               </div>
 
 
-              <div class="form-row">
-	        <div class="form-question" 
-                     i18n:translate="util.creator_url">Author URL</div>
-	        <div class="form-answer">
-                  <input name="creator_href" class="form-field"/>
-	          <a href="" id="creator_href" class="helpLink">
-	            <img src="images/information.png"
-		         tal:attributes="src python:request.staticdirect('/images/information.png')"
-		         i18n:attributes="alt" alt="Information" /></a>
-	        </div>
-              </div>
+              <div class="form-section">
+                <h3 i18n:translate="util.identifying_party">Identifying Individual or Organization</h3>
 
-              <div id="help_creator_href" class="help_panel">
-                <div class="hd" i18n:translate="util.creator_url">Author URL</div>
-                <div class="bd" i18n:translate="license.mark.creator_url_help">
-                  This may be the URL where the author published the
-                  work online, or the URL where the work is published
-                  by the person identifying the work.
+                <div class="form-row">
+	          <div class="form-question" 
+                       i18n:translate="util.name">Name</div>
+	          <div class="form-answer">
+                    <input name="curator" class="form-field"/>
+	            <a href="" id="curator" class="helpLink">
+	              <img src="images/information.png"
+		           tal:attributes="src python:request.staticdirect('/images/information.png')"
+		           i18n:attributes="alt" alt="Information" /></a>
+	          </div>
+                </div>
+
+                <div id="help_curator" class="help_panel">
+                  <div class="hd" i18n:translate="util.name">Name</div>
+                  <div class="bd" i18n:translate="license.mark.curator_help">
+                    Identify yourself here.
+                  </div>
+                </div>
+
+
+                <div class="form-row">
+	          <div class="form-question" 
+                       i18n:translate="util.url">URL</div>
+	          <div class="form-answer">
+                    <input name="curator_href" class="form-field"/>
+	            <a href="" id="curator_href" class="helpLink">
+	              <img src="images/information.png"
+		           tal:attributes="src python:request.staticdirect('/images/information.png')"
+		           i18n:attributes="alt" alt="Information" /></a>
+	          </div>
+                </div>
+
+                <div id="help_curator_href" class="help_panel">
+                  <div class="hd" i18n:translate="util.url">Name</div>
+                  <div class="bd" i18n:translate="license.mark.curator_href_help">
+                    This may be your main website or the information
+                    page about your on a hosting website, such as Flickr
+                    Commons.
+                  </div>
                 </div>
               </div>
-
-
-              <h3 i18n:translate="util.identifying_party">Identifying Individual or Organization</h3>
-
-              <div class="form-row">
-	        <div class="form-question" 
-                     i18n:translate="util.name">Name</div>
-	        <div class="form-answer">
-                  <input name="curator" class="form-field"/>
-	          <a href="" id="curator" class="helpLink">
-	            <img src="images/information.png"
-		         tal:attributes="src python:request.staticdirect('/images/information.png')"
-		         i18n:attributes="alt" alt="Information" /></a>
-	        </div>
-              </div>
-
-              <div id="help_curator" class="help_panel">
-                <div class="hd" i18n:translate="util.name">Name</div>
-                <div class="bd" i18n:translate="license.mark.curator_help">
-                  Identify yourself here.
-                </div>
-              </div>
-
-
-              <div class="form-row">
-	        <div class="form-question" 
-                     i18n:translate="util.url">URL</div>
-	        <div class="form-answer">
-                  <input name="curator_href" class="form-field"/>
-	          <a href="" id="curator_href" class="helpLink">
-	            <img src="images/information.png"
-		         tal:attributes="src python:request.staticdirect('/images/information.png')"
-		         i18n:attributes="alt" alt="Information" /></a>
-	        </div>
-              </div>
-
-              <div id="help_curator_href" class="help_panel">
-                <div class="hd" i18n:translate="util.url">Name</div>
-                <div class="bd" i18n:translate="license.mark.curator_href_help">
-                  This may be your main website or the information
-                  page about your on a hosting website, such as Flickr
-                  Commons.
-                </div>
-              </div>
-
 
               <div class="form-row">
 	        <div class="form-question">&nbsp;</div>
