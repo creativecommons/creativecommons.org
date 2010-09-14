@@ -111,7 +111,7 @@
                 <div class="bd" i18n:translate="license.mark.work_title">
                   This is usually the title of the work given by the
                   author, or if none the name associated with the work
-                  by the person providing the work.
+                  by the person identifying the work.
                 </div>
               </div>
 
