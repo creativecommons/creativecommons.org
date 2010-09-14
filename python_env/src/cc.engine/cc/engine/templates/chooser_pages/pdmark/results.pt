@@ -52,7 +52,7 @@ YAHOO.util.Event.onDOMReady(function() {
 
       <p i18n:translate="license.mark.choose_button">
         Choose which style of button you would like to appear by the
-        work on your webpage:
+        work on the webpage:
       </p>
 
       <div class="licensebox" align="center">
