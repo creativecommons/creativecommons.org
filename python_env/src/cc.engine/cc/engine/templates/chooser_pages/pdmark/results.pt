@@ -156,7 +156,7 @@ YAHOO.util.Event.onDOMReady(function() {
 
             <div class="more-metadata">
               <div i18n:translate="license.mark.update_opt_in">
-                Send me updates about Public Domain Mark:
+                Send me updates about the Public Domain Mark:
               </div>
               <input type="checkbox" name="send_updates" value="1" /><br/>
             </div>
