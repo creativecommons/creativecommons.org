@@ -156,7 +156,7 @@
                 <div class="bd" i18n:translate="license.mark.creator_url_help">
                   This may be the URL where the author published the
                   work online, or the URL where the work is published
-                  by the person providing the work.
+                  by the person identifying the work.
                 </div>
               </div>
 
