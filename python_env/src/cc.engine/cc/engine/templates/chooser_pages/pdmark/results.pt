@@ -86,7 +86,7 @@ YAHOO.util.Event.onDOMReady(function() {
 
       <h3 i18n:translate="license.have_your_own_website">Have a website?</h3>
       <p i18n:translate="license.mark.copy_text">
-        Copy the text below to your Web site to let your visitors know
+        Copy the text below to your website to let your visitors know
         that the work identified by you is free of known copyright
         restrictions.  Creative Commons does not maintain a record of
         the work you have identified using the Public Domain Mark.  It
