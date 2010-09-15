@@ -104,16 +104,13 @@
 	              <img src="images/information.png"
 		           tal:attributes="src python:request.staticdirect('/images/information.png')"
 		           i18n:attributes="alt" alt="Information" /></a>
+                    <br />
+                    <div class="form-field-description" i18n:translate="license.mark.work_title">
+                      This is usually the title of the work given by the
+                      author, or if none the name associated with the work
+                      by the person identifying the work.
+                    </div>
 	          </div>
-                </div>
-
-                <div id="help_work_title" class="help_panel">
-                  <div class="hd" i18n:translate="util.work_name">Work name</div>
-                  <div class="bd" i18n:translate="license.mark.work_title">
-                    This is usually the title of the work given by the
-                    author, or if none the name associated with the work
-                    by the person identifying the work.
-                  </div>
                 </div>
               </div>
 
@@ -130,17 +127,14 @@
 	              <img src="images/information.png"
 		           tal:attributes="src python:request.staticdirect('/images/information.png')"
 		           i18n:attributes="alt" alt="Information" /></a>
+                    <br />
+                    <div class="form-field-description"
+                         i18n:translate="license.mark.creator_help">
+                      You may list multiple authors if more
+                      than one.  If unknown, you may wish to state 'unknown'.
+                    </div>
 	          </div>
                 </div>
-
-                <div id="help_creator" class="help_panel">
-                  <div class="hd" i18n:translate="util.creator_name">Author name</div>
-                  <div class="bd" i18n:translate="license.mark.creator_help">
-                    You may list multiple authors if more
-                    than one.  If unknown, you may wish to state 'unknown'.
-                  </div>
-                </div>
-
 
                 <div class="form-row">
 	          <div class="form-question" 
@@ -151,18 +145,14 @@
 	              <img src="images/information.png"
 		           tal:attributes="src python:request.staticdirect('/images/information.png')"
 		           i18n:attributes="alt" alt="Information" /></a>
+                    <br />
+                    <div class="form-field-description" i18n:translate="license.mark.creator_url_help">
+                      This may be the URL where the author published the
+                      work online, or the URL where the work is published
+                      by the person identifying the work.
+                    </div>
 	          </div>
                 </div>
-
-                <div id="help_creator_href" class="help_panel">
-                  <div class="hd" i18n:translate="util.creator_url">Author URL</div>
-                  <div class="bd" i18n:translate="license.mark.creator_url_help">
-                    This may be the URL where the author published the
-                    work online, or the URL where the work is published
-                    by the person identifying the work.
-                  </div>
-                </div>
-              </div>
 
 
               <div class="form-section">
@@ -177,16 +167,13 @@
 	              <img src="images/information.png"
 		           tal:attributes="src python:request.staticdirect('/images/information.png')"
 		           i18n:attributes="alt" alt="Information" /></a>
+                    <br />
+                    <div class="form-field-description"
+                         i18n:translate="license.mark.curator_help">
+                      Identify yourself here.
+                    </div>
 	          </div>
                 </div>
-
-                <div id="help_curator" class="help_panel">
-                  <div class="hd" i18n:translate="util.name">Name</div>
-                  <div class="bd" i18n:translate="license.mark.curator_help">
-                    Identify yourself here.
-                  </div>
-                </div>
-
 
                 <div class="form-row">
 	          <div class="form-question" 
@@ -197,16 +184,12 @@
 	              <img src="images/information.png"
 		           tal:attributes="src python:request.staticdirect('/images/information.png')"
 		           i18n:attributes="alt" alt="Information" /></a>
+                    <div class="form-field-description" i18n:translate="license.mark.curator_href_help">
+                      This may be your main website or the information
+                      page about your on a hosting website, such as Flickr
+                      Commons.
+                    </div>
 	          </div>
-                </div>
-
-                <div id="help_curator_href" class="help_panel">
-                  <div class="hd" i18n:translate="util.url">Name</div>
-                  <div class="bd" i18n:translate="license.mark.curator_href_help">
-                    This may be your main website or the information
-                    page about your on a hosting website, such as Flickr
-                    Commons.
-                  </div>
                 </div>
               </div>
 
