@@ -109,7 +109,7 @@
 	          </div>
                 </div>
               </div>
-
+              <br />
 
               <div class="form-section">
                 <h3 i18n:translate="util.creator">Creator</h3>
@@ -143,6 +143,7 @@
 	          </div>
                 </div>
               </div>
+              <br />
 
               <div class="form-section">
                 <h3 i18n:translate="util.identifying_party">Identifying Individual or Organization</h3>
@@ -173,6 +174,7 @@
 	          </div>
                 </div>
               </div>
+              <br />
 
               <div class="form-row">
 	        <div class="form-question">&nbsp;</div>
