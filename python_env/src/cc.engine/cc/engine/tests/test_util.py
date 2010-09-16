@@ -90,6 +90,8 @@ def test_safer_resource_filename():
 
 
 def test_send_email():
+    util._clear_test_inboxes()
+
     # send the email
     util.send_email(
         "sender@creativecommons.org",

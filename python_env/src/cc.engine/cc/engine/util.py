@@ -383,7 +383,7 @@ def safer_resource_filename(package, resource):
 #
 # ***IMPORTANT!***
 # ----------------
-# After running tests that call functions which send email, you should
+# Before running tests that call functions which send email, you should
 # always call _clear_test_inboxes() to "wipe" the inboxes clean. 
 
 EMAIL_TEST_INBOX = []
