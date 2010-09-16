@@ -1,3 +1,4 @@
+import email
 import StringIO
 
 from nose.tools import assert_raises
@@ -5,6 +6,10 @@ from lxml import etree
 
 import cc.license
 from cc.engine import util
+
+
+util._activate_testing()
+
 
 class FakeAcceptLanguage(object):
     def __init__(self, best_matches):
@@ -82,3 +87,37 @@ def test_safer_resource_filename():
         util.UnsafeResource,
         util.safer_resource_filename,
         'cc.engine', '../../templates/test/bunnies.pt')
+
+
+def test_send_email():
+    # send the email
+    util.send_email(
+        "sender@creativecommons.org",
+        ["amanda@example.org", "akila@example.org"],
+        "Testing is so much fun!",
+        """HAYYY GUYS!
+
+I hope you like unit tests JUST AS MUCH AS I DO!""")
+
+    # check the main inbox
+    assert len(util.EMAIL_TEST_INBOX) == 1
+    message = util.EMAIL_TEST_INBOX.pop()
+    assert message['From'] == "sender@creativecommons.org"
+    assert message['To'] == "amanda@example.org, akila@example.org"
+    assert message['Subject'] == "Testing is so much fun!"
+    assert message.get_payload() == """HAYYY GUYS!
+
+I hope you like unit tests JUST AS MUCH AS I DO!"""
+
+    # Check everything that the FakeMhost.sendmail() method got is correct
+    assert len(util.EMAIL_TEST_MBOX_INBOX) == 1
+    mbox_dict = util.EMAIL_TEST_MBOX_INBOX.pop()
+    assert mbox_dict['from'] == "sender@creativecommons.org"
+    assert mbox_dict['to'] == ["amanda@example.org", "akila@example.org"]
+    mbox_message = email.message_from_string(mbox_dict['message'])
+    assert mbox_message['From'] == "sender@creativecommons.org"
+    assert mbox_message['To'] == "amanda@example.org, akila@example.org"
+    assert mbox_message['Subject'] == "Testing is so much fun!"
+    assert mbox_message.get_payload() == """HAYYY GUYS!
+
+I hope you like unit tests JUST AS MUCH AS I DO!"""
