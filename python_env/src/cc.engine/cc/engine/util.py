@@ -2,7 +2,6 @@ import csv
 import os
 import pkg_resources
 import string
-import re
 import smtplib
 
 from email.MIMEText import MIMEText
