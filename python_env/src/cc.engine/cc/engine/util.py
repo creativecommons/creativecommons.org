@@ -43,16 +43,16 @@ class Error(Exception): pass
 ### Special ZPT unit test hackery begins HERE
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ZPT_TEST_ENABLED = False
+TESTS_ENABLED = False
 ZPT_TEST_TEMPLATES = {}
 class CCLPageTemplateFileTester(CCLPageTemplateFile):
     def pt_render(self, namespace, *args, **kwargs):
         ZPT_TEST_TEMPLATES[self.filename] = namespace
         return CCLPageTemplateFile.pt_render(self, namespace, *args, **kwargs)
 
-def _activate_zpt_testing():
-    global ZPT_TEST_ENABLED
-    ZPT_TEST_ENABLED = True
+def _activate_testing():
+    global TESTS_ENABLED
+    TESTS_ENABLED = True
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ### </Special ZPT unit test hackery>
@@ -75,7 +75,7 @@ def full_zpt_filename(template_path):
 def get_zpt_template(template_path, target_lang=None):
     full_template_path = full_zpt_filename(template_path)
 
-    if ZPT_TEST_ENABLED:
+    if TESTS_ENABLED:
         ptf_class = CCLPageTemplateFileTester
     else:
         ptf_class = CCLPageTemplateFile

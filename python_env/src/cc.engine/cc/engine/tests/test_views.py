@@ -16,7 +16,7 @@ from cc.engine.licenses import views as license_views
 import cc.license
 from cc.license._lib import rdf_helper
 
-util._activate_zpt_testing()
+util._activate_testing()
 
 
 ### ---------------
