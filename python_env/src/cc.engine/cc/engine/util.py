@@ -40,6 +40,12 @@ class Error(Exception): pass
 
 
 TESTS_ENABLED = False
+def _activate_testing():
+    """
+    Call this to activate testing in util.py
+    """
+    global TESTS_ENABLED
+    TESTS_ENABLED = True
 
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -51,10 +57,6 @@ class CCLPageTemplateFileTester(CCLPageTemplateFile):
     def pt_render(self, namespace, *args, **kwargs):
         ZPT_TEST_TEMPLATES[self.filename] = namespace
         return CCLPageTemplateFile.pt_render(self, namespace, *args, **kwargs)
-
-def _activate_testing():
-    global TESTS_ENABLED
-    TESTS_ENABLED = True
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ### </Special ZPT unit test hackery>
