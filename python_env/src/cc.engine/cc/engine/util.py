@@ -39,11 +39,13 @@ LANGUAGE_JURISDICTION_MAPPING = {}
 class Error(Exception): pass
 
 
+TESTS_ENABLED = False
+
+
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ### Special ZPT unit test hackery begins HERE
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TESTS_ENABLED = False
 ZPT_TEST_TEMPLATES = {}
 class CCLPageTemplateFileTester(CCLPageTemplateFile):
     def pt_render(self, namespace, *args, **kwargs):
@@ -354,6 +356,56 @@ def safer_resource_filename(package, resource):
 
     return filename
 
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Special email test stuff begins HERE
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# We have two "test inboxes" here, both are a list of dictionaries:
+# 
+# EMAIL_TEST_INBOX:
+# ----------------
+#   If you're writing test views, you'll probably want to check this.
+#   It should have everything nicely split out into:
+#    - subject
+#    - from
+#    - to (a list of email recipient addresses)
+#    - body
+#
+# EMAIL_TEST_MBOX_INBOX:
+# ----------------------
+#   This collects the messages from the FakeMhost inbox.  It's reslly
+#   just here for testing the send_email method itself.
+#
+#   Anyway this contains:
+#    - from
+#    - to: a list of email recipient addresses
+#    - message: not just the body, but the whole message, including
+#      headers, etc.
+
+EMAIL_TEST_INBOX = []
+EMAIL_TEST_MBOX_INBOX = []
+
+
+class FakeMhost(object):
+    def connect(self):
+        pass
+
+    def sendmail(from_addr, to_addrs, message):
+        EMAIL_TEST_MBOX_INBOX.append(
+            {'from': from_addr,
+             'to': to_addrs,
+             'message': message})
+
+def _clear_test_inboxes():
+    global EMAIL_TEST_INBOX
+    global EMAIL_TEST_MBOX_INBOX
+    EMAIL_TEST_INBOX = []
+    EMAIL_TEST_MBOX_INBOX = []
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### </Special email test stuff>
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def send_email(from_addr, to_addrs, subject, message_body):
     # TODO: make a mock mhost if testing is enabled
