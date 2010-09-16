@@ -454,25 +454,6 @@ def work_email_popup(request):
     return Response(template.pt_render(context))
 
 
-CC_WORK_EMAIL_MESSAGE_TEMPLATE = u"""
-
-Thank you for using a Creative Commons License for your work "%s"
-
-You have selected the %s License. You should include a
-reference to this license on the web page that includes the work in question.
-
-Here is the suggested HTML:
-
-%s
-
-Further tips for using the supplied HTML and RDF are here:
-http://creativecommons.org/learn/technology/usingmarkup
-
-Thank you!
-Creative Commons Support
-info@creativecommons.org
-"""
-
 def work_email_send(request):
     target_lang = util.get_target_lang_from_request(request)
 
@@ -482,13 +463,9 @@ def work_email_send(request):
     license_name = request_form.get('license_name').decode('utf-8')
     license_html = request_form.get('license_html').decode('utf-8')
 
-    message_body = CC_WORK_EMAIL_MESSAGE_TEMPLATE % (
-        work_title, license_name, license_html)
-
-    util.send_email(
-        'info@creativecommons.org', [email_addr],
-        'Your Creative Commons License Information',
-        message_body)
+    util.send_license_info_email(
+        license_name, license_html,
+        email_addr, target_lang)
 
     template = util.get_zpt_template(
         'chooser_pages/emailhtml.pt', target_lang)
@@ -640,26 +617,6 @@ def cc0_confirm(request):
     return Response(template.pt_render(context))
 
 
-CC0_EMAIL_MESSAGE_TEMPLATE = u"""
-
-Thank you for using a Creative Commons License for your work.
-
-You have selected %s. You should include a reference to this
-license on the web page that includes the work in question.
-
-Here is the suggested HTML:
-
-%s
-
-Further tips for using the supplied HTML and RDF are here:
-http://creativecommons.org/learn/technology/usingmarkup
-
-Thank you!
-Creative Commons Support
-info@creativecommons.org
-"""
-
-
 def cc0_results(request):
     target_lang = util.get_target_lang_from_request(request)
 
@@ -688,11 +645,9 @@ def cc0_results(request):
     successful_send = False
     if email_addr:
         try:
-            util.send_email(
-                'info@creativecommons.org', [email_addr],
-                'Your Creative Commons License Information',
-                CC0_EMAIL_MESSAGE_TEMPLATE % (
-                    cc0_license.title(target_lang), license_html))
+            util.send_license_info_email(
+                license.title(target_lang), license_html,
+                email_addr, target_lang)
 
             if request_form.get('send_updates', False):
                 util.send_email(
@@ -789,12 +744,10 @@ def pdmark_results(request):
     successful_send = False
     if email_addr:
         try:
-            util.send_email(
-                'info@creativecommons.org', [email_addr],
-                'Your Creative Commons License Information',
-                CC0_EMAIL_MESSAGE_TEMPLATE % (
-                    license.title(target_lang), license_html))
-    
+            util.send_license_info_email(
+                license.title(target_lang), license_html,
+                email_addr, target_lang)
+
             if request_form.get('send_updates', False):
                 util.send_email(
                     email_addr, ["cc-zero-announce-request@lists.ibiblio.org"],
