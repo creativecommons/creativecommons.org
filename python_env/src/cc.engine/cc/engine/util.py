@@ -398,7 +398,7 @@ class FakeMhost(object):
     def connect(self):
         pass
 
-    def sendmail(from_addr, to_addrs, message):
+    def sendmail(self, from_addr, to_addrs, message):
         EMAIL_TEST_MBOX_INBOX.append(
             {'from': from_addr,
              'to': to_addrs,
