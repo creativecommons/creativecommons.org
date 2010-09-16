@@ -438,7 +438,7 @@ LICENSE_INFO_EMAIL_BODY = z_gettext(
     'license.info_email_body',
     """Thank you for using a Creative Commons legal tool for your work.
 
-You have selected ${license_name}.
+You have selected ${license_title}.
 You should include a reference to this on the web page that includes
 the work in question.
 
