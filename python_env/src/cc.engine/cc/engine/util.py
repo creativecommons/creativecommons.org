@@ -361,16 +361,12 @@ def safer_resource_filename(package, resource):
 ### Special email test stuff begins HERE
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# We have two "test inboxes" here, both are a list of dictionaries:
+# We have two "test inboxes" here:
 # 
 # EMAIL_TEST_INBOX:
 # ----------------
 #   If you're writing test views, you'll probably want to check this.
-#   It should have everything nicely split out into:
-#    - subject
-#    - from
-#    - to (a list of email recipient addresses)
-#    - body
+#   It contains a list of MIMEText messages.
 #
 # EMAIL_TEST_MBOX_INBOX:
 # ----------------------
@@ -382,12 +378,21 @@ def safer_resource_filename(package, resource):
 #    - to: a list of email recipient addresses
 #    - message: not just the body, but the whole message, including
 #      headers, etc.
+#
+# ***IMPORTANT!***
+# ----------------
+# After running tests that call functions which send email, you should
+# always call _clear_test_inboxes() to "wipe" the inboxes clean. 
 
 EMAIL_TEST_INBOX = []
 EMAIL_TEST_MBOX_INBOX = []
 
 
 class FakeMhost(object):
+    """
+    Just a fake mail host so we can capture and test messages
+    from send_email
+    """
     def connect(self):
         pass
 
@@ -409,13 +414,20 @@ def _clear_test_inboxes():
 
 def send_email(from_addr, to_addrs, subject, message_body):
     # TODO: make a mock mhost if testing is enabled
-    mhost = smtplib.SMTP()
+    if TESTS_ENABLED:
+        mhost = FakeMhost()
+    else:
+        mhost = smtplib.SMTP()
+
     mhost.connect()
 
     message = MIMEText(message_body.encode('utf-8'), 'plain', 'utf-8')
     message['Subject'] = subject
     message['From'] = from_addr
     message['To'] = ', '.join(to_addrs)
+
+    if TESTS_ENABLED:
+        EMAIL_TEST_INBOX.append(message)
 
     return mhost.sendmail(from_addr, to_addrs, message.as_string())
 
