@@ -123,3 +123,39 @@ I hope you like unit tests JUST AS MUCH AS I DO!"""
     assert mbox_message.get_payload() == """HAYYY GUYS!
 
 I hope you like unit tests JUST AS MUCH AS I DO!"""
+
+
+SILLY_LICENSE_HTML = """This work available under a
+<a href="http://example.org/goes/nowhere">very silly license</a>."""
+
+def test_send_license_info_email():
+    util._clear_test_inboxes()
+
+    util.send_license_info_email(
+        'Creative Commons Very-Silly License 5.8',
+        SILLY_LICENSE_HTML,
+        'ilovesillylicenses@example.org', 'en')
+
+    assert len(util.EMAIL_TEST_INBOX) == 1
+    message = util.EMAIL_TEST_INBOX.pop()
+    assert message['From'] == "info@creativecommons.org"
+    assert message['To'] == "ilovesillylicenses@example.org"
+    assert message['Subject'] == "Your Creative Commons License Information"
+    assert message.get_payload() == """Thank you for using a Creative Commons legal tool for your work.
+
+You have selected Creative Commons Very-Silly License 5.8.
+You should include a reference to this on the web page that includes
+the work in question.
+
+Here is the suggested HTML:
+
+This work available under a
+<a href="http://example.org/goes/nowhere">very silly license</a>.
+
+Tips for marking your work can be found at
+http://wiki.creativecommons.org/Marking.  Information on the supplied HTML and
+metadata can be found at http://wiki.creativecommons.org/CC_REL.
+
+Thank you!
+Creative Commons Support
+info@creativecommons.org"""
