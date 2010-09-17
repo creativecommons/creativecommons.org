@@ -122,15 +122,6 @@ YAHOO.util.Event.onDOMReady(function() {
                 <span tal:replace="email_addr" i18n:name="email_addr">
                   foo@example.com</span>.
               </p>
-
-              <span tal:omit-tag="" 
-                    tal:condition="requested_send_updates"
-                    i18n:translate="license.mark.subscribed_to_updates">
-                You have asked to be notified of updates to Public Domain Mark.
-                A subscription request has been sent on your behalf; you must
-                click the link in the confirmation email to complete the sign-up
-                process.
-              </span>
             </div>
           </metal:email_container>
         </metal:email_results>
@@ -138,8 +129,7 @@ YAHOO.util.Event.onDOMReady(function() {
         <metal:request_email tal:condition="not:email_requested">
           <p i18n:translate="license.mark.send_email_updates">
             If you'd like to get the HTML with embedded metadata via
-            email and optionally receive updates about the Public
-            Domain Mark, fill in your email address below.
+            email, fill in your email address below.
           </p>      
 
           <form action="" tal:attributes="action request/path_info">
@@ -152,13 +142,6 @@ YAHOO.util.Event.onDOMReady(function() {
             <div class="more-metadata">
               <div i18n:translate="util.your_email">Your email:</div>
               <input type="textbox" name="email" />
-            </div>
-
-            <div class="more-metadata">
-              <div i18n:translate="license.mark.update_opt_in">
-                Send me updates about the Public Domain Mark:
-              </div>
-              <input type="checkbox" name="send_updates" value="1" /><br/>
             </div>
 
             <input id="do-send-email" type="submit" value="Send" 

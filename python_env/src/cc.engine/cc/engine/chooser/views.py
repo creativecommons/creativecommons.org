@@ -747,11 +747,6 @@ def pdmark_results(request):
             util.send_license_info_email(
                 license.title(target_lang), license_html,
                 email_addr, target_lang)
-
-            if request_form.get('send_updates', False):
-                util.send_email(
-                    email_addr, ["cc-zero-announce-request@lists.ibiblio.org"],
-                    'subscribe', '')
     
             successful_send = True
     
