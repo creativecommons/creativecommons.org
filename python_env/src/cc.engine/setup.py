@@ -50,6 +50,7 @@ setup(
         'webtest',
         'wsgi_cache',
         'flup==1.0.2',
+        'simplejson',
         ],
 
     # author metadata
