@@ -644,20 +644,19 @@ def cc0_results(request):
     email_addr = request_form.get('email')
     successful_send = False
     if email_addr:
-        try:
-            util.send_license_info_email(
-                license.title(target_lang), license_html,
-                email_addr, target_lang)
+        successful_send = util.send_license_info_email(
+            license.title(target_lang), license_html,
+            email_addr, target_lang)
 
-            if request_form.get('send_updates', False):
+        # Also subscribe the user to the cc0 announce mailing list,
+        # if requested
+        if successful_send and request_form.get('send_updates', False):
+            try:
                 util.send_email(
                     email_addr, ["cc-zero-announce-request@lists.ibiblio.org"],
                     'subscribe', '')
-
-            successful_send = True
-
-        except SMTPException:
-            successful_send = False
+            except SMTPException:
+                successful_send = False
 
     context = _base_context(request, target_lang)
     context.update({
@@ -743,15 +742,8 @@ def pdmark_results(request):
     email_addr = request_form.get('email')
     successful_send = False
     if email_addr:
-        try:
-            util.send_license_info_email(
-                license.title(target_lang), license_html,
-                email_addr, target_lang)
-    
-            successful_send = True
-    
-        except SMTPException:
-            successful_send = False
+        successful_send = util.send_license_info_email(
+            license.title(target_lang), license_html,
 
     context = _base_context(request, target_lang)
     context.update({
