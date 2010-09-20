@@ -29,7 +29,7 @@ def _base_context(request, target_lang=None):
             or util.get_target_lang_from_request(request)),
         'active_languages': util.active_languages(),
         }
-    
+
     context.update(util.rtl_context_stuff(target_lang))
     return context
 
@@ -344,6 +344,7 @@ def choose_results_view(request):
         {'engine_template': engine_template,
          'license': license,
          'license_slim_logo': license_slim_logo,
+         'license_title': license.title(target_lang),
          'license_html': license_html})
 
     if request.GET.get('partner') or request.matchdict.get('publicdomain'):
