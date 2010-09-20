@@ -745,6 +745,7 @@ def pdmark_results(request):
     if email_addr:
         successful_send = util.send_license_info_email(
             license.title(target_lang), license_html,
+            email_addr, target_lang)
 
     context = _base_context(request, target_lang)
     context.update({
