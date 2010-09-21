@@ -43,6 +43,6 @@ class RestrictHttpMethods(object):
             if request.method not in self.allowed_methods:
                 return HTTPMethodNotAllowed()
 
-            return controller(request, license=license, *args, **kwargs)
+            return controller(request, *args, **kwargs)
 
         return _make_safe(new_controller_func, controller)
