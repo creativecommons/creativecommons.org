@@ -28,6 +28,13 @@ def get_license(controller):
 
 
 class RestrictHttpMethods(object):
+    """
+    A decorator to restrict which methods are allowed on this controller.
+
+    EG:
+      @RestrictHttpMethods('GET', 'PUT')
+      def my_view(request):
+    """
     def __init__(self, *allowed_methods):
         self.allowed_methods = allowed_methods
 
