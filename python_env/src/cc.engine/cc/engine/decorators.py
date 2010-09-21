@@ -38,9 +38,9 @@ class RestrictHttpMethods(object):
     def __init__(self, *allowed_methods):
         self.allowed_methods = allowed_methods
 
-    def __call__(controller):
+    def __call__(self, controller):
         def new_controller_func(request, *args, **kwargs):
-            if request.method not in self.allowed_methods
+            if request.method not in self.allowed_methods:
                 return HTTPMethodNotAllowed()
 
             return controller(request, license=license, *args, **kwargs)
