@@ -1,4 +1,4 @@
-from webob.exc import HTTPNotFound
+from webob.exc import HTTPNotFound, HTTPMethodNotAllowed
 
 from cc.license import by_code, CCLicenseError
 
@@ -25,3 +25,17 @@ def get_license(controller):
         return controller(request, license=license, *args, **kwargs)
 
     return _make_safe(new_controller_func, controller)
+
+
+class RestrictHttpMethods(object):
+    def __init__(self, *allowed_methods):
+        self.allowed_methods = allowed_methods
+
+    def __call__(controller):
+        def new_controller_func(request, *args, **kwargs):
+            if request.method not in self.allowed_methods
+                return HTTPMethodNotAllowed()
+
+            return controller(request, license=license, *args, **kwargs)
+
+        return _make_safe(new_controller_func, controller)
