@@ -8,6 +8,7 @@ from webob import Response, exc
 from zope.i18n import translate
 
 from cc.engine import util
+from cc.engine.decorators import RestrictHttpMethods
 from cc.engine.chooser.xmp_template import license_xmp_template
 from cc.license._lib.functions import get_selector_jurisdictions
 from cc.i18n import ccorg_i18n_setup
@@ -455,6 +456,7 @@ def work_email_popup(request):
     return Response(template.pt_render(context))
 
 
+@RestrictHttpMethods('POST')
 def work_email_send(request):
     target_lang = util.get_target_lang_from_request(request)
 
@@ -644,7 +646,7 @@ def cc0_results(request):
     ## Did the user request an email?
     email_addr = request_form.get('email')
     successful_send = False
-    if email_addr:
+    if email_addr and request.method == 'POST':
         successful_send = util.send_license_info_email(
             license.title(target_lang), license_html,
             email_addr, target_lang)
@@ -742,7 +744,7 @@ def pdmark_results(request):
     ## Did the user request an email?
     email_addr = request_form.get('email')
     successful_send = False
-    if email_addr:
+    if email_addr and request.method == 'POST':
         successful_send = util.send_license_info_email(
             license.title(target_lang), license_html,
             email_addr, target_lang)
