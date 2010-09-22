@@ -462,7 +462,6 @@ def work_email_send(request):
 
     request_form = request.GET or request.POST
     email_addr = request_form.get('to_email', '').decode('utf-8')
-    work_title = request_form.get('work_title', '').decode('utf-8')
     license_name = request_form.get('license_name').decode('utf-8')
     license_html = request_form.get('license_html').decode('utf-8')
 
