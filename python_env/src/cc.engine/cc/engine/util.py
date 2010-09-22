@@ -58,6 +58,9 @@ class CCLPageTemplateFileTester(CCLPageTemplateFile):
         ZPT_TEST_TEMPLATES[self.filename] = namespace
         return CCLPageTemplateFile.pt_render(self, namespace, *args, **kwargs)
 
+def _clear_zpt_test_templates():
+    ZPT_TEST_TEMPLATES.clear()
+
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ### </Special ZPT unit test hackery>
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
