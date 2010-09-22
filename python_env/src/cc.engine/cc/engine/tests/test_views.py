@@ -220,7 +220,8 @@ class TestEmailSenderViews(unittest.TestCase):
         assert 'To the extent possible under law,' in mail_body
 
         # check that the right template was loaded
-        assert util.ZPT_TEST_TEMPLATES.has_key('chooser_pages/zero/results.pt')
+        assert util.ZPT_TEST_TEMPLATES.has_key(
+            util.full_zpt_filename('chooser_pages/zero/results.pt'))
 
         # For doing a GET (shouldn't send email!
         # --------------------------------------
@@ -234,7 +235,8 @@ class TestEmailSenderViews(unittest.TestCase):
         assert len(util.EMAIL_TEST_INBOX) == 0
 
         # check that the right template was loaded
-        assert util.ZPT_TEST_TEMPLATES.has_key('chooser_pages/zero/results.pt')
+        assert util.ZPT_TEST_TEMPLATES.has_key(
+            util.full_zpt_filename('chooser_pages/zero/results.pt'))
 
 
     def test_pdmark_results_email_send(self):
