@@ -1,6 +1,7 @@
 import cgi
 import pkg_resources
 import urlparse
+import unittest
 import lxml
 try:
     import json
@@ -188,3 +189,53 @@ def test_deeds_up_for_licenses():
     for license_uri in license_uris:
         license_path = urlparse.urlsplit(license_uri)[2]
         TESTAPP.get(license_path)
+
+
+class TestEmailSenderViews(unittest.TestCase):
+    def setUp(self):
+        util._clear_test_inboxes()
+        util._clear_zpt_test_templates()
+        
+    def test_work_email_send(self):
+        pass
+
+    def test_cc0_results_email_send(self):
+        # For doing a POST (email sending time!)
+        # --------------------------------------
+        results = TESTAPP.post(
+            '/choose/zero/results',
+            {'email': 'recipient@example.org'})
+        
+        # assert that there's 1 message in the inbox,
+        # and that it's the right one
+        assert len(util.EMAIL_TEST_INBOX) == 1
+        sent_mail = util.EMAIL_TEST_INBOX.pop()
+        assert sent_mail['To'] == 'recipient@example.org'
+        assert sent_mail['From'] == 'info@creativecommons.org'
+        assert sent_mail['Subject'] == \
+            "Your Creative Commons License Information"
+        mail_body = sent_mail.get_payload()
+
+        assert 'You have selected CC0 1.0 Universal' in mail_body
+        assert 'To the extent possible under law,' in mail_body
+
+        # check that the right template was loaded
+        assert util.ZPT_TEST_TEMPLATES.has_key('chooser_pages/zero/results.pt')
+
+        # For doing a GET (shouldn't send email!
+        # --------------------------------------
+        util._clear_test_inboxes()
+        util._clear_zpt_test_templates()
+
+        results = TESTAPP.get(
+            '/choose/zero/results?email=recipient@example.org')
+        
+        # assert that there's no messages in the inbox
+        assert len(util.EMAIL_TEST_INBOX) == 0
+
+        # check that the right template was loaded
+        assert util.ZPT_TEST_TEMPLATES.has_key('chooser_pages/zero/results.pt')
+
+
+    def test_pdmark_results_email_send(self):
+        pass
