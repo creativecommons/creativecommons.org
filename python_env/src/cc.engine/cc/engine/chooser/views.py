@@ -648,7 +648,7 @@ def cc0_results(request):
     successful_send = False
     if email_addr and request.method == 'POST':
         successful_send = util.send_license_info_email(
-            license.title(target_lang), license_html,
+            cc0_license.title(target_lang), license_html,
             email_addr, target_lang)
 
         # Also subscribe the user to the cc0 announce mailing list,
