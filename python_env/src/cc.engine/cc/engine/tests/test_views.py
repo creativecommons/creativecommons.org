@@ -197,7 +197,38 @@ class TestEmailSenderViews(unittest.TestCase):
         util._clear_zpt_test_templates()
         
     def test_work_email_send(self):
-        pass
+        # For doing a POST (email sending time!)
+        # --------------------------------------
+        results = TESTAPP.post(
+            '/choose/work-email',
+            {'to_email': 'recipient@example.org',
+             'work_title': 'Floobie Bletch',
+             'license_name': 'Scroll of Charging',
+             'license_html': 'You feel charged up!'})
+        
+        # assert that there's 1 message in the inbox,
+        # and that it's the right one
+        assert len(util.EMAIL_TEST_INBOX) == 1
+        sent_mail = util.EMAIL_TEST_INBOX.pop()
+        assert sent_mail['To'] == 'recipient@example.org'
+        assert sent_mail['From'] == 'info@creativecommons.org'
+        assert sent_mail['Subject'] == \
+            "Your Creative Commons License Information"
+        mail_body = sent_mail.get_payload()
+
+        assert 'You have selected Scroll of Charging' in mail_body
+        assert 'You feel charged up!' in mail_body
+
+        # check that the right template was loaded
+        assert util.ZPT_TEST_TEMPLATES.has_key(
+            util.full_zpt_filename('chooser_pages/emailhtml.pt'))
+
+        # For doing a GET (shouldn't send email!)
+        # ---------------------------------------
+        results = TESTAPP.get(
+            '/choose/work-email?license_name=Scroll+of+Charging&to_email=recipient%40example.org&work_title=Floobie+Bletch&license_html=You+feel+charged+up%21',
+            expect_errors=True)
+        assert results.status_int == 405
 
     def test_cc0_results_email_send(self):
         # For doing a POST (email sending time!)
@@ -223,8 +254,8 @@ class TestEmailSenderViews(unittest.TestCase):
         assert util.ZPT_TEST_TEMPLATES.has_key(
             util.full_zpt_filename('chooser_pages/zero/results.pt'))
 
-        # For doing a GET (shouldn't send email!
-        # --------------------------------------
+        # For doing a GET (shouldn't send email!)
+        # ---------------------------------------
         util._clear_test_inboxes()
         util._clear_zpt_test_templates()
 
@@ -263,8 +294,8 @@ class TestEmailSenderViews(unittest.TestCase):
         assert util.ZPT_TEST_TEMPLATES.has_key(
             util.full_zpt_filename('chooser_pages/pdmark/results.pt'))
 
-        # For doing a GET (shouldn't send email!
-        # --------------------------------------
+        # For doing a GET (shouldn't send email!)
+        # ---------------------------------------
         util._clear_test_inboxes()
         util._clear_zpt_test_templates()
 
