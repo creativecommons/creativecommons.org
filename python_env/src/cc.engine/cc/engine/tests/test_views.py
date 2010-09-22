@@ -199,7 +199,7 @@ class TestEmailSenderViews(unittest.TestCase):
     def test_work_email_send(self):
         # For doing a POST (email sending time!)
         # --------------------------------------
-        results = TESTAPP.post(
+        response = TESTAPP.post(
             '/choose/work-email',
             {'to_email': 'recipient@example.org',
              'work_title': 'Floobie Bletch',
@@ -225,15 +225,15 @@ class TestEmailSenderViews(unittest.TestCase):
 
         # For doing a GET (shouldn't send email!)
         # ---------------------------------------
-        results = TESTAPP.get(
+        response = TESTAPP.get(
             '/choose/work-email?license_name=Scroll+of+Charging&to_email=recipient%40example.org&work_title=Floobie+Bletch&license_html=You+feel+charged+up%21',
             expect_errors=True)
-        assert results.status_int == 405
+        assert response.status_int == 405
 
     def test_cc0_results_email_send(self):
         # For doing a POST (email sending time!)
         # --------------------------------------
-        results = TESTAPP.post(
+        response = TESTAPP.post(
             '/choose/zero/results',
             {'email': 'recipient@example.org'})
         
@@ -259,7 +259,7 @@ class TestEmailSenderViews(unittest.TestCase):
         util._clear_test_inboxes()
         util._clear_zpt_test_templates()
 
-        results = TESTAPP.get(
+        response = TESTAPP.get(
             '/choose/zero/results?email=recipient@example.org')
         
         # assert that there's no messages in the inbox
@@ -273,7 +273,7 @@ class TestEmailSenderViews(unittest.TestCase):
     def test_pdmark_results_email_send(self):
         # For doing a POST (email sending time!)
         # --------------------------------------
-        results = TESTAPP.post(
+        response = TESTAPP.post(
             '/choose/mark/results',
             {'email': 'recipient@example.org'})
         
@@ -299,7 +299,7 @@ class TestEmailSenderViews(unittest.TestCase):
         util._clear_test_inboxes()
         util._clear_zpt_test_templates()
 
-        results = TESTAPP.get(
+        response = TESTAPP.get(
             '/choose/mark/results?email=recipient@example.org')
         
         # assert that there's no messages in the inbox
