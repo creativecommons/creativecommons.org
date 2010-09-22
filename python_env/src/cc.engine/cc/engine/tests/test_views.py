@@ -240,4 +240,40 @@ class TestEmailSenderViews(unittest.TestCase):
 
 
     def test_pdmark_results_email_send(self):
-        pass
+        # For doing a POST (email sending time!)
+        # --------------------------------------
+        results = TESTAPP.post(
+            '/choose/mark/results',
+            {'email': 'recipient@example.org'})
+        
+        # assert that there's 1 message in the inbox,
+        # and that it's the right one
+        assert len(util.EMAIL_TEST_INBOX) == 1
+        sent_mail = util.EMAIL_TEST_INBOX.pop()
+        assert sent_mail['To'] == 'recipient@example.org'
+        assert sent_mail['From'] == 'info@creativecommons.org'
+        assert sent_mail['Subject'] == \
+            "Your Creative Commons License Information"
+        mail_body = sent_mail.get_payload()
+
+        assert 'You have selected Public Domain Mark 1.0' in mail_body
+        assert 'free of copyright restrictions' in mail_body
+
+        # check that the right template was loaded
+        assert util.ZPT_TEST_TEMPLATES.has_key(
+            util.full_zpt_filename('chooser_pages/pdmark/results.pt'))
+
+        # For doing a GET (shouldn't send email!
+        # --------------------------------------
+        util._clear_test_inboxes()
+        util._clear_zpt_test_templates()
+
+        results = TESTAPP.get(
+            '/choose/mark/results?email=recipient@example.org')
+        
+        # assert that there's no messages in the inbox
+        assert len(util.EMAIL_TEST_INBOX) == 0
+
+        # check that the right template was loaded
+        assert util.ZPT_TEST_TEMPLATES.has_key(
+            util.full_zpt_filename('chooser_pages/pdmark/results.pt'))
