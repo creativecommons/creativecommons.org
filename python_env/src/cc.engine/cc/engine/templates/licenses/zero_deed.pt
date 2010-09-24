@@ -92,6 +92,12 @@
                  name="endorsement">endorsement</a>
               by the author or the affirmer.
             </li>
+
+            <li i18n:translate="deed.zero.other_info.no_warranty">
+              The person who associated a work with this deed makes no
+              warranties about the work, and disclaims liability for
+              all uses of the work.
+            </li>
           </ul>
         </li>
 
