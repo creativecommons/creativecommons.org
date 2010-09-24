@@ -34,11 +34,11 @@
         <li class="license nolaw">
           <p id="nolaw-text" style="margin-bottom:1em;"
              i18n:translate="deed.zero.nocopyright-text">
-            The person who associated a work with this document
-            has dedicated the work to the Commons by waiving all
-            of his or her rights to the work worldwide under copyright law
-            and all related or neighboring legal rights he or she
-            had in the work, to the extent allowable by law.  
+            The person who associated a work with this deed
+            has <b>dedicated</b> the work to the public domain by
+            waiving all of his or her rights to the work worldwide
+            under copyright law, including all related and neighboring
+            rights, to the extent allowed by law.
           </p>
           <p i18n:translate="deed.zero.no-endorsment">
             Works under CC0 do not require attribution.  When citing
