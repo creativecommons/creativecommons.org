@@ -75,8 +75,13 @@
           <strong i18n:translate="util.other_information">Other Information</strong>
           &mdash; 
             <li i18n:translate="deed.zero.patent">
-              Patent or trademark rights held by the person who
-              associated this document with a work.
+              In no way are the patent or trademark rights of any
+              person affected by CC0, nor are the rights that other
+              persons may have in the work or in how the work is used,
+              such as
+              <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F"
+                 class="helpLink" id="publicity_rights"
+                 name="publicity_rights">publicity or privacy</a> rights.
             </li>
 
             <li i18n:translate="deed.publicity_rights">
