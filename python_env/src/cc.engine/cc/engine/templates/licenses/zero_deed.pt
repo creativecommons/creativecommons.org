@@ -74,11 +74,6 @@
         <li class="license">
           <strong i18n:translate="util.other_information">Other Information</strong>
           &mdash; 
-          <span tal:omit-tag=""
-                i18n:translate="deed.zero.other_rights">
-            In no way are any of the following rights affected by CC0:</span>
-          <ul>
-
             <li i18n:translate="deed.zero.patent">
               Patent or trademark rights held by the person who
               associated this document with a work.
