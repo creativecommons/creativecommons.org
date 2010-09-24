@@ -41,8 +41,9 @@
             rights, to the extent allowed by law.
           </p>
           <p i18n:translate="deed.zero.no-endorsment">
-            Works under CC0 do not require attribution.  When citing
-            the work, you should not imply endorsement by the author.
+            You can copy, modify, distribute and perform the work,
+            even for commercial purposes, all without asking
+            permission. See <b>Other Information</b> below.
           </p>
         </li>
         <p id="work-attribution-container" style="display:none;">
