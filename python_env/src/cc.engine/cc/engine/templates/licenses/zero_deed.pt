@@ -74,7 +74,7 @@
         <li class="license">
           <strong i18n:translate="util.other_information">Other Information</strong>
           &mdash; 
-            <li i18n:translate="deed.zero.patent">
+            <li i18n:translate="deed.zero.other_rights">
               In no way are the patent or trademark rights of any
               person affected by CC0, nor are the rights that other
               persons may have in the work or in how the work is used,
@@ -84,13 +84,12 @@
                  name="publicity_rights">publicity or privacy</a> rights.
             </li>
 
-            <li i18n:translate="deed.publicity_rights">
-              Rights other persons may have either in the work itself
-              or in how the work is used, such
-              as
-              <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F"
-                 class="helpLink" id="publicity_rights">publicity</a>
-              or privacy rights.
+            <li i18n:translate="deed.zero.no_endorsement">
+              When using or citing the work, you should not imply
+              <a href=""
+                 class="helpLink" id="endorsement"
+                 name="endorsement">endorsement</a>
+              by the author or the affirmer.
             </li>
           </ul>
         </li>
@@ -98,17 +97,16 @@
       </ul>
 
       <div id="help_publicity_rights">
-        <div class="hd" i18n:translate="deed.publicity_rights.help.title">
-          What are "Publicity Rights"?
-        </div>
+        <div class="hd" i18n:translate="util.other_rights">Other Rights</div>
         <div class="bd">
-          <p i18n:translate="deed.zero.publicity_rights.help">Publicity
-          rights allow individuals to control how their voice, image
-          or likeness is used for commercial purposes in public.  If a
-          work under CC0 includes the voice or image of anyone other
-          than the affirmer, a user of the work may need to get
-          permission from those individuals before using the work for
-          commercial purposes.</p>
+          <p i18n:translate="deed.zero.other_rights.help">
+            The use of a work free of copyright restrictions may be
+            otherwise regulated or limited. The work or its use may be
+            subject to personal data protection laws, publicity,
+            image, or privacy rights that allow a person to control
+            how their voice, image or likeness is used, or other
+            restrictions or limitations under applicable law.
+          </p>
 
           <p>
             <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F"
