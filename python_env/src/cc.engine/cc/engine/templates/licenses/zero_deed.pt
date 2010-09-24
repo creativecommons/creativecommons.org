@@ -117,10 +117,26 @@
 
           <p>
             <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F"
-               i18n:translate="util.learn_more">Learn more</a>.</p>
+               i18n:translate="util.learn_more">Learn more</a>.
+          </p>
         </div>
       </div>
 
+      <div id="help_endorsement">
+        <div class="hd" i18n:translate="util.endorsement">Endorsement</div>
+        <div class="bd">
+          <p i18n:translate="deed.zero.endorsement.help">
+            In some jurisdictions, wrongfully implying that an author,
+            publisher or anyone else endorses your use of a work may
+            be unlawful.
+          </p>
+
+          <p>
+            <a href=""
+               i18n:translate="util.learn_more">Learn more</a>.
+          </p>
+        </div>
+      </div>
     </div>
 
     <span id='referrer-metadata-container'/>
