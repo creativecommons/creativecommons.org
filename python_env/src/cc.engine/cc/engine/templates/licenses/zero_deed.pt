@@ -12,8 +12,11 @@
              tal:content="structure string:<!-- ${license/rdf} -->" />
 
   <h2 property="dc:title" 
-      metal:fill-slot="license-name" tal:content="license_title">
-    CC0
+      metal:fill-slot="license-name">
+    <small tal:content="license_title">CC0 1.0 Universal</small>
+    <br />
+    <span i18n:translate="util.public_domain_dedication"
+          tal:omit-tag="">Public Domain Dedication</span>
   </h2>
 
   <div metal:fill-slot="body" tal:omit-tag="">
