@@ -74,7 +74,7 @@
         <li class="license">
           <strong i18n:translate="util.other_information">Other Information</strong>
           &mdash; 
-            <li i18n:translate="deed.zero.other_rights">
+            <li i18n:translate="deed.zero.other_info.other_rights">
               In no way are the patent or trademark rights of any
               person affected by CC0, nor are the rights that other
               persons may have in the work or in how the work is used,
@@ -84,7 +84,7 @@
                  name="publicity_rights">publicity or privacy</a> rights.
             </li>
 
-            <li i18n:translate="deed.zero.no_endorsement">
+            <li i18n:translate="deed.zero.other_info.no_endorsement">
               When using or citing the work, you should not imply
               <a href=""
                  class="helpLink" id="endorsement"
