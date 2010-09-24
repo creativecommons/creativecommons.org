@@ -72,7 +72,7 @@
       <ul class="license-properties">
 
         <li class="license">
-          <strong i18n:translate="util.other_rights">Other Rights</strong>
+          <strong i18n:translate="util.other_information">Other Information</strong>
           &mdash; 
           <span tal:omit-tag=""
                 i18n:translate="deed.zero.other_rights">
