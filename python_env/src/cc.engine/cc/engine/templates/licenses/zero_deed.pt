@@ -85,9 +85,11 @@
             </li>
 
             <li i18n:translate="deed.zero.other_info.no_warranty">
-              The person who associated a work with this deed makes no
-              warranties about the work, and disclaims liability for
-              all uses of the work.
+              Unless expressly stated otherwise, the person who
+              associated a work with this deed makes no warranties
+              about the work, and disclaims liability for all uses of
+              the work, to the fullest extent permitted by applicable
+              law.
             </li>
 
             <li i18n:translate="deed.zero.other_info.no_endorsement">
