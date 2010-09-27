@@ -574,9 +574,9 @@ def publicdomain_result(request):
         work_info, target_lang)
 
     template = util.get_zpt_template(
-        'chooser_pages/publicdomain/publicdomain-4.pt')
+        'chooser_pages/publicdomain/publicdomain-4.pt', target_lang)
     engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt')
+        'macros_templates/engine.pt', target_lang)
 
     context = _base_context(request, target_lang)
     context.update({
