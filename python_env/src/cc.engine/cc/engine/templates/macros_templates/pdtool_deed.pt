@@ -47,7 +47,7 @@
     </script>
 
     <script type="text/javascript"
-            tal:attributes="src python:request.staticdirect('includes/referrer/deed.js')">
+            tal:attributes="src python:request.staticdirect('includes/referrer/pddeed.js')">
     </script>
 
     <script type="text/javascript"
