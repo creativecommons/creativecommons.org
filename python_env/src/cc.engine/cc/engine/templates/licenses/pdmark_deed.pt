@@ -40,23 +40,20 @@
                  id="work-details-block">
               <ul>
                 <li style="padding-bottom: 0.5em;"><strong>Work Details</strong></li>
-                <li id="meta_title"
-                    style="display:none">
+                <li style="display:none">
                   <span style="display:inline-block; width: 6em; text-align: right; margin-right: 0.5em;"
                         i18n:translate="deed.mark.workdetails.work">Work:</span>
-                  <a href="#"></a>
+                  <span id="meta_title"></span>
                 </li>
-                <li id="meta_author"
-                    style="display:none">
+                <li style="display:none">
                   <span style="display:inline-block; width: 6em; text-align: right; margin-right: 0.5em;"
                         i18n:translate="deed.mark.workdetails.author">Author:</span>
-                  <a href="#"></a>
+                  <span id="meta_author"></span>
                 </li>
-                <li id="meta_curator"
-                    style="display:none">
+                <li style="display:none">
                   <span style="display:inline-block; width: 6em; text-align: right; margin-right: 0.5em;"
                         i18n:translate="deed.mark.workdetails.curator">Identified by:</span>
-                  <a href="#"></a>
+                  <span id="meta_curator"></span>
                 </li>
 
                 <li id="work-attribution-container" style="margin-top: 25px;">
