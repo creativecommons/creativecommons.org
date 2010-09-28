@@ -36,7 +36,7 @@
           </li>
 
           <li class="license">
-            <div style="margin-top: 0px; padding-top:15px; padding-bottom: 0px; border-top: 1px solid #ddd;"
+            <div style="margin-top: 0px; padding-top:15px; padding-bottom: 0px; border-top: 1px solid #ddd; display:none;"
                  id="work-details-block">
               <ul>
                 <li style="padding-bottom: 0.5em;"><strong>Work Details</strong></li>
