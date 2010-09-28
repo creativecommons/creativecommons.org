@@ -39,6 +39,27 @@
             <div style="margin-top: 0px; padding-top:15px; padding-bottom: 0px; border-top: 1px solid #ddd; display:none;"
                  id="work-details-block">
               <ul>
+                <li class="license norms" style="display:none;">
+                  <p i18n:translate="deed.mark.normsapply">
+                    <a href="#" id="usage_guidelines"
+                       name="usage_guidelines">Non-binding use guidelines</a>
+                    apply to this work.
+                  </p>
+                </li>
+                <li class="license nolaw" style="display:none;">
+                  <p>
+                    The person who identified this public domain work has also
+                    waived any and all copyrights he or she may have in the
+                    work, including all related and neighboring rights, to the
+                    extent allowed by law.
+                    <a href="" class="helpLink" id="zero_help"
+                       name="zero_help">
+                      <img src="http://creativecommons.org/images/information.png"
+                           alt="Information" style="border: none; float:inherit;
+                                                    margin-bottom:-5px" /></a>
+                  </p>
+                </li>
+
                 <li style="padding-bottom: 0.5em;"><strong>Work Details</strong></li>
                 <li style="display:none">
                   <span style="display:inline-block; width: 6em; text-align: right; margin-right: 0.5em;"
