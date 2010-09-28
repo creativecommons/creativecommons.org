@@ -36,8 +36,41 @@
           </li>
 
           <li class="license">
-            <div style="margin-top: 0px; padding-top:15px; padding-bottom: 0px; border-top: 1px solid #ddd;">
-              <!-- XXX: Work details stuff will go here. -->
+            <div style="margin-top: 0px; padding-top:15px; padding-bottom: 0px; border-top: 1px solid #ddd;"
+                 id="work-details-block">
+              <ul>
+                <li style="padding-bottom: 0.5em;"><strong>Work Details</strong></li>
+                <li id="meta_title"
+                    style="display:none">
+                  <span style="display:inline-block; width: 6em; text-align: right; margin-right: 0.5em;"
+                        i18n:translate="deed.mark.workdetails.work">Work:</span>
+                  <a href="#"></a>
+                </li>
+                <li id="meta_author"
+                    style="display:none">
+                  <span style="display:inline-block; width: 6em; text-align: right; margin-right: 0.5em;"
+                        i18n:translate="deed.mark.workdetails.author">Author:</span>
+                  <a href="#"></a>
+                </li>
+                <li id="meta_curator"
+                    style="display:none">
+                  <span style="display:inline-block; width: 6em; text-align: right; margin-right: 0.5em;"
+                        i18n:translate="deed.mark.workdetails.curator">Identified by:</span>
+                  <a href="#"></a>
+                </li>
+
+                <li id="work-attribution-container" style="margin-top: 25px;">
+                  <strong>
+                    You can
+                    <a href="" class="helpLink"
+                       id="citation_help" name="citation_help">cite</a>
+                    this work with this HTML:
+                  </strong>
+                  <br />
+                  <input id="work-attribution" value="" />
+                </li>
+
+              </ul>
             </div>
           </li>
 
