@@ -103,42 +103,42 @@
         </li>
 
         <li class="license" style="display:none" id="work-details-block">
-            <div style="margin-top: 0px; padding-top:15px; padding-bottom: 0px; border-top: 1px solid #ddd;" >
-              <ul>
-                <li class="license norms" style="display:none;">
-                  <p i18n:translate="deed.normsapply">
-                    <a href="#" id="usage_guidelines"
-                       name="usage_guidelines">Non-binding use guidelines</a>
-                    apply to this work.
-                  </p>
-                </li>
+          <div style="margin-top: 0px; padding-top:15px; padding-bottom: 0px; border-top: 1px solid #ddd;" >
+            <ul>
+              <li class="license norms" style="display:none;">
+                <p i18n:translate="deed.normsapply">
+                  <a href="#" id="usage_guidelines"
+                     name="usage_guidelines">Non-binding use guidelines</a>
+                  apply to this work.
+                </p>
+              </li>
 
-                <li style="padding-bottom: 0.5em; display:none;"><strong>Work Details</strong></li>
-                <li style="display:none">
-                  <span class="work-details-item-title"
-                        i18n:translate="deed.workdetails.work">Work:</span>
-                  <span id="meta_title" class="work-details-item-value"></span>
-                </li>
-                <li style="display:none">
-                  <span class="work-details-item-title"
-                        i18n:translate="deed.workdetails.affirmer">Affirmer:</span>
-                  <span id="meta_affirmer" class="work-details-item-value"></span>
-                </li>
+              <li style="padding-bottom: 0.5em; display:none;"><strong>Work Details</strong></li>
+              <li style="display:none">
+                <span class="work-details-item-title"
+                      i18n:translate="deed.workdetails.work">Work:</span>
+                <span id="meta_title" class="work-details-item-value"></span>
+              </li>
+              <li style="display:none">
+                <span class="work-details-item-title"
+                      i18n:translate="deed.workdetails.affirmer">Affirmer:</span>
+                <span id="meta_affirmer" class="work-details-item-value"></span>
+              </li>
 
-                <li id="work-attribution-container" style="margin-top: 25px; display:none;">
-                  <strong i18n:translate="deed.cite_this_work">
-                    You can
-                    <a href="" class="helpLink"
-                       id="citation_help" name="citation_help">cite</a>
-                    this work with this HTML:
-                  </strong>
-                  <br />
-                  <input id="work-attribution" value="" />
-                </li>
+              <li id="work-attribution-container" style="margin-top: 25px; display:none;">
+                <strong i18n:translate="deed.cite_this_work">
+                  You can
+                  <a href="" class="helpLink"
+                     id="citation_help" name="citation_help">cite</a>
+                  this work with this HTML:
+                </strong>
+                <br />
+                <input id="work-attribution" value="" />
+              </li>
 
-              </ul>
-            </div>
-          </li>
+            </ul>
+          </div>
+        </li>
       </ul>
 
       <div id="help_publicity_rights">
