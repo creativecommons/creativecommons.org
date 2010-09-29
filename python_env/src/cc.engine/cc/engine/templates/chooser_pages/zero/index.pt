@@ -8,8 +8,6 @@
     <title metal:fill-slot="title">CC0</title>
 
     <metal:headers fill-slot="headers">
-      <base href="" tal:attributes="href python:request.urlgen('choose_cc0_landing')" />
-
       <link rel="stylesheet" type="text/css" 
 	    href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
       <link rel="stylesheet" type="text/css"
