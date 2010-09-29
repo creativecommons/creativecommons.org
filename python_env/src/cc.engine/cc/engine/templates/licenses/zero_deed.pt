@@ -46,26 +46,6 @@
             permission. See <b>Other Information</b> below.
           </p>
         </li>
-        <p id="work-attribution-container" style="display:none;">
-          <strong i18n:translate="deed.attribute_this_work">Attribute this work:</strong><br/>
-          <input id="work-attribution" value="" type="text"
-                 readonly="readonly" onclick="this.select()"
-                 onfocus="document.getElementById('work-attribution').select();"/>
-          <input id="license-code" type="hidden" 
-                 value="CC BY 3.0"
-                 tal:attributes="value python: 'CC %s %s' %
-                                 (license.license_code.upper(),
-                                  license.version)" />
-          <input id="license-url" type="hidden"
-                 value=""
-                 tal:attributes="value license/uri" />
-          <a href="" id="attribution_help">
-            <img src="images/information.png"
-                 tal:attributes="src python:request.staticdirect('images/information.png')"
-                 i18n:attributes="alt"
-                 alt="Information" />
-          </a>
-        </p>
       </ul>
     </div>
     <div id="deed-understanding">
