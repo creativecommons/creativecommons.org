@@ -149,10 +149,10 @@
             Endorsement
           </div>
           <div class="bd">
-            <p i18n:translate="deed.help.endorsement">
-              In some jurisdictions, wrongfully implying that an author,
-              publisher or anyone else endorses your use of a work may be
-              unlawful.
+            <p i18n:translate="deed.zero.endorsement.help">
+            In some jurisdictions, wrongfully implying that an author,
+            publisher or anyone else endorses your use of a work may
+            be unlawful.
             </p>
             <p>
               <a href="#" i18n:translate="util.learn_more">Learn more.</a>
