@@ -149,7 +149,7 @@
             Endorsement
           </div>
           <div class="bd">
-            <p i18n:translate="deed.mark.help.endorsement">
+            <p i18n:translate="deed.help.endorsement">
               In some jurisdictions, wrongfully implying that an author,
               publisher or anyone else endorses your use of a work may be
               unlawful.
@@ -164,7 +164,7 @@
           <div class="hd" i18n:translate="util.citation">
             Citation
           </div>
-          <div class="bd" i18n:translate="deed.mark.help.endorsement">
+          <div class="bd" i18n:translate="deed.help.endorsement">
             <p>
               Copy and paste the HTML provided into your webpage to
               easily cite this work.
@@ -180,7 +180,7 @@
             Moral Rights
           </div>
           <div class="bd">
-            <p i18n:translate="deed.mark.help.moralrights">
+            <p i18n:translate="deed.help.moralrights">
               Copyright laws in most jurisdictions around the world grant
               creators "moral rights" which may provide some redress if use of a
               work is considered "derogatory".
@@ -196,7 +196,7 @@
             Other Rights
           </div>
           <div class="bd">
-            <p i18n:translate="deed.mark.help.other_rights">
+            <p i18n:translate="deed.help.other_rights">
               The use of a work free of copyright restrictions may be otherwise
               regulated or limited.  The work or its use may be subject to
               personal data protection laws, publicity, image, or privacy rights
@@ -213,7 +213,7 @@
           <div class="hd"
                i18n:translate="util.term_of_copyright">Term of Copyright</div>
           <div class="bd">
-            <p i18n:translate="deed.mark.help.term_of_copyright">
+            <p i18n:translate="deed.help.term_of_copyright">
               Copyright terms vary jurisdiction to jurisdiction.  A work free of
               copyright restrictions in one jurisdiction may not be similarly
               free in other jurisdictions.
