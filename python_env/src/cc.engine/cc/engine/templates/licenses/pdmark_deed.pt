@@ -159,6 +159,22 @@
             </p>
           </div>
         </div>
+
+        <div id="help_citation_help">
+          <div class="hd" i18n:translate="util.citation">
+            Citation
+          </div>
+          <div class="bd" i18n:translate="deed.mark.help.endorsement">
+            <p>
+              Copy and paste the HTML provided into your webpage to
+              easily cite this work.
+            </p>
+            <p>
+              <a href="#" i18n:translate="util.learn_more">Learn more.</a>
+            </p>
+          </div>
+        </div>
+
         <div id="help_moral_rights">
           <div class="hd" i18n:translate="util.moralrights">
             Moral Rights
