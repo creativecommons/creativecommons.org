@@ -196,13 +196,13 @@
             Other Rights
           </div>
           <div class="bd">
-            <p i18n:translate="deed.help.other_rights">
-              The use of a work free of copyright restrictions may be otherwise
-              regulated or limited.  The work or its use may be subject to
-              personal data protection laws, publicity, image, or privacy rights
-              that allow a person to control how their voice, image or likeness
-              is used, or other restrictions or limitations under applicable
-              law.
+            <p i18n:translate="deed.zero.other_rights.help">
+            The use of a work free of copyright restrictions may be
+            otherwise regulated or limited. The work or its use may be
+            subject to personal data protection laws, publicity,
+            image, or privacy rights that allow a person to control
+            how their voice, image or likeness is used, or other
+            restrictions or limitations under applicable law.
             </p>
             <p>
               <a href="#" i18n:translate="util.learn_more">Learn more.</a>
