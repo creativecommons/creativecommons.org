@@ -164,7 +164,7 @@
           <div class="hd" i18n:translate="util.citation">
             Citation
           </div>
-          <div class="bd" i18n:translate="deed.help.endorsement">
+          <div class="bd" i18n:translate="deed.help.citation">
             <p>
               Copy and paste the HTML provided into your webpage to
               easily cite this work.
