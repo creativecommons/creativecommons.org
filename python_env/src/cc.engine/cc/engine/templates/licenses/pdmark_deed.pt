@@ -62,17 +62,17 @@
                 <li style="padding-bottom: 0.5em; display:none;"><strong>Work Details</strong></li>
                 <li style="display:none">
                   <span class="work-details-item-title"
-                        i18n:translate="deed.mark.workdetails.work">Work:</span>
+                        i18n:translate="deed.workdetails.work">Work:</span>
                   <span id="meta_title" class="work-details-item-value"></span>
                 </li>
                 <li style="display:none">
                   <span class="work-details-item-title"
-                        i18n:translate="deed.mark.workdetails.author">Author:</span>
+                        i18n:translate="deed.workdetails.author">Author:</span>
                   <span id="meta_author" class="work-details-item-value"></span>
                 </li>
                 <li style="display:none">
                   <span class="work-details-item-title"
-                        i18n:translate="deed.mark.workdetails.curator">Identified by:</span>
+                        i18n:translate="deed.workdetails.curator">Identified by:</span>
                   <span id="meta_curator" class="work-details-item-value"></span>
                 </li>
 
