@@ -103,7 +103,7 @@
         </li>
 
         <li class="license" style="display:none" id="work-details-block">
-          <div style="margin-top: 0px; padding-top:15px; padding-bottom: 0px; border-top: 1px solid #ddd;" >
+          <div>
             <ul>
               <li class="license norms" style="display:none;">
                 <p i18n:translate="deed.normsapply">
