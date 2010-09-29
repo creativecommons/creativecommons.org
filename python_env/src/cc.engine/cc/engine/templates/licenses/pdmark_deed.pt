@@ -59,24 +59,24 @@
                   </p>
                 </li>
 
-                <li style="padding-bottom: 0.5em;"><strong>Work Details</strong></li>
+                <li style="padding-bottom: 0.5em; display:none;"><strong>Work Details</strong></li>
                 <li style="display:none">
-                  <span style="display:inline-block; width: 6em; text-align: right; margin-right: 0.5em;"
+                  <span class="work-details-item-title"
                         i18n:translate="deed.mark.workdetails.work">Work:</span>
-                  <span id="meta_title"></span>
+                  <span id="meta_title" class="work-details-item-value"></span>
                 </li>
                 <li style="display:none">
-                  <span style="display:inline-block; width: 6em; text-align: right; margin-right: 0.5em;"
+                  <span class="work-details-item-title"
                         i18n:translate="deed.mark.workdetails.author">Author:</span>
-                  <span id="meta_author"></span>
+                  <span id="meta_author" class="work-details-item-value"></span>
                 </li>
                 <li style="display:none">
-                  <span style="display:inline-block; width: 6em; text-align: right; margin-right: 0.5em;"
+                  <span class="work-details-item-title"
                         i18n:translate="deed.mark.workdetails.curator">Identified by:</span>
-                  <span id="meta_curator"></span>
+                  <span id="meta_curator" class="work-details-item-value"></span>
                 </li>
 
-                <li id="work-attribution-container" style="margin-top: 25px;">
+                <li id="work-attribution-container" style="margin-top: 25px; display:none;">
                   <strong>
                     You can
                     <a href="" class="helpLink"
