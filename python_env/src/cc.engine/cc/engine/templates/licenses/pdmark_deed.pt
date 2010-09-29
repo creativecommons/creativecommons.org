@@ -97,13 +97,13 @@
         <ul class="license-properties">
           <li class="license">
             <strong i18n:translate="util.other_information">Other Information</strong>
-            <ul i18n:translate="deed.mark.other_information">
-              <li>
+            <ul>
+              <li i18n:translate="deed.mark.other_info.jurisdictions">
                 The work may not be free of copyright restrictions in all
                 <a href="" class="helpLink"
                    id="all_jurisdictions" name="all_jurisdictions">jurisdictions</a>.
               </li>
-              <li>
+              <li i18n:translate="deed.mark.other_info.other_rights">
                 Persons may have other rights in or related to the work, such as
                 patent or trademark rights, and others may have rights in how
                 the work is used, such as
@@ -111,7 +111,7 @@
                    class="helpLink" id="publicity_rights"
                    name="publicity_rights">publicity or privacy</a> rights.
               </li>
-              <li>
+              <li i18n:translate="deed.mark.other_info.moral_rights">
                 In some jurisdictions
                 <a href="" class="helpLink" id="moral_rights"
                    name="moral_rights">moral rights</a>
@@ -119,13 +119,13 @@
                 rights may include the right to be identified as the author and
                 the right to object to derogatory treatments.
               </li>
-              <li>
+              <li i18n:translate="deed.mark.other_info.no_warranty">
                 Unless expressly stated otherwise, the person who identified the
                 work makes no warranties about the work, and disclaims liability
                 for all uses of the work, to the fullest extent permitted by
                 applicable law.
               </li>
-              <li>
+              <li i18n:translate="deed.mark.other_info.no_endorsement">
                 When using or citing the work, you should not imply
                 <a href="" class="helpLink" id="endorsement"
                    name="endorsement">endorsement</a>
