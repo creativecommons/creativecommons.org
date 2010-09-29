@@ -86,7 +86,7 @@
 
 	      <span id="mycheckbox" class="yui-button">
 	        <span class="first-child">
-	          <a id="do-begin" href="./waiver">
+	          <a id="do-begin" href="/choose/zero/waiver">
 		    <span tal:omit-tag=""
 		          i18n:translate="util.begin">begin</span> &raquo;
 	          </a>
