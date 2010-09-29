@@ -77,7 +77,7 @@
                 </li>
 
                 <li id="work-attribution-container" style="margin-top: 25px; display:none;">
-                  <strong>
+                  <strong i18n:translate="deed.cite_this_work">
                     You can
                     <a href="" class="helpLink"
                        id="citation_help" name="citation_help">cite</a>
