@@ -39,24 +39,21 @@
             <div>
               <ul>
                 <li class="license norms" style="display:none;">
-                  <p i18n:translate="deed.normsapply">
-                    <a href="#" id="usage_guidelines"
-                       name="usage_guidelines">Non-binding use guidelines</a>
-                    apply to this work.
-                  </p>
+                  <a href="#" id="usage_guidelines"
+                     name="usage_guidelines">Non-binding use guidelines</a>
+                  apply to this work.
                 </li>
                 <li class="license nolaw" style="display:none;">
-                  <p>
-                    The person who identified this public domain work has also
-                    waived any and all copyrights he or she may have in the
-                    work, including all related and neighboring rights, to the
-                    extent allowed by law.
-                    <a href="" class="helpLink" id="zero_help"
-                       name="zero_help">
-                      <img src="http://creativecommons.org/images/information.png"
-                           alt="Information" style="border: none; float:inherit;
-                                                    margin-bottom:-5px" /></a>
-                  </p>
+                  The person who identified this public domain work has also
+                  waived any and all copyrights he or she may have in the
+                  work, including all related and neighboring rights, to the
+                  extent allowed by law.
+                  <a href="" class="helpLink" id="zero_help"
+                     name="zero_help">
+                    <img src="http://creativecommons.org/images/information.png"
+                         alt="Information" style="border: none; float:inherit;
+                                                  margin-bottom:-5px" /></a>
+
                 </li>
 
                 <li style="padding-bottom: 0.5em; display:none;"><strong>Work Details</strong></li>
