@@ -53,11 +53,9 @@
           <div>
             <ul>
               <li class="license norms" style="display:none;">
-                <p i18n:translate="deed.normsapply">
-                  <a href="#" id="usage_guidelines"
-                     name="usage_guidelines">Non-binding use guidelines</a>
-                  apply to this work.
-                </p>
+                <a href="#" id="usage_guidelines"
+                   name="usage_guidelines">Non-binding use guidelines</a>
+                apply to this work.
               </li>
 
               <li style="padding-bottom: 0.5em; display:none;"><strong>Work Details</strong></li>
@@ -177,11 +175,11 @@
             i18n:translate="util.who_is_affirmer">Who is the affirmer?</div>
        <div class="bd">
          <p>
-           The affirmer is the person who surrendered all rights to
-           the work worldwide using CC0, to the extent allowable by
-           law.  It may be the original author of the work or anyone
-           else who may have some copyright or related or neighboring
-           legal rights in the work
+           The affirmer is the person who surrendered rights to the
+           work worldwide using CC0, to the extent allowable by law.
+           It may be the original author of the work or another person
+           who may have had some copyright or related or neighboring
+           legal rights in the work.
          </p>
 
          <p>
