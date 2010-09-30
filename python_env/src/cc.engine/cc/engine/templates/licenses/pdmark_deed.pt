@@ -221,6 +221,22 @@
             <p><a href="#" i18n:translate="util.learn_more">Learn more.</a></p>
           </div>
         </div>
+        <div id="help_zero_help">
+          <div class="hd"
+               i18n:translate="util.rights_of_identifier">
+            Rights of Person Identifying Work
+          </div>
+          <div class="bd">
+            <p i18n:translate="deed.help.term_of_copyright">
+              The copyright laws of some jurisdictions grant copyright
+              protection to those who restore and/or digitize public domain
+              works, among other things.  The person who identified this public
+              domain work has waived any such rights under
+              <a href="http://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+            </p>
+            <p><a href="#" i18n:translate="util.learn_more">Learn more.</a></p>
+          </div>
+        </div>
       </div>
       <span id="referrer-metadata-container"></span>
 
