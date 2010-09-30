@@ -56,7 +56,7 @@
 
                 </li>
 
-                <li style="padding-bottom: 0.5em; display:none;"><strong>Work Details</strong></li>
+                <li style="padding-bottom: 0.5em; display:none;" id="work-details-title"><strong>Work Details</strong></li>
                 <li style="display:none">
                   <span class="work-details-item-title"
                         i18n:translate="deed.workdetails.work">Work:</span>
