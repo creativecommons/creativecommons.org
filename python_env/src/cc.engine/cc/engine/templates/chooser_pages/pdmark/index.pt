@@ -84,13 +84,13 @@
             </p>
 
             <p i18n:translate="license.mark.intro_3">
-              Please note that this is not a registration process and Creative
-              Commons does not store or save any of the information you
-              provide. This tool guides you through the process of generating
-              HTML with embedded metadata for marking the work you have
-              identified as free of known copyright restrictions.  The work will
-              not be associated with a Public Domain Mark until you publish it
-              marked as being so.
+              Please note that this is <strong>not a registration
+              process</strong> and Creative Commons does not store or save any
+              of the information you provide. This tool guides you through the
+              process of generating HTML with embedded metadata for marking the
+              work you have identified as free of known copyright restrictions.
+              The work will not be associated with a Public Domain Mark until
+              you publish it marked as being so.
             </p>
 
 	    <p>
