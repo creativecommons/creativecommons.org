@@ -75,6 +75,10 @@
  {"path": "/choose/mark/",
   "string_tests": [
       "Public Domain Mark",
+      "Using the Public Domain Mark, you can mark a work"]},
+ {"path": "/choose/mark/details",
+  "string_tests": [
+      "Public Domain Mark",
       "Identifying Individual or Organization"]},
  {"path": "/choose/mark/results",
   "string_tests": [

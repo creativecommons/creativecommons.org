@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="engine_template/macros/page"
+      i18n:domain="cc_org">
+  <head>
+    <title metal:fill-slot="title">Public Domain Mark</title>
+
+    <metal:headers fill-slot="headers">
+      <link rel="stylesheet" type="text/css"
+            href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
+
+      <script type="text/javascript"
+              src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+      <script type="text/javascript"
+              src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script>
+      <script type="text/javascript"
+              src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
+      <script type="text/javascript"
+              src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script>
+
+      <link rel="stylesheet" type="text/css" href="zero.css"
+	    tal:attributes="href python:request.staticdirect('/includes/zero.css')" />
+
+      <script src="help.js" type="text/javascript"
+              tal:attributes="src python:request.staticdirect('/includes/help.js')" >
+      </script>
+
+      <script type="text/javascript">
+        YAHOO.namespace("cc.zero");
+
+        YAHOO.cc.zero.on_click = function(event) {
+
+        YAHOO.util.Dom.get("details-submit").disabled = !(
+        YAHOO.util.Dom.get("confirm_details").checked &&
+        YAHOO.util.Dom.get("confirm_understand").checked);
+
+        } // on_click
+
+        YAHOO.util.Event.onDOMReady(function() {
+
+        // connect event handlers for the check boxes
+        YAHOO.util.Event.addListener("confirm_details", "click", YAHOO.cc.zero.on_click);
+        YAHOO.util.Event.addListener("confirm_understand", "click", YAHOO.cc.zero.on_click);
+
+        });
+      </script>
+
+    </metal:headers>
+  </head>
+
+  <body>
+    <metal:left fill-slot="sidebar">
+    </metal:left>
+
+    <metal:title fill-slot="page-header-title">Public Domain Mark</metal:title>
+
+    <metal:body fill-slot="body">
+      <div class="yui-content">
+        <div id="page-welcome" class="yui-module">
+          <div class="bd">
+
+            <p>
+              Using the Public Domain Mark, you can mark a work that is free of
+              known copyright restrictions and clearly convey that status.  When
+              applied properly, the PDM allows the work to be easily discovered,
+              and provides valuable information about the work.
+            </p>
+
+            <p>
+              The PDM is intended for use with old works that are free of
+              copyright restrictions around the world, or works that have been
+              affirmatively placed in the worldwide public domain prior to the
+              expiration of copyright by the rights’ holder.  It should not be
+              used to mark works that are in the public domain in some
+              jurisdictions while known to be restricted by copyright in
+              others. Currently, Creative Commons does not recommend the Public
+              Domain Mark for works whose copyright status differs jurisdiction
+              to jurisdiction, though we are developing means for marking and
+              tagging such works.  You should consult with your legal advisor if
+              you are unsure whether you should use the PDM for a work you have
+              identified.
+            </p>
+
+            <p>
+              Please note that this is not a registration process and Creative
+              Commons does not store or save any of the information you
+              provide. This tool guides you through the process of generating
+              HTML with embedded metadata for marking the work you have
+              identified as free of known copyright restrictions.  The work will
+              not be associated with a Public Domain Mark until you publish it
+              marked as being so.
+            </p>
+
+	    <p>
+	      <span id="mycheckbox" class="yui-button">
+	        <span class="first-child">
+	          <a id="do-learn-more" href="/about/mark"
+		     i18n:translate="util.learn_more">learn more</a>
+	        </span>
+	      </span>
+
+	      <span id="mycheckbox" class="yui-button">
+	        <span class="first-child">
+	          <a id="do-begin" href="/choose/mark/details">
+		    <span tal:omit-tag=""
+		          i18n:translate="util.begin">begin</span> &raquo;
+	          </a>
+	        </span>
+	      </span>
+	    </p>
+          </div>
+        </div>
+      </div>
+    </metal:body>
+
+  </body>
+</html>
