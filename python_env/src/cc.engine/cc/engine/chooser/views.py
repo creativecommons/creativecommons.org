@@ -705,6 +705,13 @@ def pdmark_landing(request):
     """
     Landing page for the Public Domain Mark chooser.
     """
+    pass
+
+
+def pdmark_details(request):
+    """
+    Details/user form page for the Public Domain Mark chooser.
+    """
     target_lang = util.get_target_lang_from_request(request)
 
     template = util.get_zpt_template(
