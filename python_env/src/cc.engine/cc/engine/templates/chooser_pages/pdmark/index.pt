@@ -61,14 +61,14 @@
         <div id="page-welcome" class="yui-module">
           <div class="bd">
 
-            <p>
+            <p i18n:translate="license.mark.intro_1">
               Using the Public Domain Mark, you can mark a work that is free of
               known copyright restrictions and clearly convey that status.  When
               applied properly, the PDM allows the work to be easily discovered,
               and provides valuable information about the work.
             </p>
 
-            <p>
+            <p i18n:translate="license.mark.intro_2">
               The PDM is intended for use with old works that are free of
               copyright restrictions around the world, or works that have been
               affirmatively placed in the worldwide public domain prior to the
@@ -83,7 +83,7 @@
               identified.
             </p>
 
-            <p>
+            <p i18n:translate="license.mark.intro_3">
               Please note that this is not a registration process and Creative
               Commons does not store or save any of the information you
               provide. This tool guides you through the process of generating
