@@ -75,8 +75,6 @@
 
     <div id="header">
 
-    <a href="#languages" i18n:translate="util.Translations">Translations</a>
-
     <div id="deed" 
          tal:attributes="class color | green; 
                          dir   get_ltr_rtl; 

@@ -64,8 +64,6 @@
     <metal:rdf metal:define-slot="page_top">
     </metal:rdf>
 
-    <a href="#languages" i18n:translate="util.Translations">Translations</a>
-
     <div id="deed" class="pd pd-grey"
          tal:attributes="dir   get_ltr_rtl; 
                          style is_rtl_align;">
