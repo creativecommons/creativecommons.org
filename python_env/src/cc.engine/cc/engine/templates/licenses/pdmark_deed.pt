@@ -216,7 +216,10 @@
               copyright restrictions in one jurisdiction may not be similarly
               free in other jurisdictions.
             </p>
-            <p><a href="#" i18n:translate="util.learn_more">Learn more.</a></p>
+            <p>
+              <a href="http://wiki.creativecommons.org/PDM_FAQ#Why_might_a_free_of_copyright_restrictions_in_one_jurisdiction_not_be_free_of_copyright_restrictions_everywhere.3F"
+                 i18n:translate="util.learn_more">Learn more.</a>
+            </p>
           </div>
         </div>
       </div>
