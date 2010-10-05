@@ -168,7 +168,8 @@
               easily cite this work.
             </p>
             <p>
-              <a href="#" i18n:translate="util.learn_more">Learn more.</a>
+              <a href="http://wiki.creativecommons.org/PDM_FAQ#Am_I_required_to_attribute_the_author_of_the_work.2C_or_the_person_who_applied_the_PDM_to_the_work.3F"
+                 i18n:translate="util.learn_more">Learn more.</a>
             </p>
           </div>
         </div>
