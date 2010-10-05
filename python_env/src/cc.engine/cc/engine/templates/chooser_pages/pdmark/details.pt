@@ -168,7 +168,7 @@
                     <input name="curator_href" class="form-field"/>
                     <div class="form-field-description" i18n:translate="license.mark.curator_href_help">
                       This may be your main website or the information
-                      page about your on a hosting website, such as Flickr
+                      page about you on a hosting website, such as Flickr
                       Commons.
                     </div>
 	          </div>
