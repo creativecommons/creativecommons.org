@@ -23,7 +23,7 @@
     <div id="deed-rights" 
          tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
       <h3 i18n:translate="deed.zero.no_copyright">No Copyright</h3>
-      <div id="librepd" tal:condition="license/libre">
+      <div id="librepd">
         <a href="http://freedomdefined.org/">
           <img src="/images/deed/seal.png" border="0" 
                i18n:attributes="alt"
