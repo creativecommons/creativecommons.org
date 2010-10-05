@@ -122,8 +122,8 @@
                     <br />
                     <div class="form-field-description"
                          i18n:translate="license.mark.creator_help">
-                      You may list multiple authors if more
-                      than one.  If unknown, you may wish to state 'unknown'.
+                      You may list multiple authors.
+                      If unknown, you may wish to state 'unknown'.
                     </div>
 	          </div>
                 </div>
