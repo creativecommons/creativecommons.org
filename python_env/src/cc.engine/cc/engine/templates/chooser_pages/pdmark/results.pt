@@ -76,8 +76,8 @@ YAHOO.util.Event.onDOMReady(function() {
       </div>
 
       <span id="waiver-results-leadin" 
-            i18n:translate="license.zero.preview_waiver">
-        Here's a preview of how your waiver will appear on your site:
+            i18n:translate="license.mark.preview_waiver">
+        Here's a preview of how the mark will appear on the website:
       </span>
 
       <div class="preview" id="results-preview" 
