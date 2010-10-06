@@ -146,7 +146,7 @@
             Endorsement
           </div>
           <div class="bd">
-            <p i18n:translate="deed.zero.endorsement.help">
+            <p i18n:translate="deed.help.endorsement">
             In some jurisdictions, wrongfully implying that an author,
             publisher or anyone else endorses your use of a work may
             be unlawful.
@@ -195,7 +195,7 @@
             Other Rights
           </div>
           <div class="bd">
-            <p i18n:translate="deed.zero.other_rights.help">
+            <p i18n:translate="deed.help.other_rights">
             The use of a work free of known copyright restrictions may
             be otherwise regulated or limited. The work or its use may
             be subject to personal data protection laws, publicity,
