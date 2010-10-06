@@ -288,7 +288,7 @@ class TestEmailSenderViews(unittest.TestCase):
         mail_body = sent_mail.get_payload()
 
         assert 'You have selected Public Domain Mark 1.0' in mail_body
-        assert 'free of copyright restrictions' in mail_body
+        assert 'free of known copyright restrictions' in mail_body
 
         # check that the right template was loaded
         assert util.ZPT_TEST_TEMPLATES.has_key(
