@@ -175,7 +175,7 @@
        <div class="hd"
             i18n:translate="util.who_is_affirmer">Who is the affirmer?</div>
        <div class="bd">
-         <p>
+         <p i18n:translate="deed.help.who_is_affirmer">
            The affirmer is the person who surrendered rights to the
            work worldwide using CC0, to the extent allowable by law.
            It may be the original author of the work or another person
