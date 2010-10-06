@@ -41,7 +41,7 @@
     </li>
   </ul>
 
-  <h2 i18n:translate="util.public_domain_certification">Public Domain Mark</h2>
+  <h2 i18n:translate="util.public_domain_mark">Public Domain Mark</h2>
 
   <p i18n:translate="license.pdtools.pdc">Use this tool if you have
     identified a work that is free of known copyright restrictions.
