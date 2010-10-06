@@ -59,7 +59,7 @@ YAHOO.util.Event.onDOMReady(function() {
         <table>
           <tr>
             <td valign="bottom" align="center">
-              <img src="http://i.creativecommons.org/p/mark/1.0/80x31.png"
+              <img src="http://i.creativecommons.org/p/mark/1.0/88x31.png"
                    style="border:0px;" /><br/>
               <input type="radio" name="button" checked
                      onclick="swapbutton('http://i.creativecommons.org/p/mark/1.0/88x31.png')" />
