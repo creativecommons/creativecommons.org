@@ -112,16 +112,16 @@
               <div style="clear:both;"></div>
 
               <div class="form-section">
-                <h3 i18n:translate="util.creator">Creator</h3>
+                <h3 i18n:translate="util.author">Author</h3>
 
                 <div class="form-row">
 	          <div class="form-question" 
-                       i18n:translate="util.creator_name">Author name</div>
+                       i18n:translate="util.author_name">Author name</div>
 	          <div class="form-answer">
-                    <input name="creator" class="form-field"/>
+                    <input name="author_title" class="form-field"/>
                     <br />
                     <div class="form-field-description"
-                         i18n:translate="license.mark.creator_help">
+                         i18n:translate="license.mark.author_help">
                       You may list multiple authors.
                       If unknown, you may wish to state 'unknown'.
                     </div>
@@ -130,12 +130,12 @@
 
                 <div class="form-row">
 	          <div class="form-question" 
-                       i18n:translate="util.creator_url">Author URL</div>
+                       i18n:translate="util.author_url">Author URL</div>
 	          <div class="form-answer">
-                    <input name="creator_href" class="form-field"/>
+                    <input name="author_href" class="form-field"/>
                     <br />
                     <div class="form-field-description"
-                         i18n:translate="license.mark.creator_url_help">
+                         i18n:translate="license.mark.author_url_help">
                       This may be the URL where the author published the
                       work online, or the URL where the work is published
                       by the person identifying the work.
@@ -152,7 +152,7 @@
 	          <div class="form-question" 
                        i18n:translate="util.name">Name</div>
 	          <div class="form-answer">
-                    <input name="curator" class="form-field"/>
+                    <input name="curator_title" class="form-field"/>
                     <br />
                     <div class="form-field-description"
                          i18n:translate="license.mark.curator_help">
