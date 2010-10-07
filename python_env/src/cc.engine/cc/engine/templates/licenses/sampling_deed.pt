@@ -19,8 +19,10 @@
            style="text-align:center"
            tal:condition="license/deprecated">
         <h3 i18n:translate="deed.retired">
-          This license is <a href="/retiredlicenses">retired</a>. Do
-          not use for new works.
+          Creative Commons has
+          <a href="http://creativecommons.org/retiredlicenses">retired
+          this legal tool</a>. CC does not recommend that you 
+          apply this tool to works.
         </h3>
       </div>
 
