@@ -169,13 +169,6 @@ YAHOO.util.Event.onDOMReady(function() {
               <input type="textbox" name="email" />
             </div>
 
-            <div class="more-metadata">
-              <div i18n:translate="license.zero.update_opt_in">
-                Send me updates about CC0:
-              </div>
-              <input type="checkbox" name="send_updates" value="1" /><br/>
-            </div>
-
             <input id="do-send-email" type="submit" value="Send" 
                    i18n:attributes="value util.Send" />
           </form>

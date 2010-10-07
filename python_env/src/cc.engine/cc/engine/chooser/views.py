@@ -650,16 +650,6 @@ def cc0_results(request):
             cc0_license.title(target_lang), license_html,
             email_addr, target_lang)
 
-        # Also subscribe the user to the cc0 announce mailing list,
-        # if requested
-        if successful_send and request_form.get('send_updates', False):
-            try:
-                util.send_email(
-                    email_addr, ["cc-zero-announce-request@lists.ibiblio.org"],
-                    'subscribe', '')
-            except SMTPException:
-                successful_send = False
-
     context = _base_context(request, target_lang)
     context.update({
             'engine_template': engine_template,
