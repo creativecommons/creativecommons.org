@@ -36,6 +36,16 @@
       </a>
     </div>
 
+    <div id="deed-newer" style="text-align:center"
+         tal:condition="license/deprecated">
+      <h3 i18n:translate="deed.retired">
+        Creative Commons has
+        <a href="http://creativecommons.org/retiredlicenses">retired
+        this legal tool</a>. CC does not recommend that you 
+        apply this tool to works.
+      </h3>
+    </div>
+
     <div tal:omit-tag="" i18n:translate="deed.pd">
       <p>
         The person or persons who have associated work with this
