@@ -23,7 +23,8 @@
          tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
 
       <div id="deed-newer" style="text-align:center">
-        <h3 i18n:translate="deed.retired">
+        <!--h3 i18n:translate="deed.retired"-->
+        <h3>
           Creative Commons has
           <a href="http://creativecommons.org/retiredlicenses">retired
           this legal tool</a>. CC does not recommend that you 
