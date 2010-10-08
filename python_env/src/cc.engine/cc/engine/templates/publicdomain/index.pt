@@ -39,7 +39,7 @@
   <ul>
     <li>
       <a i18n:translate="util.learn_more"
-	 href="/about/cc0">Learn more</a>
+	 href="/about/pdm">Learn more</a>
     </li>
     <li>
       <a i18n:translate="util.use_this_tool"
