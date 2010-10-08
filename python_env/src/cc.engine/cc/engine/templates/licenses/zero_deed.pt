@@ -52,7 +52,7 @@
         <li class="license" style="display:none" id="work-details-block">
           <div>
             <ul>
-              <li class="license norms" style="display:none;">
+              <li class="license usage-guidelines" style="display:none;">
                 <a href="#" id="usage_guidelines"
                    name="usage_guidelines">Non-binding use guidelines</a>
                 apply to this work.
