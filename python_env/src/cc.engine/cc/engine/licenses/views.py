@@ -29,11 +29,15 @@ DEED_TEMPLATE_MAPPING = {
     'BSD': 'licenses/mitbsd_deed.pt',
     'devnations': 'licenses/devnations_deed.pt',
     'CC0': 'licenses/zero_deed.pt',
+    'mark': 'licenses/pdmark_deed.pt',
     'publicdomain': 'licenses/publicdomain_deed.pt'}
 
 
 @get_license
 def license_deed_view(request, license):
+    """
+    The main and major deed generating view.
+    """
     # True if the legalcode for this license is available in
     # multiple languages (or a single language with a language code different
     # than that of the jurisdiction.
@@ -54,6 +58,11 @@ def license_deed_view(request, license):
     else:
        color = 'green'
 
+    # Get the language this view will be displayed in.
+    #  - First checks to see if the routing matchdict specifies the language
+    #  - Or, next gets the jurisdictions' default language if the jurisdiction
+    #    specifies one
+    #  - Otherwise it's english!
     if request.matchdict.has_key('target_lang'):
         target_lang = request.matchdict.get('target_lang')
     elif license.jurisdiction.default_language:
@@ -62,6 +71,7 @@ def license_deed_view(request, license):
     else:
         target_lang = 'en'
 
+    # Use the lower-dash style for all RDF-related locale stuff
     rdf_style_target_lang = target_lang.replace('_', '-').lower()
 
     license_title = None
@@ -73,6 +83,7 @@ def license_deed_view(request, license):
 
     conditions = util.get_license_conditions(license, target_lang)
 
+    # Find out all the active languages
     active_languages = util.active_languages()
     active_lang_codes = [lang['code'] for lang in active_languages]
 
@@ -82,9 +93,17 @@ def license_deed_view(request, license):
             and request.matchdict.has_key('target_lang'):
         return exc.HTTPNotFound()
 
-    deed_template = util.get_zpt_template(
-        'macros_templates/deed.pt',
-        target_lang=target_lang)
+    # Use the pdtools deed macros template if CC0 or PD Mark, else use
+    # standard deed macros template
+    if license.license_code in ('mark', 'CC0'):
+        deed_template = util.get_zpt_template(
+            'macros_templates/pdtool_deed.pt',
+            target_lang=target_lang)
+    else:
+        deed_template = util.get_zpt_template(
+            'macros_templates/deed.pt',
+            target_lang=target_lang)
+
     support_template = util.get_zpt_template(
         'macros_templates/support.pt',
         target_lang=target_lang)

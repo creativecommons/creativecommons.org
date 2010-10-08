@@ -1,6 +1,6 @@
 from cc.engine import util
 
-util._activate_zpt_testing()
+util._activate_testing()
 
 
 def test_zpt():

@@ -12,105 +12,179 @@
              tal:content="structure string:<!-- ${license/rdf} -->" />
 
   <h2 property="dc:title" 
-      metal:fill-slot="license-name" tal:content="license_title">
-    CC0
+      metal:fill-slot="license-name">
+    <small tal:content="license_title">CC0 1.0 Universal</small>
+    <br />
+    <span i18n:translate="util.public_domain_dedication"
+          tal:omit-tag="">Public Domain Dedication</span>
   </h2>
 
   <div metal:fill-slot="body" tal:omit-tag="">
     <div id="deed-rights" 
          tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
       <h3 i18n:translate="deed.zero.no_copyright">No Copyright</h3>
-      <div id="librepd" tal:condition="license/libre">
+      <div id="librepd">
         <a href="http://freedomdefined.org/">
           <img src="/images/deed/seal.png" border="0" 
                i18n:attributes="alt"
                alt="This license is acceptable for Free Cultural Works." />
         </a>
       </div>
-      <ul class="license-properties">
+      <ul class="license-properties" style="width: 550px;">
         <li class="license nolaw">
-          <p id="nolaw-text" style="margin-bottom:1em;"
-             i18n:translate="deed.zero.nocopyright-text">
-            The person who associated a work with this document
-            has dedicated the work to the Commons by waiving all
-            of his or her rights to the work worldwide under copyright law
-            and all related or neighboring legal rights he or she
-            had in the work, to the extent allowable by law.  
+          <!-- p id="nolaw-text" style="margin-bottom:1em;"
+             i18n:translate="deed.zero.nocopyright-text"-->
+          <p id="nolaw-text" style="margin-bottom:1em;">
+            The person who associated a work with this deed
+            has <b>dedicated</b> the work to the public domain by
+            waiving all of his or her rights to the work worldwide
+            under copyright law, including all related and neighboring
+            rights, to the extent allowed by law.
           </p>
-          <p i18n:translate="deed.zero.no-endorsment">
-            Works under CC0 do not require attribution.  When citing
-            the work, you should not imply endorsement by the author.
+          <!--p i18n:translate="deed.zero.no-endorsment"-->
+          <p>
+            You can copy, modify, distribute and perform the work,
+            even for commercial purposes, all without asking
+            permission. See <b>Other Information</b> below.
           </p>
         </li>
-        <p id="work-attribution-container" style="display:none;">
-          <strong i18n:translate="deed.attribute_this_work">Attribute this work:</strong><br/>
-          <input id="work-attribution" value="" type="text"
-                 readonly="readonly" onclick="this.select()"
-                 onfocus="document.getElementById('work-attribution').select();"/>
-          <input id="license-code" type="hidden" 
-                 value="CC BY 3.0"
-                 tal:attributes="value python: 'CC %s %s' %
-                                 (license.license_code.upper(),
-                                  license.version)" />
-          <input id="license-url" type="hidden"
-                 value=""
-                 tal:attributes="value license/uri" />
-          <a href="" id="attribution_help">
-            <img src="images/information.png"
-                 tal:attributes="src python:request.staticdirect('images/information.png')"
-                 i18n:attributes="alt"
-                 alt="Information" />
-          </a>
-        </p>
+
+        <li class="license" style="display:none" id="work-details-block">
+          <div>
+            <ul>
+              <li class="license norms" style="display:none;">
+                <a href="#" id="usage_guidelines"
+                   name="usage_guidelines">Non-binding use guidelines</a>
+                apply to this work.
+              </li>
+
+              <li style="padding-bottom: 0.5em; display:none;"><strong>Work Details</strong></li>
+              <li style="display:none">
+                <span class="work-details-item-title"
+                      i18n:translate="deed.workdetails.work">Work:</span>
+                <span id="meta_title" class="work-details-item-value"></span>
+              </li>
+              <li style="display:none">
+                <span class="work-details-item-title"
+                      i18n:translate="deed.workdetails.affirmer">
+                  <a href="" class="inline-help helpLink"
+                     id="who_is_affirmer">Affirmer</a></span>
+                <span id="meta_affirmer" class="work-details-item-value"></span>
+              </li>
+
+              <li id="work-attribution-container" style="margin-top: 25px; display:none;">
+                <strong i18n:translate="deed.cite_this_work">
+                  You can
+                  <a href="" class="helpLink"
+                     id="citation_help" name="citation_help">cite</a>
+                  this work with this HTML:
+                </strong>
+                <br />
+                <input id="work-attribution" value="" />
+              </li>
+            </ul>
+          </div>
+        </li>
       </ul>
     </div>
-    <div id="deed-understanding-zero">
+    <div id="deed-understanding">
       <ul class="license-properties">
 
         <li class="license">
-          <strong i18n:translate="util.other_rights">Other Rights</strong>
-          &mdash; 
-          <span tal:omit-tag=""
-                i18n:translate="deed.zero.other_rights">
-            In no way are any of the following rights affected by CC0:</span>
+          <strong i18n:translate="util.other_information">Other Information</strong>
           <ul>
-
-            <li i18n:translate="deed.zero.patent">
-              Patent or trademark rights held by the person who
-              associated this document with a work.
+            <li i18n:translate="deed.zero.other_info.other_rights">
+              In no way are the patent or trademark rights of any
+              person affected by CC0, nor are the rights that other
+              persons may have in the work or in how the work is used,
+              such as
+              <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F"
+                 class="helpLink" id="publicity_rights"
+                 name="publicity_rights">publicity or privacy</a> rights.
             </li>
 
-            <li i18n:translate="deed.publicity_rights">
-              Rights other persons may have either in the work itself
-              or in how the work is used, such
-              as
-              <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F"
-                 class="helpLink" id="publicity_rights">publicity</a>
-              or privacy rights.
+            <li i18n:translate="deed.zero.other_info.no_warranty">
+              Unless expressly stated otherwise, the person who
+              associated a work with this deed makes no warranties
+              about the work, and disclaims liability for all uses of
+              the work, to the fullest extent permitted by applicable
+              law.
+            </li>
+
+            <li i18n:translate="deed.zero.other_info.no_endorsement">
+              When using or citing the work, you should not imply
+              <a href=""
+                 class="helpLink" id="endorsement"
+                 name="endorsement">endorsement</a>
+              by the author or the affirmer.
             </li>
           </ul>
         </li>
-
       </ul>
 
       <div id="help_publicity_rights">
-        <div class="hd" i18n:translate="deed.publicity_rights.help.title">
-          What are "Publicity Rights"?
-        </div>
+        <div class="hd" i18n:translate="util.other_rights">Other Rights</div>
         <div class="bd">
-          <p i18n:translate="deed.zero.publicity_rights.help">Publicity
-          rights allow individuals to control how their voice, image
-          or likeness is used for commercial purposes in public.  If a
-          work under CC0 includes the voice or image of anyone other
-          than the affirmer, a user of the work may need to get
-          permission from those individuals before using the work for
-          commercial purposes.</p>
+          <p i18n:translate="deed.help.other_rights">
+            The use of a work free of known copyright restrictions may
+            be otherwise regulated or limited. The work or its use may
+            be subject to personal data protection laws, publicity,
+            image, or privacy rights that allow a person to control
+            how their voice, image or likeness is used, or other
+            restrictions or limitations under applicable law.
+          </p>
 
           <p>
             <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F"
-               i18n:translate="util.learn_more">Learn more</a>.</p>
+               i18n:translate="util.learn_more">Learn more</a>.
+          </p>
         </div>
       </div>
+
+      <div id="help_endorsement">
+        <div class="hd" i18n:translate="util.endorsement">Endorsement</div>
+        <div class="bd">
+          <p i18n:translate="deed.help.endorsement">
+            In some jurisdictions, wrongfully implying that an author,
+            publisher or anyone else endorses your use of a work may
+            be unlawful.
+          </p>
+
+          <p>
+            <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Do_I_need_to_be_aware_of_anything_else_when_providing_attribution_or_credit.3F"
+               i18n:translate="util.learn_more">Learn more</a>.
+          </p>
+        </div>
+      </div>
+
+      <div id="help_citation_help">
+        <div class="hd" i18n:translate="util.citation">Citation</div>
+        <div class="bd">
+          <p i18n:translate="deed.help.citation">
+            Copy and paste the HTML provided into your webpage to
+            easily cite this work.
+          </p>
+          <p>
+            <a href="http://wiki.creativecommons.org/CC0_FAQ#Do_I_have_to_attribute_the_person_who_applied_CC0_to_their_work.3F"
+               i18n:translate="util.learn_more">Learn more.</a>
+          </p>
+        </div>
+      </div>
+
+     <div id="help_who_is_affirmer">
+       <div class="hd"
+            i18n:translate="util.who_is_affirmer">Who is the affirmer?</div>
+       <div class="bd">
+         <p i18n:translate="deed.help.who_is_affirmer">
+           The affirmer is the person who surrendered rights to the
+           work worldwide using CC0, to the extent allowable by law.
+           It may be the original author of the work or another person
+           who may have had some copyright or related or neighboring
+           legal rights in the work.
+         </p>
+       </div>
+     </div>
+
 
     </div>
 
@@ -133,7 +207,8 @@
         Disclaimer
       </div>
 
-      <div class="bd" i18n:translate="deed.zero.disclaimer">
+      <!-- div class="bd" i18n:translate="deed.zero.disclaimer" -->
+      <div class="bd">
         <p>
           The Commons Deed is not a legal instrument. It is simply a
           handy reference for understanding the CC0 Legal Code, a
@@ -150,6 +225,13 @@
           relationship.
         </p>
 
+	<p>
+          Creative Commons has not verified the copyright status of
+          any work to which CC0 has been applied.  CC makes no
+          warranties about any work or its copyright status in any
+          jurisdiction, and disclaims all liability for all uses of
+          any work.
+        </p>
       </div>
     </div>
 

@@ -17,17 +17,24 @@
   
 <div metal:fill-slot="body">
 
-  <p i18n:translate="license.pdtools.intro">Our licenses help authors
-  keep and manage their copyright on terms they choose.  Our public
-  domain tools, on the other hand, facilitate the discovery of works
-  already in the public domain and enable authors and copyright owners
-  who want to dedicate their works to the public domain to do so.</p>
+  <!-- p i18n:translate="license.pdtools.intro"-->
+  <p>
+    Our licenses help authors keep and manage their copyright on terms
+    they choose.  Our public domain tools, on the other hand, enable
+    authors and copyright owners who want to dedicate their works to
+    the worldwide public domain to do so, and facilitate the labeling
+    and discovery of works that are already free of known copyright
+    restrictions.
+  </p>
 
   <h2>CC0</h2>
 
-  <p i18n:translate="license.pdtools.zero">Use this universal tool if
-    you are a holder of copyright or database rights, and you wish to
-    waive all your interests in your work.</p>
+  <!--p i18n:translate="license.pdtools.zero"-->
+  <p>
+    Use this universal tool if you are a holder of copyright or
+    database rights, and you wish to waive all your interests in your
+    work worldwide.
+  </p>
 
   <ul>
     <li>
@@ -40,20 +47,24 @@
     </li>
   </ul>
 
-  <h2 i18n:translate="util.public_domain_certification">Public Domain Certification</h2>
+  <h2 i18n:translate="util.public_domain_mark">Public Domain Mark</h2>
 
-  <p i18n:translate="license.pdtools.pdc">Use this tool if you have
-    identified and want to certify other works that are already in the
-    public domain.  You will also be relinquishing any rights in the
-    work you may have under copyright.  Creative Commons does not
-    recommend this tool for use with works under copyright - consider
-    using CC0 instead.
+  <!-- p i18n:translate="license.pdtools.pdc" -->
+  <p>
+    Use this tool if you have identified a work that is free of known
+    copyright restrictions.  Creative Commons does not recommend this
+    tool for works that are restricted by copyright laws in one or
+    more jurisdictions.
   </p>
 
   <ul>
     <li>
+      <a i18n:translate="util.learn_more"
+	 href="http://wiki.creativecommons.org/PDM_FAQ">Learn more</a>
+    </li>
+    <li>
       <a i18n:translate="util.use_this_tool"
-	 href="/choose/publicdomain-2">Use this tool</a>
+	 href="/choose/mark">Use this tool</a>
     </li>
   </ul>
 

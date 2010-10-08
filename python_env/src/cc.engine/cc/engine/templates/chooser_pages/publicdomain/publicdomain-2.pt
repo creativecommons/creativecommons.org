@@ -18,6 +18,16 @@
     </metal:title>
 
     <metal:body fill-slot="body">
+      <p>
+        <i i18n:translate="license.pd.retired">
+          Creative Commons has
+          <a href="http://creativecommons.org/retiredlicenses">retired this
+            legal tool</a>.  CC recommends using a
+          <a href="http://creativecommons.org/publicdomain">current tool</a>
+          for waiving rights or identifying public domain works.
+        </i>
+      </p>
+
       <p i18n:translate="license.pd.intro_1">
         You have selected the Public Domain Certification.  The Public
         Domain Certification should only be used to certify a work that is

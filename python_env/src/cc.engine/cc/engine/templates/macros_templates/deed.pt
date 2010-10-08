@@ -21,13 +21,11 @@
 
     <link rel="stylesheet" type="text/css" 
           tal:attributes="href python: request.staticdirect('includes/deed3.css')"
-          href="/@@/cc/includes/deed3.css" media="screen" />
-    <link rel="stylesheet" type="text/css" 
-          href="/@@/cc/includes/deed3-rtl.css" media="screen" 
+          media="screen" />
+    <link rel="stylesheet" type="text/css" media="screen" 
           tal:attributes="href python: request.staticdirect('includes/deed3-rtl.css')"
           tal:condition="is_rtl" />
-    <link rel="stylesheet" type="text/css" 
-          href="/includes/deed3-print.css" media="print" 
+    <link rel="stylesheet" type="text/css" media="print" 
           tal:attributes="href python: request.staticdirect('includes/deed3-print.css')"
           />
     <link rel="stylesheet" type="text/css" 
@@ -77,9 +75,6 @@
 
     <div id="header">
 
-    <div metal:use-macro="support_template/macros/translations"></div>
-    </div>
-
     <div id="deed" 
          tal:attributes="class color | green; 
                          dir   get_ltr_rtl; 
@@ -87,7 +82,8 @@
 
       <div id="deed-head">
 	<div id="cc-logo">
-	  <img src="/images/deed/cc-logo.jpg" alt="cc logo" />
+          <img tal:attributes="src python:request.staticdirect('images/deed/cc-logo.jpg')"
+               alt="cc logo" />
 	</div>
 	<div id="cc-link">
 	  <a rel="dc:creator" href="http://creativecommons.org/">
@@ -216,6 +212,9 @@ also available.
       Use this license for your own work.</a>
       </metal:use-this-license>
     </p>
+
+    <div metal:use-macro="support_template/macros/translations"></div>
+    </div>
 
 <script type="text/javascript">
 

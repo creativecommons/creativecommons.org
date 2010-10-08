@@ -25,7 +25,7 @@ import sys
 
 setup(
     name = "cc.engine",
-    version = "10.1.7",
+    version = "10.2",
     namespace_packages = ['cc',],
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     zip_safe=False,
@@ -41,6 +41,7 @@ setup(
         'cc.i18n',
         'python-gettext',
         'zope.interface',
+        'zope.pagetemplate',
         'PasteScript',
         #'repoze.bfg',
         'WebOb',
@@ -49,6 +50,7 @@ setup(
         'webtest',
         'wsgi_cache',
         'flup==1.0.2',
+        'simplejson',
         ],
 
     # author metadata

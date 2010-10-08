@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:define-macro="page"
+      xmlns:cc="http://creativecommons.org/ns#"
+      xmlns:dc="http://purl.org/dc/elements/1.1/" lang="en">
+  <head>
+    <title metal:define-slot="title">Creative Commons &mdash;
+      <span tal:omit-tag="" tal:content="license/title">
+	LICENSE TITLE
+      </span></title>
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css" />
+
+    <link rel="stylesheet"
+          tal:attributes="href python: request.staticdirect('includes/deed3.css')" />
+    <link rel="stylesheet" type="text/css" 
+          href="/@@/cc/includes/deed3-rtl.css" media="screen" 
+          tal:attributes="href python: request.staticdirect('includes/deed3-rtl.css')"
+          tal:condition="is_rtl" />
+    <link rel="stylesheet" type="text/css"
+          tal:attributes="href python: request.staticdirect('includes/deed3-print.css')"
+          media="print" /> 
+    <link rel="stylesheet" type="text/css"
+          tal:attributes="href python: request.staticdirect('includes/jurisdictions.css')"
+          media="screen" /> 
+
+    <!--[if lt IE 7]>
+    <link rel="stylesheet" type="text/css" href="/includes/deed3-ie.css"
+          media="screen"
+          tal:attributes="href python:request.staticdirect('includes/deed3-ie.css')" />
+    <![endif]-->
+
+    <link rel="alternate" type="application/rdf+xml" href="rdf" />
+
+    <script metal:use-macro="support_template/macros/language_javascript" />
+
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js">
+    </script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/connection/connection-min.js">
+    </script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/json/json-min.js">
+    </script>
+
+    <script type="text/javascript"
+            tal:attributes="src python:request.staticdirect('includes/referrer/pddeed.js')">
+    </script>
+
+    <script type="text/javascript"
+            tal:attributes="src python:request.staticdirect('includes/help.js')">
+    </script>
+
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js">
+    </script>
+
+    <metal:headers define-slot="headers" />
+  </head>
+
+  <body class="yui-skin-sam">
+    <metal:rdf metal:define-slot="page_top">
+    </metal:rdf>
+
+    <div id="deed" class="pd pd-grey"
+         tal:attributes="dir   get_ltr_rtl; 
+                         style is_rtl_align;">
+      <div id="deed-head">
+        <div id="cc-logo">
+          <img tal:attributes="src python:request.staticdirect('images/deed/cc-logo.jpg')"
+               alt="cc logo" />
+        </div>
+        <div id="deed-license">
+          <h2 property="dc:title" metal:define-slot="license-name"></h2>
+        </div>
+      </div>
+      <div id="deed-main" tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
+        <div id="deed-main-content"
+             tal:attributes="class string:${license/jurisdiction/code}">
+          <div tal:omit-tag="" metal:define-slot="body"></div>
+        </div>
+      </div>
+      <div id="deed-foot">
+        <div tal:omit-tag="" metal:define-slot="footer"></div>
+      </div>
+    </div>
+    <p id="footer">
+      <metal:use-this-license metal:define-slot="use-this-license">
+      </metal:use-this-license>
+    </p>
+
+    <div id="header">
+      <div metal:use-macro="support_template/macros/translations"></div>
+    </div>
+
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+    <script type="text/javascript">_uacct = "UA-2010.8.56-2"; urchinTracker();</script>
+
+  </body>
+</html>

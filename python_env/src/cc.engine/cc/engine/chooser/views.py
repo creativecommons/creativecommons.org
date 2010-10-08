@@ -8,17 +8,20 @@ from webob import Response, exc
 from zope.i18n import translate
 
 from cc.engine import util
+from cc.engine.decorators import RestrictHttpMethods
 from cc.engine.chooser.xmp_template import license_xmp_template
 from cc.license._lib.functions import get_selector_jurisdictions
 from cc.i18n import ccorg_i18n_setup
 import cc.license
 from cc.license.formatters.classes import (
-    HTMLFormatter, CC0HTMLFormatter, PublicDomainHTMLFormatter)
+    HTMLFormatter, CC0HTMLFormatter, PublicDomainHTMLFormatter,
+    PDMarkHTMLFormatter)
 
 
 HTML_FORMATTER = HTMLFormatter()
 CC0_HTML_FORMATTER = CC0HTMLFormatter()
 PUBLICDOMAIN_HTML_FORMATTER = PublicDomainHTMLFormatter()
+PDMARK_HTML_FORMATTER = PDMarkHTMLFormatter()
 
 
 def _base_context(request, target_lang=None):
@@ -29,7 +32,7 @@ def _base_context(request, target_lang=None):
             or util.get_target_lang_from_request(request)),
         'active_languages': util.active_languages(),
         }
-    
+
     context.update(util.rtl_context_stuff(target_lang))
     return context
 
@@ -344,6 +347,7 @@ def choose_results_view(request):
         {'engine_template': engine_template,
          'license': license,
          'license_slim_logo': license_slim_logo,
+         'license_title': license.title(target_lang),
          'license_html': license_html})
 
     if request.GET.get('partner') or request.matchdict.get('publicdomain'):
@@ -452,41 +456,18 @@ def work_email_popup(request):
     return Response(template.pt_render(context))
 
 
-CC_WORK_EMAIL_MESSAGE_TEMPLATE = u"""
-
-Thank you for using a Creative Commons License for your work "%s"
-
-You have selected the %s License. You should include a
-reference to this license on the web page that includes the work in question.
-
-Here is the suggested HTML:
-
-%s
-
-Further tips for using the supplied HTML and RDF are here:
-http://creativecommons.org/learn/technology/usingmarkup
-
-Thank you!
-Creative Commons Support
-info@creativecommons.org
-"""
-
+@RestrictHttpMethods('POST')
 def work_email_send(request):
     target_lang = util.get_target_lang_from_request(request)
 
     request_form = request.GET or request.POST
     email_addr = request_form.get('to_email', '').decode('utf-8')
-    work_title = request_form.get('work_title', '').decode('utf-8')
     license_name = request_form.get('license_name').decode('utf-8')
     license_html = request_form.get('license_html').decode('utf-8')
 
-    message_body = CC_WORK_EMAIL_MESSAGE_TEMPLATE % (
-        work_title, license_name, license_html)
-
-    util.send_email(
-        'info@creativecommons.org', [email_addr],
-        'Your Creative Commons License Information',
-        message_body)
+    util.send_license_info_email(
+        license_name, license_html,
+        email_addr, target_lang)
 
     template = util.get_zpt_template(
         'chooser_pages/emailhtml.pt', target_lang)
@@ -573,9 +554,9 @@ def publicdomain_result(request):
         work_info, target_lang)
 
     template = util.get_zpt_template(
-        'chooser_pages/publicdomain/publicdomain-4.pt')
+        'chooser_pages/publicdomain/publicdomain-4.pt', target_lang)
     engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt')
+        'macros_templates/engine.pt', target_lang)
 
     context = _base_context(request, target_lang)
     context.update({
@@ -586,7 +567,9 @@ def publicdomain_result(request):
     return Response(template.pt_render(context))
 
 
-### CC0
+### -----------
+### CC0 Chooser
+### -----------
 def cc0_landing(request):
     target_lang = util.get_target_lang_from_request(request)
 
@@ -636,26 +619,6 @@ def cc0_confirm(request):
     return Response(template.pt_render(context))
 
 
-CC0_EMAIL_MESSAGE_TEMPLATE = u"""
-
-Thank you for using a Creative Commons License for your work.
-
-You have selected %s. You should include a reference to this
-license on the web page that includes the work in question.
-
-Here is the suggested HTML:
-
-%s
-
-Further tips for using the supplied HTML and RDF are here:
-http://creativecommons.org/learn/technology/usingmarkup
-
-Thank you!
-Creative Commons Support
-info@creativecommons.org
-"""
-
-
 def cc0_results(request):
     target_lang = util.get_target_lang_from_request(request)
 
@@ -682,23 +645,10 @@ def cc0_results(request):
     ## Did the user request an email?
     email_addr = request_form.get('email')
     successful_send = False
-    if email_addr:
-        try:
-            util.send_email(
-                'info@creativecommons.org', [email_addr],
-                'Your Creative Commons License Information',
-                CC0_EMAIL_MESSAGE_TEMPLATE % (
-                    cc0_license.title(target_lang), license_html))
-
-            if request_form.get('send_updates', False):
-                util.send_email(
-                    email_addr, ["cc-zero-announce-request@lists.ibiblio.org"],
-                    'subscribe', '')
-
-            successful_send = True
-
-        except SMTPException:
-            successful_send = False
+    if email_addr and request.method == 'POST':
+        successful_send = util.send_license_info_email(
+            cc0_license.title(target_lang), license_html,
+            email_addr, target_lang)
 
     context = _base_context(request, target_lang)
     context.update({
@@ -733,5 +683,87 @@ def cc0_partner(request):
                 request_form.get('exit_url', ''),
                 request_form.get('referrer', ''),
                 cc0_license)})
+
+    return Response(template.pt_render(context))
+
+
+### --------------------------
+### Public Domain Mark Chooser
+### --------------------------
+
+def pdmark_landing(request):
+    """
+    Landing page for the Public Domain Mark chooser.
+    """
+    target_lang = util.get_target_lang_from_request(request)
+
+    template = util.get_zpt_template(
+        'chooser_pages/pdmark/index.pt', target_lang)
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine.pt', target_lang)
+
+    context = _base_context(request, target_lang)
+    context.update({
+            'engine_template': engine_template})
+
+    return Response(template.pt_render(context))
+
+
+def pdmark_details(request):
+    """
+    Details/user form page for the Public Domain Mark chooser.
+    """
+    target_lang = util.get_target_lang_from_request(request)
+
+    template = util.get_zpt_template(
+        'chooser_pages/pdmark/details.pt', target_lang)
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine.pt', target_lang)
+
+    context = _base_context(request, target_lang)
+    context.update({
+            'engine_template': engine_template})
+
+    return Response(template.pt_render(context))
+
+
+def pdmark_results(request):
+    """
+    Results page for the Public Domain Mark chooser.
+
+    Includes the user's RDFa copy-paste html.
+    Also handles email sending if the user requests it.
+    """
+    target_lang = util.get_target_lang_from_request(request)
+
+    template = util.get_zpt_template(
+        'chooser_pages/pdmark/results.pt', target_lang)
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine.pt', target_lang)
+
+    request_form = request.GET or request.POST
+
+    ## RDFA generation
+    license = cc.license.by_code('mark')
+    license_html = PDMARK_HTML_FORMATTER.format(
+        license, request_form, target_lang).strip()
+
+    ## Did the user request an email?
+    email_addr = request_form.get('email')
+    successful_send = False
+    if email_addr and request.method == 'POST':
+        successful_send = util.send_license_info_email(
+            license.title(target_lang), license_html,
+            email_addr, target_lang)
+
+    context = _base_context(request, target_lang)
+    context.update({
+            'engine_template': engine_template,
+            'request_form': request_form,
+            'rdfa': license_html,
+            'email_requested': bool(email_addr),
+            'email_addr': email_addr,
+            'successful_send': successful_send,
+            'requested_send_updates': request_form.get('send_updates', False)})
 
     return Response(template.pt_render(context))

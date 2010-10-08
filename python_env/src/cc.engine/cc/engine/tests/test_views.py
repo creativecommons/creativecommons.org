@@ -1,7 +1,12 @@
 import cgi
 import pkg_resources
 import urlparse
+import unittest
 import lxml
+try:
+    import json
+except ImportError:
+    import simplejson as json
 
 import webtest
 from webob import Request
@@ -12,7 +17,7 @@ from cc.engine.licenses import views as license_views
 import cc.license
 from cc.license._lib import rdf_helper
 
-util._activate_zpt_testing()
+util._activate_testing()
 
 
 ### ---------------
@@ -109,80 +114,30 @@ def test_rdf_views():
     _rdf_tester(
         '/licenses/BSD/rdf',
         'licenses/creativecommons.org_licenses_BSD_.rdf')
-
-
-ALL_VIEWS_LIST = [
-    '/publicdomain/',
-    '/licenses/',
-
-    # license deeds
-    '/licenses/by/3.0/', '/licenses/by/3.0/deed', '/licenses/by/3.0/deed.es',
-    '/licenses/by/3.0/rdf', '/licenses/by/3.0/legalcode',
-    '/licenses/by/3.0/legalcode-plain',
-
-    # jurisdiction license deeds
-    '/licenses/by/3.0/us/', '/licenses/by/3.0/us/deed',
-    '/licenses/by/3.0/us/deed.es', '/licenses/by/3.0/us/rdf',
-    '/licenses/by/3.0/us/legalcode', '/licenses/by/3.0/us/legalcode-plain',
-
-    # MIT / BSD
-    '/licenses/MIT/', '/licenses/BSD/',
-    '/licenses/MIT/deed', '/licenses/BSD/deed',
-    '/licenses/MIT/deed.es', '/licenses/BSD/deed.es',
-    '/licenses/MIT/rdf', '/licenses/BSD/rdf',
-    # these should redirect..
-    '/licenses/MIT/legalcode', '/licenses/BSD/legalcode',
-
-    # Publicdomain
-    '/licenses/publicdomain/', '/licenses/publicdomain/deed',
-    '/licenses/publicdomain/deed.es', '/licenses/publicdomain/rdf',
-
-    # CC0
-    '/publicdomain/zero/1.0/', '/publicdomain/zero/1.0/deed',
-    '/publicdomain/zero/1.0/deed.es', '/publicdomain/zero/1.0/legalcode',
-    '/publicdomain/zero/1.0/legalcode-plain',
-
-    # CC license chooser
-    '/choose/', '/choose/results-one', '/choose/xmp',
-    '/choose/get-html', '/choose/get-rdf', '/choose/wiki',
-    '/choose/sampling', '/choose/music',
-    '/choose/non-web-popup', '/choose/work-html-popup',
-    '/choose/?partner=FreeMusicArchive&jurisdiction_choose=1&exit_url=http%3A%2F%2Ffreemusicarchive.org%2Fcontribute%2FccLicense%2FThe_Wild_Tape%3Flicense_url%3D[license_url]%26license_name%3D[license_name]%26license_button%3D[license_button]%26deed_url%3D[deed_url]',
-    '/choose/get-html?license_url=http%3A%2F%2Fcreativecommons.org%2Flicenses%2Fby-nc-sa%2F2.0%2Fde%2F',
-    ### We should test this one with a "real" unit test.
-    ##'/choose/work-email'
-
-    # FSF choosers
-    '/choose/cc-gpl', '/choose/cc-lgpl',
-
-    # Public domain chooser
-    '/choose/publicdomain-2', '/choose/publicdomain-3',
-    '/choose/publicdomain-4',
-    '/choose/publicdomain-4?understand=confirm&field1=continue',
-    '/choose/publicdomain-4?understand=confirm&field1=continue&title=&foocopyright_holder=bar',
-    '/choose/publicdomain-direct',
-
-    # CC0 chooser
-    '/choose/zero/', '/choose/zero/waiver', '/choose/zero/confirm',
-    '/choose/zero/results',
-    '/choose/zero/confirm?license-class=zero&name=&actor_href=&work_title=&work_jurisdiction=-&confirm=confirm&understand=confirm&field1=continue',
-    '/choose/zero/results?license-class=zero&name=&actor_href=&work_title=&work_jurisdiction=-&confirm=confirm&understand=confirm&field1=continue&waiver-affirm=affirm',
-    '/choose/zero/confirm?license-class=zero&name=foo&actor_href=bar&work_title=baz&work_jurisdiction=BA&confirm=confirm&understand=confirm&field1=continue',
-    '/choose/zero/results?license-class=zero&name=foo&actor_href=bar&work_title=baz&work_jurisdiction=BA&confirm=confirm&understand=confirm&field1=continue&waiver-affirm=affirm',
-    '/choose/zero/partner',
-
-    # Characteristics
-    '/characteristic/by', '/characteristic/nc', '/characteristic/nd',
-    '/characteristic/sa']
     
 
-def test_all_views_up_simple():
+VIEWS_TEST_DATA = json.load(
+    file(pkg_resources.resource_filename(
+            'cc.engine.tests', 'view_tests.json')))
+
+
+def test_all_views_simple():
     """
-    Super simple test to make sure all GET'able views are up & return
-    200 OK or redirect
+    Test all views by checking with the JSON data.
+
+    Possible parameters for view data in the JSON file and what will
+    be tested if present:
+     - path: *required*.  Simple test that the page loads (or
+       redirects) will be done.
+     - string_tests: an array of strings that will be checked for
+       presence in the body of the response.
     """
-    for view in ALL_VIEWS_LIST:
-        TESTAPP.get(view)
+    for view in VIEWS_TEST_DATA:
+        view_result = TESTAPP.get(view['path'])
+
+        if view.has_key('string_tests'):
+            for string_test in view['string_tests']:
+                assert string_test in view_result.unicode_body
 
 
 def test_license_to_choose_redirect():
@@ -223,3 +178,122 @@ def test_deeds_up_for_licenses():
     for license_uri in license_uris:
         license_path = urlparse.urlsplit(license_uri)[2]
         TESTAPP.get(license_path)
+
+
+class TestEmailSenderViews(unittest.TestCase):
+    def setUp(self):
+        util._clear_test_inboxes()
+        util._clear_zpt_test_templates()
+        
+    def test_work_email_send(self):
+        # For doing a POST (email sending time!)
+        # --------------------------------------
+        response = TESTAPP.post(
+            '/choose/work-email',
+            {'to_email': 'recipient@example.org',
+             'work_title': 'Floobie Bletch',
+             'license_name': 'Scroll of Charging',
+             'license_html': 'You feel charged up!'})
+        
+        # assert that there's 1 message in the inbox,
+        # and that it's the right one
+        assert len(util.EMAIL_TEST_INBOX) == 1
+        sent_mail = util.EMAIL_TEST_INBOX.pop()
+        assert sent_mail['To'] == 'recipient@example.org'
+        assert sent_mail['From'] == 'info@creativecommons.org'
+        assert sent_mail['Subject'] == \
+            "Your Creative Commons License Information"
+        mail_body = sent_mail.get_payload()
+
+        assert 'You have selected Scroll of Charging' in mail_body
+        assert 'You feel charged up!' in mail_body
+
+        # check that the right template was loaded
+        assert util.ZPT_TEST_TEMPLATES.has_key(
+            util.full_zpt_filename('chooser_pages/emailhtml.pt'))
+
+        # For doing a GET (shouldn't send email!)
+        # ---------------------------------------
+        response = TESTAPP.get(
+            '/choose/work-email?license_name=Scroll+of+Charging&to_email=recipient%40example.org&work_title=Floobie+Bletch&license_html=You+feel+charged+up%21',
+            expect_errors=True)
+        assert response.status_int == 405
+
+    def test_cc0_results_email_send(self):
+        # For doing a POST (email sending time!)
+        # --------------------------------------
+        response = TESTAPP.post(
+            '/choose/zero/results',
+            {'email': 'recipient@example.org'})
+        
+        # assert that there's 1 message in the inbox,
+        # and that it's the right one
+        assert len(util.EMAIL_TEST_INBOX) == 1
+        sent_mail = util.EMAIL_TEST_INBOX.pop()
+        assert sent_mail['To'] == 'recipient@example.org'
+        assert sent_mail['From'] == 'info@creativecommons.org'
+        assert sent_mail['Subject'] == \
+            "Your Creative Commons License Information"
+        mail_body = sent_mail.get_payload()
+
+        assert 'You have selected CC0 1.0 Universal' in mail_body
+        assert 'To the extent possible under law,' in mail_body
+
+        # check that the right template was loaded
+        assert util.ZPT_TEST_TEMPLATES.has_key(
+            util.full_zpt_filename('chooser_pages/zero/results.pt'))
+
+        # For doing a GET (shouldn't send email!)
+        # ---------------------------------------
+        util._clear_test_inboxes()
+        util._clear_zpt_test_templates()
+
+        response = TESTAPP.get(
+            '/choose/zero/results?email=recipient@example.org')
+        
+        # assert that there's no messages in the inbox
+        assert len(util.EMAIL_TEST_INBOX) == 0
+
+        # check that the right template was loaded
+        assert util.ZPT_TEST_TEMPLATES.has_key(
+            util.full_zpt_filename('chooser_pages/zero/results.pt'))
+
+
+    def test_pdmark_results_email_send(self):
+        # For doing a POST (email sending time!)
+        # --------------------------------------
+        response = TESTAPP.post(
+            '/choose/mark/results',
+            {'email': 'recipient@example.org'})
+        
+        # assert that there's 1 message in the inbox,
+        # and that it's the right one
+        assert len(util.EMAIL_TEST_INBOX) == 1
+        sent_mail = util.EMAIL_TEST_INBOX.pop()
+        assert sent_mail['To'] == 'recipient@example.org'
+        assert sent_mail['From'] == 'info@creativecommons.org'
+        assert sent_mail['Subject'] == \
+            "Your Creative Commons License Information"
+        mail_body = sent_mail.get_payload()
+
+        assert 'You have selected Public Domain Mark 1.0' in mail_body
+        assert 'free of known copyright restrictions' in mail_body
+
+        # check that the right template was loaded
+        assert util.ZPT_TEST_TEMPLATES.has_key(
+            util.full_zpt_filename('chooser_pages/pdmark/results.pt'))
+
+        # For doing a GET (shouldn't send email!)
+        # ---------------------------------------
+        util._clear_test_inboxes()
+        util._clear_zpt_test_templates()
+
+        response = TESTAPP.get(
+            '/choose/mark/results?email=recipient@example.org')
+        
+        # assert that there's no messages in the inbox
+        assert len(util.EMAIL_TEST_INBOX) == 0
+
+        # check that the right template was loaded
+        assert util.ZPT_TEST_TEMPLATES.has_key(
+            util.full_zpt_filename('chooser_pages/pdmark/results.pt'))

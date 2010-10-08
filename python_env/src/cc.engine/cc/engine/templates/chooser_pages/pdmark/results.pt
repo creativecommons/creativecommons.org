@@ -5,7 +5,7 @@
       metal:use-macro="engine_template/macros/page"
       i18n:domain="cc_org">
 <head>
-  <title metal:fill-slot="title">CC0: Results</title>
+  <title metal:fill-slot="title">Public Domain Mark: Results</title>
 
   <metal:headers fill-slot="headers">
 
@@ -42,49 +42,33 @@ YAHOO.util.Event.onDOMReady(function() {
 <metal:left fill-slot="sidebar">
 </metal:left>
 
-<metal:title fill-slot="page-header-title">CC0</metal:title>
+<metal:title fill-slot="page-header-title">Public Domain Mark</metal:title>
 
 <metal:body fill-slot="body">
 <div class="yui-skin-sam">
 
-  <div id="error" class="yui-module"
-       tal:condition="not:can_issue">
-    <div class="bd">
-      <p i18n:translate="license.zero.declined">
-        You did not affirm your decision to waive the rights
-        associated with your work. If you'd like to continue you can
-        click the Back button to review your choice.
-      </p>
-      <ul>
-        <li><a href="/about/cc0" 
-               i18n:translate="license.zero.about">About CC0</a></li>
-        <li><a href="http://wiki.creativecommons.org/CC0_FAQ"
-               i18n:translate="util.FAQ">Frequently Asked Questions</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div id="results" class="yui-module" tal:condition="can_issue">
+  <div id="results" class="yui-module">
     <div class="bd" id="waiver-results">
 
-      <p i18n:translate="license.choose_button">
-        Choose which style of button you'd like on your webpage:
+      <p i18n:translate="license.mark.choose_button">
+        Choose which style of button you would like to appear by the
+        work on the webpage:
       </p>
 
       <div class="licensebox" align="center">
         <table>
           <tr>
             <td valign="bottom" align="center">
-              <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png"
+              <img src="http://i.creativecommons.org/p/mark/1.0/88x31.png"
                    style="border:0px;" /><br/>
               <input type="radio" name="button" checked
-                     onclick="swapbutton('http://i.creativecommons.org/p/zero/1.0/88x31.png')" />
+                     onclick="swapbutton('http://i.creativecommons.org/p/mark/1.0/88x31.png')" />
             </td>
             <td valign="bottom" align="center">
-              <img src="http://i.creativecommons.org/p/zero/1.0/80x15.png"
+              <img src="http://i.creativecommons.org/p/mark/1.0/80x15.png"
                    style="border:0px;" /><br/>
               <input type="radio" name="button"
-                     onclick="swapbutton('http://i.creativecommons.org/p/zero/1.0/80x15.png')"/>
+                     onclick="swapbutton('http://i.creativecommons.org/p/mark/1.0/80x15.png')"/>
             </td>
 
           </tr>
@@ -92,8 +76,8 @@ YAHOO.util.Event.onDOMReady(function() {
       </div>
 
       <span id="waiver-results-leadin" 
-            i18n:translate="license.zero.preview_waiver">
-        Here's a preview of how your waiver will appear on your site:
+            i18n:translate="license.mark.preview_waiver">
+        Here's a preview of how the mark will appear on the website:
       </span>
 
       <div class="preview" id="results-preview" 
@@ -101,12 +85,13 @@ YAHOO.util.Event.onDOMReady(function() {
       </div>
 
       <h3 i18n:translate="license.have_your_own_website">Have a website?</h3>
-      <p i18n:translate="license.zero.copy_text">
-        Copy the text below to your Web site to let your visitors
-        know that you've waived the rights to your work.  Creative
-        Commons does not retain a record of your selection; as the
-        publisher it's up to you to let people know how they may use your
-        work.
+      <p i18n:translate="license.mark.copy_text">
+        Copy the text below to your website to let your visitors know
+        that the work identified by you is free of known copyright
+        restrictions.  Creative Commons does not maintain a record of
+        the work you have identified using the Public Domain Mark.  It
+        is up to you to let people know that you have identified the
+        work using the mark.
       </p> 
 
       <textarea id="codetocopy" cols="70" rows="6"
@@ -137,23 +122,14 @@ YAHOO.util.Event.onDOMReady(function() {
                 <span tal:replace="email_addr" i18n:name="email_addr">
                   foo@example.com</span>.
               </p>
-
-              <span tal:omit-tag="" 
-                    tal:condition="requested_send_updates"
-                    i18n:translate="license.zero.subscribed_to_updates">
-                You have asked to be notified of updates to CC0.  A subscription
-                request has been sent on your behalf; you must click the link in
-                the confirmation email to complete the sign-up process.
-              </span>
             </div>
           </metal:email_container>
         </metal:email_results>
 
         <metal:request_email tal:condition="not:email_requested">
-          <p i18n:translate="license.zero.send_email_updates">
+          <p i18n:translate="license.mark.send_email_updates">
             If you'd like to get the HTML with embedded metadata via
-            email and optionally receive updates about CC0, fill in your
-            email address below.
+            email, fill in your email address below.
           </p>      
 
           <form action="" method="post"

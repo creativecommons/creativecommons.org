@@ -8,8 +8,6 @@
     <title metal:fill-slot="title">CC0</title>
 
     <metal:headers fill-slot="headers">
-      <base href="" tal:attributes="href python:request.urlgen('choose_cc0_landing')" />
-
       <link rel="stylesheet" type="text/css" 
 	    href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
       <link rel="stylesheet" type="text/css"
@@ -86,7 +84,7 @@
 
 	      <span id="mycheckbox" class="yui-button">
 	        <span class="first-child">
-	          <a id="do-begin" href="./waiver">
+	          <a id="do-begin" href="/choose/zero/waiver">
 		    <span tal:omit-tag=""
 		          i18n:translate="util.begin">begin</span> &raquo;
 	          </a>

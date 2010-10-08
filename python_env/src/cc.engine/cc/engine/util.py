@@ -1,7 +1,7 @@
 import csv
 import os
 import pkg_resources
-import re
+import string
 import smtplib
 
 from email.MIMEText import MIMEText
@@ -15,12 +15,16 @@ from zope.component.globalregistry import base
 from zope.i18n.interfaces import ITranslationDomain
 from zope.i18n.translationdomain import TranslationDomain
 from zope.i18n import translate
+from zope.i18nmessageid import MessageFactory
 
 from cc.license._lib import rdf_helper
 from cc.license._lib import functions as cclicense_functions
 from cc.i18n import ccorg_i18n_setup
 
 from cc.engine.pagetemplate import CCLPageTemplateFile
+
+
+z_gettext = MessageFactory('cc_org')
 
 
 BASE_TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
@@ -35,20 +39,27 @@ LANGUAGE_JURISDICTION_MAPPING = {}
 class Error(Exception): pass
 
 
+TESTS_ENABLED = False
+def _activate_testing():
+    """
+    Call this to activate testing in util.py
+    """
+    global TESTS_ENABLED
+    TESTS_ENABLED = True
+
+
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ### Special ZPT unit test hackery begins HERE
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-ZPT_TEST_ENABLED = False
 ZPT_TEST_TEMPLATES = {}
 class CCLPageTemplateFileTester(CCLPageTemplateFile):
     def pt_render(self, namespace, *args, **kwargs):
         ZPT_TEST_TEMPLATES[self.filename] = namespace
         return CCLPageTemplateFile.pt_render(self, namespace, *args, **kwargs)
 
-def _activate_zpt_testing():
-    global ZPT_TEST_ENABLED
-    ZPT_TEST_ENABLED = True
+def _clear_zpt_test_templates():
+    ZPT_TEST_TEMPLATES.clear()
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ### </Special ZPT unit test hackery>
@@ -71,7 +82,7 @@ def full_zpt_filename(template_path):
 def get_zpt_template(template_path, target_lang=None):
     full_template_path = full_zpt_filename(template_path)
 
-    if ZPT_TEST_ENABLED:
+    if TESTS_ENABLED:
         ptf_class = CCLPageTemplateFileTester
     else:
         ptf_class = CCLPageTemplateFile
@@ -366,9 +377,68 @@ def safer_resource_filename(package, resource):
     return filename
 
 
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### Special email test stuff begins HERE
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# We have two "test inboxes" here:
+# 
+# EMAIL_TEST_INBOX:
+# ----------------
+#   If you're writing test views, you'll probably want to check this.
+#   It contains a list of MIMEText messages.
+#
+# EMAIL_TEST_MBOX_INBOX:
+# ----------------------
+#   This collects the messages from the FakeMhost inbox.  It's reslly
+#   just here for testing the send_email method itself.
+#
+#   Anyway this contains:
+#    - from
+#    - to: a list of email recipient addresses
+#    - message: not just the body, but the whole message, including
+#      headers, etc.
+#
+# ***IMPORTANT!***
+# ----------------
+# Before running tests that call functions which send email, you should
+# always call _clear_test_inboxes() to "wipe" the inboxes clean. 
+
+EMAIL_TEST_INBOX = []
+EMAIL_TEST_MBOX_INBOX = []
+
+
+class FakeMhost(object):
+    """
+    Just a fake mail host so we can capture and test messages
+    from send_email
+    """
+    def connect(self):
+        pass
+
+    def sendmail(self, from_addr, to_addrs, message):
+        EMAIL_TEST_MBOX_INBOX.append(
+            {'from': from_addr,
+             'to': to_addrs,
+             'message': message})
+
+def _clear_test_inboxes():
+    global EMAIL_TEST_INBOX
+    global EMAIL_TEST_MBOX_INBOX
+    EMAIL_TEST_INBOX = []
+    EMAIL_TEST_MBOX_INBOX = []
+
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### </Special email test stuff>
+### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 def send_email(from_addr, to_addrs, subject, message_body):
     # TODO: make a mock mhost if testing is enabled
-    mhost = smtplib.SMTP()
+    if TESTS_ENABLED:
+        mhost = FakeMhost()
+    else:
+        mhost = smtplib.SMTP()
+
     mhost.connect()
 
     message = MIMEText(message_body.encode('utf-8'), 'plain', 'utf-8')
@@ -376,7 +446,65 @@ def send_email(from_addr, to_addrs, subject, message_body):
     message['From'] = from_addr
     message['To'] = ', '.join(to_addrs)
 
+    if TESTS_ENABLED:
+        EMAIL_TEST_INBOX.append(message)
+
     return mhost.sendmail(from_addr, to_addrs, message.as_string())
+
+
+LICENSE_INFO_EMAIL_BODY = z_gettext(
+    'license.info_email_body',
+    """Thank you for using a Creative Commons legal tool for your work.
+
+You have selected ${license_title}.
+You should include a reference to this on the web page that includes
+the work in question.
+
+Here is the suggested HTML:
+
+${license_html}
+
+Tips for marking your work can be found at
+http://wiki.creativecommons.org/Marking.  Information on the supplied HTML and
+metadata can be found at http://wiki.creativecommons.org/CC_REL.
+
+Thank you!
+Creative Commons Support
+info@creativecommons.org""")
+
+LICENSE_INFO_EMAIL_SUBJECT = z_gettext(
+    'license.info_email_subject',
+    'Your Creative Commons License Information')
+
+
+def send_license_info_email(license_title, license_html,
+                            recipient_email, locale):
+    """
+    Send license information email to a user.
+
+    Arguments:
+     - license_title: title of the license
+     - license_html: copy-paste license HTML
+     - recipient_email: the user that is getting this email
+     - locale: language email should be sent in
+
+    Returns:
+      A boolean specifying whether or not the email sent successfully
+    """
+
+    email_body = string.Template(
+        translate(LICENSE_INFO_EMAIL_BODY, target_language=locale)).substitute(
+        {'license_title': license_title,
+         'license_html': license_html})
+
+    try:
+        send_email(
+            'info@creativecommons.org', [recipient_email],
+            translate(LICENSE_INFO_EMAIL_SUBJECT, target_language=locale),
+            email_body)
+        return True
+    except smtplib.SMTPException:
+        return False
 
 
 def make_locale_lower_upper_style(locale):
