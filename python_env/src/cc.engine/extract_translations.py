@@ -1,7 +1,7 @@
 from zope.app.locales.extract import POTMaker, POTEntry
 from zope.app.locales.extract import py_strings
 from zope.app.locales.extract import tal_strings
-from zope.app.locales.pygettext import normalize
+from babel.messages.pofile import normalize
 from zope.i18nmessageid import Message
 
 from zope.app.locales.pygettext import make_escapes
