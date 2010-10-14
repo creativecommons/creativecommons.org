@@ -24,7 +24,7 @@ from cc.i18n import ccorg_i18n_setup
 from cc.engine.pagetemplate import CCLPageTemplateFile
 
 
-z_gettext = MessageFactory('cc_org')
+_ = MessageFactory('cc_org')
 
 
 BASE_TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
@@ -437,7 +437,7 @@ def send_email(from_addr, to_addrs, subject, message_body):
     return mhost.sendmail(from_addr, to_addrs, message.as_string())
 
 
-LICENSE_INFO_EMAIL_BODY = z_gettext(
+LICENSE_INFO_EMAIL_BODY = _(
     'license.info_email_body',
     """Thank you for using a Creative Commons legal tool for your work.
 
@@ -457,7 +457,7 @@ Thank you!
 Creative Commons Support
 info@creativecommons.org""")
 
-LICENSE_INFO_EMAIL_SUBJECT = z_gettext(
+LICENSE_INFO_EMAIL_SUBJECT = _(
     'license.info_email_subject',
     'Your Creative Commons License Information')
 
