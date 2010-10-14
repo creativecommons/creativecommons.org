@@ -9,12 +9,25 @@ make_escapes(1)
 
 class CCPOTEntry(POTEntry):
     def write(self, file):
+        if (isinstance(self.msgid, Message) and
+            self.msgid.default is not None):
+
+            # Write Default
+            default = self.msgid.default.strip()
+            lines = normalize(default).split("\n")
+            lines[0] = "#. Default: %s\n" % lines[0]
+            for i in range(1, len(lines)):
+                lines[i] = "#. %s\n" % lines[i]
+            file.write("".join(lines))
+
         if self.comments:
             file.write(self.comments)
         file.write('msgid %s\n' % normalize(self.msgid))
+
         if (isinstance(self.msgid, Message) and
             self.msgid.default is not None):
-            file.write('msgstr %s\n' % normalize(self.msgid.default.strip()))
+            # Write msgstr
+            file.write('msgstr %s\n' % normalize(default))
         else:
             file.write('msgstr ""\n')
 
