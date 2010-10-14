@@ -36,6 +36,8 @@ class CCPOTMaker(POTMaker):
 
 
 maker = CCPOTMaker('extracted.pot', '')
+maker.add(py_strings('cc/engine/', 'cc_org'),
+          'cc/engine/')
 maker.add(tal_strings('cc/engine/templates/', 'cc_org', include_default_domain=True),
           'cc/engine/templates/')
 maker.write()
