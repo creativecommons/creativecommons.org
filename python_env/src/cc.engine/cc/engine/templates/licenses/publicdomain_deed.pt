@@ -38,8 +38,7 @@
 
     <div id="deed-newer" style="text-align:center"
          tal:condition="license/deprecated">
-      <!--h3 i18n:translate="deed.retired"-->
-      <h3>
+      <h3 i18n:translate="deed.retired">
         Creative Commons has
         <a href="http://creativecommons.org/retiredlicenses">retired
           this legal tool</a>

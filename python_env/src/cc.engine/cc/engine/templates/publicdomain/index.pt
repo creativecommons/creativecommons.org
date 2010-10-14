@@ -17,8 +17,7 @@
   
 <div metal:fill-slot="body">
 
-  <!-- p i18n:translate="license.pdtools.intro"-->
-  <p>
+  <p i18n:translate="license.pdtools.intro">
     Our licenses help authors keep and manage their copyright on terms
     they choose.  Our public domain tools, on the other hand, enable
     authors and copyright owners who want to dedicate their works to
@@ -29,8 +28,7 @@
 
   <h2>CC0</h2>
 
-  <!--p i18n:translate="license.pdtools.zero"-->
-  <p>
+  <p i18n:translate="license.pdtools.zero">
     Use this universal tool if you are a holder of copyright or
     database rights, and you wish to waive all your interests in your
     work worldwide.
@@ -49,8 +47,7 @@
 
   <h2 i18n:translate="util.public_domain_mark">Public Domain Mark</h2>
 
-  <!-- p i18n:translate="license.pdtools.pdc" -->
-  <p>
+  <p i18n:translate="license.pdtools.pdc">
     Use this tool if you have identified a work that is free of known
     copyright restrictions.  Creative Commons does not recommend this
     tool for works that are restricted by copyright laws in one or

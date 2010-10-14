@@ -32,17 +32,15 @@
       </div>
       <ul class="license-properties" style="width: 550px;">
         <li class="license nolaw">
-          <!-- p id="nolaw-text" style="margin-bottom:1em;"
-             i18n:translate="deed.zero.nocopyright-text"-->
-          <p id="nolaw-text" style="margin-bottom:1em;">
+          <p id="nolaw-text" style="margin-bottom:1em;"
+             i18n:translate="deed.zero.nocopyright-text">
             The person who associated a work with this deed
             has <b>dedicated</b> the work to the public domain by
             waiving all of his or her rights to the work worldwide
             under copyright law, including all related and neighboring
             rights, to the extent allowed by law.
           </p>
-          <!--p i18n:translate="deed.zero.no-endorsment"-->
-          <p>
+          <p i18n:translate="deed.zero.no-endorsment">
             You can copy, modify, distribute and perform the work,
             even for commercial purposes, all without asking
             permission. See <b>Other Information</b> below.
@@ -207,8 +205,7 @@
         Disclaimer
       </div>
 
-      <!-- div class="bd" i18n:translate="deed.zero.disclaimer" -->
-      <div class="bd">
+      <div class="bd" i18n:translate="deed.zero.disclaimer">
         <p>
           The Commons Deed is not a legal instrument. It is simply a
           handy reference for understanding the CC0 Legal Code, a
