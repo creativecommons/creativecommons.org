@@ -241,7 +241,7 @@
   </metal:footer>
 
   <metal:use-this-license fill-slot="use-this-license">
-    <a id="get_this" href="/choose/zero/" 
+    <a id="get_this" href="/publicdomain/" 
        i18n:translate="deed.use_this_tool">Use this tool for your own work.</a>
   </metal:use-this-license>
 </body>
