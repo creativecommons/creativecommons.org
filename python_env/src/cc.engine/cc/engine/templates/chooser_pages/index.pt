@@ -29,8 +29,7 @@
     
   <div metal:fill-slot="body">
 
-    <!-- p i18n:translate="license.what"-->
-    <p>
+    <p i18n:translate="license.what">
       With a Creative Commons license, <strong>you keep your
       copyright</strong> but allow people
       to <a href="/learn/licenses/fullrights">copy and distribute your

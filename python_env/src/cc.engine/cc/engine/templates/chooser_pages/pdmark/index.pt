@@ -96,7 +96,7 @@
 	    <p>
 	      <span id="mycheckbox" class="yui-button">
 	        <span class="first-child">
-	          <a id="do-learn-more" href="/about/mark"
+	          <a id="do-learn-more" href="/about/pdm"
 		     i18n:translate="util.learn_more">learn more</a>
 	        </span>
 	      </span>

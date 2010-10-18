@@ -32,17 +32,15 @@
       </div>
       <ul class="license-properties" style="width: 550px;">
         <li class="license nolaw">
-          <!-- p id="nolaw-text" style="margin-bottom:1em;"
-             i18n:translate="deed.zero.nocopyright-text"-->
-          <p id="nolaw-text" style="margin-bottom:1em;">
+          <p id="nolaw-text" style="margin-bottom:1em;"
+             i18n:translate="deed.zero.nocopyright-text">
             The person who associated a work with this deed
             has <b>dedicated</b> the work to the public domain by
             waiving all of his or her rights to the work worldwide
             under copyright law, including all related and neighboring
             rights, to the extent allowed by law.
           </p>
-          <!--p i18n:translate="deed.zero.no-endorsment"-->
-          <p>
+          <p i18n:translate="deed.zero.no-endorsment">
             You can copy, modify, distribute and perform the work,
             even for commercial purposes, all without asking
             permission. See <b>Other Information</b> below.
@@ -52,13 +50,13 @@
         <li class="license" style="display:none" id="work-details-block">
           <div>
             <ul>
-              <li class="license norms" style="display:none;">
+              <li class="license usage-guidelines" style="display:none;">
                 <a href="#" id="usage_guidelines"
                    name="usage_guidelines">Non-binding use guidelines</a>
                 apply to this work.
               </li>
 
-              <li style="padding-bottom: 0.5em; display:none;"><strong>Work Details</strong></li>
+              <li style="padding-bottom: 0.5em; display:none;" id="work-details-title"><strong>Work Details</strong></li>
               <li style="display:none">
                 <span class="work-details-item-title"
                       i18n:translate="deed.workdetails.work">Work:</span>
@@ -207,8 +205,7 @@
         Disclaimer
       </div>
 
-      <!-- div class="bd" i18n:translate="deed.zero.disclaimer" -->
-      <div class="bd">
+      <div class="bd" i18n:translate="deed.zero.disclaimer">
         <p>
           The Commons Deed is not a legal instrument. It is simply a
           handy reference for understanding the CC0 Legal Code, a
@@ -244,7 +241,7 @@
   </metal:footer>
 
   <metal:use-this-license fill-slot="use-this-license">
-    <a id="get_this" href="/choose/zero/" 
+    <a id="get_this" href="/publicdomain/" 
        i18n:translate="deed.use_this_tool">Use this tool for your own work.</a>
   </metal:use-this-license>
 </body>
