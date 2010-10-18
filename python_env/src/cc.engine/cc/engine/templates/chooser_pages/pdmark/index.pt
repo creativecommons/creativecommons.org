@@ -60,7 +60,7 @@
       <div class="yui-content">
         <div id="page-welcome" class="yui-module">
           <div class="bd">
-            <p class="pd-explain-differences"
+            <div class="pd-explain-differences"
                i18n:translate="license.mark.CC0-difference">
               You are using a tool for labeling works that are free of known
               copyright restrictions. Creative Commons does not recommend this
@@ -68,7 +68,7 @@
               more jurisdictions. If you want to free <b>your own work</b> of
               copyright restrictions, instead use the
               <b><a href="/choose/zero/">CC0 public domain dedication</a></b>.
-            </p>
+            </div>
 
             <p i18n:translate="license.mark.intro_1">
               Using the Public Domain Mark, you can mark a work that is free of
