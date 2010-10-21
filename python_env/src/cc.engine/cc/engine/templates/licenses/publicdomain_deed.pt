@@ -91,7 +91,7 @@
 
     <div id="help_use_zero">
       <div class="hd">CC0 for Public Domain Dedication</div>
-      <div class="bd">
+      <div class="bd" i18n:translate="deed.pd.help_use_zero">
         This tool is based on United States law and may not be applicable
         outside the US. For dedicating new works to the public domain, we
         recommend <a href="/choose/zero/">CC0</a>.
