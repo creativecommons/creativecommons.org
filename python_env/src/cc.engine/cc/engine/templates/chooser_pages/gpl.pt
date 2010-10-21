@@ -27,7 +27,7 @@
 
         <!-- Creative Commons License -->
         <a href="http://creativecommons.org/licenses/GPL/2.0/">
-          <img alt="CC-GNU GPL" border="0" src="/images/public/cc-GPL-a.png" /></a><br />
+          <img alt="CC-GNU GPL" border="0" src="http://i.creativecommons.org/l/GPL/2.0/88x62.png" /></a><br />
         <span tal:omit-tag="" i18n:translate="license.fsf_software_licensed">
 
           <span i18n:name="license_code" tal:omit-tag="">GPL</span>
@@ -91,7 +91,7 @@
               <!-- Creative Commons License -->
               <a href="http://creativecommons.org/licenses/GPL/2.0/">
                 <img alt="CC-GNU GPL" border="0" 
-                     src="http://creativecommons.org/images/public/cc-GPL-a.png" /></a>
+                     src="http://i.creativecommons.org/l/GPL/2.0/88x62.png" /></a>
               <br />
               <span tal:omit-tag="" i18n:translate="license.fsf_software_licensed">
                 <span i18n:name="license_code" tal:omit-tag="">GPL</span>
