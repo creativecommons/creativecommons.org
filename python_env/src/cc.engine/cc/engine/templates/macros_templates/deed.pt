@@ -51,9 +51,10 @@
 	    src="http://yui.yahooapis.com/2.6.0/build/json/json-min.js">
     </script>
 
-    <script type="text/javascript"
-            tal:attributes="src python:request.staticdirect('includes/referrer/deed.js')"
-            src="/includes/referrer/deed.js">
+    <script type="text/javascript" href="http://scraper.creativecommons.org/js/deed.js">
+    </script>
+    <script type="text/javascript">
+      document.write("<script type='text/javascript' href='http://scraper.creativecommons.org/apps/deed?url=" + encodeURIComponent(document.referrer) + "&license_uri=" + document.URL + "callback=YAHOO.cc.success'></script>");
     </script>
 
     <script type="text/javascript" 
