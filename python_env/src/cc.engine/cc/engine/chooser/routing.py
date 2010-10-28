@@ -63,5 +63,7 @@ chooser_routes = [
           controller="cc.engine.chooser.views:pdmark_details"),
     Route("choose_pdmark_results", "/mark/results",
           controller="cc.engine.chooser.views:pdmark_results"),
+    Route("choose_pdmark_partner", "/mark/partner",
+          controller="cc.engine.chooser.views:pdmark_partner"),
     ]
 

@@ -1,0 +1,70 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="partner_template/macros/page"
+      i18n:domain="cc_org">
+  <head>
+    <title metal:fill-slot="title">Choose a License</title>
+  </head>
+  <body>
+    <div metal:fill-slot="body"
+         tal:define="target_lang string:en;
+                     stylesheet request_form/stylesheet | nothing;
+                     exiturl    request_form/exit_url | string:'';
+                     pd_exiturl python:exiturl.replace('&', '%26');
+                     partner    request_form/partner | nothing;
+                     partner_icon_url python: request_form.get('partner_icon_url','/images/remote_logo.gif');
+                     show_jurisdiction request_form/jurisdiction_chooser | nothing;
+                     def_juris request_form/jurisdiction | nothing;">
+
+      <h1 i18n:translate="license.confirm_choice">Confirm Choice</h1>
+
+      <p i18n:translate="license.mark.intro_1">
+        Using the Public Domain Mark, you can mark a work that is free of
+        known copyright restrictions and clearly convey that status.  When
+        applied properly, the PDM allows the work to be easily discovered,
+        and provides valuable information about the work.
+      </p>
+
+      <p i18n:translate="license.mark.intro_2">
+        The PDM is intended for use with old works that are free of
+        copyright restrictions around the world, or works that have been
+        affirmatively placed in the worldwide public domain prior to the
+        expiration of copyright by the rights’ holder.  It should not be
+        used to mark works that are in the public domain in some
+        jurisdictions while known to be restricted by copyright in
+        others. Currently, Creative Commons does not recommend the Public
+        Domain Mark for works whose copyright status differs jurisdiction
+        to jurisdiction, though we are developing means for marking and
+        tagging such works.  You should consult with your legal advisor if
+        you are unsure whether you should use the PDM for a work you have
+        identified.
+      </p>
+
+      <p i18n:translate="license.mark.intro_3">
+        Please note that this is <strong>not a registration
+          process</strong> and Creative Commons does not store or save any
+        of the information you provide. This tool guides you through the
+        process of generating HTML with embedded metadata for marking the
+        work you have identified as free of known copyright restrictions.
+        The work will not be associated with a Public Domain Mark until
+        you publish it marked as being so.
+      </p>
+
+      <p i18n:translate="license.partner.mark.use_cc0_instead">
+        If you want to free <em>your own work</em> of
+        copyright restrictions, instead use the
+        <span tal:omit-tag="" i18n:name="pd_url"
+              tal:content="string:/choose/zero/partner?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
+        <a href="${pd_url}">CC0 public domain dedication</a>.
+      </p>
+
+      <p i18n:translate="license.you_may_proceed">
+        <span tal:omit-tag=""
+              i18n:name="processed_exit_url" tal:content="exit_url" />
+You may now <a href="#" tal:attributes="href exit_url">proceed</a>
+      </p>
+    </div>
+  </body>
+</html>
