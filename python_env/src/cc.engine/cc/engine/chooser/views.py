@@ -320,11 +320,7 @@ def chooser_view(request):
 def choose_results_view(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    if request.matchdict.get('publicdomain', False):
-        template = util.get_zpt_template(
-            'chooser_pages/publicdomain/publicdomain-partner.pt',
-            target_lang)
-    elif request.GET.get('partner'):
+    if request.GET.get('partner'):
         template = util.get_zpt_template(
             'chooser_pages/partner/results.pt', target_lang)
     else:
@@ -350,7 +346,7 @@ def choose_results_view(request):
          'license_title': license.title(target_lang),
          'license_html': license_html})
 
-    if request.GET.get('partner') or request.matchdict.get('publicdomain'):
+    if request.GET.get('partner'):
         context.update(
             {'partner_template': util.get_zpt_template(
                     'macros_templates/partner.pt', target_lang),
