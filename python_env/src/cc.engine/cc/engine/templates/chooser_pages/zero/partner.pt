@@ -39,7 +39,7 @@
 
       <p i18n:translate="license.partner.zero.use_pdm_instead">
         If instead you want to certify that a work is
-        <em>already in the public domain</em>, use the
+        <em>already in the public domain</em>, instead use the
         <span tal:omit-tag="" i18n:name="pd_url"
               tal:content="string:/choose/mark/partner?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
         <a href="${pd_url}">Public Domain Mark</a>.
