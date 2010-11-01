@@ -683,6 +683,22 @@ def cc0_partner(request):
     return Response(template.pt_render(context))
 
 
+# publicdomain-direct now redirects to CC0!
+
+def publicdomain_direct_redirect(request):
+    """
+    /choose/publicdomain-direct used to point to PDCC, which has been
+    retired, so we redirect to CC0.
+    """
+    new_url = '/choose/zero/partner'
+
+    request_form = request.GET or request.POST
+    if request_form:
+        new_url = '%s?%s' % (
+            new_url, urlencode(request_form))
+    return exc.HTTPTemporaryRedirect(location=new_url)
+
+
 ### --------------------------
 ### Public Domain Mark Chooser
 ### --------------------------

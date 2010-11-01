@@ -40,9 +40,9 @@ chooser_routes = [
     Route("choose_publicdomain_result", "/publicdomain-4",
           controller="cc.engine.chooser.views:publicdomain_result"),
     
-    ### General publicdomain partner page now points to CC0 partner
+    ### General publicdomain partner page now redirects to CC0 partner
     Route("choose_publicdomain_partner", "/publicdomain-direct",
-          controller="cc.engine.chooser.views:cc0_partner"),
+          controller="cc.engine.chooser.views:publicdomain_direct_redirect"),
 
     ## CC0 chooser
     Route("choose_cc0_landing", "/zero/",
