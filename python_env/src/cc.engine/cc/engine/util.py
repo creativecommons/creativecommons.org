@@ -164,6 +164,27 @@ def get_locale_text_orientation(locale):
         return u'ltr'
 
 
+def subset_dict(orig_dict, subset_keys):
+    """
+    Take a dictionary, return a subset of it based on a list of
+    allowed keys.
+
+    Args:
+      - orig_dict: the dictionary to subset
+      - subset_keys: a list of keys that are allowed in the new dictionary
+
+    Returns:
+      A new dictionary with only the subset keys
+    """
+    new_dict = {}
+
+    for key in subset_keys:
+        if orig_dict.has_key(key):
+            new_dict[key] = orig_dict[key]
+
+    return new_dict
+
+
 def get_license_conditions(license, target_language="en_US"):
     """
     This is for compatibility with the way the old cc.engine handled

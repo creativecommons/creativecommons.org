@@ -159,3 +159,18 @@ metadata can be found at http://wiki.creativecommons.org/CC_REL.
 Thank you!
 Creative Commons Support
 info@creativecommons.org"""
+
+
+def test_subset_dict():
+    expected = {
+        'keeper1': 'keepme1',
+        'keeper2': 'keepme2'}
+
+    result = util.subset_dict(
+        {'keeper1': 'keepme1',
+         'loser1': 'loseme1',
+         'keeper2': 'keepme2',
+         'loser2': 'loseme2'},
+        ['keeper1', 'keeper2', 'keeper3'])
+
+    assert result == expected
