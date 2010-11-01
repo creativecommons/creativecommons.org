@@ -670,11 +670,18 @@ def cc0_partner(request):
 
     cc0_license = cc.license.by_code('CC0')
 
+    # Used for recommending PDM in case that's more appropriate
+    get_params = urlencode(
+        util.subset_dict(
+            request_form,
+            ['target_lang', 'partner', 'pd_exiturl', 'stylesheet']))
+
     context = _base_context(request, target_lang)
     context.update(
         {'partner_template': util.get_zpt_template(
                 'macros_templates/partner.pt', target_lang),
          'request_form': request_form,
+         'get_params': get_params,
          'exit_url': _generate_exit_url(
                 request_form.get('exit_url', ''),
                 request_form.get('referrer', ''),
@@ -791,11 +798,18 @@ def pdmark_partner(request):
 
     cc0_license = cc.license.by_code('mark')
 
+    # Used for recommending CC0 in case that's more appropriate
+    get_params = urlencode(
+        util.subset_dict(
+            request_form,
+            ['target_lang', 'partner', 'pd_exiturl', 'stylesheet']))
+    
     context = _base_context(request, target_lang)
     context.update(
         {'partner_template': util.get_zpt_template(
                 'macros_templates/partner.pt', target_lang),
          'request_form': request_form,
+         'get_params': get_params,
          'exit_url': _generate_exit_url(
                 request_form.get('exit_url', ''),
                 request_form.get('referrer', ''),

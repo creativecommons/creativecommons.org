@@ -56,7 +56,7 @@
         If you want to free <em>your own work</em> of
         copyright restrictions, instead use the
         <span tal:omit-tag="" i18n:name="pd_url"
-              tal:content="string:/choose/zero/partner?lang=${target_lang}&partner=${partner}&exit_url=${pd_exiturl}&license_code=publicdomain&stylesheet=${stylesheet}" />
+              tal:content="string:/choose/zero/partner?${get_params}" />
         <a href="${pd_url}">CC0 public domain dedication</a>.
       </p>
 
