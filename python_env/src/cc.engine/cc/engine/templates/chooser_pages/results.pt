@@ -107,11 +107,12 @@
         </p>
 
         <div id="chooserDonate">
-          <div><a href="https://creativecommons.net/donate/"><img src="/images/support/2010/cc-support.png" alt="Donate" title="Donate" border="0"/></a></div>
+          <div>
+            <a href="https://creativecommons.net/donate/"><img src="/images/support/2010/cc-support.png" alt="Donate" title="Donate" border="0"/></a></div>
             <p i18n:translate="license.donate_message">
               Creative Commons is a non-profit organization.<br/>
-			  We need your support to continue providing these tools.<br/>
-			  <a href="https://creativecommons.net/donate/">Donate today!</a>
+	      We need your support to continue providing these tools.<br/>
+	      <a href="https://creativecommons.net/donate/">Donate today!</a>
            </p>
         </div>
 
