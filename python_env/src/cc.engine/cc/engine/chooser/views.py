@@ -794,7 +794,7 @@ def pdmark_partner(request):
 
     request_form = request.GET or request.POST
 
-    cc0_license = cc.license.by_code('mark')
+    pdm_license = cc.license.by_code('mark')
 
     # Used for recommending CC0 in case that's more appropriate
     get_params = util.publicdomain_partner_get_params(request_form)
@@ -808,6 +808,6 @@ def pdmark_partner(request):
          'exit_url': _generate_exit_url(
                 request_form.get('exit_url', ''),
                 request_form.get('referrer', ''),
-                cc0_license)})
+                pdm_license)})
 
     return Response(template.pt_render(context))
