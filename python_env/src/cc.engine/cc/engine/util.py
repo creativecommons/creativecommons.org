@@ -195,9 +195,6 @@ def publicdomain_partner_get_params(request_form):
     get_params_dict = subset_dict(
         request_form,
         ['lang', 'partner', 'exit_url', 'stylesheet'])
-    if get_params_dict.has_key('exit_url'):
-        get_params_dict['exit_url'] = get_params_dict[
-            'exit_url'].replace('&', '%26')
 
     get_params = urllib.urlencode(get_params_dict)
 
