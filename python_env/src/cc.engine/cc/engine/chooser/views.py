@@ -266,10 +266,13 @@ def _work_rdf(work_info, license):
 
 def chooser_view(request):
     target_lang = util.get_target_lang_from_request(request)
+    context = _base_context(request, target_lang)
 
     if request.GET.get('partner'):
         template = util.get_zpt_template(
             'chooser_pages/partner/index.pt', target_lang)
+        context['pd_get_params'] = util.publicdomain_partner_get_params(
+            request.GET)
     else:
         template = util.get_zpt_template(
             'chooser_pages/index.pt', target_lang)
@@ -287,8 +290,6 @@ def chooser_view(request):
         j.code for j in get_selector_jurisdictions('standard')
         if j.code != '']
     
-    context = _base_context(request, target_lang)
-
     requested_jurisdiction = None
     if request.GET.has_key('jurisdiction') and \
             request.GET['jurisdiction'] in available_jurisdiction_codes:
