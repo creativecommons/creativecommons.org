@@ -671,10 +671,7 @@ def cc0_partner(request):
     cc0_license = cc.license.by_code('CC0')
 
     # Used for recommending PDM in case that's more appropriate
-    get_params = urlencode(
-        util.subset_dict(
-            request_form,
-            ['target_lang', 'partner', 'pd_exiturl', 'stylesheet']))
+    get_params = util.publicdomain_partner_get_params(request_form)
 
     context = _base_context(request, target_lang)
     context.update(
@@ -799,10 +796,7 @@ def pdmark_partner(request):
     cc0_license = cc.license.by_code('mark')
 
     # Used for recommending CC0 in case that's more appropriate
-    get_params = urlencode(
-        util.subset_dict(
-            request_form,
-            ['target_lang', 'partner', 'pd_exiturl', 'stylesheet']))
+    get_params = util.publicdomain_partner_get_params(request_form)
     
     context = _base_context(request, target_lang)
     context.update(
