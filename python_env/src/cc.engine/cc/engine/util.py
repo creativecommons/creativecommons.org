@@ -3,6 +3,7 @@ import os
 import pkg_resources
 import string
 import smtplib
+import urllib
 
 from email.MIMEText import MIMEText
 import email.Charset
@@ -183,6 +184,24 @@ def subset_dict(orig_dict, subset_keys):
             new_dict[key] = orig_dict[key]
 
     return new_dict
+
+
+def publicdomain_partner_get_params(request_form):
+    """
+    Take a request form (GET or POST parameters) and use it to
+    generate an appropriate urlencoded get parameters to link with on
+    a partner interface to the CC0 and/or PDM partner pages
+    """
+    get_params_dict = subset_dict(
+        request_form,
+        ['lang', 'partner', 'exit_url', 'stylesheet'])
+    if get_params_dict.has_key('exit_url'):
+        get_params_dict['exit_url'] = get_params_dict[
+            'exit_url'].replace('&', '%26')
+
+    get_params = urllib.urlencode(get_params_dict)
+
+    return get_params
 
 
 def get_license_conditions(license, target_language="en_US"):
