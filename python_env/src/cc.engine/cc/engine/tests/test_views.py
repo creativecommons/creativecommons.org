@@ -358,3 +358,41 @@ def test_publicdomain_partners_alternatelinks():
     assert urlparse.urlsplit(other_pd_href)[2] == '/choose/mark/partner'
     qs = cgi.parse_qs(urlparse.urlsplit(other_pd_href)[3])
     assert qs == expected_response_qs
+
+
+def test_publicdomain_partners_exiturls():
+    """
+    Ensure that the exit urls from publicdomain partner pages make
+    sense.
+    """
+    # PDM's exit URL
+    response = TESTAPP.get(
+        '/choose/mark/partner?'
+        'lang=en&partner=http://nethack.org/&'
+        'exit_url=http://nethack.org/return_from_cc?license_url=[license_url]%26license_name=[license_name]&'
+        'stylesheet=http://nethack.org/yendor.css&'
+        'extraneous_argument=large%20mimic')
+    
+    response_etree = lxml_html.parse(StringIO.StringIO(response.unicode_body))
+    proceed_href = response_etree.xpath(
+        '//a[text()="proceed"]')[0].attrib['href']
+    assert proceed_href == (
+        'http://nethack.org/return_from_cc?'
+        'license_url=http%3A//creativecommons.org/publicdomain/mark/1.0/&'
+        'license_name=Public%20Domain%20Mark%201.0')
+    
+    # CC0's exit URL
+    response = TESTAPP.get(
+        '/choose/zero/partner?'
+        'lang=en&partner=http://nethack.org/&'
+        'exit_url=http://nethack.org/return_from_cc?license_url=[license_url]%26license_name=[license_name]&'
+        'stylesheet=http://nethack.org/yendor.css&'
+        'extraneous_argument=large%20mimic')
+
+    response_etree = lxml_html.parse(StringIO.StringIO(response.unicode_body))
+    proceed_href = response_etree.xpath(
+        '//a[text()="proceed"]')[0].attrib['href']
+    assert proceed_href == (
+        'http://nethack.org/return_from_cc?'
+        'license_url=http%3A//creativecommons.org/publicdomain/zero/1.0/&'
+        'license_name=CC0%201.0%20Universal')
