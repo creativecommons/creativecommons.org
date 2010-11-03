@@ -304,8 +304,6 @@ def test_publicdomain_direct_redirect():
     Test to ensure that /choose/publicdomain-direct redirects
     appropriately
     """
-    # Make sure we redirect from /license/* to /choose/ and keep the
-    # GET parameters
     response = TESTAPP.get(
         '/choose/publicdomain-direct?'
         'stylesheet=foo.css&partner=blah')
