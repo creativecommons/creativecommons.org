@@ -298,7 +298,12 @@ class TestEmailSenderViews(unittest.TestCase):
         assert util.ZPT_TEST_TEMPLATES.has_key(
             util.full_zpt_filename('chooser_pages/pdmark/results.pt'))
 
+
 def test_publicdomain_direct_redirect():
+    """
+    Test to ensure that /choose/publicdomain-direct redirects
+    appropriately
+    """
     # Make sure we redirect from /license/* to /choose/ and keep the
     # GET parameters
     response = TESTAPP.get(
