@@ -297,3 +297,16 @@ class TestEmailSenderViews(unittest.TestCase):
         # check that the right template was loaded
         assert util.ZPT_TEST_TEMPLATES.has_key(
             util.full_zpt_filename('chooser_pages/pdmark/results.pt'))
+
+def test_publicdomain_direct_redirect():
+    # Make sure we redirect from /license/* to /choose/ and keep the
+    # GET parameters
+    response = TESTAPP.get(
+        '/choose/publicdomain-direct?'
+        'stylesheet=foo.css&partner=blah')
+    redirected_response = response.follow()
+    assert urlparse.urlsplit(response.location)[2] == '/choose/zero/partner'
+    qs = cgi.parse_qs(urlparse.urlsplit(response.location)[3])
+    assert qs == {
+        'stylesheet': ['foo.css'],
+        'partner': ['blah']}
