@@ -662,6 +662,9 @@ def cc0_results(request):
 
 
 def cc0_partner(request):
+    """
+    Partner page for CC0
+    """
     target_lang = util.get_target_lang_from_request(request)
 
     template = util.get_zpt_template(
@@ -787,6 +790,9 @@ def pdmark_results(request):
 
 
 def pdmark_partner(request):
+    """
+    Partner page for PDM
+    """
     target_lang = util.get_target_lang_from_request(request)
 
     template = util.get_zpt_template(
