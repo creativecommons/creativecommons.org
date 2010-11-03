@@ -2,7 +2,9 @@ import cgi
 import pkg_resources
 import urlparse
 import unittest
-import lxml
+from lxml import html as lxml_html
+import StringIO
+
 try:
     import json
 except ImportError:
@@ -313,3 +315,46 @@ def test_publicdomain_direct_redirect():
     assert qs == {
         'stylesheet': ['foo.css'],
         'partner': ['blah']}
+
+
+def test_publicdomain_partners_alternatelinks():
+    """
+    Make sure the publicdomain partner pages (both PDM and CC0) have
+    working links to other partner pages.  CC0 should link to PDM and
+    vice versa, and the query parameters should be preserved.
+    """
+    expected_response_qs = {
+        'lang': ['en'],
+        'partner': ['http://nethack.org/'],
+        'exit_url': ['http://nethack.org/return_from_cc?license_url=[license_url]&license_name=[license_name]'],
+        'stylesheet': ['http://nethack.org/yendor.css']}
+
+    # Test for PDM's CC0 link
+    response = TESTAPP.get(
+        '/choose/mark/partner?'
+        'lang=en&partner=http://nethack.org/&'
+        'exit_url=http://nethack.org/return_from_cc?license_url=[license_url]%26license_name=[license_name]&'
+        'stylesheet=http://nethack.org/yendor.css&'
+        'extraneous_argument=large%20mimic')
+    
+    response_etree = lxml_html.parse(StringIO.StringIO(response.unicode_body))
+    other_pd_href = response_etree.xpath(
+        '//a[text()="CC0 public domain dedication"]')[0].attrib['href']
+    assert urlparse.urlsplit(other_pd_href)[2] == '/choose/zero/partner'
+    qs = cgi.parse_qs(urlparse.urlsplit(other_pd_href)[3])
+    assert qs == expected_response_qs
+
+    # Test for CC0's PDM link
+    response = TESTAPP.get(
+        '/choose/zero/partner?'
+        'lang=en&partner=http://nethack.org/&'
+        'exit_url=http://nethack.org/return_from_cc?license_url=[license_url]%26license_name=[license_name]&'
+        'stylesheet=http://nethack.org/yendor.css&'
+        'extraneous_argument=large%20mimic')
+    
+    response_etree = lxml_html.parse(StringIO.StringIO(response.unicode_body))
+    other_pd_href = response_etree.xpath(
+        '//a[text()="Public Domain Mark"]')[0].attrib['href']
+    assert urlparse.urlsplit(other_pd_href)[2] == '/choose/mark/partner'
+    qs = cgi.parse_qs(urlparse.urlsplit(other_pd_href)[3])
+    assert qs == expected_response_qs
