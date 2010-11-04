@@ -417,7 +417,7 @@ def non_web_popup(request):
 
 
 def choose_wiki_redirect(request):
-    return exc.HTTPTemporaryRedirect(
+    return exc.HTTPMovedPermanently(
         location='/choose/results-one?license_code=by-sa')
 
 
@@ -426,7 +426,7 @@ def outdated_choosers_redirect(request):
     A couple of URLs (/choose/music and /choose/sampling) are outdated
     and so should redirect to the old chooser.
     """
-    return exc.HTTPTemporaryRedirect(
+    return exc.HTTPMovedPermanently(
         location='/choose/')
 
 
@@ -541,7 +541,7 @@ def publicdomain_result(request):
 
     # make sure the user selected "confirm"
     if request_form.get('understand', False) != 'confirm':
-        return exc.HTTPTemporaryRedirect(
+        return exc.HTTPMovedPermanently(
             location='%s?%s' % (
                 './publicdomain-3', urlencode(request.GET)))
 
@@ -704,7 +704,7 @@ def publicdomain_direct_redirect(request):
     if request_form:
         new_url = '%s?%s' % (
             new_url, urlencode(request_form))
-    return exc.HTTPTemporaryRedirect(location=new_url)
+    return exc.HTTPMovedPermanently(location=new_url)
 
 
 ### --------------------------
