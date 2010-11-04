@@ -59,7 +59,7 @@
               tal:content="python:'pd=1&field_creator='+request_form.get('copyright_holder', '')+'&field_worktitle='+request_form.get('title', '')" />
         <a href="non-web-popup?${url_vars}"
            onclick="window.open('non-web-popup?${url_vars}', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">add this text</a>
-        to your work."
+        to your work.
       </p>
     </metal:body>
   </body>
