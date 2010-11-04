@@ -79,17 +79,17 @@
 
             <p i18n:translate="license.mark.intro_2">
               The PDM is intended for use with old works that are free of
-              copyright restrictions around the world, or works that have been
-              affirmatively placed in the worldwide public domain prior to the
-              expiration of copyright by the rights’ holder.  It should not be
-              used to mark works that are in the public domain in some
-              jurisdictions while known to be restricted by copyright in
-              others. Currently, Creative Commons does not recommend the Public
-              Domain Mark for works whose copyright status differs jurisdiction
-              to jurisdiction, though we are developing means for marking and
-              tagging such works.  You should consult with your legal advisor if
-              you are unsure whether you should use the PDM for a work you have
-              identified.
+              copyright restrictions around the world.  It should not be used to
+              mark works that have been placed in the worldwide public domain
+              using the CC0 public domain dedication or a similar instrument.
+              Nor should PDM should be used for works that are in the public
+              domain in some jurisdictions while known to be restricted by
+              copyright in others.  Creative Commons does not recommend the
+              Public Domain Mark for works whose copyright status differs
+              jurisdiction to jurisdiction, though we are developing means for
+              marking and tagging such works.  You should consult with your
+              legal advisor if you are unsure whether you should use the PDM for
+              a work you have identified.
             </p>
 
             <p i18n:translate="license.mark.intro_3">
