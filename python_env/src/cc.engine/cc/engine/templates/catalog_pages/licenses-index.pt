@@ -10,9 +10,9 @@
 
   <body>
     <div metal:fill-slot="body">
-      <h1>Creative Commons Licenses</h1>
+      <h1 i18n:translate="util.Creative_Commons_Licenses">Creative Commons Licenses</h1>
 
-      <p>
+      <p i18n:translate="licenses.index.intro_1">
         The following are the six current license choices available
         from our <a href="/choose/">choose a license</a> application,
         along with previous versions that have been phased out. They
@@ -24,16 +24,22 @@
 
       <table border="0" style="margin-left:14px;margin-bottom:30px;" cellpadding="3">
 	<tr>
-	  <th align="left">Name</th>
-	  <th align="left" colspan="3">Characteristics</th>
+	  <th align="left"
+              i18n:translate="util.name">Name</th>
+	  <th align="left" colspan="3"
+               i18n:translate="util.characteristics">Characteristics</th>
 	</tr>
         <tr>
 	  <th colspan="4" style="background:#dedede;color:#333;"
-              align="left">Version 3.0 Licenses:</th>
+              align="left"
+              i18n:translate="licenses.version_3.0_licenses">Version 3.0 Licenses:</th>
         </tr>
 
         <tr>
-	  <td width="250"><a href="/licenses/by/3.0/">Attribution</a></td>
+	  <td width="250">
+            <a href="/licenses/by/3.0/"
+               i18n:translate="licenses.pretty_by">Attribution</a>
+          </td>
 	  <td>
             <img border="0" src="/icons/by/standard.gif"
                  alt="by" align="left" />
@@ -43,7 +49,10 @@
 	</tr>
 
 	<tr>
-	  <td><a href="/licenses/by-nd/3.0/">Attribution-NoDerivs</a></td>
+	  <td>
+            <a href="/licenses/by-nd/3.0/"
+               i18n:translate="licenses.pretty_by-nd">Attribution-NoDerivs</a>
+          </td>
 
 	  <td>
             <img border="0" src="/icons/by/standard.gif" alt="by" align="left" />
@@ -54,7 +63,8 @@
 
 	<tr>
 	  <td>
-            <a href="/licenses/by-nc-nd/3.0/">Attribution-NonCommercial-NoDerivs</a>
+            <a href="/licenses/by-nc-nd/3.0/"
+               i18n:translate="licenses.pretty_by-nc-nd">Attribution-NonCommercial-NoDerivs</a>
           </td>
 	  <td>
             <img border="0" src="/icons/by/standard.gif" alt="by" align="left" />
@@ -68,7 +78,10 @@
 	</tr>
 	
 	<tr>
-	  <td><a href="/licenses/by-nc/3.0/">Attribution-NonCommercial</a></td>
+	  <td>
+            <a href="/licenses/by-nc/3.0/"
+               i18n:translate="licenses.pretty_by-nc">Attribution-NonCommercial</a>
+          </td>
 
 	  <td>
             <img border="0" src="/icons/by/standard.gif" alt="by" align="left" />
@@ -81,7 +94,8 @@
 
 	<tr>
 	  <td>
-            <a href="/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike</a>
+            <a href="/licenses/by-nc-sa/3.0/"
+               i18n:translate="licenses.pretty_by-nc-sa">Attribution-NonCommercial-ShareAlike</a>
           </td>
 	  <td>
             <img border="0" src="/icons/by/standard.gif" alt="by" align="left" />
@@ -95,7 +109,8 @@
 	</tr>
 
 	<tr>
-	  <td><a href="/licenses/by-sa/3.0/">Attribution-ShareAlike</a></td>
+	  <td><a href="/licenses/by-sa/3.0/"
+               i18n:translate="licenses.pretty_by-sa">Attribution-ShareAlike</a></td>
 	  <td>
             <img border="0" src="/icons/by/standard.gif"
                  alt="by" align="left" />
@@ -107,7 +122,7 @@
 	</tr>
       </table>
 
-      <p>
+      <p i18n:translate="licenses.index.pd_tools">
         With Creative Commons licenses creators keep their copyright. If you
         want to waive all restrictions on your work or certify that a work is
         already in the public domain, see our <a href="/publicdomain">public
