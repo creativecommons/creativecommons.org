@@ -132,7 +132,7 @@
 
           <select name="field_jurisdiction">
             <option value=""  
-                    i18n:translate="" selected="selected">International</option>
+                    i18n:translate="util.International" selected="selected">International</option>
 
             <span tal:omit-tag=""
                   tal:repeat="j jurisdictions_names">
