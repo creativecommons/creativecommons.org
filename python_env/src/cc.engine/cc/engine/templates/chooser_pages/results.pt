@@ -28,20 +28,13 @@
 
     <div metal:fill-slot="body"
          tal:define="target_lang string:en;">
-
+      
+      <p i18n:translate="license.choose_button">
+        Choose which style of button you'd like on your webpage:
+      </p>
+      
       <div class="licensebox">
-        <div tal:omit-tag="" i18n:translate="license.selected">
-          <span tal:omit-tag="" i18n:name="license_url" tal:content="license/uri" />
-          <span tal:omit-tag="" i18n:name="country_name" tal:content="python: '' " />
-          You have selected the
-          <span i18n:name="license_pretty_name"
-                tal:replace="license_title" />.
-          <a href="#"
-             tal:attributes="href license/uri">See how the license will look</a>
-          to your site's visitors.
-        </div>
-
-        <div style="margin-top:10px; text-align:center;">
+        <div style="margin-top:10px;" align="center">
           <table tal:attributes="dir get_ltr_rtl;"><tr>
               <td style="text-align:center">
                 <a tal:attributes="href license/uri"
@@ -70,6 +63,15 @@
           </table>
         </div>
       </div>
+
+      <div i18n:translate="license.preview">
+          Here's a preview of how your license will appear on your site:
+      </div>
+      
+      <div class="preview" id="results-preview" 
+           tal:content="structure license_html">
+      </div>
+      
       <div style="margin-top:20px;margin-bottom:30px;">
         <h4 i18n:translate="license.have_your_own_website">Have your own website?</h4>
 
@@ -80,8 +82,8 @@
 
         <form action="">
           <div>
-            <textarea id="codetocopy" name="html"
-                      style="width:90%;height:150px;" rows="8" cols="20"
+            <textarea id="codetocopy" name="html" onclick="this.select()" readonly="true" 
+                      style="width:99%;height:150px;resize:vertical" rows="8" cols="20"
                       tal:content="structure license_html"/>
           </div>
         </form>
