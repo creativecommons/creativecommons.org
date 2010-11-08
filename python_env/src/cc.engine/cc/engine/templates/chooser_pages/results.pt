@@ -23,7 +23,7 @@
   <body>
     <metal:title metal:fill-slot="page-header-title"
                  i18n:translate="license.here_chosen">
-      Here is the license you've chosen
+      Here is the license you&rsquo;ve chosen
     </metal:title>
 
     <div metal:fill-slot="body"
@@ -55,16 +55,6 @@
                 <input type="radio" name="button"
                        checked="checked" onclick=""
                        tal:attributes="onclick python: 'swapbutton(\''+license.logo+'\')'"/>
-              </td>
-              <td style="text-align:center">
-                <a tal:attributes="href license/uri"
-                   href="#"><img id="licensebutton_some"
-                                 alt="Creative Commons License"
-                                 src="http://creativecommons.org/images/public/somerights20.png"
-                                 style="margin-right:10px;margin-bottom:4px;" /></a>
-                <br/>
-                <input type="radio" name="button"
-                       onclick="swapbutton('http://creativecommons.org/images/public/somerights20.png')"/>
               </td>
               <td style="text-align:center"
                   valign="bottom" tal:condition="not:request/wiki|nothing">
@@ -122,11 +112,6 @@
             <a href="http://wiki.creativecommons.org/Website/Publish">Read our tutorial</a>.
           </strong>
         </p>
-
-        <p i18n:translate="license.after_support_cc">
-          After publishing your license, please consider
-          <a href="https://support.creativecommons.org/donate/">supporting Creative Commons</a>.
-        </p>
       </div>
       <!-- <div metal:use-macro="here/license_macros/macros/languages">
            language box
@@ -172,19 +157,13 @@
         </li>
       </ul>
 
-      <h4 i18n:translate="license.option_next_steps">Optional next steps</h4>
+      <h4 i18n:translate="license.option_next_steps">Optional next step</h4>
 
       <ul>
         <li>
           <a href="https://creativecommons.net/r/add/"
              i18n:translate="license.register_with_cc_network"
              >Register your work with the CC Network</a>
-        </li>
-        <li>
-          <a href="http://beta.fairshare.cc/fairshare/homepage?company=cc&license=$license_url"
-             tal:attributes="href string: http://beta.fairshare.cc/fairshare/homepage?company=cc&license=${license/uri}"
-             i18n:translate="license.track_with_fairshare"
-             >Track use of your work with FairShare</a>
         </li>
       </ul>
     </metal:sidebar>
