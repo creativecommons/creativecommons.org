@@ -39,7 +39,7 @@ class CCEngineApp(object):
                 if request.GET:
                     new_path_info = '%s?%s' % (
                         new_path_info, urllib.urlencode(request.GET))
-                redirect = exc.HTTPTemporaryRedirect(location=new_path_info)
+                redirect = exc.HTTPMovedPermanently(location=new_path_info)
                 return request.get_response(redirect)(environ, start_response)
             return exc.HTTPNotFound()(environ, start_response)
         controller = load_controller(route_match['controller'])

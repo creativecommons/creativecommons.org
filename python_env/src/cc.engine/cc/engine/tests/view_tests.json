@@ -93,6 +93,9 @@
       "<span property=\"dct:title\">Work name</span>",
       "<a href=\"http://example.org/author\" rel=\"dct:creator\"><span property=\"dct:title\">author_name</span></a>",
       "<a href=\"http://example.org/curator\" rel=\"dct:publisher\"><span property=\"dct:title\">curator_name</span></a>"]},
+ {"path": "/choose/mark/partner",
+  "string_tests": [
+      "Using the Public Domain Mark"]},
 
  {"path": "/publicdomain/mark/1.0/",
   "string_tests": [

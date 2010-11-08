@@ -266,10 +266,13 @@ def _work_rdf(work_info, license):
 
 def chooser_view(request):
     target_lang = util.get_target_lang_from_request(request)
+    context = _base_context(request, target_lang)
 
     if request.GET.get('partner'):
         template = util.get_zpt_template(
             'chooser_pages/partner/index.pt', target_lang)
+        context['pd_get_params'] = util.publicdomain_partner_get_params(
+            request.GET)
     else:
         template = util.get_zpt_template(
             'chooser_pages/index.pt', target_lang)
@@ -287,8 +290,6 @@ def chooser_view(request):
         j.code for j in get_selector_jurisdictions('standard')
         if j.code != '']
     
-    context = _base_context(request, target_lang)
-
     requested_jurisdiction = None
     if request.GET.has_key('jurisdiction') and \
             request.GET['jurisdiction'] in available_jurisdiction_codes:
@@ -416,7 +417,7 @@ def non_web_popup(request):
 
 
 def choose_wiki_redirect(request):
-    return exc.HTTPTemporaryRedirect(
+    return exc.HTTPMovedPermanently(
         location='/choose/results-one?license_code=by-sa')
 
 
@@ -425,7 +426,7 @@ def outdated_choosers_redirect(request):
     A couple of URLs (/choose/music and /choose/sampling) are outdated
     and so should redirect to the old chooser.
     """
-    return exc.HTTPTemporaryRedirect(
+    return exc.HTTPMovedPermanently(
         location='/choose/')
 
 
@@ -540,7 +541,7 @@ def publicdomain_result(request):
 
     # make sure the user selected "confirm"
     if request_form.get('understand', False) != 'confirm':
-        return exc.HTTPTemporaryRedirect(
+        return exc.HTTPMovedPermanently(
             location='%s?%s' % (
                 './publicdomain-3', urlencode(request.GET)))
 
@@ -661,6 +662,9 @@ def cc0_results(request):
 
 
 def cc0_partner(request):
+    """
+    Partner page for CC0
+    """
     target_lang = util.get_target_lang_from_request(request)
 
     template = util.get_zpt_template(
@@ -671,10 +675,7 @@ def cc0_partner(request):
     cc0_license = cc.license.by_code('CC0')
 
     # Used for recommending PDM in case that's more appropriate
-    get_params = urlencode(
-        util.subset_dict(
-            request_form,
-            ['target_lang', 'partner', 'pd_exiturl', 'stylesheet']))
+    get_params = util.publicdomain_partner_get_params(request_form)
 
     context = _base_context(request, target_lang)
     context.update(
@@ -703,7 +704,7 @@ def publicdomain_direct_redirect(request):
     if request_form:
         new_url = '%s?%s' % (
             new_url, urlencode(request_form))
-    return exc.HTTPTemporaryRedirect(location=new_url)
+    return exc.HTTPMovedPermanently(location=new_url)
 
 
 ### --------------------------
@@ -789,6 +790,9 @@ def pdmark_results(request):
 
 
 def pdmark_partner(request):
+    """
+    Partner page for PDM
+    """
     target_lang = util.get_target_lang_from_request(request)
 
     template = util.get_zpt_template(
@@ -796,13 +800,10 @@ def pdmark_partner(request):
 
     request_form = request.GET or request.POST
 
-    cc0_license = cc.license.by_code('mark')
+    pdm_license = cc.license.by_code('mark')
 
     # Used for recommending CC0 in case that's more appropriate
-    get_params = urlencode(
-        util.subset_dict(
-            request_form,
-            ['target_lang', 'partner', 'pd_exiturl', 'stylesheet']))
+    get_params = util.publicdomain_partner_get_params(request_form)
     
     context = _base_context(request, target_lang)
     context.update(
@@ -813,6 +814,6 @@ def pdmark_partner(request):
          'exit_url': _generate_exit_url(
                 request_form.get('exit_url', ''),
                 request_form.get('referrer', ''),
-                cc0_license)})
+                pdm_license)})
 
     return Response(template.pt_render(context))

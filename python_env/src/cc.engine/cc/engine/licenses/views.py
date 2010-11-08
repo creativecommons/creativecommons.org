@@ -184,8 +184,8 @@ def license_legalcode_plain_view(request, license):
 def license_legalcode_redirect(request):
     # TODO: Use the legal code from the RDF instead of this hackery.
     if request.matchdict['code'] == 'MIT':
-        return exc.HTTPTemporaryRedirect(
+        return exc.HTTPMovedPermanently(
             location='http://opensource.org/licenses/mit-license.php')
     elif request.matchdict['code'] == 'BSD':
-        return exc.HTTPTemporaryRedirect(
+        return exc.HTTPMovedPermanently(
             location='http://opensource.org/licenses/bsd-license.php')

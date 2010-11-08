@@ -155,7 +155,7 @@
 
           <select name="field_jurisdiction" tal:condition="not: requested_jurisdiction">
             <option value=""  
-                    i18n:translate="" selected="selected">
+                    i18n:translate="util.International" selected="selected">
               International
             </option> 
 
@@ -171,7 +171,7 @@
           </select>
 
           <select name="field_jurisdiction" tal:condition="requested_jurisdiction">
-            <option value="" i18n:translate="">
+            <option value="" i18n:translate="util.International">
               International
             </option> 
 

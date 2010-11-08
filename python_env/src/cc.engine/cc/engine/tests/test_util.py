@@ -174,3 +174,27 @@ def test_subset_dict():
         ['keeper1', 'keeper2', 'keeper3'])
 
     assert result == expected
+
+
+def test_publicdomain_partner_get_params():
+    result = util.publicdomain_partner_get_params({'lang': 'en'})
+    assert result == 'lang=en'
+
+    # ignore garbage parameters
+    result = util.publicdomain_partner_get_params({'lang': 'en', 'floobie': 'blech'})
+    assert result == 'lang=en'
+
+    result = util.publicdomain_partner_get_params(
+        {'lang': 'en',
+         'partner': 'http://nethack.org/',
+         'exit_url': 'http://nethack.org/return_from_cc?license_url=[license_url]&license_name=[license_name]',
+         'stylesheet': 'http://nethack.org/yendor.css',
+         'extraneous_argument': 'large mimic'})
+
+    result_pieces = result.split('&')
+    assert len(result_pieces) == 4
+
+    assert 'lang=en' in result_pieces
+    assert 'partner=http%3A%2F%2Fnethack.org%2F' in result_pieces
+    assert 'exit_url=http%3A%2F%2Fnethack.org%2Freturn_from_cc%3Flicense_url%3D%5Blicense_url%5D%26license_name%3D%5Blicense_name%5D' in result_pieces
+    assert 'stylesheet=http%3A%2F%2Fnethack.org%2Fyendor.css' in result_pieces

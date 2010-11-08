@@ -17,7 +17,7 @@ def license_redirect(request):
     if request_form:
         new_url = '%s?%s' % (
             new_url, urllib.urlencode(request_form))
-    return exc.HTTPTemporaryRedirect(location=new_url)
+    return exc.HTTPMovedPermanently(location=new_url)
 
 
 def work_html_redirect(request):
@@ -25,4 +25,4 @@ def work_html_redirect(request):
     if request.GET:
         new_url = '%s?%s' % (
             new_url, urllib.urlencode(request.GET))
-    return exc.HTTPTemporaryRedirect(location=new_url)
+    return exc.HTTPMovedPermanently(location=new_url)
