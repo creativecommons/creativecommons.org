@@ -275,7 +275,7 @@ def chooser_view(request):
             'chooser_pages/index.pt', target_lang)
 
     engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
+        'macros_templates/engine_2cols.pt', target_lang)
     partner_template = util.get_zpt_template(
         'macros_templates/partner.pt', target_lang)
     metadata_template = util.get_zpt_template(
