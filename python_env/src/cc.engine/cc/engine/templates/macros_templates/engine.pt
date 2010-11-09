@@ -18,11 +18,6 @@
     <link rel="stylesheet" type="text/css" media="print"
 	  href="/@@/cc/cc5/print.css"
           tal:attributes="href python:request.staticdirect('cc5/print.css')" />
-    <link href="http://creativecommons.org/includes/progress.css" 
-	  rel="stylesheet" type="text/css" />
-    <link href="http://creativecommons.org/wp-content/themes/cc4/support.css"
-          tal:attributes="href python:request.staticdirect('cc4/support.css')"
-          rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css"
           tal:attributes="href python:request.staticdirect('cc5/engine.css')"
           href="/@@/cc/cc5/engine.css" />
@@ -75,80 +70,80 @@
 	    <div id="mainContent" class="box">
 	      <div id="contentPrimary" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
           <div class="block" id="title">
-        		<h2 tal:attributes="dir get_ltr_rtl|nothing; style
-    				    is_rtl_align|nothing;">
-        		  <metal:page_title define-slot="page-header-title">
-        		  </metal:page_title>
-    		    </h2>
-    		  </div>
-    		  <div id="blocks">
-				    <div class="block page">
+        	<h2 tal:attributes="dir get_ltr_rtl|nothing; style
+    				            is_rtl_align|nothing;">
+        	  <metal:page_title define-slot="page-header-title">
+        	  </metal:page_title>
+    		</h2>
+    	  </div>
+    	  <div id="blocks">
+			<div class="block page">
               <metal:block metal:define-slot="body">
               </metal:block>
-						</div>
-					</div>
-	        <div id="sideContent" class="content-box"
-                   tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
-		        <metal:block define-slot="sidebar" />
-					</div>
-				</div>	
- 
-        <div id="sidebar" class="content-box-right">
-          <div class="sideitem">
-            <form method="get" id="searchform" action="http://creativecommons.org/">
-              <div>
-                <input type="text" value="" name="s" id="s" class="inactive" />  <input type="submit" id="searchsubmit" value="Go" />
-              </div>
-            </form>
-            <div class="clear"></div>
-          </div>
-
-          <div class="sideitem">
-            <ul>
-              <li><img src="/@@/cc/cc5/images/license-alt.png" 
-                       tal:attributes="src python:request.staticdirect('cc5/images/license-alt.png')"
-                       alt="License your work" />&nbsp;&nbsp;
+			</div>
+		  </div>
+	      <div id="sideContent" class="content-box"
+               tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
+		    <metal:block define-slot="sidebar" />
+		  </div>
+		  </div>	
+          
+          <div id="sidebar" class="content-box-right">
+            <div class="sideitem">
+              <form method="get" id="searchform" action="http://creativecommons.org/">
+                <div>
+                  <input type="text" value="" name="s" id="s" class="inactive" />  <input type="submit" id="searchsubmit" value="Go" />
+                </div>
+              </form>
+              <div class="clear"></div>
+            </div>
+            
+            <div class="sideitem">
+              <ul>
+                <li><img src="/@@/cc/cc5/images/license-alt.png" 
+                         tal:attributes="src python:request.staticdirect('cc5/images/license-alt.png')"
+                         alt="License your work" />&nbsp;&nbsp;
                   <a href="/choose/">License your work</a>
-              </li>
-              <li>
-                <img src="/@@/cc/cc5/images/find-alt.png" 
-                     tal:attributes="src python:request.staticdirect('cc5/images/find-alt.png')"
-                     alt="Find licensed works" width="12" height="12" />&nbsp;&nbsp;
+                </li>
+                <li>
+                  <img src="/@@/cc/cc5/images/find-alt.png" 
+                       tal:attributes="src python:request.staticdirect('cc5/images/find-alt.png')"
+                       alt="Find licensed works" width="12" height="12" />&nbsp;&nbsp;
                   <a href="http://search.creativecommons.org/">Find licensed works</a>
-              </li>
-            </ul>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="sideitem">
+              <ul>
+                <li><a href="/about/opportunities/">Jobs</a></li>
+                <li><a href="/about/events/">Events</a></li>
+                <li><a href="/about/newsletter/">Newsletter</a></li>
+                <li><a href="http://wiki.creativecommons.org/Casestudies">Case Studies</a></li>
+                <li><a href="/commoners/">Creative Commoners</a></li>
+                <li><a href="/about/press">Press Room</a></li>
+              </ul>
+            </div>
           </div>
-
-          <div class="sideitem">
+        </div>
+        <div id="footer">
+          <div id="footerContent" class="box">
             <ul>
-              <li><a href="/about/opportunities/">Jobs</a></li>
-              <li><a href="/about/events/">Events</a></li>
-              <li><a href="/about/newsletter/">Newsletter</a></li>
-              <li><a href="http://wiki.creativecommons.org/Casestudies">Case Studies</a></li>
-              <li><a href="/commoners/">Creative Commoners</a></li>
-              <li><a href="/about/press">Press Room</a></li>
+              <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+              <li><a href="http://support.creativecommons.org/">Donate</a></li>
+              <li><a href="/weblog">Blog</a></li>
+              <li><a href="/policies">Policies</a></li>
+              <li><a href="/privacy">Privacy</a></li>
+              <li><a href="/about/press">Press</a></li>
+              <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
+              <li><a href="/sitemap">Sitemap</a></li>
+              <li><a href="/contact">Contact</a></li>
             </ul>
           </div>
-        </div>
-      </div>
-      <div id="footer">
-        <div id="footerContent" class="box">
-          <ul>
-            <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-            <li><a href="http://support.creativecommons.org/">Donate</a></li>
-            <li><a href="/weblog">Blog</a></li>
-            <li><a href="/policies">Policies</a></li>
-            <li><a href="/privacy">Privacy</a></li>
-            <li><a href="/about/press">Press</a></li>
-            <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
-            <li><a href="/sitemap">Sitemap</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-        </div>
-  			<div id="footerLicense">
-  			  <p class="box">
-            <metal:license define-slot="license-override">
-  				    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88" /></a>
+  		  <div id="footerLicense">
+  			<p class="box">
+              <metal:license define-slot="license-override">
+  				<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88" /></a>
   Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on this site is<br/>
   licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
             </metal:license>

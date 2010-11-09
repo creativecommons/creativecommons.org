@@ -18,11 +18,6 @@
     <link rel="stylesheet" type="text/css" media="print"
 	  href="/@@/cc/cc5/print.css"
           tal:attributes="href python:request.staticdirect('cc5/print.css')" />
-    <link href="http://creativecommons.org/includes/progress.css" 
-	  rel="stylesheet" type="text/css" />
-    <link href="http://creativecommons.org/wp-content/themes/cc4/support.css"
-          tal:attributes="href python:request.staticdirect('cc4/support.css')"
-          rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css"
           tal:attributes="href python:request.staticdirect('cc5/engine.css')"
           href="/@@/cc/cc5/engine.css" />
