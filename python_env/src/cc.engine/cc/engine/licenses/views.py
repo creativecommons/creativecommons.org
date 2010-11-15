@@ -7,6 +7,7 @@ from webob import Response, exc
 from cc.engine.decorators import get_license
 from cc.engine import util
 from cc.i18n import ccorg_i18n_setup
+from cc.i18n.util import get_well_translated_langs
 from cc.license import by_code, CCLicenseError
 from cc.licenserdf.tools.license import license_rdf_filename
 
@@ -84,7 +85,7 @@ def license_deed_view(request, license):
     conditions = util.get_license_conditions(license, target_lang)
 
     # Find out all the active languages
-    active_languages = util.active_languages()
+    active_languages = get_well_translated_langs()
     active_lang_codes = [lang['code'] for lang in active_languages]
 
     # When the target_lang is determined by the url, we should make
