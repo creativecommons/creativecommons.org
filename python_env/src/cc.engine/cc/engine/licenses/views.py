@@ -7,7 +7,7 @@ from webob import Response, exc
 from cc.engine.decorators import get_license
 from cc.engine import util
 from cc.i18n import ccorg_i18n_setup
-from cc.i18n.util import get_well_translated_langs
+from cc.i18n.util import get_well_translated_langs, get_all_trans_stats
 from cc.license import by_code, CCLicenseError
 from cc.licenserdf.tools.license import license_rdf_filename
 
@@ -87,10 +87,11 @@ def license_deed_view(request, license):
     # Find out all the active languages
     active_languages = get_well_translated_langs()
     active_lang_codes = [lang['code'] for lang in active_languages]
+    all_languages = get_all_trans_stats().keys()
 
     # When the target_lang is determined by the url, we should make
     # sure that's a real language to prevent caching bogus stuff
-    if not target_lang in active_lang_codes \
+    if not target_lang in all_languages \
             and request.matchdict.has_key('target_lang'):
         return exc.HTTPNotFound()
 
