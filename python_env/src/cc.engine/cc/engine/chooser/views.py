@@ -12,6 +12,7 @@ from cc.engine.decorators import RestrictHttpMethods
 from cc.engine.chooser.xmp_template import license_xmp_template
 from cc.license._lib.functions import get_selector_jurisdictions
 from cc.i18n import ccorg_i18n_setup
+from cc.i18n.util import get_well_translated_langs
 import cc.license
 from cc.license.formatters.classes import (
     HTMLFormatter, CC0HTMLFormatter, PublicDomainHTMLFormatter,
@@ -30,7 +31,7 @@ def _base_context(request, target_lang=None):
         'target_lang': (
             target_lang
             or util.get_target_lang_from_request(request)),
-        'active_languages': util.active_languages(),
+        'active_languages': get_well_translated_langs(),
         }
 
     context.update(util.rtl_context_stuff(target_lang))
