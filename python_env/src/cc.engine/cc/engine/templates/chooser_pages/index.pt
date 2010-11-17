@@ -46,7 +46,8 @@
     </p> 
 
      <p i18n:translate="license.explain">
-       When you choose <a href="http://creativecommons.org/about/licenses">license</a>, we provide you with HTML you can use to add the
+       When you choose a <a href="http://creativecommons.org/about/licenses">license</a>, 
+       we provide you with HTML you can use to add the
        license information to your site and information on how to select a license on
        one of several free hosting services that have incorporated Creative Commons. 
        This is not a registration and we do not retain a record of your selection.
