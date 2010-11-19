@@ -28,6 +28,17 @@
  {"path": "/licenses/MIT/legalcode"},
  {"path": "/licenses/BSD/legalcode"},
 
+ {"path": "/licenses/GPL/2.0/",
+  "string_tests": [
+      "GNU General Public License",
+      "The freedom to run the program for any purpose.",
+      "http://www.gnu.org/licenses/gpl-howto.html"]},
+ {"path": "/licenses/LGPL/2.1/",
+  "string_tests": [
+      "GNU Lesser General Public License",
+      "The freedom to run the program for any purpose.",
+      "http://www.gnu.org/licenses/gpl-howto.html"]},
+
  {"path": "/licenses/publicdomain/"},
  {"path": "/licenses/publicdomain/deed"},
  {"path": "/licenses/publicdomain/deed.es"},
@@ -51,9 +62,6 @@
  {"path": "/choose/work-html-popup"},
  {"path": "/choose/?partner=FreeMusicArchive&jurisdiction_choose=1&exit_url=http%3A%2F%2Ffreemusicarchive.org%2Fcontribute%2FccLicense%2FThe_Wild_Tape%3Flicense_url%3D[license_url]%26license_name%3D[license_name]%26license_button%3D[license_button]%26deed_url%3D[deed_url]"},
  {"path": "/choose/get-html?license_url=http%3A%2F%2Fcreativecommons.org%2Flicenses%2Fby-nc-sa%2F2.0%2Fde%2F"},
-
- {"path": "/choose/cc-gpl"},
- {"path": "/choose/cc-lgpl"},
 
  {"path": "/choose/publicdomain-2"},
  {"path": "/choose/publicdomain-3"},

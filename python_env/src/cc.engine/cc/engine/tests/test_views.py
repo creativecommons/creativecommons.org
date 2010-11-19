@@ -171,6 +171,41 @@ def test_license_to_choose_redirect():
         'work_title': ['SubZero']}
 
 
+def test_gpl_lgpl_redirects():
+    """
+    /choose/cc-gpl and /choose/cc-lgpl should now redirect to gnu.org,
+    make sure that happens
+    """
+    gpl_redirect = TESTAPP.get('/choose/cc-gpl').location
+    lgpl_redirect = TESTAPP.get('/choose/cc-lgpl').location
+    expected_redirect = 'http://www.gnu.org/licenses/gpl-howto.html'
+    assert gpl_redirect == lgpl_redirect == expected_redirect
+
+
+def test_normalchooser_gpl_redirects():
+    """
+    There was an error on the old GPL/LGPL deeds where they pointed to
+    the chooser when they should have pointed to gnu.org.  As such,
+    when license_code=GPL or LGPL, we should redirect.
+    """
+    gpl_redirect = TESTAPP.get(
+        '/choose/results-one'
+        '?license_code=GPL&jurisdiction=&version=2.0&lang=en').location
+    lgpl_redirect = TESTAPP.get(
+        '/choose/results-one'
+        '?license_code=LGPL&jurisdiction=&version=2.0&lang=en').location
+    expected_redirect = 'http://www.gnu.org/licenses/gpl-howto.html'
+    assert gpl_redirect == lgpl_redirect == expected_redirect
+
+    # But, no other license_code should redirect...
+    assert not TESTAPP.get(
+        '/choose/results-one'
+        '?license_code=by&jurisdiction=&version=2.0&lang=en').location
+    assert not TESTAPP.get(
+        '/choose/results-one'
+        '?license_code=by-sa&jurisdiction=&version=2.0&lang=en').location
+
+
 def test_deeds_up_for_licenses():
     """
     Make sure all licenses that the RDF claims exist show up with 200 OK

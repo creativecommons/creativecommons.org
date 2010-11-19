@@ -97,5 +97,12 @@
     </p> 
   </div>
 
+  <metal:use-this-license metal:fill-slot="use-this-license">
+    <a id="get_this" href="" 
+       i18n:translate="deed.use_this_license"
+       tal:attributes="href string:http://www.gnu.org/licenses/gpl-howto.html">
+      Use this license for your own work.</a>
+  </metal:use-this-license>
+
 </body>
 </html>

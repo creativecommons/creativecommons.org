@@ -2,7 +2,6 @@ from lxml import etree
 from urlparse import urlparse, urljoin
 from urllib import quote, unquote_plus, urlencode
 from StringIO import StringIO
-from smtplib import SMTPException
 
 from webob import Response, exc
 from zope.i18n import translate
@@ -334,6 +333,13 @@ def choose_results_view(request):
 
     context = _base_context(request, target_lang)
     request_form = request.GET or request.POST
+
+    # Special case: if anyone is linking to GPL/LGPL (mistake on old
+    # deeds), redirect them to gnu.org
+    if request_form.get('license_code') in ("GPL", "LGPL"):
+        return exc.HTTPMovedPermanently(
+            location='http://www.gnu.org/licenses/gpl-howto.html')
+
     license = _issue_license(request_form)
     work_dict = _formatter_work_dict(request_form)
     license_slim_logo = license.logo_method('80x15')
@@ -485,12 +491,12 @@ def work_email_send(request):
 
 ### FSF
 
-def gpl_chooser(request):
-    return util.plain_template_view('chooser_pages/gpl.pt', request)
-
-
-def lgpl_chooser(request):
-    return util.plain_template_view('chooser_pages/lgpl.pt', request)
+def gpl_redirect(request):
+    """
+    Redirect GPL and the LGPL to the appropriate location on gnu.org
+    """
+    return exc.HTTPMovedPermanently(
+        location='http://www.gnu.org/licenses/gpl-howto.html')
 
 
 ### Public domain
