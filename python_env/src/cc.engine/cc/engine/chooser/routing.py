@@ -29,7 +29,7 @@ chooser_routes = [
     ## FSF choosers
     Route("choose_gpl", "/cc-gpl",
           controller="cc.engine.chooser.views:gpl_chooser"),
-    Route("choose_gpl", "/cc-lgpl",
+    Route("choose_lgpl", "/cc-lgpl",
           controller="cc.engine.chooser.views:lgpl_chooser"),
 
     ## Public domain chooser
