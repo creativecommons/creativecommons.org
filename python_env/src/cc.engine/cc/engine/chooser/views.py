@@ -333,6 +333,13 @@ def choose_results_view(request):
 
     context = _base_context(request, target_lang)
     request_form = request.GET or request.POST
+
+    # Special case: if anyone is linking to GPL/LGPL (mistake on old
+    # deeds), redirect them to gnu.org
+    if request_form.get('license_code') in ("GPL", "LGPL"):
+        return exc.HTTPMovedPermanently(
+            location='http://www.gnu.org/licenses/gpl-howto.html')
+
     license = _issue_license(request_form)
     work_dict = _formatter_work_dict(request_form)
     license_slim_logo = license.logo_method('80x15')
