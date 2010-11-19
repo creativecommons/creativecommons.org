@@ -171,6 +171,17 @@ def test_license_to_choose_redirect():
         'work_title': ['SubZero']}
 
 
+def test_gpl_lgpl_redirects():
+    """
+    /choose/cc-gpl and /choose/cc-lgpl should now redirect to gnu.org,
+    make sure that happens
+    """
+    gpl_redirect = TESTAPP.get('/choose/cc-gpl').location
+    lgpl_redirect = TESTAPP.get('/choose/cc-lgpl').location
+    expected_redirect = 'http://www.gnu.org/licenses/gpl-howto.html'
+    assert gpl_redirect == lgpl_redirect == expected_redirect
+
+
 def test_deeds_up_for_licenses():
     """
     Make sure all licenses that the RDF claims exist show up with 200 OK
