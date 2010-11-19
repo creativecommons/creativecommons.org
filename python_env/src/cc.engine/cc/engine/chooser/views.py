@@ -2,7 +2,6 @@ from lxml import etree
 from urlparse import urlparse, urljoin
 from urllib import quote, unquote_plus, urlencode
 from StringIO import StringIO
-from smtplib import SMTPException
 
 from webob import Response, exc
 from zope.i18n import translate
