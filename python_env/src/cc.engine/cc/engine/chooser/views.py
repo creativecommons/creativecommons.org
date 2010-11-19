@@ -485,12 +485,12 @@ def work_email_send(request):
 
 ### FSF
 
-def gpl_chooser(request):
-    return util.plain_template_view('chooser_pages/gpl.pt', request)
-
-
-def lgpl_chooser(request):
-    return util.plain_template_view('chooser_pages/lgpl.pt', request)
+def gpl_redirect(request):
+    """
+    Redirect GPL and the LGPL to the appropriate location on gnu.org
+    """
+    return exc.HTTPMovedPermanently(
+        location='http://www.gnu.org/licenses/gpl-howto.html')
 
 
 ### Public domain

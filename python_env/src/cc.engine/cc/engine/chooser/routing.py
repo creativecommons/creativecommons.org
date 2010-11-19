@@ -28,9 +28,9 @@ chooser_routes = [
     # "Special" choosers
     ## FSF choosers
     Route("choose_gpl", "/cc-gpl",
-          controller="cc.engine.chooser.views:gpl_chooser"),
+          controller="cc.engine.chooser.views:gpl_redirect"),
     Route("choose_lgpl", "/cc-lgpl",
-          controller="cc.engine.chooser.views:lgpl_chooser"),
+          controller="cc.engine.chooser.views:gpl_redirect"),
 
     ## Public domain chooser
     Route("choose_publicdomain_landing", "/publicdomain-2",
