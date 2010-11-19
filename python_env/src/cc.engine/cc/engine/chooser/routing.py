@@ -26,7 +26,9 @@ chooser_routes = [
           controller="cc.engine.chooser.views:outdated_choosers_redirect"),
 
     # "Special" choosers
-    ## FSF choosers
+    ## FSF choosers...
+    ## (Actually, we no longer handle these ourselves, so they redirect
+    ##  to gnu.org.)
     Route("choose_gpl", "/cc-gpl",
           controller="cc.engine.chooser.views:gpl_redirect"),
     Route("choose_lgpl", "/cc-lgpl",
