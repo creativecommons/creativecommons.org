@@ -234,7 +234,9 @@
     </div>
 
     <metal:footer fill-slot="footer">
-      <a href="" id="disclaimer" class="helpLink" name="disclaimer">Disclaimer</a>
+      <a href="" id="disclaimer"
+         class="helpLink" name="disclaimer"
+         i18n:translate="util.Disclaimer">Disclaimer</a>
       <div id="cc-link">
         <a rel="dc:creator" href="http://creativecommons.org/">
           <span property="dc:title"

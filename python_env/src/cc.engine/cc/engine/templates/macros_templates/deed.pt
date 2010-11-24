@@ -71,8 +71,6 @@
     <metal:rdf metal:define-slot="page_top">
     </metal:rdf>
 
-    <div id="header">
-
     <div id="deed" 
          tal:attributes="class color | green; 
                          dir   get_ltr_rtl; 
@@ -201,17 +199,17 @@ also available.
          </div>
        </div>
     </div>
-    <p id="footer">
-      <metal:use-this-license metal:define-slot="use-this-license">
-      <a id="get_this" href="" 
-	 i18n:translate="deed.use_this_license"
-	 tal:attributes="href
-			 string:/choose/results-one?license_code=${license_code_quoted}&jurisdiction=${license/jurisdiction/code}&version=${license/version|nothing}&lang=${target_lang}">
-      Use this license for your own work.</a>
-      </metal:use-this-license>
-    </p>
-
-    <div metal:use-macro="support_template/macros/translations"></div>
+    <div id="footer">
+      <p>
+        <metal:use-this-license metal:define-slot="use-this-license">
+          <a id="get_this" href="" 
+             i18n:translate="deed.use_this_license"
+             tal:attributes="href
+                             string:/choose/results-one?license_code=${license_code_quoted}&jurisdiction=${license/jurisdiction/code}&version=${license/version|nothing}&lang=${target_lang}">
+          Use this license for your own work.</a>
+        </metal:use-this-license>
+      </p>
+      <div metal:use-macro="support_template/macros/translations"></div>
     </div>
 
 <script type="text/javascript">
