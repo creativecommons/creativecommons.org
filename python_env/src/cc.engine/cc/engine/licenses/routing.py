@@ -12,7 +12,6 @@ licenses_routes = [
           controller="cc.engine.licenses.views:license_deed_view",
           code="BSD"),
 
-
     Route("license_deed_explicit_mit",
           "/MIT/deed", code="MIT",
           controller="cc.engine.licenses.views:license_deed_view"),
@@ -51,6 +50,34 @@ licenses_routes = [
     Route("license_deed_lang_publicdomain",
           "/publicdomain/deed.{target_lang}", code="publicdomain",
           controller="cc.engine.licenses.views:license_deed_view"),
+
+
+    # GPL redirects and etc
+    Route("license_deed_gpl",
+          "/GPL/2.0/",
+          controller="cc.engine.licenses.views:gpl_redirect"),
+    Route("license_deed_explicit_gpl",
+          "/GPL/2.0/deed",
+          controller="cc.engine.licenses.views:gpl_redirect"),
+    Route("license_deed_lang_gpl",
+          "/GPL/2.0/deed.{target_lang}",
+          controller="cc.engine.licenses.views:gpl_redirect"),
+    Route("license_rdf_gpl",
+          "/GPL/2.0/rdf",
+          controller="cc.engine.licenses.views:gpl_rdf_redirect"),
+    Route("license_deed_lgpl",
+          "/LGPL/2.1/",
+          controller="cc.engine.licenses.views:lgpl_redirect"),
+    Route("license_deed_explicit_lgpl",
+          "/LGPL/2.1/deed",
+          controller="cc.engine.licenses.views:lgpl_redirect"),
+    Route("license_deed_lang_lgpl",
+          "/LGPL/2.1/deed.{target_lang}",
+          controller="cc.engine.licenses.views:lgpl_redirect"),
+    Route("license_rdf_lgpl",
+          "/LGPL/2.1/rdf",
+          controller="cc.engine.licenses.views:lgpl_rdf_redirect"),
+
 
     # Normal license routing 
     Route("license_deed",
