@@ -171,7 +171,7 @@ def test_license_to_choose_redirect():
         'work_title': ['SubZero']}
 
 
-def test_gpl_lgpl_redirects():
+def test_gpl_lgpl_chooser_redirects():
     """
     /choose/cc-gpl and /choose/cc-lgpl should now redirect to gnu.org,
     make sure that happens
@@ -180,6 +180,51 @@ def test_gpl_lgpl_redirects():
     lgpl_redirect = TESTAPP.get('/choose/cc-lgpl').location
     expected_redirect = 'http://www.gnu.org/licenses/gpl-howto.html'
     assert gpl_redirect == lgpl_redirect == expected_redirect
+
+
+def test_gpl_lgpl_deed_and_rdf_redirects():
+    """
+    Make sure appropriate /licenses/ pages for GPL and LGPL redirect.
+    """
+    # GPL deed
+    redirect = TESTAPP.get('/licenses/GPL/2.0/').location
+    expected_redirect = 'http://www.gnu.org/licenses/gpl-2.0.html'
+    assert redirect == expected_redirect
+
+    # GPL deed explicit
+    redirect = TESTAPP.get('/licenses/GPL/2.0/deed').location
+    expected_redirect = 'http://www.gnu.org/licenses/gpl-2.0.html'
+    assert redirect == expected_redirect
+
+    # GPL deed with lang
+    redirect = TESTAPP.get('/licenses/GPL/2.0/deed.pt').location
+    expected_redirect = 'http://www.gnu.org/licenses/gpl-2.0.html'
+    assert redirect == expected_redirect
+
+    # GPL RDF
+    redirect = TESTAPP.get('/licenses/GPL/2.0/rdf').location
+    expected_redirect = 'http://www.gnu.org/licenses/gpl-2.0.rdf'
+    assert redirect == expected_redirect
+
+    # LGPL deed
+    redirect = TESTAPP.get('/licenses/LGPL/2.1/').location
+    expected_redirect = 'http://www.gnu.org/licenses/lgpl-2.1.html'
+    assert redirect == expected_redirect
+
+    # LGPL deed explicit
+    redirect = TESTAPP.get('/licenses/LGPL/2.1/deed').location
+    expected_redirect = 'http://www.gnu.org/licenses/lgpl-2.1.html'
+    assert redirect == expected_redirect
+
+    # LGPL deed with lang
+    redirect = TESTAPP.get('/licenses/LGPL/2.1/deed.pt').location
+    expected_redirect = 'http://www.gnu.org/licenses/lgpl-2.1.html'
+    assert redirect == expected_redirect
+
+    # LGPL RDF
+    redirect = TESTAPP.get('/licenses/LGPL/2.1/rdf').location
+    expected_redirect = 'http://www.gnu.org/licenses/lgpl-2.1.rdf'
+    assert redirect == expected_redirect
 
 
 def test_normalchooser_gpl_redirects():
