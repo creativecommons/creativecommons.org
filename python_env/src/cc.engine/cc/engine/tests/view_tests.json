@@ -28,17 +28,6 @@
  {"path": "/licenses/MIT/legalcode"},
  {"path": "/licenses/BSD/legalcode"},
 
- {"path": "/licenses/GPL/2.0/",
-  "string_tests": [
-      "GNU General Public License",
-      "The freedom to run the program for any purpose.",
-      "http://www.gnu.org/licenses/gpl-howto.html"]},
- {"path": "/licenses/LGPL/2.1/",
-  "string_tests": [
-      "GNU Lesser General Public License",
-      "The freedom to run the program for any purpose.",
-      "http://www.gnu.org/licenses/gpl-howto.html"]},
-
  {"path": "/licenses/publicdomain/"},
  {"path": "/licenses/publicdomain/deed"},
  {"path": "/licenses/publicdomain/deed.es"},
