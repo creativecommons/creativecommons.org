@@ -21,6 +21,7 @@ from zope.i18nmessageid import MessageFactory
 from cc.license._lib import rdf_helper
 from cc.license._lib import functions as cclicense_functions
 from cc.i18n import ccorg_i18n_setup
+from cc.i18n.util import negotiate_locale
 
 from cc.engine.pagetemplate import CCLPageTemplateFile
 
@@ -220,12 +221,12 @@ def get_license_conditions(license, target_language="en_US"):
             translate(
                 'char.%s_title' % lic,
                 domain=ccorg_i18n_setup.I18N_DOMAIN,
-                target_language=target_language))
+                target_language=negotiate_locale(target_language)))
         char_brief = unicode_cleaner(
             translate(
                 'char.%s_brief' % lic,
                 domain=ccorg_i18n_setup.I18N_DOMAIN,
-                target_language=target_language))
+                target_language=negotiate_locale(target_language)))
 
         icon_name = lic
         predicate = 'cc:requires'
@@ -241,7 +242,7 @@ def get_license_conditions(license, target_language="en_US"):
                     translate(
                         'char.sa_bysa30_brief',
                         domain=ccorg_i18n_setup.I18N_DOMAIN,
-                        target_language=target_language))
+                        target_language=negotiate_locale(target_language)))
         elif lic == 'nd':
             predicate = ''
             object = ''
@@ -311,7 +312,8 @@ def active_languages():
 
         if code == 'test': continue
 
-        name = domain.translate(u'lang.%s' % code, target_language=code)
+        name = domain.translate(
+            u'lang.%s' % code, target_language=negotiate_locale(code))
         if name != u'lang.%s' % code:
             # we have a translation for this name...
             result.append(dict(code=code, name=name))
@@ -537,7 +539,9 @@ def send_license_info_email(license_title, license_html,
     try:
         send_email(
             'info@creativecommons.org', [recipient_email],
-            translate(LICENSE_INFO_EMAIL_SUBJECT, target_language=locale),
+            translate(
+                LICENSE_INFO_EMAIL_SUBJECT,
+                target_language=negotiate_locale(locale)),
             email_body)
         return True
     except smtplib.SMTPException:

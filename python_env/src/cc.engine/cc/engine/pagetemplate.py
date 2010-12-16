@@ -7,6 +7,8 @@ from zope.tales.expressions import PathExpr, StringExpr, NotExpr, DeferExpr
 from zope.tales.expressions import SimpleModuleImporter
 from zope.tales.pythonexpr import PythonExpr
 
+from cc.i18n.util import negotiate_locale
+
 
 class CCLPageTemplateFile(PageTemplateFile):
     def __init__(self, *args, **kwargs):
@@ -58,7 +60,8 @@ class CCLContext(Context):
     def translate(self, msgid, domain=None, mapping=None, default=None):
         translation = translate(
             msgid, domain, mapping,
-            default=default, target_language=self.target_language)
+            default=default,
+            target_language=negotiate_locale(self.target_language))
         if isinstance(translation, unicode):
             return translation
 
