@@ -94,8 +94,8 @@ def license_deed_view(request, license):
     active_lang_codes = [lang['code'] for lang in active_languages]
     negotiated_locale = negotiate_locale(target_lang)
 
-    # If negotiating the locale says that this isn't the right URL,
-    # let's redirect to something that clearly is.
+    # If negotiating the locale says that this isn't a valid language,
+    # let's fall back to something that is.
     if target_lang != negotiated_locale:
         base_url = REMOVE_DEED_URL_RE.match(request.path_info).groups()[0]
         redirect_to = base_url + 'deed.' + negotiated_locale
