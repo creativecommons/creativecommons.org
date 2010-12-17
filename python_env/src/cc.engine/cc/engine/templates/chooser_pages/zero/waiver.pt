@@ -5,7 +5,8 @@
       metal:use-macro="engine_template/macros/page"
       i18n:domain="cc_org">
   <head>
-    <title metal:fill-slot="title">CC0: Waiver</title>
+    <title metal:fill-slot="title"
+           i18n:translate="license.zero.waiver_title">CC0: Waiver</title>
 
     <metal:headers fill-slot="headers">
       <link rel="stylesheet" type="text/css"

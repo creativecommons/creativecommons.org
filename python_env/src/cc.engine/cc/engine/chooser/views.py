@@ -11,7 +11,8 @@ from cc.engine.decorators import RestrictHttpMethods
 from cc.engine.chooser.xmp_template import license_xmp_template
 from cc.license._lib.functions import get_selector_jurisdictions
 from cc.i18n import ccorg_i18n_setup
-from cc.i18n.util import get_well_translated_langs
+from cc.i18n.util import get_well_translated_langs, negotiate_locale
+
 import cc.license
 from cc.license.formatters.classes import (
     HTMLFormatter, CC0HTMLFormatter, PublicDomainHTMLFormatter,
@@ -301,7 +302,7 @@ def chooser_view(request):
          util.unicode_cleaner(
                 translate("country.%s" % juris,
                           domain=ccorg_i18n_setup.I18N_DOMAIN,
-                          target_language=target_lang)))
+                          target_language=negotiate_locale(target_lang))))
         for juris in available_jurisdiction_codes]
     jurisdictions_names = sorted(
         jurisdictions_names, key=lambda juris: juris[1])
