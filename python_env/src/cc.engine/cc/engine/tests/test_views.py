@@ -476,3 +476,34 @@ def test_publicdomain_partners_exiturls():
         'http://nethack.org/return_from_cc?'
         'license_url=http%3A//creativecommons.org/publicdomain/zero/1.0/&'
         'license_name=CC0%201.0%20Universal')
+
+
+def test_deed_fallbacks():
+    """
+    Test that we fallback appropriately when a deed gets a locale
+    that's unknown (or deprecated, which is the same thing via a
+    special case)
+    """
+    def _redirects_expectedly(source_url, redirect_url):
+        response = TESTAPP.get(source_url)
+        redirected_response = response.follow()
+        result_url = urlparse.urlsplit(response.location)[2]
+        assert result_url == redirect_url
+
+    # Redirects for totally absurd language
+    _redirects_expectedly(
+        '/licenses/by/3.0/deed.MONKEYS',
+        '/licenses/by/3.0/deed.en')
+
+    # Redirects for a language with an absurd/no-longer-existing
+    # country component
+    _redirects_expectedly(
+        '/licenses/by/3.0/deed.pt_LARGEMIMIC',
+        '/licenses/by/3.0/deed.pt')
+        
+    # Don't redirect when the language is valid
+    assert TESTAPP.get('/licenses/by/3.0/deed.pt').location == None
+
+    # Don't redirect when no language is specified
+    assert TESTAPP.get('/licenses/by/3.0/deed').location == None
+    assert TESTAPP.get('/licenses/by/3.0/').location == None
