@@ -1,3 +1,4 @@
+import re
 import urllib
 
 from lxml import etree
@@ -7,7 +8,7 @@ from webob import Response, exc
 from cc.engine.decorators import get_license
 from cc.engine import util
 from cc.i18n import ccorg_i18n_setup
-from cc.i18n.util import get_well_translated_langs, get_all_trans_stats
+from cc.i18n.util import get_well_translated_langs, negotiate_locale
 from cc.license import by_code, CCLicenseError
 from cc.licenserdf.tools.license import license_rdf_filename
 
@@ -32,6 +33,10 @@ DEED_TEMPLATE_MAPPING = {
     'CC0': 'licenses/zero_deed.pt',
     'mark': 'licenses/pdmark_deed.pt',
     'publicdomain': 'licenses/publicdomain_deed.pt'}
+
+
+# For removing the deed.foo section of a deed url
+REMOVE_DEED_URL_RE = re.compile('^(.*?/)(?:deed)?(?:\..*)?$')
 
 
 @get_license
@@ -87,13 +92,15 @@ def license_deed_view(request, license):
     # Find out all the active languages
     active_languages = get_well_translated_langs()
     active_lang_codes = [lang['code'] for lang in active_languages]
-    all_languages = get_all_trans_stats().keys()
+    negotiated_locale = negotiate_locale(target_lang)
 
-    # When the target_lang is determined by the url, we should make
-    # sure that's a real language to prevent caching bogus stuff
-    if not target_lang in all_languages \
-            and request.matchdict.has_key('target_lang'):
-        return exc.HTTPNotFound()
+    # If negotiating the locale says that this isn't a valid language,
+    # let's fall back to something that is.
+    if target_lang != negotiated_locale:
+        base_url = REMOVE_DEED_URL_RE.match(request.path_info).groups()[0]
+        redirect_to = base_url + 'deed.' + negotiated_locale
+        return exc.HTTPMovedPermanently(
+            location=redirect_to)
 
     # Use the pdtools deed macros template if CC0 or PD Mark, else use
     # standard deed macros template
