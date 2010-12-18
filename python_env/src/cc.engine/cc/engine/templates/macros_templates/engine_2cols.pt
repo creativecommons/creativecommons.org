@@ -14,16 +14,16 @@
 
     <link rel="stylesheet" type="text/css" 
           href="/@@/cc/cc5/style.css"
-          tal:attributes="href python:request.staticdirect('cc5/style.css')" />
+          tal:attributes="href python:request.staticdirect('cc6/style.css')" />
     <link rel="stylesheet" type="text/css" media="print"
-	  href="/@@/cc/cc5/print.css"
-          tal:attributes="href python:request.staticdirect('cc5/print.css')" />
+	  href="/@@/cc/cc6/print.css"
+          tal:attributes="href python:request.staticdirect('cc6/print.css')" />
     <link rel="stylesheet" type="text/css"
-          tal:attributes="href python:request.staticdirect('cc5/engine.css')"
-          href="/@@/cc/cc5/engine.css" />
+          tal:attributes="href python:request.staticdirect('cc6/engine.css')"
+          href="/@@/cc/cc6/engine.css" />
     <link rel="stylesheet" type="text/css"
-          href="/@@/cc/cc5/engine-rtl.css"
-          tal:attributes="href python:request.staticdirect('cc5/engine-rtl.css')"
+          href="/@@/cc/cc6/engine-rtl.css"
+          tal:attributes="href python:request.staticdirect('cc6/engine-rtl.css')"
 	  tal:condition="is_rtl"/>
 
     <!--[if IE]>
@@ -41,8 +41,8 @@
             src="/@@/cc/includes/license-results.js" >
     </script>
     <script type="text/javascript"
-            tal:attributes="src python:request.staticdirect('cc5/site.js')"
-            src="/@@/cc/cc5/site.js" ></script>
+            tal:attributes="src python:request.staticdirect('cc6/site.js')"
+            src="/@@/cc/cc6/site.js" ></script>
 
    <metal:headers define-slot="headers" />
 
@@ -50,103 +50,112 @@
 
   <body class="yui-skin-sam">
 
-    <div id="globalWrapper">
-      <div id="headerWrapper" class="box">
-        <div id="headerLogo">
-          <h1><a href="http://creativecommons.org/"><span>Creative Commons</span></a></h1>
-        </div>
-        <div id="headerNav">
-          <ul>
-            <li><a href="/about/">About</a></li>
-            <li><a href="/weblog/">News</a></li>
-            <li><a href="http://creativecommons.org/faq">FAQ</a></li>
-            <li><a href="http://support.creativecommons.org/">Donate</a></li>
-            <li><a href="http://wiki.creativecommons.org/">Wiki</a></li>
-            <li><a href="/projects/">Projects</a></li>
-            <li class="helpLink" id="international_list"><a href="/international/">International</a></li>
-          </ul>
-        </div>
-      </div>
-	    <div id="mainContent" class="box">
-	      <div id="contentPrimary" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
-          <div class="block" id="title">
-        	<h2 tal:attributes="dir get_ltr_rtl|nothing; style
-    				            is_rtl_align|nothing;">
-        	  <metal:page_title define-slot="page-header-title">
-        	  </metal:page_title>
-    		</h2>
-    	  </div>
-    	  <div id="blocks" class="2cols" style="width:680px;">
-			<div class="block page">
-              <metal:block metal:define-slot="body">
-              </metal:block>
+		<a id="top"></a>
+		<div id="header">
+			<div class="container_16">
+				<div class="grid_16 alpha">
+					<h1 id="logo"><a href="http://creativecommons.org"><span>Creative Commons</span></a></h1>
+					<ul class="nav">
+						<li><a href="/about/">About</a></li>
+						<li><a href="/weblog/">Blog</a></li>
+						<li><a href="https://creativecommons.net/donate">Donate</a></li>
+						<li><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></li>
+						<li><a href="http://wiki.creativecommons.org/">Wiki</a></li>
+						<li><a href="/international/">International</a></li>
+					</ul>
+				</div>
 			</div>
-		  </div>
-		  </div>	
-          
-          <div id="sidebar" class="content-box-right">
-            <div class="sideitem">
-              <form method="get" id="searchform" action="http://creativecommons.org/">
-                <div>
-                  <input type="text" value="" name="s" id="s" class="inactive" />  <input type="submit" id="searchsubmit" value="Go" />
-                </div>
-              </form>
-              <div class="clear"></div>
-            </div>
-            
-            <div class="sideitem">
-              <ul>
-                <li><img src="/@@/cc/cc5/images/license-alt.png" 
-                         tal:attributes="src python:request.staticdirect('cc5/images/license-alt.png')"
-                         alt="License your work" />&nbsp;&nbsp;
-                  <a href="/choose/">License your work</a>
-                </li>
-                <li>
-                  <img src="/@@/cc/cc5/images/find-alt.png" 
-                       tal:attributes="src python:request.staticdirect('cc5/images/find-alt.png')"
-                       alt="Find licensed works" width="12" height="12" />&nbsp;&nbsp;
-                  <a href="http://search.creativecommons.org/">Find licensed works</a>
-                </li>
-              </ul>
-            </div>
-            
-            <div class="sideitem">
-              <ul>
-                <li><a href="/about/opportunities/">Jobs</a></li>
-                <li><a href="/about/events/">Events</a></li>
-                <li><a href="/about/newsletter/">Newsletter</a></li>
-                <li><a href="http://wiki.creativecommons.org/Casestudies">Case Studies</a></li>
-                <li><a href="/commoners/">Creative Commoners</a></li>
-                <li><a href="/about/press">Press Room</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div id="footer">
-          <div id="footerContent" class="box">
-            <ul>
-              <li><a href="#top">Top</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-              <li><a href="http://support.creativecommons.org/">Donate</a></li>
-              <li><a href="/weblog">Blog</a></li>
-              <li><a href="/policies">Policies</a></li>
-              <li><a href="/privacy">Privacy</a></li>
-              <li><a href="/about/press">Press</a></li>
-              <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
-              <li><a href="/sitemap">Sitemap</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
-          </div>
-  		  <div id="footerLicense">
-  			<p class="box">
-              <metal:license define-slot="license-override">
-  				<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="Creative Commons License" style="border: medium none ;" height="31" width="88" /></a>
-  Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on this site is<br/>
-  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
-            </metal:license>
-  			  </p>
-  			</div>
-  		</div>
-    </div>
+		</div>
+
+
+		<div id="page" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
+			<div id="title" class="container_16">
+				<h1 class="grid_16" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
+					<metal:page_title define-slot="page-header-title"></metal:page_title>
+				</h1>
+			</div>
+			<div id="content" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
+				<div class="container_16">
+					<div class="grid_12">
+						<metal:block metal:define-slot="body">
+						</metal:block>
+					</div>
+				</div>
+			</div>	
+		</div>
+		<div id="footer">
+			<div class="container_16">
+				<div class="grid_2 alpha" id="top_link"><a href="#top">&#8682;</a></div>
+				<div class="clear"></div>
+				<div class="grid_6">
+					<h4>Creative Commons</h4>
+					<ul class="grid_2 alpha">
+						<li><a href="/about">About</a></li>
+						<li><a href="/who-uses-cc">Who Uses CC?</a></li>
+						<li><a href="/culture/">Culture</a></li>
+						<li><a href="/education/">Education</a></li>
+						<li><a href="/science/">Science</a></li>
+					</ul>
+					<ul class="grid_2">
+						<li><a href="/weblog/">Weblog</a></li>
+						<li><a href="">Case Studies</a></li>
+						<li><a href="/cc-talks-with/">CC Talks With...</a></li>
+						<li><a href="/newsletters/">Newsletters</a></li>
+						<li><a href="/downloads/">Downloads</a></li>
+					</ul>
+					<ul class="grid_2 omega">
+						<li><a href="/international/">International</a></li>
+						<li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
+						<li><a href="/about/staff/">Staff</a></li>
+						<li><a href="/about/press/">Press Room</a></li>
+						<li><a href="/contact/">Contact</a></li>
+					</ul>
+				</div>
+				<div class="grid_2 prefix_1">
+					<h4>Licensing</h4>
+					<ul class="grid_2 alpha omega">
+						<li><a href="/licenses/">The Licenses</a></li>
+						<li><a href="/licence/">License Work</a></li>
+						<li><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></li>
+						<li><a href="http://search.creativecommons.org/">Find Content</a></li>
+						<li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
+					</ul>
+				</div>
+				<div class="grid_2 prefix_1 suffix_1">
+					<h4>Supporting CC</h4>
+					<ul class="grid_2 alpha omega">
+						<li><a href="https://creativecommons.net/donate/">Donate</a></li>
+						<li><a href="https://creativecommons.net/store/">Store</a></li>
+						<li><a href="https://creativecommons.net/supporters/">Supporters</a></li>
+						<li><a href="https://creativecommons.net/corporate/">Corporate Giving</a></li>
+						<li><a href="https://creativecommons.net/figures/">Facts &amp; Figures</a></li>
+					</ul>
+				</div>
+				<div class="grid_3 social alpha omega">
+					<ul class="social_links">
+						<li><a href="https://creativecommons.net/civicrm/mailing/subscribe?reset=1&gid=121">Subscribe to Newsletter</a></li>
+						<li class="fb"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcreativecommons.org&amp;layout=button_count&amp;show_faces=false&amp;width=150&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe></li>
+						<li><a href="http://twitter.com/creativecommons">Follow on Twitter</a></li>
+						<li><a href="http://identi.ca/creativecommons">Follow on Identi.ca</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="container_16" id="footer_license">
+				<p class="grid_16">
+					<a href="http://creativecommons.org/policies">Policies</a>
+					&nbsp;&nbsp;&nbsp;<a href="http://creativecommons.org/privacy">Privacy</a>
+					&nbsp;&nbsp;&nbsp;<a href="http://creativecommons.org/terms">Terms of Use</a>
+				</p>
+				<p class="grid_16">
+				<metal:license define-slot="license-override">
+				<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/80x15.png" alt="Creative Commons License" style="border: medium none ;" height="15" width="80" /></a>
+				Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on this site is
+				licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
+				</metal:license>
+				</p>
+			</div>
+		</div>
+	</div>
 
 <script type="text/javascript">
 
@@ -165,3 +174,4 @@
   </body>
 
 </html>
+
