@@ -124,28 +124,15 @@
       <p i18n:translate="license.learn_share">
         Share your work with an existing community that has enabled Creative Commons licensing. 
       </p>
-
-      <ul>
-        <li>
-          <a href="http://wiki.creativecommons.org/Internet_Archive/Publish"
-             i18n:translate="license.publish_ia"
-             class="publish-links">
-            Publish your licensed music or video to the Internet Archive
-          </a>
-        </li>
-
-        <li>
-          <a href="http://wiki.creativecommons.org/Flickr/Publish"
-             i18n:translate="license.publish_flickr"
-             class="publish-links">Post your licensed images at Flickr</a>
-        </li>
-
-        <li>
-          <a href="http://wiki.creativecommons.org/Blog/Publish"
-             i18n:translate="license.publish_blog"
-             class="publish-link">Add a Creative Commons license to your blog</a>
-        </li>
-      </ul>
+      
+      <p>
+Learn where to <a href="http://wiki.creativecommons.org/Publish">publish</a> your
+<a href="http://wiki.creativecommons.org/Publish/Images">images</a>, 
+<a href="http://wiki.creativecommons.org/Publish/Audio">audio</a>, 
+<a href="http://wiki.creativecommons.org/Publish/Video">video</a>, and 
+<a href="http://wiki.creativecommons.org/Publish/Text">text</a>, including 
+<a href="http://wiki.creativecommons.org/Publish/Text#Blog">blogs</a>.
+      </p>
 
       <h4 i18n:translate="license.offline_work">Offline Work?</h4>
 
