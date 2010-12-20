@@ -88,14 +88,20 @@
           </div>
         </form>
 
-        <p i18n:translate="license.select_text">
-          <span tal:content="request/query_string"
+        <p>
+          <span i18n:translate="license.select_text">
+            <span tal:content="request/query_string"
                 tal:omit-tag=""
                 i18n:name="url_vars" >
             Select the contents of the box above and copy it. Or, have it
             <a href="/choose/work-html-popup?lang=en&amp;license_code=by-nc-nd&amp;title=efwefewf"
                onclick="window.open('http://creativecommons.org/choose/work-html-popup?lang=en&amp;license_code=by-nc-nd&amp;title=efwefewf', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">emailed to yourself.</a>
+            </span>
           </span>
+          <strong i18n:translate="license.read_tutorial">
+            Need more help?
+            <a href="http://wiki.creativecommons.org/Website/Publish">Read our tutorial</a>.
+          </strong>
         </p>
 
         <div id="chooserDonate">
@@ -107,13 +113,6 @@
 	      <a href="https://creativecommons.net/donate/">Donate today!</a>
            </p>
         </div>
-
-        <p>
-          <strong i18n:translate="license.read_tutorial">
-            Need more help?
-            <a href="http://wiki.creativecommons.org/Website/Publish">Read our tutorial</a>.
-          </strong>
-        </p>
       </div>
       <!-- <div metal:use-macro="here/license_macros/macros/languages">
            language box
@@ -122,9 +121,8 @@
     </div>
 
     <metal:sidebar fill-slot="sidebar">
-      <p i18n:translate="license.learn_host">
-        Learn about other places you can host your licensed files. These
-        sites work with your Creative Commons license.
+      <p i18n:translate="license.learn_share">
+        Share your work with an existing community that has enabled Creative Commons licensing. 
       </p>
 
       <ul>
@@ -152,10 +150,34 @@
       <h4 i18n:translate="license.offline_work">Offline Work?</h4>
 
       <ul>
-        <li i18n:translate="license.mark_nonweb">
-          <%=[ccommons::istr $lang license.mark_nonweb]%>
-          <span tal:omit-tag="" i18n:name="url_vars"
-                tal:content="request/query_string" />
+        <li>
+          
+        </li>
+        <li>
+          <span i18n:translate="license.mark_nonweb_metadata">
+            <span style="display:none">
+            <span tal:content="request/query_string"
+                  tal:omit-tag=""
+                  i18n:name="url_vars" />
+            </span>
+              To mark a document not on the web, add <a id="non-web-popup" onclick="window.open(this.href, 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;" href="/choose/non-web-popup?${url_vars}">this text</a> to your work.
+          </span>
+        </li>
+        <li i18n:translate="license.xmp_metadata">
+          <span style="display:none">
+          <span tal:content="request/query_string"
+                tal:omit-tag=""
+                i18n:name="url_vars" />
+          </span>
+            Get <a href="/choose/metadata.xmp?${url_vars}">metadata</a> for documents that <a href="http://wiki.creativecommons.org/XMP">support XMP</a>.
+        </li>
+        <li>
+          <a href="http://creativecommons.org/about/downloads/"
+             i18n:translate="license.get_high_res">Get high ressolution and vector versions of the license graphics.</a>
+        </li>
+        <li>
+          <a href="http://wiki.creativecommons.org/Marking/Creators#Marking_Specific_Media"
+             i18n:translate="license.mark_video">Learn how to mark video and other formats.</a>
         </li>
       </ul>
 

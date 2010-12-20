@@ -13,6 +13,8 @@ chooser_routes = [
           controller="cc.engine.chooser.views:get_rdf"),
     Route("choose_non_web_popup", "/non-web-popup",
           controller="cc.engine.chooser.views:non_web_popup"),
+    Route("choose_xmp_popup", "/metadata.xmp",
+          controller="cc.engine.chooser.views:choose_xmp_view"),
     Route("choose_work_html_popup", "/work-html-popup",
           controller="cc.engine.chooser.views:work_email_popup"),
     Route("choose_work_html_send", "/work-email",
