@@ -13,7 +13,7 @@
 	  /> 
 
     <link rel="stylesheet" type="text/css" 
-          href="/@@/cc/cc5/style.css"
+          href="/@@/cc/cc6/style.css"
           tal:attributes="href python:request.staticdirect('cc6/style.css')" />
     <link rel="stylesheet" type="text/css" media="print"
 	  href="/@@/cc/cc6/print.css"
