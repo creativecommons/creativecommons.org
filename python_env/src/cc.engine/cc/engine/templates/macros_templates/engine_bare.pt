@@ -1,0 +1,175 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:define-macro="page"
+      i18n:domain="cc_org">
+
+  <head>
+    <title metal:define-slot="title">Page Title</title>
+
+    <link rel="stylesheet" type="text/css"
+	  href="http://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css"
+	  /> 
+
+    <link rel="stylesheet" type="text/css" 
+          href="/@@/cc/cc5/style.css"
+          tal:attributes="href python:request.staticdirect('cc6/style.css')" />
+    <link rel="stylesheet" type="text/css" media="print"
+	  href="/@@/cc/cc6/print.css"
+          tal:attributes="href python:request.staticdirect('cc6/print.css')" />
+    <link rel="stylesheet" type="text/css"
+          tal:attributes="href python:request.staticdirect('cc6/engine.css')"
+          href="/@@/cc/cc6/engine.css" />
+    <link rel="stylesheet" type="text/css"
+          href="/@@/cc/cc6/engine-rtl.css"
+          tal:attributes="href python:request.staticdirect('cc6/engine-rtl.css')"
+	  tal:condition="is_rtl"/>
+
+    <!--[if IE]>
+      <link rel="stylesheet" type="text/css"
+            media="screen" href=/@@/cc/includes/style-ie.css"
+            tal:attributes="href python:request.staticdirect('includes/style-ie.css')" />
+    <![endif]-->
+
+    <script type="text/javascript" 
+	    src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/animation/animation-min.js"></script> 
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script>
+    <script type="text/javascript"
+            tal:attributes="src python:request.staticdirect('includes/license-results.js')"
+            src="/@@/cc/includes/license-results.js" >
+    </script>
+    <script type="text/javascript"
+            tal:attributes="src python:request.staticdirect('cc6/site.js')"
+            src="/@@/cc/cc6/site.js" ></script>
+
+   <metal:headers define-slot="headers" />
+
+  </head>
+
+  <body class="yui-skin-sam">
+
+		<a id="top"></a>
+		<div id="header">
+			<div class="container_16">
+				<div class="grid_16 alpha">
+					<h1 id="logo"><a href="http://creativecommons.org"><span>Creative Commons</span></a></h1>
+					<ul class="nav">
+						<li><a href="/about/">About</a></li>
+						<li><a href="/weblog/">Blog</a></li>
+						<li><a href="https://creativecommons.net/donate">Donate</a></li>
+						<li><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></li>
+						<li><a href="http://wiki.creativecommons.org/">Wiki</a></li>
+						<li><a href="/international/">International</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+		<div id="page" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
+			<div id="title" class="container_16">
+				<h1 class="grid_16" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
+					<metal:page_title define-slot="page-header-title"></metal:page_title>
+				</h1>
+			</div>
+			<div id="content" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
+
+				<metal:block metal:define-slot="body_custom_layout">
+				</metal:block>
+			
+			</div>	
+		</div>
+		<div id="footer">
+			<div class="container_16">
+				<div class="grid_2 alpha" id="top_link"><a href="#top">&#8682;</a></div>
+				<div class="clear"></div>
+				<div class="grid_6">
+					<h4>Creative Commons</h4>
+					<ul class="grid_2 alpha">
+						<li><a href="/about">About</a></li>
+						<li><a href="/who-uses-cc">Who Uses CC?</a></li>
+						<li><a href="/culture/">Culture</a></li>
+						<li><a href="/education/">Education</a></li>
+						<li><a href="/science/">Science</a></li>
+					</ul>
+					<ul class="grid_2">
+						<li><a href="/weblog/">Weblog</a></li>
+						<li><a href="http://wiki.creativecommons.org/Case_Studies">Case Studies</a></li>
+						<li><a href="/cc-talks-with/">CC Talks With...</a></li>
+						<li><a href="/newsletters/">Newsletters</a></li>
+						<li><a href="/downloads/">Downloads</a></li>
+					</ul>
+					<ul class="grid_2 omega">
+						<li><a href="/international/">International</a></li>
+						<li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
+						<li><a href="/about/staff/">Staff</a></li>
+						<li><a href="/about/press/">Press Room</a></li>
+						<li><a href="/contact/">Contact</a></li>
+					</ul>
+				</div>
+				<div class="grid_2 prefix_1">
+					<h4>Licensing</h4>
+					<ul class="grid_2 alpha omega">
+						<li><a href="/licenses/">The Licenses</a></li>
+						<li><a href="/licence/">License Work</a></li>
+						<li><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></li>
+						<li><a href="http://search.creativecommons.org/">Find Content</a></li>
+						<li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
+					</ul>
+				</div>
+				<div class="grid_2 prefix_1 suffix_1">
+					<h4>Supporting CC</h4>
+					<ul class="grid_2 alpha omega">
+						<li><a href="https://creativecommons.net/donate/">Donate</a></li>
+						<li><a href="https://creativecommons.net/store/">Store</a></li>
+						<li><a href="https://creativecommons.net/supporters/">Supporters</a></li>
+						<li><a href="https://creativecommons.net/corporate/">Corporate Giving</a></li>
+						<li><a href="https://creativecommons.net/figures/">Facts &amp; Figures</a></li>
+					</ul>
+				</div>
+				<div class="grid_3 social alpha omega">
+					<ul class="social_links">
+						<li><a href="https://creativecommons.net/civicrm/mailing/subscribe?reset=1&gid=121">Subscribe to Newsletter</a></li>
+						<li class="fb"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcreativecommons.org&amp;layout=button_count&amp;show_faces=false&amp;width=150&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe></li>
+						<li><a href="http://twitter.com/creativecommons">Follow on Twitter</a></li>
+						<li><a href="http://identi.ca/creativecommons">Follow on Identi.ca</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="container_16" id="footer_license">
+				<p class="grid_16">
+					<a href="http://creativecommons.org/policies">Policies</a>
+					&nbsp;&nbsp;&nbsp;<a href="http://creativecommons.org/privacy">Privacy</a>
+					&nbsp;&nbsp;&nbsp;<a href="http://creativecommons.org/terms">Terms of Use</a>
+				</p>
+				<p class="grid_16">
+				<metal:license define-slot="license-override">
+				<a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/80x15.png" alt="Creative Commons License" style="border: medium none ;" height="15" width="80" /></a>
+				Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on this site is
+				licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
+				</metal:license>
+				</p>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2010376-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+  </body>
+
+</html>
+
