@@ -14,7 +14,6 @@ from cc.licenserdf.tools.license import license_rdf_filename
 
 
 def licenses_view(request):
-    #return util.plain_template_view('catalog_pages/licenses-index.pt', request)
     target_lang = util.get_target_lang_from_request(request)
 
     template = util.get_zpt_template('catalog_pages/licenses-index.pt', target_lang)
@@ -22,8 +21,9 @@ def licenses_view(request):
     engine_template = util.get_zpt_template(
         'macros_templates/engine_bare.pt', target_lang)
     
-    context = _base_context(request, target_lang)
-    context.update({'engine_template': engine_template})
+    context = {'request': request,
+               'engine_template': engine_template}
+    context.update(util.rtl_context_stuff(target_lang))
 
     return Response(template.pt_render(context))
 
