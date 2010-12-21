@@ -13,7 +13,7 @@
 			About The Licenses
 		</metal:title>
 
-		<div metal:fill-slot="body_custom_layout" tal:define="target_lang string:en;">
+		<div metal:fill-slot="body" tal:define="target_lang string:en;">
 			<div class="container_16">
 				<div class="grid_12">
 
@@ -39,7 +39,7 @@
 				<div class="container_16">
 					<h2 class="grid_16">Three “Layers” Of Licenses</h2>
 					<div class="grid_5">
-						<img src="/images/license-layers.png"/>
+						<img src="/images/license-layers.png" alt="Three Layers of Licenses"/>
 					</div>
 					<div class="grid_11">
 						Our public copyright licenses incorporate a unique and innovative “three-layer” design. Each license begins as a traditional legal tool, in the kind of language and text formats that most lawyers know and love. We call this the Legal Code layer of each license.

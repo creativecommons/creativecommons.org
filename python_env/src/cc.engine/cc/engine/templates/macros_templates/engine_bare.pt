@@ -76,7 +76,7 @@
 			</div>
 			<div id="content" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
 
-				<metal:block metal:define-slot="body_custom_layout">
+				<metal:block metal:define-slot="body">
 				</metal:block>
 			
 			</div>	
