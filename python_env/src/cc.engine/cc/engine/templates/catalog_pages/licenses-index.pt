@@ -5,129 +5,114 @@
       metal:use-macro="engine_template/macros/page"
       i18n:domain="cc_org">
   <head>
-    <title metal:fill-slot="title">About The Licenses - Creative Commons</title>
+    <title metal:fill-slot="title">Creative Commons Licenses</title>
   </head>
 
-	<body>
-		<metal:title metal:fill-slot="page-header-title">
-			About The Licenses
-		</metal:title>
+  <body>
+    <div metal:fill-slot="body">
+      <h1>Creative Commons Licenses</h1>
 
-		<div metal:fill-slot="body_custom_layout" tal:define="target_lang string:en;">
-			<div class="container_16">
-				<div class="grid_12">
+      <p>
+        The following are the six current license choices available
+        from our <a href="/choose/">choose a license</a> application,
+        along with previous versions that have been phased out. They
+        are shown by name along the license characteristics that
+        accompany them.
+        <a href="http://creativecommons.org/about/licenses/">This
+        page explains what each icon represents</a>.
+      </p>
 
-					<h2>What our licenses do</h2>
-					The Creative Commons copyright licenses and tools forge a balance inside the traditional “all rights reserved” setting that copyright law creates. Our tools give everyone from individual creators to large companies and institutions a simple, standardized way to grant copyright permissions to their creative work. The combination of our tools and our users is a <a href="http://creativecommons.org/videos/a-shared-culture">vast and growing digital commons</a>, a pool of content that can be <a href="http://creativecommons.org/videos/wanna-work-together">copied, distributed, edited, remixed, and built upon</a>, all within the boundaries of copyright law.
-				</div>
-				<div class="grid_4">
-					<embed src="http://blip.tv/play/goY6kdkzg9ky.m4v" type="application/x-shockwave-flash" width="230" height="210" allowscriptaccess="always" allowfullscreen="true"></embed> 
-			</div></div>
-			<div class="container_16">
-				<h2 class="grid_16">License design and rationale</h2>
-				<div class="grid_8">
-					All Creative Commons licenses have many important features in common. Every license helps creators – when using our tools, we call them licensors – retain copyright, and allow other users to copy, distribute, and make other uses of their work – at least non-commercially. Every Creative Commons license also helps licensors keep the right to be given credit for their work. Every Creative Commons license works around the world, lasts as long as copyright lasts (because they are built on copyright), and is permanent. Based on these common features, licensors can select from a spectrum of rights to decide how they want to share their work.
+      <table border="0" style="margin-left:14px;margin-bottom:30px;" cellpadding="3">
+	<tr>
+	  <th align="left">Name</th>
+	  <th align="left" colspan="3">Characteristics</th>
+	</tr>
+        <tr>
+	  <th colspan="4" style="background:#dedede;color:#333;"
+              align="left">Version 3.0 Licenses:</th>
+        </tr>
 
-					Creative Commons licensors answer two questions on the path to choosing a license – first, do I want to allow commercial use or not, and second, do I want to allow derivative works or not? If a Creative Commons licensor decides to allow derivative works, she also is able to require that anyone who accepts the license – we call them licensees - to make that new work available under the same terms. We call this idea “share alike”, as it is a legal method that guarantees the digital commons grows over time. Share alike is inspired by the example set in Free Software by the GNU GPL.
-				</div>
-				<div class="grid_8">
-					The licenses don’t affect key freedoms, exceptions, and limitations to copyright, like fair use, first sale, and free expression rights. Creative Commons licenses require licensees to get your permission to do any of the things a licensor chooses to restrict — e.g., make a commercial use, create a derivative work. Licensees must keep any copyright notice intact on all copies of works under our licenses, link to the license from copies of the work, cannot alter the terms of the license, and can’t use technology to restrict other licensees’ lawful uses of the work.
+        <tr>
+	  <td width="250"><a href="/licenses/by/3.0/">Attribution</a></td>
+	  <td>
+            <img border="0" src="/icons/by/standard.gif"
+                 alt="by" align="left" />
+          </td>
+	  <td width="32">&nbsp;</td>
+	  <td width="32">&nbsp;</td>
+	</tr>
 
-					<a href="http://creativecommons.org/choose">Try out our simple <em>License Chooser</em></a>.
-			</div></div>
-			<div class="alt">
-				<div class="container_16">
-					<h2 class="grid_16">Three “Layers” Of Licenses</h2>
-					<div class="grid_5">
-						<img src="/images/license-layers.png"/>
-					</div>
-					<div class="grid_11">
-						Our public copyright licenses incorporate a unique and innovative “three-layer” design. Each license begins as a traditional legal tool, in the kind of language and text formats that most lawyers know and love. We call this the Legal Code layer of each license.
+	<tr>
+	  <td><a href="/licenses/by-nd/3.0/">Attribution-NoDerivs</a></td>
 
-						But since most creators, educators, and scientists are not in fact lawyers, we also make the licenses available in a format that normal people can read - the Commons Deed (also known as the “human readable” version of the license). The Commons Deed is a handy reference for licensors and licensees, summarizing and expressing some of the most important terms and conditions. Think of the Commons Deed as a user-friendly interface to the Legal Code beneath, although the Deed itself is not a license, and its contents are not part of the Legal Code itself.
+	  <td>
+            <img border="0" src="/icons/by/standard.gif" alt="by" align="left" />
+          </td>
+          <td width="32">&nbsp;</td>
+          <td><img border="0" src="/icons/nd/standard.gif" alt="nd" align="left" /></td>
+	</tr>
 
-						The final layer of the license design recognizes that software, from search engines to office productivity to music editing, plays an enormous role in the creation, copying, discovery, and distribution of works. In order to make it easy for the Web to know when a work is available under a Creative Commons license, we provide a “machine readable” version of the license - a summary of the key freedoms and obligations written into a format that software system, search engines, and other kinds of technology can understand. We developed a standardized way to describe licenses that software can understand called CC Rights Expression Language (CC REL) to accomplish this.
+	<tr>
+	  <td>
+            <a href="/licenses/by-nc-nd/3.0/">Attribution-NonCommercial-NoDerivs</a>
+          </td>
+	  <td>
+            <img border="0" src="/icons/by/standard.gif" alt="by" align="left" />
+          </td>
+          <td>
+            <img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" />
+          </td>
+          <td>
+            <img border="0" src="/icons/nd/standard.gif" alt="nd" align="left" />
+          </td>
+	</tr>
+	
+	<tr>
+	  <td><a href="/licenses/by-nc/3.0/">Attribution-NonCommercial</a></td>
 
-						Searching for open content is an important function enabled by our approach.. You can use <a href="http://www.google.com/support/websearch/bin/answer.py?&amp;answer=29508&amp;hl=">Google</a> and <a href="http://www.search.yahoo.com/cc">Yahoo!</a> to search for Creative Commons content, look for pictures at <a href="http://www.flickr.com/creativecommons/">Flickr</a>, albums at <a href="http://www.jamendo.com/en/creativecommons">Jamendo</a>, and general media at <a href="http://spinxpress.com/">spinxpress</a>. The <a href="http://commons.wikimedia.org/wiki/Main_Page">Wikimedia Commons</a>, which powers <a href="http://wikipedia.org">Wikipedia</a>, is a core user of our licenses as well.
+	  <td>
+            <img border="0" src="/icons/by/standard.gif" alt="by" align="left" />
+          </td>
+          <td>
+            <img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" />
+          </td>
+          <td width="32">&nbsp;</td>
+	</tr>
 
-						Taken together, these three layers of license ensure that the spectrum of rights isn’t just a legal concept. It’s something that the creators of works can understand, their users can understand, and even the Web itself can understand.
+	<tr>
+	  <td>
+            <a href="/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike</a>
+          </td>
+	  <td>
+            <img border="0" src="/icons/by/standard.gif" alt="by" align="left" />
+          </td>
+          <td>
+            <img border="0" src="/icons/nc/standard.gif" alt="nc" align="left" />
+          </td>
+          <td>
+            <img border="0" src="/icons/sa/standard.gif" alt="sa" align="left" />
+          </td>
+	</tr>
 
-			</div></div></div>
+	<tr>
+	  <td><a href="/licenses/by-sa/3.0/">Attribution-ShareAlike</a></td>
+	  <td>
+            <img border="0" src="/icons/by/standard.gif"
+                 alt="by" align="left" />
+          </td>
+          <td width="32">&nbsp;</td>
+          <td>
+            <img border="0" src="/icons/sa/standard.gif" alt="sa" align="left" />
+          </td>
+	</tr>
+      </table>
 
-			<div class="container_16">
-				<h2 class="grid_16">The Licenses</h2>
-				<ul>
-					<li class="grid_8">
-					<div class="grid_2 alpha" style="text-align:right;">
-						<img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="" width="88" height="31" />
-					</div>
-					<div class="grid_5 omega">
-						<strong>Attribution / CC BY </strong>
-						This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered, in terms of what others can do with your works licensed under Attribution.
-
-						<span style="color: #000000;"><a href="http://creativecommons.org/licenses/by/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by/3.0/legalcode">View Legal Code</a></span>
-					</div>
-					</li>
-					<li class="grid_8">
-					<div class="grid_2 alpha" style="text-align:right;">
-						<img src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" alt="" width="88" height="31" />
-					</div>
-					<div class="grid_5 omega">
-						<strong>Attribution Share Alike / CC BY-SA</strong>
-						This license lets others remix, tweak, and build upon your work even for commercial reasons, as long as they credit you and license their new creations under the identical terms. This license is often compared to open source software licenses. All new works based on yours will carry the same license, so any derivatives will also allow commercial use.
-
-						<span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-sa/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-sa/3.0/legalcode">View Legal Code</a></span>
-					</div>
-					</li>
-					<li class="grid_8">
-					<div class="grid_2 alpha" style="text-align:right;">
-						<img src="http://i.creativecommons.org/l/by-nd/3.0/88x31.png" alt="" width="88" height="31" />
-					</div>
-					<div class="grid_5 omega">
-						<strong>Attribution No Derivatives / CC BY-ND</strong>
-						This license allows for redistribution, commercial and non-commercial, as long as it is passed along unchanged and in whole, with credit to you.
-
-						<span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-nd/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-nd/3.0/legalcode">View Legal Code</a></span>
-					</div>
-					</li>
-					<li class="grid_8">
-					<div class="grid_2 alpha" style="text-align:right;">
-						<img src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" alt="" width="88" height="31" />
-					</div>
-					<div class="grid_5 omega">
-						<strong>Attribution Non-Commercial /CC BY-NC</strong>
-						This license lets others remix, tweak, and build upon your work non-commercially, and although their new works must also acknowledge you and be non-commercial, they don’t have to license their derivative works on the same terms.
-
-						<span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-nc/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-nc/3.0/legalcode">View Legal Code</a></span>
-					</div>
-					</li>
-					<li class="grid_8">
-					<div class="grid_2 alpha" style="text-align:right;">
-						<img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="" width="88" height="31" />
-					</div>
-					<div class="grid_5 omega">
-						<strong>Attribution Non-Commercial Share Alike / CC BY-NC-SA</strong>
-						This license lets others remix, tweak, and build upon your work non-commercially, as long as they credit you and license their new creations under the identical terms. Others can download and redistribute your work just like the by-nc-nd license, but they can also translate, make remixes, and produce new stories based on your work. All new work based on yours will carry the same license, so any derivatives will also be non-commercial in nature.
-
-						<span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-nc-sa/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode">View Legal Code</a></span>
-					</div>
-					</li>
-					<li class="grid_8">
-					<div class="grid_2 alpha" style="text-align:right;">
-						<img src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" alt="" width="88" height="31" />
-					</div>
-					<div class="grid_5 omega">
-						<strong>Attribution Non-Commercial No Derivatives / CC BY-NC-ND</strong>
-						This license is the most restrictive of our six main licenses, allowing redistribution. This license is often called the “free advertising” license because it allows others to download your works and share them with others as long as they mention you and link back to you, but they can’t change them in any way or use them commercially.
-
-						<span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-nc-nd/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/legalcode">View Legal Code</a></span>
-					</div>
-					</li>
-				</ul>
-				<div class="grid_12">
-					We also provide tools that work in the “all rights granted” space of the <a href="http://wiki.creativecommons.org/Public_domain">public domain</a>. Our <a href="http://creativecommons.org/about/cc0">CC0 tool</a> allows licensors to waive all rights and place a work in the public domain, and our <a href="http://creativecommons.org/about/pdm">Public Domain Mark</a> allows any web user to “mark” a work as being in the public domain.
-				</div>
-			</div>
+      <p>
+        With Creative Commons licenses creators keep their copyright. If you
+        want to waive all restrictions on your work or certify that a work is
+        already in the public domain, see our <a href="/publicdomain">public
+        domain tools</a>.
+      </p>
     </div>
   </body>
 </html>
