@@ -81,7 +81,7 @@
 						<metal:block metal:define-slot="body">
 						</metal:block>
 					</div>
-					<div class="grid_4" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
+					<div class="grid_4 prefix_1" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
 						<metal:block define-slot="sidebar" />
 					</div>
 				</div>
