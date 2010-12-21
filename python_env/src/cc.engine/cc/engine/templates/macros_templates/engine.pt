@@ -77,13 +77,13 @@
 			<div id="content" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
 
 				<div class="container_16">
-					<div class="grid_12">
+					<div class="grid_11">
 						<metal:block metal:define-slot="body">
 						</metal:block>
 					</div>
-				</div>
-				<div class="grid_4" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
-					<metal:block define-slot="sidebar" />
+					<div class="grid_4 prefix_1" tal:attributes="dir get_ltr_rtl|nothing; style is_rtl_align|nothing;">
+						<metal:block define-slot="sidebar" />
+					</div>
 				</div>
 			</div>	
 		</div>
@@ -137,8 +137,8 @@
 				</div>
 				<div class="grid_3 social alpha omega">
 					<ul class="social_links">
-						<li><a href="https://creativecommons.net/civicrm/mailing/subscribe?reset=1&gid=121">Subscribe to Newsletter</a></li>
-						<li class="fb"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcreativecommons.org&amp;layout=button_count&amp;show_faces=false&amp;width=150&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe></li>
+						<li><a href="https://creativecommons.net/civicrm/mailing/subscribe?reset=1&amp;gid=121">Subscribe to Newsletter</a></li>
+						<li class="fb"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcreativecommons.org&amp;layout=button_count&amp;show_faces=false&amp;width=150&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;"></iframe></li>
 						<li><a href="http://twitter.com/creativecommons">Follow on Twitter</a></li>
 						<li><a href="http://identi.ca/creativecommons">Follow on Identi.ca</a></li>
 					</ul>
@@ -159,7 +159,6 @@
 				</p>
 			</div>
 		</div>
-	</div>
 
 <script type="text/javascript">
 
