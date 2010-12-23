@@ -136,10 +136,7 @@ Learn where to <a href="http://wiki.creativecommons.org/Publish">publish</a> you
 
       <h4 i18n:translate="license.offline_work">Offline Work?</h4>
 
-      <ul>
-        <li>
-          
-        </li>
+      <ul class="no-bullets">
         <li>
           <span i18n:translate="license.mark_nonweb_metadata">
             <span style="display:none">
@@ -170,7 +167,7 @@ Learn where to <a href="http://wiki.creativecommons.org/Publish">publish</a> you
 
       <h4 i18n:translate="license.option_next_steps">Optional next step</h4>
 
-      <ul>
+      <ul class="no-bullets">
         <li>
           <a href="https://creativecommons.net/r/add/"
              i18n:translate="license.register_with_cc_network"
