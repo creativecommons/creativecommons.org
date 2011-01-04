@@ -54,7 +54,7 @@
 
 			</div></div></div>
 
-			<div class="container_16">
+			<div class="container_16" id="licenses">
 				<h2 class="grid_16">The Licenses</h2>
 				<ul>
 					<li class="grid_8">
@@ -62,7 +62,7 @@
 						<img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="" width="88" height="31" />
 					</div>
 					<div class="grid_5 omega">
-						<p><strong>Attribution / CC BY </strong></p>
+						<p><strong>Attribution<br/>CC BY </strong></p>
 						<p>This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered, in terms of what others can do with your works licensed under Attribution.</p>
 
 						<p><span style="color: #000000;"><a href="http://creativecommons.org/licenses/by/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by/3.0/legalcode">View Legal Code</a></span></p>
@@ -73,7 +73,7 @@
 						<img src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png" alt="" width="88" height="31" />
 					</div>
 					<div class="grid_5 omega">
-						<p><strong>Attribution Share Alike / CC BY-SA</strong></p>
+						<p><strong>Attribution-ShareAlike<br/>CC BY-SA</strong></p>
 						<p>This license lets others remix, tweak, and build upon your work even for commercial reasons, as long as they credit you and license their new creations under the identical terms. This license is often compared to open source software licenses. All new works based on yours will carry the same license, so any derivatives will also allow commercial use.</p>
 
 						<p><span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-sa/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-sa/3.0/legalcode">View Legal Code</a></span></p>
@@ -84,7 +84,7 @@
 						<img src="http://i.creativecommons.org/l/by-nd/3.0/88x31.png" alt="" width="88" height="31" />
 					</div>
 					<div class="grid_5 omega">
-						<p><strong>Attribution No Derivatives / CC BY-ND</strong></p>
+						<p><strong>Attribution-NoDerivatives<br/>CC BY-ND</strong></p>
 						<p>This license allows for redistribution, commercial and non-commercial, as long as it is passed along unchanged and in whole, with credit to you.</p>
 
 						<p><span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-nd/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-nd/3.0/legalcode">View Legal Code</a></span></p>
@@ -95,7 +95,7 @@
 						<img src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" alt="" width="88" height="31" />
 					</div>
 					<div class="grid_5 omega">
-						<p><strong>Attribution Non-Commercial /CC BY-NC</strong></p>
+						<p><strong>Attribution-NonCommercial<br/>CC BY-NC</strong></p>
 						<p>This license lets others remix, tweak, and build upon your work non-commercially, and although their new works must also acknowledge you and be non-commercial, they don’t have to license their derivative works on the same terms.</p>
 
 						<p><span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-nc/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-nc/3.0/legalcode">View Legal Code</a></span></p>
@@ -106,7 +106,7 @@
 						<img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="" width="88" height="31" />
 					</div>
 					<div class="grid_5 omega">
-						<p><strong>Attribution Non-Commercial Share Alike / CC BY-NC-SA</strong></p>
+						<p><strong>Attribution-NonCommercial-ShareAlike<br/>CC BY-NC-SA</strong></p>
 						<p>This license lets others remix, tweak, and build upon your work non-commercially, as long as they credit you and license their new creations under the identical terms. Others can download and redistribute your work just like the by-nc-nd license, but they can also translate, make remixes, and produce new stories based on your work. All new work based on yours will carry the same license, so any derivatives will also be non-commercial in nature.</p>
 
 						<p><span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-nc-sa/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode">View Legal Code</a></span></p>
@@ -117,7 +117,7 @@
 						<img src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" alt="" width="88" height="31" />
 					</div>
 					<div class="grid_5 omega">
-						<p><strong>Attribution Non-Commercial No Derivatives / CC BY-NC-ND</strong></p>
+						<p><strong>Attribution-NonCommercial-NoDerivatives<br/>CC BY-NC-ND</strong></p>
 						<p>This license is the most restrictive of our six main licenses, allowing redistribution. This license is often called the “free advertising” license because it allows others to download your works and share them with others as long as they mention you and link back to you, but they can’t change them in any way or use them commercially.</p>
 
 						<p><span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-nc-nd/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/legalcode">View Legal Code</a></span></p>
