@@ -6,6 +6,17 @@
       metal:use-macro="deed_template/macros/page"
       i18n:domain="cc_org">
 
+<head>
+  <title metal:fill-slot="title">Creative Commons &mdash;
+    <span tal:omit-tag="" tal:content="license/title">
+      Attribution 3.0 Unported
+    </span>
+    &mdash; CC
+    <span tal:omit-tag="" tal:content="python: license.license_code.upper()" />
+    <span tal:omit-tag="" tal:content="license/version" />
+  </title>
+</head>
+
 <body>
 
   <!-- RDF code here for backwards compatibility.  Please use the
