@@ -53,7 +53,7 @@
 		<a id="top"></a>
 		<div id="header">
 			<div class="container_16">
-				<div class="grid_16 alpha">
+				<div class="grid_16">
 					<h1 id="logo"><a href="http://creativecommons.org"><span>Creative Commons</span></a></h1>
 					<ul class="nav">
 						<li><a href="/about/">About</a></li>
@@ -113,7 +113,7 @@
 					<h4>Licensing</h4>
 					<ul class="grid_2 alpha omega">
 						<li><a href="/licenses/">The Licenses</a></li>
-						<li><a href="/licence/">License Work</a></li>
+						<li><a href="/choose/">Choose License</a></li>
 						<li><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></li>
 						<li><a href="http://search.creativecommons.org/">Find Content</a></li>
 						<li><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
