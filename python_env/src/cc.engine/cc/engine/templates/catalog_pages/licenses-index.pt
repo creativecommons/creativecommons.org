@@ -21,8 +21,13 @@
 					The Creative Commons copyright licenses and tools forge a balance inside the traditional “all rights reserved” setting that copyright law creates. Our tools give everyone from individual creators to large companies and institutions a simple, standardized way to grant copyright permissions to their creative work. The combination of our tools and our users is a <a href="http://creativecommons.org/videos/a-shared-culture">vast and growing digital commons</a>, a pool of content that can be <a href="http://creativecommons.org/videos/wanna-work-together">copied, distributed, edited, remixed, and built upon</a>, all within the boundaries of copyright law.
 				</div>
 				<div class="grid_4">
-					<embed src="http://blip.tv/play/goY6kdkzg9ky.m4v" type="application/x-shockwave-flash" width="230" height="210" allowscriptaccess="always" allowfullscreen="true"></embed> 
-			</div></div>
+					<video width="230" height="210" controls>
+						<source src="http://mirrors.creativecommons.org/movingimages/webm/WannaWorkTogether_360p.webm" type="video/webm" />
+						<source src="http://blip.tv/file/get/Commonscreative-WannaWorkTogether958.mov" type="video/mp4" />
+						<embed src="http://blip.tv/play/gpxSkdkzAg" type="application/x-shockwave-flash" width="230" height="210" allowscriptaccess="always" allowfullscreen="true"></embed>
+					</video>
+				</div>
+			</div>
 			<div class="container_16">
 				<h2 class="grid_16">License design and rationale</h2>
 				<div class="grid_8">
