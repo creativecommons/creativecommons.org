@@ -31,12 +31,12 @@
 			<div class="container_16">
 				<h2 class="grid_16">License design and rationale</h2>
 				<div class="grid_8">
-					<p>All Creative Commons licenses have many important features in common. Every license helps creators – when using our tools, we call them licensors – retain copyright, and allow other users to copy, distribute, and make other uses of their work – at least non-commercially. Every Creative Commons license also helps licensors keep the right to be given credit for their work. Every Creative Commons license works around the world, and lasts as long as copyright lasts (because they are built on copyright). With these common features as the baseline, licensors can select from a spectrum of rights to decide how they want to share their work.</p>
+					<p>All Creative Commons licenses have many important features in common. Every license helps creators &mdash; we call them licensors if they use our tools &nbsp; retain copyright while allowing others to copy, distribute, and make some uses of their work &mdash; at least non-commercially. Every Creative Commons license also ensures licensors get the credit for their work they deserve. Every Creative Commons license works around the world and lasts as long as applicable copyright lasts (because they are built on copyright). These common features serve as the baseline, on top of which licensors can choose to grant additional permissions when deciding how they want their work to be used.</p>
 
-					<p>Creative Commons licensors answer two questions on the path to choosing a license – first, do I want to allow commercial use or not, and second, do I want to allow derivative works or not? If a Creative Commons licensor decides to allow derivative works, she also is able to require that anyone who accepts the license – we call them licensees - to make that new work available under the same terms. We call this idea “share alike”, as it is a legal method that guarantees the digital commons grows over time. Share alike is inspired by the example set in Free Software by the GNU GPL.</p>
+					<p>A Creative Commons licensor answers a few simple questions on the path to choosing a license &mdash; first, do I want to allow commercial use or not, and then second, do I want to allow derivative works or not? If a licensor decides to allow derivative works, she may also choose to require that anyone who uses the work &mdash; we call them licensees &mdash; to make that new work available under the same license terms. We call this idea “ShareAlike” and it is one of the mechanisms that (if chosen) helps the digital commons grow over time. ShareAlike is inspired by the GNU General Public License, used by manu open source software projects.</p>
 				</div>
 				<div class="grid_8">
-					<p>The licenses don’t affect key freedoms, exceptions, and limitations to copyright, like fair use, first sale, and free expression rights. Creative Commons licenses require licensees to get your permission to do any of the things a licensor chooses to restrict — e.g., make a commercial use, create a derivative work. Licensees must keep any copyright notice intact on all copies of works under our licenses, link to the license from copies of the work, cannot alter the terms of the license, and can’t use technology to restrict other licensees’ lawful uses of the work.</p>
+					<p>Our licenses do not affect freedoms that the law grants to users of creative works otherwise protected by copyright,such as exceptions and limitations to copyright law like fair dealing. Creative Commons licenses require licensees to get permission to do any of the things with a work that the law reserves exclusively to a licensor and that the license does not expressly allo. Licensees must credit the licensor, keep copyright notices intact on all copies of the work, and link to the license from copies of the work. Licensees cannot can’t use technological measures to restrict access to the work by others.</p>
 
 					<p><a href="http://creativecommons.org/choose">Try out our simple <em>License Chooser</em></a>.</p>
 			</div></div>
@@ -68,7 +68,7 @@
 					</div>
 					<div class="grid_5 omega">
 						<p><strong>Attribution<br/>CC BY </strong></p>
-						<p>This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered, in terms of what others can do with your works licensed under Attribution.</p>
+						<p>This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered. Recommended for maximum dissemination and use licensed materials.</p>
 
 						<p><span style="color: #000000;"><a href="http://creativecommons.org/licenses/by/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by/3.0/legalcode">View Legal Code</a></span></p>
 					</div>
@@ -79,7 +79,7 @@
 					</div>
 					<div class="grid_5 omega">
 						<p><strong>Attribution-ShareAlike<br/>CC BY-SA</strong></p>
-						<p>This license lets others remix, tweak, and build upon your work even for commercial reasons, as long as they credit you and license their new creations under the identical terms. This license is often compared to open source software licenses. All new works based on yours will carry the same license, so any derivatives will also allow commercial use.</p>
+						<p>This license lets others remix, tweak, and build upon your work even for commercial reasons, as long as they credit you and license their new creations under the identical terms. This license is often compared to “copyleft” free and open source software licenses. All new works based on yours will carry the same license, so any derivatives will also allow commercial use. This is the license used by Wikipedia, and is recommended for materials that would benefit from incorporating content from Wikipedia and similarly licensed projects.</p>
 
 						<p><span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-sa/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-sa/3.0/legalcode">View Legal Code</a></span></p>
 					</div>
@@ -112,7 +112,7 @@
 					</div>
 					<div class="grid_5 omega">
 						<p><strong>Attribution-NonCommercial-ShareAlike<br/>CC BY-NC-SA</strong></p>
-						<p>This license lets others remix, tweak, and build upon your work non-commercially, as long as they credit you and license their new creations under the identical terms. Others can download and redistribute your work just like the by-nc-nd license, but they can also translate, make remixes, and produce new stories based on your work. All new work based on yours will carry the same license, so any derivatives will also be non-commercial in nature.</p>
+						<p>This license lets others remix, tweak, and build upon your work non-commercially, as long as they credit you and license their new creations under the identical terms.</p>
 
 						<p><span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-nc-sa/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode">View Legal Code</a></span></p>
 					</div>
@@ -123,7 +123,7 @@
 					</div>
 					<div class="grid_5 omega">
 						<p><strong>Attribution-NonCommercial-NoDerivatives<br/>CC BY-NC-ND</strong></p>
-						<p>This license is the most restrictive of our six main licenses, allowing redistribution. This license is often called the “free advertising” license because it allows others to download your works and share them with others as long as they mention you and link back to you, but they can’t change them in any way or use them commercially.</p>
+						<p>This license is the most restrictive of our six main licenses, only allowing others to download your works and share them with others as long as they credit you, but they can’t change them in any way or use them commercially.</p>
 
 						<p><span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-nc-nd/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/legalcode">View Legal Code</a></span></p>
 					</div>
