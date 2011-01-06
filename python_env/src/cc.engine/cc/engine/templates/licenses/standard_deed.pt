@@ -30,10 +30,8 @@ ${license/rdf} -->" />
           style="display: inline;"
           tal:content="structure
                        string:${license_title}"/>
-    (<span property="dc:identifier"
-           style="display: inline;"
-	   tal:content="string:CC ${license/license_code/upper}
-          ${license/version}"></span>)
+    (<span property="dc:identifier" style="display: inline;"
+	   tal:content="string:CC ${license/license_code/upper} ${license/version}"></span>)
   </h2>
 
   <div metal:fill-slot="body" tal:omit-tag="">
