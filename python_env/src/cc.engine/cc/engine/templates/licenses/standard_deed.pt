@@ -31,9 +31,9 @@ ${license/rdf} -->" />
           tal:content="structure
                        string:${license_title}"/>
     (<span property="dc:identifier"
-           style="display: inline;">CC
-      <span tal:omit-tag="" tal:content="python: license.license_code.upper()" />
-      <span tal:omit-tag="" tal:content="license/version" /></span>)
+           style="display: inline;"
+	   tal:content="string:CC ${license/license_code/upper}
+          ${license/version}"></span>)
   </h2>
 
   <div metal:fill-slot="body" tal:omit-tag="">
