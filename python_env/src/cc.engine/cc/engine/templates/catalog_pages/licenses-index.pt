@@ -32,12 +32,12 @@
 			<div class="container_16">
 				<h2 class="grid_16">License design and rationale</h2>
 				<div class="grid_8">
-					<p>All Creative Commons licenses have many important features in common. Every license helps creators &mdash; we call them licensors if they use our tools &nbsp; retain copyright while allowing others to copy, distribute, and make some uses of their work &mdash; at least non-commercially. Every Creative Commons license also ensures licensors get the credit for their work they deserve. Every Creative Commons license works around the world and lasts as long as applicable copyright lasts (because they are built on copyright). These common features serve as the baseline, on top of which licensors can choose to grant additional permissions when deciding how they want their work to be used.</p>
+					<p>All Creative Commons licenses have many important features in common. Every license helps creators &mdash; we call them licensors if they use our tools &mdash; retain copyright while allowing others to copy, distribute, and make some uses of their work &mdash; at least non-commercially. Every Creative Commons license also ensures licensors get the credit for their work they deserve. Every Creative Commons license works around the world and lasts as long as applicable copyright lasts (because they are built on copyright). These common features serve as the baseline, on top of which licensors can choose to grant additional permissions when deciding how they want their work to be used.</p>
 
-					<p>A Creative Commons licensor answers a few simple questions on the path to choosing a license &mdash; first, do I want to allow commercial use or not, and then second, do I want to allow derivative works or not? If a licensor decides to allow derivative works, she may also choose to require that anyone who uses the work &mdash; we call them licensees &mdash; to make that new work available under the same license terms. We call this idea “ShareAlike” and it is one of the mechanisms that (if chosen) helps the digital commons grow over time. ShareAlike is inspired by the GNU General Public License, used by manu open source software projects.</p>
+					<p>A Creative Commons licensor answers a few simple questions on the path to choosing a license &mdash; first, do I want to allow commercial use or not, and then second, do I want to allow derivative works or not? If a licensor decides to allow derivative works, she may also choose to require that anyone who uses the work &mdash; we call them licensees &mdash; to make that new work available under the same license terms. We call this idea “ShareAlike” and it is one of the mechanisms that (if chosen) helps the digital commons grow over time. ShareAlike is inspired by the GNU General Public License, used by many open source software projects.</p>
 				</div>
 				<div class="grid_8">
-					<p>Our licenses do not affect freedoms that the law grants to users of creative works otherwise protected by copyright,such as exceptions and limitations to copyright law like fair dealing. Creative Commons licenses require licensees to get permission to do any of the things with a work that the law reserves exclusively to a licensor and that the license does not expressly allo. Licensees must credit the licensor, keep copyright notices intact on all copies of the work, and link to the license from copies of the work. Licensees cannot can’t use technological measures to restrict access to the work by others.</p>
+					<p>Our licenses do not affect freedoms that the law grants to users of creative works otherwise protected by copyright, such as exceptions and limitations to copyright law like fair dealing. Creative Commons licenses require licensees to get permission to do any of the things with a work that the law reserves exclusively to a licensor and that the license does not expressly allow. Licensees must credit the licensor, keep copyright notices intact on all copies of the work, and link to the license from copies of the work. Licensees cannot can’t use technological measures to restrict access to the work by others.</p>
 
 					<p><a href="http://creativecommons.org/choose">Try out our simple <em>License Chooser</em></a>.</p>
 			</div></div>
@@ -69,7 +69,7 @@
 					</div>
 					<div class="grid_5 omega">
 						<p><strong>Attribution<br/>CC BY </strong></p>
-						<p>This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered. Recommended for maximum dissemination and use licensed materials.</p>
+						<p>This license lets others distribute, remix, tweak, and build upon your work, even commercially, as long as they credit you for the original creation. This is the most accommodating of licenses offered. Recommended for maximum dissemination and use of licensed materials.</p>
 
 						<p><span style="color: #000000;"><a href="http://creativecommons.org/licenses/by/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by/3.0/legalcode">View Legal Code</a></span></p>
 					</div>
@@ -80,7 +80,7 @@
 					</div>
 					<div class="grid_5 omega">
 						<p><strong>Attribution-ShareAlike<br/>CC BY-SA</strong></p>
-						<p>This license lets others remix, tweak, and build upon your work even for commercial reasons, as long as they credit you and license their new creations under the identical terms. This license is often compared to “copyleft” free and open source software licenses. All new works based on yours will carry the same license, so any derivatives will also allow commercial use. This is the license used by Wikipedia, and is recommended for materials that would benefit from incorporating content from Wikipedia and similarly licensed projects.</p>
+						<p>This license lets others remix, tweak, and build upon your work even for commercial purposes, as long as they credit you and license their new creations under the identical terms. This license is often compared to “copyleft” free and open source software licenses. All new works based on yours will carry the same license, so any derivatives will also allow commercial use. This is the license used by Wikipedia, and is recommended for materials that would benefit from incorporating content from Wikipedia and similarly licensed projects.</p>
 
 						<p><span style="color: #000000;"><a href="http://creativecommons.org/licenses/by-sa/3.0">View License Deed</a> | <a href="http://creativecommons.org/licenses/by-sa/3.0/legalcode">View Legal Code</a></span></p>
 					</div>
