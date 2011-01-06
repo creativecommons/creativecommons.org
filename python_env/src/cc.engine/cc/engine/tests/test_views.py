@@ -45,11 +45,6 @@ def test_root_view():
     assert response.body == 'This is the root'
 
 
-def test_licenses_view():
-    response = TESTAPP.get('/licenses/')
-    assert '<h1>Creative Commons Licenses</h1>' in response.body
-
-
 ## Deed view tests
 
 

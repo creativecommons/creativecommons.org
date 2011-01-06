@@ -1,7 +1,9 @@
 [{"path": "/publicdomain/",
   "string_tests": [
       "Our Public Domain Tools"]},
- {"path": "/licenses/"},
+ {"path": "/licenses/",
+  "string_tests": [
+      "About The Licenses"]},
 
  {"path": "/licenses/by/3.0/"},
  {"path": "/licenses/by/3.0/deed"},
