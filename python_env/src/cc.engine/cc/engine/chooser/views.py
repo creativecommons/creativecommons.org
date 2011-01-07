@@ -341,7 +341,14 @@ def choose_results_view(request):
         return exc.HTTPMovedPermanently(
             location='http://www.gnu.org/licenses/gpl-howto.html')
 
+    # Select a license based on the request form
     license = _issue_license(request_form)
+
+    # If the license is retired, redirect to info page
+    if license.deprecated:
+        return exc.HTTPMovedPermanently(location="/retiredlicenses")
+
+    # Generate the HTML+RDFa for the license + provided work information
     work_dict = _formatter_work_dict(request_form)
     license_slim_logo = license.logo_method('80x15')
 
