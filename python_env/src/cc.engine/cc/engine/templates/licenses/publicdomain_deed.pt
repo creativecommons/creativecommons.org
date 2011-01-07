@@ -104,10 +104,5 @@
   </div>
 
   <div metal:fill-slot="footer" tal:omit-tag=""></div>
-  <metal:use-this-license metal:fill-slot="use-this-license">
-    <a id="get_this" href="/choose/publicdomain-2" 
-       i18n:translate="deed.use_this_tool">
-      Use this tool for your own work.</a>
-  </metal:use-this-license>
 </body>
 </html>
