@@ -502,3 +502,19 @@ def test_deed_fallbacks():
     # Don't redirect when no language is specified
     assert TESTAPP.get('/licenses/by/3.0/deed').location == None
     assert TESTAPP.get('/licenses/by/3.0/').location == None
+
+
+USE_LICENSE_TEXT = 'Use this license for your own work.'
+
+def test_retired_deeds():
+    """
+    We shouldn't indicate how to use a license for your own works when
+    the license is retired.
+    """
+    # Don't tell users how to use retired licenses!
+    assert (
+        USE_LICENSE_TEXT
+        not in TESTAPP.get('/licenses/sampling/1.0/').unicode_body)
+
+    # We should have that text on non-retired licenses though :)
+    assert USE_LICENSE_TEXT in TESTAPP.get('/licenses/by/3.0/').unicode_body
