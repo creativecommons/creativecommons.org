@@ -518,3 +518,19 @@ def test_retired_deeds():
 
     # We should have that text on non-retired licenses though :)
     assert USE_LICENSE_TEXT in TESTAPP.get('/licenses/by/3.0/').unicode_body
+
+
+def test_choose_retired_redirects():
+    """
+    If a user somehow 'chooses' a retired license, it should redirect
+    to /retiredlicenses
+    """
+    response = TESTAPP.get(
+        '/choose/results-one?'
+        'license_code=devnations&jurisdiction=&version=2.0&lang=en')
+    retired_redirect = urlparse.urlsplit(response.location)[2]
+    expected_redirect = '/retiredlicenses'
+    assert retired_redirect == expected_redirect
+
+    # But, obviously don't redirect when we have non-deprecated licenses :)
+    response = TESTAPP.get('/choose/results-one').location == None
