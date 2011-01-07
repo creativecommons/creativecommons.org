@@ -87,7 +87,8 @@
     </div>
     <div id="footer">
       <p>
-        <metal:use-this-license metal:define-slot="use-this-license">
+        <metal:use-this-license metal:define-slot="use-this-license"
+				tal:condition="not:license/deprecated">
         </metal:use-this-license>
       </p>
       <div metal:use-macro="support_template/macros/translations"></div>
