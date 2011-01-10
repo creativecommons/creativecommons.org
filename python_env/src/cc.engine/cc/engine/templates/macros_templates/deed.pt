@@ -201,7 +201,8 @@ also available.
     </div>
     <div id="footer">
       <p>
-        <metal:use-this-license metal:define-slot="use-this-license">
+        <metal:use-this-license metal:define-slot="use-this-license"
+				tal:condition="not:license/deprecated">
           <a id="get_this" href="" 
              i18n:translate="deed.use_this_license"
              tal:attributes="href
