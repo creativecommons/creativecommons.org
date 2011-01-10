@@ -23,6 +23,8 @@ HTML_FORMATTER = HTMLFormatter()
 CC0_HTML_FORMATTER = CC0HTMLFormatter()
 PUBLICDOMAIN_HTML_FORMATTER = PublicDomainHTMLFormatter()
 PDMARK_HTML_FORMATTER = PDMarkHTMLFormatter()
+STANDARD_SELECTOR = cc.license.LicenseSelector(
+    "http://creativecommons.org/license/")
 
 
 def _base_context(request, target_lang=None):
@@ -136,9 +138,19 @@ def _formatter_work_dict(request_form):
         'source_work': request_form.get('field_sourceurl', u'')}
 
 
+def _yes_into_y(answer):
+    """
+    'yes' needs to be transformed into 'y' for by_answers. :-\
+    """
+    if answer == 'yes':
+        return 'y'
+    return answer
+
+
 def _issue_license(request_form):
     """Extract the license engine fields from the request and return a
     License object."""
+
     jurisdiction = request_form.get('field_jurisdiction',
                                     request_form.get('jurisdiction'))
     if jurisdiction == '-':
@@ -165,27 +177,15 @@ def _issue_license(request_form):
 
     else:
         ## Construct the license code for a "standard" license
-        attribution = request_form.get('field_attribution')
-        commercial = request_form.get('field_commercial')
-        derivatives = request_form.get('field_derivatives')
+        answers = {
+            'commercial': _yes_into_y(
+                request_form.get('field_commercial')),
+            'derivatives': _yes_into_y(
+                request_form.get('field_derivatives')),
+            'jurisdiction': jurisdiction,
+            'version': version}
 
-        license_code_bits = []
-        if not attribution == 'n':
-            license_code_bits.append('by')
-
-        if commercial == 'n':
-            license_code_bits.append('nc')
-
-        if derivatives == 'n':
-            license_code_bits.append('nd')
-        elif derivatives == 'sa':
-            license_code_bits.append('sa')
-
-        license_code = '-'.join(license_code_bits)
-        return cc.license.by_code(
-            license_code,
-            jurisdiction=jurisdiction,
-            version=version)
+        return STANDARD_SELECTOR.by_answers(answers)
 
 
 def _generate_exit_url(url, referrer, license):
