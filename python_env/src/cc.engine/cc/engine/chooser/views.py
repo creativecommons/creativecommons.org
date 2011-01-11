@@ -179,10 +179,10 @@ def _issue_license(request_form):
         ## Construct the license code for a "standard" license
         answers = {
             'commercial': _yes_into_y(
-                request_form.get('field_commercial')),
+                request_form.get('field_commercial', 'y')),
             'derivatives': _yes_into_y(
-                request_form.get('field_derivatives')),
-            'jurisdiction': jurisdiction,
+                request_form.get('field_derivatives', 'y')),
+            'jurisdiction': jurisdiction or '',
             'version': version}
 
         return STANDARD_SELECTOR.by_answers(answers)
