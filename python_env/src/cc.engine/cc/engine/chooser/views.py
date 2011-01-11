@@ -138,13 +138,18 @@ def _formatter_work_dict(request_form):
         'source_work': request_form.get('field_sourceurl', u'')}
 
 
-def _yes_into_y(answer):
+DEFAULT_ACCEPTED = ['y', 'n']
+ACCEPTED_DERIVATIVES = ['y', 'n', 'sa']
+
+def _accept_input_and_default_y(answer, accepted=DEFAULT_ACCEPTED):
     """
-    'yes' needs to be transformed into 'y' for by_answers. :-\
+    'yes' and other things need to be transformed into 'y' for
+    by_answers, which barfs if it recieves things it doesn't know
     """
-    if answer == 'yes':
+    if answer in accepted:
+        return answer
+    else:
         return 'y'
-    return answer
 
 
 def _issue_license(request_form):
@@ -178,10 +183,11 @@ def _issue_license(request_form):
     else:
         ## Construct the license code for a "standard" license
         answers = {
-            'commercial': _yes_into_y(
+            'commercial': _accept_input_and_default_y(
                 request_form.get('field_commercial', 'y')),
-            'derivatives': _yes_into_y(
-                request_form.get('field_derivatives', 'y')),
+            'derivatives': _accept_input_and_default_y(
+                request_form.get('field_derivatives', 'y'),
+                ACCEPTED_DERIVATIVES),
             'jurisdiction': jurisdiction or '',
             'version': version}
 
