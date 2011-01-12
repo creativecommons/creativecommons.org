@@ -594,11 +594,34 @@ def test_chooser_gives_correct_licenses():
          'jurisdiction': 'at'},
         'http://creativecommons.org/licenses/by-nc-sa/2.0/at/')
 
+    ##################
+    ### By license url
+    ##################
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by/3.0/'},
+        'http://creativecommons.org/licenses/by/3.0/')
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by-nc/3.0/'},
+        'http://creativecommons.org/licenses/by-nc/3.0/')
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by-nd/3.0/'},
+        'http://creativecommons.org/licenses/by-nd/3.0/')
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by-sa/3.0/'},
+        'http://creativecommons.org/licenses/by-sa/3.0/')
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by-nc-nd/3.0/'},
+        'http://creativecommons.org/licenses/by-nc-nd/3.0/')
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by-nc-sa/3.0/'},
+        'http://creativecommons.org/licenses/by-nc-sa/3.0/')
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by-nc-sa/3.0/pl/'},
+        'http://creativecommons.org/licenses/by-nc-sa/3.0/pl/')
+
     ################
     ### By "answers"
     ################
-
-    # ??? We don't actually look at 
     _check_license_url_against_parameters(
         {'field_commercial': 'y',
          'field_derivatives': 'y'},
@@ -628,4 +651,8 @@ def test_chooser_gives_correct_licenses():
          'field_derivatives': 'sa',
          'jurisdiction': 'pl'},
         'http://creativecommons.org/licenses/by-nc-sa/3.0/pl/')
-    
+    _check_license_url_against_parameters(
+        {'field_commercial': 'n',
+         'field_derivatives': 'sa',
+         'field_jurisdiction': 'pl'},
+        'http://creativecommons.org/licenses/by-nc-sa/3.0/pl/')
