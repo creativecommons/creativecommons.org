@@ -76,7 +76,7 @@
         <ul class="choices">
           <li>
             <input type="radio" checked="checked"
-                   name="field_commercial" value="yes" id="question_2-3"/>
+                   name="field_commercial" value="y" id="question_2-3"/>
             <label for="question_2-3"
                    i18n:translate="util.Yes">Yes</label> 
             <a href="" id="commercial" class="helpLink">
@@ -108,7 +108,7 @@
         <ul class="choices">
           <li>
             <input type="radio" checked="checked" 
-                   name="field_derivatives" value="yes"
+                   name="field_derivatives" value="y"
                    id="question_3-5" />  
             <label for="question_3-5" i18n:translate="util.Yes">Yes</label>
             <a href="" id="derivatives" class="helpLink">
