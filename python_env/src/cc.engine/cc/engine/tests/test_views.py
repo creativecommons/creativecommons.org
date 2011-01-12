@@ -44,7 +44,7 @@ TESTAPP = webtest.TestApp(
 
 def test_root_view():
     response = TESTAPP.get('/')
-    assert response.body == 'This is the root'
+    assert_equal(response.body, 'This is the root')
 
 
 ## Deed view tests
@@ -57,10 +57,10 @@ def _deed_tester(url, template_path,
     namespace = util.ZPT_TEST_TEMPLATES.pop(
             util.full_zpt_filename(template_path))
     request = namespace['request']
-    assert namespace['license'] == expected_license
-    assert request.matchdict.get('code') == expected_code
-    assert request.matchdict.get('version') == expected_version
-    assert request.matchdict.get('jurisdiction') == expected_jurisdiction
+    assert_equal(namespace['license'], expected_license)
+    assert_equal(request.matchdict.get('code'), expected_code)
+    assert_equal(request.matchdict.get('version'), expected_version)
+    assert_equal(request.matchdict.get('jurisdiction'), expected_jurisdiction)
 
 
 def test_standard_deeds_licenses():
@@ -96,8 +96,8 @@ def _rdf_tester(url, rdf_file):
     rdf_file_contents = util.unicode_cleaner(
         file(pkg_resources.resource_filename(
                 'cc.licenserdf', rdf_file)).read())
-    assert response.headers['Content-Type'] == RDF_HEADER
-    assert response.unicode_body == rdf_file_contents
+    assert_equal(response.headers['Content-Type'], RDF_HEADER)
+    assert_equal(response.unicode_body, rdf_file_contents)
 
 def test_rdf_views():
     _rdf_tester(
@@ -146,12 +146,13 @@ def test_license_to_choose_redirect():
         '/license/zero/results?'
         'license-class=zero&name=ZeroMan&work_title=SubZero')
     redirected_response = response.follow()
-    assert urlparse.urlsplit(response.location)[2] == '/choose/zero/results'
+    assert_equal(urlparse.urlsplit(response.location)[2], '/choose/zero/results')
     qs = cgi.parse_qs(urlparse.urlsplit(response.location)[3])
-    assert qs == {
-        'license-class': ['zero'],
-        'name': ['ZeroMan'],
-        'work_title': ['SubZero']}
+    assert_equal(
+        qs,
+        {'license-class': ['zero'],
+         'name': ['ZeroMan'],
+         'work_title': ['SubZero']})
 
     # Also make sure that POST redirects work
     response = TESTAPP.post(
@@ -160,12 +161,13 @@ def test_license_to_choose_redirect():
          'name': 'ZeroMan',
          'work_title': 'SubZero'})
     redirected_response = response.follow()
-    assert urlparse.urlsplit(response.location)[2] == '/choose/zero/results'
+    assert_equal(urlparse.urlsplit(response.location)[2], '/choose/zero/results')
     qs = cgi.parse_qs(urlparse.urlsplit(response.location)[3])
-    assert qs == {
-        'license-class': ['zero'],
-        'name': ['ZeroMan'],
-        'work_title': ['SubZero']}
+    assert_equal(
+        qs,
+        {'license-class': ['zero'],
+         'name': ['ZeroMan'],
+         'work_title': ['SubZero']})
 
 
 def test_gpl_lgpl_chooser_redirects():
@@ -186,42 +188,42 @@ def test_gpl_lgpl_deed_and_rdf_redirects():
     # GPL deed
     redirect = TESTAPP.get('/licenses/GPL/2.0/').location
     expected_redirect = 'http://www.gnu.org/licenses/gpl-2.0.html'
-    assert redirect == expected_redirect
+    assert_equal(redirect, expected_redirect)
 
     # GPL deed explicit
     redirect = TESTAPP.get('/licenses/GPL/2.0/deed').location
     expected_redirect = 'http://www.gnu.org/licenses/gpl-2.0.html'
-    assert redirect == expected_redirect
+    assert_equal(redirect, expected_redirect)
 
     # GPL deed with lang
     redirect = TESTAPP.get('/licenses/GPL/2.0/deed.pt').location
     expected_redirect = 'http://www.gnu.org/licenses/gpl-2.0.html'
-    assert redirect == expected_redirect
+    assert_equal(redirect, expected_redirect)
 
     # GPL RDF
     redirect = TESTAPP.get('/licenses/GPL/2.0/rdf').location
     expected_redirect = 'http://www.gnu.org/licenses/gpl-2.0.rdf'
-    assert redirect == expected_redirect
+    assert_equal(redirect, expected_redirect)
 
     # LGPL deed
     redirect = TESTAPP.get('/licenses/LGPL/2.1/').location
     expected_redirect = 'http://www.gnu.org/licenses/lgpl-2.1.html'
-    assert redirect == expected_redirect
+    assert_equal(redirect, expected_redirect)
 
     # LGPL deed explicit
     redirect = TESTAPP.get('/licenses/LGPL/2.1/deed').location
     expected_redirect = 'http://www.gnu.org/licenses/lgpl-2.1.html'
-    assert redirect == expected_redirect
+    assert_equal(redirect, expected_redirect)
 
     # LGPL deed with lang
     redirect = TESTAPP.get('/licenses/LGPL/2.1/deed.pt').location
     expected_redirect = 'http://www.gnu.org/licenses/lgpl-2.1.html'
-    assert redirect == expected_redirect
+    assert_equal(redirect, expected_redirect)
 
     # LGPL RDF
     redirect = TESTAPP.get('/licenses/LGPL/2.1/rdf').location
     expected_redirect = 'http://www.gnu.org/licenses/lgpl-2.1.rdf'
-    assert redirect == expected_redirect
+    assert_equal(redirect, expected_redirect)
 
 
 def test_normalchooser_gpl_redirects():
@@ -276,12 +278,13 @@ class TestEmailSenderViews(unittest.TestCase):
         
         # assert that there's 1 message in the inbox,
         # and that it's the right one
-        assert len(util.EMAIL_TEST_INBOX) == 1
+        assert_equal(len(util.EMAIL_TEST_INBOX), 1)
         sent_mail = util.EMAIL_TEST_INBOX.pop()
-        assert sent_mail['To'] == 'recipient@example.org'
-        assert sent_mail['From'] == 'info@creativecommons.org'
-        assert sent_mail['Subject'] == \
-            "Your Creative Commons License Information"
+        assert_equal(sent_mail['To'], 'recipient@example.org')
+        assert_equal(sent_mail['From'], 'info@creativecommons.org')
+        assert_equal(
+            sent_mail['Subject'],
+            "Your Creative Commons License Information")
         mail_body = sent_mail.get_payload()
 
         assert 'You have selected Scroll of Charging' in mail_body
@@ -296,7 +299,7 @@ class TestEmailSenderViews(unittest.TestCase):
         response = TESTAPP.get(
             '/choose/work-email?license_name=Scroll+of+Charging&to_email=recipient%40example.org&work_title=Floobie+Bletch&license_html=You+feel+charged+up%21',
             expect_errors=True)
-        assert response.status_int == 405
+        assert_equal(response.status_int, 405)
 
     def test_cc0_results_email_send(self):
         # For doing a POST (email sending time!)
@@ -307,12 +310,13 @@ class TestEmailSenderViews(unittest.TestCase):
         
         # assert that there's 1 message in the inbox,
         # and that it's the right one
-        assert len(util.EMAIL_TEST_INBOX) == 1
+        assert_equal(len(util.EMAIL_TEST_INBOX), 1)
         sent_mail = util.EMAIL_TEST_INBOX.pop()
-        assert sent_mail['To'] == 'recipient@example.org'
-        assert sent_mail['From'] == 'info@creativecommons.org'
-        assert sent_mail['Subject'] == \
-            "Your Creative Commons License Information"
+        assert_equal(sent_mail['To'], 'recipient@example.org')
+        assert_equal(sent_mail['From'], 'info@creativecommons.org')
+        assert_equal(
+            sent_mail['Subject'],
+            "Your Creative Commons License Information")
         mail_body = sent_mail.get_payload()
 
         assert 'You have selected CC0 1.0 Universal' in mail_body
@@ -331,7 +335,7 @@ class TestEmailSenderViews(unittest.TestCase):
             '/choose/zero/results?email=recipient@example.org')
         
         # assert that there's no messages in the inbox
-        assert len(util.EMAIL_TEST_INBOX) == 0
+        assert_equal(len(util.EMAIL_TEST_INBOX), 0)
 
         # check that the right template was loaded
         assert util.ZPT_TEST_TEMPLATES.has_key(
@@ -347,12 +351,13 @@ class TestEmailSenderViews(unittest.TestCase):
         
         # assert that there's 1 message in the inbox,
         # and that it's the right one
-        assert len(util.EMAIL_TEST_INBOX) == 1
+        assert_equal(len(util.EMAIL_TEST_INBOX), 1)
         sent_mail = util.EMAIL_TEST_INBOX.pop()
-        assert sent_mail['To'] == 'recipient@example.org'
-        assert sent_mail['From'] == 'info@creativecommons.org'
-        assert sent_mail['Subject'] == \
-            "Your Creative Commons License Information"
+        assert_equal(sent_mail['To'], 'recipient@example.org')
+        assert_equal(sent_mail['From'], 'info@creativecommons.org')
+        assert_equal(
+            sent_mail['Subject'],
+            "Your Creative Commons License Information")
         mail_body = sent_mail.get_payload()
 
         assert 'You have selected Public Domain Mark 1.0' in mail_body
@@ -371,7 +376,7 @@ class TestEmailSenderViews(unittest.TestCase):
             '/choose/mark/results?email=recipient@example.org')
         
         # assert that there's no messages in the inbox
-        assert len(util.EMAIL_TEST_INBOX) == 0
+        assert_equal(len(util.EMAIL_TEST_INBOX), 0)
 
         # check that the right template was loaded
         assert util.ZPT_TEST_TEMPLATES.has_key(
@@ -387,11 +392,14 @@ def test_publicdomain_direct_redirect():
         '/choose/publicdomain-direct?'
         'stylesheet=foo.css&partner=blah')
     redirected_response = response.follow()
-    assert urlparse.urlsplit(response.location)[2] == '/choose/zero/partner'
+    assert_equal(
+        urlparse.urlsplit(response.location)[2],
+        '/choose/zero/partner')
     qs = cgi.parse_qs(urlparse.urlsplit(response.location)[3])
-    assert qs == {
-        'stylesheet': ['foo.css'],
-        'partner': ['blah']}
+    assert_equal(
+        qs,
+        {'stylesheet': ['foo.css'],
+         'partner': ['blah']})
 
 
 def test_publicdomain_partners_alternatelinks():
@@ -417,9 +425,9 @@ def test_publicdomain_partners_alternatelinks():
     response_etree = lxml_html.parse(StringIO.StringIO(response.unicode_body))
     other_pd_href = response_etree.xpath(
         '//a[text()="CC0 public domain dedication"]')[0].attrib['href']
-    assert urlparse.urlsplit(other_pd_href)[2] == '/choose/zero/partner'
+    assert_equal(urlparse.urlsplit(other_pd_href)[2], '/choose/zero/partner')
     qs = cgi.parse_qs(urlparse.urlsplit(other_pd_href)[3])
-    assert qs == expected_response_qs
+    assert_equal(qs, expected_response_qs)
 
     # Test for CC0's PDM link
     response = TESTAPP.get(
@@ -432,9 +440,9 @@ def test_publicdomain_partners_alternatelinks():
     response_etree = lxml_html.parse(StringIO.StringIO(response.unicode_body))
     other_pd_href = response_etree.xpath(
         '//a[text()="Public Domain Mark"]')[0].attrib['href']
-    assert urlparse.urlsplit(other_pd_href)[2] == '/choose/mark/partner'
+    assert_equal(urlparse.urlsplit(other_pd_href)[2], '/choose/mark/partner')
     qs = cgi.parse_qs(urlparse.urlsplit(other_pd_href)[3])
-    assert qs == expected_response_qs
+    assert_equal(qs, expected_response_qs)
 
 
 def test_publicdomain_partners_exiturls():
@@ -453,10 +461,11 @@ def test_publicdomain_partners_exiturls():
     response_etree = lxml_html.parse(StringIO.StringIO(response.unicode_body))
     proceed_href = response_etree.xpath(
         '//a[text()="proceed"]')[0].attrib['href']
-    assert proceed_href == (
-        'http://nethack.org/return_from_cc?'
-        'license_url=http%3A//creativecommons.org/publicdomain/mark/1.0/&'
-        'license_name=Public%20Domain%20Mark%201.0')
+    assert_equal(
+        proceed_href,
+        ('http://nethack.org/return_from_cc?'
+         'license_url=http%3A//creativecommons.org/publicdomain/mark/1.0/&'
+         'license_name=Public%20Domain%20Mark%201.0'))
     
     # CC0's exit URL
     response = TESTAPP.get(
@@ -469,10 +478,11 @@ def test_publicdomain_partners_exiturls():
     response_etree = lxml_html.parse(StringIO.StringIO(response.unicode_body))
     proceed_href = response_etree.xpath(
         '//a[text()="proceed"]')[0].attrib['href']
-    assert proceed_href == (
-        'http://nethack.org/return_from_cc?'
-        'license_url=http%3A//creativecommons.org/publicdomain/zero/1.0/&'
-        'license_name=CC0%201.0%20Universal')
+    assert_equal(
+        proceed_href,
+        ('http://nethack.org/return_from_cc?'
+         'license_url=http%3A//creativecommons.org/publicdomain/zero/1.0/&'
+         'license_name=CC0%201.0%20Universal'))
 
 
 def test_deed_fallbacks():
@@ -485,7 +495,7 @@ def test_deed_fallbacks():
         response = TESTAPP.get(source_url)
         redirected_response = response.follow()
         result_url = urlparse.urlsplit(response.location)[2]
-        assert result_url == redirect_url
+        assert_equal(result_url, redirect_url)
 
     # Redirects for totally absurd language
     _redirects_expectedly(
@@ -499,11 +509,11 @@ def test_deed_fallbacks():
         '/licenses/by/3.0/deed.pt')
         
     # Don't redirect when the language is valid
-    assert TESTAPP.get('/licenses/by/3.0/deed.pt').location == None
+    assert_equal(TESTAPP.get('/licenses/by/3.0/deed.pt').location, None)
 
     # Don't redirect when no language is specified
-    assert TESTAPP.get('/licenses/by/3.0/deed').location == None
-    assert TESTAPP.get('/licenses/by/3.0/').location == None
+    assert_equal(TESTAPP.get('/licenses/by/3.0/deed').location, None)
+    assert_equal(TESTAPP.get('/licenses/by/3.0/').location, None)
 
 
 USE_LICENSE_TEXT = 'Use this license for your own work.'
@@ -532,7 +542,7 @@ def test_choose_retired_redirects():
         'license_code=devnations&jurisdiction=&version=2.0&lang=en')
     retired_redirect = urlparse.urlsplit(response.location)[2]
     expected_redirect = '/retiredlicenses'
-    assert retired_redirect == expected_redirect
+    assert_equal(retired_redirect, expected_redirect)
 
     # But, obviously don't redirect when we have non-deprecated licenses :)
     response = TESTAPP.get('/choose/results-one').location == None
