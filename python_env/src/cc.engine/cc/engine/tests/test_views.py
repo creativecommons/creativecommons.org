@@ -1,6 +1,7 @@
 import cgi
 import pkg_resources
 import urlparse
+import urllib
 import unittest
 from lxml import html as lxml_html
 import StringIO
@@ -13,6 +14,7 @@ except ImportError:
 import webtest
 from webob import Request
 import RDF
+from nose.tools import assert_equal, assert_true
 
 from cc.engine import app, staticdirect, util, views
 from cc.engine.licenses import views as license_views
@@ -534,3 +536,41 @@ def test_choose_retired_redirects():
 
     # But, obviously don't redirect when we have non-deprecated licenses :)
     response = TESTAPP.get('/choose/results-one').location == None
+
+
+def test_chooser_gives_correct_licenses():
+    """
+    Test that the chooser gives us the right licenses.
+
+    Some of these may need to be updated as we release new version numbers!
+    """
+    
+    def _check_license_url_against_parameters(parameters, expected_url):
+        """
+        See if the license's url given by the chooser for PARAMETERS
+        matches EXPECTED_URL
+        """
+        util._clear_zpt_test_templates()
+        TESTAPP.get(
+            '/choose/results-one?' +
+            urllib.urlencode(parameters))
+        license = util.ZPT_TEST_TEMPLATES[
+            util.full_zpt_filename('chooser_pages/results.pt')]['license']
+        assert_equal(license.uri, expected_url)
+            
+    ###################
+    ### Boring default!
+    ###################
+
+    # default is CC BY 3.0.  Make sure it is!
+    _check_license_url_against_parameters(
+        {}, 'http://creativecommons.org/licenses/by/3.0/')
+
+    ###################
+    ### By license code
+    ###################
+
+
+    ################
+    ### By "answers"
+    ################
