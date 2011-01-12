@@ -656,3 +656,18 @@ def test_chooser_gives_correct_licenses():
          'field_derivatives': 'sa',
          'field_jurisdiction': 'pl'},
         'http://creativecommons.org/licenses/by-nc-sa/3.0/pl/')
+
+    # Also, we used to use "yes" instead of "y", make sure that still
+    # means "y"
+    _check_license_url_against_parameters(
+        {'field_commercial': 'yes',
+         'field_derivatives': 'yes'},
+        'http://creativecommons.org/licenses/by/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'n',
+         'field_derivatives': 'yes'},
+        'http://creativecommons.org/licenses/by-nc/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'yes',
+         'field_derivatives': 'n'},
+        'http://creativecommons.org/licenses/by-nd/3.0/')
