@@ -570,6 +570,30 @@ def test_chooser_gives_correct_licenses():
     ### By license code
     ###################
 
+    _check_license_url_against_parameters(
+        {'license_code': 'by'},
+        'http://creativecommons.org/licenses/by/3.0/')
+    _check_license_url_against_parameters(
+        {'license_code': 'by-sa'},
+        'http://creativecommons.org/licenses/by-sa/3.0/')
+    _check_license_url_against_parameters(
+        {'license_code': 'by-sa',
+         'version': '2.0'},
+        'http://creativecommons.org/licenses/by-sa/2.0/')
+    _check_license_url_against_parameters(
+        {'license_code': 'by-sa',
+         'version': '2.0'},
+        'http://creativecommons.org/licenses/by-sa/2.0/')
+    _check_license_url_against_parameters(
+        {'license_code': 'by-sa',
+         'version': '2.0'},
+        'http://creativecommons.org/licenses/by-sa/2.0/')
+    _check_license_url_against_parameters(
+        {'license_code': 'by-nc-sa',
+         'version': '2.0',
+         'jurisdiction': 'at'},
+        'http://creativecommons.org/licenses/by-nc-sa/2.0/at/')
+
 
     ################
     ### By "answers"
