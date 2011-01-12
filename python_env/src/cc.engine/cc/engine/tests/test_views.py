@@ -594,7 +594,38 @@ def test_chooser_gives_correct_licenses():
          'jurisdiction': 'at'},
         'http://creativecommons.org/licenses/by-nc-sa/2.0/at/')
 
-
     ################
     ### By "answers"
     ################
+
+    # ??? We don't actually look at 
+    _check_license_url_against_parameters(
+        {'field_commercial': 'y',
+         'field_derivatives': 'y'},
+        'http://creativecommons.org/licenses/by/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'n',
+         'field_derivatives': 'y'},
+        'http://creativecommons.org/licenses/by-nc/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'y',
+         'field_derivatives': 'n'},
+        'http://creativecommons.org/licenses/by-nd/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'y',
+         'field_derivatives': 'sa'},
+        'http://creativecommons.org/licenses/by-sa/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'n',
+         'field_derivatives': 'n'},
+        'http://creativecommons.org/licenses/by-nc-nd/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'n',
+         'field_derivatives': 'sa'},
+        'http://creativecommons.org/licenses/by-nc-sa/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'n',
+         'field_derivatives': 'sa',
+         'jurisdiction': 'pl'},
+        'http://creativecommons.org/licenses/by-nc-sa/3.0/pl/')
+    
