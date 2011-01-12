@@ -147,7 +147,7 @@ def _accept_input_and_default_y(answer, accepted=DEFAULT_ACCEPTED):
     by_answers, which barfs if it recieves things it doesn't know
     """
     if answer in accepted:
-        return answer
+        return str(answer)
     else:
         return 'y'
 
@@ -181,6 +181,10 @@ def _issue_license(request_form):
         return cc.license.by_uri(request_form['license_url'])
 
     else:
+        if jurisdiction:
+            # rdflib throws a hissy fit about unicode objects..
+            jurisdiction = str(jurisdiction)
+
         ## Construct the license code for a "standard" license
         answers = {
             'commercial': _accept_input_and_default_y(
