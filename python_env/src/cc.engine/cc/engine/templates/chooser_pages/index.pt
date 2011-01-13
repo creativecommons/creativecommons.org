@@ -201,8 +201,6 @@
         <div>
           <input type="hidden" name="lang" value="en"
                  tal:attributes="value target_lang" /> 
-          <input type="hidden" name="language" value="en"
-                 tal:attributes="value target_lang" /> 
           <input type="hidden" name="n_questions" value="3" />
         </div>
     

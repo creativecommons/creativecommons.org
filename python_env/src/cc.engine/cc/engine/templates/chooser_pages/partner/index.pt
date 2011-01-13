@@ -41,7 +41,6 @@
 
       <form method="get" action="results-one">
         <input type="hidden" name="lang" value="en" tal:attributes="value target_lang"/>
-        <input type="hidden" name="language" value="en" tal:attributes="value target_lang"/>
         <input type="hidden" name="referrer" value="en" tal:attributes="value referrer "/>
 
         <input type="hidden" name="partner" value="" tal:attributes="value partner" />
