@@ -171,7 +171,7 @@ Learn where to <a href="http://wiki.creativecommons.org/Publish">publish</a> you
         <li>
           <a href="https://creativecommons.net/r/add/"
              i18n:translate="license.register_with_cc_network"
-             >Register your work with the CC Network</a>
+             >Catalog your work with the CC Network</a>
         </li>
       </ul>
     </metal:sidebar>
