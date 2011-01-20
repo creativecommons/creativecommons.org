@@ -544,6 +544,14 @@ def test_choose_retired_redirects():
     expected_redirect = '/retiredlicenses'
     assert_equal(retired_redirect, expected_redirect)
 
+    # Special case: PDCC redirects to /publicdomain/
+    response = TESTAPP.get(
+        '/choose/results-one?'
+        'license_code=publicdomain')
+    retired_redirect = urlparse.urlsplit(response.location)[2]
+    expected_redirect = '/publicdomain/'
+    assert_equal(retired_redirect, expected_redirect)
+
     # But, obviously don't redirect when we have non-deprecated licenses :)
     response = TESTAPP.get('/choose/results-one').location == None
 

@@ -356,7 +356,11 @@ def choose_results_view(request):
 
     # If the license is retired, redirect to info page
     if license.deprecated:
-        return exc.HTTPMovedPermanently(location="/retiredlicenses")
+        # Special case: PDCC should redirect to /publicdomain/
+        if license.license_code == 'publicdomain':
+            return exc.HTTPMovedPermanently(location="/publicdomain/")
+        else:
+            return exc.HTTPMovedPermanently(location="/retiredlicenses")
 
     # Generate the HTML+RDFa for the license + provided work information
     work_dict = _formatter_work_dict(request_form)
