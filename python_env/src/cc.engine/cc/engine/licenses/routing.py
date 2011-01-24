@@ -116,7 +116,11 @@ licenses_routes = [
     Route("license_legalcode_plain_jurisdiction",
           "/{code}/{version:[0-9.]+}/{jurisdiction}/legalcode-plain",
           controller="cc.engine.licenses.views:license_legalcode_plain_view"),
-]
+    Route("license_standard_catcher",
+          "/{code}/",
+          controller="cc.engine.licenses.views:license_catcher",
+          url_template="/licenses/${code}/${version}/"),
+    ]
 
 
 

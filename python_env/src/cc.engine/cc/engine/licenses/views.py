@@ -10,6 +10,7 @@ from cc.engine import util
 from cc.i18n import ccorg_i18n_setup
 from cc.i18n.util import get_well_translated_langs, negotiate_locale
 from cc.license import by_code, CCLicenseError
+from cc.license._lib import all_possible_license_versions
 from cc.licenserdf.tools.license import license_rdf_filename
 
 
@@ -239,3 +240,31 @@ def lgpl_rdf_redirect(request):
     """
     return exc.HTTPMovedPermanently(
         location='http://www.gnu.org/licenses/lgpl-2.1.rdf')
+
+
+# This function could probably use a better name, but I can't think of
+# one!
+def license_catcher(request):
+    """
+    If someone chooses something like /licenses/by/ (fails to select a
+    version, etc) help point them to the available licenses.
+    """
+    target_lang = util.get_target_lang_from_request(request)
+
+    template = util.get_zpt_template('catalog_pages/license_catcher.pt', target_lang)
+    engine_template = util.get_zpt_template(
+        'macros_templates/engine_bare.pt', target_lang)
+
+    license_versions = all_possible_license_versions(
+        request.matchdict['code'])
+    license_versions.reverse()
+
+    if not license_versions:
+        return exc.HTTPNotFound()
+
+    context = {'request': request,
+               'engine_template': engine_template,
+               'license_versions': license_versions}
+    context.update(util.rtl_context_stuff(target_lang))
+
+    return Response(template.pt_render(context))

@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="engine_template/macros/page"
+      i18n:domain="cc_org">
+  <head>
+    <title metal:fill-slot="title">Licenses - Creative Commons</title>
+  </head>
+
+  <body>
+    <metal:title metal:fill-slot="page-header-title">
+      Looking for a license?
+    </metal:title>
+
+    <div metal:fill-slot="body" tal:define="target_lang string:en;">
+
+      <p>
+        Are you looking for one of these licenses?
+      </p>
+
+      <ul>
+        <span tal:repeat="license license_versions" tal:omit-tag="">
+          <li>
+            <a tal:attributes="href license/uri">
+              <b tal:content="license/title"></b>
+            </a>
+          </li>
+        </span>
+      </ul>
+    </div>
+  </body>
+</html>
