@@ -118,13 +118,14 @@ licenses_routes = [
           controller="cc.engine.licenses.views:license_legalcode_plain_view"),
     Route("license_standard_catcher",
           "/{code}/",
-          controller="cc.engine.licenses.views:license_catcher",
-          url_template="/licenses/${code}/${version}/"),
+          controller="cc.engine.licenses.views:license_catcher"),
     ]
 
 
 
 cc0_routes = [
+    Route("cc0_catcher", "/", code='CC0',
+          controller="cc.engine.licenses.views:license_catcher"),
     Route("cc0_deed", "/{version:[0-9.]+}/",
           code='CC0', controller="cc.engine.licenses.views:license_deed_view"),
     Route("cc0_deed_explicit", "/{version:[0-9.]+}/deed",
@@ -140,6 +141,8 @@ cc0_routes = [
 
 
 mark_routes = [
+    Route("mark_catcher", "/", code='mark',
+          controller="cc.engine.licenses.views:license_catcher"),
     Route("mark_deed", "/{version:[0-9.]+}/",
           code='mark', controller="cc.engine.licenses.views:license_deed_view"),
     Route("mark_deed_explicit", "/{version:[0-9.]+}/deed",
