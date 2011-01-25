@@ -16,19 +16,23 @@
 
     <div metal:fill-slot="body" tal:define="target_lang string:en;">
 
-      <p>
-        Are you looking for one of these licenses?
-      </p>
+      <div class="container_16">
+        <div class="grid_16">
+          <p>
+            Are you looking for one of these licenses?
+          </p>
 
-      <ul id="suggested_licenses">
-        <span tal:repeat="license license_versions" tal:omit-tag="">
-          <li>
-            <a tal:attributes="href license/uri">
-              <b tal:content="license/title"></b>
-            </a>
-          </li>
-        </span>
-      </ul>
+          <ul id="suggested_licenses">
+            <span tal:repeat="license license_versions" tal:omit-tag="">
+              <li>
+                <a tal:attributes="href license/uri">
+                  <b tal:content="license/title"></b>
+                </a>
+              </li>
+            </span>
+          </ul>
+        </div>
+      </div>
     </div>
   </body>
 </html>
