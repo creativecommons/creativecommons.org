@@ -689,3 +689,37 @@ def test_chooser_gives_correct_licenses():
         {'field_commercial': 'yes',
          'field_derivatives': 'n'},
         'http://creativecommons.org/licenses/by-nd/3.0/')
+
+
+def test_license_catcher():
+    """
+    Test that the "license catcher" suggests the right licenses
+    """
+    def get_license_links(response):
+        response_tree = lxml_html.parse(
+            StringIO.StringIO(response.unicode_body))
+        return [
+            el.attrib['href']
+            for el in response_tree.xpath("id('suggested_licenses')//a")]
+
+    assert_equal(
+        get_license_links(TESTAPP.get('/licenses/by/')),
+        ['http://creativecommons.org/licenses/by/3.0/',
+         'http://creativecommons.org/licenses/by/2.5/',
+         'http://creativecommons.org/licenses/by/2.0/',
+         'http://creativecommons.org/licenses/by/1.0/'])
+
+    assert_equal(
+        get_license_links(TESTAPP.get('/licenses/by-sa/')),
+        ['http://creativecommons.org/licenses/by-sa/3.0/',
+         'http://creativecommons.org/licenses/by-sa/2.5/',
+         'http://creativecommons.org/licenses/by-sa/2.0/',
+         'http://creativecommons.org/licenses/by-sa/1.0/'])
+
+    assert_equal(
+        get_license_links(TESTAPP.get('/publicdomain/mark/')),
+        ['http://creativecommons.org/publicdomain/mark/1.0/'])
+
+    assert_equal(
+        get_license_links(TESTAPP.get('/publicdomain/zero/')),
+        ['http://creativecommons.org/publicdomain/zero/1.0/'])

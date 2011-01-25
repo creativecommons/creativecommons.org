@@ -20,7 +20,7 @@
         Are you looking for one of these licenses?
       </p>
 
-      <ul>
+      <ul id="suggested_licenses">
         <span tal:repeat="license license_versions" tal:omit-tag="">
           <li>
             <a tal:attributes="href license/uri">
