@@ -267,4 +267,8 @@ def license_catcher(request):
                'license_versions': license_versions}
     context.update(util.rtl_context_stuff(target_lang))
 
-    return Response(template.pt_render(context))
+    # This is a helper page, but it's still for not-found situations.
+    # 404!
+    return Response(
+        template.pt_render(context),
+        status=404)

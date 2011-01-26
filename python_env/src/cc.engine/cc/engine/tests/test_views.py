@@ -703,23 +703,23 @@ def test_license_catcher():
             for el in response_tree.xpath("id('suggested_licenses')//a")]
 
     assert_equal(
-        get_license_links(TESTAPP.get('/licenses/by/')),
+        get_license_links(TESTAPP.get('/licenses/by/', status=404)),
         ['http://creativecommons.org/licenses/by/3.0/',
          'http://creativecommons.org/licenses/by/2.5/',
          'http://creativecommons.org/licenses/by/2.0/',
          'http://creativecommons.org/licenses/by/1.0/'])
 
     assert_equal(
-        get_license_links(TESTAPP.get('/licenses/by-sa/')),
+        get_license_links(TESTAPP.get('/licenses/by-sa/', status=404)),
         ['http://creativecommons.org/licenses/by-sa/3.0/',
          'http://creativecommons.org/licenses/by-sa/2.5/',
          'http://creativecommons.org/licenses/by-sa/2.0/',
          'http://creativecommons.org/licenses/by-sa/1.0/'])
 
     assert_equal(
-        get_license_links(TESTAPP.get('/publicdomain/mark/')),
+        get_license_links(TESTAPP.get('/publicdomain/mark/', status=404)),
         ['http://creativecommons.org/publicdomain/mark/1.0/'])
 
     assert_equal(
-        get_license_links(TESTAPP.get('/publicdomain/zero/')),
+        get_license_links(TESTAPP.get('/publicdomain/zero/', status=404)),
         ['http://creativecommons.org/publicdomain/zero/1.0/'])
