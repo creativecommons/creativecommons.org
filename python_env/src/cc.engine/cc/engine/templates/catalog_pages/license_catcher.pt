@@ -6,20 +6,33 @@
       metal:use-macro="engine_template/macros/page"
       i18n:domain="cc_org">
   <head>
-    <title metal:fill-slot="title">Licenses - Creative Commons</title>
+    <title metal:fill-slot="title">
+      <span tal:condition="python:license_class == 'standard'"
+            tal:omit-tag="">Licenses - Creative Commons</span>
+      <span tal:condition="python:license_class in ['zero', 'mark']"
+            tal:omit-tag="">Public Domain Tools - Creative Commons</span>
+    </title>
   </head>
 
   <body>
     <metal:title metal:fill-slot="page-header-title">
-      Looking for a license?
+      <span tal:condition="python:license_class == 'standard'"
+            tal:omit-tag="">Looking for a license?</span>
+      <span tal:condition="python:license_class == 'zero'"
+            tal:omit-tag="">Looking for CC0?</span>
+      <span tal:condition="python:license_class == 'mark'"
+            tal:omit-tag="">Looking for the Public Domain Mark?</span>
     </metal:title>
 
     <div metal:fill-slot="body" tal:define="target_lang string:en;">
 
       <div class="container_16">
         <div class="grid_16">
-          <p>
+          <p tal:condition="python:license_class == 'standard'">
             Are you looking for one of these licenses?
+          </p>
+          <p tal:condition="python:license_class in ['zero', 'mark']">
+            Are you looking for one of these public domain tools?
           </p>
 
           <ul id="suggested_licenses">

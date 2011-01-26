@@ -264,7 +264,8 @@ def license_catcher(request):
 
     context = {'request': request,
                'engine_template': engine_template,
-               'license_versions': license_versions}
+               'license_versions': license_versions,
+               'license_class': license_versions[0].license_class}
     context.update(util.rtl_context_stuff(target_lang))
 
     # This is a helper page, but it's still for not-found situations.
