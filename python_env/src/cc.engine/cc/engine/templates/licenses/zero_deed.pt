@@ -13,9 +13,9 @@
 
   <h2 metal:fill-slot="license-name">
     <small>
-      <span property="dc:title" style="display:inline !important;"
+      <span property="dc:title dct:title" style="display:inline !important;"
 	    tal:content="license_title">CC0 1.0 Universal</span>
-      (<span property="dc:identifier"  style="display:inline !important;">CC0 1.0</span>)
+      (<span property="dc:identifier dct:identifier"  style="display:inline !important;">CC0 1.0</span>)
     </small>
     <br />
     <span i18n:translate="util.public_domain_dedication"

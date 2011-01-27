@@ -26,11 +26,11 @@
 ${license/rdf} -->" />
 
   <h2 metal:fill-slot="license-name">
-    <span property="dc:title"
+    <span property="dc:title dct:title"
           style="display: inline;"
           tal:content="structure
                        string:${license_title}"/>
-    (<span property="dc:identifier" style="display: inline;"
+    (<span property="dc:identifier dct:identifier" style="display: inline;"
 	   tal:content="string:CC ${license/license_code/upper} ${license/version}"></span>)
   </h2>
 

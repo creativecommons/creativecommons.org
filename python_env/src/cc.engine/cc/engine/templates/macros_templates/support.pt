@@ -34,7 +34,9 @@ setCookie('lang','%s', expiry, '/');
      tal:repeat="lang active_languages">
 
 <a href="#" title="English" hreflang="ca" 
-   rel="alternate nofollow" xml:lang="ca" 
+   rel="alternate nofollow frbr:translation" 
+   rev="frbr:translationOf"
+   xml:lang="ca" 
    tal:content="lang/name"
    tal:attributes="title lang/name;
                    href  string:./deed.${lang/code};
