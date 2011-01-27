@@ -257,14 +257,13 @@ def license_catcher(request):
 
     license_versions = all_possible_license_versions(
         request.matchdict['code'])
-    license_versions.reverse()
 
     if not license_versions:
         return exc.HTTPNotFound()
 
     context = {'request': request,
                'engine_template': engine_template,
-               'license_versions': license_versions,
+               'license_versions': reversed(license_versions),
                'license_class': license_versions[0].license_class}
     context.update(util.rtl_context_stuff(target_lang))
 
