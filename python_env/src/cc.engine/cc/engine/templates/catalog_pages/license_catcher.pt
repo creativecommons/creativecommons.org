@@ -16,26 +16,22 @@
 
   <body>
     <metal:title metal:fill-slot="page-header-title">
-      <span tal:condition="python:license_class == 'standard'"
-            tal:omit-tag="">Looking for a license?</span>
-      <span tal:condition="python:license_class == 'zero'"
-            tal:omit-tag="">Looking for CC0?</span>
-      <span tal:condition="python:license_class == 'mark'"
-            tal:omit-tag="">Looking for the Public Domain Mark?</span>
+      Sorry...
     </metal:title>
 
     <div metal:fill-slot="body" tal:define="target_lang string:en;">
-
       <div class="container_16">
         <div class="grid_16">
-          <p tal:condition="python:license_class == 'standard'">
-            Are you looking for one of these licenses?
-          </p>
-          <p tal:condition="python:license_class in ['zero', 'mark']">
-            Are you looking for one of these public domain tools?
-          </p>
+	  <p>The page you were looking for was not found.<br/>&nbsp;</p>
 
-          <ul id="suggested_licenses">
+          <h4 tal:condition="python:license_class == 'standard'">
+            Are you looking for one of these licenses?
+          </h4>
+          <h4 tal:condition="python:license_class in ['zero', 'mark']">
+            Are you looking for one of these public domain tools?
+          </h4>
+
+          <ul class="archives" id="suggested_licenses">
             <span tal:repeat="license license_versions" tal:omit-tag="">
               <li>
                 <a tal:attributes="href license/uri">
