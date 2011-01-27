@@ -6,11 +6,8 @@
       metal:use-macro="engine_template/macros/page"
       i18n:domain="cc_org">
   <head>
-    <title metal:fill-slot="title">
-      <span tal:condition="python:license_class == 'standard'"
-            tal:omit-tag="">Licenses - Creative Commons</span>
-      <span tal:condition="python:license_class in ['zero', 'mark']"
-            tal:omit-tag="">Public Domain Tools - Creative Commons</span>
+    <title metal:fill-slot="title" i18n:translate="util.Creative_Commons">
+      Creative Commons
     </title>
   </head>
 
