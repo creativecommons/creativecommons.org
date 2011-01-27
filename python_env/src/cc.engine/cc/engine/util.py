@@ -11,6 +11,7 @@ email.Charset.add_charset('utf-8', email.Charset.SHORTEST, None, None)
 
 import RDF
 from lxml import etree
+import routes
 from webob import Response
 from zope.component.globalregistry import base
 from zope.i18n.interfaces import ITranslationDomain
@@ -574,6 +575,29 @@ def get_target_lang_from_request(request):
         target_lang = 'en'
 
     return make_locale_lower_upper_style(target_lang)
+
+
+def generate_404_response(request, routing, environ, staticdirector):
+    """
+    Create a 'nice looking' 404 response.
+    """
+    request.matchdict = {}
+    request.urlgen = routes.URLGenerator(routing.mapping, environ)
+    request.staticdirect = staticdirector
+
+    target_lang = get_target_lang_from_request(request)
+    template = get_zpt_template(
+        'catalog_pages/404.pt', target_lang)
+    engine_template = get_zpt_template(
+        'macros_templates/engine_bare.pt', target_lang)
+
+    context = {
+        'request': request,
+        'engine_template': engine_template}
+    context.update(rtl_context_stuff(target_lang))
+
+    return Response(
+        template.pt_render(context), status=404)
 
 
 ###

@@ -42,6 +42,14 @@ TESTAPP = webtest.TestApp(
         staticdirect.RemoteStaticDirect('/static/'), {}))
 
 
+# XXX: Move to test_app?
+def test_404():
+    response = TESTAPP.get('/haha-i-dont-exist/', status=404)
+
+    # You'd better be sorry!
+    assert u'Sorry...' in response.unicode_body
+
+
 def test_root_view():
     response = TESTAPP.get('/')
     assert_equal(response.body, 'This is the root')

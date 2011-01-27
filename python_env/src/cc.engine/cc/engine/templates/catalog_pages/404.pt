@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="engine_template/macros/page"
+      i18n:domain="cc_org">
+  <head>
+    <title metal:fill-slot="title" i18n:translate="util.Creative_Commons">
+      Creative Commons
+    </title>
+  </head>
+
+  <body>
+    <metal:title metal:fill-slot="page-header-title">
+      Sorry...
+    </metal:title>
+
+    <div metal:fill-slot="body" tal:define="target_lang string:en;">
+      <div class="container_16">
+        <div class="grid_16">
+	  <p>The page you were looking for was not found.<br/>&nbsp;</p>
+
+	  <h4>Other Content</h4>
+	  <ul class="archives">
+	    <li><a href="http://creativecommons.org">Home</a></li>
+	    <li><a href="http://creativecommons.org/weblog/">Blog</a></li>
+	    <li><a href="https://creativecommons.net/donate/">Donate</a></li>
+	    <li><a href="http://wiki.creativecommons.org">Wiki</a></li>
+	    <li><a href="http://search.creativecommons.org">Search</a></li>
+	  </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

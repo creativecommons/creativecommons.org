@@ -2,9 +2,9 @@ import sys
 import urllib
 
 import routes
-from webob import Request, exc
+from webob import Request, Response, exc
 
-from cc.engine import routing, staticdirect
+from cc.engine import routing, staticdirect, util
 
 
 class Error(Exception): pass
@@ -31,7 +31,10 @@ class CCEngineApp(object):
         request = Request(environ)
         path_info = request.path_info
         route_match = routing.mapping.match(path_info)
+
         if route_match is None:
+            # If there's an equivalent URL that ends with /, redirect
+            # to that.
             if not path_info.endswith('/') \
                     and request.method == 'GET' \
                     and routing.mapping.match(path_info + '/'):
@@ -41,7 +44,12 @@ class CCEngineApp(object):
                         new_path_info, urllib.urlencode(request.GET))
                 redirect = exc.HTTPMovedPermanently(location=new_path_info)
                 return request.get_response(redirect)(environ, start_response)
-            return exc.HTTPNotFound()(environ, start_response)
+
+            # Return a 404
+            response = util.generate_404_response(
+                request, routing, environ, self.staticdirector)
+            return response(environ, start_response)
+
         controller = load_controller(route_match['controller'])
         request.start_response = start_response
 
