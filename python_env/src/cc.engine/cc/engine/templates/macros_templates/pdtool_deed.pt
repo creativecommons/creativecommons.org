@@ -6,7 +6,7 @@
       metal:define-macro="page"
       xmlns:cc="http://creativecommons.org/ns#"
       xmlns:dc="http://purl.org/dc/elements/1.1/" lang="en">
-  <head>
+  <head about="" tal:attributes="about string:${license/uri}">
     <title metal:define-slot="title">Creative Commons &mdash;
       <span tal:omit-tag="" tal:content="license/title">
 	LICENSE TITLE
@@ -59,7 +59,9 @@
     <metal:headers define-slot="headers" />
   </head>
 
-  <body class="yui-skin-sam">
+  <body typeof="cc:License"
+	about="" tal:attributes="about string:${license/uri}"
+	class="yui-skin-sam">
     <metal:rdf metal:define-slot="page_top">
     </metal:rdf>
 
