@@ -24,12 +24,7 @@
         <div class="grid_16">
 	  <p>The page you were looking for was not found.<br/>&nbsp;</p>
 
-          <h4 tal:condition="python:license_class == 'standard'">
-            Are you looking for one of these licenses?
-          </h4>
-          <h4 tal:condition="python:license_class in ['zero', 'mark']">
-            Are you looking for one of these public domain tools?
-          </h4>
+          <h4>Were you looking for:</h4>
 
           <ul class="archives" id="suggested_licenses">
             <span tal:repeat="license license_versions" tal:omit-tag="">
