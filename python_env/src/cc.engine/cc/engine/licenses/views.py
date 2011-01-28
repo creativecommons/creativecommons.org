@@ -10,7 +10,6 @@ from cc.engine import util
 from cc.i18n import ccorg_i18n_setup
 from cc.i18n.util import get_well_translated_langs, negotiate_locale
 from cc.license import by_code, CCLicenseError
-from cc.license._lib import all_possible_license_versions
 from cc.licenserdf.tools.license import license_rdf_filename
 
 
@@ -64,25 +63,7 @@ def license_deed_view(request):
             jurisdiction=request.matchdict.get('jurisdiction'),
             version=request.matchdict.get('version'))
     except CCLicenseError:
-        # Look to see if there are other licenses of that code,
-        # possibly of that jurisdiction.
-        if request.matchdict.has_key('jurisdiction'):
-            # If licenses of a jurisdiction don't exist, fallback to
-            # just licenses of this code.
-            try:
-                license_versions = all_possible_license_versions(
-                    request.matchdict['code'],
-                    request.matchdict['jurisdiction'])
-            except CCLicenseError:
-                license_versions = None
-
-            if not license_versions:
-                license_versions = all_possible_license_versions(
-                    request.matchdict['code'])
-        else:
-            # If there's no jurisdiction we'll just look it up by code.
-            license_versions = all_possible_license_versions(
-                request.matchdict['code'])
+        license_versions = util.catch_license_versions_from_request(request)
 
         if license_versions:
             # If we can't get it, but others of that code exist, give
@@ -291,12 +272,12 @@ def license_catcher(request):
     """
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template('catalog_pages/license_catcher.pt', target_lang)
+    template = util.get_zpt_template(
+        'catalog_pages/license_catcher.pt', target_lang)
     engine_template = util.get_zpt_template(
         'macros_templates/engine_bare.pt', target_lang)
 
-    license_versions = all_possible_license_versions(
-        request.matchdict['code'])
+    license_versions = util.catch_license_versions_from_request(request)
 
     if not license_versions:
         return exc.HTTPNotFound()

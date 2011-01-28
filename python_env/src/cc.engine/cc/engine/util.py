@@ -19,8 +19,9 @@ from zope.i18n.translationdomain import TranslationDomain
 from zope.i18n import translate
 from zope.i18nmessageid import MessageFactory
 
-from cc.license._lib import rdf_helper
+from cc.license._lib import rdf_helper, all_possible_license_versions
 from cc.license._lib import functions as cclicense_functions
+from cc.license import CCLicenseError
 from cc.i18n import ccorg_i18n_setup
 from cc.i18n.util import negotiate_locale
 
@@ -598,6 +599,35 @@ def generate_404_response(request, routing, environ, staticdirector):
 
     return Response(
         template.pt_render(context), status=404)
+
+
+def catch_license_versions_from_request(request):
+    """
+    If we're a view that tries to figure out what alternate licenses
+    might exist from the user's request, this utility helps look for
+    those.
+    """
+    # Look to see if there are other licenses of that code,
+    # possibly of that jurisdiction.
+    if request.matchdict.has_key('jurisdiction'):
+        # If licenses of a jurisdiction don't exist, fallback to
+        # just licenses of this code.
+        try:
+            license_versions = all_possible_license_versions(
+                request.matchdict['code'],
+                request.matchdict['jurisdiction'])
+        except CCLicenseError:
+            license_versions = None
+
+        if not license_versions:
+            license_versions = all_possible_license_versions(
+                request.matchdict['code'])
+    else:
+        # If there's no jurisdiction we'll just look it up by code.
+        license_versions = all_possible_license_versions(
+            request.matchdict['code'])
+
+    return license_versions
 
 
 ###
