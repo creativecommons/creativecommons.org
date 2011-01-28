@@ -601,12 +601,16 @@ def cc0_landing(request):
 
     template = util.get_zpt_template(
         'chooser_pages/zero/index.pt', target_lang)
+    support_template = util.get_zpt_template(
+        'macros_templates/support.pt',
+        target_lang=target_lang)
     engine_template = util.get_zpt_template(
         'macros_templates/engine.pt', target_lang)
 
     context = _base_context(request, target_lang)
     context.update({
-            'engine_template': engine_template})
+            'engine_template': engine_template,
+            'support_template': support_template})
 
     return Response(template.pt_render(context))
 
@@ -748,12 +752,16 @@ def pdmark_landing(request):
 
     template = util.get_zpt_template(
         'chooser_pages/pdmark/index.pt', target_lang)
+    support_template = util.get_zpt_template(
+        'macros_templates/support.pt',
+        target_lang=target_lang)
     engine_template = util.get_zpt_template(
         'macros_templates/engine.pt', target_lang)
 
     context = _base_context(request, target_lang)
     context.update({
-            'engine_template': engine_template})
+            'engine_template': engine_template,
+            'support_template': support_template})
 
     return Response(template.pt_render(context))
 
