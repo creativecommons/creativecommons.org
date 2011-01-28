@@ -3,6 +3,8 @@ import StringIO
 
 from nose.tools import assert_raises
 from lxml import etree
+from webob import Request
+import nose
 
 import cc.license
 from cc.engine import util
@@ -198,3 +200,70 @@ def test_publicdomain_partner_get_params():
     assert 'partner=http%3A%2F%2Fnethack.org%2F' in result_pieces
     assert 'exit_url=http%3A%2F%2Fnethack.org%2Freturn_from_cc%3Flicense_url%3D%5Blicense_url%5D%26license_name%3D%5Blicense_name%5D' in result_pieces
     assert 'stylesheet=http%3A%2F%2Fnethack.org%2Fyendor.css' in result_pieces
+
+
+def test_catch_license_versions_from_request():
+    # Request with just a code
+    request = Request.blank('/')
+    request.matchdict = {
+        'code': 'by'}
+    license_versions = util.catch_license_versions_from_request(request)
+    license_uris = [lic.uri for lic in license_versions]
+
+    nose.tools.assert_equal(
+        license_uris,
+        ['http://creativecommons.org/licenses/by/1.0/',
+         'http://creativecommons.org/licenses/by/2.0/',
+         'http://creativecommons.org/licenses/by/2.5/',
+         'http://creativecommons.org/licenses/by/3.0/'])
+
+    # Request with a code and valid jurisdiction
+    request = Request.blank('/')
+    request.matchdict = {
+        'code': 'by',
+        'jurisdiction': 'es'}
+    license_versions = util.catch_license_versions_from_request(request)
+    license_uris = [lic.uri for lic in license_versions]
+
+    nose.tools.assert_equal(
+        license_uris,
+        ['http://creativecommons.org/licenses/by/2.0/es/',
+         'http://creativecommons.org/licenses/by/2.1/es/',
+         'http://creativecommons.org/licenses/by/2.5/es/',
+         'http://creativecommons.org/licenses/by/3.0/es/'])
+
+    # Request with a code and bogus jurisdiction
+    request = Request.blank('/')
+    request.matchdict = {
+        'code': 'by',
+        'jurisdiction': 'zz'}
+    license_versions = util.catch_license_versions_from_request(request)
+    license_uris = [lic.uri for lic in license_versions]
+
+    nose.tools.assert_equal(
+        license_uris,
+        ['http://creativecommons.org/licenses/by/1.0/',
+         'http://creativecommons.org/licenses/by/2.0/',
+         'http://creativecommons.org/licenses/by/2.5/',
+         'http://creativecommons.org/licenses/by/3.0/'])
+
+    # Request with a bogus code
+    request = Request.blank('/')
+    request.matchdict = {
+        'code': 'AAAAA'}
+    license_versions = util.catch_license_versions_from_request(request)
+    license_uris = [lic.uri for lic in license_versions]
+
+    nose.tools.assert_equal(
+        license_uris, [])
+
+    # Request with a bogus code and bogus jurisdiction
+    request = Request.blank('/')
+    request.matchdict = {
+        'code': 'AAAAA', 'jurisdiction': 'FUUUUUUU'}
+    license_versions = util.catch_license_versions_from_request(request)
+    license_uris = [lic.uri for lic in license_versions]
+
+    nose.tools.assert_equal(
+        license_uris, [])
+    
