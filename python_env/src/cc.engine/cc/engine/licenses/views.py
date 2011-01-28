@@ -51,11 +51,51 @@ DEED_TEMPLATE_MAPPING = {
 REMOVE_DEED_URL_RE = re.compile('^(.*?/)(?:deed)?(?:\..*)?$')
 
 
-@get_license
-def license_deed_view(request, license):
+def license_deed_view(request):
     """
     The main and major deed generating view.
     """
+    ##########################
+    # Try and get the license.
+    ##########################
+    try:
+        license = by_code(
+            request.matchdict['code'],
+            jurisdiction=request.matchdict.get('jurisdiction'),
+            version=request.matchdict.get('version'))
+    except CCLicenseError:
+        # Look to see if there are other licenses of that code,
+        # possibly of that jurisdiction.
+        if request.matchdict.has_key('jurisdiction'):
+            # If licenses of a jurisdiction don't exist, fallback to
+            # just licenses of this code.
+            try:
+                license_versions = all_possible_license_versions(
+                    request.matchdict['code'],
+                    request.matchdict['jurisdiction'])
+            except CCLicenseError:
+                license_versions = None
+
+            if not license_versions:
+                license_versions = all_possible_license_versions(
+                    request.matchdict['code'])
+        else:
+            # If there's no jurisdiction we'll just look it up by code.
+            license_versions = all_possible_license_versions(
+                request.matchdict['code'])
+
+        if license_versions:
+            # If we can't get it, but others of that code exist, give
+            # a special 404.
+            return license_catcher(request)
+        else:
+            # Otherwise, give the normal 404.
+            return exc.HTTPNotFound()
+
+    ####################
+    # Everything else ;)
+    ####################
+
     # True if the legalcode for this license is available in
     # multiple languages (or a single language with a language code different
     # than that of the jurisdiction.
