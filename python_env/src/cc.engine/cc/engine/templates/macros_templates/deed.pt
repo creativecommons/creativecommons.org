@@ -141,7 +141,7 @@
                tal:omit-tag="">
            <a href="legalcode.eu" i18n:translate="">lang.eu</a> 
            <a href="legalcode.gl" i18n:translate="">lang.gl</a> 
-           <a href="legalcode.ast" i18n:translate="">lang.ast_ES</a>
+           <a href="legalcode.ast" i18n:translate="">lang.ast</a>
          </span>
          <span tal:condition="python: license.version == '2.5'"
                tal:omit-tag="">
