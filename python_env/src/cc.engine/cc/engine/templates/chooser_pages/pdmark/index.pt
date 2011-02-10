@@ -112,7 +112,14 @@
 
 	      <span id="mycheckbox" class="yui-button">
 	        <span class="first-child">
-	          <a id="do-begin" href="/choose/mark/details">
+	          <a tal:condition="python: request.GET.has_key('lang')"
+                     id="do-begin" href="/choose/mark/details"
+                     tal:attributes="href python: '/choose/mark/details?lang=' + target_lang">
+		    <span tal:omit-tag=""
+		          i18n:translate="util.begin">begin</span> &raquo;
+	          </a>
+	          <a tal:condition="python: not request.GET.has_key('lang')"
+                     id="do-begin" href="/choose/mark/details">
 		    <span tal:omit-tag=""
 		          i18n:translate="util.begin">begin</span> &raquo;
 	          </a>

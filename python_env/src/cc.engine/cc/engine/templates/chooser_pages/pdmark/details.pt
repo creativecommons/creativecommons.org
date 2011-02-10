@@ -176,6 +176,11 @@
               </div>
               <div style="clear:both;"></div>
 
+              <div>
+                <input type="hidden" name="lang" value="en"
+                       tal:attributes="value target_lang" /> 
+              </div>
+
               <div class="form-row">
 	        <div class="form-question">&nbsp;</div>
 	        <div class="form-answer">
