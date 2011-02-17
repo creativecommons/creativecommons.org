@@ -25,7 +25,10 @@ def licenses_view(request):
                'engine_template': engine_template}
     context.update(util.rtl_context_stuff(target_lang))
 
-    return Response(template.pt_render(context))
+    # Don't cache the response for internationalization reasons
+    response = Response(template.pt_render(context))
+    response.headers.add('Cache-Control', 'no-cache')
+    return response
 
 
 def publicdomain_view(request):
