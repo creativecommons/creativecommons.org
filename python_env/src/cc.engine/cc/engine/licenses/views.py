@@ -20,9 +20,14 @@ def licenses_view(request):
 
     engine_template = util.get_zpt_template(
         'macros_templates/engine_bare.pt', target_lang)
+    support_template = util.get_zpt_template(
+        'macros_templates/support.pt',
+        target_lang=target_lang)
     
     context = {'request': request,
-               'engine_template': engine_template}
+               'engine_template': engine_template,
+               'support_template': support_template,
+               'active_languages': get_well_translated_langs()}
     context.update(util.rtl_context_stuff(target_lang))
 
     # Don't cache the response for internationalization reasons
