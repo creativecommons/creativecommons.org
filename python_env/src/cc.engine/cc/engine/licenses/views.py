@@ -84,16 +84,6 @@ def license_deed_view(request):
     ####################
     # Everything else ;)
     ####################
-
-    # True if the legalcode for this license is available in
-    # multiple languages (or a single language with a language code different
-    # than that of the jurisdiction.
-    #
-    # ZZZ i18n information like this should really be stored outside of
-    # the presentation layer; we don't maintain it anywhere right now, so
-    # here it is.
-    multi_language = license.jurisdiction.code in ('es', 'ca', 'be', 'ch', 'rs')
-
     # "color" of the license; the color reflects the relative amount
     # of freedom.
     if license.license_code in ('devnations', 'sampling'):
@@ -117,6 +107,18 @@ def license_deed_view(request):
             license.jurisdiction.default_language)
     else:
         target_lang = 'en'
+
+    # True if the legalcode for this license is available in
+    # multiple languages (or a single language with a language code different
+    # than that of the jurisdiction).
+    #
+    # Stored in the RDF, we'll just check license.legalcodes() :)
+    legalcodes = license.legalcodes(target_lang)
+    if len(legalcodes) > 1 \
+            or list(legalcodes)[0][2] is not None:
+        multi_language = True
+    else:
+        multi_language = False
 
     # Use the lower-dash style for all RDF-related locale stuff
     rdf_style_target_lang = target_lang.replace('_', '-').lower()
@@ -174,6 +176,7 @@ def license_deed_view(request):
         'license_title': license_title,
         'license': license,
         'multi_language': multi_language,
+        'legalcodes': legalcodes,
         'color': color,
         'conditions': conditions,
         'deed_template': deed_template,
