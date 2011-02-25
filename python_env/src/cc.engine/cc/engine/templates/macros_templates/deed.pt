@@ -140,7 +140,7 @@
             </span>
 
             <span tal:omit-tag="" i18n:translate="deed.human_summary"
-                  tal:condition="python: not(multi_language) and (license.license_code not in ('GPL', 'LGPL'))" />
+                  tal:condition="python: not(multi_language)" />
           </p>
 
         </div>
