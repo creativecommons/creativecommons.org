@@ -96,6 +96,49 @@ def test_standard_deeds_licenses():
         cc.license.by_code('BSD'))
 
 
+def test_deed_legalcodes():
+    def get_legalcode_links(request_url):
+        """
+        Return [(link_href, stripped_link_text)]
+        """
+        response = TESTAPP.get(request_url)
+        response_tree = lxml_html.parse(
+            StringIO.StringIO(response.unicode_body))
+        return [
+            (el.attrib['href'], el.text.strip())
+            for el in response_tree.xpath("id('legalcode-block')//a")]
+
+    # Standard, single-legalcode
+    # Maybe test for absolute urls later :\
+    assert_equal(
+        get_legalcode_links('/licenses/by/3.0/'),
+        [('legalcode', 'Legal Code (the full license)')])
+
+    # Multilegal, english
+    assert_equal(
+        get_legalcode_links('/licenses/by/2.5/es/deed.en'),
+        [('http://creativecommons.org/licenses/by/2.5/es/legalcode.eu',
+          u'Basque'),
+         ('http://creativecommons.org/licenses/by/2.5/es/legalcode.ca',
+          u'Catalan'),
+         ('http://creativecommons.org/licenses/by/2.5/es/legalcode.gl',
+          u'Galician'),
+         ('http://creativecommons.org/licenses/by/2.5/es/legalcode.es',
+          u'Spanish')])
+    
+    # Multilegal, non-english
+    assert_equal(
+        get_legalcode_links('/licenses/by/2.5/es/deed.es'),
+        [('http://creativecommons.org/licenses/by/2.5/es/legalcode.es',
+          u'Castellano'),
+         ('http://creativecommons.org/licenses/by/2.5/es/legalcode.ca',
+          u'Catal\xe1n'),
+         ('http://creativecommons.org/licenses/by/2.5/es/legalcode.gl',
+          u'Gallego'),
+         ('http://creativecommons.org/licenses/by/2.5/es/legalcode.eu',
+          u'Vasco')])
+
+
 ## RDF view tests
 RDF_HEADER = 'application/rdf+xml; charset=UTF-8'
 
