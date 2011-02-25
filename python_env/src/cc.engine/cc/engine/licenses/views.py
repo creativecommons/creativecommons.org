@@ -117,6 +117,7 @@ def license_deed_view(request):
     if len(legalcodes) > 1 \
             or list(legalcodes)[0][2] is not None:
         multi_language = True
+        legalcodes = sorted(legalcodes, key=lambda lc: lc[2])
     else:
         multi_language = False
 
