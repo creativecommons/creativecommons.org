@@ -126,45 +126,45 @@
 	    </div>
 	  </metal:disclaimer>
 
-	<p style="text-align:center">
+	  <p style="text-align:center">
 
-    <span tal:omit-tag="" tal:condition="multi_language">
-     <span tal:omit-tag="" i18n:translate="deed.human_summary_multilanguage" />
-       <br/>
+            <span tal:omit-tag="" tal:condition="multi_language">
+              <span tal:omit-tag="" i18n:translate="deed.human_summary_multilanguage" />
+              <br/>
 
-       <span tal:omit-tag=""
-             tal:repeat="legalcode legalcodes">
-         <a tal:attributes="href python: legalcode[0]"
-            tal:content="python: legalcode[2]"></a> 
-       </span>
-    </span>
+              <span tal:omit-tag=""
+                    tal:repeat="legalcode legalcodes">
+                <a tal:attributes="href python: legalcode[0]"
+                   tal:content="python: legalcode[2]"></a> 
+              </span>
+            </span>
 
-    <metal:block 
-       tal:condition="python: license.license_code == 'LGPL'">
-      <span i18n:translate="deed.lgpl_human_summary" tal:omit-tag="">
-	This is a human-readable summary of the Legal Code (the full 
-	<a href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">
-	  GNU Lesser General Public License</a>). A 
-	<a href="legalcode.pt">Portuguese translation</a> is also available.
-      </span>
-    </metal:block>
+            <metal:block 
+               tal:condition="python: license.license_code == 'LGPL'">
+              <span i18n:translate="deed.lgpl_human_summary" tal:omit-tag="">
+	        This is a human-readable summary of the Legal Code (the full 
+	        <a href="http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">
+	          GNU Lesser General Public License</a>). A 
+	        <a href="legalcode.pt">Portuguese translation</a> is also available.
+              </span>
+            </metal:block>
 
-    <metal:block 
-       tal:condition="python: license.license_code == 'GPL'">
-      <span i18n:translate="deed.gpl_human_summary" tal:omit-tag="">
-This is a human-readable summary of the Legal Code (the full <a
-href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General
-Public License</a>). A <a href="legalcode.pt">Portuguese translation</a> is
-also available.
-      </span>
-    </metal:block>
+            <metal:block 
+               tal:condition="python: license.license_code == 'GPL'">
+              <span i18n:translate="deed.gpl_human_summary" tal:omit-tag="">
+                This is a human-readable summary of the Legal Code (the full
+                <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General
+                  Public License</a>). A <a href="legalcode.pt">Portuguese translation</a> is
+                also available.
+              </span>
+            </metal:block>
 
-    <span tal:omit-tag="" tal:condition="python: not(multi_language) and (license.license_code not in ('GPL', 'LGPL'))"
-          i18n:translate="deed.human_summary" />
- </p>
+            <span tal:omit-tag="" i18n:translate="deed.human_summary"
+                  tal:condition="python: not(multi_language) and (license.license_code not in ('GPL', 'LGPL'))" />
+          </p>
 
-         </div>
-       </div>
+        </div>
+      </div>
     </div>
     <div id="footer">
       <p>
@@ -174,7 +174,7 @@ also available.
              i18n:translate="deed.use_this_license"
              tal:attributes="href
                              string:/choose/results-one?license_code=${license_code_quoted}&jurisdiction=${license/jurisdiction/code}&version=${license/version|nothing}&lang=${target_lang}">
-          Use this license for your own work.</a>
+            Use this license for your own work.</a>
         </metal:use-this-license>
       </p>
       <div metal:use-macro="support_template/macros/translations"></div>
