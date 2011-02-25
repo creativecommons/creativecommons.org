@@ -126,7 +126,7 @@
 	    </div>
 	  </metal:disclaimer>
 
-	  <p style="text-align:center">
+	  <p style="text-align:center" id="legalcode-block">
 
             <span tal:omit-tag="" tal:condition="multi_language">
               <span tal:omit-tag="" i18n:translate="deed.human_summary_multilanguage" />
