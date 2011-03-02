@@ -122,16 +122,17 @@
 
     <metal:sidebar fill-slot="sidebar">
       <p i18n:translate="license.learn_share">
-        Share your work with an existing community that has enabled Creative Commons licensing. 
+        Share your work with an existing community that has enabled
+        Creative Commons licensing.
       </p>
       
       <p>
-Learn where to <a href="http://wiki.creativecommons.org/Publish">publish</a> your
-<a href="http://wiki.creativecommons.org/Publish/Images">images</a>, 
-<a href="http://wiki.creativecommons.org/Publish/Audio">audio</a>, 
-<a href="http://wiki.creativecommons.org/Publish/Video">video</a>, and 
-<a href="http://wiki.creativecommons.org/Publish/Text">text</a>, including 
-<a href="http://wiki.creativecommons.org/Publish/Text#Blog">blogs</a>.
+        Learn where to <a href="http://wiki.creativecommons.org/Publish">publish</a> your
+        <a href="http://wiki.creativecommons.org/Publish/Images">images</a>, 
+        <a href="http://wiki.creativecommons.org/Publish/Audio">audio</a>, 
+        <a href="http://wiki.creativecommons.org/Publish/Video">video</a>, and 
+        <a href="http://wiki.creativecommons.org/Publish/Text">text</a>, including 
+        <a href="http://wiki.creativecommons.org/Publish/Text#Blog">blogs</a>.
       </p>
 
       <h4 i18n:translate="license.offline_work">Offline Work?</h4>
@@ -148,20 +149,24 @@ Learn where to <a href="http://wiki.creativecommons.org/Publish">publish</a> you
           </span>
         </li>
         <li i18n:translate="license.xmp_metadata">
-          <span style="display:none">
           <span tal:content="request/query_string"
                 tal:omit-tag=""
                 i18n:name="url_vars" />
-          </span>
-            Get <a href="/choose/metadata.xmp?${url_vars}">metadata</a> for documents that <a href="http://wiki.creativecommons.org/XMP">support XMP</a>.
+          Get <a href="/choose/metadata.xmp?${url_vars}">metadata</a>
+          for documents that
+          <a href="http://wiki.creativecommons.org/XMP">support XMP</a>.
         </li>
         <li>
           <a href="http://creativecommons.org/about/downloads/"
-             i18n:translate="license.get_high_res">Get high ressolution and vector versions of the license graphics.</a>
+             i18n:translate="license.get_high_res">
+            Get high ressolution and vector versions of the license graphics.
+          </a>
         </li>
         <li>
           <a href="http://wiki.creativecommons.org/Marking/Creators#Marking_Specific_Media"
-             i18n:translate="license.mark_video">Learn how to mark video and other formats.</a>
+             i18n:translate="license.mark_video">
+            Learn how to mark video and other formats.
+          </a>
         </li>
       </ul>
 
