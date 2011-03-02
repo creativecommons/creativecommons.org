@@ -126,7 +126,7 @@
         Creative Commons licensing.
       </p>
       
-      <p>
+      <p i18n:translate="license.learn_where_to_publish">
         Learn where to <a href="http://wiki.creativecommons.org/Publish">publish</a> your
         <a href="http://wiki.creativecommons.org/Publish/Images">images</a>, 
         <a href="http://wiki.creativecommons.org/Publish/Audio">audio</a>, 
