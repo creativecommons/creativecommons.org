@@ -128,7 +128,7 @@
               know when a work is available under a Creative Commons license, we
               provide a “machine readable” version of the license — a summary of
               the key freedoms and obligations written into a format that
-              software system, search engines, and other kinds of technology can
+              software systems, search engines, and other kinds of technology can
               understand. We developed a standardized way to describe licenses
               that software can understand called
               <a href="http://wiki.creativecommons.org/Ccrel">CC Rights
@@ -137,7 +137,7 @@
 
             <p i18n:translate="license.index.three_layers.body4">
               Searching for open content is an important function enabled by
-              our approach.. You can use
+              our approach.  You can use
               <a href="http://www.google.com/support/websearch/bin/answer.py?&amp;answer=29508&amp;hl=">Google</a>
               and <a href="http://www.search.yahoo.com/cc">Yahoo!</a>
               to search for Creative Commons content, look for pictures at
