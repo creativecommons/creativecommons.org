@@ -45,6 +45,8 @@
 	  Image</option>
 	<option value="Text" i18n:translate="util.Text">
 	  Text</option>
+	<option value="Dataset" i18n:translate="util.Dataset">
+	  Dataset</option>
 	<option value="InteractiveResource" 
 		i18n:translate="util.Interactive">Interactive</option>
       </select>
