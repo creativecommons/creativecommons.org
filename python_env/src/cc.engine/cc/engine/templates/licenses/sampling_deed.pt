@@ -47,7 +47,8 @@
 	  class="license-properties">
     	<li class="license by" i18n:translate="char.by_brief">
           <%=[ccommons::istr $lang char.by_brief]%></li>
-    	<li i18n:translate="char.na_brief">
+    	<li tal:condition="python: license.license_code != 'nc-sampling+'"
+            i18n:translate="char.na_brief">
           <%=[ccommons::istr $lang char.na_brief]%></li>
     	<li tal:condition="python: license.license_code in ('nc-sampling+', 'sampling+')"
             i18n:translate="deed.notice"></li>
