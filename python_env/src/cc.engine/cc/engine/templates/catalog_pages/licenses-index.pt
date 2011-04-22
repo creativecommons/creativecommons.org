@@ -70,8 +70,8 @@
             available under the same license terms. We call this idea
             “ShareAlike” and it is one of the mechanisms that (if chosen) helps
             the digital commons grow over time. ShareAlike is inspired by the
-            GNU General Public License, used by many open source software
-            projects.
+            GNU General Public License, used by many free and open source
+            software projects.
           </p>
         </div>
         <div class="grid_8">
@@ -111,7 +111,7 @@
             <p i18n:translate="license.index.three_layers.body2">
               But since most creators, educators, and scientists are not in fact
               lawyers, we also make the licenses available in a format that
-              normal people can read - the Commons Deed (also known as the
+              normal people can read — the Commons Deed (also known as the
               “human readable” version of the license). The Commons Deed is a
               handy reference for licensors and licensees, summarizing and
               expressing some of the most important terms and conditions. Think
@@ -126,9 +126,9 @@
               an enormous role in the creation, copying, discovery, and
               distribution of works. In order to make it easy for the Web to
               know when a work is available under a Creative Commons license, we
-              provide a “machine readable” version of the license - a summary of
+              provide a “machine readable” version of the license — a summary of
               the key freedoms and obligations written into a format that
-              software system, search engines, and other kinds of technology can
+              software systems, search engines, and other kinds of technology can
               understand. We developed a standardized way to describe licenses
               that software can understand called
               <a href="http://wiki.creativecommons.org/Ccrel">CC Rights
@@ -137,7 +137,7 @@
 
             <p i18n:translate="license.index.three_layers.body4">
               Searching for open content is an important function enabled by
-              our approach.. You can use
+              our approach.  You can use
               <a href="http://www.google.com/support/websearch/bin/answer.py?&amp;answer=29508&amp;hl=">Google</a>
               and <a href="http://www.search.yahoo.com/cc">Yahoo!</a>
               to search for Creative Commons content, look for pictures at
@@ -147,12 +147,13 @@
               and general media at
               <a href="http://spinxpress.com/">spinxpress</a>.
               The <a href="http://commons.wikimedia.org/wiki/Main_Page">Wikimedia
-              Commons</a>, which powers <a href="http://wikipedia.org">Wikipedia</a>,
+              Commons</a>, the multimedia repository of
+              <a href="http://wikipedia.org">Wikipedia</a>,
               is a core user of our licenses as well.
             </p>
 
             <p i18n:translate="license.index.three_layers.body5">
-              Taken together, these three layers of license ensure that the
+              Taken together, these three layers of licenses ensure that the
               spectrum of rights isn’t just a legal concept. It’s something that
               the creators of works can understand, their users can understand,
               and even the Web itself can understand.
