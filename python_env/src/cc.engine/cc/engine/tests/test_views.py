@@ -80,17 +80,6 @@ def test_standard_deeds_licenses():
         'by-sa', '3.0', None,
         cc.license.by_code('by-sa'))
 
-    # MIT and BSD, the only ones which are called without version
-    # codes in the URL
-    _deed_tester(
-        '/licenses/MIT/', 'licenses/mitbsd_deed.pt',
-        'MIT', None, None,
-        cc.license.by_code('MIT'))
-    _deed_tester(
-        '/licenses/BSD/', 'licenses/mitbsd_deed.pt',
-        'BSD', None, None,
-        cc.license.by_code('BSD'))
-
 
 def test_deed_legalcodes():
     def get_legalcode_links(request_url):
@@ -228,49 +217,49 @@ def test_gpl_lgpl_chooser_redirects():
     assert gpl_redirect == lgpl_redirect == expected_redirect
 
 
-def test_gpl_lgpl_deed_and_rdf_redirects():
-    """
-    Make sure appropriate /licenses/ pages for GPL and LGPL redirect.
-    """
-    # GPL deed
-    redirect = TESTAPP.get('/licenses/GPL/2.0/').location
-    expected_redirect = 'http://www.gnu.org/licenses/gpl-2.0.html'
-    assert_equal(redirect, expected_redirect)
+def test_licenses_redirects():
+    expected_redirects = (
+        # GPL deed
+        ('/licenses/GPL/2.0/', 'http://www.gnu.org/licenses/gpl-2.0.html'),
+        # GPL deed explicit
+        ('/licenses/GPL/2.0/deed', 'http://www.gnu.org/licenses/gpl-2.0.html'),
+        # GPL deed with lang
+        ('/licenses/GPL/2.0/deed.pt',
+         'http://www.gnu.org/licenses/gpl-2.0.html'),
+        # GPL RDF
+        ('/licenses/GPL/2.0/rdf', 'http://www.gnu.org/licenses/gpl-2.0.rdf'),
+        # LGPL deed
+        ('/licenses/LGPL/2.1/', 'http://www.gnu.org/licenses/lgpl-2.1.html'),
+        # LGPL deed explicit
+        ('/licenses/LGPL/2.1/deed',
+         'http://www.gnu.org/licenses/lgpl-2.1.html'),
+        # LGPL deed with lang
+        ('/licenses/LGPL/2.1/deed.pt',
+         'http://www.gnu.org/licenses/lgpl-2.1.html'),
+        # LGPL RDF
+        ('/licenses/LGPL/2.1/rdf', 'http://www.gnu.org/licenses/lgpl-2.1.rdf'),
+        # MIT redirects
+        ('/licenses/MIT/',
+         'http://opensource.org/licenses/mit-license.php'),
+        ('/licenses/MIT/deed',
+         'http://opensource.org/licenses/mit-license.php'),
+        ('/licenses/MIT/deed.es',
+         'http://opensource.org/licenses/mit-license.php'),
+        ('/licenses/MIT/legalcode',
+         'http://opensource.org/licenses/mit-license.php'),
+        # BSD redirects
+        ('/licenses/BSD/',
+         'http://opensource.org/licenses/bsd-license.php'),
+        ('/licenses/BSD/deed',
+         'http://opensource.org/licenses/bsd-license.php'),
+        ('/licenses/BSD/deed.es',
+         'http://opensource.org/licenses/bsd-license.php'),
+        ('/licenses/BSD/legalcode',
+         'http://opensource.org/licenses/bsd-license.php'))
 
-    # GPL deed explicit
-    redirect = TESTAPP.get('/licenses/GPL/2.0/deed').location
-    expected_redirect = 'http://www.gnu.org/licenses/gpl-2.0.html'
-    assert_equal(redirect, expected_redirect)
-
-    # GPL deed with lang
-    redirect = TESTAPP.get('/licenses/GPL/2.0/deed.pt').location
-    expected_redirect = 'http://www.gnu.org/licenses/gpl-2.0.html'
-    assert_equal(redirect, expected_redirect)
-
-    # GPL RDF
-    redirect = TESTAPP.get('/licenses/GPL/2.0/rdf').location
-    expected_redirect = 'http://www.gnu.org/licenses/gpl-2.0.rdf'
-    assert_equal(redirect, expected_redirect)
-
-    # LGPL deed
-    redirect = TESTAPP.get('/licenses/LGPL/2.1/').location
-    expected_redirect = 'http://www.gnu.org/licenses/lgpl-2.1.html'
-    assert_equal(redirect, expected_redirect)
-
-    # LGPL deed explicit
-    redirect = TESTAPP.get('/licenses/LGPL/2.1/deed').location
-    expected_redirect = 'http://www.gnu.org/licenses/lgpl-2.1.html'
-    assert_equal(redirect, expected_redirect)
-
-    # LGPL deed with lang
-    redirect = TESTAPP.get('/licenses/LGPL/2.1/deed.pt').location
-    expected_redirect = 'http://www.gnu.org/licenses/lgpl-2.1.html'
-    assert_equal(redirect, expected_redirect)
-
-    # LGPL RDF
-    redirect = TESTAPP.get('/licenses/LGPL/2.1/rdf').location
-    expected_redirect = 'http://www.gnu.org/licenses/lgpl-2.1.rdf'
-    assert_equal(redirect, expected_redirect)
+    for url, expected_redirect in expected_redirects:
+        redirect = TESTAPP.get(url).location
+        assert_equal(redirect, expected_redirect)
 
 
 def test_normalchooser_gpl_redirects():

@@ -19,16 +19,8 @@
  {"path": "/licenses/by/3.0/us/legalcode"},
  {"path": "/licenses/by/3.0/us/legalcode-plain"},
 
- {"path": "/licenses/MIT/"},
- {"path": "/licenses/BSD/"},
- {"path": "/licenses/MIT/deed"},
- {"path": "/licenses/BSD/deed"},
- {"path": "/licenses/MIT/deed.es"},
- {"path": "/licenses/BSD/deed.es"},
  {"path": "/licenses/MIT/rdf"},
  {"path": "/licenses/BSD/rdf"},
- {"path": "/licenses/MIT/legalcode"},
- {"path": "/licenses/BSD/legalcode"},
 
  {"path": "/licenses/publicdomain/"},
  {"path": "/licenses/publicdomain/deed"},
