@@ -305,3 +305,11 @@ def license_catcher(request):
     return Response(
         template.pt_render(context),
         status=404)
+
+
+def moved_permanently_redirect(request):
+    """
+    General method for redirecting to something that's moved permanently
+    """
+    return exc.HTTPMovedPermanently(
+        location=request.matchdict['redirect_to'])
