@@ -235,46 +235,6 @@ def license_legalcode_plain_view(request, license):
     return Response(etree.tostring(legalcode.getroot()))
 
 
-def license_legalcode_redirect(request):
-    # TODO: Use the legal code from the RDF instead of this hackery.
-    if request.matchdict['code'] == 'MIT':
-        return exc.HTTPMovedPermanently(
-            location='http://opensource.org/licenses/mit-license.php')
-    elif request.matchdict['code'] == 'BSD':
-        return exc.HTTPMovedPermanently(
-            location='http://opensource.org/licenses/bsd-license.php')
-
-
-# [L]GPL redirects
-def gpl_redirect(request):
-    """
-    Move GPL 2.0 deeds to gnu.org's domain
-    """
-    return exc.HTTPMovedPermanently(
-        location='http://www.gnu.org/licenses/gpl-2.0.html')
-
-def gpl_rdf_redirect(request):
-    """
-    Move GPL 2.0 rdf to gnu.org's domain
-    """
-    return exc.HTTPMovedPermanently(
-        location='http://www.gnu.org/licenses/gpl-2.0.rdf')
-
-def lgpl_redirect(request):
-    """
-    Move LGPL 2.1 deeds to gnu.org's domain
-    """
-    return exc.HTTPMovedPermanently(
-        location='http://www.gnu.org/licenses/lgpl-2.1.html')
-
-def lgpl_rdf_redirect(request):
-    """
-    Move LGPL 2.1 rdf to gnu.org's domain
-    """
-    return exc.HTTPMovedPermanently(
-        location='http://www.gnu.org/licenses/lgpl-2.1.rdf')
-
-
 # This function could probably use a better name, but I can't think of
 # one!
 def license_catcher(request):
