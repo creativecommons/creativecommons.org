@@ -12,14 +12,10 @@ except ImportError:
     import simplejson as json
 
 import webtest
-from webob import Request
-import RDF
-from nose.tools import assert_equal, assert_true
+from nose.tools import assert_equal
 
-from cc.engine import app, staticdirect, util, views
-from cc.engine.licenses import views as license_views
+from cc.engine import app, staticdirect, util
 import cc.license
-from cc.license._lib import rdf_helper
 
 util._activate_testing()
 
