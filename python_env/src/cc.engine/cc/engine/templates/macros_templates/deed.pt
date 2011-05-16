@@ -93,7 +93,7 @@
 	<h1><span>Creative Commons License Deed</span></h1>
 
         <div id="deed-license">
-	        <h2 metal:define-slot="license-name"></h2>
+	  <h2 metal:define-slot="license-name"></h2>
         </div>
       </div>
 
@@ -112,7 +112,25 @@
                tal:condition="python: not(multi_language)"
                i18n:translate="deed.human_summary">
           </div>
-          <div class="disclaimer"><a href="#">Disclaimer</a></div>
+
+          <div class="disclaimer">
+	    <a href="#" id="disclaimer" class="helpLink" i18n:translate="util.Disclaimer">
+	      Disclaimer
+	    </a>
+          </div>
+
+          <!--- hidden disclaimer text -->
+	  <div id="help_disclaimer">
+	    <div class="hd" i18n:translate="util.Disclaimer">
+	      Disclaimer
+	    </div>
+	    <div tal:condition="python: license.jurisdiction.code == 'jp'"
+                 class="bd" i18n:translate="deed.disclaimer.jp">
+  	    </div>
+	    <div tal:condition="python: license.jurisdiction.code != 'jp'"
+                 class="bd" i18n:translate="deed.disclaimer">
+  	    </div>
+	  </div>
         </div>
 
        <div id="deed-main-content" tal:attributes="class string:${license/jurisdiction/code}">
@@ -123,25 +141,6 @@
 
       <div id="deed-foot">
         <div tal:omit-tag="" metal:define-slot="footer">
-
-          <p id="disclaimer"
-	     tal:condition="python: license.jurisdiction.code == 'jp'"
-	     i18n:translate="deed.disclaimer.jp"></p>
-
-	  <metal:disclaimer 
-	     tal:condition="python: license.jurisdiction.code != 'jp'">
-	    <a href="#" id="disclaimer" class="helpLink" i18n:translate="util.Disclaimer">
-	      Disclaimer
-	    </a>
-	    <div id="help_disclaimer">
-	      <div class="hd" i18n:translate="util.Disclaimer">
-		Disclaimer
-	      </div>
-	      <div class="bd" i18n:translate="deed.disclaimer">
-		
-  	      </div>
-	    </div>
-	  </metal:disclaimer>
         </div>
       </div>
     </div>
