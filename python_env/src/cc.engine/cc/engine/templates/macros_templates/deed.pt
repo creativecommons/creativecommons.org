@@ -98,6 +98,23 @@
       </div>
 
       <div id="deed-main" tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
+        <div id="deed-disclaimer">
+          <div class="summary"
+               tal:condition="multi_language">
+              <span tal:omit-tag="" i18n:translate="deed.human_summary_multilanguage" />
+              <span tal:omit-tag=""
+                    tal:repeat="legalcode legalcodes">
+                <a tal:attributes="href python: legalcode[0]"
+                   tal:content="python: legalcode[2]"></a> 
+              </span>
+          </div>
+          <div class="summary"
+               tal:condition="python: not(multi_language)"
+               i18n:translate="deed.human_summary">
+          </div>
+          <div class="disclaimer"><a href="#">Disclaimer</a></div>
+        </div>
+
        <div id="deed-main-content" tal:attributes="class string:${license/jurisdiction/code}">
 
           <div tal:omit-tag="" metal:define-slot="body"></div>
@@ -125,24 +142,6 @@
   	      </div>
 	    </div>
 	  </metal:disclaimer>
-
-	  <p style="text-align:center" id="legalcode-block">
-
-            <span tal:omit-tag="" tal:condition="multi_language">
-              <span tal:omit-tag="" i18n:translate="deed.human_summary_multilanguage" />
-              <br/>
-
-              <span tal:omit-tag=""
-                    tal:repeat="legalcode legalcodes">
-                <a tal:attributes="href python: legalcode[0]"
-                   tal:content="python: legalcode[2]"></a> 
-              </span>
-            </span>
-
-            <span tal:omit-tag="" i18n:translate="deed.human_summary"
-                  tal:condition="python: not(multi_language)" />
-          </p>
-
         </div>
       </div>
     </div>
