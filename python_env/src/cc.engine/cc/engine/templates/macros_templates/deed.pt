@@ -98,15 +98,29 @@
       </div>
 
       <div id="deed-main" tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
+        <!--- hidden disclaimer text -->
+	<div id="help_disclaimer">
+	  <div class="hd" i18n:translate="util.Disclaimer">
+	    Disclaimer
+	  </div>
+	  <div tal:condition="python: license.jurisdiction.code == 'jp'"
+               class="bd" i18n:translate="deed.disclaimer.jp">
+  	  </div>
+	  <div tal:condition="python: license.jurisdiction.code != 'jp'"
+               class="bd" i18n:translate="deed.disclaimer">
+  	  </div>
+	</div>
+        
+        
         <div id="deed-disclaimer">
           <div class="summary"
                tal:condition="multi_language">
-              <span tal:omit-tag="" i18n:translate="deed.human_summary_multilanguage" />
-              <span tal:omit-tag=""
-                    tal:repeat="legalcode legalcodes">
-                <a tal:attributes="href python: legalcode[0]"
-                   tal:content="python: legalcode[2]"></a> 
-              </span>
+            <span tal:omit-tag="" i18n:translate="deed.human_summary_multilanguage" />
+            <span tal:omit-tag=""
+                  tal:repeat="legalcode legalcodes">
+              <a tal:attributes="href python: legalcode[0]"
+                 tal:content="python: legalcode[2]"></a> 
+            </span>
           </div>
           <div class="summary"
                tal:condition="python: not(multi_language)"
@@ -118,19 +132,6 @@
 	      Disclaimer
 	    </a>
           </div>
-
-          <!--- hidden disclaimer text -->
-	  <div id="help_disclaimer">
-	    <div class="hd" i18n:translate="util.Disclaimer">
-	      Disclaimer
-	    </div>
-	    <div tal:condition="python: license.jurisdiction.code == 'jp'"
-                 class="bd" i18n:translate="deed.disclaimer.jp">
-  	    </div>
-	    <div tal:condition="python: license.jurisdiction.code != 'jp'"
-                 class="bd" i18n:translate="deed.disclaimer">
-  	    </div>
-	  </div>
         </div>
 
        <div id="deed-main-content" tal:attributes="class string:${license/jurisdiction/code}">
