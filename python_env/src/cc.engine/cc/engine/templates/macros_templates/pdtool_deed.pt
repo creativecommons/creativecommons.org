@@ -82,7 +82,7 @@
       </div>
 
       <div id="deed-main" tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
-        <div tal:omit-tag="" metal:define-slot="disclaimer">
+        <div tal:omit-tag="" metal:define-slot="legalcode-block">
         </div>
 
         <div id="deed-main-content"

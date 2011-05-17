@@ -197,7 +197,7 @@
 
   </div>
 
-  <metal:disclaimer fill-slot="disclaimer">
+  <metal:legalcode fill-slot="legalcode-block">
     <!--- hidden disclaimer text -->
     <div id="help_disclaimer">
       <div class="hd" i18n:translate="util.Disclaimer">
@@ -244,7 +244,7 @@
 	</a>
       </div>
     </div>
-  </metal:disclaimer>
+  </metal:legalcode>
 
   <metal:use-this-license fill-slot="use-this-license">
     <a id="get_this" href="/publicdomain/" 
