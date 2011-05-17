@@ -80,7 +80,11 @@
           <h2 property="dc:title dct:title" metal:define-slot="license-name"></h2>
         </div>
       </div>
+
       <div id="deed-main" tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
+        <div tal:omit-tag="" metal:define-slot="disclaimer">
+        </div>
+
         <div id="deed-main-content"
              tal:attributes="class string:${license/jurisdiction/code}">
           <div tal:omit-tag="" metal:define-slot="body"></div>

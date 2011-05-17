@@ -197,15 +197,11 @@
 
   </div>
 
-  <metal:footer fill-slot="footer">
-
-    <a href="" id="disclaimer" class="helpLink"
-       i18n:translate="util.Disclaimer">
-      Disclaimer
-    </a>
+  <metal:disclaimer fill-slot="disclaimer">
+    <!--- hidden disclaimer text -->
     <div id="help_disclaimer">
       <div class="hd" i18n:translate="util.Disclaimer">
-        Disclaimer
+	Disclaimer
       </div>
 
       <div class="bd" i18n:translate="deed.zero.disclaimer">
@@ -235,13 +231,20 @@
       </div>
     </div>
 
-    <p style="text-align:center" 
-       i18n:translate="deed.zero.human_summary">
-      This is a human-readable summary of
-      the <a href="./legalcode">Legal Code (read the full text)</a>.
-    </p>
+    <div id="deed-disclaimer">
+      <div class="summary"
+           i18n:translate="deed.zero.human_summary">
+        This is a human-readable summary of
+        the <a href="./legalcode">Legal Code (read the full text)</a>.
+      </div>
 
-  </metal:footer>
+      <div class="disclaimer">
+	<a href="#" id="disclaimer" class="helpLink" i18n:translate="util.Disclaimer">
+	  Disclaimer
+	</a>
+      </div>
+    </div>
+  </metal:disclaimer>
 
   <metal:use-this-license fill-slot="use-this-license">
     <a id="get_this" href="/publicdomain/" 
