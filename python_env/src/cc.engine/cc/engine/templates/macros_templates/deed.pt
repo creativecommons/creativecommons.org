@@ -98,7 +98,7 @@
       </div>
 
       <div id="deed-main" tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
-        <metal:legalcode-block tal:omit-tag="" metal:define-slot="legalcode-block">
+        <div id="legalcode-block" metal:define-slot="legalcode-block">
           <!--- hidden disclaimer text -->
 	  <div id="help_disclaimer">
 	    <div class="hd" i18n:translate="util.Disclaimer">
@@ -133,7 +133,7 @@
 	      </a>
             </div>
           </div>
-        </metal:legalcode-block>
+        </div>
 
         <div id="deed-main-content" tal:attributes="class string:${license/jurisdiction/code}">
           <div tal:omit-tag="" metal:define-slot="body"></div>
