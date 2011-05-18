@@ -140,10 +140,6 @@
         </div>
       </div>
 
-      <div id="deed-foot">
-        <div tal:omit-tag="" metal:define-slot="footer">
-        </div>
-      </div>
     </div>
     <div id="footer">
       <p>

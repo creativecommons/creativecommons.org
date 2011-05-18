@@ -106,6 +106,5 @@
     <span rel="cc:permits" resource="http://creativecommons.org/ns#Distribution"></span>
   </div>
 
-  <div metal:fill-slot="footer" tal:omit-tag=""></div>
 </body>
 </html>
