@@ -91,7 +91,10 @@ def test_deed_legalcodes():
             StringIO.StringIO(response.unicode_body))
         return [
             (el.attrib['href'], el.text.strip())
-            for el in response_tree.xpath("id('legalcode-block')//a")]
+            for el in response_tree.xpath(
+                "id('legalcode-block')/"
+                "div[@id='deed-disclaimer']/"
+                "div[@class='summary']//a")]
 
     # Standard, single-legalcode
     # Maybe test for absolute urls later :\
