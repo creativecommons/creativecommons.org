@@ -128,7 +128,7 @@
             </div>
 
             <div class="disclaimer">
-	      <a href="#" class="disclaimer helpLink" i18n:translate="util.Disclaimer">
+	      <a href="#" class="helpLink" i18n:translate="util.Disclaimer">
 	        Disclaimer
 	      </a>
             </div>
