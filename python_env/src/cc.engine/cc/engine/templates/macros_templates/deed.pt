@@ -127,8 +127,8 @@
                  i18n:translate="deed.human_summary">
             </div>
 
-            <div class="disclaimer">
-	      <a href="#" class="helpLink" i18n:translate="util.Disclaimer">
+            <div>
+	      <a href="#" class="disclaimer helpLink" i18n:translate="util.Disclaimer">
 	        Disclaimer
 	      </a>
             </div>
