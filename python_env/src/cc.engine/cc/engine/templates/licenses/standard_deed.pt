@@ -82,6 +82,10 @@ ${license/rdf} -->" />
             resource="http://creativecommons.org/ns#DerivativeWorks"
             i18n:translate="deed.free_derivative">
         </li>
+        <li class="license commercial"
+            tal:condition="python: 'http://creativecommons.org/ns#CommercialUse' not in license.prohibits"
+            i18n:translate="deed.free_commercial">
+        </li>
         <li id="more-container"
             class="license-hidden">
           <span id='devnations-container'/>
