@@ -100,7 +100,7 @@
       <div id="deed-main" tal:attributes="dir get_ltr_rtl; style is_rtl_align;">
         <div id="legalcode-block" metal:define-slot="legalcode-block">
           <!--- hidden disclaimer text -->
-	  <div id="help_disclaimer_popup">
+	  <div id="help_disclaimer_popup" class="help_panel">
 	    <div class="hd" i18n:translate="util.Disclaimer">
 	      Disclaimer
 	    </div>
