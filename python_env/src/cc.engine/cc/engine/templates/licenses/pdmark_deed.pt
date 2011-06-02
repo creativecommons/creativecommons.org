@@ -243,7 +243,7 @@
                 i18n:translate="util.Creative_Commons">Creative Commons</span>
         </a>
       </div>
-      <div id="help_disclaimer" style="text-align:left">
+      <div id="help_disclaimer" style="text-align:left" class="help_panel">
         <div class="hd" i18n:translate="util.Disclaimer">
           Disclaimer
         </div>
