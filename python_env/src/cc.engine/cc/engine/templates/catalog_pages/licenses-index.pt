@@ -93,7 +93,7 @@
           </p>
         </div>
       </div>
-      <div class="alt">
+      <div class="alt" id="layers">
         <div class="container_16">
           <h2 i18n:translate="license.index.three_layers.title"
               class="grid_16">Three “Layers” Of Licenses</h2>
