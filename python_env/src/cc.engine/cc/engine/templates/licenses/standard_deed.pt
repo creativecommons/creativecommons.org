@@ -62,7 +62,7 @@ ${license/rdf} -->" />
            href=''>
           <img tal:attributes="src python: '/images/international/'+license.jurisdiction.code+'.png'; alt python: license.jurisdiction.code;"
                src=''
-               style="border: 0"/>
+               style="border: 1px solid #C0C0C0"/>
         </a>
       </span>
 
