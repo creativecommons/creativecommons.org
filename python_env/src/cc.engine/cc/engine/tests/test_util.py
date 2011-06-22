@@ -83,12 +83,12 @@ def test_locale_to_cclicense_style():
 
 def test_safer_resource_filename():
     assert util.safer_resource_filename(
-        'cc.engine', 'templates/test/bunnies.pt').endswith(
-        'templates/test/bunnies.pt')
+        'cc.engine', 'templates/test/bunnies.html').endswith(
+        'templates/test/bunnies.html')
     assert_raises(
         util.UnsafeResource,
         util.safer_resource_filename,
-        'cc.engine', '../../templates/test/bunnies.pt')
+        'cc.engine', '../../templates/test/bunnies.html')
 
 
 def test_send_email():
