@@ -11,6 +11,7 @@ email.Charset.add_charset('utf-8', email.Charset.SHORTEST, None, None)
 
 import RDF
 from lxml import etree
+import jinja2
 import routes
 from webob import Response
 from zope.component.globalregistry import base
@@ -23,6 +24,7 @@ from cc.license._lib import rdf_helper, all_possible_license_versions
 from cc.license._lib import functions as cclicense_functions
 from cc.license import CCLicenseError
 from cc.i18n import ccorg_i18n_setup
+from cc.i18n.gettext import ugettext_for_locale
 from cc.i18n.util import negotiate_locale
 
 from cc.engine.pagetemplate import CCLPageTemplateFile
@@ -50,6 +52,49 @@ def _activate_testing():
     """
     global TESTS_ENABLED
     TESTS_ENABLED = True
+
+
+### ~~~~~~~~~~~~~~~~~~~~~~~
+### Jinja2 templating stuff
+### ~~~~~~~~~~~~~~~~~~~~~~~
+
+
+def cctrans(locale, logical_key, **trans_values):
+    """
+    A method for translating via logical keys
+    """
+    ugettext = ugettext_for_locale(locale)
+    return string.Template(ugettext(logical_key)).substitute(
+        trans_values)
+
+
+# Create the template loader
+TEMPLATE_LOADER = jinja2.PackageLoader('cc.engine', 'templates')
+# Add cctrans to the global context
+TEMPLATE_LOADER.globals['cctrans'] = cctrans
+
+
+TEST_TEMPLATE_CONTEXT = {}
+
+def _clear_test_template_context():
+    TEST_TEMPLATE_CONTEXT.clear()
+
+
+def render_template(request, template_path, context):
+    """
+    Render a template with the request in the response.
+
+    Also stores data for unit testing purposes if appropriate.
+    """
+    template = TEMPLATE_LOADER.get_template(template_path)
+    context['request'] = request
+
+    rendered = template.render(context)
+
+    if TESTS_ENABLED:
+        TEST_TEMPLATE_CONTEXT[template_path] = context
+
+    return rendered
 
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
