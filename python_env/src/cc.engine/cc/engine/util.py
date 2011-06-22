@@ -24,7 +24,7 @@ from cc.license._lib import rdf_helper, all_possible_license_versions
 from cc.license._lib import functions as cclicense_functions
 from cc.license import CCLicenseError
 from cc.i18n import ccorg_i18n_setup
-from cc.i18n.gettext import ugettext_for_locale
+from cc.i18n.gettext_i18n import ugettext_for_locale
 from cc.i18n.util import negotiate_locale
 
 from cc.engine.pagetemplate import CCLPageTemplateFile
@@ -58,7 +58,6 @@ def _activate_testing():
 ### Jinja2 templating stuff
 ### ~~~~~~~~~~~~~~~~~~~~~~~
 
-
 def cctrans(locale, logical_key, **trans_values):
     """
     A method for translating via logical keys
@@ -70,8 +69,14 @@ def cctrans(locale, logical_key, **trans_values):
 
 # Create the template loader
 TEMPLATE_LOADER = jinja2.PackageLoader('cc.engine', 'templates')
+TEMPLATE_ENV = jinja2.Environment(
+    loader=TEMPLATE_LOADER,
+    # TODO: we want this to be true eventually!
+    autoescape=False,
+    extensions=['jinja2.ext.autoescape'])
+
 # Add cctrans to the global context
-TEMPLATE_LOADER.globals['cctrans'] = cctrans
+TEMPLATE_ENV.globals['cctrans'] = cctrans
 
 
 TEST_TEMPLATE_CONTEXT = {}
@@ -86,7 +91,7 @@ def render_template(request, template_path, context):
 
     Also stores data for unit testing purposes if appropriate.
     """
-    template = TEMPLATE_LOADER.get_template(template_path)
+    template = TEMPLATE_ENV.get_template(template_path)
     context['request'] = request
 
     rendered = template.render(context)
