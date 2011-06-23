@@ -16,22 +16,14 @@ from cc.licenserdf.tools.license import license_rdf_filename
 def licenses_view(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template('catalog_pages/licenses-index.pt', target_lang)
-
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine_bare.pt', target_lang)
-    support_template = util.get_zpt_template(
-        'macros_templates/support.pt',
-        target_lang=target_lang)
-    
-    context = {'request': request,
-               'engine_template': engine_template,
-               'support_template': support_template,
-               'active_languages': get_well_translated_langs()}
+    context = {'active_languages': get_well_translated_langs()}
     context.update(util.rtl_context_stuff(target_lang))
 
     # Don't cache the response for internationalization reasons
-    response = Response(template.pt_render(context))
+    response = Response(
+        util.render_template(
+            request, target_lang,
+            'catalog_pages/licenses-index.html', context))
     response.headers.add('Cache-Control', 'no-cache')
     return response
 

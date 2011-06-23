@@ -1,0 +1,172 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+    <title>{% block title %}Page Title{% endblock %}</title>
+
+    <link rel="stylesheet" type="text/css"
+          href="http://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css"
+          /> 
+
+    <link rel="stylesheet" type="text/css" 
+          href="{{ request.staticdirect('cc6/style.css') }}" />
+    <link rel="stylesheet" type="text/css" media="print"
+          href="{{ request.staticdirect('cc6/print.css') }}" />
+    <link rel="stylesheet" type="text/css"
+          href="{{ request.staticdirect('cc6/engine.css') }}" />
+
+    {% if is_rtl %}
+      <link rel="stylesheet" type="text/css"
+            href="{{ request.staticdirect('cc6/engine-rtl.css') }}" />
+    {% endif %}
+
+    <!--[if IE]>
+      <link rel="stylesheet" type="text/css"
+          media="screen" href="/wp-content/themes/cc6/style-ie.css" />
+    <![endif]-->
+
+    <script type="text/javascript" 
+            src="http://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/animation/animation-min.js"></script> 
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script>
+    <script type="text/javascript"
+            src="{{ request.staticdirect('includes/license-results.js') }}" >
+    </script>
+    <script type="text/javascript"
+            src="{{ request.staticdirect('cc6/site.js') }}" ></script>
+
+    {% block headers %}{% endblock %}
+
+  </head>
+
+  <body class="yui-skin-sam">
+
+    <a id="top"></a>
+    <div id="header">
+      <div class="container_16">
+        <div class="grid_16">
+          <h1 id="logo"><a href="http://creativecommons.org"><span>Creative Commons</span></a></h1>
+          <ul class="nav">
+            <li><a href="/about">About</a></li>
+            <li><a href="/weblog">Blog</a></li>
+            <li><a href="https://creativecommons.net/donate">Donate</a></li>
+            <li><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></li>
+            <li><a href="http://wiki.creativecommons.org/">Wiki</a></li>
+            <li><a href="/affiliates">International</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
+         id="page">
+      <div id="title" class="container_16">
+        <h1 dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
+            class="grid_16">
+          {% block page_header_title %}{% endblock %}
+        </h1>
+      </div>
+      <div dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
+           id="content">
+        <div class="container_16">
+          <div class="grid_11">
+            {% block body %}
+            {% endblock %}
+          </div>
+          <div class="grid_4 prefix_1"
+               dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
+            {% block sidebar %}{% endblock %}
+          </div>
+        </div>
+      </div>    
+    </div>
+    <div id="footer">
+      <div class="container_16">
+        <div class="grid_2 alpha" id="top_link"><a href="#top">&#8682;</a></div>
+        <div class="clear"></div>
+        <div class="grid_6">
+          <h4>Creative Commons</h4>
+          <dl class="grid_2 alpha">
+            <dt><a href="/about">About</a></dt>
+            <dt><a href="/who-uses-cc">Who Uses CC?</a></dt>
+            <dt><a href="/culture">Culture</a></dt>
+            <dt><a href="/education">Education</a></dt>
+            <dt><a href="/science">Science</a></dt>
+          </dl>
+          <dl class="grid_2">
+            <dt><a href="/weblog">Blog</a></dt>
+            <dt><a href="http://wiki.creativecommons.org/Case_Studies">Case Studies</a></dt>
+            <dt><a href="/interviews">CC Talks With...</a></dt>
+            <dt><a href="/newsletter">Newsletters</a></dt>
+            <dt><a href="/about/downloads">Downloads</a></dt>
+          </dl>
+          <dl class="grid_2 omega">
+            <dt><a href="/affiliates">International</a></dt>
+            <dt><a href="http://wiki.creativecommons.org/Events">Events</a></dt>
+            <dt><a href="/about/people">People</a></dt>
+            <dt><a href="/about/press">Press Room</a></dt>
+            <dt><a href="/contact">Contact</a></dt>
+          </dl>
+        </div>
+        <div class="grid_2 prefix_1">
+          <h4>Licensing</h4>
+          <dl class="grid_2 alpha omega">
+            <dt><a href="/licenses">The Licenses</a></dt>
+            <dt><a href="/choose">Choose License</a></dt>
+            <dt><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></dt>
+            <dt><a href="http://search.creativecommons.org/">Find Content</a></dt>
+            <dt><a href="http://wiki.creativecommons.org/Developers">Developers</a></dt>
+          </dl>
+        </div>
+        <div class="grid_2 prefix_1 suffix_1">
+          <h4>Supporting CC</h4>
+          <dl class="grid_2 alpha omega">
+            <dt><a href="https://creativecommons.net/donate">Donate</a></dt>
+            <dt><a href="https://creativecommons.net/store">Store</a></dt>
+            <dt><a href="https://creativecommons.net/supporters">Supporters</a></dt>
+            <dt><a href="https://creativecommons.net/corporate">Corporate Giving</a></dt>
+            <dt><a href="https://creativecommons.net/figures">Facts &amp; Figures</a></dt>
+          </dl>
+        </div>
+        <div class="grid_3 social alpha omega">
+          <dl class="social_links">
+            <dt><a href="https://creativecommons.net/civicrm/mailing/subscribe?reset=1&amp;gid=121">Subscribe to Newsletter</a></dt>
+            <dt class="fb"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcreativecommons.org&amp;layout=button_count&amp;show_faces=false&amp;width=150&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;"></iframe></dt>
+            <dt><a href="http://twitter.com/creativecommons">Follow on Twitter</a></dt>
+            <dt><a href="http://identi.ca/creativecommons">Follow on Identi.ca</a></dt>
+          </dl>
+        </div>
+      </div>
+      <div class="container_16" id="footer_license">
+        <p class="grid_16">
+          <a href="http://creativecommons.org/policies">Policies</a>
+          &nbsp;&nbsp;&nbsp;<a href="http://creativecommons.org/privacy">Privacy</a>
+          &nbsp;&nbsp;&nbsp;<a href="http://creativecommons.org/terms">Terms of Use</a>
+        </p>
+        <p class="grid_16">
+          {% block license_override %}
+            <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img src="http://i.creativecommons.org/l/by/3.0/80x15.png" alt="Creative Commons License" style="border: medium none ;" height="15" width="80" /></a>
+            Except where otherwise
+            <a class="subfoot" href="/policies#license">noted</a>,
+            content on this site is licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"
+               class="subfoot">Creative Commons Attribution 3.0 License</a>
+          {% endblock %}
+        </p>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2010376-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+    </script>
+  </body>
+</html>
