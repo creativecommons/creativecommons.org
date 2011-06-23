@@ -15,7 +15,7 @@ def test_jinja():
                {'name': 'Frank', 'description': 'grouch'}]
     fake_request = Request.blank('/bunnies/')
     result = util.render_template(
-        fake_request, 'test/bunnies.html', {'bunnies': bunnies})
+        fake_request, 'en', 'test/bunnies.html', {'bunnies': bunnies})
     assert 'Welcome to the bunny field!' in result
     assert 'Lilian the lazy' in result
 

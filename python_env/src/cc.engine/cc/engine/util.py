@@ -85,7 +85,7 @@ def _clear_test_template_context():
     TEST_TEMPLATE_CONTEXT.clear()
 
 
-def render_template(request, template_path, context):
+def render_template(request, locale, template_path, context):
     """
     Render a template with the request in the response.
 
@@ -93,6 +93,7 @@ def render_template(request, template_path, context):
     """
     template = TEMPLATE_ENV.get_template(template_path)
     context['request'] = request
+    context['locale'] = locale
 
     rendered = template.render(context)
 
