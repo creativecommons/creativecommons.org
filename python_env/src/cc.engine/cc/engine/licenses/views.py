@@ -16,7 +16,9 @@ from cc.licenserdf.tools.license import license_rdf_filename
 def licenses_view(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    context = {'active_languages': get_well_translated_langs()}
+    context = {
+        'active_languages': get_well_translated_langs(),
+        'page_bare': True}
     context.update(util.rtl_context_stuff(target_lang))
 
     # Don't cache the response for internationalization reasons
