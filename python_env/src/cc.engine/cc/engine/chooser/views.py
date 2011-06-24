@@ -178,7 +178,7 @@ def _issue_license(request_form):
 
     # check for license_url
     elif request_form.has_key('license_url'):
-        return cc.license.by_uri(request_form['license_url'])
+        return cc.license.by_uri(str(request_form['license_url']))
 
     else:
         if jurisdiction:
