@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
   <head>
@@ -67,16 +68,22 @@
       </div>
       <div dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
            id="content">
-        <div class="container_16">
-          <div class="grid_11">
-            {% block body %}
-            {% endblock %}
+        {% if not page_bare %}
+          {# if this is set we don't have a sidebar and are fully wide #}
+          <div class="container_16">
+            <div class="grid_11">
+        {% endif %}
+
+        {% block body %}{% endblock %}
+
+        {% if not page_bare %}
+            </div>
+            <div class="grid_4 prefix_1"
+                 dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
+              {% block sidebar %}{% endblock %}
+            </div>
           </div>
-          <div class="grid_4 prefix_1"
-               dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
-            {% block sidebar %}{% endblock %}
-          </div>
-        </div>
+        {% endif %}
       </div>    
     </div>
     <div id="footer">
