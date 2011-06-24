@@ -375,10 +375,10 @@ def choose_results_view(request):
                     license)})
 
     if request.GET.get('partner'):
-        # DERP
-        assert 0
-        # template = util.get_zpt_template(
-        #     'chooser_pages/partner/results.pt', target_lang)
+        return Response(
+            util.render_template(
+                request, target_lang,
+                'chooser_pages/partner/results.html', context))
     else:
         return Response(
             util.render_template(
