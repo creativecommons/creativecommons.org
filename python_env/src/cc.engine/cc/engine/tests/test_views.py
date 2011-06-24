@@ -607,12 +607,12 @@ def test_chooser_gives_correct_licenses():
         See if the license's url given by the chooser for PARAMETERS
         matches EXPECTED_URL
         """
-        util._clear_zpt_test_templates()
+        util._clear_test_template_context()
         TESTAPP.get(
             '/choose/results-one?' +
             urllib.urlencode(parameters))
-        license = util.ZPT_TEST_TEMPLATES[
-            util.full_zpt_filename('chooser_pages/results.pt')]['license']
+        license = util.TEST_TEMPLATE_CONTEXT[
+            'chooser_pages/results.html']['license']
         assert_equal(license.uri, expected_url)
             
     ###################
