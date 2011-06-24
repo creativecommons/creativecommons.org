@@ -332,16 +332,6 @@ def chooser_view(request):
 def choose_results_view(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    if request.GET.get('partner'):
-        template = util.get_zpt_template(
-            'chooser_pages/partner/results.pt', target_lang)
-    else:
-        template = util.get_zpt_template(
-            'chooser_pages/results.pt', target_lang)
-
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     context = _base_context(request, target_lang)
     request_form = request.GET or request.POST
 
@@ -370,8 +360,7 @@ def choose_results_view(request):
         license, work_dict, target_lang)
 
     context.update(
-        {'engine_template': engine_template,
-         'license': license,
+        {'license': license,
          'license_slim_logo': license_slim_logo,
          'license_title': license.title(target_lang),
          'license_html': license_html})
@@ -385,7 +374,16 @@ def choose_results_view(request):
                     request_form.get('referrer', ''),
                     license)})
 
-    return Response(template.pt_render(context))
+    if request.GET.get('partner'):
+        # DERP
+        assert 0
+        # template = util.get_zpt_template(
+        #     'chooser_pages/partner/results.pt', target_lang)
+    else:
+        return Response(
+            util.render_template(
+                request, target_lang,
+                'chooser_pages/results.html', context))
 
 
 def choose_xmp_view(request):
