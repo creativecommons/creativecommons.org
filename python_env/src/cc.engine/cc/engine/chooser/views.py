@@ -279,24 +279,6 @@ def chooser_view(request):
     target_lang = util.get_target_lang_from_request(request)
     context = _base_context(request, target_lang)
 
-    if request.GET.get('partner'):
-        template = util.get_zpt_template(
-            'chooser_pages/partner/index.pt', target_lang)
-        context['pd_get_params'] = util.publicdomain_partner_get_params(
-            request.GET)
-    else:
-        template = util.get_zpt_template(
-            'chooser_pages/index.pt', target_lang)
-
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine_2cols.pt', target_lang)
-    partner_template = util.get_zpt_template(
-        'macros_templates/partner.pt', target_lang)
-    metadata_template = util.get_zpt_template(
-        'macros_templates/metadata.pt', target_lang)
-    support_template = util.get_zpt_template(
-        'macros_templates/support.pt', target_lang)
-
     available_jurisdiction_codes = [
         j.code for j in get_selector_jurisdictions('standard')
         if j.code != '']
@@ -318,15 +300,24 @@ def chooser_view(request):
         jurisdictions_names, key=lambda juris: juris[1])
 
     context.update(
-        {'engine_template': engine_template,
-         'partner_template': partner_template,
-         'metadata_template': metadata_template,
-         'support_template': support_template,
-         'jurisdictions_names': jurisdictions_names,
+        {'jurisdictions_names': jurisdictions_names,
          'requested_jurisdiction': requested_jurisdiction,
-         'referrer': request.headers.get('REFERER','')})
+         'referrer': request.headers.get('REFERER',''),
+         'page_style': '2cols'})
 
-    return Response(template.pt_render(context))
+    if request.GET.get('partner'):
+        context['pd_get_params'] = util.publicdomain_partner_get_params(
+            request.GET)
+
+        return Response(
+            util.render_template(
+                request, target_lang,
+                'chooser_pages/partner/index.html', context))
+    else:
+        return Response(
+            util.render_template(
+                request, target_lang,
+                'chooser_pages/index.html', context))
 
 
 def choose_results_view(request):
