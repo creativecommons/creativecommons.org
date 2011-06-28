@@ -66,9 +66,15 @@
           {% block page_header_title %}{% endblock %}
         </h1>
       </div>
+
       <div dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
            id="content">
-        {% if not page_bare %}
+        {% if page_style == "bare" %}
+          {# No wrapping needed :) #}
+        {% elif page_style == "2cols" %}
+          <div class="container_16">
+            <div class="grid_12">
+        {% else %}
           {# if this is set we don't have a sidebar and are fully wide #}
           <div class="container_16">
             <div class="grid_11">
@@ -76,7 +82,12 @@
 
         {% block body %}{% endblock %}
 
-        {% if not page_bare %}
+        {% if page_style == "bare" %}
+          {# Again... no wrapping needed :) #}
+        {% elif page_style == "2cols" %}
+            </div>
+          </div>
+        {% else %}
             </div>
             <div class="grid_4 prefix_1"
                  dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">

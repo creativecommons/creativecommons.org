@@ -18,7 +18,7 @@ def licenses_view(request):
 
     context = {
         'active_languages': get_well_translated_langs(),
-        'page_bare': True}
+        'page_style': "bare"}
     context.update(util.rtl_context_stuff(target_lang))
 
     # Don't cache the response for internationalization reasons
