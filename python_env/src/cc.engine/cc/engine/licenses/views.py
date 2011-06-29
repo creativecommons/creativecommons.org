@@ -135,7 +135,6 @@ def license_deed_view(request):
 
     # Find out all the active languages
     active_languages = get_well_translated_langs()
-    active_lang_codes = [lang['code'] for lang in active_languages]
     negotiated_locale = negotiate_locale(target_lang)
 
     # If negotiating the locale says that this isn't a valid language,
