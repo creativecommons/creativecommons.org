@@ -170,15 +170,6 @@
         </li>
       </ul>
 
-      <h4 i18n:translate="license.option_next_steps">Optional next step</h4>
-
-      <ul class="no-bullets">
-        <li>
-          <a href="https://creativecommons.net/r/add/"
-             i18n:translate="license.register_with_cc_network"
-             >Catalog your work with the CC Network</a>
-        </li>
-      </ul>
     </metal:sidebar>
   </body>
 </html>
