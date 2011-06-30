@@ -1,0 +1,98 @@
+{% extends "macros_templates/partner.html" %}
+
+{% block title %}Choose a License{% endblock title %}
+
+{% block body %}
+  <p>
+    {{ cctrans(locale, "license.partner_what") }}
+  </p>
+
+  <p>
+    {{ cctrans(locale, "license.partner.publicdomain_options",
+               cc0_url="/choose/zero/partner?%s" % pd_get_params,
+               pd_url="/choose/mark/partner?%s" % pd_get_params) }}
+  </p>
+
+  <form method="get" action="results-one">
+    <input type="hidden" name="lang" value="{{ target_lang }}" />
+    <input type="hidden" name="referrer" value="{{ referrer }}" />
+    <input type="hidden" name="partner" value="{{ request.GET['partner'] }}" />
+    <input type="hidden" name="exit_url" value="{{ request.GET['exit_url'] }}" />
+    <input type="hidden" name="stylesheet"
+           value="{{ request.GET['stylesheet'] }}"  />
+    <input type="hidden" name="partner_icon_url" value="{{ request.GET['partner_icon_url'] }}" />
+
+    <p>
+      <b>
+        {{ cctrans(locale, "license.q2",
+                   lang=target_lang) }}
+      </b>
+      <br />
+
+      <input type="radio" checked name="field_commercial"
+             value="y" /> {{ cctrans(locale, "util.Yes") }} <br />
+      <input type="radio" name="field_commercial"
+             value="n" /> {{ cctrans(locale, "util.No") }} <br />
+    </p>
+
+    <p>
+      <b>
+        {{ cctrans(locale, "license.q3",
+                   lang=target_lang) }}
+      </b>
+      <br />
+
+      <input type="radio" checked name="field_derivatives" value="y" />
+      {{ cctrans(locale, "util.Yes") }}
+      <br />
+        
+      <input type="radio" name="field_derivatives" value="sa" /> 
+      {{ cctrans(locale, "license.a6",
+                 lang=target_lang) }}
+      <br />
+
+      <input type="radio" name="field_derivatives" value="n" />
+      {{ cctrans(locale, "util.No") }}
+      <br />
+
+      {% if request.GET.has_key('jurisdiction_choose') == False
+         and request.GET.has_key('jurisdiction') %}
+        {# Is this span needed? #}
+        <span>
+          <input type="hidden" name="field_jurisdiction"
+                 value="{{ request.GET['jurisdiction'] }}" />
+        </span>
+      {% endif %}
+    </p>
+
+    <p>
+      {{ cctrans(locale, "license.jurisdiction_question") }}
+      (<a href="http://creativecommons.org/choose/jurisdiction-popup?lang=en"
+          onclick="window.open('http://creativecommons.org/choose/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
+          >more info</a>
+      <a href="http://creativecommons.org/choose/jurisdiction-popup?lang=en"
+         onclick="window.open('http://creativecommons.org/choose/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">
+        <img src="http://creativecommons.org/images/popup.gif"
+             width="15" height="13" alt="more info" border="0" />
+      </a>)
+      <br />
+
+      <select name="field_jurisdiction">
+        <option value="" selected="selected">{{ cctrans(locale, "util.International") }}</option>
+
+        {% for juris_code, juris_name in jurisdictions_names %}
+          <option value="{{ juris_code }}">
+            {{ juris_name }}
+          </option>
+        {% endfor %}
+      </select>
+    </p>
+
+    <p>
+      <input type="submit"
+             value="{{ cctrans(locale, 'license.Select_a_License') }}" />
+    </p>
+  </form>
+
+  {{ cctrans(locale, "license.partner_note") }}
+{% endblock %}
