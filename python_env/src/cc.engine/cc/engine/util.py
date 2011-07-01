@@ -646,18 +646,13 @@ def generate_404_response(request, routing, environ, staticdirector):
     request.staticdirect = staticdirector
 
     target_lang = get_target_lang_from_request(request)
-    template = get_zpt_template(
-        'catalog_pages/404.pt', target_lang)
-    engine_template = get_zpt_template(
-        'macros_templates/engine_bare.pt', target_lang)
 
-    context = {
-        'request': request,
-        'engine_template': engine_template}
+    context = {'page_style': 'bare'}
     context.update(rtl_context_stuff(target_lang))
 
-    return Response(
-        template.pt_render(context), status=404)
+    return render_to_response(
+        request, target_lang,
+        'catalog_pages/404.html', context)
 
 
 def catch_license_versions_from_request(request):
