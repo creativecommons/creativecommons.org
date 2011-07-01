@@ -31,7 +31,11 @@ def licenses_view(request):
 
 
 def publicdomain_view(request):
-    return util.plain_template_view('publicdomain/index.pt', request)
+    target_lang = util.get_target_lang_from_request(request)
+
+    return util.render_to_response(
+        request, target_lang,
+        'publicdomain/index.html', {})
 
 
 DEED_TEMPLATE_MAPPING = {
