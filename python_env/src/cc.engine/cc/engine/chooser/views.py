@@ -515,41 +515,29 @@ def gpl_redirect(request):
 def publicdomain_landing(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/publicdomain/publicdomain-2.pt',
-        target_lang)
-
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-    support_template = util.get_zpt_template(
-        'macros_templates/support.pt', target_lang)
+    request_form = request.GET or request.POST
 
     context = _base_context(request, target_lang)
-    context.update({
-            'support_template': support_template,
-            'engine_template': engine_template})
+    context['request_form'] = request_form
 
-    return Response(template.pt_render(context))
+    return Response(
+        util.render_template(
+            request, target_lang,
+            'chooser_pages/publicdomain/publicdomain-2.html', context))
 
 
 def publicdomain_confirm(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/publicdomain/publicdomain-3.pt',
-        target_lang)
-
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     request_form = request.GET or request.POST
 
     context = _base_context(request, target_lang)
-    context.update({
-            'engine_template': engine_template,
-            'request_form': request_form})
+    context['request_form'] = request_form
 
-    return Response(template.pt_render(context))
+    return Response(
+        util.render_template(
+            request, target_lang,
+            'chooser_pages/publicdomain/publicdomain-3.html', context))
 
 
 def publicdomain_result(request):
@@ -559,7 +547,7 @@ def publicdomain_result(request):
 
     # make sure the user selected "confirm"
     if request_form.get('understand', False) != 'confirm':
-        return exc.HTTPMovedPermanently(
+        return exc.HTTPFound(
             location='%s?%s' % (
                 './publicdomain-3', urlencode(request.GET)))
 
@@ -568,18 +556,15 @@ def publicdomain_result(request):
         cc.license.by_code('publicdomain'),
         work_info, target_lang)
 
-    template = util.get_zpt_template(
-        'chooser_pages/publicdomain/publicdomain-4.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     context = _base_context(request, target_lang)
     context.update({
-            'engine_template': engine_template,
             'request_form': request_form,
             'license_html': license_html})
 
-    return Response(template.pt_render(context))
+    return Response(
+        util.render_template(
+            request, target_lang,
+            'chooser_pages/publicdomain/publicdomain-4.html', context))
 
 
 ### -----------
