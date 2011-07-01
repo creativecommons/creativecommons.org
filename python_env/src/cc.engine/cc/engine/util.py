@@ -650,9 +650,11 @@ def generate_404_response(request, routing, environ, staticdirector):
     context = {'page_style': 'bare'}
     context.update(rtl_context_stuff(target_lang))
 
-    return render_to_response(
-        request, target_lang,
-        'catalog_pages/404.html', context)
+    return Response(
+        render_template(
+            request, target_lang,
+            'catalog_pages/404.html', context),
+        status=404)
 
 
 def catch_license_versions_from_request(request):
