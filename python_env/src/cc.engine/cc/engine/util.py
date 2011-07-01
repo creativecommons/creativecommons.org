@@ -103,6 +103,14 @@ def render_template(request, locale, template_path, context):
     return rendered
 
 
+def render_to_response(request, locale, template_path, context):
+    """
+    Convenience method for rendering a response along with the template
+    """
+    return Response(
+        render_template(request, locale, template_path, context))
+
+
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ### Special ZPT unit test hackery begins HERE
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
