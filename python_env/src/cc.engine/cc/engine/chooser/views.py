@@ -594,19 +594,14 @@ def cc0_waiver(request):
 def cc0_confirm(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/zero/confirm.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     request_form = request.GET or request.POST
 
     context = _base_context(request, target_lang)
-    context.update({
-            'engine_template': engine_template,
-            'request_form': request_form})
+    context['request_form'] = request_form
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/zero/confirm.html', context)
 
 
 def cc0_results(request):
