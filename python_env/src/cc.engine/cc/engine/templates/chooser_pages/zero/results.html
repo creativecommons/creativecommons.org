@@ -1,0 +1,142 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}CC0: Results{% endblock title %}
+
+{% block headers %}
+  <link rel="stylesheet" type="text/css" 
+        href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
+  <link rel="stylesheet" type="text/css"
+        href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
+
+  <script type="text/javascript"
+          src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script> 
+  <script type="text/javascript" 
+          src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
+
+  <link rel="stylesheet" type="text/css"
+        href="{{ request.staticdirect('/includes/zero.css') }}" />
+
+  <script type="text/javascript">
+    YAHOO.util.Event.onDOMReady(function() {
+      // init the buttons
+      (new YAHOO.widget.Button("do-send-email")).render();
+    });
+  </script>
+{% endblock headers %}
+
+<body>
+
+{% block sidebar %}{% endblock %}
+
+{% block page_header_title %}CC0{% endblock %}
+
+{% block body %}
+  <div class="yui-skin-sam">
+
+    {% if not can_issue %}
+      <div id="error" class="yui-module">
+        <div class="bd">
+          <p>
+            {{ cctrans(locale, "license.zero.declined") }}
+          </p>
+          <ul>
+            <li>
+              <a href="/about/cc0">{{ cctrans(locale, "license.zero.about") }}</a>
+            </li>
+            <li>
+              <a href="http://wiki.creativecommons.org/CC0_FAQ"
+                 >{{ cctrans(locale, "util.FAQ") }}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    {% else %}
+      <div id="results" class="yui-module">
+        <div class="bd" id="waiver-results">
+          <p>
+            {{ cctrans(locale, "license.choose_button") }}
+          </p>
+  
+          <div class="licensebox" align="center">
+            <table>
+              <tr>
+                <td valign="bottom" align="center">
+                  <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png"
+                       style="border:0px;" /><br/>
+                  <input type="radio" name="button" checked
+                         onclick="swapbutton('http://i.creativecommons.org/p/zero/1.0/88x31.png')" />
+                </td>
+                <td valign="bottom" align="center">
+                  <img src="http://i.creativecommons.org/p/zero/1.0/80x15.png"
+                       style="border:0px;" /><br/>
+                  <input type="radio" name="button"
+                         onclick="swapbutton('http://i.creativecommons.org/p/zero/1.0/80x15.png')"/>
+                </td>
+  
+              </tr>
+            </table>
+          </div>
+  
+          <span id="waiver-results-leadin">
+            {{ cctrans(locale, "license.zero.preview_waiver") }}
+          </span>
+  
+          <div class="preview" id="results-preview">{{ rdfa }}</div>
+  
+          <h3>{{ cctrans(locale, "license.have_your_own_website") }}</h3>
+          <p>
+            {{ cctrans(locale, "license.zero.copy_text") }}
+          </p>
+  
+          <textarea id="codetocopy" cols="70" rows="6"
+                    onfocus="select()">{{ rdfa }}</textarea>
+  
+          <div class="more-metadata-container">
+            <h3 style="margin-top:0;">{{ cctrans(locale, "license.zero.send_email") }}</h3>
+  
+            {% if email_requested %}
+              {# email container #}
+              {% if not succesful_send %}
+                <div class="more-metadata-container error">
+                  {{ cctrans(locale, "license.zero.email_error",
+                             email_addr=email_addr) }}
+                </div>
+              {% else %}
+                <div>
+                  <p>
+                    {{ cctrans(locale, "license.zero.email_sent",
+                               email_addr=email_addr) }}
+                  </p>
+  
+                  {% if requested_send_updates %}
+                    {{ cctrans(locale, "license.zero.subscribed_to_updates") }}
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% else %}
+              <p>
+                {{ cctrans(locale, "license.zero.send_email_updates") }}
+              </p>
+  
+              <form action="{{ request.path_info }}" method="post">
+                {% for key, value in request_form.iteritems() %}
+                  <input type="hidden" name="{{ key }}" value="{{ value }}" />
+                {% endfor %}
+
+                <div class="more-metadata">
+                  <div>{{ cctrans(locale, "util.your_email") }}</div>
+                  <input type="textbox" name="email" />
+                </div>
+  
+                <input id="do-send-email" type="submit"
+                       value="{{ cctrans(locale, 'util.Send') }}" />
+              </form>
+            {% endif %}
+  
+          </div>
+        </div>
+        <div class="ft"></div>
+      </div>
+    {% endif %}
+  </div>
+{% endblock body %}

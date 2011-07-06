@@ -607,11 +607,6 @@ def cc0_confirm(request):
 def cc0_results(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/zero/results.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     request_form = request.GET or request.POST
 
     ## Do we confirm, understand and accept the conditions of cc0?
@@ -637,7 +632,6 @@ def cc0_results(request):
 
     context = _base_context(request, target_lang)
     context.update({
-            'engine_template': engine_template,
             'request_form': request_form,
             'can_issue': can_issue,
             'rdfa': license_html,
@@ -646,7 +640,9 @@ def cc0_results(request):
             'requested_send_updates': request_form.get('send_updates', False),
             'successful_send': successful_send})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/zero/results.html', context)
 
 
 def cc0_partner(request):
