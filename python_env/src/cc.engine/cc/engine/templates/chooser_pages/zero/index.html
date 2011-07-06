@@ -1,0 +1,83 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}CC0{% endblock title %}
+
+{% block headers %}
+  <link rel="stylesheet" type="text/css" 
+        href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
+
+  <script type="text/javascript" 
+          src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="zero.css"
+        tal:attributes="href python:request.staticdirect('includes/zero.css')" />
+
+  <script src="help.js" type="text/javascript"
+          tal:attributes="src python:request.staticdirect('includes/help.js')" >
+  </script>
+
+  <script type="text/javascript">
+    YAHOO.util.Event.onDOMReady(function() {
+
+    // init the buttons
+    new YAHOO.widget.Button("do-begin");
+    new YAHOO.widget.Button("do-learn-more");
+
+    });
+  </script>
+{% endblock headers %}
+
+{% block sidebar %}{% endblock %}
+
+{% block page_header_title %}CC0{% endblock %}
+
+{% block body %}
+  <div class="yui-content">
+    <div id="page-welcome" class="yui-module">
+      <div class="bd">
+        <div class="pd-explain-differences">
+          {{ cctrans(locale, "license.zero.PDM-difference") }}
+        </div>
+
+        <p>
+          {{ cctrans(locale, "license.zero.intro_1") }}
+        </p>
+
+        <p>
+          {{ cctrans(locale, "license.zero.intro_2") }}
+        </p>
+
+        <p>
+          {{ cctrans(locale, "license.zero.intro_3") }}
+        </p>
+
+        <p>
+          <span id="mycheckbox" class="yui-button">
+            <span class="first-child">
+              <a id="do-learn-more"
+                 href="/about/cc0">{{ cctrans(locale, "util.learn_more") }}</a>
+            </span>
+          </span>
+
+          <span id="mycheckbox" class="yui-button">
+            <span class="first-child">
+              {% if request.GET.has_key('lang') %}
+                <a id="do-begin"
+                   href="{{ '/choose/zero/waiver?lang=' + target_lang }}">
+                  {{ cctrans(locale, "util.begin") }} &raquo;
+                </a>
+              {% else %}
+                <a id="do-begin" href="/choose/zero/waiver">
+                  {{ cctrans(locale, "util.begin") }} &raquo;
+                </a>
+              {% endif %}
+            </span>
+          </span>
+        </p>
+
+        {% include "includes/engine_languages.html" %}
+
+      </div>
+    </div>
+  </div>
+{% endblock body %}
