@@ -575,26 +575,20 @@ def cc0_landing(request):
 
     context = _base_context(request, target_lang)
 
-    return Response(
-        util.render_template(
-            request, target_lang,
-            'chooser_pages/zero/index.html', context))
+    util.render_to_response(
+        request, target_lang,
+        'chooser_pages/zero/index.html', context)
 
 
 def cc0_waiver(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/zero/waiver.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     context = _base_context(request, target_lang)
-    context.update({
-            'engine_template': engine_template,
-            'country_list': util.CODE_COUNTRY_LIST})
+    context['country_list'] = util.CODE_COUNTRY_LIST
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/zero/waiver.html', context)
 
 
 def cc0_confirm(request):

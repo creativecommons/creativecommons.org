@@ -1,0 +1,181 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}{{ cctrans(locale, "license.zero.waiver_title") }}{% endblock title %}
+
+{% block headers %}
+  <link rel="stylesheet" type="text/css"
+        href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
+
+  <script type="text/javascript"
+          src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script>
+  <script type="text/javascript"
+          src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
+  <script type="text/javascript"
+          src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js"></script>
+
+  <link rel="stylesheet" type="text/css"
+        href="{{ request.staticdirect('/includes/zero.css') }}" />
+
+  <script type="text/javascript"
+          src="{{ request.staticdirect('/includes/help.js') }}" >
+  </script>
+
+  <script type="text/javascript">
+    YAHOO.namespace("cc.zero");
+
+    YAHOO.cc.zero.on_click = function(event) {
+
+    YAHOO.util.Dom.get("details-submit").disabled = !(
+    YAHOO.util.Dom.get("confirm_details").checked &&
+    YAHOO.util.Dom.get("confirm_understand").checked);
+
+    } // on_click
+
+    YAHOO.util.Event.onDOMReady(function() {
+
+    // connect event handlers for the check boxes
+    YAHOO.util.Event.addListener("confirm_details", "click", YAHOO.cc.zero.on_click);
+    YAHOO.util.Event.addListener("confirm_understand", "click", YAHOO.cc.zero.on_click);
+
+    });
+  </script>
+{% endblock headers %}
+
+{% block sidebar %}{% endblock %}
+
+{% block page_header_title %}CC0 Waiver{% endblock %}
+
+{% block body %}
+  <div class="yui-skin-sam">
+    <div id="waiver_ui" class="yui-module">
+      <div class="bd">
+        <p>
+          {{ cctrans(locale, "license.zero.additional_metadata") }}
+          <a href="" id="embedded_metadata" class="helpLink">
+            <img src="{{ request.staticdirect('/images/information.png') }}"
+                 alt="{{ cctrans(locale, 'Information') }}"/></a>
+        </p>
+
+        <div id="help_embedded_metadata" class="help_panel">
+          <div class="hd">{{ cctrans(locale, "Embedded Metadata") }}</div>
+          <div class="bd">
+            {{ cctrans(locale, "license.zero.metadata_help") }}
+          </div>
+        </div>
+
+        <form id="form-details" action="confirm">
+          <input type="hidden" name="license-class" value="zero" />
+
+          <div class="form-row">
+            <div class="form-question">{{ cctrans(locale, "util.your_name") }}</div>
+            <div class="form-answer">
+              <input name="name" class="form-field"/>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-question">{{ cctrans(locale, "util.your_url") }}</div>
+            <div class="form-answer">
+              <input name="actor_href" class="form-field"/>
+              <a href="" id="url" class="helpLink">
+                <img src="{{ request.staticdirect('/images/information.png') }}"
+                     alt="{{ cctrans(locale, 'Information') }}" /></a>
+            </div>
+          </div>
+
+          <div id="help_url" class="help_panel">
+            <div class="hd">{{ cctrans(locale, "util.your_url") }}</div>
+            <div class="bd">
+              {{ cctrans(locale, "license.zero.your_url_help") }}
+            </div>
+          </div>
+
+
+          <div class="form-row">
+            <div class="form-question">
+              {{ cctrans(locale, "util.title_of_work") }}
+            </div>
+            <div class="form-answer">
+              <input name="work_title" class="form-field" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-question">{{ cctrans(locale, "util.territory") }}</div>
+            <div class="form-answer">
+              <select name="work_jurisdiction" class="form-field">
+                <option value="-">---</option>
+                {% for c in country_list %}
+                  <option value="{{ c[0] }}">{{ c[1] }}</option>
+                {% endfor %}
+              </select>
+
+              <a href="" id="country" class="helpLink">
+                <img src="{{ request.staticdirect('/images/information.png') }}"
+    	         alt="{{ cctrans(locale, 'Information') }}"
+    	         /></a>
+            </div>
+          </div>
+
+          <div id="help_country" class="help_panel">
+            <div class="hd">{{ cctrans(locale, "util.territory") }}</div>
+            <div class="bd">
+              {{ cctrans(locale, "license.zero.country_help") }}
+            </div>
+          </div>
+
+
+          <div class="form-row">
+            <div class="form-question">
+              <input name="confirm" type="checkbox"
+    	         id="confirm_details" class="form-field"
+    	         value="confirm" />
+            </div>
+            <div class="form-answer">
+              <label for="confirm">
+                {{ cctrans(locale, "license.zero.confirm_waiver") }}
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-question">&nbsp;</div>
+            <div class="form-answer">
+              <iframe class="form-field" src="/publicdomain/zero/1.0/legalcode-plain">
+              </iframe>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-question">
+              <input name="understand" type="checkbox"
+                     id="confirm_understand" class="form-field"
+                     value="confirm" />
+            </div>
+            <div class="form-answer">
+              <label for="understand">
+                {{ cctrans(locale, "license.zero.confirm_reading") }}
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <input type="hidden" name="lang" value="{{ target_lang }}" /> 
+          </div>
+
+          <div class="form-row">
+            <div class="form-question">&nbsp;</div>
+            <div class="form-answer">
+              <input type="submit" id="details-submit" disabled=""
+    	             name="field1" value="{{ cctrans(locale, 'util.continue') }}"> 
+            </div>
+          </div>
+
+        </form>
+
+        <br clear="both"/>&nbsp;
+      </div>
+    </div>
+
+  </div>
+{% endblock body %}
