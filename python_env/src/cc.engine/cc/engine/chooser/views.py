@@ -575,7 +575,7 @@ def cc0_landing(request):
 
     context = _base_context(request, target_lang)
 
-    util.render_to_response(
+    return util.render_to_response(
         request, target_lang,
         'chooser_pages/zero/index.html', context)
 
