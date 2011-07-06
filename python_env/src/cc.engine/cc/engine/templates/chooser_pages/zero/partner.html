@@ -1,0 +1,25 @@
+{% extends "macros_templates/partner.html" %}
+
+{% block title %}Choose a License{% endblock title %}
+
+{% block body %}
+<h1>{{ cctrans(locale, "license.confirm_choice") }}</h1>
+
+<p>
+  {{ cctrans(locale, "license.zero.intro_1") }}
+</p>
+
+<p>
+  {{ cctrans(locale, "license.zero.intro_2") }}
+</p>
+
+<p>
+  {{ cctrans(locale, "license.partner.zero.use_pdm_instead",
+             pd_url="/choose/mark/partner?%s" % get_params) }}
+</p>
+
+<p>
+  {{ cctrans(locale, "license.you_may_proceed",
+             processed_exit_url=exit_url) }}
+</p>
+{% endblock body %}
