@@ -9,11 +9,11 @@
   <script type="text/javascript" 
           src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="zero.css"
-        tal:attributes="href python:request.staticdirect('includes/zero.css')" />
+  <link rel="stylesheet" type="text/css"
+        href="{{ request.staticdirect('includes/zero.css') }}" />
 
-  <script src="help.js" type="text/javascript"
-          tal:attributes="src python:request.staticdirect('includes/help.js')" >
+  <script type="text/javascript"
+          src="{{ request.staticdirect('/includes/help.js') }}" >
   </script>
 
   <script type="text/javascript">
