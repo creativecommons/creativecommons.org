@@ -341,6 +341,7 @@ class TestEmailSenderViews(unittest.TestCase):
         assert_equal(response.status_int, 405)
 
     def test_cc0_results_email_send(self):
+        util._clear_test_template_context()
         # For doing a POST (email sending time!)
         # --------------------------------------
         response = TESTAPP.post(
@@ -362,13 +363,13 @@ class TestEmailSenderViews(unittest.TestCase):
         assert 'To the extent possible under law,' in mail_body
 
         # check that the right template was loaded
-        assert util.ZPT_TEST_TEMPLATES.has_key(
-            util.full_zpt_filename('chooser_pages/zero/results.pt'))
+        assert util.TEST_TEMPLATE_CONTEXT.has_key(
+            'chooser_pages/zero/results.html')
 
         # For doing a GET (shouldn't send email!)
         # ---------------------------------------
         util._clear_test_inboxes()
-        util._clear_zpt_test_templates()
+        util._clear_test_template_context()
 
         response = TESTAPP.get(
             '/choose/zero/results?email=recipient@example.org')
@@ -377,8 +378,8 @@ class TestEmailSenderViews(unittest.TestCase):
         assert_equal(len(util.EMAIL_TEST_INBOX), 0)
 
         # check that the right template was loaded
-        assert util.ZPT_TEST_TEMPLATES.has_key(
-            util.full_zpt_filename('chooser_pages/zero/results.pt'))
+        assert util.TEST_TEMPLATE_CONTEXT.has_key(
+            'chooser_pages/zero/results.html')
 
 
     def test_pdmark_results_email_send(self):
