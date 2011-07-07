@@ -170,7 +170,7 @@
 
 </script>
     <script type="text/javascript">
-      document.write("<" + "script type='text/javascript' src='http://scraper.creativecommons.org/apps/deed?url=" + encodeURIComponent(document.referrer) + "&license_uri=" + document.URL + "&callback=YAHOO.cc.success'" + "><" + "/script>");
+      document.write("<" + "script type='text/javascript' src='http://scraper.creativecommons.org/apps/deed?url=" + encodeURIComponent(document.referrer) + "&license_uri=" + encodeURIComponent(document.URL) + "&callback=YAHOO.cc.success'" + "><" + "/script>");
     </script>
   </body>
 </html>
