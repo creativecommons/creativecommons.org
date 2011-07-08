@@ -15,7 +15,6 @@
                      exiturl    request/GET/exit_url;
                      pd_exiturl python:exiturl.replace('&', '%26');
                      partner    request/GET/partner;
-                     show_jurisdiction request/GET/jurisdiction_chooser | nothing;
                      def_juris request/GET/jurisdiction | nothing;
                      ">
       <p i18n:translate="license.partner_what">
@@ -109,13 +108,13 @@
                  value="n" i18n:translate="util.No" />
           <br />
 
-          <span tal:condition="python: request.GET.has_key('jurisdiction_choose')==False and request.GET.has_key('jurisdiction')">
+          <span tal:condition="python: not show_jurisdiction and requested_jurisdiction">
             <input type="hidden" name="field_jurisdiction"
-                   value="" tal:attributes="value request/GET/jurisdiction"/>
+                   value="" tal:attributes="value requested_jurisdiction"/>
           </span>
         </p>
 
-        <p>
+        <p tal:condition="show_jurisdiction">
           <span tal:omit-tag="" i18n:translate="license.jurisdiction_question">
             Jurisdiction of your license
           </span>

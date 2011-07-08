@@ -55,38 +55,39 @@
       {{ cctrans(locale, "util.No") }}
       <br />
 
-      {% if request.GET.has_key('jurisdiction_choose') == False
-         and request.GET.has_key('jurisdiction') %}
+      {% if not show_jurisdiction and requested_jurisdiction %}
         {# Is this span needed? #}
         <span>
           <input type="hidden" name="field_jurisdiction"
-                 value="{{ request.GET['jurisdiction'] }}" />
+                 value="{{ requested_jurisdiction }}" />
         </span>
       {% endif %}
     </p>
 
-    <p>
-      {{ cctrans(locale, "license.jurisdiction_question") }}
-      (<a href="http://creativecommons.org/choose/jurisdiction-popup?lang=en"
-          onclick="window.open('http://creativecommons.org/choose/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
-          >more info</a>
-      <a href="http://creativecommons.org/choose/jurisdiction-popup?lang=en"
-         onclick="window.open('http://creativecommons.org/choose/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">
-        <img src="http://creativecommons.org/images/popup.gif"
-             width="15" height="13" alt="more info" border="0" />
-      </a>)
-      <br />
-
-      <select name="field_jurisdiction">
-        <option value="" selected="selected">{{ cctrans(locale, "util.International") }}</option>
-
-        {% for juris_code, juris_name in jurisdictions_names %}
-          <option value="{{ juris_code }}">
-            {{ juris_name }}
-          </option>
-        {% endfor %}
-      </select>
-    </p>
+    {% if show_jurisdiction %}
+      <p>
+        {{ cctrans(locale, "license.jurisdiction_question") }}
+        (<a href="http://creativecommons.org/choose/jurisdiction-popup?lang=en"
+            onclick="window.open('http://creativecommons.org/choose/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
+            >more info</a>
+        <a href="http://creativecommons.org/choose/jurisdiction-popup?lang=en"
+           onclick="window.open('http://creativecommons.org/choose/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">
+          <img src="http://creativecommons.org/images/popup.gif"
+               width="15" height="13" alt="more info" border="0" />
+        </a>)
+        <br />
+  
+        <select name="field_jurisdiction">
+          <option value="" selected="selected">{{ cctrans(locale, "util.International") }}</option>
+  
+          {% for juris_code, juris_name in jurisdictions_names %}
+            <option value="{{ juris_code }}">
+              {{ juris_name }}
+            </option>
+          {% endfor %}
+        </select>
+     </p>
+    {% endif %}
 
     <p>
       <input type="submit"
