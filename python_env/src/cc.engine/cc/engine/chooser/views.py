@@ -317,11 +317,14 @@ def chooser_view(request):
     jurisdictions_names = sorted(
         jurisdictions_names, key=lambda juris: juris[1])
 
+    show_jurisdiction = request.GET.get('jurisdiction_choose') == '1'
+
     context.update(
         {'engine_template': engine_template,
          'partner_template': partner_template,
          'metadata_template': metadata_template,
          'support_template': support_template,
+         'show_jurisdiction': show_jurisdiction,
          'jurisdictions_names': jurisdictions_names,
          'requested_jurisdiction': requested_jurisdiction,
          'referrer': request.headers.get('REFERER','')})
