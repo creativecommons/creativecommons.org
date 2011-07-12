@@ -135,7 +135,7 @@
 
       <ul class="no-bullets">
         <li>
-          <span i18n:translate="license.mark_nonweb_metadata">
+          <span i18n:translate="license.mark_nonweb">
             <span style="display:none">
             <span tal:content="request/query_string"
                   tal:omit-tag=""
