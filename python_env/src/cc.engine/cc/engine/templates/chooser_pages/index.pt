@@ -22,10 +22,6 @@
 </head>
 
 <body>
-  <metal:title metal:fill-slot="page-header-title"
-               i18n:translate="license.License_Your_Work">
-    License Your Work
-  </metal:title>
     
   <div metal:fill-slot="body">
 
