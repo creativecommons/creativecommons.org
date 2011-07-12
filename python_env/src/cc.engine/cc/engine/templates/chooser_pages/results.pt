@@ -21,10 +21,6 @@
   </head>
 
   <body>
-    <metal:title metal:fill-slot="page-header-title"
-                 i18n:translate="license.here_chosen">
-      Here is the license you&rsquo;ve chosen
-    </metal:title>
 
     <div metal:fill-slot="body"
          tal:define="target_lang string:en;">
