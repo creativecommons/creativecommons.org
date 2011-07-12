@@ -338,8 +338,8 @@ def get_all_license_urls():
                     }
               """
     query = RDF.Query(qstring, query_language='sparql')
-    solns = list(query.execute(rdf_helper.ALL_MODEL))
-    return tuple(str(s['luri'].uri) for s in solns)
+    return tuple(str(s['luri'].uri)
+                 for s in query.execute(rdf_helper.ALL_MODEL))
 
 
 def unicode_cleaner(string):
