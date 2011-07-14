@@ -142,8 +142,7 @@ def license_deed_view(request):
     if target_lang != negotiated_locale:
         base_url = REMOVE_DEED_URL_RE.match(request.path_info).groups()[0]
         redirect_to = base_url + 'deed.' + negotiated_locale
-        return exc.HTTPMovedPermanently(
-            location=redirect_to)
+        return exc.HTTPFound(location=redirect_to)
 
     # Use the pdtools deed macros template if CC0 or PD Mark, else use
     # standard deed macros template
