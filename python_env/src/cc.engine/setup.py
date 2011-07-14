@@ -53,6 +53,10 @@ setup(
         'simplejson',
         ],
 
+    dependency_links = [
+        'http://code.creativecommons.org/basket/',
+        ],
+
     # author metadata
     author = 'Christopher Webber',
     author_email = 'cwebber@creativecommons.org',
