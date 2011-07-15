@@ -330,8 +330,8 @@ class TestEmailSenderViews(unittest.TestCase):
         assert 'You feel charged up!' in mail_body
 
         # check that the right template was loaded
-        assert util.ZPT_TEST_TEMPLATES.has_key(
-            util.full_zpt_filename('chooser_pages/emailhtml.pt'))
+        assert util.TEST_TEMPLATE_CONTEXT.has_key(
+            'chooser_pages/emailhtml.html')
 
         # For doing a GET (shouldn't send email!)
         # ---------------------------------------
