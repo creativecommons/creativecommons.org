@@ -421,20 +421,18 @@ def non_web_popup(request):
 
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
-    template = util.get_zpt_template(
-        'chooser_pages/nonweb_popup.pt', target_lang)
-    popup_template = util.get_zpt_template(
-        'macros_templates/popup.pt', target_lang)
+
     is_publicdomain = request_form.get('publicdomain') or request_form.get('pd')
     
     context = _base_context(request, target_lang)
 
     context.update(
-        {'popup_template': popup_template,
-         'license': license,
+        {'license': license,
          'is_publicdomain': is_publicdomain})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/nonweb_popup.html', context)
 
 
 def choose_wiki_redirect(request):
