@@ -1,7 +1,7 @@
 {% extends "macros_templates/engine.html" %}
 
 {% block title %}
-  {{ cctrans(locale, "util.public_domain_certification") }}
+  {{ cctrans(locale, "util.public_domain_certification")|safe }}
 {% endblock title %}
 
 {% block headers %}
@@ -44,7 +44,7 @@ YAHOO.util.Event.onDOMReady(function() {
 {% endblock headers %}
 
 {% block page_header_title %}
-  {{ cctrans(locale, "license.pd.confirm_title") }}
+  {{ cctrans(locale, "license.pd.confirm_title")|safe }}
 {% endblock %}
 
 {% block body %}
@@ -53,10 +53,10 @@ YAHOO.util.Event.onDOMReady(function() {
       <form id="form-details" action="./publicdomain-4">
         <div class="licensebox" style="clear:both;">
           <h4>
-            {{ cctrans(locale, "deed.pd.title_plain") }}
+            {{ cctrans(locale, "deed.pd.title_plain")|safe }}
           </h4>
 
-          {{ cctrans(locale, "deed.pd") }}
+          {{ cctrans(locale, "deed.pd")|safe }}
         </div>
 
         {% if request_form.get('lang', False) %}
@@ -72,7 +72,7 @@ YAHOO.util.Event.onDOMReady(function() {
           </div>
           <div class="form-answer">
             <label for="understand">
-              {{ cctrans(locale, "license.pdc.confirm_reading") }}
+              {{ cctrans(locale, "license.pdc.confirm_reading")|safe }}
             </label>
           </div>
         </div>
@@ -81,7 +81,7 @@ YAHOO.util.Event.onDOMReady(function() {
           <div class="form-question">&nbsp;</div>
           <div class="form-answer">
             <input type="submit" id="details-submit" disabled=""
-    	           name="field1" value="{{ cctrans(locale, 'util.continue') }}" /> 
+    	           name="field1" value="{{ cctrans(locale, 'util.continue')|safe }}" /> 
           </div>
         </div>
 

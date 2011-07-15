@@ -4,24 +4,24 @@
 
 {% block body %}
   <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
-    {{ cctrans(locale, "license.html_display") }}
+    {{ cctrans(locale, "license.html_display")|safe }}
   </p>
   <form action="">
     <textarea cols="30" rows="8" name="html" 
               style="width:90%;height:150px;">{{ license_html }}</textarea>
     <p>
       <input type="button" onclick="form.html.focus();form.html.select()"
-             name="grab" value="{{ cctrans(locale, 'util.Highlight_Text') }}"/>
+             name="grab" value="{{ cctrans(locale, 'util.Highlight_Text')|safe }}"/>
     </p>
   </form>
 
   <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
-    {{ cctrans(locale, "license.html_directions") }}
+    {{ cctrans(locale, "license.html_directions")|safe }}
   </p>
 
   <form action="./work-email" method="post">
     <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
-      {{ cctrans(locale, "license.html_email") }}
+      {{ cctrans(locale, "license.html_email")|safe }}
       <input type="text" name="to_email" value="" /> 
       <input type="hidden" name="lang"
              value="{{ request.GET.get('lang', '') }}" />
@@ -36,14 +36,14 @@
              value="{{ license.title }}" />
 
       <input type="submit"
-             value="{{ cctrans(locale, 'util.Send') }}" />
+             value="{{ cctrans(locale, 'util.Send')|safe }}" />
     </p>
   </form>
 
   <div align="center"
        dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
     <a href="javascript:window.close();">
-      {{ cctrans(locale, "util.Close_window") }}
+      {{ cctrans(locale, "util.Close_window")|safe }}
     </a>
   </div>
 {% endblock %}

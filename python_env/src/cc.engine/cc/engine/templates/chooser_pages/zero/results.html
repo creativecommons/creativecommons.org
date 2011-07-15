@@ -37,15 +37,15 @@
       <div id="error" class="yui-module">
         <div class="bd">
           <p>
-            {{ cctrans(locale, "license.zero.declined") }}
+            {{ cctrans(locale, "license.zero.declined")|safe }}
           </p>
           <ul>
             <li>
-              <a href="/about/cc0">{{ cctrans(locale, "license.zero.about") }}</a>
+              <a href="/about/cc0">{{ cctrans(locale, "license.zero.about")|safe }}</a>
             </li>
             <li>
               <a href="http://wiki.creativecommons.org/CC0_FAQ"
-                 >{{ cctrans(locale, "util.FAQ") }}</a>
+                 >{{ cctrans(locale, "util.FAQ")|safe }}</a>
             </li>
           </ul>
         </div>
@@ -54,7 +54,7 @@
       <div id="results" class="yui-module">
         <div class="bd" id="waiver-results">
           <p>
-            {{ cctrans(locale, "license.choose_button") }}
+            {{ cctrans(locale, "license.choose_button")|safe }}
           </p>
   
           <div class="licensebox" align="center">
@@ -78,44 +78,44 @@
           </div>
   
           <span id="waiver-results-leadin">
-            {{ cctrans(locale, "license.zero.preview_waiver") }}
+            {{ cctrans(locale, "license.zero.preview_waiver")|safe }}
           </span>
   
           <div class="preview" id="results-preview">{{ rdfa }}</div>
   
-          <h3>{{ cctrans(locale, "license.have_your_own_website") }}</h3>
+          <h3>{{ cctrans(locale, "license.have_your_own_website")|safe }}</h3>
           <p>
-            {{ cctrans(locale, "license.zero.copy_text") }}
+            {{ cctrans(locale, "license.zero.copy_text")|safe }}
           </p>
   
           <textarea id="codetocopy" cols="70" rows="6"
                     onfocus="select()">{{ rdfa }}</textarea>
   
           <div class="more-metadata-container">
-            <h3 style="margin-top:0;">{{ cctrans(locale, "license.zero.send_email") }}</h3>
+            <h3 style="margin-top:0;">{{ cctrans(locale, "license.zero.send_email")|safe }}</h3>
   
             {% if email_requested %}
               {# email container #}
               {% if not succesful_send %}
                 <div class="more-metadata-container error">
                   {{ cctrans(locale, "license.zero.email_error",
-                             email_addr=email_addr) }}
+                             email_addr=email_addr)|safe }}
                 </div>
               {% else %}
                 <div>
                   <p>
                     {{ cctrans(locale, "license.zero.email_sent",
-                               email_addr=email_addr) }}
+                               email_addr=email_addr)|safe }}
                   </p>
   
                   {% if requested_send_updates %}
-                    {{ cctrans(locale, "license.zero.subscribed_to_updates") }}
+                    {{ cctrans(locale, "license.zero.subscribed_to_updates")|safe }}
                   {% endif %}
                 </div>
               {% endif %}
             {% else %}
               <p>
-                {{ cctrans(locale, "license.zero.send_email_updates") }}
+                {{ cctrans(locale, "license.zero.send_email_updates")|safe }}
               </p>
   
               <form action="{{ request.path_info }}" method="post">
@@ -124,12 +124,12 @@
                 {% endfor %}
 
                 <div class="more-metadata">
-                  <div>{{ cctrans(locale, "util.your_email") }}</div>
+                  <div>{{ cctrans(locale, "util.your_email")|safe }}</div>
                   <input type="textbox" name="email" />
                 </div>
   
                 <input id="do-send-email" type="submit"
-                       value="{{ cctrans(locale, 'util.Send') }}" />
+                       value="{{ cctrans(locale, 'util.Send')|safe }}" />
               </form>
             {% endif %}
   

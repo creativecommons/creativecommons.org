@@ -36,26 +36,26 @@
     <div id="page-welcome" class="yui-module">
       <div class="bd">
         <div class="pd-explain-differences">
-          {{ cctrans(locale, "license.zero.PDM-difference") }}
+          {{ cctrans(locale, "license.zero.PDM-difference")|safe }}
         </div>
 
         <p>
-          {{ cctrans(locale, "license.zero.intro_1") }}
+          {{ cctrans(locale, "license.zero.intro_1")|safe }}
         </p>
 
         <p>
-          {{ cctrans(locale, "license.zero.intro_2") }}
+          {{ cctrans(locale, "license.zero.intro_2")|safe }}
         </p>
 
         <p>
-          {{ cctrans(locale, "license.zero.intro_3") }}
+          {{ cctrans(locale, "license.zero.intro_3")|safe }}
         </p>
 
         <p>
           <span id="mycheckbox" class="yui-button">
             <span class="first-child">
               <a id="do-learn-more"
-                 href="/about/cc0">{{ cctrans(locale, "util.learn_more") }}</a>
+                 href="/about/cc0">{{ cctrans(locale, "util.learn_more")|safe }}</a>
             </span>
           </span>
 
@@ -64,11 +64,11 @@
               {% if request.GET.has_key('lang') %}
                 <a id="do-begin"
                    href="{{ '/choose/zero/waiver?lang=' + target_lang }}">
-                  {{ cctrans(locale, "util.begin") }} &raquo;
+                  {{ cctrans(locale, "util.begin")|safe }} &raquo;
                 </a>
               {% else %}
                 <a id="do-begin" href="/choose/zero/waiver">
-                  {{ cctrans(locale, "util.begin") }} &raquo;
+                  {{ cctrans(locale, "util.begin")|safe }} &raquo;
                 </a>
               {% endif %}
             </span>

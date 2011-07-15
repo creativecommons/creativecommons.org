@@ -71,8 +71,7 @@ def cctrans(locale, logical_key, **trans_values):
 TEMPLATE_LOADER = jinja2.PackageLoader('cc.engine', 'templates')
 TEMPLATE_ENV = jinja2.Environment(
     loader=TEMPLATE_LOADER,
-    # TODO: we want this to be true eventually!
-    autoescape=False,
+    autoescape=True,
     extensions=['jinja2.ext.autoescape'])
 
 # Add cctrans to the global context

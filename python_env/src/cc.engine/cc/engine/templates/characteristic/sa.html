@@ -1,6 +1,6 @@
 {% extends "macros_templates/popup.html" %}
 
-{% block title %}{{ cctrans(locale, "char.sa_title") }}{% endblock %}
+{% block title %}{{ cctrans(locale, "char.sa_title")|safe }}{% endblock %}
 
 {% block body %}
   <p dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}" >
@@ -9,13 +9,13 @@
   </p>
 
   <p dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
-    <strong>{{ cctrans(locale, "char.sa_title") }}</strong></p>
+    <strong>{{ cctrans(locale, "char.sa_title")|safe }}</strong></p>
 
   <p dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
-    {{ cctrans(locale, "char.sa_description") }}
+    {{ cctrans(locale, "char.sa_description")|safe }}
   </p>
 
   <div style="text-align:center">
-    <a href="javascript:window.close();">{{ cctrans(locale, "util.Close_window") }}</a>
+    <a href="javascript:window.close();">{{ cctrans(locale, "util.Close_window")|safe }}</a>
   </div>
 {% endblock %}

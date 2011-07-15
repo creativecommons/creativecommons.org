@@ -16,7 +16,7 @@
 
 {% block body %}
   <p>
-    {{ cctrans(locale, "license.choose_button") }}
+    {{ cctrans(locale, "license.choose_button")|safe }}
   </p>
   
   <div class="licensebox">
@@ -52,7 +52,7 @@
   </div>
 
   <div>
-    {{ cctrans(locale, "license.preview") }}
+    {{ cctrans(locale, "license.preview")|safe }}
   </div>
   
   <div class="preview" id="results-preview">
@@ -62,10 +62,10 @@
   </div>
   
   <div style="margin-top:20px;margin-bottom:30px;">
-    <h4>{{ cctrans(locale, "license.have_your_own_website") }}</h4>
+    <h4>{{ cctrans(locale, "license.have_your_own_website")|safe }}</h4>
 
     <p>
-      {{ cctrans(locale, "license.copy_text") }}
+      {{ cctrans(locale, "license.copy_text")|safe }}
     </p>
 
     <form action="">
@@ -82,10 +82,10 @@
     <p>
       <span>
         {{ cctrans(locale, "license.select_text",
-                   url_vars=request.query_string) }}
+                   url_vars=request.query_string)|safe }}
       </span>
       <strong>
-        {{ cctrans(locale, "license.read_tutorial") }}
+        {{ cctrans(locale, "license.read_tutorial")|safe }}
       </strong>
     </p>
 
@@ -93,7 +93,7 @@
       <div>
         <a href="https://creativecommons.net/donate/"><img src="/images/support/2010/cc-support.png" alt="Donate" title="Donate" border="0"/></a></div>
         <p>
-          {{ cctrans(locale, "license.donate_message") }}
+          {{ cctrans(locale, "license.donate_message")|safe }}
        </p>
     </div>
   </div>
@@ -105,34 +105,34 @@
 
 {% block sidebar %}
   <p>
-    {{ cctrans(locale, "license.learn_share") }}
+    {{ cctrans(locale, "license.learn_share")|safe }}
   </p>
   
   <p>
-    {{ cctrans(locale, "license.learn_where_to_publish") }}
+    {{ cctrans(locale, "license.learn_where_to_publish")|safe }}
   </p>
 
-  <h4>{{ cctrans(locale, "license.offline_work") }}</h4>
+  <h4>{{ cctrans(locale, "license.offline_work")|safe }}</h4>
 
   <ul class="no-bullets">
     <li>
       <span>
         {{ cctrans(locale, "license.mark_nonweb",
-                   url_vars=request.query_string) }}
+                   url_vars=request.query_string)|safe }}
       </span>
     </li>
     <li>
       {{ cctrans(locale, "license.xmp_metadata",
-                 url_vars=request.query_string) }}
+                 url_vars=request.query_string)|safe }}
     </li>
     <li>
       <a href="http://creativecommons.org/about/downloads/">
-        {{ cctrans(locale, "license.get_high_res") }}
+        {{ cctrans(locale, "license.get_high_res")|safe }}
       </a>
     </li>
     <li>
       <a href="http://wiki.creativecommons.org/Marking/Creators#Marking_Specific_Media">
-        {{ cctrans(locale, "license.mark_video") }}
+        {{ cctrans(locale, "license.mark_video")|safe }}
       </a>
     </li>
   </ul>

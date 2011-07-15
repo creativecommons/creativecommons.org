@@ -5,10 +5,10 @@
 {% block body %}
   <p>
     {{ cctrans(locale, "license.link_emailed,
-               email=request_form['to_email']") }}
+               email=request_form['to_email']")|safe }}
   </p>
 
   <div align="center">
-    <a href="javascript:window.close();">{{ cctrans(locale, "util.Close_window") }}</a>
+    <a href="javascript:window.close();">{{ cctrans(locale, "util.Close_window")|safe }}</a>
   </div>
 {% endblock %}

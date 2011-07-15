@@ -14,7 +14,7 @@
 {% block sidebar %}{% endblock %}
 
 {% block page_header_title %}
-  CC0: {{ cctrans(locale, "license.zero.confirm_title") }}
+  CC0: {{ cctrans(locale, "license.zero.confirm_title")|safe }}
 {% endblock %}
 
 {% block body %}
@@ -27,15 +27,15 @@
       <div id="confirm-waiver" class="yui-module">
         <div class="bd">
           <p>
-            {{ cctrans(locale, "license.zero.confirm_waiver_1") }}
+            {{ cctrans(locale, "license.zero.confirm_waiver_1")|safe }}
           </p>
 
           <p>
-            {{ cctrans(locale, "license.zero.confirm_waiver_2") }}
+            {{ cctrans(locale, "license.zero.confirm_waiver_2")|safe }}
           </p>
 
           <p>
-            {{ cctrans(locale, "license.zero.confirm_waiver_3") }}
+            {{ cctrans(locale, "license.zero.confirm_waiver_3")|safe }}
           </p>
 
           <div class="form-row yui-buttongroup">
@@ -44,7 +44,7 @@
                 <button type="submit" id="decline-submit"
                         name="waiver-decline"
                         value="decline">
-                  {{ cctrans(locale, "license.zero.confirm_waiver_no") }}
+                  {{ cctrans(locale, "license.zero.confirm_waiver_no")|safe }}
                 </button>
               </span>
             </span>
@@ -54,7 +54,7 @@
                 <button type="submit" id="confirm-submit" 
                         name="waiver-affirm" class="alert" 
                         value="affirm">
-                  {{ cctrans(locale, "license.zero.confirm_waiver_yes") }}
+                  {{ cctrans(locale, "license.zero.confirm_waiver_yes")|safe }}
                 </button>
               </span>
             </span>

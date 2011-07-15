@@ -7,11 +7,11 @@
     {{ cctrans(locale, "license.partner_selected",
                license_deed_url=license.uri,
                license_pretty_name=license.title(target_lang),
-               license_url=license.uri) }}
+               license_url=license.uri)|safe }}
   </p>
 
   <p>
     {{ cctrans(locale, "license.you_may_proceed",
-               processed_exit_url=exit_url) }}
+               processed_exit_url=exit_url)|safe }}
   </p>
 {% endblock %}

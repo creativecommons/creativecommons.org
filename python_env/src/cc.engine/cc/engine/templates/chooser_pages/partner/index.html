@@ -4,13 +4,13 @@
 
 {% block body %}
   <p>
-    {{ cctrans(locale, "license.partner_what") }}
+    {{ cctrans(locale, "license.partner_what")|safe }}
   </p>
 
   <p>
     {{ cctrans(locale, "license.partner.publicdomain_options",
                cc0_url="/choose/zero/partner?%s" % pd_get_params,
-               pd_url="/choose/mark/partner?%s" % pd_get_params) }}
+               pd_url="/choose/mark/partner?%s" % pd_get_params)|safe }}
   </p>
 
   <form method="get" action="results-one">
@@ -25,34 +25,34 @@
     <p>
       <b>
         {{ cctrans(locale, "license.q2",
-                   lang=target_lang) }}
+                   lang=target_lang)|safe }}
       </b>
       <br />
 
       <input type="radio" checked name="field_commercial"
-             value="y" /> {{ cctrans(locale, "util.Yes") }} <br />
+             value="y" /> {{ cctrans(locale, "util.Yes")|safe }} <br />
       <input type="radio" name="field_commercial"
-             value="n" /> {{ cctrans(locale, "util.No") }} <br />
+             value="n" /> {{ cctrans(locale, "util.No")|safe }} <br />
     </p>
 
     <p>
       <b>
         {{ cctrans(locale, "license.q3",
-                   lang=target_lang) }}
+                   lang=target_lang)|safe }}
       </b>
       <br />
 
       <input type="radio" checked name="field_derivatives" value="y" />
-      {{ cctrans(locale, "util.Yes") }}
+      {{ cctrans(locale, "util.Yes")|safe }}
       <br />
         
       <input type="radio" name="field_derivatives" value="sa" /> 
       {{ cctrans(locale, "license.a6",
-                 lang=target_lang) }}
+                 lang=target_lang)|safe }}
       <br />
 
       <input type="radio" name="field_derivatives" value="n" />
-      {{ cctrans(locale, "util.No") }}
+      {{ cctrans(locale, "util.No")|safe }}
       <br />
 
       {% if not show_jurisdiction and requested_jurisdiction %}
@@ -66,7 +66,7 @@
 
     {% if show_jurisdiction %}
       <p>
-        {{ cctrans(locale, "license.jurisdiction_question") }}
+        {{ cctrans(locale, "license.jurisdiction_question")|safe }}
         (<a href="http://creativecommons.org/choose/jurisdiction-popup?lang=en"
             onclick="window.open('http://creativecommons.org/choose/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
             >more info</a>
@@ -78,7 +78,7 @@
         <br />
   
         <select name="field_jurisdiction">
-          <option value="" selected="selected">{{ cctrans(locale, "util.International") }}</option>
+          <option value="" selected="selected">{{ cctrans(locale, "util.International")|safe }}</option>
   
           {% for juris_code, juris_name in jurisdictions_names %}
             <option value="{{ juris_code }}">
@@ -91,9 +91,9 @@
 
     <p>
       <input type="submit"
-             value="{{ cctrans(locale, 'license.Select_a_License') }}" />
+             value="{{ cctrans(locale, 'license.Select_a_License')|safe }}" />
     </p>
   </form>
 
-  {{ cctrans(locale, "license.partner_note") }}
+  {{ cctrans(locale, "license.partner_note")|safe }}
 {% endblock %}

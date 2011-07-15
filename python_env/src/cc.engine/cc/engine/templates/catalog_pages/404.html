@@ -1,6 +1,6 @@
 {% extends "macros_templates/engine.html" %}
 
-{% block title %}{{ cctrans(locale, "util.Creative_Commons") }}{% endblock %}
+{% block title %}{{ cctrans(locale, "util.Creative_Commons")|safe }}{% endblock %}
 
 {% block page_header_title %}
   Sorry...
