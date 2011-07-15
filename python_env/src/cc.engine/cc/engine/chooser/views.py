@@ -457,18 +457,14 @@ def work_email_popup(request):
 
     license_html = HTML_FORMATTER.format(license, work_dict, target_lang)
 
-    template = util.get_zpt_template(
-        'chooser_pages/htmlpopup.pt', target_lang)
-    popup_template = util.get_zpt_template(
-        'macros_templates/popup.pt', target_lang)
-    
     context = _base_context(request, target_lang)
     context.update(
-        {'popup_template': popup_template,
-         'license': license,
+        {'license': license,
          'license_html': license_html})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/htmlpopup.html', context)
 
 
 @RestrictHttpMethods('POST')
@@ -484,17 +480,12 @@ def work_email_send(request):
         license_name, license_html,
         email_addr, target_lang)
 
-    template = util.get_zpt_template(
-        'chooser_pages/emailhtml.pt', target_lang)
-    popup_template = util.get_zpt_template(
-        'macros_templates/popup.pt', target_lang)
-
     context = _base_context(request, target_lang)
-    context.update(
-        {'request_form': request_form,
-         'popup_template': popup_template})
+    context.update['request_form'] = request_form
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/emailhtml.html', context)
 
 
 ## Special choosers
