@@ -484,7 +484,7 @@ def work_email_send(request):
         email_addr, target_lang)
 
     context = _base_context(request, target_lang)
-    context.update['request_form'] = request_form
+    context['request_form'] = request_form
 
     return util.render_to_response(
         request, target_lang,
