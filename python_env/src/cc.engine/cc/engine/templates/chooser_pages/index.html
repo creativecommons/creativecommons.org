@@ -5,7 +5,7 @@
 {% block headers %}
     <script type="text/javascript"
             src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js">
-    </script> 
+    </script>
 
     <script src="{{ request.staticdirect('/includes/help.js') }}"
             type="text/javascript">
@@ -16,7 +16,7 @@
 <div>
   <p>
     {{ cctrans(locale, "license.what")|safe }}
-  </p> 
+  </p>
 
   <p>
     {{ cctrans(locale, "license.explain")|safe }}
@@ -33,9 +33,9 @@
     <form action="./results-one" method="get" >
       <div>
         <input type="hidden"  name="q_1" value="2" id="question_1-2"
-               checked="checked" /> 
+               checked="checked" />
         <input type="hidden" name="q_1" value="1" id="question_1-1" />
-      </div>    
+      </div>
 
       <p>
         <strong>
@@ -46,7 +46,7 @@
         <li>
           <input type="radio" checked="checked"
                  name="field_commercial" value="y" id="question_2-3"/>
-          <label for="question_2-3">{{ cctrans(locale, "util.Yes")|safe }}</label> 
+          <label for="question_2-3">{{ cctrans(locale, "util.Yes")|safe }}</label>
           <a href="" id="commercial" class="helpLink">
             <img src="{{ request.staticdirect('images/information.png') }}"
                  alt="{{ cctrans(locale, 'Information')|safe }}"/>
@@ -54,7 +54,7 @@
         </li>
 
         <li>
-          <input type="radio"  
+          <input type="radio"
                  name="field_commercial" value="n" id="question_2-4"/>
           <label for="question_2-4">{{ cctrans(locale, "util.No")|safe }}</label>
           <a href="" id="noncommercial" class="helpLink">
@@ -69,22 +69,22 @@
           {{ cctrans(locale, "api.derivatives")|safe }}
         </strong>
       </p>
-              
+
       <ul class="choices">
         <li>
-          <input type="radio" checked="checked" 
+          <input type="radio" checked="checked"
                  name="field_derivatives" value="y"
-                 id="question_3-5" />  
+                 id="question_3-5" />
           <label for="question_3-5">{{ cctrans(locale, "util.Yes")|safe }}</label>
           <a href="" id="derivatives" class="helpLink">
             <img src="{{ request.staticdirect('images/information.png') }}"
                  alt="{{ cctrans(locale, 'Information')|safe }}"/>
           </a>
         </li>
-          
+
         <li>
-          <input type="radio" name="field_derivatives" value="sa" 
-                 id="question_3-6" /> 
+          <input type="radio" name="field_derivatives" value="sa"
+                 id="question_3-6" />
           <label for="question_3-6">
             <span>
               {{ cctrans(locale, "Yes, as long as others share alike")|safe }}
@@ -97,8 +97,8 @@
         </li>
 
         <li>
-          <input type="radio"  name="field_derivatives" value="n" 
-                 id="question_3-7" /> 
+          <input type="radio"  name="field_derivatives" value="n"
+                 id="question_3-7" />
           <label for="question_3-7">{{ cctrans(locale, "util.No")|safe }}</label>
           <a href="" id="noderivatives" class="helpLink">
             <img src="{{ request.staticdirect('images/information.png') }}"
@@ -143,22 +143,22 @@
       {% include "includes/more_metadata.html" %}
 
       <div>
-        <input type="hidden" name="lang" value="{{ target_lang }}" /> 
+        <input type="hidden" name="lang" value="{{ target_lang }}" />
         <input type="hidden" name="n_questions" value="3" />
       </div>
-  
+
       <div>
-        <p> 
+        <p>
           <input type="submit" class="submit"
                  value="{{ cctrans(locale, 'license.Select_a_License')|safe }}" />
-        </p>    
+        </p>
       </div>
     </form>
   </div>
   <br />
 
   {% include "includes/engine_languages.html" %}
-  
+
   <div id="help_jurisdiction">
     <div class="hd">
       <span>{{ cctrans(locale, "util.Jurisdiction")|safe }}</span>
@@ -179,7 +179,7 @@
       </p>
     </div>
   </div>
-                      
+
   <div id="help_noncommercial">
     <div class="hd">
       <span>{{ cctrans(locale, "licenses.pretty_nc")|safe }}</span>
@@ -190,7 +190,7 @@
       </p>
     </div>
   </div>
-                      
+
   <div id="help_derivatives">
     <div class="hd">
       <span>{{ cctrans(locale, "Allow Derivative Works")|safe }}</span>
