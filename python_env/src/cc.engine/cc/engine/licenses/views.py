@@ -12,6 +12,8 @@ from cc.i18n.util import get_well_translated_langs, negotiate_locale
 from cc.license import by_code, CCLicenseError
 from cc.licenserdf.tools.license import license_rdf_filename
 
+from cc.i18n.util import locale_to_lower_upper
+
 
 def licenses_view(request):
     target_lang = util.get_target_lang_from_request(request)
@@ -103,7 +105,7 @@ def license_deed_view(request):
     if request.matchdict.has_key('target_lang'):
         target_lang = request.matchdict.get('target_lang')
     elif license.jurisdiction.default_language:
-        target_lang = util.locale_to_cclicense_style(
+        target_lang = locale_to_lower_upper(
             license.jurisdiction.default_language)
     else:
         target_lang = 'en'

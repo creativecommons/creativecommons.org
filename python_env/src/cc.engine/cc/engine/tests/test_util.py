@@ -75,12 +75,6 @@ def test_active_languages():
     {'code': 'en', 'name': u'English'} in util.active_languages()
 
 
-def test_locale_to_cclicense_style():
-    assert util.locale_to_cclicense_style('en-US') == 'en_US'
-    assert util.locale_to_cclicense_style('en') == 'en'
-    assert util.locale_to_cclicense_style('EN-us') == 'en_US'
-
-
 def test_safer_resource_filename():
     assert util.safer_resource_filename(
         'cc.engine', 'templates/test/bunnies.pt').endswith(

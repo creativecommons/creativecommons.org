@@ -24,6 +24,7 @@ from cc.license._lib import functions as cclicense_functions
 from cc.license import CCLicenseError
 from cc.i18n import ccorg_i18n_setup
 from cc.i18n.util import negotiate_locale
+from cc.i18n.util import locale_to_lower_upper
 
 from cc.engine.pagetemplate import CCLPageTemplateFile
 
@@ -100,7 +101,7 @@ def get_locale_file_from_locale(locale):
     Returns the path to the locale file as a string or None if
     that file does not exist.
     """
-    language = locale_to_cclicense_style(locale)
+    language = locale_to_lower_upper(locale)
 
     this_locale_filename = pkg_resources.resource_filename(
         u'zope.i18n.locales', u'data/%s.xml' % language)
@@ -293,7 +294,7 @@ def active_languages():
             str(query_string),
             query_language='sparql')
         this_juri_locales = set(
-            [make_locale_lower_upper_style(str(result['lang']))
+            [locale_to_lower_upper(str(result['lang']))
              for result in query.execute(rdf_helper.JURI_MODEL)])
 
         # Append those locales that are applicable to this domain
@@ -550,22 +551,11 @@ def send_license_info_email(license_title, license_html,
         return False
 
 
-def make_locale_lower_upper_style(locale):
-    if '-' in locale:
-        lang, country = locale.split('-', 1)
-        return '%s_%s' % (lang.lower(), country.upper())
-    elif '_' in locale:
-        lang, country = locale.split('_', 1)
-        return '%s_%s' % (lang.lower(), country.upper())
-    else:
-        return locale.lower()
-
-
 def get_target_lang_from_request(request):
     request_form = request.GET or request.POST
 
     if request_form.has_key('lang'):
-        return make_locale_lower_upper_style(request_form['lang'])
+        return locale_to_lower_upper(request_form['lang'])
 
     accept_lang_matches = request.accept_language.best_matches()
     if request.matchdict.has_key('target_lang'):
@@ -575,7 +565,7 @@ def get_target_lang_from_request(request):
     else:
         target_lang = 'en'
 
-    return make_locale_lower_upper_style(target_lang)
+    return locale_to_lower_upper(target_lang)
 
 
 def generate_404_response(request, routing, environ, staticdirector):
