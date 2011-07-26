@@ -74,7 +74,7 @@ def test_standard_deeds_licenses():
     _deed_tester(
         '/licenses/by/3.0/', 'licenses/standard_deed.pt',
         'by', '3.0', None,
-        cc.license.by_code('by', '3.0'))
+        cc.license.by_code('by', version='3.0'))
     _deed_tester(
         '/licenses/by-sa/3.0/', 'licenses/standard_deed.pt',
         'by-sa', '3.0', None,
