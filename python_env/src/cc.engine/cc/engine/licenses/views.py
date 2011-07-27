@@ -241,26 +241,23 @@ def license_catcher(request):
     """
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'catalog_pages/license_catcher.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine_bare.pt', target_lang)
-
     license_versions = util.catch_license_versions_from_request(request)
 
     if not license_versions:
         return exc.HTTPNotFound()
 
     context = {'request': request,
-               'engine_template': engine_template,
                'license_versions': reversed(license_versions),
-               'license_class': license_versions[0].license_class}
+               'license_class': license_versions[0].license_class,
+               'page_style': 'bare'}
     context.update(util.rtl_context_stuff(target_lang))
 
     # This is a helper page, but it's still for not-found situations.
     # 404!
     return Response(
-        template.pt_render(context),
+        util.render_template(
+            request, target_lang,
+            'catalog_pages/license_catcher.html', context),
         status=404)
 
 
