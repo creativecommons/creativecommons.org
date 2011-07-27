@@ -703,16 +703,11 @@ def pdmark_details(request):
     """
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/pdmark/details.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     context = _base_context(request, target_lang)
-    context.update({
-            'engine_template': engine_template})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/pdmark/details.html', context)
 
 
 def pdmark_results(request):
