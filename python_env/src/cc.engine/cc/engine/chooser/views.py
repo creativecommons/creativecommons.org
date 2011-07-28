@@ -719,11 +719,6 @@ def pdmark_results(request):
     """
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/pdmark/results.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     request_form = request.GET or request.POST
 
     ## RDFA generation
@@ -741,7 +736,6 @@ def pdmark_results(request):
 
     context = _base_context(request, target_lang)
     context.update({
-            'engine_template': engine_template,
             'request_form': request_form,
             'rdfa': license_html,
             'email_requested': bool(email_addr),
@@ -749,7 +743,9 @@ def pdmark_results(request):
             'successful_send': successful_send,
             'requested_send_updates': request_form.get('send_updates', False)})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/pdmark/results.html', context)
 
 
 def pdmark_partner(request):
