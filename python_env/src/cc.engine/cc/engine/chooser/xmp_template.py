@@ -2,7 +2,7 @@ import string
 import re
 
 from cc.i18n.gettext_i18n import ugettext_for_locale
-from cc.license.util import locale_to_dash_style
+from cc.i18n.util import locale_to_lower_lower
 
 
 WORK_FORMATS = {
@@ -61,7 +61,7 @@ def get_xmp_info(request_form, license, locale):
         work_notice_template = string.Template(
             ugettext('license.work_type_licensed'))
         work_notice = work_notice_template.substitute(
-            {'license_name': license.title(locale_to_dash_style(locale)),
+            {'license_name': license.title(locale_to_lower_lower(locale)),
              'license_url': license.uri,
              'work_type': i18n_work})
 
