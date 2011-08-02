@@ -28,7 +28,8 @@
     </div>
   {% endif %}
 
-  <div id="deed-rights" dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
+  <div id="deed-rights"
+       dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
     {% if license.deprecated %}
       <div id="deed-newer" style="text-align:center">
         <h3>{{ cctrans(locale, "deed.retired")|safe }}</h3>
