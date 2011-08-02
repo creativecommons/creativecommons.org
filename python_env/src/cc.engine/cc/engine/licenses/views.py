@@ -39,17 +39,13 @@ def publicdomain_view(request):
 
 
 DEED_TEMPLATE_MAPPING = {
-    'sampling': 'licenses/sampling_deed.pt',
-    'sampling+': 'licenses/sampling_deed.pt',
-    'nc-sampling+': 'licenses/sampling_deed.pt',
-    'GPL': 'licenses/fsf_deed.pt',
-    'LGPL': 'licenses/fsf_deed.pt',
-    'MIT': 'licenses/mitbsd_deed.pt',
-    'BSD': 'licenses/mitbsd_deed.pt',
-    'devnations': 'licenses/devnations_deed.pt',
-    'CC0': 'licenses/zero_deed.pt',
-    'mark': 'licenses/pdmark_deed.pt',
-    'publicdomain': 'licenses/publicdomain_deed.pt'}
+    'sampling': 'licenses/sampling_deed.html',
+    'sampling+': 'licenses/sampling_deed.html',
+    'nc-sampling+': 'licenses/sampling_deed.html',
+    'devnations': 'licenses/devnations_deed.html',
+    'CC0': 'licenses/zero_deed.html',
+    'mark': 'licenses/pdmark_deed.html',
+    'publicdomain': 'licenses/publicdomain_deed.html'}
 
 
 # For removing the deed.foo section of a deed url
@@ -143,29 +139,10 @@ def license_deed_view(request):
         return exc.HTTPMovedPermanently(
             location=redirect_to)
 
-    # Use the pdtools deed macros template if CC0 or PD Mark, else use
-    # standard deed macros template
-    if license.license_code in ('mark', 'CC0'):
-        deed_template = util.get_zpt_template(
-            'macros_templates/pdtool_deed.pt',
-            target_lang=target_lang)
-    else:
-        deed_template = util.get_zpt_template(
-            'macros_templates/deed.pt',
-            target_lang=target_lang)
-
-    support_template = util.get_zpt_template(
-        'macros_templates/support.pt',
-        target_lang=target_lang)
-
     if DEED_TEMPLATE_MAPPING.has_key(license.license_code):
-        main_template = util.get_zpt_template(
-            DEED_TEMPLATE_MAPPING[license.license_code],
-            target_lang=target_lang)
+        main_template = DEED_TEMPLATE_MAPPING[license.license_code]
     else:
-        main_template = util.get_zpt_template(
-            'licenses/standard_deed.pt',
-            target_lang=target_lang)
+        main_template = 'licenses/standard_deed.html'
 
     context = {
         'request': request,
@@ -177,13 +154,14 @@ def license_deed_view(request):
         'legalcodes': legalcodes,
         'color': color,
         'conditions': conditions,
-        'deed_template': deed_template,
         'active_languages': active_languages,
-        'support_template': support_template,
         'target_lang': target_lang}
     context.update(util.rtl_context_stuff(target_lang))
 
-    return Response(main_template.pt_render(context))
+    return Response(
+        util.render_template(
+            request, target_lang,
+            main_template, context))
 
 
 @get_license
