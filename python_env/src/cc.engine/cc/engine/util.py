@@ -71,15 +71,6 @@ def _clear_zpt_test_templates():
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-def locale_to_cclicense_style(locale):
-    split_locale = locale.split('-')
-    new_locale = split_locale[0].lower()
-    if len(split_locale) == 2:
-        new_locale = new_locale + u'_' + split_locale[1].upper()
-
-    return new_locale
-
-
 def full_zpt_filename(template_path):
     return os.path.join(BASE_TEMPLATE_DIR, template_path)
 
