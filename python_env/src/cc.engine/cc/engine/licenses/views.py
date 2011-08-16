@@ -8,9 +8,12 @@ from webob import Response, exc
 from cc.engine.decorators import get_license
 from cc.engine import util
 from cc.i18n import ccorg_i18n_setup
-from cc.i18n.util import get_well_translated_langs, negotiate_locale
+from cc.i18n.util import (
+    get_well_translated_langs, negotiate_locale, locale_to_lower_lower)
 from cc.license import by_code, CCLicenseError
 from cc.licenserdf.tools.license import license_rdf_filename
+
+from cc.i18n.util import locale_to_lower_upper
 
 
 def licenses_view(request):
@@ -97,7 +100,7 @@ def license_deed_view(request):
     if request.matchdict.has_key('target_lang'):
         target_lang = request.matchdict.get('target_lang')
     elif license.jurisdiction.default_language:
-        target_lang = util.locale_to_cclicense_style(
+        target_lang = locale_to_lower_upper(
             license.jurisdiction.default_language)
     else:
         target_lang = 'en'
@@ -116,7 +119,7 @@ def license_deed_view(request):
         multi_language = False
 
     # Use the lower-dash style for all RDF-related locale stuff
-    rdf_style_target_lang = target_lang.replace('_', '-').lower()
+    rdf_style_target_lang = locale_to_lower_lower(target_lang)
 
     license_title = None
     try:
@@ -136,8 +139,7 @@ def license_deed_view(request):
     if target_lang != negotiated_locale:
         base_url = REMOVE_DEED_URL_RE.match(request.path_info).groups()[0]
         redirect_to = base_url + 'deed.' + negotiated_locale
-        return exc.HTTPMovedPermanently(
-            location=redirect_to)
+        return exc.HTTPFound(location=redirect_to)
 
     if DEED_TEMPLATE_MAPPING.has_key(license.license_code):
         main_template = DEED_TEMPLATE_MAPPING[license.license_code]

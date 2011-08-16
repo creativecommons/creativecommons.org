@@ -20,6 +20,13 @@ import cc.license
 util._activate_testing()
 
 
+### ----------
+### Exceptions
+### ----------
+
+class StringTestFailed(AssertionError): pass
+
+
 ### ---------------
 ### routing testing
 ### ---------------
@@ -74,7 +81,7 @@ def test_standard_deeds_licenses():
     _deed_tester(
         '/licenses/by/3.0/', 'licenses/standard_deed.pt',
         'by', '3.0', None,
-        cc.license.by_code('by', '3.0'))
+        cc.license.by_code('by', version='3.0'))
     _deed_tester(
         '/licenses/by-sa/3.0/', 'licenses/standard_deed.pt',
         'by-sa', '3.0', None,
@@ -175,7 +182,10 @@ def test_all_views_simple():
 
         if view.has_key('string_tests'):
             for string_test in view['string_tests']:
-                assert string_test in view_result.unicode_body
+                if not string_test in view_result.unicode_body:
+                    raise StringTestFailed(
+                        'On path "%s" string test failed for: "%s"' % (
+                            view['path'], string_test))
 
 
 def test_license_to_choose_redirect():
