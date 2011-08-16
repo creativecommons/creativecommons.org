@@ -1,0 +1,48 @@
+{% extends "macros_templates/deed.html" %}
+
+{% block title -%}
+  Creative Commons &mdash;
+  {{ cctrans(locale, "deed.pd.title_plain")|safe }}
+{%- endblock title %}
+
+{% block legalcode_block %}{% endblock %}
+
+{% block page_top %}
+  <!-- RDF code here for backwards compatibility.  Please use the
+       license's RDFa instead. -->
+  <!-- {{ license.rdf|safe }} -->
+{% endblock %}
+
+{% block license_name %}
+  <span property="dc:title" datatype="">
+    {{ cctrans(locale, "deed.pd.title")|safe }}
+  </h2>
+{% endblock %}
+
+{% block body %}
+  <div id="librepd">
+    <a href="http://freedomdefined.org/">
+      <img src="/images/deed/seal.png" style="border: 0" 
+           alt="{{ cctrans(locale, 'This license is acceptable for Free Cultural Works.')|safe }}" />
+    </a>
+  </div>
+
+  {% if license.deprecated %}
+    <div id="deed-newer" style="text-align:center">
+      <h3>{{ cctrans(locale, "deed.retired")|safe }}</h3>
+    </div>
+  {% endif %}
+
+  {{ cctrans(locale, "deed.pd")|safe }}
+
+  <div id="help_use_zero">
+    <div class="hd">CC0 for Public Domain Dedication</div>
+    <div class="bd">
+      {{ cctrans(locale, "deed.pd.help_use_zero")|safe }}
+    </div>
+  </div>
+
+  <span rel="cc:permits" resource="http://creativecommons.org/ns#Reproduction"></span>
+  <span rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks"></span>
+  <span rel="cc:permits" resource="http://creativecommons.org/ns#Distribution"></span>
+{% endblock %}
