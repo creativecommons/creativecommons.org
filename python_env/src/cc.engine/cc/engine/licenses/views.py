@@ -8,7 +8,8 @@ from webob import Response, exc
 from cc.engine.decorators import get_license
 from cc.engine import util
 from cc.i18n import ccorg_i18n_setup
-from cc.i18n.util import get_well_translated_langs, negotiate_locale
+from cc.i18n.util import (
+    get_well_translated_langs, negotiate_locale, locale_to_lower_lower)
 from cc.license import by_code, CCLicenseError
 from cc.licenserdf.tools.license import license_rdf_filename
 
@@ -124,7 +125,7 @@ def license_deed_view(request):
         multi_language = False
 
     # Use the lower-dash style for all RDF-related locale stuff
-    rdf_style_target_lang = target_lang.replace('_', '-').lower()
+    rdf_style_target_lang = locale_to_lower_lower(target_lang)
 
     license_title = None
     try:
