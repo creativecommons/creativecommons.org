@@ -1,0 +1,184 @@
+{% extends "macros_templates/pdtool_deed.html" %}
+
+{% block page_top %}
+  <!-- RDF code here for backwards compatibility.  Please use the
+       license's RDFa instead. -->
+  <!-- {{ license.rdf|safe }} -->
+{% endblock %}
+
+{% block license_name %}
+  <small>
+    <span property="dc:title dct:title"
+          style="display:inline !important;">{{ license_title }}</span>
+    (<span property="dc:identifier dct:identifier"
+           style="display:inline !important;">CC0 1.0</span>)
+  </small>
+  <br />
+  {{ cctrans(locale, "util.public_domain_dedication")|safe }}
+{% endblock %}
+
+{% block body %}
+  <div id="deed-rights" 
+       dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
+    <h3>{{ cctrans(locale, "deed.zero.no_copyright")|safe }}</h3>
+    <div id="librepd">
+      <a href="http://freedomdefined.org/">
+        <img src="/images/deed/seal.png" border="0" 
+             alt="{{ cctrans(locale, 'This license is acceptable for Free Cultural Works.')|safe }}" />
+      </a>
+    </div>
+    <ul class="license-properties" style="width: 550px;">
+      <li class="license nolaw">
+        <p id="nolaw-text" style="margin-bottom:1em;">
+          {{ cctrans(locale, "deed.zero.nocopyright-text")|safe }}
+        </p>
+        <p>
+          {{ cctrans(locale, "deed.zero.no-endorsment")|safe }}
+        </p>
+      </li>
+
+      <li class="license" style="display:none" id="work-details-block">
+        <div>
+          <ul>
+            <li class="license usage-guidelines" style="display:none;">
+              <a href="#" id="usage_guidelines"
+                 name="usage_guidelines">Non-binding use guidelines</a>
+              apply to this work.
+            </li>
+
+            <li style="padding-bottom: 0.5em; display:none;" id="work-details-title">
+              <strong>Work Details</strong>
+            </li>
+            <li style="display:none">
+              <span class="work-details-item-title">
+                {{ cctrans(locale, "deed.workdetails.work")|safe }}
+              </span>
+              <span id="meta_title" class="work-details-item-value"></span>
+            </li>
+            <li style="display:none">
+              <span class="work-details-item-title">
+                {{ cctrans(locale, "deed.workdetails.affirmer")|safe }}
+              </span>
+              <span id="meta_affirmer" class="work-details-item-value"></span>
+            </li>
+
+            <li id="work-attribution-container" style="margin-top: 25px; display:none;">
+              <strong>
+                {{ cctrans(locale, "deed.cite_this_work")|safe }}
+              </strong>
+              <br />
+              <input id="work-attribution" value="" />
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="deed-understanding">
+    <ul class="license-properties">
+
+      <li class="license">
+        <strong>{{ cctrans(locale, "util.other_information")|safe }}</strong>
+        <ul>
+          <li>
+            {{ cctrans(locale, "deed.zero.other_info.other_rights")|safe }}
+          </li>
+
+          <li>
+            {{ cctrans(locale, "deed.zero.other_info.no_warranty")|safe }}
+          </li>
+
+          <li>
+            {{ cctrans(locale, "deed.zero.other_info.no_endorsement")|safe }}
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <div id="help_publicity_rights">
+      <div class="hd">{{ cctrans(locale, "util.other_rights")|safe }}</div>
+      <div class="bd">
+        <p>
+          {{ cctrans(locale, "deed.help.other_rights")|safe }}
+        </p>
+
+        <p>
+          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F">{{ cctrans(locale, "util.learn_more")|safe }}</a>.
+        </p>
+      </div>
+    </div>
+
+    <div id="help_endorsement">
+      <div class="hd">{{ cctrans(locale, "util.endorsement")|safe }}</div>
+      <div class="bd">
+        <p>
+          {{ cctrans(locale, "deed.help.endorsement")|safe }}
+        </p>
+
+        <p>
+          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Do_I_need_to_be_aware_of_anything_else_when_providing_attribution_or_credit.3F">{{ cctrans(locale, "util.learn_more")|safe }}</a>.
+        </p>
+      </div>
+    </div>
+
+    <div id="help_citation_help">
+      <div class="hd">{{ cctrans(locale, "util.citation")|safe }}</div>
+      <div class="bd">
+        <p>
+          {{ cctrans(locale, "deed.help.citation")|safe }}
+        </p>
+        <p>
+          <a href="http://wiki.creativecommons.org/CC0_FAQ#Do_I_have_to_attribute_the_person_who_applied_CC0_to_their_work.3F">{{ cctrans(locale, "util.learn_more")|safe }}</a>
+        </p>
+      </div>
+    </div>
+
+   <div id="help_who_is_affirmer">
+     <div class="hd">
+       {{ cctrans(locale, "util.who_is_affirmer")|safe }}
+     </div>
+     <div class="bd">
+       <p>
+         {{ cctrans(locale, "deed.help.who_is_affirmer")|safe }}
+       </p>
+     </div>
+   </div>
+
+
+  </div>
+
+  <span id='referrer-metadata-container'/>
+
+  <span rel="cc:permits" resource="http://creativecommons.org/ns#Reproduction"></span>
+  <span rel="cc:permits" resource="http://creativecommons.org/ns#DerivativeWorks"></span>
+  <span rel="cc:permits" resource="http://creativecommons.org/ns#Distribution"></span>
+{% endblock body %}
+
+{% block legalcode_block %}
+  <!--- hidden disclaimer text -->
+  <div id="help_disclaimer_popup" class="help_panel">
+    <div class="hd">
+      {{ cctrans(locale, "util.Disclaimer")|safe }}
+    </div>
+
+    <div class="bd">
+      {{ cctrans(locale, "deed.zero.disclaimer")|safe }}
+    </div>
+  </div>
+
+  <div id="deed-disclaimer">
+    <div class="summary">
+      {{ cctrans(locale, "deed.zero.human_summary")|safe }}
+    </div>
+
+    <div class="disclaimer">
+      <a href="#" id="disclaimer_popup" class="helpLink">
+        {{ cctrans(locale, "util.Disclaimer")|safe }}
+      </a>
+    </div>
+  </div>
+{% endblock legalcode_block %}
+
+{% block use_this_license %}
+  <a id="get_this" href="/publicdomain/">{{ cctrans(locale, "deed.use_this_tool")|safe }}</a>
+{% endblock use_this_license %}
