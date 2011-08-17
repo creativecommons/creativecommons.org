@@ -65,8 +65,7 @@ def _deed_tester(url, template_path,
                  expected_code, expected_version, expected_jurisdiction,
                  expected_license):
     response = TESTAPP.get(url)
-    namespace = util.ZPT_TEST_TEMPLATES.pop(
-            util.full_zpt_filename(template_path))
+    namespace = util.TEST_TEMPLATE_CONTEXT.pop(template_path)
     request = namespace['request']
     assert_equal(namespace['license'], expected_license)
     assert_equal(request.matchdict.get('code'), expected_code)
@@ -79,11 +78,11 @@ def test_standard_deeds_licenses():
     Make sure the correct licenses get selected from the deeds
     """
     _deed_tester(
-        '/licenses/by/3.0/', 'licenses/standard_deed.pt',
+        '/licenses/by/3.0/', 'licenses/standard_deed.html',
         'by', '3.0', None,
         cc.license.by_code('by', version='3.0'))
     _deed_tester(
-        '/licenses/by-sa/3.0/', 'licenses/standard_deed.pt',
+        '/licenses/by-sa/3.0/', 'licenses/standard_deed.html',
         'by-sa', '3.0', None,
         cc.license.by_code('by-sa'))
 
@@ -313,7 +312,7 @@ def test_deeds_up_for_licenses():
 class TestEmailSenderViews(unittest.TestCase):
     def setUp(self):
         util._clear_test_inboxes()
-        util._clear_zpt_test_templates()
+        util._clear_test_template_context()
         
     def test_work_email_send(self):
         # For doing a POST (email sending time!)
@@ -420,7 +419,7 @@ class TestEmailSenderViews(unittest.TestCase):
         # For doing a GET (shouldn't send email!)
         # ---------------------------------------
         util._clear_test_inboxes()
-        util._clear_zpt_test_templates()
+        util._clear_test_template_context()
 
         response = TESTAPP.get(
             '/choose/mark/results?email=recipient@example.org')
