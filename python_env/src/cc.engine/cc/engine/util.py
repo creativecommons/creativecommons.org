@@ -111,40 +111,6 @@ def render_to_response(request, locale, template_path, context):
         render_template(request, locale, template_path, context))
 
 
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-### Special ZPT unit test hackery begins HERE
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-ZPT_TEST_TEMPLATES = {}
-class CCLPageTemplateFileTester(CCLPageTemplateFile):
-    def pt_render(self, namespace, *args, **kwargs):
-        ZPT_TEST_TEMPLATES[self.filename] = namespace
-        return CCLPageTemplateFile.pt_render(self, namespace, *args, **kwargs)
-
-def _clear_zpt_test_templates():
-    ZPT_TEST_TEMPLATES.clear()
-
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-### </Special ZPT unit test hackery>
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-def full_zpt_filename(template_path):
-    return os.path.join(BASE_TEMPLATE_DIR, template_path)
-
-
-def get_zpt_template(template_path, target_lang=None):
-    full_template_path = full_zpt_filename(template_path)
-
-    if TESTS_ENABLED:
-        ptf_class = CCLPageTemplateFileTester
-    else:
-        ptf_class = CCLPageTemplateFile
-
-    return ptf_class(
-        full_template_path, target_language=target_lang)
-    
-
 def get_locale_file_from_locale(locale):
     """
     Returns the path to the locale file as a string or None if
