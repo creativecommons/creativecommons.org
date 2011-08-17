@@ -137,7 +137,7 @@
  {"path": "/choose/results-one",
   "string_tests": [
       "Choose which style of button you'd like on your webpage:",
-      "src=\"http://i.creativecommons.org/l/by/3.0/88x31.png\"",
+      "src=&#34;http://i.creativecommons.org/l/by/3.0/88x31.png&#34;",
       "Creative Commons Attribution 3.0 Unported License"]},
  {"path": "/choose/xmp",
   "string_tests": [
@@ -189,7 +189,7 @@
   "string_tests": [
       "Identify a Public Domain Work",
       "Now that you've chosen the Public Domain Certification, you should mark the work in the appropriate way.",
-      "src=\"http://i.creativecommons.org/l/publicdomain/88x31.png\""]},
+      "src=&#34;http://i.creativecommons.org/l/publicdomain/88x31.png&#34;"]},
  {"path": "/choose/publicdomain-4?understand=confirm&field1=continue&title=&foocopyright_holder=bar"},
  {"path": "/choose/publicdomain-direct"},
 
@@ -215,7 +215,7 @@
       "<input type=\"hidden\" name=\"name\" value=\"\" />",
       "<input type=\"hidden\" name=\"actor_href\" value=\"\" />",
       "<input type=\"hidden\" name=\"work_title\" value=\"\" />",
-      "<input type=\"hidden\" name=\"work_jurisdiction\"\n                   value=\"-\" />"]},
+      "<input type=\"hidden\" name=\"work_jurisdiction\" value=\"-\" />"]},
  {"path": "/choose/zero/results?license-class=zero&name=&actor_href=&work_title=&work_jurisdiction=-&confirm=confirm&understand=confirm&field1=continue&waiver-affirm=affirm",
   "string_tests": [
       "CC0",
@@ -226,9 +226,9 @@
   "string_tests": [
       "CC0: Confirm Waiver",
       "<input type=\"hidden\" name=\"name\" value=\"foo\" />",
-      "<input type=\"hidden\" name=\"actor_href\"\n                   value=\"bar\" />",
-      "<input type=\"hidden\" name=\"work_title\"\n                   value=\"baz\" />",
-      "<input type=\"hidden\" name=\"work_jurisdiction\"\n                   value=\"BA\" />"]},
+      "<input type=\"hidden\" name=\"actor_href\" value=\"bar\" />",
+      "<input type=\"hidden\" name=\"work_title\" value=\"baz\" />",
+      "<input type=\"hidden\" name=\"work_jurisdiction\" value=\"BA\" />"]},
  {"path": "/choose/zero/results?license-class=zero&name=foo&actor_href=bar&work_title=baz&work_jurisdiction=BA&confirm=confirm&understand=confirm&field1=continue&waiver-affirm=affirm",
   "string_tests": [
       "CC0: Results",
