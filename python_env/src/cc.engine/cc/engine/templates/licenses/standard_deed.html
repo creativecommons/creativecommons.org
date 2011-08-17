@@ -53,7 +53,7 @@
         {{ cctrans(locale, "deed.free_copy_distribute")|safe }}
       </li>
 
-      {% if not license.license_code.find('nd') %}
+      {% if not 'nd' in license.license_code %}
         <li class="license remix"
             rel="cc:permits"
             resource="http://creativecommons.org/ns#DerivativeWorks">
