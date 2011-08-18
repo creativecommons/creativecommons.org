@@ -1,6 +1,6 @@
 from webob.exc import HTTPNotFound, HTTPMethodNotAllowed
 
-from cc.license import by_code, CCLicenseError
+from cc.license import by_code
 
 def _make_safe(decorator, original):
     """
@@ -14,12 +14,11 @@ def _make_safe(decorator, original):
 
 def get_license(controller):
     def new_controller_func(request, *args, **kwargs):
-        try:
-            license = by_code(
-                request.matchdict['code'],
-                jurisdiction=request.matchdict.get('jurisdiction'),
-                version=request.matchdict.get('version'))
-        except CCLicenseError:
+        license = by_code(
+            request.matchdict['code'],
+            jurisdiction=request.matchdict.get('jurisdiction'),
+            version=request.matchdict.get('version'))
+        if not license:
             return HTTPNotFound()
 
         return controller(request, license=license, *args, **kwargs)

@@ -21,7 +21,6 @@ from zope.i18nmessageid import MessageFactory
 
 from cc.license._lib import rdf_helper, all_possible_license_versions
 from cc.license._lib import functions as cclicense_functions
-from cc.license import CCLicenseError
 from cc.i18n import ccorg_i18n_setup
 from cc.i18n.util import negotiate_locale
 from cc.i18n.util import locale_to_lower_upper
@@ -593,12 +592,9 @@ def catch_license_versions_from_request(request):
     if request.matchdict.has_key('jurisdiction'):
         # If licenses of a jurisdiction don't exist, fallback to
         # just licenses of this code.
-        try:
-            license_versions = all_possible_license_versions(
-                request.matchdict['code'],
-                request.matchdict['jurisdiction'])
-        except CCLicenseError:
-            license_versions = None
+        license_versions = all_possible_license_versions(
+            request.matchdict['code'],
+            request.matchdict['jurisdiction'])
 
         if not license_versions:
             license_versions = all_possible_license_versions(

@@ -9,7 +9,7 @@ from cc.engine.decorators import get_license
 from cc.engine import util
 from cc.i18n import ccorg_i18n_setup
 from cc.i18n.util import get_well_translated_langs, negotiate_locale
-from cc.license import by_code, CCLicenseError
+from cc.license import by_code
 from cc.licenserdf.tools.license import license_rdf_filename
 
 from cc.i18n.util import locale_to_lower_upper
@@ -67,12 +67,11 @@ def license_deed_view(request):
     ##########################
     # Try and get the license.
     ##########################
-    try:
-        license = by_code(
-            request.matchdict['code'],
-            jurisdiction=request.matchdict.get('jurisdiction'),
-            version=request.matchdict.get('version'))
-    except CCLicenseError:
+    license = by_code(
+        request.matchdict['code'],
+        jurisdiction=request.matchdict.get('jurisdiction'),
+        version=request.matchdict.get('version'))
+    if not license:
         license_versions = util.catch_license_versions_from_request(request)
 
         if license_versions:
