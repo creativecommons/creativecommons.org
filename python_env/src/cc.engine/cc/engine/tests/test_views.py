@@ -20,6 +20,13 @@ import cc.license
 util._activate_testing()
 
 
+### ----------
+### Exceptions
+### ----------
+
+class StringTestFailed(AssertionError): pass
+
+
 ### ---------------
 ### routing testing
 ### ---------------
@@ -175,13 +182,10 @@ def test_all_views_simple():
 
         if view.has_key('string_tests'):
             for string_test in view['string_tests']:
-                try:
-                    assert string_test in view_result.unicode_body
-                except:
-                    print "\n\nString test failed for this path:"
-                    print " - %s" % view['path']
-                    print "\nwhile testing for:\n\n%s\n\n" % string_test
-                    raise
+                if not string_test in view_result.unicode_body:
+                    raise StringTestFailed(
+                        'On path "%s" string test failed for: "%s"' % (
+                            view['path'], string_test))
 
 
 def test_license_to_choose_redirect():
