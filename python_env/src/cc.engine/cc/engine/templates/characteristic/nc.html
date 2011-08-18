@@ -3,15 +3,15 @@
 {% block title %}{{ cctrans(locale, "char.nc_title")|safe }}{% endblock %}
 
 {% block body %}
-  <p dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}" >
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}" >
     <img src="/icon/nc/standard.gif" alt="nc" hspace="4"
-         style="{{ is_rtl_align }}" />
+         align="{{ is_rtl_align }}" />
   </p>
 
-  <p dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
     <strong>{{ cctrans(locale, "char.nc_title")|safe }}</strong></p>
 
-  <p dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
     {{ cctrans(locale, "char.nc_description")|safe }}
   </p>
 
