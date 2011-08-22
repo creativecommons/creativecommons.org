@@ -41,7 +41,7 @@ setup(
         'cc.i18n',
         'python-gettext',
         'zope.interface',
-        'zope.pagetemplate',
+        'zope.pagetemplate<3.6.0',
         'PasteScript',
         #'repoze.bfg',
         'WebOb',
