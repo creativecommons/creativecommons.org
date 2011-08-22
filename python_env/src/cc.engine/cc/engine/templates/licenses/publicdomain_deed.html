@@ -14,9 +14,8 @@
 {% endblock %}
 
 {% block license_name %}
-  <span property="dc:title" datatype="">
-    {{ cctrans(locale, "deed.pd.title")|safe }}
-  </h2>
+  <span property="dc:title" style="display: inline;"
+        datatype="">{{ cctrans(locale, "deed.pd.title")|safe }}</span>
 {% endblock %}
 
 {% block body %}
