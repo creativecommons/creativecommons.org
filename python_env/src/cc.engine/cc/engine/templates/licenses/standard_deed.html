@@ -79,9 +79,7 @@
     <ul dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
         class="license-properties">
       {% for attr in conditions %}
-      <li rel="cc:requires"
-          resource="http://creativecommons.org/ns#Attribution"
-          class="license {{ attr.icon_name }}"
+      <li class="license {{ attr.icon_name }}"
           rel="{{ attr.predicate }}" resource="{{ attr.object }}">
           <p>
             <strong>{{ attr.char_title|safe }}</strong> &mdash;
