@@ -14,8 +14,8 @@
 {% block license_name %}
   <span property="dc:title dct:title"
         style="display: inline;">{{ license_title }}</span>
-  (<span property="dc:identifier dct:identifier" style="display: inline;">
-    {{- license.license_code.upper() }} {{ license.version }}</span>)
+  (<span property="dc:identifier dct:identifier"
+         style="display: inline;">CC {{ license.license_code.upper() }} {{ license.version }}</span>)
 {% endblock %}
 
 {% block body %}
