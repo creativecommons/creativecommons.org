@@ -1,0 +1,31 @@
+{% extends "macros_templates/popup.html" %}
+
+{% block title %}Non-Web Popup{% endblock %}
+
+{% block body %}
+  <p>The text to display is as follows:</p>
+
+  <form action="">
+    <textarea cols="30" rows="8"
+              name="html" style="width:90%;height:150px;">
+      {%- if is_publicdomain -%}
+        {{ cctrans(locale, "license.non_web_pd")|safe }}
+      {%- else -%}
+        {{ cctrans(locale, "license.non_web_statement",
+                   license_name=license.title(target_lang),
+                   license_url=license.uri)|safe }}
+      {%- endif -%}
+    </textarea>
+
+    <p>
+      <input type="button" onclick="form.html.focus();form.html.select()" 
+             value="{{ cctrans(locale, 'util.Highlight_Text')|safe }}" 
+             name="grab" />
+    </p>
+  </form>
+
+  <div align="center">
+    <a href="javascript:window.close();">{{ cctrans(locale, "util.Close_window")|safe }}</a>
+  </div>
+{% endblock %}
+

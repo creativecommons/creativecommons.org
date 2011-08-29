@@ -1,0 +1,43 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}Creative Commons Public Domain Tools{% endblock %}
+
+{% block page_header_title %}
+  {{ cctrans(locale, "license.pdtools.title")|safe }}
+{% endblock %}
+  
+{% block body %}
+  <p>
+    {{ cctrans(locale, "license.pdtools.intro")|safe }}
+  </p>
+
+  <h2>CC0</h2>
+
+  <p>
+    {{ cctrans(locale, "license.pdtools.zero")|safe }}
+  </p>
+
+  <ul>
+    <li>
+      <a href="/about/cc0">{{ cctrans(locale, "util.learn_more")|safe }}</a>
+    </li>
+    <li>
+      <a href="/choose/zero/">{{ cctrans(locale, "util.use_this_tool")|safe }}</a>
+    </li>
+  </ul>
+
+  <h2>{{ cctrans(locale, "licenses.publicdomain_mark_title")|safe }}</h2>
+
+  <p>
+    {{ cctrans(locale, "license.pdtools.pdm")|safe }}
+  </p>
+
+  <ul>
+    <li>
+      <a href="/about/pdm">{{ cctrans(locale, "util.learn_more")|safe }}</a>
+    </li>
+    <li>
+      <a href="/choose/mark">{{ cctrans(locale, "util.use_this_tool")|safe }}</a>
+    </li>
+  </ul>
+{% endblock body %}

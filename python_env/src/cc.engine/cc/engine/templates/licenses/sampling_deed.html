@@ -1,0 +1,87 @@
+{% extends "macros_templates/deed.html" %}
+
+{% block license_name %}
+  <span property="dc:title"
+        style="display: inline;">{{ license_title }}</span>
+{% endblock %}
+
+{% block body %}
+  <div id="deed-rights"
+       dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
+    {% if license.deprecated %}
+      <div id="deed-newer"
+           style="text-align:center">
+        <h3>
+          {{ cctrans(locale, "deed.retired")|safe }}
+        </h3>
+      </div>
+    {% endif %}
+
+    <h3>{{ cctrans(locale, "deed.You_are_free")|safe }}</h3>
+    <ul class="license-properties">
+      {% if license.license_code == 'nc-sampling+' %}
+        <li class="license samplingplus">
+          {{ cctrans(locale, "deed.free_sample_nc")|safe }}
+        </li>
+      {% else %}
+        <li class="license sampling">
+          {{ cctrans(locale, "deed.free_sample")|safe }}
+        </li>
+      {% endif %}
+
+      {% if license.license_code in ('nc-sampling+', 'sampling+') %}
+        <li class="license samplingplus">
+          {{ cctrans(locale, "deed.free_copy_distribute_noncommercial")|safe }}
+        </li>
+      {% endif %}
+    </ul>
+
+  </div>
+  <div id="deed-conditions">
+    <h3>{{ cctrans(locale, "deed.under_conditions")|safe }}</h3>
+    <ul class="license-properties"
+        dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
+      <li class="license by">
+        {{ cctrans(locale, "char.by_brief")|safe }}
+      </li>
+      {% if license.license_code == 'nc-sampling+' %}
+        <li class="license nc">
+          {{ cctrans(locale, "char.nc_brief")|safe }}
+        </li>
+      {% else %}
+        <li>
+          {{ cctrans(locale, "char.na_brief")|safe }}
+        </li>
+      {% endif %}
+
+      {% if license.license_code in ('nc-sampling+', 'sampling+') %}
+        <li>
+          {{ cctrans(locale, "deed.notice")|safe }}
+        </li>
+      {% else %}
+        <li>
+          {{ cctrans(locale, "deed.notice_withoutdistribution")|safe }}
+        </li>
+        <li>
+          {{ cctrans(locale, "char.no_brief")|safe }}
+        </li>
+      {% endif %}
+
+      <li>
+        In no way are any of the following rights affected by
+        the above:
+
+        <ul>
+          <li>
+            {{ cctrans(locale, "deed.fair_use")|safe }}
+          </li>
+          <li>
+            {{ cctrans(locale, "deed.publicity_rights")|safe }}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <span id="referrer-metadata-container" />
+{% endblock %}

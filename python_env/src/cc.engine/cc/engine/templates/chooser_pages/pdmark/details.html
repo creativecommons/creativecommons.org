@@ -1,0 +1,153 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}Public Domain Mark{% endblock title %}
+
+{% block headers %}
+  <link rel="stylesheet" type="text/css"
+        href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
+
+  <script type="text/javascript"
+          src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script>
+  <script type="text/javascript"
+          src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
+
+  <link rel="stylesheet" type="text/css"
+        href="{{ request.staticdirect('includes/zero.css') }}" />
+
+  <script type="text/javascript"
+          src="{{ request.staticdirect('/includes/help.js') }}" >
+  </script>
+
+  <script type="text/javascript">
+    YAHOO.namespace("cc.zero");
+
+    YAHOO.cc.zero.on_click = function(event) {
+
+    YAHOO.util.Dom.get("details-submit").disabled = !(
+    YAHOO.util.Dom.get("confirm_details").checked &&
+    YAHOO.util.Dom.get("confirm_understand").checked);
+
+    } // on_click
+
+    YAHOO.util.Event.onDOMReady(function() {
+
+    // connect event handlers for the check boxes
+    YAHOO.util.Event.addListener("confirm_details", "click", YAHOO.cc.zero.on_click);
+    YAHOO.util.Event.addListener("confirm_understand", "click", YAHOO.cc.zero.on_click);
+
+    });
+  </script>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
+
+{% block page_header_title %}Public Domain Mark{% endblock %}
+
+{% block body %}
+  <div class="yui-skin-sam">
+    <div id="waiver_ui" class="yui-module">
+      <div class="bd">
+        <p>
+          {{ cctrans(locale, "license.mark.additional_metadata")|safe }}
+          <a href="" id="embedded_metadata" class="helpLink">
+            <img src="{{ request.staticdirect('/images/information.png') }}"
+                 alt="{{ cctrans(locale, 'Information')|safe }}"/></a>
+        </p>
+
+        <div id="help_embedded_metadata" class="help_panel">
+          <div class="hd">{{ cctrans(locale, "Embedded Metadata")|safe }}</div>
+          <div class="bd">
+            {{ cctrans(locale, "license.mark.metadata_help")|safe }}
+          </div>
+        </div>
+
+        <form id="form-details" action="./results">
+          <div class="form-section">
+            <h3>{{ cctrans(locale, "util.work_information")|safe }}</h3>
+
+            <div class="form-row">
+              <div class="form-question">{{ cctrans(locale, "util.work_name")|safe }}</div>
+              <div class="form-answer">
+                <input name="work_title" class="form-field"/>
+                <br />
+                <div class="form-field-description">
+                  {{ cctrans(locale, "license.mark.work_title")|safe }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="clear:both;"></div>
+
+          <div class="form-section">
+            <h3>{{ cctrans(locale, "util.author")|safe }}</h3>
+
+            <div class="form-row">
+              <div class="form-question">{{ cctrans(locale, "util.author_name")|safe }}</div>
+              <div class="form-answer">
+                <input name="author_title" class="form-field"/>
+                <br />
+                <div class="form-field-description">
+                  {{ cctrans(locale, "license.mark.author_help")|safe }}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-question">{{ cctrans(locale, "util.author_url")|safe }}</div>
+              <div class="form-answer">
+                <input name="author_href" class="form-field"/>
+                <br />
+                <div class="form-field-description">
+                  {{ cctrans(locale, "license.mark.author_url_help")|safe }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="clear:both;"></div>
+
+          <div class="form-section">
+            <h3>{{ cctrans(locale, "util.identifying_party")|safe }}</h3>
+
+            <div class="form-row">
+              <div class="form-question">{{ cctrans(locale, "util.name")|safe }}</div>
+              <div class="form-answer">
+                <input name="curator_title" class="form-field"/>
+                <br />
+                <div class="form-field-description">
+                  {{ cctrans(locale, "license.mark.curator_help")|safe }}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-question">{{ cctrans(locale, "util.url")|safe }}</div>
+              <div class="form-answer">
+                <input name="curator_href" class="form-field"/>
+                <div class="form-field-description">
+                  {{ cctrans(locale, "license.mark.curator_href_help")|safe }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="clear:both;"></div>
+
+          <div>
+            <input type="hidden" name="lang" value="{{ target_lang }}" /> 
+          </div>
+
+          <div class="form-row">
+            <div class="form-question">&nbsp;</div>
+            <div class="form-answer">
+              <input type="submit" id="submit"
+    	         name="field1" value="{{ cctrans(locale, 'util.continue')|safe }}" /> 
+            </div>
+          </div>
+
+        </form>
+
+        <br clear="both"/>&nbsp;
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

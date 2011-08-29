@@ -19,42 +19,36 @@ from cc.i18n.util import locale_to_lower_upper
 def licenses_view(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template('catalog_pages/licenses-index.pt', target_lang)
-
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine_bare.pt', target_lang)
-    support_template = util.get_zpt_template(
-        'macros_templates/support.pt',
-        target_lang=target_lang)
-    
-    context = {'request': request,
-               'engine_template': engine_template,
-               'support_template': support_template,
-               'active_languages': get_well_translated_langs()}
+    context = {
+        'active_languages': get_well_translated_langs(),
+        'page_style': "bare"}
     context.update(util.rtl_context_stuff(target_lang))
 
     # Don't cache the response for internationalization reasons
-    response = Response(template.pt_render(context))
+    response = Response(
+        util.render_template(
+            request, target_lang,
+            'catalog_pages/licenses-index.html', context))
     response.headers.add('Cache-Control', 'no-cache')
     return response
 
 
 def publicdomain_view(request):
-    return util.plain_template_view('publicdomain/index.pt', request)
+    target_lang = util.get_target_lang_from_request(request)
+
+    return util.render_to_response(
+        request, target_lang,
+        'publicdomain/index.html', {})
 
 
 DEED_TEMPLATE_MAPPING = {
-    'sampling': 'licenses/sampling_deed.pt',
-    'sampling+': 'licenses/sampling_deed.pt',
-    'nc-sampling+': 'licenses/sampling_deed.pt',
-    'GPL': 'licenses/fsf_deed.pt',
-    'LGPL': 'licenses/fsf_deed.pt',
-    'MIT': 'licenses/mitbsd_deed.pt',
-    'BSD': 'licenses/mitbsd_deed.pt',
-    'devnations': 'licenses/devnations_deed.pt',
-    'CC0': 'licenses/zero_deed.pt',
-    'mark': 'licenses/pdmark_deed.pt',
-    'publicdomain': 'licenses/publicdomain_deed.pt'}
+    'sampling': 'licenses/sampling_deed.html',
+    'sampling+': 'licenses/sampling_deed.html',
+    'nc-sampling+': 'licenses/sampling_deed.html',
+    'devnations': 'licenses/devnations_deed.html',
+    'CC0': 'licenses/zero_deed.html',
+    'mark': 'licenses/pdmark_deed.html',
+    'publicdomain': 'licenses/publicdomain_deed.html'}
 
 
 # For removing the deed.foo section of a deed url
@@ -146,29 +140,10 @@ def license_deed_view(request):
         redirect_to = base_url + 'deed.' + negotiated_locale
         return exc.HTTPFound(location=redirect_to)
 
-    # Use the pdtools deed macros template if CC0 or PD Mark, else use
-    # standard deed macros template
-    if license.license_code in ('mark', 'CC0'):
-        deed_template = util.get_zpt_template(
-            'macros_templates/pdtool_deed.pt',
-            target_lang=target_lang)
-    else:
-        deed_template = util.get_zpt_template(
-            'macros_templates/deed.pt',
-            target_lang=target_lang)
-
-    support_template = util.get_zpt_template(
-        'macros_templates/support.pt',
-        target_lang=target_lang)
-
     if DEED_TEMPLATE_MAPPING.has_key(license.license_code):
-        main_template = util.get_zpt_template(
-            DEED_TEMPLATE_MAPPING[license.license_code],
-            target_lang=target_lang)
+        main_template = DEED_TEMPLATE_MAPPING[license.license_code]
     else:
-        main_template = util.get_zpt_template(
-            'licenses/standard_deed.pt',
-            target_lang=target_lang)
+        main_template = 'licenses/standard_deed.html'
 
     context = {
         'request': request,
@@ -180,13 +155,14 @@ def license_deed_view(request):
         'legalcodes': legalcodes,
         'color': color,
         'conditions': conditions,
-        'deed_template': deed_template,
         'active_languages': active_languages,
-        'support_template': support_template,
         'target_lang': target_lang}
     context.update(util.rtl_context_stuff(target_lang))
 
-    return Response(main_template.pt_render(context))
+    return Response(
+        util.render_template(
+            request, target_lang,
+            main_template, context))
 
 
 @get_license
@@ -244,26 +220,23 @@ def license_catcher(request):
     """
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'catalog_pages/license_catcher.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine_bare.pt', target_lang)
-
     license_versions = util.catch_license_versions_from_request(request)
 
     if not license_versions:
         return exc.HTTPNotFound()
 
     context = {'request': request,
-               'engine_template': engine_template,
                'license_versions': reversed(license_versions),
-               'license_class': license_versions[0].license_class}
+               'license_class': license_versions[0].license_class,
+               'page_style': 'bare'}
     context.update(util.rtl_context_stuff(target_lang))
 
     # This is a helper page, but it's still for not-found situations.
     # 404!
     return Response(
-        template.pt_render(context),
+        util.render_template(
+            request, target_lang,
+            'catalog_pages/license_catcher.html', context),
         status=404)
 
 

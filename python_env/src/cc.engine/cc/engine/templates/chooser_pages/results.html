@@ -1,0 +1,137 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}Choose a License{% endblock title %}
+
+{% block headers %}
+  <style>
+    #beta h4 {
+      margin-bottom: 0.25em;
+      margin-top: 0.5em;
+      padding-left: 0;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css"
+        href="{{ request.staticdirect('includes/zero.css') }}" />
+{% endblock headers %}
+
+{% block body %}
+  <p>
+    {{ cctrans(locale, "license.choose_button")|safe }}
+  </p>
+  
+  <div class="licensebox">
+    <div style="margin-top:10px;" align="center">
+      <table dir="{{ get_ltr_rtl }}">
+        <tr>
+          <td style="text-align:center">
+            <a href="{{ license.uri }}">
+              <img id="licensebutton"
+                   alt="Creative Commons License"
+                   src="{{ license.logo }}"
+                   style="margin-right:10px;margin-bottom:4px; border: 0;" />
+            </a>
+            <br/>
+            <input type="radio" name="button"
+                   checked="checked" onclick="swapbutton('{{ license.logo }}')" />
+          </td>
+          {% if not request.wiki %}
+            <td style="text-align:center" valign="bottom">
+              <a href="{{ license.uri }}">
+                <img id="licensebutton_slim"
+                     alt="Creative Commons License"
+                     src="{{ license_slim_logo }}"
+                     style="margin-right:10px;margin-bottom:4px; border: 0;" /></a>
+              <br/>
+              <input type="radio" name="button"
+                     onclick="swapbutton('{{ license_slim_logo }}')"/>
+            </td>
+          {% endif %}
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    {{ cctrans(locale, "license.preview")|safe }}
+  </div>
+  
+  <div class="preview" id="results-preview">
+    {%- autoescape False -%}
+      {{- license_html -}}
+    {%- endautoescape -%}
+  </div>
+  
+  <div style="margin-top:20px;margin-bottom:30px;">
+    <h4>{{ cctrans(locale, "license.have_your_own_website")|safe }}</h4>
+
+    <p>
+      {{ cctrans(locale, "license.copy_text")|safe }}
+    </p>
+
+    <form action="">
+      <div>
+        <textarea id="codetocopy" name="html" onclick="this.select()" readonly="true" 
+                  style="width:99%;height:150px;resize:vertical" rows="8" cols="20">
+          {{- license_html -}}
+        </textarea>
+      </div>
+    </form>
+
+    <p>
+      <span>
+        {{ cctrans(locale, "license.select_text",
+                   url_vars=request.query_string)|safe }}
+      </span>
+      <strong>
+        {{ cctrans(locale, "license.read_tutorial")|safe }}
+      </strong>
+    </p>
+
+    <div id="chooserDonate">
+      <div>
+        <a href="https://creativecommons.net/donate/"><img src="/images/support/2010/cc-support.png" alt="Donate" title="Donate" border="0"/></a></div>
+        <p>
+          {{ cctrans(locale, "license.donate_message")|safe }}
+       </p>
+    </div>
+  </div>
+  <!-- <div metal:use-macro="here/license_macros/macros/languages">
+       language box
+       </div>
+  -->
+{% endblock %}
+
+{% block sidebar %}
+  <p>
+    {{ cctrans(locale, "license.learn_share")|safe }}
+  </p>
+  
+  <p>
+    {{ cctrans(locale, "license.learn_where_to_publish")|safe }}
+  </p>
+
+  <h4>{{ cctrans(locale, "license.offline_work")|safe }}</h4>
+
+  <ul class="no-bullets">
+    <li>
+      <span>
+        {{ cctrans(locale, "license.mark_nonweb",
+                   url_vars=request.query_string)|safe }}
+      </span>
+    </li>
+    <li>
+      {{ cctrans(locale, "license.xmp_metadata",
+                 url_vars=request.query_string)|safe }}
+    </li>
+    <li>
+      <a href="http://creativecommons.org/about/downloads/">
+        {{ cctrans(locale, "license.get_high_res")|safe }}
+      </a>
+    </li>
+    <li>
+      <a href="http://wiki.creativecommons.org/Marking/Creators#Marking_Specific_Media">
+        {{ cctrans(locale, "license.mark_video")|safe }}
+      </a>
+    </li>
+  </ul>
+{% endblock %}

@@ -65,8 +65,7 @@ def _deed_tester(url, template_path,
                  expected_code, expected_version, expected_jurisdiction,
                  expected_license):
     response = TESTAPP.get(url)
-    namespace = util.ZPT_TEST_TEMPLATES.pop(
-            util.full_zpt_filename(template_path))
+    namespace = util.TEST_TEMPLATE_CONTEXT.pop(template_path)
     request = namespace['request']
     assert_equal(namespace['license'], expected_license)
     assert_equal(request.matchdict.get('code'), expected_code)
@@ -79,11 +78,11 @@ def test_standard_deeds_licenses():
     Make sure the correct licenses get selected from the deeds
     """
     _deed_tester(
-        '/licenses/by/3.0/', 'licenses/standard_deed.pt',
+        '/licenses/by/3.0/', 'licenses/standard_deed.html',
         'by', '3.0', None,
         cc.license.by_code('by', version='3.0'))
     _deed_tester(
-        '/licenses/by-sa/3.0/', 'licenses/standard_deed.pt',
+        '/licenses/by-sa/3.0/', 'licenses/standard_deed.html',
         'by-sa', '3.0', None,
         cc.license.by_code('by-sa'))
 
@@ -313,7 +312,7 @@ def test_deeds_up_for_licenses():
 class TestEmailSenderViews(unittest.TestCase):
     def setUp(self):
         util._clear_test_inboxes()
-        util._clear_zpt_test_templates()
+        util._clear_test_template_context()
         
     def test_work_email_send(self):
         # For doing a POST (email sending time!)
@@ -340,8 +339,8 @@ class TestEmailSenderViews(unittest.TestCase):
         assert 'You feel charged up!' in mail_body
 
         # check that the right template was loaded
-        assert util.ZPT_TEST_TEMPLATES.has_key(
-            util.full_zpt_filename('chooser_pages/emailhtml.pt'))
+        assert util.TEST_TEMPLATE_CONTEXT.has_key(
+            'chooser_pages/emailhtml.html')
 
         # For doing a GET (shouldn't send email!)
         # ---------------------------------------
@@ -351,6 +350,7 @@ class TestEmailSenderViews(unittest.TestCase):
         assert_equal(response.status_int, 405)
 
     def test_cc0_results_email_send(self):
+        util._clear_test_template_context()
         # For doing a POST (email sending time!)
         # --------------------------------------
         response = TESTAPP.post(
@@ -372,13 +372,13 @@ class TestEmailSenderViews(unittest.TestCase):
         assert 'To the extent possible under law,' in mail_body
 
         # check that the right template was loaded
-        assert util.ZPT_TEST_TEMPLATES.has_key(
-            util.full_zpt_filename('chooser_pages/zero/results.pt'))
+        assert util.TEST_TEMPLATE_CONTEXT.has_key(
+            'chooser_pages/zero/results.html')
 
         # For doing a GET (shouldn't send email!)
         # ---------------------------------------
         util._clear_test_inboxes()
-        util._clear_zpt_test_templates()
+        util._clear_test_template_context()
 
         response = TESTAPP.get(
             '/choose/zero/results?email=recipient@example.org')
@@ -387,8 +387,8 @@ class TestEmailSenderViews(unittest.TestCase):
         assert_equal(len(util.EMAIL_TEST_INBOX), 0)
 
         # check that the right template was loaded
-        assert util.ZPT_TEST_TEMPLATES.has_key(
-            util.full_zpt_filename('chooser_pages/zero/results.pt'))
+        assert util.TEST_TEMPLATE_CONTEXT.has_key(
+            'chooser_pages/zero/results.html')
 
 
     def test_pdmark_results_email_send(self):
@@ -413,13 +413,13 @@ class TestEmailSenderViews(unittest.TestCase):
         assert 'free of known copyright restrictions' in mail_body
 
         # check that the right template was loaded
-        assert util.ZPT_TEST_TEMPLATES.has_key(
-            util.full_zpt_filename('chooser_pages/pdmark/results.pt'))
+        assert util.TEST_TEMPLATE_CONTEXT.has_key(
+            'chooser_pages/pdmark/results.html')
 
         # For doing a GET (shouldn't send email!)
         # ---------------------------------------
         util._clear_test_inboxes()
-        util._clear_zpt_test_templates()
+        util._clear_test_template_context()
 
         response = TESTAPP.get(
             '/choose/mark/results?email=recipient@example.org')
@@ -428,8 +428,8 @@ class TestEmailSenderViews(unittest.TestCase):
         assert_equal(len(util.EMAIL_TEST_INBOX), 0)
 
         # check that the right template was loaded
-        assert util.ZPT_TEST_TEMPLATES.has_key(
-            util.full_zpt_filename('chooser_pages/pdmark/results.pt'))
+        assert util.TEST_TEMPLATE_CONTEXT.has_key(
+            'chooser_pages/pdmark/results.html')
 
 
 def test_publicdomain_direct_redirect():
@@ -617,12 +617,12 @@ def test_chooser_gives_correct_licenses():
         See if the license's url given by the chooser for PARAMETERS
         matches EXPECTED_URL
         """
-        util._clear_zpt_test_templates()
+        util._clear_test_template_context()
         TESTAPP.get(
             '/choose/results-one?' +
             urllib.urlencode(parameters))
-        license = util.ZPT_TEST_TEMPLATES[
-            util.full_zpt_filename('chooser_pages/results.pt')]['license']
+        license = util.TEST_TEMPLATE_CONTEXT[
+            'chooser_pages/results.html']['license']
         assert_equal(license.uri, expected_url)
             
     ###################

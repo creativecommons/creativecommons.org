@@ -1,0 +1,160 @@
+<div class="more-metadata-container">
+  <h4>{{ cctrans(locale, "license.additional_info")|safe }}</h4>
+  <p>
+    <span>
+      {{ cctrans(locale, "license.additional_fields_optional")|safe }}
+    </span>
+    <a href="" id="embedded_metadata" class="helpLink">
+      <img src="{{ request.staticdirect('images/information.png') }}"
+           alt="{{ cctrans(locale, 'Information')|safe }}" />
+    </a>
+  </p>
+
+
+  <div class="more-metadata">
+    <div>
+      {{ cctrans(locale, "license.tell_format")|safe }}
+    </div>
+
+    <select name="field_format">
+      <option value="" selected="selected">
+        {{ cctrans(locale, "util.Other")|safe }}</option>
+      <option value="Sound">
+        {{ cctrans(locale, "util.Audio")|safe }}</option>
+      <option value="MovingImage">
+        {{ cctrans(locale, "util.Video")|safe }}</option>
+      <option value="StillImage">
+        {{ cctrans(locale, "util.Image")|safe }}</option>
+      <option value="Text">
+        {{ cctrans(locale, "util.Text")|safe }}</option>
+      <option value="Dataset">
+        {{ cctrans(locale, "util.Dataset")|safe }}</option>
+      <option value="InteractiveResource">
+        {{ cctrans(locale, "util.Interactive")|safe }}</option>
+    </select>
+  </div>
+
+  <div class="more-metadata">
+    <div>{{ cctrans(locale, "util.title_of_work")|safe }}</div>
+
+    <input type="text" name="field_worktitle" value="" /> 
+    <a href="" id="worktitle" class="helpLink">
+      <img src="{{ request.staticdirect('images/information.png') }}"
+           alt="{{ cctrans(locale, 'Information')|safe }}" />
+    </a>
+  </div>
+
+  <div class="more-metadata">
+    <div>
+      {{ cctrans(locale, "util.attribute_to_name")|safe }}
+    </div>
+
+    <input type="text" name="field_attribute_to_name" /> 
+    <a href="" id="attribution_name" class="helpLink">
+      <img src="{{ request.staticdirect('images/information.png') }}"
+           alt="{{ cctrans(locale, 'Information')|safe }}" />
+    </a>
+  </div>
+
+
+  <div class="more-metadata">
+    <div>
+      {{ cctrans(locale, "util.attribute_to_url")|safe }}
+    </div>
+
+    <input type="text" name="field_attribute_to_url" value="" />
+    <a href="" id="attribution_url" class="helpLink">
+      <img src="{{ request.staticdirect('images/information.png') }}"
+           alt="{{ cctrans(locale, 'Information')|safe }}" />
+    </a>
+  </div>
+
+  <div class="more-metadata">
+    <div>{{ cctrans(locale, "util.source_work")|safe }}</div>
+
+    <input type="text" name="field_sourceurl" value=""/>
+    <a href="" id="source_work" class="helpLink">
+      <img src="{{ request.staticdirect('images/information.png') }}"
+           alt="{{ cctrans(locale, 'Information')|safe }}" />
+    </a>
+  </div>
+
+  <div class="more-metadata">
+    <div>{{ cctrans(locale, "util.more_permissions_url")|safe }}</div>
+
+    <input type="text" name="field_morepermissionsurl" value=""/>
+    <a href="" id="more_permissions_url" class="helpLink">
+      <img src="{{ request.staticdirect('images/information.png') }}"
+           alt="{{ cctrans(locale, 'Information')|safe }}" />
+    </a>
+  </div>
+
+  <div id="help_embedded_metadata">
+    <div class="hd">{{ cctrans(locale, "Embedded Metadata")|safe }}</div>
+    <div class="bd">
+      {{ cctrans(locale, "license.metadata_help")|safe }}
+    </div>
+  </div>
+
+  <div id="help_source_work">
+    <div class="hd">
+      <span>{{ cctrans(locale, "util.source_work")|safe }}</span>
+    </div>
+    <div class="bd">
+      <p>
+        {{ cctrans(locale, "jargon.source_work_description")|safe }}
+      </p>
+    </div>
+  </div>
+
+  <div id="help_worktitle">
+    <div class="hd">
+      <span>{{ cctrans(locale, "util.title_of_work")|safe }}</span>
+    </div>
+    <div class="bd">
+      <p>
+        {{ cctrans(locale, "The title of the work you are licensing.")|safe }}
+      </p>
+    </div>
+  </div>
+
+  <div id="help_attribution_name">
+    <div class="hd">
+      <span>
+        {{ cctrans(locale, "util.attribute_to_name")|safe }}
+      </span>
+    </div>
+    <div class="bd">
+      <p>
+        {{ cctrans(locale, "The name users of the work should give attribution to. For example, the name of the work's author.")|safe }}
+      </p>
+    </div>
+  </div>
+
+  <div id="help_attribution_url">
+    <div class="hd">
+      <span>
+        {{ cctrans(locale, "util.attribute_to_url")|safe }}
+      </span>
+    </div>
+    <div class="bd">
+      <p>
+        {{ cctrans(locale, "The URL users of the work should link to. For example, the work's page on the author's site.")|safe }}
+      </p>
+    </div>
+  </div>
+
+  <div id="help_more_permissions_url">
+    <div class="hd">
+      <span>
+        {{ cctrans(locale, "util.more_permissions_url")|safe }}
+      </span>
+    </div>
+    <div class="bd">
+      <p>
+        {{ cctrans(locale, "A URL where a user can obtain information about clearing rights that are not pre-cleared by your CC license.")|safe }}
+      </p>
+    </div>
+  </div>
+
+</div>

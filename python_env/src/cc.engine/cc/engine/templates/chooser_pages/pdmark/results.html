@@ -1,0 +1,116 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}Public Domain Mark: Results{% endblock title %}
+
+{% block headers %}
+  <link rel="stylesheet" type="text/css" 
+        href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
+
+  <script type="text/javascript"
+          src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script> 
+  <script type="text/javascript" 
+          src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
+
+  <link rel="stylesheet" type="text/css"
+        href="{{ request.staticdirect('includes/zero.css') }}" />
+
+  <script type="text/javascript">
+    YAHOO.util.Event.onDOMReady(function() {
+      // init the buttons
+      (new YAHOO.widget.Button("do-send-email")).render();
+    });
+  </script>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
+
+{% block page_header_title %}Public Domain Mark{% endblock %}
+
+{% block body %}
+  <div class="yui-skin-sam">
+    <div id="results" class="yui-module">
+      <div class="bd" id="waiver-results">
+        <p>
+          {{ cctrans(locale, "license.mark.choose_button")|safe }}
+        </p>
+
+        <div class="licensebox" align="center">
+          <table>
+            <tr>
+              <td valign="bottom" align="center">
+                <img src="http://i.creativecommons.org/p/mark/1.0/88x31.png"
+                     style="border:0px;" /><br/>
+                <input type="radio" name="button" checked
+                       onclick="swapbutton('http://i.creativecommons.org/p/mark/1.0/88x31.png')" />
+              </td>
+              <td valign="bottom" align="center">
+                <img src="http://i.creativecommons.org/p/mark/1.0/80x15.png"
+                     style="border:0px;" /><br/>
+                <input type="radio" name="button"
+                       onclick="swapbutton('http://i.creativecommons.org/p/mark/1.0/80x15.png')"/>
+              </td>
+
+            </tr>
+          </table>
+        </div>
+
+        <span id="waiver-results-leadin">
+          {{ cctrans(locale, "license.mark.preview_waiver")|safe }}
+        </span>
+
+        <div class="preview"
+             id="results-preview">{{ rdfa|safe }}</div>
+
+        <h3>{{ cctrans(locale, "license.have_your_own_website")|safe }}</h3>
+        <p>
+          {{ cctrans(locale, "license.mark.copy_text")|safe }}
+        </p>
+
+        <textarea id="codetocopy" cols="70" rows="6"
+                  onfocus="select()">{{ rdfa }}</textarea>
+
+        <div class="more-metadata-container">
+          <h3 style="margin-top:0;">{{ cctrans(locale, "license.zero.send_email")|safe }}</h3>
+
+          {% if email_requested %}
+            {% if successful_send %}
+              <div>
+                <p>
+                  {{ cctrans(locale, "license.zero.email_sent",
+                             email_addr=email_addr)|safe }}
+                </p>
+              </div>
+            {% else %}
+              <div class="more-metadata-container error">
+                {{ cctrans(locale, "license.zero.email_error",
+                           email_addr=email_addr)|safe }}
+              </div>
+            {% endif %}
+
+          {% else %}
+            <p>
+              {{ cctrans(locale, "license.mark.send_email_updates")|safe }}
+            </p>
+
+            <form action="{{ request.path_info }}" method="post">
+              {% for key, value in request_form.iteritems() %}
+                <input type="hidden" name="{{ key }}" value="{{ value }}" />
+              {% endfor %}
+
+              <div class="more-metadata">
+                <div>{{ cctrans(locale, "util.your_email")|safe }}</div>
+                <input type="textbox" name="email" />
+              </div>
+
+              <input id="do-send-email" type="submit"
+                     value="{{ cctrans(locale, 'util.Send')|safe }}" />
+            </form>
+          {% endif %}
+
+        </div>
+      </div>
+      <div class="ft"></div>
+    </div>
+
+  </div>
+{% endblock body %}

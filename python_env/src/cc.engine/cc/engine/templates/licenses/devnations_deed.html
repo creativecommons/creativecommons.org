@@ -1,0 +1,79 @@
+{% extends "macros_templates/deed.html" %}
+
+{% block page_top %}
+  <!-- RDF code here for backwards compatibility.  Please use the
+       license's RDFa instead. -->
+  <!-- {{ license.rdf|safe }} -->
+{% endblock %}
+
+{% block license_name %}
+  <span property="dc:title"
+        style="display: inline;">{{ license_title }}</span>
+{% endblock %}
+
+{% block body %}
+  <div id="deed-rights"
+       dir="{{ get_ltr_rtl}}" style="{{ is_rtl_align }}">
+
+    <div id="deed-newer" style="text-align:center">
+      <h3>{{ cctrans(locale, "deed.retired")|safe }}</h3>
+    </div>
+
+    <h3 rel="cc:permits"
+        resource="http://creativecommons.org/ns#Reproduction">{{ cctrans(locale, "deed.You_are_free")|safe }}</h3>
+
+    <ul class="license-properties">
+      <li class="license share" rel="cc:permits"
+          resource="http://creativecommons.org/ns#Distribution">
+        {{ cctrans(locale, "deed.free_copy_distribute")|safe }}
+      </li>
+
+      <li class="license remix" rel="cc:permits"
+          resource="http://creativecommons.org/ns#DerivativeWorks">
+        {{ cctrans(locale, "deed.free_derivative")|safe }}
+      </li>
+    </ul>
+
+  </div>
+
+  <div id="deed-conditions">
+    <h3>{{ cctrans(locale, "deed.under_conditions")|safe }}</h3>
+    <ul class="license-properties"
+        dir="{{ get_ltr_rtl}}" style="{{ is_rtl_align }}">
+
+      <li class="license devnations"><strong>Developing Nations</strong>.
+        You may exercise the above freedoms in developing
+        nations only.
+      </li>
+
+      <li rel="cc:requires"
+          resource="http://creativecommons.org/ns#Attribution"
+          class="license by">
+        <p>
+          <strong>{{ cctrans(locale, "char.by_title")|safe }}</strong>.
+          <span>
+            {{ cctrans(locale, "char.by_brief")|safe }}
+          </span>
+        </p>
+      </li>
+
+        <li>{{ cctrans(locale, "deed.notice")|safe }}</li>
+        <li>{{ cctrans(locale, "deed.permission")|safe }}</li>
+
+      <li>
+        In no way are any of the following rights affected by
+        the above:
+
+        <ul>
+          <li>
+            {{ cctrans(locale, "deed.fair_use")|safe }}
+          </li>
+          <li>
+            {{ cctrans(locale, "deed.publicity_rights")|safe }}
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "macros_templates/popup.html" %}
+
+{% block title %}{{ cctrans(locale, "char.by_title")|safe }}{% endblock %}
+
+{% block body %}
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}" >
+    <img src="/icon/by/standard.gif" alt="by" hspace="4"
+         align="{{ is_rtl_align }}" />
+  </p>
+
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
+    <strong>{{ cctrans(locale, "char.by_title")|safe }}</strong></p>
+
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
+    {{ cctrans(locale, "char.by_description")|safe }}
+  </p>
+
+  <div style="text-align:center">
+    <a href="javascript:window.close();">{{ cctrans(locale, "util.Close_window")|safe }}</a>
+  </div>
+{% endblock %}

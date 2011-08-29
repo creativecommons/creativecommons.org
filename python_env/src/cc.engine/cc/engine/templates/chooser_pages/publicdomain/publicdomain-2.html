@@ -1,0 +1,63 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}
+  {{ cctrans(locale, "util.public_domain_certification")|safe }}
+{% endblock title %}
+
+{% block page_header_title %}
+  {{ cctrans(locale, "license.pd.identify_a_pd_work")|safe }}
+{% endblock page_header_title %}
+
+{% block body %}
+  <p>
+    <i>
+      {{ cctrans(locale, "license.pd.retired")|safe }}
+    </i>
+  </p>
+
+  <p>
+    {{ cctrans(locale, "license.pd.intro_1")|safe }}
+  </p>
+
+  <p>
+    {{ cctrans(locale, "license.pd.intro_3")|safe }}
+  </p>
+
+  <h3>
+    {{ cctrans(locale, "license.pd.about_the_work")|safe }}
+  </h3>
+
+  <form id="publicdomain"
+        action="./publicdomain-3">
+    {% if request.GET.get('lang', False) %}
+      <input type="hidden" name="lang"
+             value="{{ request.GET.get('lang','') }}" />
+    {% endif %}
+    <table border="0" cellspacing="3" cellpadding="3">
+      <tbody>
+        <tr>
+          <td align="right">
+            {{ cctrans(locale, "util.title_of_work")|safe }}
+          </td>
+          <td><input type="text" name="title" value="" />
+          </td>
+        </tr>
+        <tr>
+          <td align="right">
+            {{ cctrans(locale, "util.author")|safe }}
+          </td>
+          <td><input type="text" name="copyright_holder" value="" />
+          </td>
+        </tr>
+        <tr>
+          <td align="right">&nbsp;</td>
+          <td>
+            <input type="submit"
+                   value="{{ cctrans(locale, 'util.proceed')|safe }}" /></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+
+  {% include "includes/engine_languages.html" %}
+{% endblock body %}
