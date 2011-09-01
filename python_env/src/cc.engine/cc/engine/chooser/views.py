@@ -178,7 +178,7 @@ def _issue_license(request_form):
 
     # check for license_url
     elif request_form.has_key('license_url'):
-        return cc.license.by_uri(request_form['license_url'])
+        return cc.license.by_uri(str(request_form['license_url']))
 
     else:
         if jurisdiction:
@@ -279,24 +279,6 @@ def chooser_view(request):
     target_lang = util.get_target_lang_from_request(request)
     context = _base_context(request, target_lang)
 
-    if request.GET.get('partner'):
-        template = util.get_zpt_template(
-            'chooser_pages/partner/index.pt', target_lang)
-        context['pd_get_params'] = util.publicdomain_partner_get_params(
-            request.GET)
-    else:
-        template = util.get_zpt_template(
-            'chooser_pages/index.pt', target_lang)
-
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine_2cols.pt', target_lang)
-    partner_template = util.get_zpt_template(
-        'macros_templates/partner.pt', target_lang)
-    metadata_template = util.get_zpt_template(
-        'macros_templates/metadata.pt', target_lang)
-    support_template = util.get_zpt_template(
-        'macros_templates/support.pt', target_lang)
-
     available_jurisdiction_codes = [
         j.code for j in get_selector_jurisdictions('standard')
         if j.code != '']
@@ -320,30 +302,29 @@ def chooser_view(request):
     show_jurisdiction = request.GET.get('jurisdiction_choose') == '1'
 
     context.update(
-        {'engine_template': engine_template,
-         'partner_template': partner_template,
-         'metadata_template': metadata_template,
-         'support_template': support_template,
+        {'jurisdictions_names': jurisdictions_names,
          'show_jurisdiction': show_jurisdiction,
-         'jurisdictions_names': jurisdictions_names,
          'requested_jurisdiction': requested_jurisdiction,
-         'referrer': request.headers.get('REFERER','')})
+         'referrer': request.headers.get('REFERER',''),
+         'page_style': '2cols'})
 
-    return Response(template.pt_render(context))
+    if request.GET.get('partner'):
+        context['pd_get_params'] = util.publicdomain_partner_get_params(
+            request.GET)
+
+        return Response(
+            util.render_template(
+                request, target_lang,
+                'chooser_pages/partner/index.html', context))
+    else:
+        return Response(
+            util.render_template(
+                request, target_lang,
+                'chooser_pages/index.html', context))
 
 
 def choose_results_view(request):
     target_lang = util.get_target_lang_from_request(request)
-
-    if request.GET.get('partner'):
-        template = util.get_zpt_template(
-            'chooser_pages/partner/results.pt', target_lang)
-    else:
-        template = util.get_zpt_template(
-            'chooser_pages/results.pt', target_lang)
-
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
 
     context = _base_context(request, target_lang)
     request_form = request.GET or request.POST
@@ -373,22 +354,28 @@ def choose_results_view(request):
         license, work_dict, target_lang)
 
     context.update(
-        {'engine_template': engine_template,
-         'license': license,
+        {'license': license,
          'license_slim_logo': license_slim_logo,
          'license_title': license.title(target_lang),
          'license_html': license_html})
 
     if request.GET.get('partner'):
         context.update(
-            {'partner_template': util.get_zpt_template(
-                    'macros_templates/partner.pt', target_lang),
-             'exit_url': _generate_exit_url(
+            {'exit_url': _generate_exit_url(
                     request_form.get('exit_url', ''),
                     request_form.get('referrer', ''),
                     license)})
 
-    return Response(template.pt_render(context))
+    if request.GET.get('partner'):
+        return Response(
+            util.render_template(
+                request, target_lang,
+                'chooser_pages/partner/results.html', context))
+    else:
+        return Response(
+            util.render_template(
+                request, target_lang,
+                'chooser_pages/results.html', context))
 
 
 def choose_xmp_view(request):
@@ -432,20 +419,18 @@ def non_web_popup(request):
 
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
-    template = util.get_zpt_template(
-        'chooser_pages/nonweb_popup.pt', target_lang)
-    popup_template = util.get_zpt_template(
-        'macros_templates/popup.pt', target_lang)
+
     is_publicdomain = request_form.get('publicdomain') or request_form.get('pd')
     
     context = _base_context(request, target_lang)
 
     context.update(
-        {'popup_template': popup_template,
-         'license': license,
+        {'license': license,
          'is_publicdomain': is_publicdomain})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/nonweb_popup.html', context)
 
 
 def choose_wiki_redirect(request):
@@ -471,18 +456,14 @@ def work_email_popup(request):
 
     license_html = HTML_FORMATTER.format(license, work_dict, target_lang)
 
-    template = util.get_zpt_template(
-        'chooser_pages/htmlpopup.pt', target_lang)
-    popup_template = util.get_zpt_template(
-        'macros_templates/popup.pt', target_lang)
-    
     context = _base_context(request, target_lang)
     context.update(
-        {'popup_template': popup_template,
-         'license': license,
+        {'license': license,
          'license_html': license_html})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/htmlpopup.html', context)
 
 
 @RestrictHttpMethods('POST')
@@ -498,17 +479,12 @@ def work_email_send(request):
         license_name, license_html,
         email_addr, target_lang)
 
-    template = util.get_zpt_template(
-        'chooser_pages/emailhtml.pt', target_lang)
-    popup_template = util.get_zpt_template(
-        'macros_templates/popup.pt', target_lang)
-
     context = _base_context(request, target_lang)
-    context.update(
-        {'request_form': request_form,
-         'popup_template': popup_template})
+    context['request_form'] = request_form
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/emailhtml.html', context)
 
 
 ## Special choosers
@@ -529,41 +505,29 @@ def gpl_redirect(request):
 def publicdomain_landing(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/publicdomain/publicdomain-2.pt',
-        target_lang)
-
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-    support_template = util.get_zpt_template(
-        'macros_templates/support.pt', target_lang)
+    request_form = request.GET or request.POST
 
     context = _base_context(request, target_lang)
-    context.update({
-            'support_template': support_template,
-            'engine_template': engine_template})
+    context['request_form'] = request_form
 
-    return Response(template.pt_render(context))
+    return Response(
+        util.render_template(
+            request, target_lang,
+            'chooser_pages/publicdomain/publicdomain-2.html', context))
 
 
 def publicdomain_confirm(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/publicdomain/publicdomain-3.pt',
-        target_lang)
-
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     request_form = request.GET or request.POST
 
     context = _base_context(request, target_lang)
-    context.update({
-            'engine_template': engine_template,
-            'request_form': request_form})
+    context['request_form'] = request_form
 
-    return Response(template.pt_render(context))
+    return Response(
+        util.render_template(
+            request, target_lang,
+            'chooser_pages/publicdomain/publicdomain-3.html', context))
 
 
 def publicdomain_result(request):
@@ -573,7 +537,7 @@ def publicdomain_result(request):
 
     # make sure the user selected "confirm"
     if request_form.get('understand', False) != 'confirm':
-        return exc.HTTPMovedPermanently(
+        return exc.HTTPFound(
             location='%s?%s' % (
                 './publicdomain-3', urlencode(request.GET)))
 
@@ -582,18 +546,15 @@ def publicdomain_result(request):
         cc.license.by_code('publicdomain'),
         work_info, target_lang)
 
-    template = util.get_zpt_template(
-        'chooser_pages/publicdomain/publicdomain-4.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     context = _base_context(request, target_lang)
     context.update({
-            'engine_template': engine_template,
             'request_form': request_form,
             'license_html': license_html})
 
-    return Response(template.pt_render(context))
+    return Response(
+        util.render_template(
+            request, target_lang,
+            'chooser_pages/publicdomain/publicdomain-4.html', context))
 
 
 ### -----------
@@ -602,63 +563,39 @@ def publicdomain_result(request):
 def cc0_landing(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/zero/index.pt', target_lang)
-    support_template = util.get_zpt_template(
-        'macros_templates/support.pt',
-        target_lang=target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     context = _base_context(request, target_lang)
-    context.update({
-            'engine_template': engine_template,
-            'support_template': support_template})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/zero/index.html', context)
 
 
 def cc0_waiver(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/zero/waiver.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     context = _base_context(request, target_lang)
-    context.update({
-            'engine_template': engine_template,
-            'country_list': util.CODE_COUNTRY_LIST})
+    context['country_list'] = util.CODE_COUNTRY_LIST
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/zero/waiver.html', context)
 
 
 def cc0_confirm(request):
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/zero/confirm.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     request_form = request.GET or request.POST
 
     context = _base_context(request, target_lang)
-    context.update({
-            'engine_template': engine_template,
-            'request_form': request_form})
+    context['request_form'] = request_form
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/zero/confirm.html', context)
 
 
 def cc0_results(request):
     target_lang = util.get_target_lang_from_request(request)
-
-    template = util.get_zpt_template(
-        'chooser_pages/zero/results.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
 
     request_form = request.GET or request.POST
 
@@ -685,7 +622,6 @@ def cc0_results(request):
 
     context = _base_context(request, target_lang)
     context.update({
-            'engine_template': engine_template,
             'request_form': request_form,
             'can_issue': can_issue,
             'rdfa': license_html,
@@ -694,7 +630,9 @@ def cc0_results(request):
             'requested_send_updates': request_form.get('send_updates', False),
             'successful_send': successful_send})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/zero/results.html', context)
 
 
 def cc0_partner(request):
@@ -702,9 +640,6 @@ def cc0_partner(request):
     Partner page for CC0
     """
     target_lang = util.get_target_lang_from_request(request)
-
-    template = util.get_zpt_template(
-        'chooser_pages/zero/partner.pt', target_lang)
 
     request_form = request.GET or request.POST
 
@@ -715,16 +650,16 @@ def cc0_partner(request):
 
     context = _base_context(request, target_lang)
     context.update(
-        {'partner_template': util.get_zpt_template(
-                'macros_templates/partner.pt', target_lang),
-         'request_form': request_form,
+        {'request_form': request_form,
          'get_params': get_params,
          'exit_url': _generate_exit_url(
                 request_form.get('exit_url', ''),
                 request_form.get('referrer', ''),
                 cc0_license)})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/zero/partner.html', context)
 
 
 # publicdomain-direct now redirects to CC0!
@@ -753,20 +688,11 @@ def pdmark_landing(request):
     """
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/pdmark/index.pt', target_lang)
-    support_template = util.get_zpt_template(
-        'macros_templates/support.pt',
-        target_lang=target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     context = _base_context(request, target_lang)
-    context.update({
-            'engine_template': engine_template,
-            'support_template': support_template})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/pdmark/index.html', context)
 
 
 def pdmark_details(request):
@@ -775,16 +701,11 @@ def pdmark_details(request):
     """
     target_lang = util.get_target_lang_from_request(request)
 
-    template = util.get_zpt_template(
-        'chooser_pages/pdmark/details.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
-
     context = _base_context(request, target_lang)
-    context.update({
-            'engine_template': engine_template})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/pdmark/details.html', context)
 
 
 def pdmark_results(request):
@@ -795,11 +716,6 @@ def pdmark_results(request):
     Also handles email sending if the user requests it.
     """
     target_lang = util.get_target_lang_from_request(request)
-
-    template = util.get_zpt_template(
-        'chooser_pages/pdmark/results.pt', target_lang)
-    engine_template = util.get_zpt_template(
-        'macros_templates/engine.pt', target_lang)
 
     request_form = request.GET or request.POST
 
@@ -818,7 +734,6 @@ def pdmark_results(request):
 
     context = _base_context(request, target_lang)
     context.update({
-            'engine_template': engine_template,
             'request_form': request_form,
             'rdfa': license_html,
             'email_requested': bool(email_addr),
@@ -826,7 +741,9 @@ def pdmark_results(request):
             'successful_send': successful_send,
             'requested_send_updates': request_form.get('send_updates', False)})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/pdmark/results.html', context)
 
 
 def pdmark_partner(request):
@@ -834,9 +751,6 @@ def pdmark_partner(request):
     Partner page for PDM
     """
     target_lang = util.get_target_lang_from_request(request)
-
-    template = util.get_zpt_template(
-        'chooser_pages/pdmark/partner.pt', target_lang)
 
     request_form = request.GET or request.POST
 
@@ -847,13 +761,13 @@ def pdmark_partner(request):
     
     context = _base_context(request, target_lang)
     context.update(
-        {'partner_template': util.get_zpt_template(
-                'macros_templates/partner.pt', target_lang),
-         'request_form': request_form,
+        {'request_form': request_form,
          'get_params': get_params,
          'exit_url': _generate_exit_url(
                 request_form.get('exit_url', ''),
                 request_form.get('referrer', ''),
                 pdm_license)})
 
-    return Response(template.pt_render(context))
+    return util.render_to_response(
+        request, target_lang,
+        'chooser_pages/pdmark/partner.html', context)

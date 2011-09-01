@@ -1,0 +1,227 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}Choose a License{% endblock title %}
+
+{% block headers %}
+    <script type="text/javascript"
+            src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js">
+    </script>
+
+    <script src="{{ request.staticdirect('/includes/help.js') }}"
+            type="text/javascript">
+    </script>
+{% endblock headers %}
+
+{% block body %}
+<div>
+  <p>
+    {{ cctrans(locale, "license.what")|safe }}
+  </p>
+
+  <p>
+    {{ cctrans(locale, "license.explain")|safe }}
+  </p>
+
+  <div id="help_give_you_credit" class="help_panel">
+    <div class="hd">{{ cctrans(locale, "char.by_title")|safe }}</div>
+    <div class="bd">
+      {{ cctrans(locale, "char.by_description")|safe }}
+    </div>
+  </div>
+
+  <div class="licensebox">
+    <form action="./results-one" method="get" >
+      <div>
+        <input type="hidden"  name="q_1" value="2" id="question_1-2"
+               checked="checked" />
+        <input type="hidden" name="q_1" value="1" id="question_1-1" />
+      </div>
+
+      <p>
+        <strong>
+          {{ cctrans(locale, "api.commercial")|safe }}
+        </strong>
+      </p>
+      <ul class="choices">
+        <li>
+          <input type="radio" checked="checked"
+                 name="field_commercial" value="y" id="question_2-3"/>
+          <label for="question_2-3">{{ cctrans(locale, "util.Yes")|safe }}</label>
+          <a href="" id="commercial" class="helpLink">
+            <img src="{{ request.staticdirect('images/information.png') }}"
+                 alt="{{ cctrans(locale, 'Information')|safe }}"/>
+          </a>
+        </li>
+
+        <li>
+          <input type="radio"
+                 name="field_commercial" value="n" id="question_2-4"/>
+          <label for="question_2-4">{{ cctrans(locale, "util.No")|safe }}</label>
+          <a href="" id="noncommercial" class="helpLink">
+            <img src="{{ request.staticdirect('images/information.png') }}"
+                 alt="{{ cctrans(locale, 'Information')|safe }}"/>
+          </a>
+        </li>
+      </ul>
+
+      <p>
+        <strong>
+          {{ cctrans(locale, "api.derivatives")|safe }}
+        </strong>
+      </p>
+
+      <ul class="choices">
+        <li>
+          <input type="radio" checked="checked"
+                 name="field_derivatives" value="y"
+                 id="question_3-5" />
+          <label for="question_3-5">{{ cctrans(locale, "util.Yes")|safe }}</label>
+          <a href="" id="derivatives" class="helpLink">
+            <img src="{{ request.staticdirect('images/information.png') }}"
+                 alt="{{ cctrans(locale, 'Information')|safe }}"/>
+          </a>
+        </li>
+
+        <li>
+          <input type="radio" name="field_derivatives" value="sa"
+                 id="question_3-6" />
+          <label for="question_3-6">
+            <span>
+              {{ cctrans(locale, "Yes, as long as others share alike")|safe }}
+            </span>
+            <a href="" class="helpLink" id="sharealike">
+              <img src="{{ request.staticdirect('images/information.png') }}"
+                   alt="{{ cctrans(locale, 'Information')|safe }}"/>
+            </a>
+          </label>
+        </li>
+
+        <li>
+          <input type="radio"  name="field_derivatives" value="n"
+                 id="question_3-7" />
+          <label for="question_3-7">{{ cctrans(locale, "util.No")|safe }}</label>
+          <a href="" id="noderivatives" class="helpLink">
+            <img src="{{ request.staticdirect('images/information.png') }}"
+                 alt="{{ cctrans(locale, 'Information')|safe }}"/>
+          </a>
+        </li>
+      </ul>
+
+      <p>
+        {{ cctrans(locale, "license.jurisdiction_question")|safe }}
+        <a href="" class="helpLink" id="jurisdiction">
+          <img src="{{ request.staticdirect('images/information.png') }}"
+               alt="{{ cctrans(locale, 'Information')|safe }}"/>
+        </a>
+        <br />
+
+        <select name="field_jurisdiction">
+          {# If a specific jurisdiction is requested, we'll mark that
+           # as selected.  Otherwise util.International should be selected. #}
+          <option value=""
+                  {% if not requested_jurisdiction -%}
+                    selected="selected"
+                  {%- endif %}>
+            {{ cctrans(locale, "util.International")|safe }}
+          </option>
+
+          {% for juris_code, juris_name in jurisdictions_names %}
+            {% if juris_code == requested_jurisdiction %}
+              <option value="{{ juris_code }}"
+                      selected="selected">
+                {{- juris_name -}}
+              </option>
+            {% else %}
+              <option value="{{ juris_code }}">
+                {{- juris_name -}}
+              </option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </p>
+
+      {% include "includes/more_metadata.html" %}
+
+      <div>
+        <input type="hidden" name="lang" value="{{ target_lang }}" />
+        <input type="hidden" name="n_questions" value="3" />
+      </div>
+
+      <div>
+        <p>
+          <input type="submit" class="submit"
+                 value="{{ cctrans(locale, 'license.Select_a_License')|safe }}" />
+        </p>
+      </div>
+    </form>
+  </div>
+  <br />
+
+  {% include "includes/engine_languages.html" %}
+
+  <div id="help_jurisdiction">
+    <div class="hd">
+      <span>{{ cctrans(locale, "util.Jurisdiction")|safe }}</span>
+    </div>
+    <div class="bd">
+      <p>
+        {{ cctrans(locale, "license.jurisdiction_help")|safe }}
+      </p>
+    </div>
+  </div>
+  <div id="help_commercial">
+    <div class="hd">
+      <span>{{ cctrans(locale, "Commercial Use")|safe }}</span>
+    </div>
+    <div class="bd">
+      <p>
+        {{ cctrans(locale, "license.help.commercial")|safe }}
+      </p>
+    </div>
+  </div>
+
+  <div id="help_noncommercial">
+    <div class="hd">
+      <span>{{ cctrans(locale, "licenses.pretty_nc")|safe }}</span>
+    </div>
+    <div class="bd">
+      <p>
+        {{ cctrans(locale, "license.help.noncommercial")|safe }}
+      </p>
+    </div>
+  </div>
+
+  <div id="help_derivatives">
+    <div class="hd">
+      <span>{{ cctrans(locale, "Allow Derivative Works")|safe }}</span>
+    </div>
+    <div class="bd">
+      <p>
+        {{ cctrans(locale, "license.help.derivatives")|safe }}
+      </p>
+    </div>
+  </div>
+
+  <div id="help_noderivatives">
+    <div class="hd">
+      <span>{{ cctrans(locale, "char.nd_title")|safe }}</span>
+    </div>
+    <div class="bd">
+      <p>
+        {{ cctrans(locale, "char.nd_description")|safe }}
+      </p>
+    </div>
+  </div>
+
+  <div id="help_sharealike">
+    <div class="hd">
+      <span>{{ cctrans(locale, "char.sa_title")|safe }}</span>
+    </div>
+    <div class="bd">
+      <p>
+        {{ cctrans(locale, "char.sa_description")|safe }}
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

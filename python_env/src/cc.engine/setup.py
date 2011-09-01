@@ -21,8 +21,6 @@
 
 from setuptools import setup, find_packages
 
-import sys
-
 setup(
     name = "cc.engine",
     version = "10.2",
@@ -51,6 +49,7 @@ setup(
         'wsgi_cache',
         'flup==1.0.2',
         'simplejson',
+        'jinja2',
         ],
 
     dependency_links = [

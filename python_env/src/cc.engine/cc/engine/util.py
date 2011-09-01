@@ -11,6 +11,7 @@ email.Charset.add_charset('utf-8', email.Charset.SHORTEST, None, None)
 
 import RDF
 from lxml import etree
+import jinja2
 import routes
 from webob import Response
 from zope.component.globalregistry import base
@@ -22,6 +23,7 @@ from zope.i18nmessageid import MessageFactory
 from cc.license._lib import rdf_helper, all_possible_license_versions
 from cc.license._lib import functions as cclicense_functions
 from cc.i18n import ccorg_i18n_setup
+from cc.i18n.gettext_i18n import ugettext_for_locale
 from cc.i18n.util import negotiate_locale
 from cc.i18n.util import locale_to_lower_upper
 
@@ -52,39 +54,61 @@ def _activate_testing():
     TESTS_ENABLED = True
 
 
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-### Special ZPT unit test hackery begins HERE
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### ~~~~~~~~~~~~~~~~~~~~~~~
+### Jinja2 templating stuff
+### ~~~~~~~~~~~~~~~~~~~~~~~
 
-ZPT_TEST_TEMPLATES = {}
-class CCLPageTemplateFileTester(CCLPageTemplateFile):
-    def pt_render(self, namespace, *args, **kwargs):
-        ZPT_TEST_TEMPLATES[self.filename] = namespace
-        return CCLPageTemplateFile.pt_render(self, namespace, *args, **kwargs)
-
-def _clear_zpt_test_templates():
-    ZPT_TEST_TEMPLATES.clear()
-
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-### </Special ZPT unit test hackery>
-### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+def cctrans(locale, logical_key, **trans_values):
+    """
+    A method for translating via logical keys
+    """
+    ugettext = ugettext_for_locale(locale)
+    return string.Template(ugettext(logical_key)).substitute(
+        trans_values)
 
 
-def full_zpt_filename(template_path):
-    return os.path.join(BASE_TEMPLATE_DIR, template_path)
+# Create the template loader
+TEMPLATE_LOADER = jinja2.PackageLoader('cc.engine', 'templates')
+TEMPLATE_ENV = jinja2.Environment(
+    loader=TEMPLATE_LOADER,
+    autoescape=True,
+    extensions=['jinja2.ext.autoescape'])
+
+# Add cctrans to the global context
+TEMPLATE_ENV.globals['cctrans'] = cctrans
 
 
-def get_zpt_template(template_path, target_lang=None):
-    full_template_path = full_zpt_filename(template_path)
+TEST_TEMPLATE_CONTEXT = {}
+
+def _clear_test_template_context():
+    TEST_TEMPLATE_CONTEXT.clear()
+
+
+def render_template(request, locale, template_path, context):
+    """
+    Render a template with the request in the response.
+
+    Also stores data for unit testing purposes if appropriate.
+    """
+    template = TEMPLATE_ENV.get_template(template_path)
+    context['request'] = request
+    context['locale'] = locale
+
+    rendered = template.render(context)
 
     if TESTS_ENABLED:
-        ptf_class = CCLPageTemplateFileTester
-    else:
-        ptf_class = CCLPageTemplateFile
+        TEST_TEMPLATE_CONTEXT[template_path] = context
 
-    return ptf_class(
-        full_template_path, target_language=target_lang)
-    
+    return rendered
+
+
+def render_to_response(request, locale, template_path, context):
+    """
+    Convenience method for rendering a response along with the template
+    """
+    return Response(
+        render_template(request, locale, template_path, context))
+
 
 def get_locale_file_from_locale(locale):
     """
@@ -567,18 +591,15 @@ def generate_404_response(request, routing, environ, staticdirector):
     request.staticdirect = staticdirector
 
     target_lang = get_target_lang_from_request(request)
-    template = get_zpt_template(
-        'catalog_pages/404.pt', target_lang)
-    engine_template = get_zpt_template(
-        'macros_templates/engine_bare.pt', target_lang)
 
-    context = {
-        'request': request,
-        'engine_template': engine_template}
+    context = {'page_style': 'bare'}
     context.update(rtl_context_stuff(target_lang))
 
     return Response(
-        template.pt_render(context), status=404)
+        render_template(
+            request, target_lang,
+            'catalog_pages/404.html', context),
+        status=404)
 
 
 def catch_license_versions_from_request(request):

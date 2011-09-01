@@ -1,0 +1,86 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}Public Domain Mark{% endblock title %}
+
+{% block headers %}
+  <link rel="stylesheet" type="text/css"
+        href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
+
+  <script type="text/javascript"
+          src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script>
+  <script type="text/javascript"
+          src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
+
+  <link rel="stylesheet" type="text/css"
+        href="{{ request.staticdirect('includes/zero.css') }}" />
+
+  <script type="text/javascript"
+          src="{{ request.staticdirect('/includes/help.js') }}" >
+  </script>
+
+  <script type="text/javascript">
+    YAHOO.namespace("cc.zero");
+
+    YAHOO.cc.zero.on_click = function(event) {
+
+    YAHOO.util.Dom.get("details-submit").disabled = !(
+    YAHOO.util.Dom.get("confirm_details").checked &&
+    YAHOO.util.Dom.get("confirm_understand").checked);
+
+    } // on_click
+
+    YAHOO.util.Event.onDOMReady(function() {
+
+    // connect event handlers for the check boxes
+    YAHOO.util.Event.addListener("confirm_details", "click", YAHOO.cc.zero.on_click);
+    YAHOO.util.Event.addListener("confirm_understand", "click", YAHOO.cc.zero.on_click);
+
+    });
+  </script>
+{% endblock headers %}
+
+{% block sidebar %}{% endblock %}
+
+{% block page_header_title %}Public Domain Mark{% endblock %}
+
+{% block body %}
+  <div class="yui-content">
+    <div id="page-welcome" class="yui-module">
+      <div class="bd">
+        <div class="pd-explain-differences">
+          {{ cctrans(locale, "license.mark.CC0-difference")|safe }}
+        </div>
+
+        <p>
+          {{ cctrans(locale, "license.mark.intro_1")|safe }}
+        </p>
+
+        <p>
+          {{ cctrans(locale, "license.mark.intro_2")|safe }}
+        </p>
+
+        <p>
+          {{ cctrans(locale, "license.mark.intro_3")|safe }}
+        </p>
+
+        <p>
+          <span id="mycheckbox" class="yui-button">
+            <span class="first-child">
+              <a id="do-learn-more"
+                 href="/about/pdm">{{ cctrans(locale, "util.learn_more")|safe }}</a>
+            </span>
+          </span>
+
+          <span id="mycheckbox" class="yui-button">
+            <span class="first-child">
+              <a href="/choose/mark/details{% if target_lang %}?lang={{ target_lang }}{% endif %}"
+                 id="do-begin">{{ cctrans(locale, "util.begin")|safe }} &raquo;</a>
+            </span>
+          </span>
+        </p>
+
+        {% include "includes/engine_languages.html" %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

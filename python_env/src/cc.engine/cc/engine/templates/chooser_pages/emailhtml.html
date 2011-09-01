@@ -1,0 +1,14 @@
+{% extends "macros_templates/popup.html" %}
+
+{% block title %}Email Information{% endblock %}
+
+{% block body %}
+  <p>
+    {{ cctrans(locale, "license.link_emailed,
+               email=request_form['to_email']")|safe }}
+  </p>
+
+  <div align="center">
+    <a href="javascript:window.close();">{{ cctrans(locale, "util.Close_window")|safe }}</a>
+  </div>
+{% endblock %}

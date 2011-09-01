@@ -1,0 +1,16 @@
+<div id="languages">
+  <span dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
+    {{ cctrans(locale, "deed.view_in")|safe }}
+  </span>
+  <br/>
+
+  {% for lang in active_languages %}
+    <a title="{{ lang.name }}"
+       rel="alternate nofollow frbr:translation" 
+       rev="frbr:translationOf"
+       href="./deed.{{ lang.code}}"
+       hreflang="{{ lang.code }}"
+       xml:lang="{{ lang.code }}">{{ lang.name }}</a>
+  {% endfor %}
+</div>
+
