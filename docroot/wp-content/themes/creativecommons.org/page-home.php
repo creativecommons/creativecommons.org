@@ -71,7 +71,7 @@ if ($_GET['stype']) {
 	<?php wp_head(); ?>
 </head>
 <?php the_post(); ?>
-	<body class="home">
+<body class="home">
 	<div id="container">
 		<header> 
 		
@@ -202,11 +202,19 @@ if ($_GET['stype']) {
         <div id="main" role="main">
             <div class="container">
                 <div class="sixteen columns">
+                <?php 
+                    if ( $_SERVER["REQUEST_URI"] == '/' ||
+                         $_SERVER["REQUEST_URI"] == '/index.php' ) {
+                        include('home-guts.php'); 
+
+                    } else { 
+                    ?>
 
 			<?php the_content(); ?>
 			<?php edit_post_link("Edit This Page", '<p class="edit">', '</p>'); ?>
+            <?php } ?>
+
                 </div>
-            </div>
             </div><!--! end of .container -->
 		</div><!--! end of #main -->
 
