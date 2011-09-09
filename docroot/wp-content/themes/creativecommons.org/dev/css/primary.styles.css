@@ -1,0 +1,521 @@
+/* ==|== primary styles =====================================================
+   Author:
+   ========================================================================== */
+
+/* =============================================================================
+   Preboot
+   ========================================================================== */
+
+html, body {
+	height: 100%;
+}
+
+::-moz-selection { background: #627D0F; color: #fff; text-shadow: none; }
+::selection { background: #627D0F; color: #fff; text-shadow: none; }
+
+
+/* =============================================================================
+   Scaffolding
+   ========================================================================== */
+
+#container {
+	min-height: 100%;
+	position: relative;
+}
+
+#main {
+	padding-bottom: 400px;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 380px;
+	padding-top: 0px;
+	margin-top: 0px;
+	background-color: #98C807;
+	border-top: none;
+	-webkit-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.row {
+  margin-left: 0px;
+  margin-bottom: 0px;
+}
+
+.first.row {
+	margin-top: 60px;
+}
+
+a {
+  color: #4374B7;
+}
+
+a:visited {
+	color: #4374B7;
+}
+
+.btn.primary:visited {
+	color: #fff;
+}
+
+/*.btn:visited {
+	color: #393839;
+}*/
+
+.bucket .btn {
+	margin-right: 15px;
+}
+
+.btn.primary {
+  font-weight: 700;
+  background-color: #688527;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#98C807), to(#688527));
+  background-image: -moz-linear-gradient(#98C807, #688527);
+  background-image: -ms-linear-gradient(#98C807, #688527);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #98C807), color-stop(100%, #688527));
+  background-image: -webkit-linear-gradient(#98C807, #688527);
+  background-image: -o-linear-gradient(#98C807, #688527);
+  background-image: linear-gradient(#98C807, #688527);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border-color: #688527 #688527 #50661E;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+
+/* =============================================================================
+   Typography
+   ========================================================================== */
+
+h6 {
+  line-height: 18px;
+  margin-bottom: 18px;
+}
+
+h6, h6 small {
+	color: #A7A9AC;
+}
+
+   
+/* =============================================================================
+   Patterns
+   ========================================================================== */
+
+.topbar {
+	border-bottom: 1px solid #EDEDEE;
+}
+.topbar .topbar-inner {
+	background: #98C807;
+	background-color: #98C807;
+	background-repeat: repeat-x;
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#98C807), to(#688527));
+	background-image: -moz-linear-gradient(#98C807, #688527);
+	background-image: -ms-linear-gradient(#98C807, #688527);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #98C807), color-stop(100%, #688527));
+	background-image: -webkit-linear-gradient(#98C807, #688527);
+	background-image: -o-linear-gradient(#98C807, #688527);
+	background-image: linear-gradient(#98C807, #688527);
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.topbar #skip-navigation {
+	position: absolute;
+	top: -100px;
+	left: 150px;
+}
+
+.topbar #skip-navigation:focus {
+	top: 0px;
+}
+
+.topbar #logo {
+	position: relative;
+	float: left;
+	display: block;
+	background: #393839;
+	height: 40px;
+	width: 150px;
+    background: url("../img/cc.logo-126x30.png") 10px 4px no-repeat;
+}
+
+.topbar #logo span {
+	display: none;
+}
+
+.topbar #home-button {
+	position:absolute;
+	height: 40px;
+	width: 150px;
+	top:0;
+	left: 0;
+	z-index: 1;
+}
+
+.topbar #home-link {
+	position: absolute;
+	left: 0;
+	z-index: -1;
+}
+
+.topbar #home-button:hover {
+	background-color: #393839;
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+.topbar a:focus #home-button {
+	outline: thin dotted;
+}
+
+a.menu:after, .dropdown-toggle:after {
+	display: none;
+}
+
+#short-menu a.dropdown-toggle:after {
+	display: inline-block;
+}
+
+.topbar a {
+  color: #ffffff;
+}
+
+.topbar div > ul a:hover, .nav a:hover
+  background-color: #9FCC3B;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.topbar div > ul .active a, .nav .active a {
+  background-color: #9FCC3B;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.topbar form {
+	float: right;
+  	max-width: 220px;
+  	width: 20%;
+  	margin-right: 10px;
+}
+
+.topbar form input {
+  	width: 85%;
+  	float: right;
+  	max-width: 220px;
+  	border: 1px solid #777;
+}
+.topbar form input:-moz-placeholder {
+  color: #F2F2F2;
+}
+.topbar form input::-webkit-input-placeholder {
+  color: #F2F2F2;
+}
+.topbar form input:hover {
+  background-color: #ADCC67;
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+.topbar form input:focus, .topbar form input.focused {
+  outline: none;
+  background-color: #fff;
+  color: #404040;
+  text-shadow: 0 1px 0 #fff;
+  border: 0;
+  padding: 5px 10px;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+}
+.topbar form #glass {
+	cursor: pointer;
+	position: absolute;
+	outline: none;
+	right: 6px;
+	top: 6px;
+	width: 16px;
+	height: 16px;
+	font-size: 0px;
+	margin: 0;
+	border: 0 none;
+	background: url("../img/search-glass.png") no-repeat 0 0; /* Icon by Tiheum, GNU/GPL*/
+	overflow:hidden;
+}
+.topbar form #glass:active {
+	outline: none;
+}
+.topbar form #glass:focus {
+	padding: 0;
+	outline: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.topbar form input[type='text'] {
+	background-color: #89B033;
+  	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.topbar form input:focus, .topbar form input.focused {
+  outline: none;
+  background-color: #fff;
+  color: #404040;
+  text-shadow: 0 1px 0 #fff;
+  border: 0;
+  padding: 5px 10px;
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+}
+
+.topbar form input[type='submit'] {
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.nav .dropdown.open .dropdown-toggle, 
+.nav .dropdown.open .dropdown-toggle:hover {
+  background-color: #688527;
+  background-color: rgba(255, 255, 255, 0.1);
+  *background-color: #688527;
+  /* IE6-7 */
+
+  color: #fff;
+}
+
+.topbar div > ul .menu-dropdown li a:hover,
+.nav .menu-dropdown li a:hover {
+  background-color: #EDEDEE;
+  *background-color: #EDEDEE;
+  /* IE6-7 */
+
+  color: #393839;
+}
+
+.topbar div > ul .menu-dropdown,
+.nav .menu-dropdown {
+  background-color: #fff;
+  min-width: 220px;
+  max-width: 220px;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+.topbar div > ul .menu-dropdown li a,
+.nav .menu-dropdown li a {
+	text-shadow: none;
+}
+
+.topbar div > ul .menu-dropdown li a:hover,
+.nav .menu-dropdown li a:hover {
+  background-color: #dddddd;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#eeeeee), to(#dddddd));
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -ms-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(top, #eeeeee, #dddddd);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#dddddd', GradientType=0);
+  color: #404040;
+  text-decoration: none;
+  -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
+  -moz-box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.025), inset 0 -1px rgba(0, 0, 0, 0.025);
+}
+
+/*.topbar .dropdown-menu a:hover, .dropdown-menu a:hover{
+  background-color: #EDEDEE;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: #393839;
+}*/
+
+.topbar div > ul .menu-dropdown .divider,
+.nav .menu-dropdown .divider {
+  background: #F2F2F2;
+  background: rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+  
+.topbar ul li ul li span {
+  padding: 6px 15px;
+  cursor: default;
+  color: #BFBFBF;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: none;
+  border-top: none;
+}
+
+.bucket {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.bucket .inner {
+  background-color: #393839;
+  *background-color: #393839;
+  /* IE 6-7 */
+
+  padding: 0px;
+  overflow: hidden;
+  width: 100%;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.bucket .title {
+  color: #fff;
+  padding: 9px 14px;
+  line-height: 1;
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  border-bottom: 1px solid #EDEDEE;
+}
+.bucket .content {
+  position: relative;
+  background-color: #F5F5F5;
+  padding: 14px;
+  -webkit-border-radius: 0 0 3px 3px;
+  -moz-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  padding-bottom: 60px;
+}
+
+.bucket .sample {
+	overflow: hidden;
+	display: block;
+	width: 100%;
+	margin; 0 auto;
+	text-align: center;
+}
+
+.bucket-follow {
+	display: block;
+	float: right;
+	position: absolute;
+	bottom: 20px;
+}
+
+footer, footer p, footer p small {
+	color: #EDEDEE;
+}
+
+footer a, footer a:visited {
+	color: #fff;
+}
+
+footer a {
+	font-weight: bold;
+}
+
+footer #colophon {
+	position: relative;
+	z-index: 1000;
+}
+
+#globe {
+	position: absolute;
+	overflow: visible;
+	top: 30px;
+	left: 0px;
+	width: 500px;
+	height: 350px;
+	background: url("../img/World_map_-_low_resolution.png") no-repeat 0 0; /* CC BY SA http://en.wikipedia.org/wiki/File:World_map_-_low_resolution.svg */
+	opacity:0.3; filter:alpha(opacity=30);
+}
+
+.carousel {
+	display: none;
+	position: relative;
+}
+
+.first .carousel {
+	margin-top: 0px;
+}
+
+.slides_container {
+	position: relative;
+}
+.slides_container div.slide {
+	display:block;
+}
+
+.bucket .slide .content {
+	background: #393839;
+}
+
+.bucket .slide .film {
+	position: relative;
+}
+
+.bucket .slide .film img {
+	width: 100%;
+}
+  
+.bucket .slide p, .slide h6 {
+	color: #EDEDEE;
+}
+
+.bucket .slide p strong {
+	color: #fff;
+}
+
+.bucket .slide p a {
+	color: #98C807;
+}
+
+.bucket .slide p a {
+	font-weight: bold;
+}
+
+.bucket .slide .film .caption {
+	z-index:500;
+	position:absolute;
+	bottom: 0px;
+	left:0px;
+	min-height:30px;
+	padding:5px 20px 0 20px;
+	background:#ccc;
+	background:rgba(0,0,0,.8);
+	color:#fff;
+	border-top:1px solid #000;
+	text-shadow:none;
+}
+
+.bucket .frames {
+	position: absolute;
+	right: 5px;
+	top: -15px;
+}
+
+.bucket .frames li {
+	float:left;
+	margin:0 1px;
+	list-style:none;
+}
+
+.bucket .frames li a {
+	display:block;
+	width:12px;
+	height:0;
+	padding-top:12px;
+	background-image:url(../img/pagination.png);
+	background-position:0 0;
+	float:left;
+	overflow:hidden;
+}
+
+.bucket .frames li a:focus {
+	outline: thin dotted;
+}
+
+.bucket .frames li.current a {
+	background-position:0 -12px;
+}
