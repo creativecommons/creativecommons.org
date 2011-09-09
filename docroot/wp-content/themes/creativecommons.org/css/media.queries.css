@@ -94,4 +94,8 @@
 	.bucket .slide .film {
 		height: 196px;
 	}
+
+	.helpbox .popover {
+		left: -40px;
+	}
 }

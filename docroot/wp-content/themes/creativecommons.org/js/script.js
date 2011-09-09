@@ -8,7 +8,7 @@
 $(document).ready(function(){
 
 
-  // Dropdown example for topbar nav
+  // Dropdown for topbar nav
   // ===============================
 
   $("body").bind("click", function (e) {
@@ -17,9 +17,25 @@ $(document).ready(function(){
 
   $(".dropdown-toggle, .menu").click(function (e) {
     $('.dropdown-toggle, .menu').not(this).parent("li").removeClass("open");
-    var $li = $(this).parent("li").toggleClass('open');
+    var $li = $(this).parent('li').toggleClass('open');
     return false;
   });
+  
+  // Help popovers
+  // ===============================
+
+	$("a.help-link").bind("click", function(e) {
+		//$('.help-popover').removeClass('open');
+		$(this).parent().parent().find('.help-popover').toggleClass('open');
+		e.preventDefault();
+	});
+	
+	$('.help-popover a.close').bind('click', function(e) {
+		$(this).parent().parent().parent().removeClass('open');
+	});
+  
+  // Carousel slides
+  // ===============================
 
   $(function(){
     $("#slides").slides({

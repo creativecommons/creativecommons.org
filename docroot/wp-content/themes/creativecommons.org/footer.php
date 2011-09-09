@@ -1,79 +1,77 @@
-			</div>
-			<div id="footer">
-				<div class="container_16">
-					<div class="grid_2 alpha" id="top_link"><a href="#top">&#8682;</a></div>
-					<div class="clear"></div>
-					<div class="grid_6">
-						<h4>Creative Commons</h4>
-						<dl class="grid_2 alpha">
-							<dt><a href="/about">About</a></li>
-							<dt><a href="/who-uses-cc">Who Uses CC?</a></li>
-							<dt><a href="/culture">Culture</a></li>
-							<dt><a href="/education">Education</a></li>
-							<dt><a href="/science">Science</a></li>
-						</dl>
-						<dl class="grid_2">
-							<dt><a href="/weblog">Blog</a></li>
-							<dt><a href="http://wiki.creativecommons.org/Case_Studies">Case Studies</a></li>
-							<dt><a href="/interviews">CC Talks With...</a></li>
-							<dt><a href="/newsletter">Newsletters</a></li>
-							<dt><a href="/about/downloads">Downloads</a></li>
-						</dl>
-						<dl class="grid_2 omega">
-							<dt><a href="/affiliates">International</a></li>
-							<dt><a href="http://wiki.creativecommons.org/Events">Events</a></li>
-							<dt><a href="/about/people">People</a></li>
-							<dt><a href="/about/press">Press Room</a></li>
-							<dt><a href="/contact">Contact</a></li>
-						</dl>
-					</div>
-					<div class="grid_2 prefix_1">
-						<h4>Licensing</h4>
-						<dl class="grid_2 alpha omega">
-							<dt><a href="/licenses">The Licenses</a></li>
-							<dt><a href="/choose">Choose License</a></li>
-							<dt><a href="http://wiki.creativecommons.org/FAQ">FAQ</a></li>
-							<dt><a href="http://search.creativecommons.org/">Find Content</a></li>
-							<dt><a href="http://wiki.creativecommons.org/Developers">Developers</a></li>
-						</dl>
-					</div>
-					<div class="grid_2 prefix_1 suffix_1">
-						<h4>Supporting CC</h4>
-						<dl class="grid_2 alpha omega">
-							<dt><a href="https://creativecommons.net/donate">Donate</a></li>
-							<dt><a href="https://creativecommons.net/store">Store</a></li>
-							<dt><a href="https://creativecommons.net/supporters">Supporters</a></li>
-							<dt><a href="https://creativecommons.net/corporate">Corporate Giving</a></li>
-							<dt><a href="https://creativecommons.net/figures">Facts &amp; Figures</a></li>
-						</dl>
-					</div>
-					<div class="grid_3 social alpha omega">
-						<dl class="social_links">
-							<dt><a href="https://creativecommons.net/civicrm/mailing/subscribe?reset=1&gid=121">Subscribe to Newsletter</a></li>
-							<dt class="fb"><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcreativecommons.org&amp;layout=button_count&amp;show_faces=false&amp;width=150&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe></li>
-							<dt><a href="http://twitter.com/creativecommons">Follow on Twitter</a></li>
-							<dt><a href="http://identi.ca/creativecommons">Follow on Identi.ca</a></li>
-						</dl>
+
+		<footer>
+		<div class="container">
+		
+			<div id="globe"></div>
+
+			<div id="colophon">
+				<div class="sixteen columns">
+					<div class="first row">
+						<div class="five columns">
+							<div class="bucket">
+								<a href="http://www.facebook.com/creativecommons" title="Creative Commons on Facebook"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/facebook.png" alt="Creative Commons on Facebook"/></a>
+								<a href="http://twitter.com/creativecommons" title="Creative Commons on Twitter"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/twitter.png" alt="Creative Commons on Twitter"/></a>
+								<a href="http://identi.ca/creativecommons" title="Creative Commons on Identi.ca"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/identica.png" alt="Creative Commons on Identi.ca"/></a>
+								<a href="http://www.flickr.com/photos/creativecommons/" title="Creative Commons on Flickr"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/flickr.png" alt="Flickr"/></a>
+							</div>
+						</div>
+						<div class="four offset-by-six columns">
+							<div class="bucket">
+								<p><a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons Attribution 3.0 License"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="License"/></a></p>
+								<p><small>Except where otherwise noted, content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons Attribution 3.0 License">Creative Commons Attribution 3.0 License</a></small></p>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="container_16" id="footer_license">
-					<p class="grid_16">
-						<a href="http://creativecommons.org/policies">Policies</a>
-						&nbsp;&nbsp;&nbsp;<a href="http://creativecommons.org/privacy">Privacy</a>
-						&nbsp;&nbsp;&nbsp;<a href="http://creativecommons.org/terms">Terms of Use</a>
-					</p>
-
-					<p class="grid_16">
-						<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
-							<img src="http://i.creativecommons.org/l/by/3.0/80x15.png" alt="Creative Commons License" style="border:none;" height="15" width="80" />
-						</a>
-						<div style="display: inline" xmlns:cc="http://creativecommons.org/ns#" about="http://creativecommons.org">
-						Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on <span property="cc:attributionName" content="Creative Commons"></span><span property="cc:attributionURL" content="http://creativecommons.org">this site</span> is licensed under a <a rel="license" href="/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
+				<div class="sixteen columns">
+					<div class="first row">
+						<div class="five columns">
+							<div class="bucket">
+								<a href="#container">Top</a>
+							</div>
 						</div>
-					</p>					
+						<div class="four offset-by-six columns">
+							<p><a href="http://creativecommons.org/policies">Policies</a></p>
+							<p><a href="http://creativecommons.org/privacy">Privacy</a></p>
+							<p><a href="http://creativecommons.org/terms">Terms of Use</a></p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
+	</footer>
+	</div> <!--! end of #container -->
+
+
+	<!-- JavaScript at the bottom for fast page loading -->
+
+	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+
+
+	<!-- scripts concatenated and minified via build script -->
+	<script defer src="js/plugins.js"></script>
+	<script defer src="js/script.js"></script>
+	<!-- end scripts -->
+
+	<!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+			 mathiasbynens.be/notes/async-analytics-snippet -->
+ <!-- <script>
+		var _gaq=[['_setAccount','UA-2010376-1'],['_trackPageview'],['_trackPageLoadTime']];
+		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
+	</script>-->
+
+	<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+			 chromium.org/developers/how-tos/chrome-frame-getting-started -->
+	<!--[if lt IE 7 ]>
+		<script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+		<script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+	<![endif]-->
+
+
 	</body>
 </html>
 
