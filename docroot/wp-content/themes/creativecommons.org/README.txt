@@ -1,7 +1,8 @@
-Creative Commons Theme v6.0
-2010-12-20
+Creative Commons Theme v7.0
+2011-09-16
 
-By Alex Roberts / Creative Commons
+Originally by Alex Roberts / Creative Commons
+Updated and Restructured by Fabricatorz, LLC
 
 Based on the 960 Base Theme by Domenico Monaco and the 960 Grid System by Nathan Smith.
 
