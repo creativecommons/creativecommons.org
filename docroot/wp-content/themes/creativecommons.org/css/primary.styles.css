@@ -446,12 +446,13 @@ a.menu:after, .dropdown-toggle:after {
 	bottom: 20px;
 }
 
+
 footer, footer p, footer p small {
-	color: #EDEDEE;
+	color: #ffffff;
 }
 
-footer a, footer a:visited {
-	color: #fff;
+footer a, footer a:hover, footer a:visited {
+	color: #ffffff;
 }
 
 footer a {
@@ -471,7 +472,7 @@ footer #colophon {
 	width: 500px;
 	height: 350px;
 	background: url("../img/World_map_-_low_resolution.png") no-repeat 0 0; /* CC BY SA http://en.wikipedia.org/wiki/File:World_map_-_low_resolution.svg */
-	opacity:0.3; filter:alpha(opacity=30);
+	opacity:0.15; filter:alpha(opacity=15);
 }
 
 .carousel {
