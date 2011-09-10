@@ -12,7 +12,6 @@
 								<a href="http://www.facebook.com/creativecommons" title="Creative Commons on Facebook"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/facebook.png" alt="Creative Commons on Facebook"/></a>
 								<a href="http://twitter.com/creativecommons" title="Creative Commons on Twitter"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/twitter.png" alt="Creative Commons on Twitter"/></a>
 								<a href="http://identi.ca/creativecommons" title="Creative Commons on Identi.ca"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/identica.png" alt="Creative Commons on Identi.ca"/></a>
-								<a href="http://www.flickr.com/photos/creativecommons/" title="Creative Commons on Flickr"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/flickr.png" alt="Flickr"/></a>
 							</div>
 						</div>
 						<div class="four offset-by-six columns">
