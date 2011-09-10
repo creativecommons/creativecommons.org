@@ -1,12 +1,14 @@
 <?php get_header(); ?>
+<body class="home">
+	<div id="container">
+        <?php include 'page-nav.php'; ?>
 
-		<div id="title" class="container_16">
-			<h1 class="grid_16">
-				Search Results	
-			</h1>
-		</div>
+        <div id="main" role="main">
+            <div class="container">
+                <div class="sixteen columns">
+                <h1>Search Results</h1>
 
-		<div id="content">
+		<div>
 			<div class="container_16">
 				<div class="grid_12">
 					<div id="cse" style="padding-bottom: 25px; width: 100%;"><h3><img src="/wp-content/themes/cc5/images/loading.gif" alt="Loading" style="margin-bottom:-6px;" /> Loading search...</h3></div>
@@ -26,5 +28,13 @@
 		</div>
 
 	</div>
+
+
+
+
+                </div>
+            </div><!--! end of .container -->
+		</div><!--! end of #main -->
+
 <?php get_footer(); ?>
 

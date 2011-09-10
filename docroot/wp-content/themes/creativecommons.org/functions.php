@@ -1,14 +1,6 @@
 <?php
-/*
- * Theme Name: 960Base Theme SIMPLE
- * Theme URI: http://960basetheme.kiuz.it
- * Description: Wordpress theme based on 960 Grid System
- * Author: Domenico Monaco
- * Author URI: http://www.kiuz.it
- * Version: 1.0.0 BETA
- */
-?>
-<?php
+    include 'meta.php';
+
 // Remove link rel="start" from blog pages
 remove_action('wp_head', 'start_post_rel_link'); // Removes the start link
 remove_action('wp_head', 'parent_post_rel_link', 10, 0); // Removes rel="parent"

@@ -1,17 +1,4 @@
-<?php
-/*
-Template Name: Default 12col Grid
-*/
-/*
- * Theme Name: 960 Base Theme
- * Theme URI: http://960basetheme.kiuz.it
- * Description: Wordpress theme based on 960 Grid System
- * Author: Domenico Monaco
- * Author URI: http://www.kiuz.it
- * Version: 0.5
- */
-?>
-
+<?php include 'meta.php'; ?>
 <?php get_header(); ?>
 
 <?php 
