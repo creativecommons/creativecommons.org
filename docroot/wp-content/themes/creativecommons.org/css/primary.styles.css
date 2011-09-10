@@ -242,7 +242,6 @@ a.menu:after, .dropdown-toggle:after {
   padding: 5px 10px;
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
 }
 .topbar form #glass {
 	cursor: pointer;
@@ -283,7 +282,7 @@ a.menu:after, .dropdown-toggle:after {
   padding: 5px 10px;
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
   -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);i
 }
 
 .topbar form input[type='submit'] {

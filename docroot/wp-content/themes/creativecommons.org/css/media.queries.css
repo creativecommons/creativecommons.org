@@ -48,11 +48,15 @@
 }
 
 @media only screen and (max-width: 767px) {
-	.topbar #wide-menu, .topbar form #glass {
+	.topbar #wide-menu {
 		display: none;
 	}
 	.topbar form {
 		margin-right: 0px;
+		width: 120px;
+	}
+	.topbar form input {
+		width: 100%;
 	}
 	
 	footer .first.row {

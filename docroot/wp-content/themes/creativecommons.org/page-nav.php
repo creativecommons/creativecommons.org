@@ -11,7 +11,7 @@
 								<ul class="menu-dropdown">
 									<li><a href="<?php bloginfo('home')?>/about">About</a></li>
 									<li><a href="<?php bloginfo('home')?>/licenses/">Licenses</a></li>
-									<li><a href="<?php bloginfo('home')?>/about/cc0">Public Domain</a></li>
+									<li><a href="<?php bloginfo('home')?>/publicdomain/">Public Domain</a></li>
 									<li><a href="https://creativecommons.net/donate/">Support CC</a></li>
 									<li><a href="<?php bloginfo('home')?>/culture">Projects</a></li>
 									<li><a href="<?php bloginfo('home')?>/weblog">News</a></li>
@@ -23,7 +23,7 @@
 				    	<a href="<?php bloginfo('home')?>/about" class="dropdown-toggle">About</a>
 				    	<ul class="menu-dropdown">
 						    <li><a href="<?php bloginfo('home')?>/about">Our Mission</a></li>
-						    <li><a href="<?php bloginfo('home')?>/about/history">History of CC</a></li>
+						    <li><a href="<?php bloginfo('home')?>/about/history">History</a></li>
 						    <li class="divider"></li>
 						    <li><a href="<?php bloginfo('home')?>/who-uses-cc">Who Uses CC?</a></li>
 						    <li><a href="http://wiki.creativecommons.org/Case_Studies">Case Studies</a></li>
@@ -44,19 +44,19 @@
 				    <li class="dropdown">
 				    	<a href="<?php bloginfo('home')?>/licenses/" class="dropdown-toggle">Licenses</a>
 				    	<ul class="menu-dropdown">
-						    <li><a href="<?php bloginfo('home')?>/licenses/">About the Licenses</a></li>
-						    <li><a href="<?php bloginfo('home')?>/choose/">Choose a License</a></li>
-						    <li><a href="http://labs.creativecommons.org/demos/search/?beta=1">Find Licensed Content</a></li>
-						    <li><a href="http://wiki.creativecommons.org/Marking">HOWTO Use Licensed Content</a></li>
+		    <li><a href="<?php bloginfo('home')?>/licenses/">About the Licenses</a></li>
+		    <li><a href="<?php bloginfo('home')?>/choose/">Choose a License</a></li>
+		    <li><a href="http://labs.creativecommons.org/demos/search/?beta=1">Find licensed content</a></li>
 						    <li class="divider"></li>
-						    <li><span>Licensors</span></li>
-						    <li><a href="http://wiki.creativecommons.org/FAQ#Do_I_need_to_sign_something_or_register_to_obtain_a_Creative_Commons_license.3F">Do I need to register my work?</a></li>
-						    <li><a href="http://wiki.creativecommons.org/Marking/Creators">Marking my work with CC licenses</a></li>
+		    <li><span>Licensors</span></li>
+		    <li><a href="http://wiki.creativecommons.org/Before_Licensing">Things to know before licensing</a></li>
+		    <li><a href="http://wiki.creativecommons.org/FAQ#Do_I_need_to_sign_something_or_register_to_obtain_a_Creative_Commons_license.3F">Do I need to register my work?</a></li>
+		    <li><a href="http://wiki.creativecommons.org/Marking/">Marking my work</a></li>
 						    <li class="divider"></li>
-						    <li><span>Licensees</span></li>
-						    <li><a href="http://wiki.creativecommons.org/FAQ#Will_Creative_Commons_give_me_permission_to_use_a_work.3F">Getting permission</a></li>
-						    <li><a href="http://wiki.creativecommons.org/FAQ#How_do_I_properly_attribute_a_Creative_Commons_licensed_work.3F">Giving attribution</a></li>
-						    <li><a href="http://wiki.creativecommons.org/Marking/Users">Marking work with CC licenses</a></li>
+		    <li><span>Licensees</span></li>
+			<li><a href="http://wiki.creativecommons.org/FAQ#How_do_I_properly_attribute_a_Creative_Commons_licensed_work.3F">Attributing a work properly</a></li>
+		    <li><a href="http://wiki.creativecommons.org/Marking/Users">Marking a CC-licensed work</a></li>
+			<li><a href="http://wiki.creativecommons.org/FAQ#Will_Creative_Commons_give_me_permission_to_use_a_work.3F">Getting permission</a></li>
 						    <li class="divider"></li>
 						    <li><span>Developers</span></li>
 						    <li><a href="http://wiki.creativecommons.org/Integrate">App Integration</a></li>
@@ -65,8 +65,10 @@
 				      </ul>
 				    </li>
 				    <li class="dropdown">
-				    	<a href="<?php bloginfo('home')?>/about/cc0" class="dropdown-toggle">Public Domain</a>
+				    	<a href="<?php bloginfo('home')?>/publicdomain/" class="dropdown-toggle">Public Domain</a>
 				    	<ul class="menu-dropdown">
+					<li><a href="<?php bloginfo('home')?>/publicdomain/">Our Public Domain Tools</a></li>	
+					<li class="divider"></li>
 						    <li><a href="<?php bloginfo('home')?>/about/cc0">About CC0 Public Domain Dedication</a></li>
 						    <li><a href="<?php bloginfo('home')?>/choose/zero/">Choose CC0 Public Domain Dedication </a></li>
 						    <li class="divider"></li>
@@ -114,7 +116,7 @@
 				</ul>
 				<form action="<?php bloginfo('home')?>" id="search_form">
 					<input type="hidden" name="stype" value="site" id="find_site" />
-					<input type="text" name="q" placeholder="Search" />
+					<input type="text" name="q" placeholder="Site Search" />
 					<input type="submit" id="glass" title="Search" value="Submit">
 				</form>
 				</div>
