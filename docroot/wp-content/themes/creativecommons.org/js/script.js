@@ -85,6 +85,8 @@ $(document).ready(function(){
 		container: 'studies',
 		generateNextPrev: false,
 		paginationClass: 'frames',
+		play: 15000,
+		pause: 15000,
 		effect: 'fade',
 		fadeSpeed: 0,
 	});
