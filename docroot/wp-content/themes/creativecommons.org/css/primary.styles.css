@@ -491,35 +491,35 @@ footer #colophon {
 	display:block;
 }
 
-.bucket .slide .content {
+.carousel .slide .content {
 	background: #393839;
 }
 
-.bucket .slide .film {
+.carousel .slide .film {
 	position: relative;
 }
 
-.bucket .slide .film img {
+.carousel .slide .film img {
 	width: 100%;
 }
   
-.bucket .slide p, .slide h6 {
+.carousel .slide p, .carousel .slide h6 {
 	color: #EDEDEE;
 }
 
-.bucket .slide p strong {
+.carousel .slide p strong {
 	color: #fff;
 }
 
-.bucket .slide p a {
+.carousel .slide p a {
 	color: #98C807;
 }
 
-.bucket .slide p a {
+.carousel .slide p a {
 	font-weight: bold;
 }
 
-.bucket .slide .film .caption {
+.carousel .slide .film .caption {
 	z-index:500;
 	position:absolute;
 	bottom: 0px;
@@ -537,6 +537,10 @@ footer #colophon {
 	position: absolute;
 	right: 5px;
 	top: -15px;
+}
+
+.bucket #case .frames {
+	top: 5px;
 }
 
 .bucket .frames li {
@@ -562,6 +566,10 @@ footer #colophon {
 
 .bucket .frames li.current a {
 	background-position:0 -12px;
+}
+
+#case .studies .slide {
+	height: 450px;
 }
 
 #store {

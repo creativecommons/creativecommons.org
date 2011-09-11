@@ -77,6 +77,19 @@ $(document).ready(function(){
 	});
   });
 
+  // Case studies
+  // ===============================
+
+  $(function() {
+	$('#case').slides({
+		container: 'studies',
+		generateNextPrev: false,
+		paginationClass: 'frames',
+		effect: 'fade',
+		fadeSpeed: 0,
+	});
+  });
+
   // Store slides
   // ===============================
 

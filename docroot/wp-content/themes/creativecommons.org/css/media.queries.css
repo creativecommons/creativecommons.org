@@ -36,6 +36,10 @@
 		height: 330px;
 		width: 940px;
 	}
+
+	#case .studies .slide {
+		width: 232px;
+	}
 	
 	
 }
@@ -43,6 +47,10 @@
 	
 	.bucket .slide .film .caption {
 		width: 640px;
+	}
+
+	#case .studies .slide {
+		width: 312px;
 	}
 	
 }
@@ -76,7 +84,9 @@
 		height: 240px;
 	}
 	
-	
+	#case .studies .slide {
+		width: 392px;
+	}	
 }
 
 @media only screen and (max-width: 480px) {
@@ -98,6 +108,12 @@
 	.bucket .slide .film {
 		height: 196px;
 	}
+
+	
+	#case .studies .slide {
+        	width: 272px;
+	}
+
 
 	.helpbox .popover {
 		left: -40px;

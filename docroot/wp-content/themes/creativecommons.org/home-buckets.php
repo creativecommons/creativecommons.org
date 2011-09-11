@@ -72,18 +72,34 @@
 						<div class="six columns">
 							<div class="bucket">
 								<div class="inner">
-									<h3 class="title">Case Study</h3>
+									<h3 class="title">Case Studies</h3>
 									<div class="content">
+										<div id="case">
+										<div class="studies">
+											<div class="slide">
+											<div class="sample">
+												<img src="<?php bloginfo('stylesheet_directory'); ?>/img/120px-Aljazeera.svg.png" alt="Al Jazeera"/>
+											</div>
+
+											<h5>Al Jazeera</h5>
+											<h6>Satellite television network</h6>
+
+										<p>The Al Jazeera Creative Commons Repository hosts select broadcast quality footage that Al Jazeera has released under various Creative Commons licenses. Read our <a href="http://wiki.creativecommons.org/Case_Studies/Al_Jazeera"> case study for Al Jazeera</a></p>
+										</div>
+										<div class="slide">
 										<div class="sample">
-											<img src="<?php bloginfo('stylesheet_directory'); ?>/img/120px-Aljazeera.svg.png" alt="Al Jazeera"/>
+											<img src="<?php bloginfo('stylesheet_directory'); ?>/img/US-WhiteHouse-Logo.png" alt="Whitehouse.gov"/>
 										</div>
 
-										<h5>Al Jazeera</h5>
-										<h6>Satellite television network</h6>
+										<h5>Whitehouse.gov</h5>
+										<h6>The official website of the President of the United States</h6>
 
-										<p>The Al Jazeera Creative Common Repository hosts select broadcast quality footage that Al Jazeera has released under various Creative Commons licenses.</p>
+										<p>The official website of the Obama-Biden Administration incorporates a Creative Commons Attribution 3.0 Licence. Read <a href="http://wiki.creativecommons.org/Case_Studies/Whitehouse.gov">our case study for Whitehouse.gov</a></p>
+                                                                                        </div>
 
-										<div class="bucket-follow"><a href="http://wiki.creativecommons.org/Case_Studies/Al_Jazeera">Read this Case Study...</a></div>
+										</div> <!--! end of "studies -->
+										</div> <!--! end of #case -->
+										<div class="bucket-follow"><a href="http://wiki.creativecommons.org/Case_Studies">Read more Case Studies...</a></div>
 									</div> <!--! end of "content" -->
 								</div> <!--! end of "inner" -->
 							</div> <!--! end of "bucket" -->
