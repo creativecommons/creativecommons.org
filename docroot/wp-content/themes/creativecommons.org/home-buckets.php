@@ -54,13 +54,12 @@
 									<h3 class="title">Global Network</h3>
 									<div class="content">
 										<div class="sample">
-											<img src="<?php bloginfo('stylesheet_directory'); ?>/img/africa.png" alt="Map"/>
 										</div>
 
 										<h5>CC Affiliate Network</h5>
 										<h6>Promoting CC Around the World</h6>
 
-										<p>The CC Affiliate Network consists of 100+ affiliates working to support and promote CC activities around the world.</p>
+										<p>The CC Affiliate Network consists of 100+ affiliates working working in over 70 jurisdictions to support and promote CC activities around the world.</p>
 
 										<p>The teams enage in public outreach, community building, translation, research, publicity, and in general, promoting sharing and our mission.</p>
 
@@ -96,7 +95,26 @@
 									<h3 class="title">CC Store</h3>
 									<div class="content">
 										<div class="sample">
-											<img src="https://creativecommons.net/sites/default/files/buttons_1_0.jpg" alt="CC Buttons" height="200" />
+											<div id="store">
+												<div class="swag">
+													<div class="slide">
+														<a href="https://creativecommons.net/content/1-buttons-set-5">
+														<img src="<?php bloginfo('stylesheet_directory'); ?>/img/buttons_1_0_300x200.jpg" alt="CC Buttons" />
+														</a>
+													</div>
+                                                                                                        <div class="slide">
+                                                                                                                <a href="https://creativecommons.net/content/t-shirt-science">
+                                                                                                                <img src="<?php bloginfo('stylesheet_directory'); ?>/img/XKCD-Science-back_300x200.jpg" alt="T-shirt: Science@creativecommons" />
+                                                                                                                </a>
+                                                                                                        </div>
+													<div class="slide">
+														<a href="https://creativecommons.net/sites/default/files/imagecache/product_list/black-cc.jpg">
+														<img src="<?php bloginfo('stylesheet_directory'); ?>/img/black-cc_300x200.jpg" alt="T-Shirt: CC Logo" />
+														</a>
+													</div>
+
+												</div>
+											</div>
 										</div>
 
 										<h5>Support CC</h5>

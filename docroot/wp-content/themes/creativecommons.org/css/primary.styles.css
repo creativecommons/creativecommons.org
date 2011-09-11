@@ -563,3 +563,12 @@ footer #colophon {
 .bucket .frames li.current a {
 	background-position:0 -12px;
 }
+
+#store {
+	width: 300px;
+	margin: 0 auto;
+}
+
+#store .swag {
+	height: 200px;
+}

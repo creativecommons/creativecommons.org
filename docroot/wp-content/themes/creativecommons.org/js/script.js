@@ -77,6 +77,25 @@ $(document).ready(function(){
 	});
   });
 
+  // Store slides
+  // ===============================
+
+  $(function() {
+	$("#store").slides({
+		container: 'swag',
+		generateNextPrev: false,
+		pagination: false,
+		generatePagination: false,
+		play: 7000,
+		pause: 7000,
+		effect: 'fade',
+		fadeSpeed: 500,
+		crossfade: 'true',
+		fadeEasing: 'easeOutQuad',
+		hoverPause: true
+	});
+  });
+
 });
 
 $(window).load( $('div.carousel').css('display', 'block') );
