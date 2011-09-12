@@ -3,13 +3,7 @@
 {% block title %}Choose a License{% endblock title %}
 
 {% block headers %}
-    <script type="text/javascript"
-            src="http://yui.yahooapis.com/2.6.0/build/container/container-min.js">
-    </script>
-
-    <script src="{{ request.staticdirect('/includes/help.js') }}"
-            type="text/javascript">
-    </script>
+<link rel="stylesheet" type="text/css" href="/wp-content/themes/creativecommons.org/engine.css" />
 {% endblock headers %}
 
 {% block body %}
@@ -30,7 +24,7 @@
   </div>
 
   <div class="licensebox">
-    <form action="./results-one" method="get" >
+    <form action="./results-one" method="get" class="form-stacked" >
       <div>
         <input type="hidden"  name="q_1" value="2" id="question_1-2"
                checked="checked" />
