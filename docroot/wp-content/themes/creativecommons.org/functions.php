@@ -1,9 +1,10 @@
 <?php
     include 'meta.php';
 
-// Moving sites
-update_option('siteurl','http://cc.localhost');
-update_option('home','http://cc.localhost');
+// This file is not to be checked in.
+$func_custom = TEMPLATEPATH . '/functions-custom.php';
+if ( is_readable( $func_custom ) )
+    include_once( $func_custom );
 
 // Remove link rel="start" from blog pages
 remove_action('wp_head', 'start_post_rel_link'); // Removes the start link
