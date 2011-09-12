@@ -37,6 +37,7 @@
 	<div class="sixteen columns">
         <div class="first row">
 
+
       <div id="title">
         <h1 dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
             >
@@ -47,23 +48,37 @@
 	
 	<div class="row">
 
-	<div class="twelve columns alpha">
+	{% if page_style == "bare" %}
+		{# No wrapping needed :) #}
+	{% elif page_style == "2cols" %}
+		<div class="sixteen columns">
+	{% else %}
+		<div class="twelve columns alpha">
+	{% endif %}
 
       <div dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
            id="content">
 
         {% block body %}{% endblock %}
 
-            </div> <!--! end of #content -->
-          </div> <!--! end of "twelve columns alpha" -->
+	</div>
 
-	<div class="four columns omega">
+	{% if page_style == "bare" %}
+		{# Again... no wrapping needed :) #}
+	{% elif page_style == "2cols" %}
+
+          </div> <!--! end of "sixteen columns" -->
+
+	{% else %}
+	</div> <!--! end of "twelve columns alpha" -->
+	<div class="three columns offset-by-one omega">
 
             <div
                  dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
               {% block sidebar %}{% endblock %}
             </div> <!--! end of sidebar -->
-          </div> <!--! end of "four columns omega" -->
+          </div> <!--! end of "three columns offset-by-one omega" -->
+        {% endif %}
 
 
 	</div> <!-- end of "row" -->
