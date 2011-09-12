@@ -45,6 +45,9 @@
             <img src="{{ request.staticdirect('images/information.png') }}"
                  alt="{{ cctrans(locale, 'Information')|safe }}"/>
           </a>
+<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
+<h3 class="title">{{ cctrans(locale, "Commercial Use")|safe }}</h3><a href="#" class="close">&times;</a>
+<div class="content"><p>{{ cctrans(locale, "license.help.commercial")|safe }}</p></div></div></div></div>
         </li>
 
         <li>
@@ -55,6 +58,9 @@
             <img src="{{ request.staticdirect('images/information.png') }}"
                  alt="{{ cctrans(locale, 'Information')|safe }}"/>
           </a>
+<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
+<h3 class="title">{{ cctrans(locale, "licenses.pretty_nc")|safe }}</h3><a href="#" class="close">&times;</a>
+<div class="content"><p>{{ cctrans(locale, "license.help.noncommercial")|safe }}</p></div></div></div></div>
         </li>
       </ul>
 
@@ -74,6 +80,9 @@
             <img src="{{ request.staticdirect('images/information.png') }}"
                  alt="{{ cctrans(locale, 'Information')|safe }}"/>
           </a>
+<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
+<h3 class="title">{{ cctrans(locale, "Allow Derivative Works")|safe }}</h3><a href="#" class="close">&times;</a>
+<div class="content"><p>{{ cctrans(locale, "license.help.derivatives")|safe }}</p></div></div></div></div>
         </li>
 
         <li>
@@ -87,6 +96,9 @@
               <img src="{{ request.staticdirect('images/information.png') }}"
                    alt="{{ cctrans(locale, 'Information')|safe }}"/>
             </a>
+<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
+<h3 class="title">{{ cctrans(locale, "char.sa_title")|safe }}</h3><a href="#" class="close">&times;</a>
+<div class="content"><p>{{ cctrans(locale, "char.sa_description")|safe }}</p></div></div></div></div>
           </label>
         </li>
 
@@ -98,15 +110,23 @@
             <img src="{{ request.staticdirect('images/information.png') }}"
                  alt="{{ cctrans(locale, 'Information')|safe }}"/>
           </a>
+<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
+<h3 class="title">{{ cctrans(locale, "char.nd_title")|safe }}</h3><a href="#" class="close">&times;</a>
+<div class="content"><p>{{ cctrans(locale, "char.nd_description")|safe }}</p></div></div></div></div>
         </li>
       </ul>
 
       <p>
+<div>
         {{ cctrans(locale, "license.jurisdiction_question")|safe }}
         <a href="" class="helpLink" id="jurisdiction">
           <img src="{{ request.staticdirect('images/information.png') }}"
                alt="{{ cctrans(locale, 'Information')|safe }}"/>
         </a>
+<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
+<h3 class="title">{{ cctrans(locale, "util.Jurisdiction")|safe }}</h3><a href="#" class="close">&times;</a>
+<div class="content"><p>{{ cctrans(locale, "license.jurisdiction_help")|safe }}</p></div></div></div></div>
+</div>
         <br />
 
         <select name="field_jurisdiction">
@@ -143,7 +163,7 @@
 
       <div>
         <p>
-          <input type="submit" class="submit"
+          <input type="submit" class="primary btn submit"
                  value="{{ cctrans(locale, 'license.Select_a_License')|safe }}" />
         </p>
       </div>
@@ -153,69 +173,5 @@
 
   {% include "includes/engine_languages.html" %}
 
-  <div id="help_jurisdiction">
-    <div class="hd">
-      <span>{{ cctrans(locale, "util.Jurisdiction")|safe }}</span>
-    </div>
-    <div class="bd">
-      <p>
-        {{ cctrans(locale, "license.jurisdiction_help")|safe }}
-      </p>
-    </div>
-  </div>
-  <div id="help_commercial">
-    <div class="hd">
-      <span>{{ cctrans(locale, "Commercial Use")|safe }}</span>
-    </div>
-    <div class="bd">
-      <p>
-        {{ cctrans(locale, "license.help.commercial")|safe }}
-      </p>
-    </div>
-  </div>
-
-  <div id="help_noncommercial">
-    <div class="hd">
-      <span>{{ cctrans(locale, "licenses.pretty_nc")|safe }}</span>
-    </div>
-    <div class="bd">
-      <p>
-        {{ cctrans(locale, "license.help.noncommercial")|safe }}
-      </p>
-    </div>
-  </div>
-
-  <div id="help_derivatives">
-    <div class="hd">
-      <span>{{ cctrans(locale, "Allow Derivative Works")|safe }}</span>
-    </div>
-    <div class="bd">
-      <p>
-        {{ cctrans(locale, "license.help.derivatives")|safe }}
-      </p>
-    </div>
-  </div>
-
-  <div id="help_noderivatives">
-    <div class="hd">
-      <span>{{ cctrans(locale, "char.nd_title")|safe }}</span>
-    </div>
-    <div class="bd">
-      <p>
-        {{ cctrans(locale, "char.nd_description")|safe }}
-      </p>
-    </div>
-  </div>
-
-  <div id="help_sharealike">
-    <div class="hd">
-      <span>{{ cctrans(locale, "char.sa_title")|safe }}</span>
-    </div>
-    <div class="bd">
-      <p>
-        {{ cctrans(locale, "char.sa_description")|safe }}
-      </p>
-    </div>
-  </div>
 </div>
 {% endblock %}
