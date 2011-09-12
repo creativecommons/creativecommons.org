@@ -5,9 +5,8 @@
 {% block page_header_title %}About The Licenses{% endblock page_header_title %}
 
 {% block body %}
-{# maybe include an extra div around all this? #}
-  <div class="container_16">
-    <div class="grid_12">
+  <div class="row">
+    <div class="ten columns alpha">
       <h2>
         {{ cctrans(locale, "license.index.what_licenses_do.title")|safe }}
       </h2>
@@ -16,20 +15,20 @@
       </div>
     </div>
 
-    <div class="grid_4">
+    <div class="six columns omega">
       <video width="230" height="210" controls>
         <source src="http://mirrors.creativecommons.org/movingimages/webm/WannaWorkTogether_360p.webm" type="video/webm" />
         <source src="http://blip.tv/file/get/Commonscreative-WannaWorkTogether958.mov" type="video/mp4" />
         <embed src="http://blip.tv/play/gpxSkdkzAg" type="application/x-shockwave-flash" width="230" height="210" allowscriptaccess="always" allowfullscreen="true"></embed>
       </video>
     </div>
-  </div>
+  </div> <!--! end "row" -->
 
-  <div class="container_16">
-    <h2 class="grid_16">
+  <div class="row">
+    <h2>
       {{ cctrans(locale, "license.index.design_rationale.title")|safe }}
     </h2>
-    <div class="grid_8">
+    <div class="eight columns alpha">
       <p>
         {{ cctrans(locale, "license.index.design_rationale.body1")|safe }}
       </p>
@@ -38,7 +37,7 @@
         {{ cctrans(locale, "license.index.design_rationale.body2")|safe }}
       </p>
     </div>
-    <div class="grid_8">
+    <div class="eight columns omega">
       <p>
         {{ cctrans(locale, "license.index.design_rationale.body3")|safe }}
       </p>
@@ -49,14 +48,15 @@
     </div>
   </div>
   <div class="alt" id="layers">
-    <div class="container_16">
-      <h2 class="grid_16">
+    <div class="row">
+      <h2>
         {{ cctrans(locale, "license.index.three_layers.title")|safe }}
       </h2>
-      <div class="grid_5">
+        <div class="six columns alpha">
         <img src="/images/license-layers.png" alt="Three Layers of Licenses"/>
       </div>
-      <div class="grid_11">
+
+      <div class="ten columns omega">
         <p>
           {{ cctrans(locale, "license.index.three_layers.body1")|safe }}
         </p>
@@ -80,16 +80,17 @@
     </div>
   </div>
 
-  <div class="container_16" id="licenses">
-    <h2 class="grid_16">
+  <div class="row" id="licenses">
+    <h2>
       {{ cctrans(locale, "license.index.the_licenses.title")|safe }}
     </h2>
-    <ul>
-      <li class="grid_8">
-        <div class="grid_2 alpha" style="text-align:right;">
+    <div class="row">
+      <div class="eight columns alpha">
+        <div class="two columns alpha">
+
           <img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="" width="88" height="31" />
         </div>
-        <div class="grid_5 omega">
+        <div class="six columns omega">
           <p>
             <strong>
               {{ cctrans(locale, "licenses.pretty_by")|safe }}
@@ -109,14 +110,14 @@
             </span>
           </p>
         </div>
-      </li>
+      </div>
 
-      <li class="grid_8">
-        <div class="grid_2 alpha" style="text-align:right;">
+      <div class="eight columns omega">
+        <div class="two columns alpha">
           <img src="http://i.creativecommons.org/l/by-sa/3.0/88x31.png"
                alt="" width="88" height="31" />
         </div>
-        <div class="grid_5 omega">
+        <div class="six columns omega">
           <p>
             <strong>
               {{ cctrans(locale, "licenses.pretty_by-sa")|safe }}
@@ -138,12 +139,14 @@
             </span>
           </p>
         </div>
-      </li>
-      <li class="grid_8">
-        <div class="grid_2 alpha" style="text-align:right;">
+      </div>
+	</div>
+	<div class="row">
+      <div class="eight columns alpha">
+        <div class="two columns alpha">
           <img src="http://i.creativecommons.org/l/by-nd/3.0/88x31.png" alt="" width="88" height="31" />
         </div>
-        <div class="grid_5 omega">
+        <div class="six columns omega">
           <p>
             <strong>
               {{ cctrans(locale, "licenses.pretty_by-nd")|safe }}
@@ -165,12 +168,12 @@
             </span>
           </p>
         </div>
-      </li>
-      <li class="grid_8">
-        <div class="grid_2 alpha" style="text-align:right;">
+      </div>
+      <div class="eight columns omega">
+        <div class="two columns alpha">
           <img src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" alt="" width="88" height="31" />
         </div>
-        <div class="grid_5 omega">
+        <div class="six columns omega">
           <p>
             <strong>
               {{ cctrans(locale, "licenses.pretty_by-nc")|safe }}
@@ -192,12 +195,14 @@
             </span>
           </p>
         </div>
-      </li>
-      <li class="grid_8">
-        <div class="grid_2 alpha" style="text-align:right;">
+      </div>
+	</div>
+	<div class="row">
+      <div class="eight columns alpha">
+        <div class="two columns alpha">
           <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" alt="" width="88" height="31" />
         </div>
-        <div class="grid_5 omega">
+        <div class="six columns omega">
           <p>
             <strong>
               {{ cctrans(locale, "licenses.pretty_by-nc-sa")|safe }}
@@ -219,12 +224,12 @@
             </span>
           </p>
         </div>
-      </li>
-      <li class="grid_8">
-        <div class="grid_2 alpha" style="text-align:right;">
+      </div>
+      <div class="eight columns omega">
+        <div class="two columns alpha">
           <img src="http://i.creativecommons.org/l/by-nc-nd/3.0/88x31.png" alt="" width="88" height="31" />
         </div>
-        <div class="grid_5 omega">
+        <div class="six columns omega">
           <p>
             <strong>
               {{ cctrans(locale, "licenses.pretty_by-nc-nd")|safe }}
@@ -246,16 +251,16 @@
             </span>
           </p>
         </div>
-      </li>
-    </ul>
-    <div class="grid_12">
+      </div>
+    </div>
+    <div class="row">
       <p>
         {{ cctrans(locale, "license.about_our_publicdomain_tools")|safe }}
       </p>
     </div>
   </div>
 
-  <div class="container_16">
+  <div class="row">
     {% include "includes/engine_languages.html" %}
   </div>
 {% endblock body %}
