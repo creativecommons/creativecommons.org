@@ -7,6 +7,12 @@ div.licensebox {
     width:543px; /* padding yields to 575px */ 
 }
 
+.licensebox input, .licensebox label, .licensebox a {
+
+        display: inline-block;
+
+}
+
 div.licensebox ul.choices {
 	margin: -0.5em 0pt 0pt; 
 	padding: 0pt; 
