@@ -24,14 +24,15 @@ $(document).ready(function(){
   // Help popovers
   // ===============================
 
-	$("a.help-link").bind("click", function(e) {
-		//$('.help-popover').removeClass('open');
-		$(this).parent().parent().find('.help-popover').toggleClass('open');
+	$("a.helpLink").bind("click", function(e) {
+		$(this).next('.help-popover').toggleClass('open');
+		//$(this).parent().find('.help-popover').toggleClass('open');
 		e.preventDefault();
 	});
 	
 	$('.help-popover a.close').bind('click', function(e) {
 		$(this).parent().parent().parent().removeClass('open');
+		e.preventDefault();
 	});
   
   // Carousel slides

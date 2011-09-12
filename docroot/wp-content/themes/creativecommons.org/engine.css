@@ -49,7 +49,7 @@ div.more-metadata {
 	padding-bottom: 0.75em;
 }
 
-div.more-metadata div {
+div.more-metadata .label {
 	float:left; 
 	font-weight: bold;
 	padding-left: 0.75em;
