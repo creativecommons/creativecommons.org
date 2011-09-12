@@ -9,7 +9,7 @@
 <!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head profile="http://gmpg.org/xfn/11">
-	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" charset="<?php bloginfo('charset'); ?>" />
 
 	<!-- Use the .htaccess and remove these lines to avoid edge case issues.
 			 More info: h5bp.com/b/378 -->
@@ -44,7 +44,6 @@
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<?php } ?>
 
-
     <?php if ($category_name == "weblog" || is_front_page() ) { ?>
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('home')?>/weblog/rss" />
     <?php } else if (is_category()) { ?>
@@ -54,13 +53,5 @@
     <?php } ?>
 
 
-	<!-- <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>?20110103" type="text/css" media="screen" /> -->
-	<!-- <link rel="stylesheet" href="/stylesheet" type="text/css" /> -->
-	<!--[if IE ]><link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_directory'); ?>/style-ie.css" /><![endif]--> 
-	<!-- <link href="<?php bloginfo('stylesheet_directory'); ?>/support.css" rel="stylesheet" type="text/css" /> -->
- 	<!-- <link href="http://creativecommons.org/includes/total.css" rel="stylesheet" type="text/css" /> -->
-	<!-- <script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/jquery.min.js"></script> -->
-	<!-- <script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/jquery.carousel.min.js"></script> -->
-	<!-- <script type="text/javascript" charset="utf-8" src="<?php bloginfo('stylesheet_directory'); ?>/site.js"></script> -->
 	<?php wp_head(); ?>
 </head>

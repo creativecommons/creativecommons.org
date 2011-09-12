@@ -1,4 +1,8 @@
 <?php
+/**
+ * Template Name: HOME DEV PAGE
+ *
+ */
 // search handler
 if ($_GET['stype']) {
 	if ($_GET['stype'] == "content") {
@@ -18,17 +22,17 @@ if ($_GET['stype']) {
             <div class="container">
                 <div class="sixteen columns">
                 <?php 
-                    if ( $_SERVER["REQUEST_URI"] == '/' ||
-                         $_SERVER["REQUEST_URI"] == '/index.php' ) {
-                        include 'home-carousel.php'; 
-                        include 'home-buckets.php'; 
+                    // if ( $_SERVER["REQUEST_URI"] == '/' ||
+                    //      $_SERVER["REQUEST_URI"] == '/index.php' ) {
+                        include 'homedev-carousel.php'; 
+                        include 'homedev-buckets.php'; 
 
-                    } else { 
+                    // } else { 
                     ?>
 
-			<?php the_content(); ?>
-			<?php edit_post_link("Edit This Page", '<p class="edit">', '</p>'); ?>
-            <?php } ?>
+			<?php // the_content(); ?>
+			<?php // edit_post_link("Edit This Page", '<p class="edit">', '</p>'); ?>
+            <?php // } ?>
 
                 </div>
             </div><!--! end of .container -->

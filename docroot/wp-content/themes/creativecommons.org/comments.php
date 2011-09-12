@@ -1,14 +1,6 @@
 <?php
-/*
- * Theme Name: 960Base Theme SIMPLE
- * Theme URI: http://960basetheme.kiuz.it
- * Description: Wordpress theme based on 960 Grid System
- * Author: Domenico Monaco
- * Author URI: http://www.kiuz.it
- * Version: 1.0.0
- */
-?>
-<?php
+    include 'meta.php';
+
 // Do not delete these lines
 	if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
 		die ('Please do not load this page directly. Thanks!');

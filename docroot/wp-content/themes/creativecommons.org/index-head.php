@@ -1,15 +1,3 @@
-
-			<div id="features" style="background:url(/images/splash/cc-org-banner-Thanks-widebg.jpg) no-repeat 50% 50% #d4eaed; height: 220px;">
-				<div class="container_16">
-					<div class="grid_10 prefix_3">
-						<div class="feature_text">
-						<h1>A big thank you to all of our supporters in 2010!</h1>
-						<h3>We need your continued support for the year ahead.</h3>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="clear"></div>
 <?php
 
 return;

@@ -1,4 +1,3 @@
-
 		<footer>
 		<div class="container">
 		
@@ -41,7 +40,6 @@
 	</footer>
 	</div> <!--! end of #container -->
 
-
 	<!-- JavaScript at the bottom for fast page loading -->
 
 	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
@@ -56,12 +54,12 @@
 
 	<!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
 			 mathiasbynens.be/notes/async-analytics-snippet -->
- <!-- <script>
+    <script>
 		var _gaq=[['_setAccount','UA-2010376-1'],['_trackPageview'],['_trackPageLoadTime']];
 		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 		s.parentNode.insertBefore(g,s)}(document,'script'));
-	</script>-->
+	</script>
 
 	<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
 			 chromium.org/developers/how-tos/chrome-frame-getting-started -->
@@ -70,7 +68,5 @@
 		<script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 	<![endif]-->
 
-
 	</body>
 </html>
-

@@ -1,6 +1,10 @@
 <?php
     include 'meta.php';
 
+// Moving sites
+update_option('siteurl','http://cc.localhost');
+update_option('home','http://cc.localhost');
+
 // Remove link rel="start" from blog pages
 remove_action('wp_head', 'start_post_rel_link'); // Removes the start link
 remove_action('wp_head', 'parent_post_rel_link', 10, 0); // Removes rel="parent"

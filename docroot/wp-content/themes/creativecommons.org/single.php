@@ -8,6 +8,13 @@ if (have_posts())  {
   exit();
 } ?>
 <?php get_header(); ?>
+<body>
+	<div id="container">
+        <?php include 'page-nav.php'; ?>
+
+        <div id="main" role="main">
+            <div class="container">
+                <div class="sixteen columns">
 <?php
 // check if this single is a commoner or blog post
 $is_commoner = (in_category(7) ? true : false);
@@ -21,44 +28,38 @@ foreach (get_the_category() as $cat) {
 }
 ?>
 
-<div id="title" class="container_16">
-
+<div class="first row">
 	<?php edit_post_link("Edit This Post", '<p class="alignright edit">', '</p>'); ?>
-	<? if ($is_commoner) { ?>
+	<?php if ($is_commoner) { ?>
 	<h3 class="category">
-		<? $cat = get_the_category(); (count($cat) > 1) ? $cat = $cat[0] : $cat = $cat[0]; ?>
+		<?php $cat = get_the_category(); (count($cat) > 1) ? $cat = $cat[0] : $cat = $cat[0]; ?>
 		<a href="<?php echo get_option('home') . "/" . $cat->category_nicename . "/"; ?>">
-		<? echo $cat->cat_name; ?>
+		<?php echo $cat->cat_name; ?>
 		</a>
 	</h3>
-	<? } else if ($is_blog) { ?>
+	<?php } else if ($is_blog) { ?>
 	<h3 class="category">
 		<a href="<?php echo get_category_link(1);?>">
 			News
 		</a>
 	</h3>
-	<? } else if ($category_name == "press-releases") { ?>
+	<?php } else if ($category_name == "press-releases") { ?>
 	<h3 class="category">
 		<a href="<?php echo get_settings('home') . "/" ?>press-releases/">
 			Press Releases
 		</a>
 	</h3>
-	<? } ?>
+	<?php } ?>
 
-	<h1 class="grid_16">
-		<?php the_title(); ?>
-	</h1>
-	
-	<h4 class="grid_16 meta"><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
+    <h1><?php the_title(); ?></h1>
+	<h4><?php the_author() ?>, <?php the_time('F jS, Y')?></h4>
 </div>
 
-<div id="content">
-	<div class="container_16">
-		<div class="grid_12" id="post-<?php the_ID(); ?>">
+<div class="row" id="post-<?php the_ID(); ?>">
 			<?php the_content(); ?>
 
 			<div class="twitter">
-				<? /* FIXME: use official buttons here, include facebook */ ?>
+				<?php /* FIXME: use official buttons here, include facebook */ ?>
 				<a href="http://twitter.com/home?status=<?php the_title() ?> - <?php the_permalink() ?> via @creativecommons">Share on Twitter</a>
 				<a href="http://identi.ca/?action=newnotice&amp;status_textarea=<?php the_title() ?>%20-%20<?php the_permalink() ?>%20via%20@creativecommons">Share on Identi.ca</a>
 			</div>
@@ -70,9 +71,10 @@ foreach (get_the_category() as $cat) {
 			<?php } ?>
 
 			<div class="comments"><?php if ($is_blog) comments_template(); ?></div>
-		</div>
-	</div>
 </div>
 
-<?php get_footer(); ?>
+                </div>
+            </div><!--! end of .container -->
+		</div><!--! end of #main -->
 
+<?php get_footer(); ?>
