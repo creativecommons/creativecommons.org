@@ -3,11 +3,6 @@
 {% block title %}CC0{% endblock title %}
 
 {% block headers %}
-  <link rel="stylesheet" type="text/css" 
-        href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
-
-  <script type="text/javascript" 
-          src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
 
   <link rel="stylesheet" type="text/css"
         href="{{ request.staticdirect('includes/zero.css') }}" />
@@ -16,15 +11,6 @@
           src="{{ request.staticdirect('/includes/help.js') }}" >
   </script>
 
-  <script type="text/javascript">
-    YAHOO.util.Event.onDOMReady(function() {
-
-    // init the buttons
-    new YAHOO.widget.Button("do-begin");
-    new YAHOO.widget.Button("do-learn-more");
-
-    });
-  </script>
 {% endblock headers %}
 
 {% block sidebar %}{% endblock %}
@@ -32,8 +18,8 @@
 {% block page_header_title %}CC0{% endblock %}
 
 {% block body %}
-  <div class="yui-content">
-    <div id="page-welcome" class="yui-module">
+  <div>
+    <div id="page-welcome">
       <div class="bd">
         <div class="pd-explain-differences">
           {{ cctrans(locale, "license.zero.PDM-difference")|safe }}
@@ -52,27 +38,19 @@
         </p>
 
         <p>
-          <span id="mycheckbox" class="yui-button">
-            <span class="first-child">
-              <a id="do-learn-more"
+              <a id="do-learn-more" class="btn"
                  href="/about/cc0">{{ cctrans(locale, "util.learn_more")|safe }}</a>
-            </span>
-          </span>
 
-          <span id="mycheckbox" class="yui-button">
-            <span class="first-child">
               {% if request.GET.has_key('lang') %}
-                <a id="do-begin"
+                <a id="do-begin" class="primary btn"
                    href="{{ '/choose/zero/waiver?lang=' + target_lang }}">
                   {{ cctrans(locale, "util.begin")|safe }} &raquo;
                 </a>
               {% else %}
-                <a id="do-begin" href="/choose/zero/waiver">
+                <a id="do-begin" class="primary btn" href="/choose/zero/waiver">
                   {{ cctrans(locale, "util.begin")|safe }} &raquo;
                 </a>
               {% endif %}
-            </span>
-          </span>
         </p>
 
         {% include "includes/engine_languages.html" %}
