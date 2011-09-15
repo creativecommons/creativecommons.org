@@ -1,18 +1,28 @@
 <div class="more-metadata-container">
- <h4>{{ cctrans(locale, "license.additional_info")|safe }}</h4>
-<p>	<div>
-    <span>
-      {{ cctrans(locale, "license.additional_fields_optional")|safe }}
-    </span>
-    <a href="" id="embedded_metadata" class="helpLink">
-      <img src="{{ request.staticdirect('images/information.png') }}"
-           alt="{{ cctrans(locale, 'Information')|safe }}" />
-    </a>
-<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
-<h3 class="title">{{ cctrans(locale, "Embedded Metadata")|safe }}</h3><a href="#" class="close">&times;</a>
-<div class="content"><p>{{ cctrans(locale, "license.metadata_help")|safe }}</p></div></div></div></div>
-</div></p>
-
+  <h4>{{ cctrans(locale, "license.additional_info")|safe }}</h4>
+  <p>
+    <div>
+      <span>
+        {{ cctrans(locale, "license.additional_fields_optional")|safe }}
+      </span>
+      <a href="" id="embedded_metadata" class="helpLink">
+        <img src="{{ request.staticdirect('images/information.png') }}"
+             alt="{{ cctrans(locale, 'Information')|safe }}" />
+      </a>
+      <div class="help-popover">
+        <div class="popover below">
+          <div class="arrow"></div>
+          <div class="inner">
+            <h3 class="title">{{ cctrans(locale, "Embedded Metadata")|safe }}</h3>
+            <a href="#" class="close">&times;</a>
+            <div class="content">
+              <p>{{ cctrans(locale, "license.metadata_help")|safe }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p>
 
   <div class="more-metadata">
     <div class="label">
@@ -40,15 +50,23 @@
   <div class="more-metadata">
     <div class="label">{{ cctrans(locale, "util.title_of_work")|safe }}</div>
 
-    <input type="text" name="field_worktitle" value="" /> 
+    <input type="text" name="field_worktitle" value="" />
     <a href="" id="worktitle" class="helpLink">
       <img src="{{ request.staticdirect('images/information.png') }}"
            alt="{{ cctrans(locale, 'Information')|safe }}" />
     </a>
-<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
-<h3 class="title">{{ cctrans(locale, "util.title_of_work")|safe }}</h3><a href="#" class="close">&times;</a>
-<div class="content"><p>{{ cctrans(locale, "The title of the work you are licensing.")|safe }}</p></div></div></div></div>
-
+    <div class="help-popover">
+      <div class="popover below">
+        <div class="arrow"></div>
+        <div class="inner">
+          <h3 class="title">{{ cctrans(locale, "util.title_of_work")|safe }}</h3>
+          <a href="#" class="close">&times;</a>
+          <div class="content">
+            <p>{{ cctrans(locale, "The title of the work you are licensing.")|safe }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="more-metadata">
@@ -56,14 +74,23 @@
       {{ cctrans(locale, "util.attribute_to_name")|safe }}
     </div>
 
-    <input type="text" name="field_attribute_to_name" /> 
+    <input type="text" name="field_attribute_to_name" />
     <a href="" id="attribution_name" class="helpLink">
       <img src="{{ request.staticdirect('images/information.png') }}"
            alt="{{ cctrans(locale, 'Information')|safe }}" />
     </a>
-<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
-<h3 class="title">{{ cctrans(locale, "util.attribute_to_name")|safe }}</h3><a href="#" class="close">&times;</a>
-<div class="content"><p>{{ cctrans(locale, "The name users of the work should give attribution to. For example, the name of the work's author.")|safe }}</p></div></div></div></div>
+    <div class="help-popover">
+      <div class="popover below">
+        <div class="arrow"></div>
+        <div class="inner">
+          <h3 class="title">{{ cctrans(locale, "util.attribute_to_name")|safe }}</h3>
+          <a href="#" class="close">&times;</a>
+          <div class="content">
+            <p>{{ cctrans(locale, "The name users of the work should give attribution to. For example, the name of the work's author.")|safe }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
 
@@ -77,10 +104,18 @@
       <img src="{{ request.staticdirect('images/information.png') }}"
            alt="{{ cctrans(locale, 'Information')|safe }}" />
     </a>
-<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
-<h3 class="title">{{ cctrans(locale, "util.attribute_to_url")|safe }}</h3><a href="#" class="close">&times;</a>
-<div class="content"><p>{{ cctrans(locale, "The URL users of the work should link to. For example, the work's page on the author's site.")|safe }}</p></div></div></div></div>
-
+    <div class="help-popover">
+      <div class="popover below">
+        <div class="arrow"></div>
+        <div class="inner">
+          <h3 class="title">{{ cctrans(locale, "util.attribute_to_url")|safe }}</h3>
+          <a href="#" class="close">&times;</a>
+          <div class="content">
+            <p>{{ cctrans(locale, "The URL users of the work should link to. For example, the work's page on the author's site.")|safe }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="more-metadata">
@@ -91,9 +126,18 @@
       <img src="{{ request.staticdirect('images/information.png') }}"
            alt="{{ cctrans(locale, 'Information')|safe }}" />
     </a>
-<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
-<h3 class="title">{{ cctrans(locale, "util.source_work")|safe }}</h3><a href="#" class="close">&times;</a>
-<div class="content"><p>{{ cctrans(locale, "jargon.source_work_description")|safe }}</p></div></div></div></div>
+    <div class="help-popover">
+      <div class="popover below">
+        <div class="arrow"></div>
+        <div class="inner">
+          <h3 class="title">{{ cctrans(locale, "util.source_work")|safe }}</h3>
+          <a href="#" class="close">&times;</a>
+          <div class="content">
+            <p>{{ cctrans(locale, "jargon.source_work_description")|safe }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="more-metadata">
@@ -104,10 +148,17 @@
       <img src="{{ request.staticdirect('images/information.png') }}"
            alt="{{ cctrans(locale, 'Information')|safe }}" />
     </a>
-<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
-<h3 class="title">{{ cctrans(locale, "util.more_permissions_url")|safe }}</h3><a href="#" class="close">&times;</a>
-<div class="content"><p>{{ cctrans(locale, "A URL where a user can obtain information about clearing rights that are not pre-cleared by your CC license.")|safe }}</p></div></div></div></div>
+    <div class="help-popover">
+      <div class="popover below">
+        <div class="arrow"></div>
+        <div class="inner">
+          <h3 class="title">{{ cctrans(locale, "util.more_permissions_url")|safe }}</h3>
+          <a href="#" class="close">&times;</a>
+          <div class="content">
+            <p>{{ cctrans(locale, "A URL where a user can obtain information about clearing rights that are not pre-cleared by your CC license.")|safe }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-
 </div>

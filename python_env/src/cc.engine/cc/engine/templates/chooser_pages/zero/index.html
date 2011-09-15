@@ -38,23 +38,22 @@
         </p>
 
         <p>
-              <a id="do-learn-more" class="btn"
-                 href="/about/cc0">{{ cctrans(locale, "util.learn_more")|safe }}</a>
+          <a id="do-learn-more" class="btn"
+             href="/about/cc0">{{ cctrans(locale, "util.learn_more")|safe }}</a>
 
-              {% if request.GET.has_key('lang') %}
-                <a id="do-begin" class="primary btn"
-                   href="{{ '/choose/zero/waiver?lang=' + target_lang }}">
-                  {{ cctrans(locale, "util.begin")|safe }} &raquo;
-                </a>
-              {% else %}
-                <a id="do-begin" class="primary btn" href="/choose/zero/waiver">
-                  {{ cctrans(locale, "util.begin")|safe }} &raquo;
-                </a>
-              {% endif %}
+          {% if request.GET.has_key('lang') %}
+            <a id="do-begin" class="primary btn"
+               href="{{ '/choose/zero/waiver?lang=' + target_lang }}">
+              {{ cctrans(locale, "util.begin")|safe }} &raquo;
+            </a>
+          {% else %}
+            <a id="do-begin" class="primary btn" href="/choose/zero/waiver">
+              {{ cctrans(locale, "util.begin")|safe }} &raquo;
+            </a>
+          {% endif %}
         </p>
 
         {% include "includes/engine_languages.html" %}
-
       </div>
     </div>
   </div>
