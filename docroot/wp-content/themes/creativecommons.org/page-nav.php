@@ -37,7 +37,7 @@
 						    <li><a href="<?php bloginfo('home')?>/opportunities">Job Opportunities</a></li>
 						    <li class="divider"></li>
 						    <li><a href="http://wiki.creativecommons.org/FAQ">Frequently Asked Questions</a></li>
-						    <li><a href="http://creativecommons.org/contact">Contact Us</a></li>
+						    <li><a href="<?php bloginfo('home')?>/contact">Contact Us</a></li>
 						    
 				      </ul>
 				    </li>

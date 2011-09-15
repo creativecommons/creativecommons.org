@@ -7,9 +7,8 @@
 							<h3 class="title">Learn</h3>
 							<div class="content"> 
 								<h6>What is Creative Commons?</h6>
-								<p>Creative Commons helps you get your ideas out there. We're creating a world where content is open for use by everyone.</p>
-
-								<p><strong>Learn about the licenses</strong> we offer to get started!</p>
+								<p>Creative Commons helps you share your knowledge and creativity with the world.</p>
+								<p>We're helping to realize the full potential of the Internet—universal access to research and education, full participation in culture—to drive a new era of development growth, and productivity.</p>
 
 								<div class="bucket-follow"><a class="btn" href="#">Learn about CC</a></div>
 							</div> <!--! end of "content" --> 
@@ -23,9 +22,9 @@
 									<h3 class="title">License</h3>
 										<div class="content">
 										<h6>How can I license my work?</h6>
-										<p>Licensing your work so others can use it is simple. <strong>Just tell us a bit about yourself</strong> and what you are submitting.</p>
+										<p>There is no registration to use the Creative Commons licenses. Licensing a work is as simple as selecting which of the six licenses best meets your goals, and then marking your work in some way so that others know that you have chosen to release the work under the terms of that license.</p>
 
-										<p><strong>License here</strong> and we'll get you our famous CC logos for your work!</p>
+										<p> Our license-choosing tool can help you select the right license.</p>
 
 										<div class="bucket-follow"><a class="btn primary" href="#">Choose a License</a></div>
 									</div> <!--! end of "content" -->
@@ -37,10 +36,13 @@
 								<div class="inner">
 									<h3 class="title">Explore</h3>
 										<div class="content">
-										<h6>Looking to create?</h6>
-										<p>Looking for music, video, writing, code, or other creative works?</p><p><strong>Creative Commons has got you covered</strong>. Search for creative work through sources like Google and Flickr right here.</p>
+										<h6>Looking for creative work?</h6>
+										<p>Looking for music, video, writing, code, or other creative works?</p>
 
-										<div class="bucket-follow"><a class="btn" href="#">Start Creating</a></div>
+										<p>Creative Commons has developed a search portal that allows you to find
+CC-licensed works through sources like Google and Flickr.</p>
+
+										<div class="bucket-follow"><a class="btn" href="http://search.creativecommons.org/">Find CC-licensed works</a></div>
 									</div> <!--! end of "content" -->
 								</div> <!--! end of "inner" -->
 							</div> <!--! end of "bucket" -->
@@ -61,7 +63,7 @@
 
 										<p>The CC Affiliate Network consists of 100+ affiliates working working in over 70 jurisdictions to support and promote CC activities around the world.</p>
 
-										<p>The teams enage in public outreach, community building, translation, research, publicity, and in general, promoting sharing and our mission.</p>
+										<p>The teams engage in public outreach, community building, translation, research, publicity, legal and policy work, and in general, promoting sharing and our mission.</p>
 
 										<div class="bucket-follow"><a href="http://wiki.creativecommons.org/CC_Affiliate_Network">Explore the Affiliate Network...</a></div>
 									</div> <!--! end of "content" -->
@@ -84,7 +86,7 @@
 											<h5>Al Jazeera</h5>
 											<h6>Satellite television network</h6>
 
-										<p>The Al Jazeera Creative Commons Repository hosts select broadcast quality footage that Al Jazeera has released under various Creative Commons licenses. Read our <a href="http://wiki.creativecommons.org/Case_Studies/Al_Jazeera"> case study for Al Jazeera</a></p>
+										<p>The Al Jazeera Creative Commons Repository hosts select broadcast quality footage that Al Jazeera has released under CC Attribution. Read our <a href="http://wiki.creativecommons.org/Case_Studies/Al_Jazeera"> case study for Al Jazeera</a>.</p>
 										</div>
 										<div class="slide">
 										<div class="sample">
@@ -94,7 +96,7 @@
 										<h5>Whitehouse.gov</h5>
 										<h6>The official website of the President of the United States</h6>
 
-										<p>The official website of the Obama-Biden Administration incorporates a Creative Commons Attribution 3.0 Licence. Read <a href="http://wiki.creativecommons.org/Case_Studies/Whitehouse.gov">our case study for Whitehouse.gov</a></p>
+										<p>The official website of the Obama-Biden Administration incorporates a Creative Commons Attribution 3.0 Licence for all third-party material. Read <a href="http://wiki.creativecommons.org/Case_Studies/Whitehouse.gov">our case study for Whitehouse.gov</a>.</p>
                                                                                         </div>
 
 										</div> <!--! end of "studies -->
@@ -136,7 +138,7 @@
 										<h5>Support CC</h5>
 										<h6>Buy Swag and Goodies</h6>
 
-										<p>We have T-shirts, vinyl stikers, buttons and lapel pins.</p>
+										<p>Show that you love to share! Support CC with t-shirts for your loved ones, vinyl stickers for your laptop, buttons, and lapel pins.</p>
 
 										<div class="bucket-follow"><a href="https://creativecommons.net/store/">Visit the Store</a></div>
 									</div> <!--! end of "content" -->

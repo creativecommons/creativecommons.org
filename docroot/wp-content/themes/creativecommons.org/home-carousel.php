@@ -27,9 +27,8 @@
 											<div class="content">
 												<h6>Global Summit</h6>
 
-												<p>For three days from 16-18 September 2011, the Creative Commons Global Summit, <strong>Powering an Open Future</strong>, will bring together the CC community in Warsaw, Poland</p>
+												<p>For three days from 16-18 September 2011, the Creative Commons Global Summit, <strong>Powering an Open Future</strong>, will bring together the CC community in Warsaw, Poland.</p>
 
-												<p><strong>Registration for the Summit is open!</strong> You can register now.<p>
 												<div class="bucket-follow"><a class="primary btn" href="http://wiki.creativecommons.org/Global_Summit_2011">Learn more</a></div>
 											</div> <!--! end of "content" -->
 										</div> <!--! end of "five columns alpha" -->
