@@ -4,6 +4,7 @@ cc/engine/resources/cc5
 cc/engine/resources/cc6
 cc/engine/resources/images
 cc/engine/resources/includes
+cc/engine/resources/cctheme
 dist/
 bin/
 develop-eggs/
