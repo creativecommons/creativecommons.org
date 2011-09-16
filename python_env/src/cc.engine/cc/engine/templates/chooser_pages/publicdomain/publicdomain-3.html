@@ -6,38 +6,25 @@
 
 {% block headers %}
   <link rel="stylesheet" type="text/css"
-        href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
-
-  <script type="text/javascript"
-          src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js">
-  </script>
-  <script type="text/javascript"
-          src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js">
-  </script>
-
-  <link rel="stylesheet" type="text/css"
         href="{{ request.staticdirect('/includes/zero.css') }}" />
-
-  <script type="text/javascript">
-
-YAHOO.namespace("cc.pdc");
-
-YAHOO.cc.pdc.on_click = function(event) {
-
-    YAHOO.util.Dom.get("details-submit").disabled = !(
-        YAHOO.util.Dom.get("confirm_understand").checked);
-
-} // on_click
-
-YAHOO.util.Event.onDOMReady(function() {
-
-    // connect event handlers for the check box
-    YAHOO.util.Event.addListener("confirm_understand", "click", 
-                                 YAHOO.cc.pdc.on_click);
-
-});
-  </script>
 {% endblock headers %}
+
+{% block scripts %}
+  <script type="text/javascript">
+    function continue_toggler() {
+        submit_button = $('#details-submit');
+        if ($('#confirm_understand').is(':checked')) {
+            submit_button.removeAttr('disabled');
+            submit_button.removeClass('disabled');
+        } else {
+            submit_button.attr('disabled', 'disabled');
+            submit_button.addClass('disabled');
+        }
+    }
+
+    $('#confirm_understand').click(continue_toggler);
+  </script>
+{% endblock %}
 
 {% block page_header_title %}
   {{ cctrans(locale, "license.pd.confirm_title")|safe }}
@@ -76,7 +63,7 @@ YAHOO.util.Event.onDOMReady(function() {
         <div class="form-row">
           <div class="form-question">&nbsp;</div>
           <div class="form-answer">
-            <input type="submit" id="details-submit" disabled=""
+            <input type="submit" id="details-submit" disabled="" class="btn"
     	           name="field1" value="{{ cctrans(locale, 'util.continue')|safe }}" /> 
           </div>
         </div>

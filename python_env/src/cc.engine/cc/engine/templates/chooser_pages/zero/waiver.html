@@ -3,19 +3,27 @@
 {% block title %}{{ cctrans(locale, "license.zero.waiver_title")|safe }}{% endblock title %}
 
 {% block headers %}
-
   <link rel="stylesheet" type="text/css"
         href="{{ request.staticdirect('/includes/zero.css') }}" />
-
-  <script type="text/javascript"
-          src="{{ request.staticdirect('/includes/help.js') }}" >
-  </script>
-
-  <script type="text/javascript">
-
-  </script>
-
 {% endblock headers %}
+
+{% block scripts %}
+  <script type="text/javascript">
+    function continue_toggler() {
+        submit_button = $('#details-submit');
+        if ($('#confirm_details').is(':checked') && $('#confirm_understand').is(':checked')) {
+            submit_button.removeAttr('disabled');
+            submit_button.removeClass('disabled');
+        } else {
+            submit_button.attr('disabled', 'disabled');
+            submit_button.addClass('disabled');
+        }
+    }
+
+    $('#confirm_details').click(continue_toggler);
+    $('#confirm_understand').click(continue_toggler);
+  </script>
+{% endblock %}
 
 {% block sidebar %}{% endblock %}
 
@@ -158,8 +166,9 @@
           <div class="form-row">
             <div class="form-question">&nbsp;</div>
             <div class="form-answer">
-              <input type="submit" id="details-submit" disabled=""
-    	             name="field1" value="{{ cctrans(locale, 'util.continue')|safe }}">
+              <input type="submit" id="details-submit" disabled="disabled"
+                     class="btn" name="field1"
+                     value="{{ cctrans(locale, 'util.continue')|safe }}">
             </div>
           </div>
 
