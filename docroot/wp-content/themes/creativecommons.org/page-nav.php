@@ -46,7 +46,7 @@
 				    	<ul class="menu-dropdown">
 		    <li><a href="<?php bloginfo('home')?>/licenses/">About the Licenses</a></li>
 		    <li><a href="<?php bloginfo('home')?>/choose/">Choose a License</a></li>
-		    <li><a href="http://labs.creativecommons.org/demos/search/?beta=1">Find licensed content</a></li>
+		    <li><a href="http://search.creativecommons.org">Find licensed content</a></li>
 						    <li class="divider"></li>
 		    <li><span>Licensors</span></li>
 		    <li><a href="http://wiki.creativecommons.org/Before_Licensing">Things to know before licensing</a></li>
