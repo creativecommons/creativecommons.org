@@ -105,6 +105,7 @@
 				    <a href="<?php bloginfo('home')?>/weblog" class="dropdown-toggle">News</a>
 				    	<ul class="menu-dropdown">
 						    <li><a href="<?php bloginfo('home')?>/weblog">Blog</a></li>
+						    <li><a href="http://planet.creativecommons.org/">Affiliate News</a></li>
 						    <li class="divider"></li>
 						    <li><a href="<?php bloginfo('home')?>/interviews">Interviews</a></li>
 						    <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
