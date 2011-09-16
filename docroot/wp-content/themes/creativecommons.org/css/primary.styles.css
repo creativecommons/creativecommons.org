@@ -24,14 +24,14 @@ html, body {
 }
 
 #main {
-	padding-bottom: 400px;
+	padding-bottom: 300px;
 }
 
 footer {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 380px;
+	height: 260px;
 	padding-top: 0px;
 	margin-top: 0px;
 	background-color: #98C807;
@@ -464,13 +464,25 @@ footer #colophon {
 	z-index: 500;
 }
 
+#footer  {
+	text-shadow: none;
+}
+
+#footer .nav a:hover {
+	text-decoration: underline;
+}
+
+#colophon .bucket {
+	margin-left: 10px;
+}
+
 #globe {
 	position: absolute;
 	overflow: visible;
-	top: 30px;
+	top: 10px;
 	left: 0px;
-	width: 500px;
-	height: 350px;
+	width: 393px;
+	height: 250px;
 	background: url("../img/Peters_projection,_blank.png") no-repeat 0 0; /* https://secure.wikimedia.org/wikipedia/commons/wiki/File:Peters_projection,_blank.svg */
 	opacity:0.75; filter:alpha(opacity=75);
 }

@@ -24,9 +24,9 @@
 					</div>
 				</div>
 				<div class="sixteen columns">
-					<div class="first row">
+					<div class="row">
 						<div class="six columns">
-							<ul class="pills">
+							<ul class="nav">
 							<li><a href="http://creativecommons.org/policies">Policies</a></li>
 							<li><a href="http://creativecommons.org/privacy">Privacy</a></li>
 							<li><a href="http://creativecommons.org/terms">Terms of Use</a></li>

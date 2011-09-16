@@ -10,7 +10,7 @@
 								<p>Creative Commons helps you share your knowledge and creativity with the world.</p>
 								<p>We're helping to realize the full potential of the Internet—universal access to research and education, full participation in culture—to drive a new era of development growth, and productivity.</p>
 
-								<div class="bucket-follow"><a class="btn" href="#">Learn about CC</a></div>
+								<div class="bucket-follow"><a class="btn" href="/about">Learn about CC</a></div>
 							</div> <!--! end of "content" --> 
 						</div> <!--! end of "inner" -->
 						</div> <!--! end of "bucket" -->
@@ -26,7 +26,7 @@
 
 										<p> Our license-choosing tool can help you select the right license.</p>
 
-										<div class="bucket-follow"><a class="btn primary" href="#">Choose a License</a></div>
+										<div class="bucket-follow"><a class="btn primary" href="/choose/">Choose a License</a></div>
 									</div> <!--! end of "content" -->
 								</div> <!--! end of "inner" -->
 							</div> <!--! end of "bucket" -->
