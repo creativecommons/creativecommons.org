@@ -10,6 +10,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" charset="<?php bloginfo('charset'); ?>" />
+    <meta name="author" content="fabricatorz" />
 
 	<!-- Use the .htaccess and remove these lines to avoid edge case issues.
 			 More info: h5bp.com/b/378 -->

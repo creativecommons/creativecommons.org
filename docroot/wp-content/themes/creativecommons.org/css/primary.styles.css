@@ -100,6 +100,7 @@ div.input {
   background-image: -webkit-linear-gradient(#98C807, #688527);
   background-image: -o-linear-gradient(#98C807, #688527);
   background-image: linear-gradient(#98C807, #688527);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#98C807', endColorstr='#688527', GradientType=0);
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   border-color: #688527 #688527 #50661E;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
@@ -137,6 +138,7 @@ h6, h6 small {
 	background-image: -webkit-linear-gradient(#98C807, #688527);
 	background-image: -o-linear-gradient(#98C807, #688527);
 	background-image: linear-gradient(#98C807, #688527);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#98C807', endColorstr='#688527', GradientType=0);
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
