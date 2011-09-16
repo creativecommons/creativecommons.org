@@ -5,10 +5,6 @@
 {% block headers %}
   <link rel="stylesheet" type="text/css"
         href="{{ request.staticdirect('includes/zero.css') }}" />
-
-  <script type="text/javascript"
-          src="{{ request.staticdirect('/includes/help.js') }}" >
-  </script>
 {% endblock %}
 
 {% block sidebar %}{% endblock %}
@@ -123,7 +119,7 @@
           <div class="form-row">
             <div class="form-question">&nbsp;</div>
             <div class="form-answer">
-              <input type="submit" id="submit"
+              <input type="submit" id="submit" class="btn"
                      name="field1" value="{{ cctrans(locale, 'util.continue')|safe }}" />
             </div>
           </div>
