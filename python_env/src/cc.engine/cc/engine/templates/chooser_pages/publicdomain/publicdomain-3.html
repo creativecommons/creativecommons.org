@@ -18,10 +18,6 @@
   <link rel="stylesheet" type="text/css"
         href="{{ request.staticdirect('/includes/zero.css') }}" />
 
-  <script type="text/javascript"
-          src="{{ request.staticdirect('/includes/help.js') }}" >
-  </script>
-
   <script type="text/javascript">
 
 YAHOO.namespace("cc.pdc");
@@ -50,7 +46,7 @@ YAHOO.util.Event.onDOMReady(function() {
 {% block body %}
   <div class="yui-module">
     <div class="bd">
-      <form id="form-details" action="./publicdomain-4">
+      <form id="form-details" class="form-stacked" action="./publicdomain-4">
         <div class="licensebox" style="clear:both;">
           <h4>
             {{ cctrans(locale, "deed.pd.title_plain")|safe }}
