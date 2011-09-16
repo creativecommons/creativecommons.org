@@ -3,16 +3,6 @@
 {% block title %}CC0: Results{% endblock title %}
 
 {% block headers %}
-  <link rel="stylesheet" type="text/css" 
-        href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
-  <link rel="stylesheet" type="text/css"
-        href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
-
-  <script type="text/javascript"
-          src="http://yui.yahooapis.com/2.6.0/build/element/element-beta-min.js"></script> 
-  <script type="text/javascript" 
-          src="http://yui.yahooapis.com/2.6.0/build/button/button-min.js"></script>
-
   <link rel="stylesheet" type="text/css"
         href="{{ request.staticdirect('/includes/zero.css') }}" />
 
@@ -31,10 +21,10 @@
 {% block page_header_title %}CC0{% endblock %}
 
 {% block body %}
-  <div class="yui-skin-sam">
+  <div>
 
     {% if not can_issue %}
-      <div id="error" class="yui-module">
+      <div id="error">
         <div class="bd">
           <p>
             {{ cctrans(locale, "license.zero.declined")|safe }}
@@ -51,7 +41,7 @@
         </div>
       </div>
     {% else %}
-      <div id="results" class="yui-module">
+      <div id="results">
         <div class="bd" id="waiver-results">
           <p>
             {{ cctrans(locale, "license.choose_button")|safe }}

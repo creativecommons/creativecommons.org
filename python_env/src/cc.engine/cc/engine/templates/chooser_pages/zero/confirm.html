@@ -3,10 +3,6 @@
 {% block title %}CC0: Confirm Waiver{% endblock title %}
 
 {% block headers %}
-  <link rel="stylesheet" type="text/css" 
-        href="http://yui.yahooapis.com/2.6.0/build/button/assets/skins/sam/button.css">
-  <link rel="stylesheet" type="text/css"
-        href="http://yui.yahooapis.com/2.6.0/build/container/assets/container.css">
   <link rel="stylesheet" type="text/css"
         href="{{ request.staticdirect('/includes/zero.css') }}" />
 {% endblock headers %}
@@ -18,13 +14,13 @@
 {% endblock %}
 
 {% block body %}
-  <div class="yui-skin-sam">
+  <div>
     <form action="results">
       {% for key, value in request_form.iteritems() %}
         <input type="hidden" name="{{ key }}" value="{{ value }}" />
       {% endfor %}
 
-      <div id="confirm-waiver" class="yui-module">
+      <div id="confirm-waiver">
         <div class="bd">
           <p>
             {{ cctrans(locale, "license.zero.confirm_waiver_1")|safe }}
@@ -38,8 +34,8 @@
             {{ cctrans(locale, "license.zero.confirm_waiver_3")|safe }}
           </p>
 
-          <div class="form-row yui-buttongroup">
-            <span class="yui-button">
+          <div class="form-row">
+            <span>
               <span class="first-child">
                 <button type="submit" id="decline-submit" class="btn"
                         name="waiver-decline"
@@ -49,10 +45,10 @@
               </span>
             </span>
 
-            <span class="yui-button">
+            <span>
               <span class="first-child">
                 <button type="submit" id="confirm-submit"
-                        name="waiver-affirm" class="alert" 
+                        name="waiver-affirm" class="btn danger"
                         value="affirm">
                   {{ cctrans(locale, "license.zero.confirm_waiver_yes")|safe }}
                 </button>
