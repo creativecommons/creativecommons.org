@@ -14,7 +14,7 @@ if (have_posts())  {
 
         <div id="main" role="main">
             <div class="container">
-                <div class="sixteen columns">
+                <div class="twelve columns">
 <?php
 // check if this single is a commoner or blog post
 $is_commoner = (in_category(7) ? true : false);

@@ -68,6 +68,19 @@
 
 <?php else : ?>
 
+<style type='text/css'>
+ol.fieldset {
+    list-style-type: none;
+}
+ol.fieldset textarea {
+    width: 100%;
+    margin-top: 8px;
+}
+ol.fieldset input {
+    margin: 4px 0;
+}
+</style>
+
 <ol class="fieldset">
 
 	<li class="field">
