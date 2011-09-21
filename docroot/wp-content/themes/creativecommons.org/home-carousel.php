@@ -7,8 +7,8 @@
 											<div class="content">
 												<h6>A Culture of Sharing</h6>
 												<p>Creative Commons is building a culture of sharing.</p>
-												<p>By <strong>allowing your work to be available</strong> to millions of other creators on the web, you might be responsible for <strong>the next big thing.</strong></p>
-												<p>Learn more by <strong>watching this video</strong>!</p>
+												<p>By allowing your work to be available to millions of other creators on the web, you might be responsible for the next big thing.</p>
+												<p>Learn more by watching this video!</p>
 
 												<div class="bucket-follow"><a class="primary btn" href="<?php bloginfo('home');?>/videos/a-shared-culture">Watch the Video</a></div>
 											</div> <!--! end of "content" -->
@@ -36,7 +36,7 @@
 											<div class="film">
 												<a href="http://wiki.creativecommons.org/Global_Summit_2011"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/ccline.png" alt="Creative Commons Global Summit 2011" /></a>
 												<div class="caption">
-													<p>The CC Global Summit is taking place 16–17 September 2011 in Warsaw Poland. <a href="http://wiki.creativecommons.org/Global_Summit_2011">Learn more!</a></p>
+													<p>The CC Global Summit is taking place 16–18 September 2011 in Warsaw Poland. <a href="http://wiki.creativecommons.org/Global_Summit_2011">Learn more!</a></p>
 												</div>
 											</div><!--! end of "film" -->
 										</div><!--! end of "eleven columns omega" -->
@@ -47,14 +47,14 @@
 												<h6>The Power of Open</h6>
 												<p>Stories of creators sharing knowledge, art, &amp; data.</p>
 												<p>The stories in <strong>The Power of Open</strong> demonstrate the breadth and creativity of the individuals and organizations using CC.</p>
-												<p>Learn more by <strong>reading the book</strong>!</p>
+												<p>Learn more by reading the book!</p>
 
 												<div class="bucket-follow"><a class="primary btn" href="http://thepowerofopen.org/">Read the Book</a></div>
 											</div> <!--! end of "content" -->
 										</div> <!--! end of "five columns alpha" -->
 										<div class="eleven columns omega">
 											<div class="film">
-											<a href="<?php bloginfo('home');?>/weblog/entry/27742"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/poo.jpg" alt="The Power of Open" /></a>
+											<a href="http://thepowerofopen.org/"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/poo.jpg" alt="The Power of Open" /></a>
 												<div class="caption">
 													<p>The Power of Open: Stories of creators sharing knowledge, art, & data using Creative Commons. <a href="http://thepowerofopen.org/">Read it now</a>.</p>
 												</div>
