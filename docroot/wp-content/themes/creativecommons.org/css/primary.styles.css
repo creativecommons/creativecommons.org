@@ -626,3 +626,40 @@ footer #colophon {
 	font-size: 11px;
 	margin-bottom: 13px;
 }
+
+/* Press Kit Specials */
+ul.presskit {
+        margin-top: 1em;
+        list-style:none;
+        clear: both;
+        margin-left: 0;
+}
+
+ul.presskit li {
+  display: inline-block;
+  vertical-align: top;
+        width: 7em;
+        padding: 0.3em 0.7em;
+        margin: 0 0.4em 0 0;
+        margin-bottom: 0.8em;
+        border:1px solid #e0e0e0;
+        text-align: center;
+
+  zoom:1;
+  *display: inline;
+}
+
+ul.presskit li a {
+        font-size: 0.9em;
+}
+
+ul.presskit li.wide {
+        width: 16.33em;
+}
+
+p.presskit {
+        clear: both;
+        margin-top: 1em;
+        margin-left: 0.4em;
+}
+
