@@ -62,62 +62,62 @@
 	<small><?php cancel_comment_reply_link(); ?></small>
 </div>
 
-<p class="logged-in">Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account">Log out &raquo;</a></p>
-
-<p><textarea class="textarea" name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+<div class="clearfix">
+<!--<label for="comment">Comment</label>-->
+<div class="input">
+<textarea name="comment" id="comment" cols="100%" rows="10"  tabindex="4"></textarea>
+<span class="help-block">Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. [<a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account">Log out</a>]</span>
+</div>
+</div>
 
 <?php else : ?>
 
-<style type='text/css'>
-ol.fieldset {
-    list-style-type: none;
-}
-ol.fieldset textarea {
-    width: 100%;
-    margin-top: 8px;
-}
-ol.fieldset input {
-    margin: 4px 0;
-}
-</style>
+<fieldset>
 
-<ol class="fieldset">
-
-	<li class="field">
+	<div class="clearfix">
+	<label for="author">Name <?php if ($req) echo "(required)"; ?></label>
+	
+	<div class="input">
 	<input class="text" type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="22" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />
-		<label for="author">Name <?php if ($req) echo "(required)"; ?></label>
 		
 	
-	</li>
+	</div>
+	</div>
 
-	<li class="field">
+	<div class="clearfix">
+	<label for="email">Email <?php if ($req) echo "(required)"; ?></label>
+	<div class="input">
 			<input class="text" type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?> />
-		<label for="email">Email <?php if ($req) echo "(required)"; ?></label>
-
 	
-	</li>
+	</div>
+	</div>
 
-	<li class="field">
+	<div class="clearfix">
+	<label for="url">Website</label>
+	<div class="input">
 	<input class="text" type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="22" tabindex="3" />
-		<label for="url">Website</label>
-		
 	
-	</li>
+	</div>
+	</div>
 
-	<li class="field">
+	<div class="clearfix">
+	<label for="comment">Comment</label>
+	<div class="input">
 	
 		<textarea class="textarea" name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea>
 	
-	</li>
+	</div>
+	</div>
 
-</ol>
+</fieldset>
 
 <?php endif; // If logged in ?>
 
 <!--<p><small><strong>XHTML:</strong> You can use these tags: <code><?php echo allowed_tags(); ?></code></small></p>-->
 
-<p class="submit">
-<input class="btinput" name="submit" type="submit" id="submit" tabindex="5" value="Submit" /></p>
+<div class="actions">
+<input class="primary btn" name="submit" type="submit" id="submit" tabindex="5" value="Submit" />
+</div>
 
 <input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" />
 

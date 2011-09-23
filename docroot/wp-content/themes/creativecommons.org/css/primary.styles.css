@@ -594,3 +594,35 @@ footer #colophon {
 #store .swag {
 	height: 200px;
 }
+
+.avatar {
+	display:none;
+}
+
+.comments {
+	margin-top: 13px;
+}
+
+.comments ol.commentlist {
+	list-style-type: none;
+	margin-top: 13px;
+}
+
+.comments ol.commentlist li {
+	margin-bottom: 18px;
+}
+
+.comments ol.commentlist li p {
+	margin-left: 18px;
+}
+
+.comments .comment-author cite {
+	font-size: 15px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.comments .comment-meta {
+	font-size: 11px;
+	margin-bottom: 13px;
+}
