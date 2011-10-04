@@ -47,7 +47,7 @@ footer {
 }
 
 .first.row {
-	margin-top: 60px;
+	margin-top: 20px;
 }
 
 a {
@@ -125,7 +125,7 @@ h6, h6 small {
    ========================================================================== */
 
 .topbar {
-	border-bottom: 1px solid #EDEDEE;
+	position: relative;
 }
 .topbar .topbar-inner {
 	background: #98C807;
