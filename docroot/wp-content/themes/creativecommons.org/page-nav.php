@@ -84,8 +84,10 @@
 						    <li class="divider"></li>
 				    		<li><a href="https://creativecommons.net/store/">Buy CC Merchandise</a></li>
 				    		<li><a href="https://creativecommons.net/supporters/">Our Supporters</a></li>
+						<li><a href="https://creativecommons.net/testimonials/">Testimonials</a></li>
 				    		<li><a href="https://creativecommons.net/corporate/">Corporate Giving</a></li>
-				    		<li><a href="https://creativecommons.net/figures/">Facts &amp; Figures </a></li>
+				    		<li><a href="https://creativecommons.net/figures/">Facts &amp; Figures</a></li>
+                                                <li><a href="https://creativecommons.net/spread/">Share the Power of Open</a></li>
 				    	</ul>
 				    </li>
 				    
