@@ -1,117 +1,312 @@
 <!doctype html>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>		<html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>		<html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>          <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>          <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 
-  <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
 
+  <title>{% block title %}Page Title{% endblock %}</title>
 
-    <title>{% block title %}Page Title{% endblock %}</title>
+  <link href="/wp-content/themes/creativecommons.org/favicon.ico" title="Icon" type="image/x-icon" rel="icon" />
 
-	<link href="/wp-content/themes/creativecommons.org/favicon.ico" title="Icon" type="image/x-icon" rel="icon" />
+  <link rel="stylesheet" href="/wp-content/themes/creativecommons.org/css/style.css" />
+  <link rel="stylesheet" href="/wp-content/themes/creativecommons.org/engine.css" />
 
-    <link rel="stylesheet" href="/wp-content/themes/creativecommons.org/css/style.css">
-    <link rel="stylesheet" href="/wp-content/themes/creativecommons.org/engine.css">
+  {% if is_rtl %}
+    <link rel="stylesheet" type="text/css"
+          href="{{ request.staticdirect('cc6/engine-rtl.css') }}" />
+  {% endif %}
 
-    {% if is_rtl %}
-      <link rel="stylesheet" type="text/css"
-            href="{{ request.staticdirect('cc6/engine-rtl.css') }}" />
-    {% endif %}
+  <script src="/wp-content/themes/creativecommons.org/js/libs/modernizr-2.0.6.min.js"></script>
 
-    <script src="/wp-content/themes/creativecommons.org/js/libs/modernizr-2.0.6.min.js"></script>
+  <script type="text/javascript"
+          src="{{ request.staticdirect('includes/license-results.js') }}" >
+  </script>   
+  {% block headers %}{% endblock %}
+</head>
 
-	<script type="text/javascript"
-            src="{{ request.staticdirect('includes/license-results.js') }}" >
-	</script>	
+<body>
+  <div id="container">
+    <header>
+      <div class="topbar">
+        <div class="topbar-inner">
+          <div class="container">
+            <a id="skip-navigation" href="#start-content"
+               title="Skip Navigation">Skip Navigation</a>
+            <a href="/" title="Home">
+              <span id="home-link">Home</span>
+              <span id="home-button"></span>
+            </a>
+            <div id="logo"><span>Creative Commons</span></div>
+            <ul id="short-menu" class="nav">
+              <li class="dropdown">
+                <a href="#about" class="dropdown-toggle">Menu</a>
+                <ul class="menu-dropdown">
+                  <li><a href="/about">About</a></li>
+                  <li><a href="/licenses/">Licenses</a></li>
+                  <li><a href="/publicdomain/">Public Domain</a></li>
+                  <li><a href="https://creativecommons.net/donate/">Support CC</a></li>
+                  <li><a href="/culture">Projects</a></li>
+                  <li><a href="/weblog">News</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul id="wide-menu" class="nav">
+              <li class="dropdown">
+                <a href="/about" class="dropdown-toggle">About</a>
+                <ul class="menu-dropdown">
+                  <li><a href="/about">Our Mission</a></li>
+                  <li><a href="/about/history">History</a></li>
 
-    {% block headers %}{% endblock %}
+                  <li class="divider"></li>
+                  <li><a href="/who-uses-cc">Who Uses CC?</a></li>
+                  <li><a href="http://wiki.creativecommons.org/Case_Studies">Case Studies</a></li>
+                  <li><a href="/videos/">Videos about CC</a></li>
 
-  </head>
+                  <li class="divider"></li>
+                  <li><strong><span>The Team</span></strong></li>
+                  <li><a href="/board">Board of Directors</a></li>
+                  <li><a href="/staff">Staff</a></li>
+                  <li><a href="/fellows">Fellows</a></li>
+                  <li><a href="http://wiki.creativecommons.org/CC_Affiliate_Network">Affiliate Network</a>
+                  </li><li><a href="/opportunities">Job Opportunities</a></li>
 
-  <body>
+                  <li class="divider"></li>
+                  <li><a href="http://wiki.creativecommons.org/FAQ">Frequently Asked Questions</a></li>
+                  <li><a href="http://creativecommons.org/contact">Contact Us</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="/licenses/" class="dropdown-toggle">Licenses</a>
+                <ul class="menu-dropdown">
+                  <li><a href="/licenses/">About the Licenses</a></li>
+                  <li><a href="/choose/">Choose a License</a></li>
+                  <li><a href="http://labs.creativecommons.org/demos/search/?beta=1">Find licensed content</a></li>
 
-	<div id="container">
+                  <li class="divider"></li>
+                  <li><span>Licensors</span></li>
+                  <li><a href="http://wiki.creativecommons.org/Before_Licensing">Things to know before licensing</a></li>
+                  <li><a href="http://wiki.creativecommons.org/FAQ#Do_I_need_to_sign_something_or_register_to_obtain_a_Creative_Commons_license.3F">Do I need to register my work?</a></li>
+                  <li><a href="http://wiki.creativecommons.org/Marking/">Marking my work</a></li>
 
-<header> <div class="topbar"><div class="topbar-inner"><div class="container"><a id="skip-navigation" href="#start-content" title="Skip Navigation">Skip Navigation</a><a href="" title="Home"><span id="home-link">Home</span><span id="home-button"></span></a><div id="logo"><span>Creative Commons</span></div><ul id="short-menu" class="nav"><li class="dropdown"><a href="#about" class="dropdown-toggle">Menu</a><ul class="menu-dropdown"><li><a href="/about">About</a></li><li><a href="/licenses/">Licenses</a></li><li><a href="/publicdomain/">Public Domain</a></li><li><a href="https://creativecommons.net/donate/">Support CC</a></li><li><a href="/culture">Projects</a></li><li><a href="/weblog">News</a></li></ul></li></ul><ul id="wide-menu" class="nav"><li class="dropdown"><a href="/about" class="dropdown-toggle">About</a><ul class="menu-dropdown"><li><a href="/about">Our Mission</a></li><li><a href="/about/history">History</a></li><li class="divider"></li><li><a href="/who-uses-cc">Who Uses CC?</a></li><li><a href="http://wiki.creativecommons.org/Case_Studies">Case Studies</a></li><li><a href="/videos/">Videos about CC</a></li><li class="divider"></li><li><strong><span>The Team</span></strong></li><li><a href="/board">Board of Directors</a></li><li><a href="/staff">Staff</a></li><li><a href="/fellows">Fellows</a></li><li><a href="http://wiki.creativecommons.org/CC_Affiliate_Network">Affiliate Network</a></li><li><a href="/opportunities">Job Opportunities</a></li><li class="divider"></li><li><a href="http://wiki.creativecommons.org/FAQ">Frequently Asked Questions</a></li><li><a href="http://creativecommons.org/contact">Contact Us</a></li></ul></li><li class="dropdown"><a href="/licenses/" class="dropdown-toggle">Licenses</a><ul class="menu-dropdown"><li><a href="/licenses/">About the Licenses</a></li><li><a href="/choose/">Choose a License</a></li><li><a href="http://labs.creativecommons.org/demos/search/?beta=1">Find licensed content</a></li><li class="divider"></li><li><span>Licensors</span></li><li><a href="http://wiki.creativecommons.org/Before_Licensing">Things to know before licensing</a></li><li><a href="http://wiki.creativecommons.org/FAQ#Do_I_need_to_sign_something_or_register_to_obtain_a_Creative_Commons_license.3F">Do I need to register my work?</a></li><li><a href="http://wiki.creativecommons.org/Marking/">Marking my work</a></li><li class="divider"></li><li><span>Licensees</span></li><li><a href="http://wiki.creativecommons.org/FAQ#How_do_I_properly_attribute_a_Creative_Commons_licensed_work.3F">Attributing a work properly</a></li><li><a href="http://wiki.creativecommons.org/Marking/Users">Marking a CC-licensed work</a></li><li><a href="http://wiki.creativecommons.org/FAQ#Will_Creative_Commons_give_me_permission_to_use_a_work.3F">Getting permission</a></li><li class="divider"></li><li><span>Developers</span></li><li><a href="http://wiki.creativecommons.org/Integrate">App Integration</a></li><li><a href="http://wiki.creativecommons.org/Developer_Challenges">Developer Challenges</a></li><li><a href="http://wiki.creativecommons.org/Translate">Translation</a></li></ul></li><li class="dropdown"><a href="/publicdomain/" class="dropdown-toggle">Public Domain</a><ul class="menu-dropdown"><li><a href="/publicdomain/">Our Public Domain Tools</a></li><li class="divider"></li><li><a href="/about/cc0">About CC0 Public Domain Dedication</a></li><li><a href="/choose/zero/">Choose CC0 Public Domain Dedication </a></li><li class="divider"></li><li><a href="/about/pdm">About Public Domain Mark</a></li><li><a href="/choose/mark/">Use Public Domain Mark</a></li> </ul></li><li class="dropdown"><a href="https://creativecommons.net/donate/" class="dropdown-toggle">Support CC</a><ul class="menu-dropdown"><li><a href="https://creativecommons.net/donate/">Donate to Creative Commons</a></li><li class="divider"></li><li><a href="https://creativecommons.net/store/">Buy CC Merchandise</a></li><li><a href="https://creativecommons.net/supporters/">Our Supporters</a></li><li><a href="https://creativecommons.net/corporate/">Corporate Giving</a></li><li><a href="https://creativecommons.net/figures/">Facts &amp; Figures </a></li></ul></li><li class="dropdown"><a href="/culture" class="dropdown-toggle">Projects</a><ul class="menu-dropdown"><li><a href="/culture">Culture</a></li><li><a href="/education">Education</a></li><li><a href="/science">Science</a></li><li><a href="/government">Government</a></li><li class="divider"></li><li><a href="http://wiki.creativecommons.org/LRMI">Learning Resource Metadata Initiative (LRMI) </a></li><li><a href="/taa-grant-program">Gates OPEN</a></li></ul></li><li class="dropdown"><a href="/weblog" class="dropdown-toggle">News</a><ul class="menu-dropdown"><li><a href="/weblog">Blog</a></li><li><a href="http://planet.creativecommons.org/">Affiliate News</a></li><li class="divider"></li><li><a href="/interviews">Interviews</a></li><li><a href="http://wiki.creativecommons.org/Events">Events</a></li><li><a href="https://creativecommons.net/civicrm/mailing/subscribe?reset=1&gid=121">CC Newsletter</a></li><li class="divider"></li><li><a href="/about/press">Press Room</a></li> </ul></li></ul><form action="" id="search_form"><input type="hidden" name="stype" value="site" id="find_site" /><input type="text" name="q" placeholder="Site Search" /><input type="submit" id="glass" title="Search" value="Submit"></form></div></div></div></header>
+                  <li class="divider"></li>
+                  <li><span>Licensees</span></li>
+                  <li><a href="http://wiki.creativecommons.org/FAQ#How_do_I_properly_attribute_a_Creative_Commons_licensed_work.3F">Attributing a work properly</a></li>
+                  <li><a href="http://wiki.creativecommons.org/Marking/Users">Marking a CC-licensed work</a></li>
+                  <li><a href="http://wiki.creativecommons.org/FAQ#Will_Creative_Commons_give_me_permission_to_use_a_work.3F">Getting permission</a></li>
+                  <li class="divider"></li>
+                  <li><span>Developers</span></li>
+                  <li><a href="http://wiki.creativecommons.org/Integrate">App Integration</a></li>
+                  <li><a href="http://wiki.creativecommons.org/Developer_Challenges">Developer Challenges</a></li>
+                  <li><a href="http://wiki.creativecommons.org/Translate">Translation</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="/publicdomain/" class="dropdown-toggle">Public Domain</a>
+                <ul class="menu-dropdown">
+                  <li><a href="/publicdomain/">Our Public Domain Tools</a></li>
 
-        <div dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}" 
-	id="main" role="main">
-	<div class="container">
+                  <li class="divider"></li>
+                  <li><a href="/about/cc0">About CC0 Public Domain Dedication</a></li>
+                  <li><a href="/choose/zero/">Choose CC0 Public Domain Dedication </a></li>
 
-	<div class="sixteen columns">
-        <div class="first row">
+                  <li class="divider"></li>
+                  <li><a href="/about/pdm">About Public Domain Mark</a></li>
+                  <li><a href="/choose/mark/">Use Public Domain Mark</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="https://creativecommons.net/donate/" class="dropdown-toggle">Support CC</a>
+                <ul class="menu-dropdown">
+                  <li><a href="https://creativecommons.net/donate/">Donate to Creative Commons</a></li>
 
+                  <li class="divider"></li>
+                  <li><a href="https://creativecommons.net/store/">Buy CC Merchandise</a></li>
+                  <li><a href="https://creativecommons.net/supporters/">Our Supporters</a></li>
+                  <li><a href="https://creativecommons.net/corporate/">Corporate Giving</a></li>
+                  <li><a href="https://creativecommons.net/figures/">Facts &amp; Figures </a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="/culture" class="dropdown-toggle">Projects</a>
+                <ul class="menu-dropdown">
+                  <li><a href="/culture">Culture</a></li>
+                  <li><a href="/education">Education</a></li>
+                  <li><a href="/science">Science</a></li>
+                  <li><a href="/government">Government</a></li>
+                  <li class="divider"></li>
+                  <li><a href="http://wiki.creativecommons.org/LRMI">Learning Resource Metadata Initiative (LRMI) </a></li>
+                  <li><a href="/taa-grant-program">Gates OPEN</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="/weblog" class="dropdown-toggle">News</a>
+                <ul class="menu-dropdown">
+                  <li><a href="/weblog">Blog</a></li>
+                  <li><a href="http://planet.creativecommons.org/">Affiliate News</a></li>
 
-      <div id="title">
-        <h1 dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
-            >
-          {% block page_header_title %}{% endblock %}
-        </h1>
+                  <li class="divider"></li>
+                  <li><a href="/interviews">Interviews</a></li>
+                  <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
+                  <li><a href="https://creativecommons.net/civicrm/mailing/subscribe?reset=1&gid=121">CC Newsletter</a></li>
+                  <li class="divider"></li>
+                  <li><a href="/about/press">Press Room</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form action="" id="search_form">
+              <input type="hidden" name="stype" value="site" id="find_site" />
+              <input type="text" name="q" placeholder="Site Search" />
+              <input type="submit" id="glass" title="Search" value="Submit">
+            </form>
+          </div>
+        </div>
       </div>
-	</div> <!--! end of "first row" -->
-	
-	<div class="row">
+    </header>
 
-	{% if page_style == "bare" %}
-		{# No wrapping needed :) #}
-	{% elif page_style == "2cols" %}
-		<div class="sixteen columns">
-	{% else %}
-		<div class="twelve columns alpha">
-	{% endif %}
+    <div dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}" 
+         id="main" role="main">
+      <div class="container">
 
-      <div dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
-           id="content">
+        <div class="sixteen columns">
+          <div class="first row">
+            <div id="title">
+              <h1 dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
+                {%- block page_header_title %}{% endblock -%}
+              </h1>
+            </div>
+          </div> <!--! end of "first row" -->
+          
+          <div class="row">
 
-        {% block body %}{% endblock %}
+            {% if page_style == "bare" %}
+              {# No wrapping needed :) #}
+            {% elif page_style == "2cols" %}
+              <div class="sixteen columns">
+            {% else %}
+              <div class="twelve columns alpha">
+            {% endif %}
 
-	</div>
+            <div dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
+                 id="content">
+               {% block body %}{% endblock %}
+            </div>
 
-	{% if page_style == "bare" %}
-		{# Again... no wrapping needed :) #}
-	{% elif page_style == "2cols" %}
+            {% if page_style == "bare" %}
+              {# Again... no wrapping needed :) #}
+            {% elif page_style == "2cols" %}
+              </div> <!--! end of "sixteen columns" -->
+            {% else %}
+              </div> <!--! end of "twelve columns alpha" -->
+              <div class="four columns omega">
+                <div dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
+                  {% block sidebar %}{% endblock %}
+                </div> <!--! end of sidebar -->
+              </div> <!--! end of "four columns omega" -->
+            {% endif %}
+          </div> <!-- end of "row" -->
+        </div> <!--! end of "sixteen columns" -->
+      </div><!--! end of .container -->
+    </div><!--! end of #main -->
 
-          </div> <!--! end of "sixteen columns" -->
+    <footer>
+      <div class="container">
+        <div id="globe"></div>
+        <div id="colophon">
+          <div class="sixteen columns">
+            <div class="first row">
+              <div class="five columns">
+                <div class="bucket">
+                  <a href="http://www.facebook.com/creativecommons"
+                     title="Creative Commons on Facebook"
+                     ><img src="/wp-content/themes/creativecommons.org/img/facebook.png"
+                           alt="Creative Commons on Facebook"/></a>
+                  <a href="http://twitter.com/creativecommons"
+                     title="Creative Commons on Twitter"
+                     ><img src="/wp-content/themes/creativecommons.org/img/twitter.png"
+                           alt="Creative Commons on Twitter"/></a>
+                  <a href="http://identi.ca/creativecommons"
+                     title="Creative Commons on Identi.ca"
+                     ><img src="/wp-content/themes/creativecommons.org/img/identica.png"
+                           alt="Creative Commons on Identi.ca"/></a>
+                </div>
+              </div>
+              <div class="fouroffset-by-six columns">
+                <div class="bucket">
+                  <p>
+                    <a href="http://creativecommons.org/licenses/by/3.0/"
+                       title="Creative Commons Attribution 3.0 License"
+                       ><img src="http://i.creativecommons.org/l/by/3.0/88x31.png"
+                             alt="License"/></a>
+                  </p>
+                  <div style="display: inline;" xmlns:cc="http://creativecommons.org/ns#"
+                       about="http://creativecommons.org">
+                    <p>
+                      <small>
+                        Except where otherwise
+                        <a class="subfoot" href="/policies#license">noted</a>,
+                        content on
+                        <span property="cc:attributionName" content="Creative Commons"></span>
+                        <span property="cc:attributionURL"
+                              content="http://creativecommons.org">this site</span>
+                        is licensed under a
+                        <a rel="license" href="/licenses/by/3.0/"
+                           class="subfoot">Creative Commons Attribution 3.0 License</a>
+                      </small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sixteen columns">
+            <div class="row">
+              <div class="six columns">
+                <ul class="nav">
+                  <li>
+                    <a href="http://creativecommons.org/policies">Policies</a>
+                  </li>
+                  <li>
+                    <a href="http://creativecommons.org/privacy">Privacy</a>
+                  </li>
+                  <li>
+                    <a href="http://creativecommons.org/terms">Terms of Use</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div><!--! end of #container -->
 
-	{% else %}
-	</div> <!--! end of "twelve columns alpha" -->
-	<div class="four columns omega">
+  <!-- JavaScript at the bottom for fast page loading -->
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/wp-content/themes/creativecommons.org/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+  <!-- scripts concatenated and minified via build script -->
+  <script defer src="/wp-content/themes/creativecommons.org/js/plugins.js"></script>
+  <script defer src="/wp-content/themes/creativecommons.org/js/script.js"></script>
+  <!-- end scripts -->
 
-            <div
-                 dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
-              {% block sidebar %}{% endblock %}
-            </div> <!--! end of sidebar -->
-          </div> <!--! end of "four columns omega" -->
-        {% endif %}
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2010376-1']);
+    _gaq.push(['_trackPageview']);
 
-
-	</div> <!-- end of "row" -->
-
-	</div> <!--! end of "sixteen columns" -->
-
-		</div><!--! end of .container -->
-		</div><!--! end of #main -->
-
-<footer><div class="container"><div id="globe"></div><div id="colophon"><div class="sixteen columns"><div class="first row"><div class="five columns"><div class="bucket"><a href="http://www.facebook.com/creativecommons" title="Creative Commons on Facebook"><img src="/wp-content/themes/creativecommons.org/img/facebook.png" alt="Creative Commons on Facebook"/></a><a href="http://twitter.com/creativecommons" title="Creative Commons on Twitter"><img src="/wp-content/themes/creativecommons.org/img/twitter.png" alt="Creative Commons on Twitter"/></a><a href="http://identi.ca/creativecommons" title="Creative Commons on Identi.ca"><img src="/wp-content/themes/creativecommons.org/img/identica.png" alt="Creative Commons on Identi.ca"/></a></div></div><div class="four offset-by-six columns"><div class="bucket"><p><a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons Attribution 3.0 License"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="License"/></a></p><div style="display: inline;" xmlns:cc="http://creativecommons.org/ns#" about="http://creativecommons.org"><p><small>Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on <span property="cc:attributionName" content="Creative Commons"></span><span property="cc:attributionURL" content="http://creativecommons.org">this site</span> is licensed under a <a rel="license" href="/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a></small></p> </div></div></div></div></div><div class="sixteen columns"><div class="row"><div class="six columns"><ul class="nav"><li><a href="http://creativecommons.org/policies">Policies</a></li><li><a href="http://creativecommons.org/privacy">Privacy</a></li><li><a href="http://creativecommons.org/terms">Terms of Use</a></li></ul></div></div></div></div></div></footer>
-</div> <!--! end of #container -->
-
-    <script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-2010376-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-    </script>
-  </body>
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  {% block scripts %}{% endblock %}
+</body>
 </html>
