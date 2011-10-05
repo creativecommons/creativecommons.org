@@ -221,7 +221,7 @@
       "CC0",
       "Choose which style of button you'd like on your webpage:",
       "Here's a preview of how your waiver will appear on your site:",
-      "src=\"http://i.creativecommons.org/l/by/3.0/80x15.png\""]},
+      "src=\"http://i.creativecommons.org/p/zero/1.0/80x15.png\""]},
  {"path": "/choose/zero/confirm?license-class=zero&name=foo&actor_href=bar&work_title=baz&work_jurisdiction=BA&confirm=confirm&understand=confirm&field1=continue",
   "string_tests": [
       "CC0: Confirm Waiver",

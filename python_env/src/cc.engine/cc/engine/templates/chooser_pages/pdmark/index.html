@@ -3,14 +3,8 @@
 {% block title %}Public Domain Mark{% endblock title %}
 
 {% block headers %}
-
   <link rel="stylesheet" type="text/css"
         href="{{ request.staticdirect('includes/zero.css') }}" />
-
-  <script type="text/javascript"
-          src="{{ request.staticdirect('/includes/help.js') }}" >
-  </script>
-
 {% endblock headers %}
 
 {% block sidebar %}{% endblock %}
@@ -18,33 +12,33 @@
 {% block page_header_title %}Public Domain Mark{% endblock %}
 
 {% block body %}
-    <div id="page-welcome">
-      <div class="bd">
-        <div class="pd-explain-differences">
-          {{ cctrans(locale, "license.mark.CC0-difference")|safe }}
-        </div>
-
-        <p>
-          {{ cctrans(locale, "license.mark.intro_1")|safe }}
-        </p>
-
-        <p>
-          {{ cctrans(locale, "license.mark.intro_2")|safe }}
-        </p>
-
-        <p>
-          {{ cctrans(locale, "license.mark.intro_3")|safe }}
-        </p>
-
-        <p>
-              <a class="btn" id="do-learn-more"
-                 href="/about/pdm">{{ cctrans(locale, "util.learn_more")|safe }}</a>
-
-              <a class="primary btn" href="/choose/mark/details{% if target_lang %}?lang={{ target_lang }}{% endif %}"
-                 id="do-begin">{{ cctrans(locale, "util.begin")|safe }} &raquo;</a>
-        </p>
-
-        {% include "includes/engine_languages.html" %}
+  <div id="page-welcome">
+    <div class="bd">
+      <div class="pd-explain-differences">
+        {{ cctrans(locale, "license.mark.CC0-difference")|safe }}
       </div>
+
+      <p>
+        {{ cctrans(locale, "license.mark.intro_1")|safe }}
+      </p>
+
+      <p>
+        {{ cctrans(locale, "license.mark.intro_2")|safe }}
+      </p>
+
+      <p>
+        {{ cctrans(locale, "license.mark.intro_3")|safe }}
+      </p>
+
+      <p>
+        <a class="btn" id="do-learn-more"
+           href="/about/pdm">{{ cctrans(locale, "util.learn_more")|safe }}</a>
+
+        <a class="primary btn" href="/choose/mark/details{% if target_lang %}?lang={{ target_lang }}{% endif %}"
+           id="do-begin">{{ cctrans(locale, "util.begin")|safe }} &raquo;</a>
+      </p>
+
+      {% include "includes/engine_languages.html" %}
+    </div>
   </div>
 {% endblock %}

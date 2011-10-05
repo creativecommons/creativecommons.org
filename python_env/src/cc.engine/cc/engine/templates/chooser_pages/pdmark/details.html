@@ -3,13 +3,8 @@
 {% block title %}Public Domain Mark{% endblock title %}
 
 {% block headers %}
-
   <link rel="stylesheet" type="text/css"
         href="{{ request.staticdirect('includes/zero.css') }}" />
-
-  <script type="text/javascript"
-          src="{{ request.staticdirect('/includes/help.js') }}" >
-  </script>
 {% endblock %}
 
 {% block sidebar %}{% endblock %}
@@ -24,10 +19,21 @@
           <a href="" id="embedded_metadata" class="helpLink">
             <img src="{{ request.staticdirect('/images/information.png') }}"
                  alt="{{ cctrans(locale, 'Information')|safe }}"/></a>
-<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
-<h3 class="title">Embedded Metadata</h3><a href="#" class="close">&times;</a>
-<div class="content"><p>The information is embedded in a software readable format. This allows search engines to index additional information about the marked work. </p> <p> <a href="http://wiki.creativecommons.org/Metadata">More information</a> on Creative Commons metadata is available if you want to find out more.</p></div></div></div></div>
-        </div></p>
+          <div class="help-popover">
+            <div class="popover below">
+              <div class="arrow"></div>
+              <div class="inner">
+                <h3 class="title">Embedded Metadata</h3>
+                <a href="#" class="close">&times;</a>
+                <div class="content">
+                  <p>The information is embedded in a software readable format. This allows search engines to index additional information about the marked work.</p>
+                  <p><a href="http://wiki.creativecommons.org/Metadata">More information</a> on Creative Commons metadata is available if you want to find out more.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </p>
 
         <div id="help_embedded_metadata" class="help_panel">
           <div class="hd">{{ cctrans(locale, "Embedded Metadata")|safe }}</div>
@@ -107,14 +113,14 @@
           <div style="clear:both;"></div>
 
           <div>
-            <input type="hidden" name="lang" value="{{ target_lang }}" /> 
+            <input type="hidden" name="lang" value="{{ target_lang }}" />
           </div>
 
           <div class="form-row">
             <div class="form-question">&nbsp;</div>
             <div class="form-answer">
-              <input type="submit" id="submit"
-    	         name="field1" value="{{ cctrans(locale, 'util.continue')|safe }}" /> 
+              <input type="submit" id="submit" class="btn"
+                     name="field1" value="{{ cctrans(locale, 'util.continue')|safe }}" />
             </div>
           </div>
 

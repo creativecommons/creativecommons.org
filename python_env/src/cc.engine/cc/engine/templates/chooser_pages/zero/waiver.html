@@ -3,19 +3,27 @@
 {% block title %}{{ cctrans(locale, "license.zero.waiver_title")|safe }}{% endblock title %}
 
 {% block headers %}
-
   <link rel="stylesheet" type="text/css"
         href="{{ request.staticdirect('/includes/zero.css') }}" />
-
-  <script type="text/javascript"
-          src="{{ request.staticdirect('/includes/help.js') }}" >
-  </script>
-
-  <script type="text/javascript">
-
-  </script>
-
 {% endblock headers %}
+
+{% block scripts %}
+  <script type="text/javascript">
+    function continue_toggler() {
+        submit_button = $('#details-submit');
+        if ($('#confirm_details').is(':checked') && $('#confirm_understand').is(':checked')) {
+            submit_button.removeAttr('disabled');
+            submit_button.removeClass('disabled');
+        } else {
+            submit_button.attr('disabled', 'disabled');
+            submit_button.addClass('disabled');
+        }
+    }
+
+    $('#confirm_details').click(continue_toggler);
+    $('#confirm_understand').click(continue_toggler);
+  </script>
+{% endblock %}
 
 {% block sidebar %}{% endblock %}
 
@@ -25,16 +33,26 @@
   <div>
     <div id="waiver_ui">
       <div class="bd">
-        <p><div>
-          {{ cctrans(locale, "license.zero.additional_metadata")|safe }}
-          <a href="" id="embedded_metadata" class="helpLink">
-            <img src="{{ request.staticdirect('/images/information.png') }}"
-                 alt="{{ cctrans(locale, 'Information')|safe }}"/></a>
-<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
-<h3 class="title">{{ cctrans(locale, "Embedded Metadata")|safe }}</h3><a href="#" class="close">&times;</a>
-<div class="content"><p>{{ cctrans(locale, "license.zero.metadata_help")|safe }}</p></div></div></div></div>
-
-        </div></p>
+        <p>
+          <div>
+            {{ cctrans(locale, "license.zero.additional_metadata")|safe }}
+            <a href="" id="embedded_metadata" class="helpLink">
+              <img src="{{ request.staticdirect('/images/information.png') }}"
+                   alt="{{ cctrans(locale, 'Information')|safe }}"/></a>
+              <div class="help-popover">
+                <div class="popover below">
+                  <div class="arrow"></div>
+                  <div class="inner">
+                    <h3 class="title">{{ cctrans(locale, "Embedded Metadata")|safe }}</h3>
+                    <a href="#" class="close">&times;</a>
+                    <div class="content">
+                      <p>{{ cctrans(locale, "license.zero.metadata_help")|safe }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </p>
 
         <form id="form-details" class="form-stacked" action="confirm">
           <input type="hidden" name="license-class" value="zero" />
@@ -53,13 +71,20 @@
               <a href="" id="url" class="helpLink">
                 <img src="{{ request.staticdirect('/images/information.png') }}"
                      alt="{{ cctrans(locale, 'Information')|safe }}" /></a>
-<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
-<h3 class="title">{{ cctrans(locale, "util.your_url")|safe }}</h3><a href="#" class="close">&times;</a>
-<div class="content"><p>{{ cctrans(locale, "license.zero.your_url_help")|safe }}</p></div></div></div></div>
-
+              <div class="help-popover">
+                <div class="popover below">
+                  <div class="arrow"></div>
+                  <div class="inner">
+                    <h3 class="title">{{ cctrans(locale, "util.your_url")|safe }}</h3>
+                    <a href="#" class="close">&times;</a>
+                    <div class="content">
+                      <p>{{ cctrans(locale, "license.zero.your_url_help")|safe }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
 
           <div class="form-row">
             <div class="form-question">
@@ -82,15 +107,23 @@
 
               <a href="" id="country" class="helpLink">
                 <img src="{{ request.staticdirect('/images/information.png') }}"
-    	         alt="{{ cctrans(locale, 'Information')|safe }}"
-    	         /></a>
-<div class="help-popover"><div class="popover below"><div class="arrow"></div><div class="inner">
-<h3 class="title">{{ cctrans(locale, "util.territory")|safe }}</h3><a href="#" class="close">&times;</a>
-<div class="content"><p>{{ cctrans(locale, "license.zero.country_help")|safe }}</p></div></div></div></div>
+    	         alt="{{ cctrans(locale, 'Information')|safe }}" /></a>
+              <div class="help-popover">
+                <div class="popover below">
+                  <div class="arrow"></div>
+                  <div class="inner">
+                    <h3 class="title">{{ cctrans(locale, "util.territory")|safe }}</h3>
+                    <a href="#" class="close">&times;</a>
+                    <div class="content">
+                      <p>
+                        {{ cctrans(locale, "license.zero.country_help")|safe }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-
-
 
           <div class="form-row">
             <div class="form-question">
@@ -127,14 +160,15 @@
           </div>
 
           <div>
-            <input type="hidden" name="lang" value="{{ target_lang }}" /> 
+            <input type="hidden" name="lang" value="{{ target_lang }}" />
           </div>
 
           <div class="form-row">
             <div class="form-question">&nbsp;</div>
             <div class="form-answer">
-              <input type="submit" id="details-submit" disabled=""
-    	             name="field1" value="{{ cctrans(locale, 'util.continue')|safe }}"> 
+              <input type="submit" id="details-submit" disabled="disabled"
+                     class="btn" name="field1"
+                     value="{{ cctrans(locale, 'util.continue')|safe }}">
             </div>
           </div>
 

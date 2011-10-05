@@ -184,7 +184,7 @@
       <div id="deed-newer" tal:condition="">
         <p>
           {{ cctrans(locale, "deed.superseded",
-                     current_version_url=license.current_version.url)|safe }}
+                     current_version_url=license.current_version.uri)|safe }}
         </p>
       </div>
     {% endif %}
