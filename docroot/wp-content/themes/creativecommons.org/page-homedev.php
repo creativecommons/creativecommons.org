@@ -16,23 +16,23 @@ if ($_GET['stype']) {
 <?php the_post(); ?>
 <body>
 	<div id="container">
-        <?php include 'page-nav.php'; ?>
+        <?php // include 'page-nav.php'; ?>
 
         <div id="main" role="main">
             <div class="container">
                 <div class="sixteen columns">
                 <?php 
-                    // if ( $_SERVER["REQUEST_URI"] == '/' ||
-                    //      $_SERVER["REQUEST_URI"] == '/index.php' ) {
-                        include 'homedev-carousel.php'; 
-                        include 'homedev-buckets.php'; 
+                    if ( $_SERVER["REQUEST_URI"] == '/homedev' ||
+                         $_SERVER["REQUEST_URI"] == '/index.php' ) {
+                            include 'homedev-buckets.php'; 
 
-                    // } else { 
-                    ?>
+                    } else { 
 
-			<?php // the_content(); ?>
-			<?php // edit_post_link("Edit This Page", '<p class="edit">', '</p>'); ?>
-            <?php // } ?>
+			            the_content();
+			            edit_post_link("Edit This Page", '<p class="edit">', 
+                                       '</p>');
+                    } 
+                ?>
 
                 </div>
             </div><!--! end of .container -->
