@@ -1,107 +1,243 @@
 <?php
 
-
-function get_buckets ($bucket_type = 'Bucket', $orderby = 'rating')
+function get_buckets ($bucket_type      = 'Bucket', 
+                      $exclude_category = 'Case Studies, CC Store', 
+                      $orderby          = 'rating',
+                      $debug = false)
 {
+    $buckets = array();
+    $bookmarks = get_bookmarks(array('orderby'        =>  $orderby,
+                                     'category_name'  =>  $bucket_type ));
+    // print_r($bookmarks);
+    $excluded_categories = explode(', ', $exclude_category);
+    // print_r($excluded_categories);
+    if ( empty($excluded_categories) )
+        $excluded_categories[] = $exclude_category;
+    // print_r($excluded_categories);
 
-    $buckets = get_bookmarks(array('orderby'        =>  $orderby,
-                                   'category_name'  =>  $bucket_type ));
-
-$top_columns    = array('five columns alpha',
-                        'six columns',
-                        'five columns omega');
-
-$bottom_columns = array();
-
-foreach ($buckets as $buck) {
-    // print_r($buck);
-    // echo $buck->term_id;
-    $book = get_bookmark($buck->link_id);
-    print_r($book);
-    foreach ( $book->link_category as $term_id )
+    foreach ($bookmarks as $b) 
     {
-        $term = get_term_by('id', $term_id, 'link_category');
-        print_r($term);
+        $do_not_save = false;
+        $book = get_bookmark($b->link_id);
+        // print_r($book);
+        foreach ( $book->link_category as $term_id )
+        {
+            $link_terms = get_term_by('id', $term_id, 'link_category');
+            //print_r($link_terms);
+            if ( in_array($link_terms->name, $excluded_categories) )
+            {
+                $do_not_save = true;
+            }
+            $book->link_terms[] = $link_terms;
+            // print_r($term);
+        }
+        if ( ! $do_not_save )
+            $buckets[] = $book;
     }
-    echo "-----\n";
-}
+    // print_r($buckets);
+    return $buckets;
 }
 
-get_buckets();
-// get_buckets('Carousel');
+function get_button ($bucket, $link, $class = 'btn')
+{
+    $button_text            = '';
+    $use_green_button       = false;
+    $use_text_button        = false;
+
+/* carousel
+
+												<div class="bucket-follow"><a class="primary btn" href="<?php echo $carousel->link_url; ?>"><?php echo $button_text; ?></a></div>
+
+** bucket normal button
+												<div class="bucket-follow"><a class="btn" href="<?php echo $bucket->link_url; ?>"><?php echo $button_text; ?></a></div>
+
+** bucket green button
+
+										<div class="bucket-follow"><a class="btn primary" href="#">Choose a License</a></div>
+
+** text button
+
+<div class="bucket-follow"><a href="http
+://wiki.creativecommons.org/CC_Affiliate_Network">Explore the Affiliate Network.
+..</a></div>
+
+
+*/
+
+
+    if ( count($bucket->link_terms) > 1 )
+    {
+        foreach ($bucket->link_terms as $term)
+        {
+            $button_text = '';
+            // check if 'Green Button ' at front
+            $replace_ct = 0;
+            $button_text = str_ireplace('Green Button ', '', $term->name, 
+                                        $replace_ct);
+            if ( $replace_ct != 0 ) 
+            {
+                $use_green_button = true;
+                break;
+            }
+
+            $replace_ct = 0;
+            $button_text = str_ireplace('Text Button ', '', $term->name, 
+                                        $replace_ct);
+            if ( $replace_ct != 0 ) 
+            {
+                $use_text_button = true;
+                break;
+            }
+
+            $replace_ct = 0;
+            $button_text = str_ireplace('Button ', '', $term->name, 
+                                        $replace_ct);
+            if ( $replace_ct != 0) 
+                break;
+        }
+    }
+    // display the right class for the button
+    return '<div class="bucket-follow">' . 
+           '<a ' . ($use_text_button ? '' : 
+                   ( 'class="' . $class . ($use_green_button ? ' primary' : '')
+                   ) ) .  
+           '" href="' . $link . '">' . $button_text . '</a></div>';
+}
+
+
+function output_carousel () 
+{
+    $carousels = get_buckets('Carousel');
+
+    if ( count($carousels) == 0 )
+        return;
+?>
+					<div class="first row">
+						<div class="carousel bucket">
+							<div id="slides" class="inner">
+								<div class="slides_container row">
+
+<?php
+    foreach ($carousels as $carousel) 
+    {
+?>
+									<div class="slide">
+										<div class="five columns alpha">
+											<div class="content">
+												<h6><?php echo $carousel->link_name; ?></h6>
+												<p><?php echo $carousel->link_notes; ?></p>
+
+                                                <?php echo get_button($carousel, $carousel->link_url, 'primary btn'); ?>
+											</div> <!--! end of "content" -->
+										</div> <!--! end of "five columns alpha" -->
+										<div class="eleven columns omega">
+											<div class="film">
+												<a href="<?php echo $carousel->link_url; ?>"><img src="<?php echo $carousel->link_image; ?>" alt="<?php echo $carousel->link_name; ?>" /></a>
+												<div class="caption">
+                                                    <?php echo $carousel->link_description; ?>
+												</div>
+											</div> <!--! end of "film" -->
+										</div> <!--! end of "eleven columns omega" -->
+									</div> <!--! end of "slide" -->
+<?php
+    }
 ?>
 
+								</div> <!--! end of "slides_container row" --> 
+							</div> <!--! end of #slides -->
+						</div> <!--! end of "carousel bucket" -->
+					</div> <!--! end of "first row" -->
 
+<?php
+
+} // end of output_carousel
+
+
+function output_buckets () 
+{
+    $buckets = get_buckets();
+    // print_r($buckets);
+
+    if ( count($buckets) == 0 )
+        return;
+
+    // classes for the six main buckets
+    $top_columns    = array('five columns alpha',
+                            'six columns',
+                            'five columns omega',
+                            'five columns alpha',
+                            'five columns omega');
+?>
 					<div class="short row">
-						<div class="five columns alpha">
+<?php
+    $ct = 0;
+    // print_r($buckets);
+    foreach ($buckets as $bucket) 
+    {
+?>
+						<div class="<?php echo $top_columns[$ct]; ?>">
 
 						<div class="bucket">
 						<div class="inner">
-							<h3 class="title">Learn</h3>
+							<h3 class="title"><?php echo $bucket->link_name; ?></h3>
 							<div class="content"> 
-								<h6>What is Creative Commons?</h6>
-								<p>Creative Commons helps you get your ideas out there. We're creating a world where content is open for use by everyone.</p>
+								<h6><?php echo $bucket->link_description; ?></h6>
+                                <?php if ( !empty($bucket->link_image) )
+                                {
+                                ?>
+													<div class="slide">
+														<a href="https://creativecommons.net/content/1-buttons-set-5">
+														<img src="<?php bloginfo('stylesheet_directory'); ?>/img/buttons_1_0_300x200.jpg" alt="CC Buttons" />
+														</a>
+													</div>
+                                <?php
+                                } 
+                                ?>
+                                <?php echo $bucket->link_notes; ?>
 
-								<p><strong>Learn about the licenses</strong> we offer to get started!</p>
 
-								<div class="bucket-follow"><a class="btn" href="#">Learn about CC</a></div>
+                                                <?php echo get_button($bucket, $bucket->link_url); ?>
+
 							</div> <!--! end of "content" --> 
 						</div> <!--! end of "inner" -->
 						</div> <!--! end of "bucket" -->
 
-						</div> <!--! end of "five columns alpha" -->
-						<div class="six columns">
-							<div class="bucket">
-								<div class="inner">
-									<h3 class="title">License</h3>
-										<div class="content">
-										<h6>How can I license my work?</h6>
-										<p>Licensing your work so others can use it is simple. <strong>Just tell us a bit about yourself</strong> and what you are submitting.</p>
+						</div> <!--! end of top_columns[$ct] -->
 
-										<p><strong>License here</strong> and we'll get you our famous CC logos for your work!</p>
+<?php
 
-										<div class="bucket-follow"><a class="btn primary" href="#">Choose a License</a></div>
-									</div> <!--! end of "content" -->
-								</div> <!--! end of "inner" -->
-							</div> <!--! end of "bucket" -->
-						</div> <!--! end of "six columns" -->
-						<div class="five columns omega">
-							<div class="bucket">
-								<div class="inner">
-									<h3 class="title">Explore</h3>
-										<div class="content">
-										<h6>Looking to create?</h6>
-										<p>Looking for music, video, writing, code, or other creative works?</p><p><strong>Creative Commons has got you covered</strong>. Search for creative work through sources like Google and Flickr right here.</p>
-
-										<div class="bucket-follow"><a class="btn" href="#">Start Creating</a></div>
-									</div> <!--! end of "content" -->
-								</div> <!--! end of "inner" -->
-							</div> <!--! end of "bucket" -->
-						</div> <!--! end of "five columns omega" -->
+    if ($ct == 2 ) 
+    {
+?>
 					</div> <!--! end of "short row" -->
 
 					<div class="tall row">
-						<div class="five columns alpha">
-							<div class="bucket">
-								<div class="inner">
-									<h3 class="title">Global Network</h3>
-									<div class="content">
-										<div class="sample">
-										</div>
+<?php
+    }
 
-										<h5>CC Affiliate Network</h5>
-										<h6>Promoting CC Around the World</h6>
+    if ( $ct == 3  )
+    {
+        output_case_studies();
+        output_store();
+    }
 
-										<p>The CC Affiliate Network consists of 100+ affiliates working working in over 70 jurisdictions to support and promote CC activities around the world.</p>
+    $ct++;
+    }
+?>
+					</div> <!--! end of "tall row" -->
 
-										<p>The teams enage in public outreach, community building, translation, research, publicity, and in general, promoting sharing and our mission.</p>
+<?php
 
-										<div class="bucket-follow"><a href="http://wiki.creativecommons.org/CC_Affiliate_Network">Explore the Affiliate Network...</a></div>
-									</div> <!--! end of "content" -->
-								</div> <!--! end of "inner" -->
-							</div> <!--! end of "bucket" -->
-						</div> <!--! end of "five columns alpha" -->
+} // end of output_buckets
 
+
+function output_case_studies ()
+{
+    $case_studies = get_buckets('Case Studies', '');
+    //print_r($case_studies);
+    if ( count($case_studies) > 0 )
+    {
+?>
 						<div class="six columns">
 							<div class="bucket">
 								<div class="inner">
@@ -109,27 +245,25 @@ get_buckets();
 									<div class="content">
 										<div id="case">
 										<div class="studies">
-											<div class="slide">
+<?php
+    foreach ($case_studies as $cs)
+    {
+?>
+									    <div class="slide">
 											<div class="sample">
-												<img src="<?php bloginfo('stylesheet_directory'); ?>/img/120px-Aljazeera.svg.png" alt="Al Jazeera"/>
+												<img src="<?php echo $cs->link_image; ?>" alt="<?php echo $cs->link_name; ?>"/>
 											</div>
 
-											<h5>Al Jazeera</h5>
-											<h6>Satellite television network</h6>
+											<h5><?php echo $cs->link_name; ?></h5>
+											<h6><?php echo $cs->link_description; ?></h6>
 
-										<p>The Al Jazeera Creative Commons Repository hosts select broadcast quality footage that Al Jazeera has released under various Creative Commons licenses. Read our <a href="http://wiki.creativecommons.org/Case_Studies/Al_Jazeera"> case study for Al Jazeera</a></p>
-										</div>
-										<div class="slide">
-										<div class="sample">
-											<img src="<?php bloginfo('stylesheet_directory'); ?>/img/US-WhiteHouse-Logo.png" alt="Whitehouse.gov"/>
+                                            <?php echo $cs->link_notes; ?>
+
 										</div>
 
-										<h5>Whitehouse.gov</h5>
-										<h6>The official website of the President of the United States</h6>
-
-										<p>The official website of the Obama-Biden Administration incorporates a Creative Commons Attribution 3.0 Licence. Read <a href="http://wiki.creativecommons.org/Case_Studies/Whitehouse.gov">our case study for Whitehouse.gov</a></p>
-                                                                                        </div>
-
+<?php
+    }
+?>
 										</div> <!--! end of "studies -->
 										</div> <!--! end of #case -->
 										<div class="bucket-follow"><a href="http://wiki.creativecommons.org/Case_Studies">Read more Case Studies...</a></div>
@@ -138,6 +272,17 @@ get_buckets();
 							</div> <!--! end of "bucket" -->
 						</div> <!--! end of "six columns" -->
 
+<?php
+    }
+} // end of output_case_studies()
+
+function output_store ()
+{
+    $store_items = get_buckets('CC Store', '');
+    // print_r($store_items);
+    if ( count($store_items) > 0 )
+    {
+?>
 						<div class="five columns omega">
 							<div class="bucket">
 								<div class="inner">
@@ -146,34 +291,35 @@ get_buckets();
 										<div class="sample">
 											<div id="store">
 												<div class="swag">
-													<div class="slide">
-														<a href="https://creativecommons.net/content/1-buttons-set-5">
-														<img src="<?php bloginfo('stylesheet_directory'); ?>/img/buttons_1_0_300x200.jpg" alt="CC Buttons" />
-														</a>
-													</div>
-                                                                                                        <div class="slide">
-                                                                                                                <a href="https://creativecommons.net/content/t-shirt-science">
-                                                                                                                <img src="<?php bloginfo('stylesheet_directory'); ?>/img/XKCD-Science-back_300x200.jpg" alt="T-shirt: Science@creativecommons" />
-                                                                                                                </a>
-                                                                                                        </div>
-													<div class="slide">
-														<a href="https://creativecommons.net/sites/default/files/imagecache/product_list/black-cc.jpg">
-														<img src="<?php bloginfo('stylesheet_directory'); ?>/img/black-cc_300x200.jpg" alt="T-Shirt: CC Logo" />
-														</a>
-													</div>
+<?php
 
+    foreach ($store_items as $si)
+    {
+    ?>
+													<div class="slide">
+														<a href="<?php echo $si->link_rss; ?>">
+														<img src="<?php echo $si->link_image; ?>" alt="<?php echo $si->link_name; ?>" />
+														</a>
+													</div>
+    <?php 
+    }
+    ?>
 												</div>
 											</div>
 										</div>
-
-										<h5>Support CC</h5>
-										<h6>Buy Swag and Goodies</h6>
-
-										<p>We have T-shirts, vinyl stikers, buttons and lapel pins.</p>
-
+										<h5><?php echo $si->link_description; ?></h5>
+										<?php echo $si->link_notes; ?>
 										<div class="bucket-follow"><a href="https://creativecommons.net/store/">Visit the Store</a></div>
+
 									</div> <!--! end of "content" -->
 								</div> <!--! end of "inner" -->
 							</div> <!--! end of "bucket" -->
 						</div> <!--! end of "five columns omega" -->
-					</div> <!--! end of "tall row" -->
+        <?php
+    }
+}
+
+output_carousel();
+output_buckets();
+
+?>
