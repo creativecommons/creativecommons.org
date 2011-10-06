@@ -16,21 +16,15 @@ import routes
 from webob import Response
 from zope.component.globalregistry import base
 from zope.i18n.interfaces import ITranslationDomain
-from zope.i18n.translationdomain import TranslationDomain
 from zope.i18n import translate
-from zope.i18nmessageid import MessageFactory
 
 from cc.license._lib import rdf_helper, all_possible_license_versions
 from cc.license._lib import functions as cclicense_functions
 from cc.i18n import ccorg_i18n_setup
 from cc.i18n.gettext_i18n import ugettext_for_locale
+from cc.i18n.gettext_i18n import fake_ugettext as _
 from cc.i18n.util import negotiate_locale
 from cc.i18n.util import locale_to_lower_upper
-
-from cc.engine.pagetemplate import CCLPageTemplateFile
-
-
-_ = MessageFactory('cc_org')
 
 
 BASE_TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
@@ -225,6 +219,8 @@ def get_license_conditions(license, target_language="en_US"):
     conditions on the deeds page.  It kinda sucks... I think we could
     do better with the new api.
     """
+    ugettext = ugettext_for_locale(target_language)
+
     attrs = []
 
     for lic in license.license_code.split('-'):
@@ -256,10 +252,10 @@ def get_license_conditions(license, target_language="en_US"):
             object = 'http://creativecommons.org/ns#ShareAlike'
             if license.version == 3.0 and license.code == 'by-sa':
                 char_brief = unicode_cleaner(
-                    translate(
-                        'char.sa_bysa30_brief',
-                        domain=ccorg_i18n_setup.I18N_DOMAIN,
-                        target_language=negotiate_locale(target_language)))
+                    ugettext(
+                        u'If you alter, transform, or build upon this work, '
+                        u'you may distribute the resulting work only under the '
+                        u'same, similar or a compatible license.'))
         elif lic == 'nd':
             predicate = ''
             object = ''
@@ -509,16 +505,15 @@ def send_email(from_addr, to_addrs, subject, message_body):
 
 
 LICENSE_INFO_EMAIL_BODY = _(
-    'license.info_email_body',
     """Thank you for using a Creative Commons legal tool for your work.
 
-You have selected ${license_title}.
+You have selected %(license_title)s.
 You should include a reference to this on the web page that includes
 the work in question.
 
 Here is the suggested HTML:
 
-${license_html}
+%(license_html)s
 
 Tips for marking your work can be found at
 http://wiki.creativecommons.org/Marking.  Information on the supplied HTML and
@@ -529,7 +524,6 @@ Creative Commons Support
 info@creativecommons.org""")
 
 LICENSE_INFO_EMAIL_SUBJECT = _(
-    'license.info_email_subject',
     'Your Creative Commons License Information')
 
 

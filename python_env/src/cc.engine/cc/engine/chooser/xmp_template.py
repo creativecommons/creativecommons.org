@@ -57,9 +57,12 @@ def get_xmp_info(request_form, license, locale):
         else:
             notice = ""
 
-        i18n_work = ugettext('util.work')
+        i18n_work = ugettext('work')
         work_notice_template = string.Template(
-            ugettext('license.work_type_licensed'))
+            ugettext(
+                u'This %(work_type)s is licensed under a '
+                u'<a rel="license" href="%(license_url)s">Creative Commons '
+                u'%(license_name)s License</a>.'))
         work_notice = work_notice_template.substitute(
             {'license_name': license.title(locale_to_lower_lower(locale)),
              'license_url': license.uri,
