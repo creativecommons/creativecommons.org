@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * This gets buckets of content and has some defaults which allow for the
+ * most generic buckets to be laid out for display. Carousels are also
+ * buckets.
+ */
 function get_buckets ($bucket_type      = 'Bucket', 
                       $exclude_category = 'Case Studies, CC Store', 
                       $orderby          = 'rating',
@@ -8,67 +12,44 @@ function get_buckets ($bucket_type      = 'Bucket',
     $buckets = array();
     $bookmarks = get_bookmarks(array('orderby'        =>  $orderby,
                                      'category_name'  =>  $bucket_type ));
-    // print_r($bookmarks);
     $excluded_categories = explode(', ', $exclude_category);
-    // print_r($excluded_categories);
     if ( empty($excluded_categories) )
         $excluded_categories[] = $exclude_category;
-    // print_r($excluded_categories);
 
     foreach ($bookmarks as $b) 
     {
         $do_not_save = false;
         $book = get_bookmark($b->link_id);
-        // print_r($book);
         foreach ( $book->link_category as $term_id )
         {
             $link_terms = get_term_by('id', $term_id, 'link_category');
-            //print_r($link_terms);
             if ( in_array($link_terms->name, $excluded_categories) )
             {
                 $do_not_save = true;
             }
             $book->link_terms[] = $link_terms;
-            // print_r($term);
         }
         if ( ! $do_not_save )
             $buckets[] = $book;
     }
-    // print_r($buckets);
     return $buckets;
 }
 
+/**
+ * Get the full output of a button for display in a bucket which also means
+ * not only a button, but can also be a green button or text only button/link
+ */
 function get_button ($bucket, $link, $class = 'btn')
 {
     $button_text            = '';
     $use_green_button       = false;
     $use_text_button        = false;
 
-/* carousel
-
-												<div class="bucket-follow"><a class="primary btn" href="<?php echo $carousel->link_url; ?>"><?php echo $button_text; ?></a></div>
-
-** bucket normal button
-												<div class="bucket-follow"><a class="btn" href="<?php echo $bucket->link_url; ?>"><?php echo $button_text; ?></a></div>
-
-** bucket green button
-
-										<div class="bucket-follow"><a class="btn primary" href="#">Choose a License</a></div>
-
-** text button
-
-<div class="bucket-follow"><a href="http
-://wiki.creativecommons.org/CC_Affiliate_Network">Explore the Affiliate Network.
-..</a></div>
-
-
-*/
-
-
     if ( count($bucket->link_terms) > 1 )
     {
         foreach ($bucket->link_terms as $term)
         {
+            // @TODO: The logic here is a bit nasty, but works.
             $button_text = '';
             // check if 'Green Button ' at front
             $replace_ct = 0;
@@ -104,13 +85,20 @@ function get_button ($bucket, $link, $class = 'btn')
            '" href="' . $link . '">' . $button_text . '</a></div>';
 }
 
-
+/** 
+ * Outputs the right specific code for the display of carousel buckets. 
+ */
 function output_carousel () 
 {
     $carousels = get_buckets('Carousel');
 
     if ( count($carousels) == 0 )
+    {
+        $static_bucket = 'home-carousel.php';
+        if ( file_exists($static_bucket) )
+            include $static_bucket;
         return;
+    }
 ?>
 					<div class="first row">
 						<div class="carousel bucket">
@@ -152,21 +140,30 @@ function output_carousel ()
 
 } // end of output_carousel
 
-
+/**
+ * Output the generic six buckets. Really, this is all determined for onlyl
+ * six buckets with the last two buckets, Case Studies and CC Store being
+ * static. The Ratings in the bookmarks/links sectin of wordpress determines
+ * the position of the boxes.
+ */
 function output_buckets () 
 {
     $buckets = get_buckets();
-    // print_r($buckets);
 
-    if ( count($buckets) == 0 )
+    // Need at least four buckets, before the 2 custom buckets
+    if ( count($buckets) < 4 )
+    {
+        $static_bucket = 'home-buckets.php';
+        if ( file_exists($static_bucket) )
+            include $static_bucket;
         return;
+    }
 
-    // classes for the six main buckets
+    // classes for the four first buckets, five and six are hardcoded
     $top_columns    = array('five columns alpha',
                             'six columns',
                             'five columns omega',
-                            'five columns alpha',
-                            'five columns omega');
+                            'five columns alpha' ); 
 ?>
 					<div class="short row">
 <?php
@@ -186,14 +183,14 @@ function output_buckets ()
                                 {
                                 ?>
 													<div class="slide">
-														<a href="https://creativecommons.net/content/1-buttons-set-5">
-														<img src="<?php bloginfo('stylesheet_directory'); ?>/img/buttons_1_0_300x200.jpg" alt="CC Buttons" />
+														<a href="<?php echo $bucket->link_rss; ?>">
+														<img src="<?php echo $bucket->link_image; ?>" alt="<?php echo $bucket->link_name; ?>" />
 														</a>
 													</div>
                                 <?php
                                 } 
                                 ?>
-                                <?php echo $bucket->link_notes; ?>
+                                <?php echo nl2br($bucket->link_notes); ?>
 
 
                                                 <?php echo get_button($bucket, $bucket->link_url); ?>
@@ -219,6 +216,7 @@ function output_buckets ()
     {
         output_case_studies();
         output_store();
+        break;
     }
 
     $ct++;
@@ -230,11 +228,12 @@ function output_buckets ()
 
 } // end of output_buckets
 
-
+/**
+ * Output case studies bucket which needs slides.
+ */
 function output_case_studies ()
 {
     $case_studies = get_buckets('Case Studies', '');
-    //print_r($case_studies);
     if ( count($case_studies) > 0 )
     {
 ?>
@@ -257,7 +256,7 @@ function output_case_studies ()
 											<h5><?php echo $cs->link_name; ?></h5>
 											<h6><?php echo $cs->link_description; ?></h6>
 
-                                            <?php echo $cs->link_notes; ?>
+                                            <?php echo nl2br($cs->link_notes); ?>
 
 										</div>
 
@@ -276,10 +275,12 @@ function output_case_studies ()
     }
 } // end of output_case_studies()
 
+/**
+ * Output the custom store bucket.
+ */
 function output_store ()
 {
     $store_items = get_buckets('CC Store', '');
-    // print_r($store_items);
     if ( count($store_items) > 0 )
     {
 ?>
@@ -308,7 +309,7 @@ function output_store ()
 											</div>
 										</div>
 										<h5><?php echo $si->link_description; ?></h5>
-										<?php echo $si->link_notes; ?>
+										<?php echo nl2br($si->link_notes); ?>
 										<div class="bucket-follow"><a href="https://creativecommons.net/store/">Visit the Store</a></div>
 
 									</div> <!--! end of "content" -->

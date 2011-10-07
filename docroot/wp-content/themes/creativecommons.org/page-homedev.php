@@ -24,7 +24,7 @@ if ($_GET['stype']) {
                 <?php 
                     if ( $_SERVER["REQUEST_URI"] == '/homedev' ||
                          $_SERVER["REQUEST_URI"] == '/index.php' ) {
-                            include 'homedev-buckets.php'; 
+                            include 'home-gestalt.php'; 
 
                     } else { 
 
