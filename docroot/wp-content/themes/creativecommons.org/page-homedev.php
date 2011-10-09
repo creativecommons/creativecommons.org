@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: HOME DEV PAGE
+ * Template Name: HOME DYNAMIC
  *
  */
 // search handler
