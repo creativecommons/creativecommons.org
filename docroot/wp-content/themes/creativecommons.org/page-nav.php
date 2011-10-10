@@ -101,6 +101,8 @@
 						    <li class="divider"></li>
 						    <li><a href="http://wiki.creativecommons.org/LRMI">Learning Resource Metadata Initiative (LRMI) </a></li>
 						    <li><a href="<?php bloginfo('home')?>/taa-grant-program">Gates OPEN</a></li>
+						    <li><a href="<?php bloginfo('home')?>/music-communities">Music Communities</a></li>
+                                                    <li><a href="<?php bloginfo('home')?>/record-labels">Record Labels</a></li>
 				      </ul>
 				    </li>
 				    <li class="dropdown">
