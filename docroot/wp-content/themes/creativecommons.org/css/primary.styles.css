@@ -627,6 +627,12 @@ footer #colophon {
 	margin-bottom: 13px;
 }
 
+#comments input.text,
+#comments textarea { 
+    width: 100%; 
+}
+
+
 /* Press Kit Specials */
 ul.presskit {
         margin-top: 1em;
