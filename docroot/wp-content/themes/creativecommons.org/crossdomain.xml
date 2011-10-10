@@ -9,7 +9,6 @@
 	<site-control permitted-cross-domain-policies="none"/>
 
 
-
 <!-- Least restrictive policy: -->
 <!--
 	<site-control permitted-cross-domain-policies="all"/>

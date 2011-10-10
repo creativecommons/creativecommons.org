@@ -115,14 +115,14 @@
 
 <!--<p><small><strong>XHTML:</strong> You can use these tags: <code><?php echo allowed_tags(); ?></code></small></p>-->
 
+<input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" />
+<?php comment_id_fields(); ?>
+<?php do_action('comment_form', $post->ID); ?>
+
 <div class="actions">
 <input class="primary btn" name="submit" type="submit" id="submit" tabindex="5" value="Submit" />
 </div>
 
-<input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" />
-
-<?php comment_id_fields(); ?>
-<?php do_action('comment_form', $post->ID); ?>
 
 </form>
 
