@@ -632,6 +632,30 @@ footer #colophon {
     width: 100%; 
 }
 
+.twitter {
+    padding-bottom: 6px;
+}
+
+.twitter a {
+	display: block;
+	display: inline-block;
+	padding: 0px 3px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	background-color: #aaa;
+	color: #fff;
+	font-weight: bold;
+	font-size: 90%;
+	border: 1px solid #999;
+}
+
+.twitter a:hover {
+	background-color: #2094c8;
+	text-decoration: none;
+}
+
+
 
 /* Press Kit Specials */
 ul.presskit {
