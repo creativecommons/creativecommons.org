@@ -1,5 +1,9 @@
 .help_panel { display: none; }
 
+.chooser {
+	width: 575px;
+}
+
 div.licensebox { 
 	background:#eee; 
 	border:1px solid #ccc; 
