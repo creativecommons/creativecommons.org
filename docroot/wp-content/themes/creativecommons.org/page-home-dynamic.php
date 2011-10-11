@@ -23,7 +23,9 @@ if ($_GET['stype']) {
                 <div class="sixteen columns">
                 <?php 
                     if ( $_SERVER["REQUEST_URI"] == '/' ||
-                         $_SERVER["REQUEST_URI"] == '/index.php' ) {
+                         $_SERVER["REQUEST_URI"] == '/index.php' || 
+                         $_SERVER["REQUEST_URI"] == '/homedev/index.php' ||
+                         $_SERVER["REQUEST_URI"] == '/homedev' ) {
                             include 'home-gestalt.php'; 
 
                     } else { 
