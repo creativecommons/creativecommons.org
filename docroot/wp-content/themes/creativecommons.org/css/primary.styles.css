@@ -448,6 +448,14 @@ a.menu:after, .dropdown-toggle:after {
 	bottom: 20px;
 }
 
+.casestudies td:first-child { 
+	vertical-align: middle; 
+}
+
+.casestudies td:first-child img { 
+	display: block; 
+	margin: auto; 
+}
 
 footer, footer p, footer p small {
 	color: #ffffff;
