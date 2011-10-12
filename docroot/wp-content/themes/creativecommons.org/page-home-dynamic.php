@@ -17,6 +17,7 @@ if ($_GET['stype']) {
 <body>
 	<div id="container">
         <?php include 'page-nav.php'; ?>
+	<?php include 'banner-donate.php'; ?>
 
         <div id="main" role="main">
             <div class="container">

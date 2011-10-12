@@ -91,7 +91,7 @@ add_filter('wp_page_menu','add_menuclass');
 
 /* CC Specific helper functions */
 function cc_progress_total() {
-  $campaign_total = file_get_contents(__DIR__ . '../../includes/total.txt');
+  $campaign_total = file_get_contents(__DIR__ . '/../../../includes/total.txt');
 
   print $campaign_total;
 }

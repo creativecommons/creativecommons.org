@@ -92,11 +92,10 @@ function output_carousel ()
 {
     $carousels = get_buckets('Carousel');
 
-    if ( count($carousels) == 0 )
+    if ( empty($carousels) || count($carousels) == 0 )
     {
         $static_bucket = 'home-carousel.php';
-        if ( file_exists($static_bucket) )
-            include $static_bucket;
+        include $static_bucket;
         return;
     }
 ?>
@@ -154,8 +153,7 @@ function output_buckets ()
     if ( count($buckets) < 4 )
     {
         $static_bucket = 'home-buckets.php';
-        if ( file_exists($static_bucket) )
-            include $static_bucket;
+        include $static_bucket;
         return;
     }
 
