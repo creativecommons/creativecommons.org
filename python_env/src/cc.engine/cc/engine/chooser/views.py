@@ -10,7 +10,9 @@ from cc.engine import util
 from cc.engine.decorators import RestrictHttpMethods
 from cc.engine.chooser.xmp_template import license_xmp_template
 from cc.license._lib.functions import get_selector_jurisdictions
+from cc.i18n.gettext_i18n import ugettext_for_locale
 from cc.i18n import ccorg_i18n_setup
+from cc.i18n import mappers
 from cc.i18n.util import get_well_translated_langs, negotiate_locale
 
 import cc.license
@@ -277,6 +279,7 @@ def _work_rdf(work_info, license):
 
 def chooser_view(request):
     target_lang = util.get_target_lang_from_request(request)
+    gettext = ugettext_for_locale(target_lang)
     context = _base_context(request, target_lang)
 
     available_jurisdiction_codes = [
@@ -290,11 +293,7 @@ def chooser_view(request):
 
     # Sort the jurisdictions for the dropdown via the translated name
     jurisdictions_names = [
-        (juris,
-         util.unicode_cleaner(
-                translate("country.%s" % juris,
-                          domain=ccorg_i18n_setup.I18N_DOMAIN,
-                          target_language=negotiate_locale(target_lang))))
+        gettext(mappers.COUNTRY_MAP[juris])
         for juris in available_jurisdiction_codes]
     jurisdictions_names = sorted(
         jurisdictions_names, key=lambda juris: juris[1])
