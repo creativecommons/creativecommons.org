@@ -367,16 +367,16 @@ a.menu:after, .dropdown-toggle:after {
 #top-banner {
   margin: 0 0 0;
   padding: 7px 14px;
-  background-color: #f5f5f5;
+  background-color: #ffff00;
   background-repeat: repeat-x;
   background-image: -khtml-gradient(linear, left top, left bottom, from(#ffffff), to(#f5f5f5));
-  background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5);
-  background-image: -ms-linear-gradient(top, #ffffff, #f5f5f5);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #f5f5f5));
-  background-image: -webkit-linear-gradient(top, #ffffff, #f5f5f5);
-  background-image: -o-linear-gradient(top, #ffffff, #f5f5f5);
-  background-image: linear-gradient(top, #ffffff, #f5f5f5);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);
+  background-image: -moz-linear-gradient(top, #ffffff, #ffff00);
+  background-image: -ms-linear-gradient(top, #ffffff, #ffff00);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #ffff00));
+  background-image: -webkit-linear-gradient(top, #ffffff, #ffff00);
+  background-image: -o-linear-gradient(top, #ffffff, #ffff00);
+  background-image: linear-gradient(top, #ffffff, #ffff00);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ffff00', GradientType=0);
   border: 1px solid #ddd;
   -webkit-border-bottom-right-radius: 3px;
   -webkit-border-bottom-left-radius: 3px;

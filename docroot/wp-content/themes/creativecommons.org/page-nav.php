@@ -128,3 +128,4 @@
 			</div>
 		</div>
 		</header>
+	<?php include 'banner-donate.php'; ?>
