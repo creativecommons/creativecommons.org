@@ -30,7 +30,7 @@
     <title><?php wp_title(''); ?> - Creative Commons</title>
     <?php }?>
 
-    <meta name="keywords" content="creative commons, commons, free culture, open source, attribution, non-commercial, share-alike, no derivatives, lessig" />
+    <meta name="keywords" content="creative commons, commons, free culture, open source, attribution, non-commercial, share-alike, no derivatives, lessig, sharing, sharism" />
     <meta name="description" content="Creative Commons licenses provide a flexible range of protections and freedoms for authors, artists, and educators. <?php if (is_single()) echo cc_post_excerpt() ?>" />
 
     <?php if (is_single()) { ?>
