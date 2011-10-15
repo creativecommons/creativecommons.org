@@ -594,7 +594,7 @@ footer #colophon {
 	bottom: 0px;
 	left:0px;
 	min-height:30px;
-	padding:5px 20px 0 20px;
+	padding:5px 20px 5px 20px;
 	background:#ccc;
 	background:rgba(0,0,0,.8);
 	color:#fff;

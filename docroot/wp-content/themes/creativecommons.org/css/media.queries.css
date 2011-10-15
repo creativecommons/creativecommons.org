@@ -41,8 +41,11 @@
 		width: 232px;
 	}
 	
-	
+	.bucket .slide .film .caption {
+		width: 470px;
+	}	
 }
+
 @media only screen and (min-width: 960px) {
 	
 	.bucket .slide .film .caption {
