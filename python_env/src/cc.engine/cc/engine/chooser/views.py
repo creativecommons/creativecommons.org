@@ -12,6 +12,7 @@ from cc.engine.chooser.xmp_template import license_xmp_template
 from cc.license._lib.functions import get_selector_jurisdictions
 from cc.i18n import ccorg_i18n_setup
 from cc.i18n.util import get_well_translated_langs, negotiate_locale
+from cc.license.util import CODE_COUNTRY_LIST
 
 import cc.license
 from cc.license.formatters.classes import (
