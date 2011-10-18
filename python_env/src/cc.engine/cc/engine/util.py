@@ -631,14 +631,3 @@ def catch_license_versions_from_request(request):
             request.matchdict['code'])
 
     return license_versions
-
-
-###
-## ISO 3166 -- country names to country code utilities
-###
-
-CODE_COUNTRY_LIST = [
-    (unicode_cleaner(code), unicode_cleaner(country))
-    for code, country in csv.reader(
-        file(pkg_resources.resource_filename('cc.engine', 'iso3166.csv')))]
-CODE_COUNTRY_MAP = dict(CODE_COUNTRY_LIST)

@@ -12,6 +12,7 @@ from cc.engine.chooser.xmp_template import license_xmp_template
 from cc.license._lib.functions import get_selector_jurisdictions
 from cc.i18n import ccorg_i18n_setup
 from cc.i18n.util import get_well_translated_langs, negotiate_locale
+from cc.license.util import CODE_COUNTRY_LIST
 
 import cc.license
 from cc.license.formatters.classes import (
@@ -574,7 +575,7 @@ def cc0_waiver(request):
     target_lang = util.get_target_lang_from_request(request)
 
     context = _base_context(request, target_lang)
-    context['country_list'] = util.CODE_COUNTRY_LIST
+    context['country_list'] = CODE_COUNTRY_LIST
 
     return util.render_to_response(
         request, target_lang,
