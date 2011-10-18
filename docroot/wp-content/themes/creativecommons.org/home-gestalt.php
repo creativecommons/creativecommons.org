@@ -112,7 +112,7 @@ function output_carousel ()
 										<div class="five columns alpha">
 											<div class="content">
 												<h6><?php echo $carousel->link_name; ?></h6>
-												<p><?php echo $carousel->link_notes; ?></p>
+												<p><?php echo nl2br($carousel->link_notes); ?></p>
 
                                                 <?php echo get_button($carousel, $carousel->link_url, 'primary btn'); ?>
 											</div> <!--! end of "content" -->

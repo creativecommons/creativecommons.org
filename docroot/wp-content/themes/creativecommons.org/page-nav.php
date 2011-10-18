@@ -51,7 +51,7 @@
 		    <li><span>Licensors</span></li>
 		    <li><a href="http://wiki.creativecommons.org/Before_Licensing">Things to know before licensing</a></li>
 		    <li><a href="http://wiki.creativecommons.org/FAQ#Do_I_need_to_sign_something_or_register_to_obtain_a_Creative_Commons_license.3F">Do I need to register my work?</a></li>
-		    <li><a href="http://wiki.creativecommons.org/Marking">Marking my work</a></li>
+		    <li><a href="http://wiki.creativecommons.org/Marking/">Marking my work</a></li>
 						    <li class="divider"></li>
 		    <li><span>Licensees</span></li>
 			<li><a href="http://wiki.creativecommons.org/FAQ#How_do_I_properly_attribute_a_Creative_Commons_licensed_work.3F">Attributing a work properly</a></li>
@@ -113,7 +113,7 @@
 						    <li class="divider"></li>
 						    <li><a href="<?php bloginfo('home')?>/interviews">Interviews</a></li>
 						    <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
-						    <li><a href="https://creativecommons.net/civicrm/mailing/subscribe?reset=1&amp;gid=121">CC Newsletter</a></li>
+						    <li><a href="https://creativecommons.net/civicrm/mailing/subscribe?reset=1&gid=121">CC Newsletter</a></li>
 						    <li class="divider"></li>
 						    <li><a href="<?php bloginfo('home')?>/about/press">Press Room</a></li>
 						 </ul>
@@ -128,4 +128,4 @@
 			</div>
 		</div>
 		</header>
-	<?php include 'banner-donate.php'; ?>
+        <?php include 'banner-donate.php'; ?>

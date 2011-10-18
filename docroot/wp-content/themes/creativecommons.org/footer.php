@@ -1,69 +1,16 @@
-		<footer>
-		<div class="container">
-		
-			<div id="globe"></div>
-
-			<div id="colophon">
-				<div class="sixteen columns">
-					<div class="first row">
-						<div class="five columns">
-							<div class="bucket">
-								<a href="http://www.facebook.com/creativecommons" title="Creative Commons on Facebook"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/facebook.png" alt="Creative Commons on Facebook"/></a>
-								<a href="http://twitter.com/creativecommons" title="Creative Commons on Twitter"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/twitter.png" alt="Creative Commons on Twitter"/></a>
-								<a href="http://identi.ca/creativecommons" title="Creative Commons on Identi.ca"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/identica.png" alt="Creative Commons on Identi.ca"/></a>
-							</div>
-						</div>
-						<div class="four offset-by-six columns">
-							<div class="bucket">
-								<p><a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons Attribution 3.0 License"><img src="http://i.creativecommons.org/l/by/3.0/88x31.png" alt="License"/></a></p>
-							<div style="display: inline;" xmlns:cc="http://creativecommons.org/ns#" about="http://creativecommons.org">
-						<p><small>Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on <span property="cc:attributionName" content="Creative Commons"></span><span property="cc:attributionURL" content="http://creativecommons.org">this site</span> is licensed under a <a rel="license" href="/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a></small></p>
-						</div>
-						</div>
-						</div>
-					</div>
-				</div>
-				<div class="sixteen columns">
-					<div class="row">
-						<div class="six columns">
-							<ul class="nav">
-							<li><a href="http://creativecommons.org/policies">Policies</a></li>
-							<li><a href="http://creativecommons.org/privacy">Privacy</a></li>
-							<li><a href="http://creativecommons.org/terms">Terms of Use</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+        <?php include 'page-footer.php'; ?>
 	</div> <!--! end of #container -->
-
-	<!-- JavaScript at the bottom for fast page loading -->
 
 	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="<?php bloginfo('stylesheet_directory'); ?>/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
 
-
-	<!-- scripts concatenated and minified via build script -->
-	<script defer src="<?php bloginfo('stylesheet_directory'); ?>/js/plugins.js"></script>
-	<script defer src="<?php bloginfo('stylesheet_directory'); ?>/js/script.js"></script>
-	<!-- end scripts -->
-
+        <?php include 'footer-codes.php'; ?>
     <script>
 		var _gaq=[['_setAccount','UA-2010376-1'],['_trackPageview'],['_trackPageLoadTime']];
 		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 		s.parentNode.insertBefore(g,s)}(document,'script'));
 	</script>
-
-	<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-			 chromium.org/developers/how-tos/chrome-frame-getting-started -->
-	<!--[if lt IE 7 ]>
-		<script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-		<script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-	<![endif]-->
-
 	</body>
 </html>
