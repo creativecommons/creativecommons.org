@@ -80,9 +80,9 @@ function get_button ($bucket, $link, $class = 'btn')
     // display the right class for the button
     return '<div class="bucket-follow">' . 
            '<a ' . ($use_text_button ? '' : 
-                   ( 'class="' . $class . ($use_green_button ? ' primary' : '')
+                   ( 'class="' . $class . ($use_green_button ? ' primary"' : '"')
                    ) ) .  
-           '" href="' . $link . '">' . $button_text . '</a></div>';
+           ' href="' . $link . '">' . $button_text . '</a></div>';
 }
 
 /** 
