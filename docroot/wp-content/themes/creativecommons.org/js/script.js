@@ -16,7 +16,7 @@ $(document).ready(function(){
   });
 
   $(".dropdown-toggle, .menu").click(function (e) {
-    $('.dropdown-toggle, .menu').not(this).parent("li").removeClass("open");
+    $('.dropdown-toggle').not(this).parent("li").removeClass("open");
     var $li = $(this).parent('li').toggleClass('open');
     return false;
   });
