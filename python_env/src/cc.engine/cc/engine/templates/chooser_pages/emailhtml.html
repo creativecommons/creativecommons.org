@@ -4,8 +4,8 @@
 
 {% block body %}
   <p>
-    {{ cctrans(locale, "license.link_emailed,
-               email=request_form['to_email']")|safe }}
+    {{ cctrans(locale, "license.link_emailed",
+               email=request_form['to_email'])|safe }}
   </p>
 
   <div align="center">
