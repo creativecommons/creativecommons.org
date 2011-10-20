@@ -231,16 +231,10 @@ def get_license_conditions(license, target_language="en_US"):
             continue
         
         # Go through the chars and build up the HTML and such
-        char_title = unicode_cleaner(
-            translate(
-                'char.%s_title' % lic,
-                domain=ccorg_i18n_setup.I18N_DOMAIN,
-                target_language=negotiate_locale(target_language)))
-        char_brief = unicode_cleaner(
-            translate(
-                'char.%s_brief' % lic,
-                domain=ccorg_i18n_setup.I18N_DOMAIN,
-                target_language=negotiate_locale(target_language)))
+        char_title = ugettext(
+            mappers.CHARACTERISTIC_TITLE_MAP[lic])
+        char_brief = ugettext(
+            mappers.CHARACTERISTIC_BRIEF_DESC_MAP[lic])
 
         icon_name = lic
         predicate = 'cc:requires'
@@ -327,7 +321,7 @@ def active_languages():
         if code == 'test': continue
 
         gettext = ugettext_for_locale(negotiate_locale(code))
-        name = gettext(mappers.LANG_MAP(code))
+        name = gettext(mappers.LANG_MAP[code])
         result.append(dict(code=code, name=name))
 
     result = sorted(result, key=lambda lang: lang['name'].lower())
