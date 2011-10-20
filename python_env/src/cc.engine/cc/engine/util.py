@@ -21,6 +21,7 @@ from zope.i18n import translate
 from cc.license._lib import rdf_helper, all_possible_license_versions
 from cc.license._lib import functions as cclicense_functions
 from cc.i18n import ccorg_i18n_setup
+from cc.i18n import mappers
 from cc.i18n.gettext_i18n import ugettext_for_locale
 from cc.i18n.gettext_i18n import fake_ugettext as _
 from cc.i18n.util import negotiate_locale
@@ -325,11 +326,9 @@ def active_languages():
 
         if code == 'test': continue
 
-        name = domain.translate(
-            u'lang.%s' % code, target_language=negotiate_locale(code))
-        if name != u'lang.%s' % code:
-            # we have a translation for this name...
-            result.append(dict(code=code, name=name))
+        gettext = ugettext_for_locale(negotiate_locale(code))
+        name = gettext(mappers.LANG_MAP(code))
+        result.append(dict(code=code, name=name))
 
     result = sorted(result, key=lambda lang: lang['name'].lower())
 
