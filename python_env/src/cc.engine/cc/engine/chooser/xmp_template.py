@@ -80,6 +80,21 @@ def get_xmp_info(request_form, license, locale):
 def license_xmp_template(request_form, license, locale):
     xmp_info = get_xmp_info(request_form, license, locale)
     xmp_output = u""
+
+    def attrib_or_none(field_name):
+        try:
+            datum = request_form[field_name].strip()
+            if datum:
+                return datum
+            else:
+                # Blank strings count as a miss here.
+                raise KeyError
+        except KeyError:
+            return None
+
+    work_title = attrib_or_none("field_worktitle")
+    attrib_name = attrib_or_none("field_attribute_to_name")
+    attrib_url = attrib_or_none("field_attribute_to_url")
     
     # assemble the XMP
     xmp_output += u"""<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>
@@ -97,8 +112,14 @@ def license_xmp_template(request_form, license, locale):
      <rdf:Description rdf:about=''
       xmlns:dc='http://purl.org/dc/elements/1.1/'>
       <dc:rights>
-       <rdf:Alt>
-        <rdf:li xml:lang='x-default' >%(notice)s</rdf:li>
+       <rdf:Alt>\n"""
+
+    language_line = "        <rdf:li xml:lang='{0}' >%(notice)s</rdf:li>\n"
+    xmp_output += language_line.format(locale)
+    if locale != 'en':
+        xmp_output += language_line.format('en')
+
+    xmp_output += """
        </rdf:Alt>
       </dc:rights>
      </rdf:Description>
@@ -106,8 +127,28 @@ def license_xmp_template(request_form, license, locale):
      <rdf:Description rdf:about=''
       xmlns:cc='http://creativecommons.org/ns#'>
       <cc:license rdf:resource='%(license_url)s'/>
-     </rdf:Description>
+     </rdf:Description>\n"""
 
+    if work_title:
+        xmp_output += """
+     <rdf:Description rdf:about='' xmlns:dc='http://purl.org/dc/elements/1.1/'>
+      <dc:title>{0}</dc:title>
+     </rdf:Description>\n""".format(work_title)
+
+    if attrib_name:
+        xmp_output += """
+     <rdf:Description rdf:about='' xmlns:cc='http://creativecommons.org/ns#'>
+      <cc:attributionName>{0}</cc:attributionName>
+     </rdf:Description>\n""".format(attrib_name)
+        
+    if attrib_url:
+        xmp_output += """
+     <rdf:Description rdf:about='' 
+      xmlns:xmpRights='http://ns.adobe.com/xap/1.0/rights/'>
+      <xmlRights:WebStatement>{0}</xmlRights:WebStatement>
+     </rdf:Description>\n""".format(attrib_url)
+
+    xmp_output += """
     </rdf:RDF>
     </x:xmpmeta>
     <?xpacket end='r'?>
