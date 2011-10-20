@@ -33,7 +33,7 @@
              value="{{ request.GET.get('field_worktitle') }}" />
 
       <input type="hidden" name="license_name"
-             value="{{ license.title }}" />
+             value="{{ license.title(target_lang) }}" />
 
       <input type="submit"
              value="{{ cctrans(locale, 'util.Send')|safe }}" />
