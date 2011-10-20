@@ -139,11 +139,31 @@
       "Choose which style of button you'd like on your webpage:",
       "src=&#34;http://i.creativecommons.org/l/by/3.0/88x31.png&#34;",
       "Creative Commons Attribution 3.0 Unported License"]},
- {"path": "/choose/xmp",
+
+ {"path": "/choose/metadata.xmp",
   "string_tests": [
       "<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>",
       "<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>",
       "Creative Commons Attribution 3.0 Unported License"]},
+ {"path": "/choose/metadata.xmp?field_worktitle=pictures+of+cats",
+  "string_tests": [
+      "<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>",
+      "<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>",
+      "Creative Commons Attribution 3.0 Unported License",
+      "<dc:title>pictures of cats</dc:title>"]},
+ {"path": "/choose/metadata.xmp?field_attribute_to_name=Cornelius+Highbrow",
+  "string_tests": [
+      "<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>",
+      "<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>",
+      "Creative Commons Attribution 3.0 Unported License",
+      "<cc:attributionName>Cornelius Highbrow</cc:attributionName>"]},
+ {"path": "/choose/metadata.xmp?field_attribute_to_url=http%3A%2F%2Ftest.foo",
+  "string_tests": [
+      "<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>",
+      "<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>",
+      "Creative Commons Attribution 3.0 Unported License",
+      "<xmlRights:WebStatement>http://test.foo</xmlRights:WebStatement>"]},
+
  {"path": "/choose/get-html",
   "string_tests": [
       "src=\"http://i.creativecommons.org/l/by/3.0/88x31.png\"",

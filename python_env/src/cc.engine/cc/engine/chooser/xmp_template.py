@@ -152,6 +152,6 @@ def license_xmp_template(request_form, license, locale):
     </rdf:RDF>
     </x:xmpmeta>
     <?xpacket end='r'?>
-    """ % xmp_info
+    """
 
-    return xmp_output
+    return xmp_output % xmp_info
