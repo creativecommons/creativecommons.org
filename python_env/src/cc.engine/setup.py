@@ -42,7 +42,7 @@ setup(
         'zope.pagetemplate<3.6.0',
         'PasteScript',
         #'repoze.bfg',
-        'WebOb',
+        'webob<=1.2a2',
         'routes',
         'sphinx',
         'webtest',

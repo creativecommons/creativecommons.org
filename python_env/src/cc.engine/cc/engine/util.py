@@ -524,6 +524,11 @@ Tips for marking your work can be found at
 http://wiki.creativecommons.org/Marking.  Information on the supplied HTML and
 metadata can be found at http://wiki.creativecommons.org/CC_REL.
 
+This email and tech support has been brought to you by the nonprofit folks at
+Creative Commons. CC relies on donations to provide you with licenses and
+services like this. Please consider a donation to our annual fund:
+https://creativecommons.net/donate.
+
 Thank you!
 Creative Commons Support
 info@creativecommons.org""")
