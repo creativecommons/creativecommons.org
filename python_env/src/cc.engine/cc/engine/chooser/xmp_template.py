@@ -82,15 +82,7 @@ def license_xmp_template(request_form, license, locale):
     xmp_output = u""
 
     def attrib_or_none(field_name):
-        try:
-            datum = request_form[field_name].strip()
-            if datum:
-                return datum
-            else:
-                # Blank strings count as a miss here.
-                raise KeyError
-        except KeyError:
-            return None
+        return request_form.get(field_name, u'').strip() or None
 
     work_title = attrib_or_none("field_worktitle")
     attrib_name = attrib_or_none("field_attribute_to_name")
