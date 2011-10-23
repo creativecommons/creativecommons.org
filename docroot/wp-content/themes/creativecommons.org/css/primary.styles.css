@@ -85,6 +85,10 @@ div.input {
 	display: none;
 }
 
+.light {
+    gray;
+}
+
 .bucket .btn {
 	margin-right: 15px;
 }
