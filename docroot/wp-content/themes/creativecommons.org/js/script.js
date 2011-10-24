@@ -106,4 +106,6 @@ $(document).ready(function(){
 
 });
 
-$(window).load( $('div.carousel').css('display', 'block') );
+if (navigator.appName != 'Microsoft Internet Explorer') {
+	$(window).load( $('div.carousel').css('display', 'block') );
+}
