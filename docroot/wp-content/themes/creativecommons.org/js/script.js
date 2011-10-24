@@ -106,6 +106,8 @@ $(document).ready(function(){
 
 });
 
-if (navigator.appName != 'Microsoft Internet Explorer') {
-	$(window).load( $('div.carousel').css('display', 'block') );
+$(window).load( $('div.carousel').css('display', 'block') );
+
+if (navigator.userAgent.match(/MSIE\s(?!9.0)/)) {
+	$(window).load( $('div.carousel').css('display', 'none') );
 }
