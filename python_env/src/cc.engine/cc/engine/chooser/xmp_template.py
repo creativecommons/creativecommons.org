@@ -79,6 +79,7 @@ def get_xmp_info(request_form, license, locale):
 
 def license_xmp_template(request_form, license, locale):
     xmp_info = get_xmp_info(request_form, license, locale)
+    xmp_info_en = get_xmp_info(request_form, license, 'en')
     xmp_output = u""
 
     def attrib_or_none(field_name):
@@ -109,7 +110,7 @@ def license_xmp_template(request_form, license, locale):
     language_line = "        <rdf:li xml:lang='{0}' >%(notice)s</rdf:li>\n"
     xmp_output += language_line.format(locale)
     if locale != 'en':
-        xmp_output += language_line.format('en')
+        xmp_output += language_line.format('en') % xmp_info_en
 
     xmp_output += """
        </rdf:Alt>
