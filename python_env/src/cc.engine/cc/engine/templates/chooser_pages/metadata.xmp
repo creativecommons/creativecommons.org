@@ -1,0 +1,47 @@
+<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>
+  <rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+  
+    <rdf:Description rdf:about=''
+		     xmlns:xapRights='http://ns.adobe.com/xap/1.0/rights/'>
+      <xapRights:Marked>{{copyrighted}}</xapRights:Marked>
+      {% if work_url %}
+      <xapRights:WebStatement rdf:resource='{{work_url}}'/>
+      {% endif %}
+    </rdf:Description>
+    
+    <rdf:Description rdf:about='' xmlns:dc='http://purl.org/dc/elements/1.1/'>
+      <dc:rights>
+	<rdf:Alto>
+	  {% for info in licenses %}
+	  <rdf:li xml:lang='{{ info.lang }}' >{{ info.notice }}</rdf:li>
+	  {% endfor %}
+	</rdf:Alt>
+      </dc:rights>
+    </rdf:Description>
+    
+    <rdf:Description rdf:about='' xmlns:cc='http://creativecommons.org/ns#'>
+      <cc:license rdf:resource='{{ license_url }}'/>
+    </rdf:Description>
+    
+    {% if work_title %}
+    <rdf:Description rdf:about='' xmlns:dc='http://purl.org/dc/elements/1.1/'>
+      <dc:title>{{ work_title }}</dc:title>
+    </rdf:Description>
+    {% endif %}
+    
+    {% if attrib_name %}
+    <rdf:Description rdf:about='' xmlns:cc='http://creativecommons.org/ns#'>
+      <cc:attributionName>{{ attrib_name }}</cc:attributionName>
+    </rdf:Description>
+    {% endif %}
+    
+    {% if attrib_url %}
+    <rdf:Description rdf:about='' 
+		     xmlns:xmpRights='http://ns.adobe.com/xap/1.0/rights/'>
+      <xmlRights:WebStatement>{{ attrib_url }}</xmlRights:WebStatement>
+    </rdf:Description>
+    {% endif %}
+    
+  </rdf:RDF>
+</x:xmpmeta>
+<?xpacket end='r'?>
