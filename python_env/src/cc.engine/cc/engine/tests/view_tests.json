@@ -163,6 +163,12 @@
       "<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>",
       "Creative Commons Attribution 3.0 Unported License",
       "<xmlRights:WebStatement>http://test.foo</xmlRights:WebStatement>"]},
+ {"path": "/choose/metadata.xmp?lang=es",
+  "string_tests": [
+      "xml:lang='es'",
+      "xml:lang='en'",
+      "licencia Creative Commons Atribuci",
+      "Creative Commons Attribution 3.0 Unported License"]},
 
  {"path": "/choose/get-html",
   "string_tests": [
