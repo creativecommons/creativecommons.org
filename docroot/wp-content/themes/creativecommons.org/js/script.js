@@ -81,7 +81,7 @@ $(document).ready(function(){
 		play: 15000,
 		pause: 15000,
 		effect: 'fade',
-		fadeSpeed: 0,
+		fadeSpeed: 0
 	});
   });
 
