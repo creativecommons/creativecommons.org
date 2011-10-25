@@ -22,26 +22,22 @@
     <rdf:Description rdf:about='' xmlns:cc='http://creativecommons.org/ns#'>
       <cc:license rdf:resource='{{ license_url }}'/>
     </rdf:Description>
-    
     {% if work_title %}
     <rdf:Description rdf:about='' xmlns:dc='http://purl.org/dc/elements/1.1/'>
       <dc:title>{{ work_title }}</dc:title>
     </rdf:Description>
     {% endif %}
-    
     {% if attrib_name %}
     <rdf:Description rdf:about='' xmlns:cc='http://creativecommons.org/ns#'>
       <cc:attributionName>{{ attrib_name }}</cc:attributionName>
     </rdf:Description>
     {% endif %}
-    
     {% if attrib_url %}
     <rdf:Description rdf:about='' 
 		     xmlns:xmpRights='http://ns.adobe.com/xap/1.0/rights/'>
       <xmlRights:WebStatement>{{ attrib_url }}</xmlRights:WebStatement>
     </rdf:Description>
     {% endif %}
-    
   </rdf:RDF>
 </x:xmpmeta>
 <?xpacket end='r'?>
