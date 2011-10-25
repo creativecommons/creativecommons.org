@@ -145,4 +145,9 @@ function cc_get_attachment_image($id, $width) {
   }
   return $image;
 }
+
+
+function get_http_security () {
+    echo 'http';
+}
 ?>
