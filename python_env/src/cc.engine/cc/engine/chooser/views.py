@@ -388,10 +388,14 @@ def choose_xmp_view(request):
         return request_form.get(field_name, u'').strip() or None
 
     context = xmp_template.get_xmp_info(request_form, license, target_lang)
+    context["default_lang"] = target_lang
     context["work_title"] = attrib_or_none("field_worktitle")
     context["attrib_name"] = attrib_or_none("field_attribute_to_name")
     context["attrib_url"] = attrib_or_none("field_attribute_to_url")
     context["licenses"] = [{
+            "lang" : "x-default",
+            "notice" : context["notice"]
+            }, {
             "lang" : target_lang,
             "notice" : context["notice"]
             }]
