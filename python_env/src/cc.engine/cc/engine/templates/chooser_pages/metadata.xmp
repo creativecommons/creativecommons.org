@@ -11,7 +11,7 @@
     
     <rdf:Description rdf:about='' xmlns:dc='http://purl.org/dc/elements/1.1/'>
       <dc:rights>
-	<rdf:Alto>
+	<rdf:Alt>
 	  {% for info in licenses %}
 	  <rdf:li xml:lang='{{ info.lang }}' >{{ info.notice }}</rdf:li>
 	  {% endfor %}
