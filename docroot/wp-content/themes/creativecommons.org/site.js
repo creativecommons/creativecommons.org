@@ -1,13 +1,13 @@
-$(function() {
+j(function() {
 
 // Handle search query without page reload
 // 2010-02-08 ~Alex
 //
-$("#search_form").submit(function(e) {
+j("#search_form").submit(function(e) {
 	e.preventDefault();
 
-	var stype = $("input[name=stype]:checked");
-	var query = $("input[name=q]");
+	var stype = j("input[name=stype]:checked");
+	var query = j("input[name=q]");
 	
 	if (query.val().length === 0) return;
 

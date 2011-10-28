@@ -1,37 +1,34 @@
 /* Author:
-
-*/
-
-
+ * Fabricatorz JS Adaptor Code for CC site
+ */
 
 
-$(document).ready(function(){
+j(document).ready(function(){
 
 
   // Dropdown for topbar nav
   // ===============================
 
-  $('.topbar').dropdown();
+  j(".topbar").dropdown();
   
   // Help popovers
   // ===============================
 
-	$("a.helpLink").bind("click", function(e) {
-		$(this).next('.help-popover').toggleClass('open');
-		//$(this).parent().find('.help-popover').toggleClass('open');
+	j("a.helpLink").bind("click", function(e) {
+		j(this).next('.help-popover').toggleClass('open');
 		e.preventDefault();
 	});
 	
-	$('.help-popover a.close').bind('click', function(e) {
-		$(this).parent().parent().parent().removeClass('open');
+	j(".help-popover a.close").bind('click', function(e) {
+		j(this).parent().parent().parent().removeClass('open');
 		e.preventDefault();
 	});
   
   // Carousel slides
   // ===============================
 
-  $(function(){
-    $("#slides").slides({
+  j(function(){
+    j("#slides").slides({
 		generateNextPrev: false,
 		pagination: true,
 		paginationClass: 'frames',
@@ -45,7 +42,7 @@ $(document).ready(function(){
 		fadeEasing: 'easeOutQuad',
 		hoverPause: true,
 		animationStart: function(current){
-			$('.caption').animate({
+			j('.caption').animate({
 				bottom: -100
 			},100);
 			if (window.console && console.log) {
@@ -54,7 +51,7 @@ $(document).ready(function(){
 			};
 		},
 		animationComplete: function(current){
-			$('.caption').animate({
+			j('.caption').animate({
 				bottom:0
 			},200);
 			if (window.console && console.log) {
@@ -63,7 +60,7 @@ $(document).ready(function(){
 			};
 		},
 		slidesLoaded: function() {
-			$('.caption').animate({
+			j('.caption').animate({
 				bottom:0
 			},200);
 		}
@@ -73,8 +70,8 @@ $(document).ready(function(){
   // Case studies
   // ===============================
 
-  $(function() {
-	$('#case').slides({
+  j(function() {
+	j('#case').slides({
 		container: 'studies',
 		generateNextPrev: false,
 		paginationClass: 'frames',
@@ -88,8 +85,8 @@ $(document).ready(function(){
   // Store slides
   // ===============================
 
-  $(function() {
-	$("#store").slides({
+  j(function() {
+	j("#store").slides({
 		container: 'swag',
 		generateNextPrev: false,
 		pagination: false,
@@ -106,8 +103,8 @@ $(document).ready(function(){
 
 });
 
-$(window).load( $('div.carousel').css('display', 'block') );
+j(window).load( j('div.carousel').css('display', 'block') );
 
 if (navigator.userAgent.match(/MSIE\s(?!9.0)/)) {
-	$(window).load( $('div.carousel').css('display', 'none') );
+	j(window).load( j('div.carousel').css('display', 'none') );
 }
