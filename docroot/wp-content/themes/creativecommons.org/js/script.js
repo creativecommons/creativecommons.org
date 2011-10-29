@@ -106,5 +106,5 @@ j(document).ready(function(){
 j(window).load( j('div.carousel').css('display', 'block') );
 
 if (navigator.userAgent.match(/MSIE\s(?!9.0)/)) {
-	j(window).load( j('div.carousel').css('display', 'none') );
+	//j(window).load( j('div.carousel').css('display', 'none') );
 }

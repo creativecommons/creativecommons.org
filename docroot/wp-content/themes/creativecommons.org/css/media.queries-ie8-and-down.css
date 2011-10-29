@@ -1,0 +1,32 @@
+  .topbar #short-menu {
+  	display: none;
+  }
+
+	.short .bucket .content {
+		min-height: 240px;
+	}
+
+	.tall .bucket .content {
+		min-height: 380px;
+	}
+
+	.bucket .slide .content {
+		height: 260px;
+	}
+	
+	.bucket .slide .film {
+		height: 330px;
+	}
+	
+	.slides_container {
+		height: 330px;
+		width: 940px;
+	}
+
+	#case .studies .slide {
+		width: 232px;
+	}
+	
+	.bucket .slide .film .caption {
+		width: 600px;
+	}	

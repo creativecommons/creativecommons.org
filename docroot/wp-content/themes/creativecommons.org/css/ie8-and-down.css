@@ -3129,20 +3129,6 @@ p.presskit {
         margin-left: 0.4em;
 }
 
-/* ==|== media queries ======================================================
-   PLACEHOLDER Media Queries for Responsive Design.
-   These override the primary ('mobile first') styles
-   Modify as content requires.
-   ========================================================================== */
-@media only screen and (min-width: 480px) {
-	.bucket .inner {
-		-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22);
-		-moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22);
-		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22);
-	}
-}
-@media only screen and (min-width: 767px) {
-  /* Style adjustments for viewports 768px and over go here */
   .topbar #short-menu {
   	display: none;
   }
@@ -3173,86 +3159,8 @@ p.presskit {
 	}
 	
 	.bucket .slide .film .caption {
-		width: 470px;
+		width: 600px;
 	}	
-}
-
-@media only screen and (min-width: 960px) {
-	
-	.bucket .slide .film .caption {
-		width: 640px;
-	}
-
-	#case .studies .slide {
-		width: 312px;
-	}
-	
-}
-
-@media only screen and (max-width: 767px) {
-	.topbar #wide-menu {
-		display: none;
-	}
-	.topbar form {
-		margin-right: 0px;
-		width: 120px;
-	}
-	.topbar form input {
-		width: 100%;
-	}
-	
-	footer .first.row {
-		margin-top: 30px;
-	}
-	
-	.slides_container, .slides_container div.slide {
-		height: 480px;
-		width: 420px;
-	}
-	
-	.bucket .slide .content {
-		height: 170px;
-	}
-	
-	.bucket .slide .film { 
-		height: 240px;
-	}
-	
-	#case .studies .slide {
-		width: 392px;
-	}	
-}
-
-@media only screen and (max-width: 480px) {
-	.topbar #logo {
-		width: 60px;
-		background: url("../img/cc.cc-27x30.png") 20px 4px no-repeat;
-	}
-	.topbar #home-button {
-		width: 60px;
-	}
-	.topbar #skip-navigation {
-		left: 50px;
-	}
-	
-	.slides_container, .slides_container div.slide{
-		height: 440px;
-	}
-	
-	.bucket .slide .film {
-		height: 196px;
-	}
-
-	
-	#case .studies .slide {
-        	width: 272px;
-	}
-
-
-	.helpbox .popover {
-		left: -40px;
-	}
-}
 /* ==|== non-semantic helper classes ========================================
    Please define your styles before this section.
    ========================================================================== */

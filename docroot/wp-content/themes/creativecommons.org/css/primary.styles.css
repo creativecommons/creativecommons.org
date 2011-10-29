@@ -564,6 +564,7 @@ footer #colophon {
 
 .slides_container {
 	position: relative;
+        height: 330px;
 }
 .slides_container div.slide {
 	display:block;
