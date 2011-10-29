@@ -2441,6 +2441,11 @@ label {
 	width: 130px;
 }
 
+#cc_widget_dialog_donateOptions label {
+    float: auto;
+    padding-left: 3px;
+}
+
 div.input {
 	margin-left: 150px;
 }
@@ -2916,7 +2921,7 @@ footer #colophon {
 	width: 393px;
 	height: 250px;
 	background: url("../img/Peters_projection_blank.png") no-repeat 0 0; /* https://secure.wikimedia.org/wikipedia/commons/wiki/File:Peters_projection,_blank.svg */
-	opacity:0.75; filter:alpha(opacity=75);
+	/*opacity:0.75; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=75)"; filter:alpha(opacity=75);*/
 }
 
 .carousel {
