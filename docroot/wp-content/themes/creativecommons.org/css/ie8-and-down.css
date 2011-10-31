@@ -2652,7 +2652,7 @@ a.menu:after, .dropdown-toggle:after {
 	cursor: pointer;
 	position: absolute;
 	outline: none;
-	right: 6px;
+	right: 14px;
 	top: 6px;
 	width: 16px;
 	height: 16px;
