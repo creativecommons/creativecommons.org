@@ -758,3 +758,13 @@ p.presskit {
         margin-left: 0.4em;
 }
 
+
+/** people pages **/
+
+div.list { width: 30%; float: left; } 
+div.list ul { margin-top: 0.175em !important; line-height:1.5em;} 
+p.org { border-top:1px solid #DDDDDD; margin-right:20px; padding-top:10px; }  
+div.person { padding: 0 0 40px 0; } 
+div.person img { padding: 0 20px 20px 0; } 
+
+
