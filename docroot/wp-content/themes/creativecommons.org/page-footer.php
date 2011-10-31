@@ -1,4 +1,4 @@
-		<footer>
+		<footer id="fixfooter">
 		<div class="container">
 		
 			<div id="globe"></div>

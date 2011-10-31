@@ -2,9 +2,8 @@
     include 'meta.php';
 ?>
 <?php include 'header-doctype.php'; ?>
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head profile="http://gmpg.org/xfn/11">
-    <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" charset="<?php bloginfo('charset'); ?>" />
+<head>
+    <meta charset="<?php bloginfo('charset'); ?>" />
     <?php include 'header-common.php'; ?>
 
     <?php if (is_front_page() || is_404()) {?>

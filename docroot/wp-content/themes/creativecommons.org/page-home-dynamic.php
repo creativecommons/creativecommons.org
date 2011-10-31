@@ -13,7 +13,7 @@ if ($_GET['stype']) {
 }
 ?>
 <?php get_header(); ?>
-<?php the_post(); ?>
+<?php // the_post(); ?>
 <body>
 	<div id="container">
         <?php include 'page-nav.php'; ?>
