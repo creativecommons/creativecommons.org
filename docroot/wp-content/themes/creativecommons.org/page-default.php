@@ -1,1 +1,6 @@
-<?php include 'page.php'; ?>
+<?php 
+/**
+ * Template Name: Page Page
+ *
+ */
+include 'page.php'; ?>

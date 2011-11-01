@@ -1,4 +1,9 @@
 <?php
+/**
+ * Template Name: Blog Archive 
+ *
+ */
+
 // Check if we're actually an international page in disguise, 
 // and call up the correct template
 $category = get_category($cat);
