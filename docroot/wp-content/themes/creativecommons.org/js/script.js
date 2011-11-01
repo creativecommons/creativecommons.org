@@ -34,7 +34,7 @@ j(document).ready(function(){
 		paginationClass: 'frames',
 		preload: false,
 		preloadImage: 'img/loading.gif',
-		play: 10000,
+		play: 4000,
 		pause: 10000,
 		effect: 'fade',
 		fadeSpeed: 500,
