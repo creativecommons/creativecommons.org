@@ -29,7 +29,9 @@ j(document).ready(function(){
 
   j(function(){
     j("#slides").slides({
-		generateNextPrev: false,
+		generateNextPrev: true,
+		next: 'next',
+		previous: 'prev',
 		pagination: true,
 		paginationClass: 'frames',
 		preload: false,
