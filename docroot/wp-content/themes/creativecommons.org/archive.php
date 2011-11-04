@@ -8,7 +8,7 @@
 // and call up the correct template
 $category = get_category($cat);
 
-if ($category->category_parent == 21) {
+if ( is_cc_main_site() && $category->category_parent == 21 ) {
   require (TEMPLATEPATH . '/international-page.php');
   exit();
 }
@@ -44,7 +44,8 @@ get_header();
 			<div class="blog" id="post-<?php the_ID(); ?>">
 				<h2 class="title">
 					<a href="<?php the_permalink() ?>">
-					<?php if (in_category(4) || in_category(7)) { ?>CC Talks With: <?php } ?> 
+                    <?php ec?>
+					<?php if ( is_cc_main_site() && (in_category(4) || in_category(7)) ) { ?>CC Talks With: <?php } ?> 
 					<?php the_title() ?>
 					</a>
 				</h2>
