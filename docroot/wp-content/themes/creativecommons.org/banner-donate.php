@@ -1,11 +1,3 @@
-<div id="top-banner">
-		<a id="donate-link" href="https://creativecommons.net/donate/?utm_campaign=fall2011&amp;utm_source=ccorg&amp;utm_medium=site_header" title="Donate to Creative Commons"></a>
-        	<div class="container">
-                <div class="row">
-                <div class="eleven columns">
-		<h4><a href="https://creativecommons.net/donate/?utm_campaign=fall2011&amp;utm_source=ccorg&amp;utm_medium=site_header">Donate to Freedom and Sharing: CC’s Annual Campaign</a></h4>
-		</div>
-		<div class="three columns omega">
 <?php
 
 	// We need to switch the Analytics source based on which site this banner 
@@ -23,8 +15,23 @@
 		default:
 			$analytics_source = 'ccorg';
 	}
-	echo "            <h5><a href='https://creativecommons.net/donate/?utm_campaign=fall2011&amp;utm_source={$analytics_source}&amp;utm_medium=site_header' class='btn'>Donate now</a></h5>";
 
+?>
+
+<div id="top-banner">
+<?php
+    echo"		<a id='donate-link' href='https://creativecommons.net/donate/?utm_campaign=fall2011&amp;utm_source=${analytics_source}&amp;utm_medium=site_header' title='Donate to Creative Commons'></a>";
+?>
+        	<div class="container">
+                <div class="row">
+                <div class="eleven columns">
+<?php
+    echo "            <h4><a href='https://creativecommons.net/donate/?utm_campaign=fall2011&amp;utm_source={$analytics_source}&amp;utm_medium=site_header'>Donate to Freedom and Sharing: CC’s Annual Campaign</a></h4>";
+?>
+		</div>
+		<div class="three columns omega">
+<?php
+    echo "            <h5><a href='https://creativecommons.net/donate/?utm_campaign=fall2011&amp;utm_source={$analytics_source}&amp;utm_medium=site_header' class='btn'>Donate now</a></h5>";
 ?>
                 </div>
                 </div>
