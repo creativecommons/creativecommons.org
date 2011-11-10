@@ -88,6 +88,8 @@ def render_template(request, locale, template_path, context):
     template = TEMPLATE_ENV.get_template(template_path)
     context['request'] = request
     context['locale'] = locale
+    if not 'gettext' in context:
+       context['gettext'] = ugettext_for_locale(locale)
 
     rendered = template.render(context)
 
