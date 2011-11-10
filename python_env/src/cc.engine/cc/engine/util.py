@@ -67,7 +67,7 @@ TEMPLATE_LOADER = jinja2.PackageLoader('cc.engine', 'templates')
 TEMPLATE_ENV = jinja2.Environment(
     loader=TEMPLATE_LOADER,
     autoescape=True,
-    extensions=['jinja2.ext.autoescape'])
+    extensions=['jinja2.ext.autoescape', 'jinja2.ext.i18n'])
 
 # Add cctrans to the global context
 TEMPLATE_ENV.globals['cctrans'] = cctrans
