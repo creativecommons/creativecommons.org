@@ -1,4 +1,3 @@
-import csv
 import os
 import pkg_resources
 import string
@@ -16,7 +15,6 @@ import routes
 from webob import Response
 from zope.component.globalregistry import base
 from zope.i18n.interfaces import ITranslationDomain
-from zope.i18n.translationdomain import TranslationDomain
 from zope.i18n import translate
 from zope.i18nmessageid import MessageFactory
 
@@ -26,9 +24,6 @@ from cc.i18n import ccorg_i18n_setup
 from cc.i18n.gettext_i18n import ugettext_for_locale
 from cc.i18n.util import negotiate_locale
 from cc.i18n.util import locale_to_lower_upper
-
-from cc.engine.pagetemplate import CCLPageTemplateFile
-
 
 _ = MessageFactory('cc_org')
 
