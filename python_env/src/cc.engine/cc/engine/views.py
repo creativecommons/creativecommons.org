@@ -1,9 +1,6 @@
-import mimetypes
 import urllib
 
 from webob import Response, exc
-
-from cc.engine import util
 
 
 def root_view(request):
