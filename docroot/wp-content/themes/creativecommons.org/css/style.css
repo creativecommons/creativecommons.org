@@ -804,7 +804,7 @@ select,
 .uneditable-input {
   display: inline-block;
   width: 210px;
-  height: 18px;
+  /*height: 18px;*/
   padding: 4px;
   font-size: 13px;
   line-height: 18px;
@@ -840,7 +840,7 @@ input[type=button], input[type=reset], input[type=submit] {
   height: auto;
 }
 select, input[type=file] {
-  height: 27px;
+  /*height: 27px;*/
   line-height: 27px;
 }
 textarea {
