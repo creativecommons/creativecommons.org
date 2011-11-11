@@ -150,7 +150,8 @@
       "<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>",
       "<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>",
       "Creative Commons Attribution 3.0 Unported License",
-      "<dc:title>pictures of cats</dc:title>"]},
+      "<dc:title>",
+      "<rdf:li xml:lang='x-default'>pictures of cats</rdf:li>"]},
  {"path": "/choose/metadata.xmp?field_attribute_to_name=Cornelius+Highbrow",
   "string_tests": [
       "<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>",
@@ -162,7 +163,7 @@
       "<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>",
       "<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>",
       "Creative Commons Attribution 3.0 Unported License",
-      "<xmlRights:WebStatement>http://test.foo</xmlRights:WebStatement>"]},
+      "<xapRights:WebStatement rdf:resource='http://test.foo'/>"]},
  {"path": "/choose/metadata.xmp?lang=es",
   "string_tests": [
       "xml:lang='es'",
