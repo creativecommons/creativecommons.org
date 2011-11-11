@@ -2405,7 +2405,6 @@ html, body {
 #fixfooter,
 footer {
     width: 100%;
-	min-width: 970px;
 	height: 260px;
 	padding-top: 0px;
 	margin-top: 0px;
@@ -2526,7 +2525,6 @@ h6, h6 small {
 
 .topbar {
     width: 100%;
-    min-width: 970px;
 	position: relative;
 }
 .topbar .topbar-inner {
@@ -2769,7 +2767,6 @@ a.menu:after, .dropdown-toggle:after {
 
 #top-banner {
   width: 100%;
-  min-width: 940px;
   position: relative;
   margin: 0 0 0;
   padding: 7px 14px;
