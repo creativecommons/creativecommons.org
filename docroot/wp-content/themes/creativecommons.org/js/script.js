@@ -106,7 +106,7 @@ j(document).ready(function(){
 });
 
 
-if (navigator.userAgent.match(/MSIE\s(?!9.0)/)) {
+if (navigator.userAgent.match(/MSIE\s(?!8.0)/)) {
 	// j(window).load( j('div.carousel').css('display', 'none') );
 } else {
     j(window).load( j('div.carousel').css('display', 'block') );
