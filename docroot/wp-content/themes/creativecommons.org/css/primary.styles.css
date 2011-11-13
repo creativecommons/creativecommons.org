@@ -768,3 +768,6 @@ div.person { padding: 0 0 40px 0; }
 div.person img { padding: 0 20px 20px 0; } 
 
 
+.wp-pagenavi {
+    padding-bottom: 20px;
+}
