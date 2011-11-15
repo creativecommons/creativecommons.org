@@ -620,6 +620,7 @@ footer #colophon {
 .carousel #slides .prev,
 .carousel #slides .next {
         display: none;
+        visibility: hidden;
 }
 
 

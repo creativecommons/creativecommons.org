@@ -5,7 +5,9 @@
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php bloginfo('stylesheet_directory'); ?>/apple-touch-icon-72x72-precomposed.png">
 	<link rel="apple-touch-icon-precomposed" href="<?php bloginfo('stylesheet_directory'); ?>/apple-touch-icon-precomposed.png">
 
+    <!--[if !IE]>
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/style.css">
+    <![endif]-->
 
     <!--[if lt IE 9]>
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/ie8-and-down.css">
