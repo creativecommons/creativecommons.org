@@ -164,4 +164,19 @@ function is_cc_main_site () {
     }
     return false;
 }
+
+/** 
+ * Is this IE 8 or less
+ */
+function is_not_old_ie () 
+{
+    $browser = get_browser(null, true);
+    if ( empty($browser) || 
+        ! ( preg_match('/IE/i', $browser[parent]) && $browser[majorver] <= 7 ) )
+    {
+        return true;
+    }
+    else
+        return false;
+}
 ?>
