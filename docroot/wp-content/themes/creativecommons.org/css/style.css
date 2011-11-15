@@ -2404,10 +2404,8 @@ html, body {
 
 #fixfooter,
 footer {
-    /*
 	position: absolute;
 	bottom: 0;
-    */
 	width: 100%;
 	height: 260px;
 	padding-top: 0px;
@@ -2945,7 +2943,6 @@ footer #colophon {
 
 .slides_container {
 	position: relative;
-        height: 330px;
 }
 .slides_container div.slide {
 	display:block;
