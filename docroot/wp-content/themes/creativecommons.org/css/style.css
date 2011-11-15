@@ -2996,7 +2996,7 @@ footer #colophon {
 
 .carousel .next {
 	position: absolute;
-	display: block;
+	display: none;
 	top: 135px;
 	right: -24px;
 	height: 43px;
@@ -3008,7 +3008,7 @@ footer #colophon {
 }
 .carousel .prev {
 	position: absolute;
-	display: block;
+	display: none;
 	top: 135px;
 	left: -24px;
 	height: 43px;
