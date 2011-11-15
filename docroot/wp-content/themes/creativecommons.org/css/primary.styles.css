@@ -551,7 +551,9 @@ footer #colophon {
 	overflow: visible;
 	top: 10px;
 	left: 0px;
-	width: 393px;
+    /* width: 940px 
+	width: 393px; */
+    width: 100%;
 	height: 250px;
 	background: url("../img/Peters_projection_blank.png") no-repeat 0 0; /* https://secure.wikimedia.org/wikipedia/commons/wiki/File:Peters_projection,_blank.svg */
 	/*opacity:0.75; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=75)"; filter:alpha(opacity=75);*/

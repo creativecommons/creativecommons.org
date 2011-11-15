@@ -100,15 +100,16 @@ footer #colophon,
 }
 
 #globe {
+    /*
 	position: absolute;
 	overflow: visible;
 	top: 10px;
 	left: 0px;
-	width: 940px;
 	height: 250px;
-    z-index: -1;
 	background: url("../img/Peters_projection_blank.png") no-repeat 0 0; 
 	background-color: #98C807;
+    */
+    z-index: -1;
 }
 
 
