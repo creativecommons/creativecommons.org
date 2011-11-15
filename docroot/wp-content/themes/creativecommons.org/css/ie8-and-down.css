@@ -3295,9 +3295,17 @@ footer #colophon,
     display: block;
 }
 
+@media only screen and (min-width: 767px) {
   .topbar #short-menu {
   	display: none;
   }
+}
+
+@media only screen and (max-width: 767px) {
+	.topbar #wide-menu {
+		display: none;
+	}
+}
 
 	.short .bucket .content {
 		min-height: 240px;
