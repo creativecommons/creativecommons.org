@@ -127,5 +127,19 @@
 				</div>
 			</div>
 		</div>
+
+        <!-- censorship bar -->
+        <div class="container"
+             style="position:relative;
+	            width:120px;
+	            height: 20px;
+	            top: -29px;
+	            left: -408px;
+	            z-index:10000;
+	            ">
+          <a href="http://americancensorship.org" >
+            <img src="http://americancensorship.org/images/stop-censorship-small.png"/>
+          </a>
+        </div>
 		</header>
         <?php include 'banner-donate.php'; ?>
