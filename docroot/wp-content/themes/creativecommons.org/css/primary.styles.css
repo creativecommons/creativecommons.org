@@ -618,6 +618,37 @@ footer #colophon {
 	text-shadow:none;
 }
 
+
+.carousel .next {
+	position: absolute;
+	display: block;
+	top: 135px;
+	right: -24px;
+	height: 43px;
+	width: 24px;
+	background: url('../img/arrow-next.png') no-repeat 0 0;
+	text-indent: -9999px;
+	font-size: 0px;
+	overflow: hidden;
+}
+.carousel .prev {
+	position: absolute;
+	display: block;
+	top: 135px;
+	left: -24px;
+	height: 43px;
+	width: 24px;
+	background: url('../img/arrow-prev.png') no-repeat 0 0;
+	text-indent: -9999px;
+	font-size: 0px;
+	overflow: hidden;
+}
+
+
+.bucket .frames {
+	position: absolute;
+
+
 .bucket .frames {
 	position: absolute;
 	right: 5px;
@@ -778,4 +809,13 @@ div.person img { padding: 0 20px 20px 0; }
     padding-bottom: 20px;
 }
 
+select, input[type=file] {
+    height: auto;
+}
 
+input,
+textarea,
+select,
+.uneditable-input { 
+    height: auto;
+}
