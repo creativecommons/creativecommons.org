@@ -74,16 +74,9 @@ footer {
 	overflow:hidden;
 }
 
-
-/* only in the ie8 version, try to add to master */
 #top-banner {
   width: 100%;
 }
-
-
-
-
-/* START try to add to the master primary styles */
 
 footer, footer p, footer p small,
 #fixfooter, #fixfooter p, #fixfooter p small {
@@ -105,10 +98,6 @@ footer #colophon,
 	position: relative;
 	z-index: 500;
 }
-
-/* END try to add */
-
-/* ie8 updates */
 
 #globe {
 	position: absolute;

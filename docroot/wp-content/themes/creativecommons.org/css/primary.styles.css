@@ -27,9 +27,12 @@ html, body {
 	padding-bottom: 300px;
 }
 
+#fixfooter,
 footer {
+    /*
 	position: absolute;
 	bottom: 0;
+    */
 	width: 100%;
 	height: 260px;
 	padding-top: 0px;
@@ -772,3 +775,4 @@ div.person img { padding: 0 20px 20px 0; }
 .wp-pagenavi {
     padding-bottom: 20px;
 }
+
