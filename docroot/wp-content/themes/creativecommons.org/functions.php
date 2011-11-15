@@ -172,7 +172,7 @@ function is_not_old_ie ()
 {
     $browser = get_browser(null, true);
     if ( empty($browser) || 
-        ! ( preg_match('/IE/i', $browser[parent]) && $browser[majorver] <= 7 ) )
+        ! ( preg_match('/IE/i', $browser[parent]) && $browser[majorver] <= 8 ) )
     {
         return true;
     }
