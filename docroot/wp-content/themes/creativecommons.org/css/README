@@ -1,0 +1,11 @@
+NOTE: The master files are composed from the CSS in this folder. Be careful.
+You should make changes to the files, and then run:
+
+ make
+
+That should generate the necessary:
+
+* style.css
+* ie8-and-down.css
+
+
