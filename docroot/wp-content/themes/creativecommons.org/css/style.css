@@ -2993,6 +2993,16 @@ footer #colophon {
 	text-shadow:none;
 }
 
+
+
+.carousel #slides .prev,
+.carousel #slides .next {
+        display: none;
+}
+
+
+
+
 .bucket .frames {
 	position: absolute;
 	right: 5px;
