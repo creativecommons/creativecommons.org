@@ -10,6 +10,8 @@ TODAY=`date +%F`
 define DISCLAIMER =
 endef
 
+# css/layout.css \
+#
 CSS =	css/normalize.css \
 		css/bootstrap-1.2.0.css \
 		css/skeleton.css \
