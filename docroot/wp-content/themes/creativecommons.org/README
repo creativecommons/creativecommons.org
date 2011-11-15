@@ -1,0 +1,6 @@
+This is the Creative Commons master style. Some files are generated
+so when using this style, make sure to run:
+
+ make
+
+This should generate some necessary styles dynamically.
