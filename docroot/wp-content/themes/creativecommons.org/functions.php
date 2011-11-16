@@ -167,6 +167,10 @@ function is_cc_main_site () {
 
 /** 
  * Is this IE 8 or less
+ * 
+ * Needs browscap to work:
+ * * http://www.php.net/manual/en/function.get-browser.php
+ * * See README for more info
  */
 function is_not_old_ie () 
 {

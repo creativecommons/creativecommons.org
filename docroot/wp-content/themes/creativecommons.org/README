@@ -4,3 +4,10 @@ so when using this style, make sure to run:
  make
 
 This should generate some necessary styles dynamically.
+
+Also, this theme relies upon php having a working browscap.ini file.
+
+We have been using the lite php browscap.ini here:
+
+ * http://browsers.garykeith.com/downloads.asp
+ * http://www.php.net/manual/en/function.get-browser.php
