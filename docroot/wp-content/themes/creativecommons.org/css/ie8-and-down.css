@@ -3175,6 +3175,7 @@ select,
 /* Tables in the wiki should have cell borders */
 .wiki_table td {
 	border: 1px solid #DDDDDD;
+	padding: 1ex;
 }
 /* Input of custom IE rules for less than IE9 */
 
