@@ -175,9 +175,12 @@ function is_cc_main_site () {
  */
 function is_not_old_ie () 
 {
+    /*
     $browser = get_browser(null, true);
     if ( (! ini_get("browscap") ) || empty($browser) || 
         ! ( preg_match('/IE/i', $browser[parent]) && $browser[majorver] <= 8 ) )
+    */
+    if(! preg_match('/MSIE [1-8]/i', $_SERVER['HTTP_USER_AGENT']))
     {
         return true;
     }
