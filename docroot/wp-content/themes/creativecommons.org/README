@@ -1,13 +1,8 @@
-This is the Creative Commons master style. Some files are generated
-so when using this style, make sure to run:
+This is the Creative Commons master theme. It is currently used in themes for
+CC.org, wiki.CC.org, CC.net, search.CC.org and labs.CC.org.  Some files are
+generated, so if you make changes to the CSS files, for example, you should
+run:
 
- make
+$ make
 
-This should generate some necessary styles dynamically.
-
-Also, this theme relies upon php having a working browscap.ini file.
-
-We have been using the lite php browscap.ini here:
-
- * http://browsers.garykeith.com/downloads.asp
- * http://www.php.net/manual/en/function.get-browser.php
+This should generate any necessary files dynamically.
