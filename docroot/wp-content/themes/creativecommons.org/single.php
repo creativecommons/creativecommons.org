@@ -19,6 +19,7 @@ if ( have_posts() )  {
 		<div id="main" role="main">
 			<div class="container">
                 <div class="twelve columns">
+				<div style="margin-top: 1em;"><h3><a href="/weblog">News</a></h3></div>
 					<div class="first row">
 						<?php edit_post_link("Edit This Post", '<p class="alignright edit">', '</p>'); ?>
 						<h1><?php the_title(); ?></h1>
