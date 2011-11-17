@@ -6,7 +6,9 @@
 	<link rel="apple-touch-icon-precomposed" href="<?php bloginfo('stylesheet_directory'); ?>/apple-touch-icon-precomposed.png">
 
     <?php 
-    if ( is_not_old_ie() )
+    $browser = get_browser(null, true);
+    if ( (! ini_get("browscap") ) || empty($browser) || 
+        ! ( preg_match('/IE/i', $browser[parent]) && $browser[majorver] <= 8 ) )
     {
     ?>
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/style.css">

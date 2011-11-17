@@ -166,16 +166,17 @@ function is_cc_main_site () {
 }
 
 /** 
- * Is this IE 8 or less
+ * Is this IE 8 or less. Assumption is newer browser.
  * 
  * Needs browscap to work:
  * * http://www.php.net/manual/en/function.get-browser.php
  * * See README for more info
+ *
  */
 function is_not_old_ie () 
 {
     $browser = get_browser(null, true);
-    if ( empty($browser) || 
+    if ( (! ini_get("browscap") ) || empty($browser) || 
         ! ( preg_match('/IE/i', $browser[parent]) && $browser[majorver] <= 8 ) )
     {
         return true;
