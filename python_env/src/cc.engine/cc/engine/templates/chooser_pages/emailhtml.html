@@ -4,11 +4,14 @@
 
 {% block body %}
   <p>
-    {{ cctrans(locale, "license.link_emailed",
-               email=request_form['to_email'])|safe }}
+    {% trans email=request_form['to_email'] %}<p>
+The information concerning your choice has been emailed to you at <strong>{{ email }}</strong>.
+</p>
+
+<p>Place the link or the HTML on your website, right next to the work you intend to license.  </p>{% endtrans %}
   </p>
 
   <div align="center">
-    <a href="javascript:window.close();">{{ cctrans(locale, "util.Close_window")|safe }}</a>
+    <a href="javascript:window.close();">{% trans %}Close window{% endtrans %}</a>
   </div>
 {% endblock %}

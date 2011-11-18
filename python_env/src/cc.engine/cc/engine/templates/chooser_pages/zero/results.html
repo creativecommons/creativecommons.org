@@ -27,15 +27,15 @@
       <div id="error">
         <div class="bd">
           <p>
-            {{ cctrans(locale, "license.zero.declined")|safe }}
+            {% trans %}You did not affirm your decision to waive the rights associated with your work. If you'd like to continue you can click the Back button to review your choice.{% endtrans %}
           </p>
           <ul>
             <li>
-              <a href="/about/cc0">{{ cctrans(locale, "license.zero.about")|safe }}</a>
+              <a href="/about/cc0">{% trans %}About CC0{% endtrans %}</a>
             </li>
             <li>
               <a href="http://wiki.creativecommons.org/CC0_FAQ"
-                 >{{ cctrans(locale, "util.FAQ")|safe }}</a>
+                 >{% trans %}Frequently Asked Questions{% endtrans %}</a>
             </li>
           </ul>
         </div>
@@ -44,7 +44,7 @@
       <div id="results">
         <div class="bd" id="waiver-results">
           <p>
-            {{ cctrans(locale, "license.choose_button")|safe }}
+            {% trans %}Choose which style of button you'd like on your webpage:{% endtrans %}
           </p>
   
           <div class="licensebox" align="center">
@@ -68,44 +68,42 @@
           </div>
   
           <span id="waiver-results-leadin">
-            {{ cctrans(locale, "license.zero.preview_waiver")|safe }}
+            {% trans %}Here's a preview of how your waiver will appear on your site:{% endtrans %}
           </span>
   
           <div class="preview" id="results-preview">{{ rdfa|safe }}</div>
   
-          <h3>{{ cctrans(locale, "license.have_your_own_website")|safe }}</h3>
+          <h3>{% trans %}Have your own website?{% endtrans %}</h3>
           <p>
-            {{ cctrans(locale, "license.zero.copy_text")|safe }}
+            {% trans %}Copy the text below to your Web site to let your visitors know that you've waived the rights to your work.  Creative Commons does not retain a record of your selection; as the publisher it's up to you to let people know how they may use your work.{% endtrans %}
           </p>
   
           <textarea id="codetocopy" cols="70" rows="6" style="width: 100%"
                     onfocus="select()">{{ rdfa }}</textarea>
   
           <div class="more-metadata-container">
-            <h3 style="margin-top:0;">{{ cctrans(locale, "license.zero.send_email")|safe }}</h3>
+            <h3 style="margin-top:0;">{% trans %}Send Email{% endtrans %}</h3>
   
             {% if email_requested %}
               {# email container #}
               {% if not succesful_send %}
                 <div class="more-metadata-container error">
-                  {{ cctrans(locale, "license.zero.email_error",
-                             email_addr=email_addr)|safe }}
+                  {% trans email_addr=email_addr %}An error occurred when we tried to send the email message; you can try clicking the Back button and double checking your email address.  If the address you used ({{ email_addr }}) was correct you can <a href="/about/contact">contact us</a>.{% endtrans %}
                 </div>
               {% else %}
                 <div>
                   <p>
-                    {{ cctrans(locale, "license.zero.email_sent",
-                               email_addr=email_addr)|safe }}
+                    {% trans email_addr=email_addr %}The suggested HTML has been sent to {{ email_addr }}.{% endtrans %}
                   </p>
   
                   {% if requested_send_updates %}
-                    {{ cctrans(locale, "license.zero.subscribed_to_updates")|safe }}
+                    {% trans %}You have asked to be notified of updates to CC0.  A subscription request has been sent on your behalf; you must click the link in the confirmation email to complete the sign-up process.{% endtrans %}
                   {% endif %}
                 </div>
               {% endif %}
             {% else %}
               <p>
-                {{ cctrans(locale, "license.zero.send_email_updates")|safe }}
+                {% trans %}If you'd like to get the HTML with embedded metadata via email and optionally receive updates about CC0, fill in your email address below.{% endtrans %}
               </p>
   
               <form action="{{ request.path_info }}" method="post">
@@ -114,12 +112,12 @@
                 {% endfor %}
 
                 <div class="more-metadata">
-                  <div>{{ cctrans(locale, "util.your_email")|safe }}</div>
+                  <div>{% trans %}your email{% endtrans %}</div>
                   <input type="textbox" name="email" />
                 </div>
   
                 <input id="do-send-email" type="submit" class="btn"
-                       value="{{ cctrans(locale, 'util.Send')|safe }}" />
+                       value="{% trans %}Send{% endtrans %}" />
               </form>
             {% endif %}
   

@@ -12,58 +12,58 @@
       <div id="deed-newer"
            style="text-align:center">
         <h3>
-          {{ cctrans(locale, "deed.retired")|safe }}
+          {% trans %}Creative Commons has <a href="http://creativecommons.org/retiredlicenses">retired this legal tool</a> and does not recommend that it be applied to works.{% endtrans %}
         </h3>
       </div>
     {% endif %}
 
-    <h3>{{ cctrans(locale, "deed.You_are_free")|safe }}</h3>
+    <h3>{% trans %}You are free:{% endtrans %}</h3>
     <ul class="license-properties">
       {% if license.license_code == 'nc-sampling+' %}
         <li class="license samplingplus">
-          {{ cctrans(locale, "deed.free_sample_nc")|safe }}
+          {% trans %}To sample, mash-up, or otherwise creatively transform this work for noncommercial purposes.{% endtrans %}
         </li>
       {% else %}
         <li class="license sampling">
-          {{ cctrans(locale, "deed.free_sample")|safe }}
+          {% trans %}To sample, mash-up, or otherwise creatively transform this work for commercial or noncommercial purposes.{% endtrans %}
         </li>
       {% endif %}
 
       {% if license.license_code in ('nc-sampling+', 'sampling+') %}
         <li class="license samplingplus">
-          {{ cctrans(locale, "deed.free_copy_distribute_noncommercial")|safe }}
+          {% trans %}To perform, display, and distribute copies of this whole work for noncommercial purposes (e.g., file-sharing or noncommercial webcasting).{% endtrans %}
         </li>
       {% endif %}
     </ul>
 
   </div>
   <div id="deed-conditions">
-    <h3>{{ cctrans(locale, "deed.under_conditions")|safe }}</h3>
+    <h3>{% trans %}Under the following conditions:{% endtrans %}</h3>
     <ul class="license-properties"
         dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
       <li class="license by">
-        {{ cctrans(locale, "char.by_brief")|safe }}
+        {% trans %}You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).{% endtrans %}
       </li>
       {% if license.license_code == 'nc-sampling+' %}
         <li class="license nc">
-          {{ cctrans(locale, "char.nc_brief")|safe }}
+          {% trans %}You may not use this work for commercial purposes.{% endtrans %}
         </li>
       {% else %}
         <li>
-          {{ cctrans(locale, "char.na_brief")|safe }}
+          {% trans %}You may not use this work to advertise for or promote anything but the work you create from it.{% endtrans %}
         </li>
       {% endif %}
 
       {% if license.license_code in ('nc-sampling+', 'sampling+') %}
         <li>
-          {{ cctrans(locale, "deed.notice")|safe }}
+          {% trans %}For any reuse or distribution, you must make clear to others the license terms of this work. The best way to do this is with a link to this web page.{% endtrans %}
         </li>
       {% else %}
         <li>
-          {{ cctrans(locale, "deed.notice_withoutdistribution")|safe }}
+          {% trans %}For any reuse, you must make clear to others the license terms of this work.{% endtrans %}
         </li>
         <li>
-          {{ cctrans(locale, "char.no_brief")|safe }}
+          {% trans %}You may not perform, display, or distribute copies of this whole work for any purpose.{% endtrans %}
         </li>
       {% endif %}
 
@@ -73,10 +73,10 @@
 
         <ul>
           <li>
-            {{ cctrans(locale, "deed.fair_use")|safe }}
+            {% trans %}Your fair dealing or <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Do_Creative_Commons_licenses_affect_fair_use.2C_fair_dealing_or_other_exceptions_to_copyright.3F" id="fair_use" class="helpLink">fair use</a> rights, or other applicable copyright exceptions and limitations;{% endtrans %}
           </li>
           <li>
-            {{ cctrans(locale, "deed.publicity_rights")|safe }}
+            {% trans %}Rights other persons may have either in the work itself or in how the work is used, such as <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F" class="helpLink" id="publicity_rights">publicity</a> or privacy rights.{% endtrans %}
           </li>
         </ul>
       </li>

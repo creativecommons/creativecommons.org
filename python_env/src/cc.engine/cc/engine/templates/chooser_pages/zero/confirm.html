@@ -10,7 +10,7 @@
 {% block sidebar %}{% endblock %}
 
 {% block page_header_title %}
-  CC0: {{ cctrans(locale, "license.zero.confirm_title")|safe }}
+  CC0: {% trans %}Confirm Waiver{% endtrans %}
 {% endblock %}
 
 {% block body %}
@@ -23,15 +23,15 @@
       <div id="confirm-waiver">
         <div class="bd">
           <p>
-            {{ cctrans(locale, "license.zero.confirm_waiver_1")|safe }}
+            {% trans %}Are you certain you wish to waive all rights to your work? Once these rights are waived, you cannot reclaim them.{% endtrans %}
           </p>
 
           <p>
-            {{ cctrans(locale, "license.zero.confirm_waiver_2")|safe }}
+            {% trans %}In particular, if you are an artist or author who depends upon copyright for your income, Creative Commons <strong>does not recommend</strong> that you use this tool.{% endtrans %}
           </p>
 
           <p>
-            {{ cctrans(locale, "license.zero.confirm_waiver_3")|safe }}
+            {% trans %}If you don't own the rights to this work, then do not use CC0. If you believe that nobody owns rights to the work, then the <a href="/choose/mark/">Public Domain Mark</a> may be what you're looking for.{% endtrans %}
           </p>
 
           <div class="form-row">
@@ -40,7 +40,7 @@
                 <button type="submit" id="decline-submit" class="btn"
                         name="waiver-decline"
                         value="decline">
-                  {{ cctrans(locale, "license.zero.confirm_waiver_no")|safe }}
+                  {% trans %}No, I Do Not Waive{% endtrans %}
                 </button>
               </span>
             </span>
@@ -50,7 +50,7 @@
                 <button type="submit" id="confirm-submit"
                         name="waiver-affirm" class="btn danger"
                         value="affirm">
-                  {{ cctrans(locale, "license.zero.confirm_waiver_yes")|safe }}
+                  {% trans %}Yes, I Waive{% endtrans %}
                 </button>
               </span>
             </span>

@@ -4,14 +4,14 @@
 
 {% block body %}
   <p>
-    {{ cctrans(locale, "license.partner_selected",
-               license_deed_url=license.uri,
-               license_pretty_name=license.title(target_lang),
-               license_url=license.uri)|safe }}
+    {% trans license_deed_url=license.uri,
+             license_pretty_name=license.title(target_lang),
+             license_url=license.uri %}You have selected the <a target="cc_other" href="{{ license_deed_url }}"><b>{{ license_pretty_name }} License</b></a>.<br>
+This license is permanently located at<br>
+<b><tt>{{ license_url }}</tt></b>.{% endtrans %}
   </p>
 
   <p>
-    {{ cctrans(locale, "license.you_may_proceed",
-               processed_exit_url=exit_url)|safe }}
+    {% trans processed_exit_url=exit_url %}You may now <a href="{{ processed_exit_url }}">proceed</a>{% endtrans %}
   </p>
 {% endblock %}

@@ -16,7 +16,7 @@
 
 {% block body %}
   <p>
-    {{ cctrans(locale, "license.choose_button")|safe }}
+    {% trans %}Choose which style of button you'd like on your webpage:{% endtrans %}
   </p>
   
   <div class="licensebox">
@@ -52,7 +52,7 @@
   </div>
 
   <div>
-    {{ cctrans(locale, "license.preview")|safe }}
+    {% trans %}Here's a preview of how your license will appear on your site:{% endtrans %}
   </div>
   
   <div class="preview" id="results-preview">
@@ -62,10 +62,10 @@
   </div>
   
   <div style="margin-top:20px;margin-bottom:30px;">
-    <h4>{{ cctrans(locale, "license.have_your_own_website")|safe }}</h4>
+    <h4>{% trans %}Have your own website?{% endtrans %}</h4>
 
     <p>
-      {{ cctrans(locale, "license.copy_text")|safe }}
+      {% trans %}Copy the text below to your Web site to let your visitors know what license applies to your works.{% endtrans %}
     </p>
 
     <form action="">
@@ -79,11 +79,10 @@
 
     <p>
       <span>
-        {{ cctrans(locale, "license.select_text",
-                   url_vars=request.query_string)|safe }}
+        {% trans url_vars=request.query_string %}Select the contents of the box above and copy it. Or, have it <a href="/license/work-html-popup?{{ url_vars }}" onclick="window.open('work-html-popup?{{ url_vars }}', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">emailed to yourself.</a>{% endtrans %}
       </span>
       <strong>
-        {{ cctrans(locale, "license.read_tutorial")|safe }}
+        {% trans %}Need more help? <a href="http://wiki.creativecommons.org/Website/Publish">Read our tutorial</a>.{% endtrans %}
       </strong>
     </p>
 
@@ -91,7 +90,7 @@
       <div>
         <a href="https://creativecommons.net/donate/"><img src="/images/support/2010/cc-support.png" alt="Donate" title="Donate" border="0"/></a></div>
         <p>
-          {{ cctrans(locale, "license.donate_message")|safe }}
+          {% trans %}Creative Commons is a non-profit organization.<br /> We need your support to continue providing these tools.<br /> <a href="https://creativecommons.net/donate/">Donate today!</a>{% endtrans %}
        </p>
     </div>
   </div>
@@ -103,34 +102,32 @@
 
 {% block sidebar %}
   <p>
-    {{ cctrans(locale, "license.learn_share")|safe }}
+    {% trans %}Share your work with an existing community that has enabled Creative Commons licensing.{% endtrans %}
   </p>
   
   <p>
-    {{ cctrans(locale, "license.learn_where_to_publish")|safe }}
+    {% trans %}Learn where to <a href="http://wiki.creativecommons.org/Publish">publish</a> your <a href="http://wiki.creativecommons.org/Publish/Images">images</a>, <a href="http://wiki.creativecommons.org/Publish/Audio">audio</a>, <a href="http://wiki.creativecommons.org/Publish/Video">video</a>, and <a href="http://wiki.creativecommons.org/Publish/Text">text</a>, including <a href="http://wiki.creativecommons.org/Publish/Text#Blog">blogs</a>.{% endtrans %}
   </p>
 
-  <h4>{{ cctrans(locale, "license.offline_work")|safe }}</h4>
+  <h4>{% trans %}Offline Work?{% endtrans %}</h4>
 
   <ul class="unstyled">
     <li>
       <span>
-        {{ cctrans(locale, "license.mark_nonweb",
-                   url_vars=request.query_string)|safe }}
+        {% trans url_vars=request.query_string %}To mark a document not on the web, <a href="non-web-popup?{{ url_vars }}" onclick="window.open('non-web-popup?{{ url_vars }}', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">add this text</a> to your work.{% endtrans %}
       </span>
     </li>
     <li>
-      {{ cctrans(locale, "license.xmp_metadata",
-                 url_vars=request.query_string)|safe }}
+      {% trans url_vars=request.query_string %}Get <a href="/choose/metadata.xmp?{{ url_vars }}">metadata</a> for documents that <a href="http://wiki.creativecommons.org/XMP">support XMP</a>.{% endtrans %}
     </li>
     <li>
       <a href="http://creativecommons.org/about/downloads/">
-        {{ cctrans(locale, "license.get_high_res")|safe }}
+        {% trans %}Get high resolution and vector versions of the license graphics.{% endtrans %}
       </a>
     </li>
     <li>
       <a href="http://wiki.creativecommons.org/Marking/Creators#Marking_Specific_Media">
-        {{ cctrans(locale, "license.mark_video")|safe }}
+        {% trans %}Learn how to mark video and other formats.{% endtrans %}
       </a>
     </li>
   </ul>

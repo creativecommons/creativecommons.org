@@ -15,10 +15,10 @@
     <div id="waiver_ui" class="yui-module">
       <div class="bd">
         <p><div>
-          {{ cctrans(locale, "license.mark.additional_metadata")|safe }}
+          {% trans %}These fields are optional, but will be embedded in the HTML generated for the work you are marking. This allows users of the work to locate the work online and find out where to go for more information.{% endtrans %}
           <a href="" id="embedded_metadata" class="helpLink">
             <img src="{{ request.staticdirect('/images/information.png') }}"
-                 alt="{{ cctrans(locale, 'Information')|safe }}"/></a>
+                 alt="{% trans %}Information{% endtrans %}"/></a>
           <div class="help-popover">
             <div class="popover below">
               <div class="arrow"></div>
@@ -36,23 +36,23 @@
         </p>
 
         <div id="help_embedded_metadata" class="help_panel">
-          <div class="hd">{{ cctrans(locale, "Embedded Metadata")|safe }}</div>
+          <div class="hd">{% trans %}Embedded Metadata{% endtrans %}</div>
           <div class="bd">
-            {{ cctrans(locale, "license.mark.metadata_help")|safe }}
+            {% trans %}<p> The information is embedded in a software readable format. This allows search engines to index additional information about the marked work. </p> <p> <a href="http://wiki.creativecommons.org/Metadata">More information</a> on Creative Commons metadata is available if you want to find out more. </p>{% endtrans %}
           </div>
         </div>
 
         <form id="form-details" action="./results">
           <div class="form-section">
-            <h3>{{ cctrans(locale, "util.work_information")|safe }}</h3>
+            <h3>{% trans %}Work Information{% endtrans %}</h3>
 
             <div class="form-row">
-              <div class="form-question">{{ cctrans(locale, "util.work_name")|safe }}</div>
+              <div class="form-question">{% trans %}Work name{% endtrans %}</div>
               <div class="form-answer">
                 <input name="work_title" class="form-field"/>
                 <br />
                 <div class="form-field-description">
-                  {{ cctrans(locale, "license.mark.work_title")|safe }}
+                  {% trans %}This is usually the title of the work given by the author, or if none the name associated with the work by the person identifying the work.{% endtrans %}
                 </div>
               </div>
             </div>
@@ -60,26 +60,26 @@
           <div style="clear:both;"></div>
 
           <div class="form-section">
-            <h3>{{ cctrans(locale, "util.author")|safe }}</h3>
+            <h3>{% trans %}Author{% endtrans %}</h3>
 
             <div class="form-row">
-              <div class="form-question">{{ cctrans(locale, "util.author_name")|safe }}</div>
+              <div class="form-question">{% trans %}Author name{% endtrans %}</div>
               <div class="form-answer">
                 <input name="author_title" class="form-field"/>
                 <br />
                 <div class="form-field-description">
-                  {{ cctrans(locale, "license.mark.author_help")|safe }}
+                  {% trans %}You may list multiple authors. If unknown, you may wish to state 'unknown'.{% endtrans %}
                 </div>
               </div>
             </div>
 
             <div class="form-row">
-              <div class="form-question">{{ cctrans(locale, "util.author_url")|safe }}</div>
+              <div class="form-question">{% trans %}Author URL{% endtrans %}</div>
               <div class="form-answer">
                 <input name="author_href" class="form-field"/>
                 <br />
                 <div class="form-field-description">
-                  {{ cctrans(locale, "license.mark.author_url_help")|safe }}
+                  {% trans %}This may be the URL where the author published the work online, or the URL where the work is published by the person identifying the work.{% endtrans %}
                 </div>
               </div>
             </div>
@@ -87,25 +87,25 @@
           <div style="clear:both;"></div>
 
           <div class="form-section">
-            <h3>{{ cctrans(locale, "util.identifying_party")|safe }}</h3>
+            <h3>{% trans %}Identifying Individual or Organization{% endtrans %}</h3>
 
             <div class="form-row">
-              <div class="form-question">{{ cctrans(locale, "util.name")|safe }}</div>
+              <div class="form-question">{% trans %}Name{% endtrans %}</div>
               <div class="form-answer">
                 <input name="curator_title" class="form-field"/>
                 <br />
                 <div class="form-field-description">
-                  {{ cctrans(locale, "license.mark.curator_help")|safe }}
+                  {% trans %}Identify yourself here.{% endtrans %}
                 </div>
               </div>
             </div>
 
             <div class="form-row">
-              <div class="form-question">{{ cctrans(locale, "util.url")|safe }}</div>
+              <div class="form-question">{% trans %}URL{% endtrans %}</div>
               <div class="form-answer">
                 <input name="curator_href" class="form-field"/>
                 <div class="form-field-description">
-                  {{ cctrans(locale, "license.mark.curator_href_help")|safe }}
+                  {% trans %}This may be your main website or the information page about you on a hosting website, such as Flickr Commons.{% endtrans %}
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@
             <div class="form-question">&nbsp;</div>
             <div class="form-answer">
               <input type="submit" id="submit" class="btn"
-                     name="field1" value="{{ cctrans(locale, 'util.continue')|safe }}" />
+                     name="field1" value="{% trans %}continue{% endtrans %}" />
             </div>
           </div>
 
