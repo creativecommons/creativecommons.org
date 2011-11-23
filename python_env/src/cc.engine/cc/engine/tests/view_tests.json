@@ -142,25 +142,29 @@
 
  {"path": "/choose/metadata.xmp",
   "string_tests": [
-      "<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>",
+      "<?xpacket begin='' id=''?>",
+      "<x:xmpmeta xmlns:x='adobe:ns:meta/'>",
       "<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>",
       "Creative Commons Attribution 3.0 Unported License"]},
  {"path": "/choose/metadata.xmp?field_worktitle=pictures+of+cats",
   "string_tests": [
-      "<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>",
+      "<?xpacket begin='' id=''?>",
+      "<x:xmpmeta xmlns:x='adobe:ns:meta/'>",
       "<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>",
       "Creative Commons Attribution 3.0 Unported License",
       "<dc:title>",
       "<rdf:li xml:lang='x-default'>pictures of cats</rdf:li>"]},
  {"path": "/choose/metadata.xmp?field_attribute_to_name=Cornelius+Highbrow",
   "string_tests": [
-      "<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>",
+      "<?xpacket begin='' id=''?>",
+      "<x:xmpmeta xmlns:x='adobe:ns:meta/'>",
       "<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>",
       "Creative Commons Attribution 3.0 Unported License",
       "<cc:attributionName>Cornelius Highbrow</cc:attributionName>"]},
  {"path": "/choose/metadata.xmp?field_attribute_to_url=http%3A%2F%2Ftest.foo",
   "string_tests": [
-      "<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>",
+      "<?xpacket begin='' id=''?>",
+      "<x:xmpmeta xmlns:x='adobe:ns:meta/'>",
       "<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>",
       "Creative Commons Attribution 3.0 Unported License",
       "<xapRights:WebStatement rdf:resource='http://test.foo'/>"]},
