@@ -24,14 +24,15 @@
 
     {%- if licenses -%}
     <rdf:Description rdf:about=''
-		     xmlns:dc='http://purl.org/dc/elements/1.1/'>
-      <dc:rights>
+		     xmlns:xapRights='http://ns.adobe.com/xap/1.0/rights/'
+		     >
+      <xapRights:UsageTerms>
 	<rdf:Alt>
 	  {% for info in licenses -%}
 	  <rdf:li xml:lang='{{ info.lang }}' >{{ info.notice|safe }}</rdf:li>
 	  {% endfor -%}
 	</rdf:Alt>
-      </dc:rights>
+      </xapRights:UsageTerms>
     </rdf:Description>
     {% endif %}
     
