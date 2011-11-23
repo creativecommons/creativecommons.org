@@ -1,40 +1,41 @@
-<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>
+<?xpacket begin='' id=''?>
+<x:xmpmeta xmlns:x='adobe:ns:meta/'>
   <rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
-    {% if copyrighted %}
+    {% if copyrighted -%}
     <rdf:Description rdf:about=''
 		     xmlns:xapRights='http://ns.adobe.com/xap/1.0/rights/'>
       <xapRights:Marked>{{ copyrighted }}</xapRights:Marked>
     </rdf:Description>
     {% endif %}
 
-    {% if work_url %}
+    {%- if work_url -%}
     <rdf:Description rdf:about=''
 		     xmlns:xapRights='http://ns.adobe.com/xap/1.0/rights/'>
       <xapRights:WebStatement rdf:resource='{{ work_url }}'/>
     </rdf:Description>
     {% endif %}
 
-    {% if attrib_url %}
+    {%- if attrib_url -%}
     <rdf:Description rdf:about=''
 		     xmlns:xapRights='http://ns.adobe.com/xap/1.0/rights/'>
       <xapRights:WebStatement rdf:resource='{{ attrib_url }}'/>
     </rdf:Description>
     {% endif %}
 
-    {% if licenses %}
+    {%- if licenses -%}
     <rdf:Description rdf:about=''
 		     xmlns:dc='http://purl.org/dc/elements/1.1/'>
       <dc:rights>
 	<rdf:Alt>
-	  {% for info in licenses %}
-	  <rdf:li xml:lang='{{ info.lang }}' >{{ info.notice }}</rdf:li>
-	  {% endfor %}
+	  {% for info in licenses -%}
+	  <rdf:li xml:lang='{{ info.lang }}' >{{ info.notice|safe }}</rdf:li>
+	  {% endfor -%}
 	</rdf:Alt>
       </dc:rights>
     </rdf:Description>
     {% endif %}
     
-    {% if work_title %}
+    {%- if work_title -%}
     <rdf:Description rdf:about=''
 		     xmlns:dc='http://purl.org/dc/elements/1.1/'>
       <dc:title>
@@ -46,26 +47,26 @@
     </rdf:Description>
     {% endif %}
 
-    {#
+    {#-
      # The following two descriptions contains elements in the cc namespace.
      # As of the time of writting, there is not a practical use case that
      # comes to mind to test against.  So, at best, the entries are only 
      # conceptually valid.
-     #}
+    -#}
 
-    {% if license_url %}
+    {%- if license_url -%}
     <rdf:Description rdf:about=''
       xmlns:cc='http://creativecommons.org/ns#'>
       <cc:license rdf:resource='{{ license_url }}'/>
     </rdf:Description>
     {% endif %}
 
-    {% if attrib_name %}
+    {%- if attrib_name -%}
     <rdf:Description rdf:about=''
       xmlns:cc='http://creativecommons.org/ns#'>
       <cc:attributionName>{{ attrib_name }}</cc:attributionName>
     </rdf:Description>
-    {% endif %}
+    {%- endif %}
   </rdf:RDF>
 </x:xmpmeta>
 <?xpacket end='r'?>
