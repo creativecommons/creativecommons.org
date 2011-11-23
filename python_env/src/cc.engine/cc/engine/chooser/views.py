@@ -392,6 +392,7 @@ def choose_xmp_view(request):
     context["work_title"] = attrib_or_none("field_worktitle")
     context["attrib_name"] = attrib_or_none("field_attribute_to_name")
     context["attrib_url"] = attrib_or_none("field_attribute_to_url")
+    context["permissions_url"] = attrib_or_none("field_morepermissionsurl")
     context["licenses"] = [{
             "lang" : "x-default",
             "notice" : context["notice"]

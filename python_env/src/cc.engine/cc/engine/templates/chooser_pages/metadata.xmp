@@ -66,6 +66,13 @@
       xmlns:cc='http://creativecommons.org/ns#'>
       <cc:attributionName>{{ attrib_name }}</cc:attributionName>
     </rdf:Description>
+    {% endif %}
+
+    {%- if permissions_url -%}
+    <rdf:Description rdf:about=''
+      xmlns:cc='http://creativecommons.org/ns#'>
+      <cc:morePermissions rdf:resource='{{ permissions_url }}'/>
+    </rdf:Description>
     {%- endif %}
   </rdf:RDF>
 </x:xmpmeta>
