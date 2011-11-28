@@ -615,15 +615,30 @@ footer #colophon {
 	text-shadow:none;
 }
 
-
-
-.carousel #slides .prev,
 .carousel #slides .next {
-        display: none;
-        visibility: hidden;
+	position: absolute;
+	display: block;
+	top: 135px;
+	right: -24px;
+	height: 43px;
+	width: 24px;
+	background: url('../img/arrow-next.png') no-repeat 0 0;
+	text-indent: -9999px;
+	font-size: 0px;
+	overflow: hidden;
 }
-
-
+.carousel #slides .prev {
+	position: absolute;
+	display: block;
+	top: 135px;
+	left: -24px;
+	height: 43px;
+	width: 24px;
+	background: url('../img/arrow-prev.png') no-repeat 0 0;
+	text-indent: -9999px;
+	font-size: 0px;
+	overflow: hidden;
+}
 
 
 .bucket .frames {
