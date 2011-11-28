@@ -12,6 +12,9 @@
 		case 'labs.creativecommons.org':
 			$analytics_source = 'cclabs';
 			break;
+		case 'creativecommons.net':
+			$analytics_source = 'ccnet';
+			break;
 		default:
 			$analytics_source = 'ccorg';
 	}
