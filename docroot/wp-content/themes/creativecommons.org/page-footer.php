@@ -29,7 +29,13 @@
 							<ul class="nav">
 							<li><a href="http://creativecommons.org/policies">Policies</a></li>
 							<li><a href="http://creativecommons.org/privacy">Privacy</a></li>
-							<li><a href="http://creativecommons.org/terms">Terms of Use</a></li>
+							<?php
+							if ( preg_match('/(staging\.)?creativecommons\.net/', $_SERVER['HTTP_HOST']) ) {
+								echo '<li><a href="https://creativecommons.net/h/policies/tou">Terms of Use</a></li>';
+							} else {
+								echo '<li><a href="http://creativecommons.org/terms">Terms of Use</a></li>';
+							}
+							?>
 							</ul>
 						</div>
 					</div>
