@@ -56,7 +56,6 @@ get_header();
 				<?php if (get_the_tags()) { ?>
 				<div class="postTags">
 					<?php the_tags(); ?>
-                    <br /><br /><br />
 				</div>
 				<?php } ?>
 			</div>

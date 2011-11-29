@@ -817,3 +817,8 @@ select,
 	border: 1px solid #DDDDDD;
 	padding: 1ex;
 }
+
+/* Add a little white space after each blog post to separate posts */
+.blog {
+	margin-bottom: 2em;
+}
