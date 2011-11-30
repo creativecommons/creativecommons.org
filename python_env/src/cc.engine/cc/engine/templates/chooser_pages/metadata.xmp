@@ -29,7 +29,7 @@
       <xapRights:UsageTerms>
 	<rdf:Alt>
 	  {% for info in licenses -%}
-	  <rdf:li xml:lang='{{ info.lang }}' >{{ info.notice|safe }}</rdf:li>
+	  <rdf:li xml:lang='{{ info.lang }}' >{{ info.notice }}</rdf:li>
 	  {% endfor -%}
 	</rdf:Alt>
       </xapRights:UsageTerms>
