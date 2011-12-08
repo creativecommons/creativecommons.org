@@ -17,7 +17,7 @@
 							<div class="bucket">
 								<p><a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons Attribution 3.0 License"><img src="<?php get_http_security(); ?>://i.creativecommons.org/l/by/3.0/88x31.png" alt="License"/></a></p>
 							<div style="display: inline;" xmlns:cc="http://creativecommons.org/ns#" about="http://creativecommons.org">
-						<p><small>Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on <span property="cc:attributionName" content="Creative Commons"></span><span property="cc:attributionURL" content="http://creativecommons.org">this site</span> is licensed under a <a rel="license" href="/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a></small></p>
+						<p><small>Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on <span property="cc:attributionName" content="Creative Commons"></span><span property="cc:attributionURL" content="http://creativecommons.org">this site</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a></small></p>
 						</div>
 						</div>
 						</div>
