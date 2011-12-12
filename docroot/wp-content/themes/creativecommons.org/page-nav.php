@@ -81,13 +81,13 @@
 				    	<a href="https://creativecommons.net/donate/" class="dropdown-toggle">Support CC</a>
 				    	<ul class="menu-dropdown">
 				    		<li><a href="https://creativecommons.net/donate/">Donate to Creative Commons</a></li>
-						<li><a href="https://creativecommons.net/store/">Buy CC Merchandise</a></li>
+						    <li><a href="https://creativecommons.net/store/">Buy CC Merchandise</a></li>
 						    <li class="divider"></li>
 				    		<li><a href="https://creativecommons.net/supporters/">Our Supporters</a></li>
-						<li><a href="https://creativecommons.net/testimonials/">Testimonials</a></li>
+						    <li><a href="https://creativecommons.net/testimonials/">Testimonials</a></li>
 				    		<li><a href="https://creativecommons.net/corporate/">Corporate Giving</a></li>
 				    		<li><a href="https://creativecommons.net/figures/">Facts &amp; Figures</a></li>
-                                                <li><a href="https://creativecommons.net/spread/">Share the Power of Open</a></li>
+                            <li><a href="https://creativecommons.net/spread/">Share the Power of Open</a></li>
 				    	</ul>
 				    </li>
 				    
@@ -102,7 +102,8 @@
 						    <li><a href="http://wiki.creativecommons.org/LRMI">Learning Resource Metadata Initiative (LRMI) </a></li>
 						    <li><a href="<?php bloginfo('home')?>/taa-grant-program">Gates OPEN</a></li>
 						    <li><a href="<?php bloginfo('home')?>/music-communities">Music Communities</a></li>
-                                                    <li><a href="<?php bloginfo('home')?>/record-labels">Record Labels</a></li>
+                            <li><a href="<?php bloginfo('home')?>/record-labels">Record Labels</a></li>
+                            <li><a href="http://wiki.creativecommons.org/4.0">Version 4.0 licenses</a></li>
 				      </ul>
 				    </li>
 				    <li class="dropdown">
