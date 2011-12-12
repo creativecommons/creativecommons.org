@@ -103,7 +103,7 @@
 						    <li><a href="<?php bloginfo('home')?>/taa-grant-program">Gates OPEN</a></li>
 						    <li><a href="<?php bloginfo('home')?>/music-communities">Music Communities</a></li>
                             <li><a href="<?php bloginfo('home')?>/record-labels">Record Labels</a></li>
-                            <li><a href="http://wiki.creativecommons.org/4.0">Version 4.0 licenses</a></li>
+                            <li><a href="http://wiki.creativecommons.org/4.0">Versioning 4.0 of CC license suite</a></li>
 				      </ul>
 				    </li>
 				    <li class="dropdown">
