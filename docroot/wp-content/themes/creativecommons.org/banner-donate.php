@@ -29,7 +29,7 @@
                 <div class="row">
                 <div class="eleven columns">
 <?php
-    echo "            <h4><a href='https://creativecommons.net/donate/?utm_campaign=fall2011&amp;utm_source={$analytics_source}&amp;utm_medium=site_header'>Donate to Freedom and Sharing: CC’s Annual Campaign</a></h4>";
+    echo "            <h4><a href='https://creativecommons.net/donate/?utm_campaign=fall2011&amp;utm_source={$analytics_source}&amp;utm_medium=site_header'>Your CC Donation Will Be Matched Through Dec 25</a></h4>";
 ?>
 		</div>
 		<div class="three columns omega">
