@@ -3,7 +3,7 @@
 		<div class="topbar">
 			<div class="topbar-inner">
 				<div class="container">
-				<a id="skip-navigation" href="#start-content" title="Skip Navigation">Skip Navigation</a>
+				<a id="skip-navigation" href="#main" title="Skip Navigation">Skip Navigation</a>
 				<a href="<?php bloginfo('home')?>" title="Home"><span id="home-link">Home</span><span id="home-button"></span></a>
 				<div id="logo"><span>Creative Commons</span></div>
 					<ul id="short-menu" class="nav">
