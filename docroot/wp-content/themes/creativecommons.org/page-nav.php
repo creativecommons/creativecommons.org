@@ -114,7 +114,7 @@
 						    <li class="divider"></li>
 						    <li><a href="<?php bloginfo('home')?>/interviews">Interviews</a></li>
 						    <li><a href="http://wiki.creativecommons.org/Events">Events</a></li>
-						    <li><a href="https://creativecommons.net/civicrm/mailing/subscribe?reset=1&gid=121">CC Newsletter</a></li>
+						    <li><a href="http://creativecommons.org/newsletter">Newsletters</a></li>
 						    <li class="divider"></li>
 						    <li><a href="<?php bloginfo('home')?>/about/press">Press Room</a></li>
 						 </ul>
