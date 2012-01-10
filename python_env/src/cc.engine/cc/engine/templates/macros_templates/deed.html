@@ -140,7 +140,7 @@
       <p>
         {% if not license.deprecated %}
           {% block use_this_license %}
-            <a id="get_this" href="/choose/results-one?license_code={{ license_code_quoted }}&jurisdiction={{ license.jurisdiction.code }}&version={{ license.version }}&lang={{ target_lang }}"
+            <a id="get_this" href="/choose/results-one?license_code={{ license_code_quoted }}&amp;jurisdiction={{ license.jurisdiction.code }}&amp;version={{ license.version }}&amp;lang={{ target_lang }}"
                >{{ cctrans(locale, "deed.use_this_license")|safe }}</a>
           {% endblock %}
         {% endif %}
@@ -149,6 +149,7 @@
     </div>
 
     <script type="text/javascript">
+//<![CDATA[
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-2010376-1']);
       _gaq.push(['_trackPageview']);
@@ -158,9 +159,12 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
+//]]]>
     </script>
     <script type="text/javascript">
-      document.write("<" + "script type='text/javascript' src='http://scraper.creativecommons.org/apps/deed?url=" + encodeURIComponent(document.referrer) + "&license_uri=" + encodeURIComponent(document.URL) + "&callback=YAHOO.cc.success'" + "><" + "/script>");
+//<![CDATA[
+      document.write("<" + "script type='text/javascript' src='http://scraper.creativecommons.org/apps/deed?url=" + encodeURIComponent(document.referrer) + "&amp;license_uri=" + encodeURIComponent(document.URL) + "&amp;callback=YAHOO.cc.success'" + "><" + "/script>");
+//]]]>
     </script>
   </body>
 </html>
