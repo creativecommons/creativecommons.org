@@ -233,9 +233,13 @@ def get_license_conditions(license, target_language="en_US"):
             continue
         
         # Go through the chars and build up the HTML and such
-        char_title = ugettext(
-            mappers.CHARACTERISTIC_TITLE_MAP[lic])
-        char_brief = ugettext(
+        char_title = None
+        char_brief = None
+        if lic in mappers.CHARACTERISTIC_TITLE_MAP:
+            char_title = ugettext(
+                mappers.CHARACTERISTIC_TITLE_MAP[lic])
+        if lic in mappers.CHARACTERISTIC_BRIEF_DESC_MAP:
+            char_brief = ugettext(
             mappers.CHARACTERISTIC_BRIEF_DESC_MAP[lic])
 
         icon_name = lic
