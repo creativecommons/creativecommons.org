@@ -542,10 +542,10 @@ def send_license_info_email(license_title, license_html,
       A boolean specifying whether or not the email sent successfully
     """
 
-    email_body = string.Template(
-        translate(LICENSE_INFO_EMAIL_BODY, target_language=locale)).substitute(
-        {'license_title': license_title,
-         'license_html': license_html})
+    gettext = ugettext_for_locale(locale)
+    email_body = gettext(LICENSE_INFO_EMAIL_BODY) % {
+            'license_title': license_title,
+            'license_html': license_html}
 
     try:
         send_email(
