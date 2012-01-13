@@ -1,4 +1,3 @@
-import string
 import re
 
 from cc.i18n.gettext_i18n import ugettext_for_locale
@@ -58,15 +57,14 @@ def get_xmp_info(request_form, license, locale):
             notice = ""
 
         i18n_work = ugettext('work')
-        work_notice_template = string.Template(
-            ugettext(
+        work_notice_template = ugettext(
                 u'This %(work_type)s is licensed under a '
                 u'<a rel="license" href="%(license_url)s">Creative Commons '
-                u'%(license_name)s License</a>.'))
-        work_notice = work_notice_template.substitute(
-            {'license_name': license.title(locale_to_lower_lower(locale)),
-             'license_url': license.uri,
-             'work_type': i18n_work})
+                u'%(license_name)s License</a>.')
+        work_notice = work_notice_template % {
+            'license_name': license.title(locale_to_lower_lower(locale)),
+            'license_url': license.uri,
+            'work_type': i18n_work}
 
         notice = notice + work_notice
 
@@ -78,42 +76,3 @@ def get_xmp_info(request_form, license, locale):
         'license_url':license.uri,
         'license':license,
         'work_url':work_url}
-
-
-def license_xmp_template(request_form, license, locale):
-    xmp_info = get_xmp_info(request_form, license, locale)
-    xmp_output = u""
-    
-    # assemble the XMP
-    xmp_output += u"""<?xpacket begin='' id=''?><x:xmpmeta xmlns:x='adobe:ns:meta/'>
-    <rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
-
-     <rdf:Description rdf:about=''
-      xmlns:xapRights='http://ns.adobe.com/xap/1.0/rights/'>
-      <xapRights:Marked>%(copyrighted)s</xapRights:Marked>""" % xmp_info
-
-    if xmp_info['work_url'] != None:
-        xmp_output += """  <xapRights:WebStatement rdf:resource='%(work_url)s'/>""" % xmp_info
-        
-    xmp_output += """ </rdf:Description>
-
-     <rdf:Description rdf:about=''
-      xmlns:dc='http://purl.org/dc/elements/1.1/'>
-      <dc:rights>
-       <rdf:Alt>
-        <rdf:li xml:lang='x-default' >%(notice)s</rdf:li>
-       </rdf:Alt>
-      </dc:rights>
-     </rdf:Description>
-
-     <rdf:Description rdf:about=''
-      xmlns:cc='http://creativecommons.org/ns#'>
-      <cc:license rdf:resource='%(license_url)s'/>
-     </rdf:Description>
-
-    </rdf:RDF>
-    </x:xmpmeta>
-    <?xpacket end='r'?>
-    """ % xmp_info
-
-    return xmp_output

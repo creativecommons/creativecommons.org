@@ -2,7 +2,7 @@ import sys
 import urllib
 
 import routes
-from webob import Request, Response, exc
+from webob import Request, exc
 
 from cc.engine import routing, staticdirect, util
 
