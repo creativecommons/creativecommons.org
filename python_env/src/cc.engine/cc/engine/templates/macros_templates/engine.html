@@ -94,7 +94,7 @@
                   <li><span>Licensors</span></li>
                   <li><a href="http://wiki.creativecommons.org/Before_Licensing">Things to know before licensing</a></li>
                   <li><a href="http://wiki.creativecommons.org/FAQ#Do_I_need_to_sign_something_or_register_to_obtain_a_Creative_Commons_license.3F">Do I need to register my work?</a></li>
-                  <li><a href="http://wiki.creativecommons.org/Marking/">Marking my work</a></li>
+                  <li><a href="http://wiki.creativecommons.org/Marking">Marking my work</a></li>
 
                   <li class="divider"></li>
                   <li><span>Licensees</span></li>
@@ -172,6 +172,24 @@
         </div>
       </div>
     </header>
+
+
+    <!-- Annual fundraising campaign banner -->
+    <div id="top-banner">
+      <a title="Donate to Creative Commons" href="https://creativecommons.net/donate/?utm_campaign=fall2011&amp;utm_source=ccorg&amp;utm_medium=site_header" id="donate-link"></a>
+      <div class="container">
+        <div class="row">
+          <div class="eleven columns">
+	    <h4><a href="https://creativecommons.net/donate/?utm_campaign=fall2011&amp;utm_source=ccorg&amp;utm_medium=site_header">Donate to Freedom and Sharing: CC’s Annual Campaign</a></h4>
+	  </div>
+	  <div class="three columns omega">
+            <h5><a class="btn" href="https://creativecommons.net/donate/?utm_campaign=fall2011&amp;utm_source=ccorg&amp;utm_medium=site_header">Donate now</a></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Annual fundraising campaign banner -->
+
 
     <div dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}" 
          id="main" role="main">
@@ -255,7 +273,7 @@
                         Except where otherwise
                         <a class="subfoot" href="/policies#license">noted</a>,
                         content on
-                        <span property="cc:attributionName" content="Creative Commons"></span>
+                        <span rel="cc:attributionName" href="Creative Commons"></span>
                         <span property="cc:attributionURL"
                               content="http://creativecommons.org">this site</span>
                         is licensed under a
@@ -295,6 +313,10 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="/wp-content/themes/creativecommons.org/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
   <!-- scripts concatenated and minified via build script -->
+  <script type="text/javascript">
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!! dirty hack !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+j = $;
+  </script>
   <script defer src="/wp-content/themes/creativecommons.org/js/plugins.js"></script>
   <script defer src="/wp-content/themes/creativecommons.org/js/script.js"></script>
   <!-- end scripts -->

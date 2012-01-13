@@ -7,7 +7,7 @@ from webob import Response, exc
 
 from cc.engine import util
 from cc.engine.decorators import RestrictHttpMethods
-from cc.engine.chooser.xmp_template import license_xmp_template
+import cc.engine.chooser.xmp_template as xmp_template
 from cc.license._lib.functions import get_selector_jurisdictions
 from cc.i18n.gettext_i18n import ugettext_for_locale
 from cc.i18n import mappers
@@ -382,12 +382,38 @@ def choose_xmp_view(request):
     license = _issue_license(request_form)
     target_lang = util.get_target_lang_from_request(request)
 
-    xmp_data = license_xmp_template(
-        request_form, license, target_lang)
+    def attrib_or_none(field_name):
+        return request_form.get(field_name, u'').strip() or None
+
+    context = xmp_template.get_xmp_info(request_form, license, target_lang)
+    context["default_lang"] = target_lang
+    context["work_title"] = attrib_or_none("field_worktitle")
+    context["attrib_name"] = attrib_or_none("field_attribute_to_name")
+    context["attrib_url"] = attrib_or_none("field_attribute_to_url")
+    context["permissions_url"] = attrib_or_none("field_morepermissionsurl")
+    context["licenses"] = [{
+            "lang" : "x-default",
+            "notice" : context["notice"]
+            }, {
+            "lang" : target_lang,
+            "notice" : context["notice"]
+            }]
+    del context["notice"]
+    if target_lang != 'en':
+        xmp_info_en =  xmp_template.get_xmp_info(request_form, license, 'en')
+        context["licenses"] .append({
+                "lang" : 'en',
+                "notice" : xmp_info_en["notice"]
+                })
+
+    xmp_data = util.render_template(
+        request, target_lang,
+        'chooser_pages/metadata.xmp',
+        context)
 
     return Response(
         xmp_data,
-        content_type='application/xmp; charset=UTF-8',
+#        content_type='application/xmp; charset=UTF-8',
         charset='UTF-8',
         content_disposition='attachment; filename="CC_%s.xmp' % (
             license.title().strip().replace(' ', '_')))

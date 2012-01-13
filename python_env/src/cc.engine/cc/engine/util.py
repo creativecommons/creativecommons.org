@@ -1,4 +1,3 @@
-import csv
 import os
 import pkg_resources
 import string
@@ -606,21 +605,22 @@ def catch_license_versions_from_request(request):
     might exist from the user's request, this utility helps look for
     those.
     """
-    # Look to see if there are other licenses of that code,
-    # possibly of that jurisdiction.
-    if request.matchdict.has_key('jurisdiction'):
-        # If licenses of a jurisdiction don't exist, fallback to
-        # just licenses of this code.
-        license_versions = all_possible_license_versions(
-            request.matchdict['code'],
-            request.matchdict['jurisdiction'])
 
-        if not license_versions:
-            license_versions = all_possible_license_versions(
-                request.matchdict['code'])
-    else:
-        # If there's no jurisdiction we'll just look it up by code.
-        license_versions = all_possible_license_versions(
-            request.matchdict['code'])
+    license_versions = []
+    code = request.matchdict['code']
+    searches = [[code]]
+    if request.matchdict.has_key('jurisdiction'):
+        # Look to see if there are other licenses of that code, possibly of
+        # that jurisdiction.  Otherwise, we'll just look it up by code.  Also,
+        # if by jurisdiction fails, by code will be the fallback.
+        searches.insert(0, [code, request.matchdict['jurisdiction']])
+
+    for search_args in searches:
+        license_versions += all_possible_license_versions(*search_args)
+        if code == u'by-nc-nd':
+            other_search = [u'by-nd-nc'] + search_args[1:]
+            license_versions += all_possible_license_versions(*other_search)
+        if license_versions:
+            break
 
     return license_versions

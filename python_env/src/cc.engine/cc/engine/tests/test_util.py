@@ -137,7 +137,8 @@ def test_send_license_info_email():
     assert message['From'] == "info@creativecommons.org"
     assert message['To'] == "ilovesillylicenses@example.org"
     assert message['Subject'] == "Your Creative Commons License Information"
-    assert message.get_payload() == """Thank you for using a Creative Commons legal tool for your work.
+    
+    normal_payload = """Thank you for using a Creative Commons legal tool for your work.
 
 You have selected Creative Commons Very-Silly License 5.8.
 You should include a reference to this on the web page that includes
@@ -160,6 +161,10 @@ https://creativecommons.net/donate.
 Thank you!
 Creative Commons Support
 info@creativecommons.org"""
+    campaign_payload = """Thank you for using a Creative Commons legal tool for your work.\n\nYou have selected Creative Commons Very-Silly License 5.8.\nYou should include a reference to this on the web page that includes\nthe work in question.\n\nHere is the suggested HTML:\n\nThis work available under a\n<a href="http://example.org/goes/nowhere">very silly license</a>.\n\nTips for marking your work can be found at\nhttp://wiki.creativecommons.org/Marking.  Information on the supplied HTML and\nmetadata can be found at http://wiki.creativecommons.org/CC_REL.\n\nThis email and tech support has been brought to you by the nonprofit folks at\nCreative Commons. CC relies on donations to provide you with licenses and\nservices like this. Please consider a donation to our annual fund:\nhttps://creativecommons.net/donate.\n\nThank you!\nCreative Commons Support\ninfo@creativecommons.org"""
+
+    assert message.get_payload() in [normal_payload, campaign_payload]
+            
 
 
 def test_subset_dict():
