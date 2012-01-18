@@ -24,6 +24,7 @@ from cc.i18n import ccorg_i18n_setup
 from cc.i18n.gettext_i18n import ugettext_for_locale
 from cc.i18n.util import negotiate_locale
 from cc.i18n.util import locale_to_lower_upper
+from cc.i18n.util import get_all_supported_languages
 
 _ = MessageFactory('cc_org')
 
@@ -571,7 +572,8 @@ def get_target_lang_from_request(request):
     if request_form.has_key('lang'):
         return locale_to_lower_upper(request_form['lang'])
 
-    accept_lang_matches = request.accept_language.best_matches()
+    accept_lang_matches = request.accept_language.best_match(
+        get_all_supported_languages())
     if request.matchdict.has_key('target_lang'):
         target_lang = request.matchdict['target_lang']
     elif accept_lang_matches:
