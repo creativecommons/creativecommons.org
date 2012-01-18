@@ -20,7 +20,14 @@
 	<?php
 	switch ($_SERVER['HTTP_HOST']) {
 		case 'creativecommons.net':
-			$analytics_code = 'UA-2010376-4';
+			// For CC.net we don't want to track any OpenID stuff
+			if ( ! (preg_match('/openid\/provider/', $_SERVER['REQUEST_URI']) ||
+					preg_match('/openid\/provider/', $_SERVER['HTTP_REFERER']) ||
+					preg_match('/o\/endpoint/', $_SERVER['REQUEST_URI'])) ) {
+				$analytics_code = 'UA-2010376-4';
+			} else {
+				$analytics_code = '';
+			}
 			break;
 		case 'labs.creativecommons.org':
 			$analytics_code = 'UA-2010376-2';
