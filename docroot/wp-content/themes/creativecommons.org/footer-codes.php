@@ -20,20 +20,29 @@
 	<?php
 	switch ($_SERVER['HTTP_HOST']) {
 		case 'creativecommons.net':
-			$analytics_code = 'UA-201076-4';
-			break;
-		case 'search.creativecommons.org':
-			$analytics_code = 'UA-201076-3';
-			break;
-		case 'wiki.creativecommons.org':
-			$analytics_code = 'UA-201076-5';
+			$analytics_code = 'UA-2010376-4';
 			break;
 		case 'labs.creativecommons.org':
-			$analytics_code = 'UA-201076-2';
+			$analytics_code = 'UA-2010376-2';
+			break;
+		case 'search.creativecommons.org':
+			$analytics_code = 'UA-2010376-3';
+			break;
+		case 'staging.creativecommons.net':
+			$analytics_code = 'UA-2010376-23';
+			break;
+		case 'staging.creativecommons.org':
+			$analytics_code = 'UA-2010376-22';
+			break;
+		case 'wiki.creativecommons.org':
+			$analytics_code = 'UA-2010376-5';
+			break;
+		case 'wiki-staging.creativecommons.org':
+			$analytics_code = 'UA-2010376-24';
 			break;
 		default:
 			// Default to the GA code for CC.org
-			$analytics_code = 'UA-201076-1';
+			$analytics_code = 'UA-2010376-1';
 	}
 	?>
 
