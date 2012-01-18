@@ -572,12 +572,12 @@ def get_target_lang_from_request(request):
     if request_form.has_key('lang'):
         return locale_to_lower_upper(request_form['lang'])
 
-    accept_lang_matches = request.accept_language.best_match(
+    accept_lang = request.accept_language.best_match(
         get_all_supported_languages())
     if request.matchdict.has_key('target_lang'):
         target_lang = request.matchdict['target_lang']
-    elif accept_lang_matches:
-        target_lang = accept_lang_matches[0]
+    elif accept_lang:
+        target_lang = accept_lang
     else:
         target_lang = 'en'
 
