@@ -1,3 +1,4 @@
+<?php include 'banner-stop-sopa.php'; ?>
 		<header> 
 		<div class="topbar">
 			<div class="topbar-inner">
