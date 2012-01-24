@@ -10,17 +10,18 @@
 {% block body %}
 <div class="chooser">
   <p>
-    {{ cctrans(locale, "license.what")|safe }}
+    {% trans %}With a Creative Commons license, <strong>you keep your copyright</strong> but allow people to <a href="/learn/licenses/fullrights">copy and distribute your work</a> provided they <a href="#" class="helpLink" id="give_you_credit">give you credit</a> &mdash; and only on the conditions you specify here. For those new to Creative Commons licensing, we've prepared <a href="/about/think">a list of things to think about</a>. If you want to offer your work with no conditions attached, or you want to mark a work that is already free of known copyright restrictions and in the public domain, choose one of our <a href="/publicdomain/">public domain tools</a>.{% endtrans %}
   </p>
 
   <p>
-    {{ cctrans(locale, "license.explain")|safe }}
+    {% trans %}When you choose a <a href="http://creativecommons.org/about/licenses">license</a>, we provide you with HTML you can use to add the license information to your site and information on how to select a license on one of several free hosting services that have incorporated Creative Commons. This is not a registration and we do not retain a record of your selection.{% endtrans %}
   </p>
 
   <div id="help_give_you_credit" class="help_panel">
-    <div class="hd">{{ cctrans(locale, "char.by_title")|safe }}</div>
+    <div class="hd">{% trans %}Attribution{% endtrans %}</div>
     <div class="bd">
-      {{ cctrans(locale, "char.by_description")|safe }}
+      {% trans %}You must attribute the
+work in the manner specified by the author or licensor.{% endtrans %}
     </div>
   </div>
 
@@ -34,26 +35,26 @@
 
       <p>
         <strong>
-          {{ cctrans(locale, "api.commercial")|safe }}
+          {% trans %}Allow commercial uses of your work?{% endtrans %}
         </strong>
       </p>
       <ul class="choices">
         <li>
           <input type="radio" checked="checked"
                  name="field_commercial" value="y" id="question_2-3"/>
-          <label for="question_2-3">{{ cctrans(locale, "util.Yes")|safe }}</label>
+          <label for="question_2-3">{% trans %}Yes{% endtrans %}</label>
           <a href="" id="commercial" class="helpLink">
             <img src="{{ request.staticdirect('images/information.png') }}"
-                 alt="{{ cctrans(locale, 'Information')|safe }}"/>
+                 alt="{% trans %}Information{% endtrans %}"/>
           </a>
           <div class="help-popover">
             <div class="popover below">
               <div class="arrow"></div>
               <div class="inner">
-                <h3 class="title">{{ cctrans(locale, "Commercial Use")|safe }}</h3>
+                <h3 class="title">{% trans %}Commercial Use{% endtrans %}</h3>
                 <a href="#" class="close">&times;</a>
                 <div class="content">
-                  <p>{{ cctrans(locale, "license.help.commercial")|safe }}</p>
+                  <p>{% trans %}The licensor permits others to copy, distribute, display, and perform the work, including for commercial purposes.{% endtrans %}</p>
                 </div>
               </div>
             </div>
@@ -63,19 +64,19 @@
         <li>
           <input type="radio"
                  name="field_commercial" value="n" id="question_2-4"/>
-          <label for="question_2-4">{{ cctrans(locale, "util.No")|safe }}</label>
+          <label for="question_2-4">{% trans %}No{% endtrans %}</label>
           <a href="" id="noncommercial" class="helpLink">
             <img src="{{ request.staticdirect('images/information.png') }}"
-                 alt="{{ cctrans(locale, 'Information')|safe }}"/>
+                 alt="{% trans %}Information{% endtrans %}"/>
           </a>
           <div class="help-popover">
             <div class="popover below">
               <div class="arrow"></div>
               <div class="inner">
-                <h3 class="title">{{ cctrans(locale, "licenses.pretty_nc")|safe }}</h3>
+                <h3 class="title">{% trans %}NonCommercial{% endtrans %}</h3>
                 <a href="#" class="close">&times;</a>
                 <div class="content">
-                  <p>{{ cctrans(locale, "license.help.noncommercial")|safe }}</p>
+                  <p>{% trans %}The licensor permits others to copy, distribute, display, and perform the work for non-commercial purposes only.{% endtrans %}</p>
                 </div>
               </div>
             </div>
@@ -85,7 +86,7 @@
 
       <p>
         <strong>
-          {{ cctrans(locale, "api.derivatives")|safe }}
+          {% trans %}Allow modifications of your work?{% endtrans %}
         </strong>
       </p>
 
@@ -94,19 +95,19 @@
           <input type="radio" checked="checked"
                  name="field_derivatives" value="y"
                  id="question_3-5" />
-          <label for="question_3-5">{{ cctrans(locale, "util.Yes")|safe }}</label>
+          <label for="question_3-5">{% trans %}Yes{% endtrans %}</label>
           <a href="" id="derivatives" class="helpLink">
             <img src="{{ request.staticdirect('images/information.png') }}"
-                 alt="{{ cctrans(locale, 'Information')|safe }}"/>
+                 alt="{% trans %}Information{% endtrans %}"/>
           </a>
           <div class="help-popover">
             <div class="popover below">
               <div class="arrow"></div>
               <div class="inner">
-                <h3 class="title">{{ cctrans(locale, "Allow Derivative Works")|safe }}</h3>
+                <h3 class="title">{% trans %}Allow Derivative Works{% endtrans %}</h3>
                 <a href="#" class="close">&times;</a>
                 <div class="content">
-                  <p>{{ cctrans(locale, "license.help.derivatives")|safe }}</p>
+                  <p>{% trans %}The licensor permits others to copy, distribute, display and perform the work, as well as make derivative works based on it.{% endtrans %}</p>
                 </div>
               </div>
             </div>
@@ -118,20 +119,20 @@
                  id="question_3-6" />
           <label for="question_3-6">
             <span>
-              {{ cctrans(locale, "Yes, as long as others share alike")|safe }}
+              {% trans %}Yes, as long as others share alike{% endtrans %}
             </span>
             <a href="" class="helpLink" id="sharealike">
               <img src="{{ request.staticdirect('images/information.png') }}"
-                   alt="{{ cctrans(locale, 'Information')|safe }}"/>
+                   alt="{% trans %}Information{% endtrans %}"/>
             </a>
             <div class="help-popover">
               <div class="popover below">
                 <div class="arrow"></div>
                 <div class="inner">
-                  <h3 class="title">{{ cctrans(locale, "char.sa_title")|safe }}</h3>
+                  <h3 class="title">{% trans %}Share Alike{% endtrans %}</h3>
                   <a href="#" class="close">&times;</a>
                   <div class="content">
-                    <p>{{ cctrans(locale, "char.sa_description")|safe }}</p>
+                    <p>{% trans %}The licensor permits others to distribute derivative works only under the same license or one compatible with the one that governs the licensor's work.{% endtrans %}</p>
                   </div>
                 </div>
               </div>
@@ -142,19 +143,19 @@
         <li>
           <input type="radio"  name="field_derivatives" value="n"
                  id="question_3-7" />
-          <label for="question_3-7">{{ cctrans(locale, "util.No")|safe }}</label>
+          <label for="question_3-7">{% trans %}No{% endtrans %}</label>
           <a href="" id="noderivatives" class="helpLink">
             <img src="{{ request.staticdirect('images/information.png') }}"
-                 alt="{{ cctrans(locale, 'Information')|safe }}"/>
+                 alt="{% trans %}Information{% endtrans %}"/>
           </a>
           <div class="help-popover">
             <div class="popover below">
               <div class="arrow"></div>
               <div class="inner">
-                <h3 class="title">{{ cctrans(locale, "char.nd_title")|safe }}</h3>
+                <h3 class="title">{% trans %}No Derivative Works{% endtrans %}</h3>
                 <a href="#" class="close">&times;</a>
                 <div class="content">
-                  <p>{{ cctrans(locale, "char.nd_description")|safe }}</p>
+                  <p>{% trans %}The licensor permits others to copy, distribute and transmit only unaltered copies of the work — not derivative works based on it.{% endtrans %}</p>
                 </div>
               </div>
             </div>
@@ -164,19 +165,25 @@
 
       <p>
         <div>
-          {{ cctrans(locale, "license.jurisdiction_question")|safe }}
+          {% trans %}Jurisdiction of your license{% endtrans %}
           <a href="" class="helpLink" id="jurisdiction">
             <img src="{{ request.staticdirect('images/information.png') }}"
-                 alt="{{ cctrans(locale, 'Information')|safe }}"/>
+                 alt="{% trans %}Information{% endtrans %}"/>
           </a>
           <div class="help-popover">
             <div class="popover below">
               <div class="arrow"></div>
               <div class="inner">
-                <h3 class="title">{{ cctrans(locale, "util.Jurisdiction")|safe }}</h3>
+                <h3 class="title">{% trans %}Jurisdiction{% endtrans %}</h3>
                 <a href="#" class="close">&times;</a>
                 <div class="content">
-                  <p>{{ cctrans(locale, "license.jurisdiction_help")|safe }}</p>
+                  <p>{% trans %}Use the option "International" if you desire a license using language
+and terminology from international treaties.  If the licenses have
+been ported to your jurisdiction and you feel that your jurisdiction's
+ported licenses account for some aspect of local legislation that the
+international licenses do not, then you may want to consider
+<a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Should_I_choose_an_international_license_or_a_ported_license.3F">which
+license is better suited for your needs</a>.{% endtrans %}</p>
                 </div>
               </div>
             </div>
@@ -192,7 +199,7 @@
                   {% if not requested_jurisdiction -%}
                     selected="selected"
                   {%- endif %}>
-            {{ cctrans(locale, "util.International")|safe }}
+            {% trans %}International{% endtrans %}
           </option>
 
           {% for juris_code, juris_name in jurisdictions_names %}
@@ -220,7 +227,7 @@
       <div>
         <p>
           <input type="submit" class="primary btn submit"
-                 value="{{ cctrans(locale, 'license.Select_a_License')|safe }}" />
+                 value="{% trans %}Select a License{% endtrans %}" />
         </p>
       </div>
     </form>

@@ -4,24 +4,24 @@
 
 {% block body %}
   <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
-    {{ cctrans(locale, "license.html_display")|safe }}
+    {% trans %}The HTML to display your button is as follows:{% endtrans %}
   </p>
   <form action="">
     <textarea cols="30" rows="8" name="html" 
               style="width:90%;height:150px;">{{ license_html }}</textarea>
     <p>
       <input type="button" onclick="form.html.focus();form.html.select()"
-             name="grab" value="{{ cctrans(locale, 'util.Highlight_Text')|safe }}"/>
+             name="grab" value="{% trans %}Highlight Text to Copy{% endtrans %}"/>
     </p>
   </form>
 
   <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
-    {{ cctrans(locale, "license.html_directions")|safe }}
+    {% trans %}Simply copy the text, then paste it into your web documents containing information about your works. <a href="/learn/technology/usingmarkup" target="_blank">More information about adding HTML to your documents here</a>.{% endtrans %}
   </p>
 
   <form action="./work-email" method="post">
     <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
-      {{ cctrans(locale, "license.html_email")|safe }}
+      {% trans %}Enter your email address to get the HTML by email:{% endtrans %}
       <input type="text" name="to_email" value="" /> 
       <input type="hidden" name="lang"
              value="{{ request.GET.get('lang', '') }}" />
@@ -36,14 +36,14 @@
              value="{{ license.title(target_lang) }}" />
 
       <input type="submit"
-             value="{{ cctrans(locale, 'util.Send')|safe }}" />
+             value="{% trans %}Send{% endtrans %}" />
     </p>
   </form>
 
   <div align="center"
        dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
     <a href="javascript:window.close();">
-      {{ cctrans(locale, "util.Close_window")|safe }}
+      {% trans %}Close window{% endtrans %}
     </a>
   </div>
 {% endblock %}

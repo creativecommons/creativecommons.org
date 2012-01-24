@@ -3,23 +3,30 @@
 {% block title %}Choose a License{% endblock title %}
 
 {% block body %}
-<h1>{{ cctrans(locale, "license.confirm_choice")|safe }}</h1>
+<h1>{% trans %}confirm choice{% endtrans %}</h1>
 
 <p>
-  {{ cctrans(locale, "license.zero.intro_1")|safe }}
+  {% trans %}Using CC0, you can waive all copyrights and related or
+	  neighboring rights that you have over your work, such as
+	  your moral rights (to the extent waivable), your publicity
+	  or privacy rights, rights you have protecting against unfair
+	  competition, and database rights and rights protecting the
+	  extraction, dissemination and reuse of data.{% endtrans %}
 </p>
 
 <p>
-  {{ cctrans(locale, "license.zero.intro_2")|safe }}
+  {% trans %}Keep in mind that you cannot waive rights to a work that you
+	  do not own unless you have permission from the owner.  To
+	  avoid infringing third party rights, you should consult with
+	  your legal advisor if you are unsure whether you have all
+	  the rights you need to distribute the work.{% endtrans %}
 </p>
 
 <p>
-  {{ cctrans(locale, "license.partner.zero.use_pdm_instead",
-             pd_url="/choose/mark/partner?%s" % get_params)|safe }}
+  {% trans pd_url="/choose/mark/partner?%s" % get_params %}If instead you want to certify that a work is <em>already in the public domain</em>, instead use the <a href="{{ pd_url }}">Public Domain Mark</a>.{% endtrans %}
 </p>
 
 <p>
-  {{ cctrans(locale, "license.you_may_proceed",
-             processed_exit_url=exit_url)|safe }}
+  {% trans processed_exit_url=exit_url %}You may now <a href="{{ processed_exit_url }}">proceed</a>{% endtrans %}
 </p>
 {% endblock body %}

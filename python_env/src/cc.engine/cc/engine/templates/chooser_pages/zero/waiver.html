@@ -1,6 +1,6 @@
 {% extends "macros_templates/engine.html" %}
 
-{% block title %}{{ cctrans(locale, "license.zero.waiver_title")|safe }}{% endblock title %}
+{% block title %}{% trans %}CC0: Waiver{% endtrans %}{% endblock title %}
 
 {% block headers %}
   <link rel="stylesheet" type="text/css"
@@ -35,18 +35,27 @@
       <div class="bd">
         <p>
           <div>
-            {{ cctrans(locale, "license.zero.additional_metadata")|safe }}
+            {% trans %}These fields are optional, but will be embedded in the HTML generated for your work. This allows users of your work to determine how to contact you or where to go for more information about the work.{% endtrans %}
             <a href="" id="embedded_metadata" class="helpLink">
               <img src="{{ request.staticdirect('/images/information.png') }}"
-                   alt="{{ cctrans(locale, 'Information')|safe }}"/></a>
+                   alt="{% trans %}Information{% endtrans %}"/></a>
               <div class="help-popover">
                 <div class="popover below">
                   <div class="arrow"></div>
                   <div class="inner">
-                    <h3 class="title">{{ cctrans(locale, "Embedded Metadata")|safe }}</h3>
+                    <h3 class="title">{% trans %}Embedded Metadata{% endtrans %}</h3>
                     <a href="#" class="close">&times;</a>
                     <div class="content">
-                      <p>{{ cctrans(locale, "license.zero.metadata_help")|safe }}</p>
+                      <p>{% trans %}<p>
+	  The information is embedded in a software readable format.
+	  This allows search engines to index additional information
+	  about your work.
+	</p>
+	<p>
+	  <a href="http://wiki.creativecommons.org/Metadata">More
+	    information</a> on Creative Commons metadata is available if
+	  you want to find out more.
+	</p>{% endtrans %}</p>
                     </div>
                   </div>
                 </div>
@@ -58,27 +67,28 @@
           <input type="hidden" name="license-class" value="zero" />
 
           <div class="form-row">
-            <div class="form-question">{{ cctrans(locale, "util.your_name")|safe }}</div>
+            <div class="form-question">{% trans %}Your name{% endtrans %}</div>
             <div class="form-answer">
               <input name="name" class="form-field"/>
             </div>
           </div>
 
           <div class="form-row">
-            <div class="form-question">{{ cctrans(locale, "util.your_url")|safe }}</div>
+            <div class="form-question">{% trans %}Your URL{% endtrans %}</div>
             <div class="form-answer">
               <input name="actor_href" class="form-field"/>
               <a href="" id="url" class="helpLink">
                 <img src="{{ request.staticdirect('/images/information.png') }}"
-                     alt="{{ cctrans(locale, 'Information')|safe }}" /></a>
+                     alt="{% trans %}Information{% endtrans %}" /></a>
               <div class="help-popover">
                 <div class="popover below">
                   <div class="arrow"></div>
                   <div class="inner">
-                    <h3 class="title">{{ cctrans(locale, "util.your_url")|safe }}</h3>
+                    <h3 class="title">{% trans %}Your URL{% endtrans %}</h3>
                     <a href="#" class="close">&times;</a>
                     <div class="content">
-                      <p>{{ cctrans(locale, "license.zero.your_url_help")|safe }}</p>
+                      <p>{% trans %}The URL where people can find more information about 
+the work or the person using CC0.{% endtrans %}</p>
                     </div>
                   </div>
                 </div>
@@ -88,7 +98,7 @@
 
           <div class="form-row">
             <div class="form-question">
-              {{ cctrans(locale, "util.title_of_work")|safe }}
+              {% trans %}Title of work{% endtrans %}
             </div>
             <div class="form-answer">
               <input name="work_title" class="form-field" />
@@ -96,7 +106,7 @@
           </div>
 
           <div class="form-row">
-            <div class="form-question">{{ cctrans(locale, "util.territory")|safe }}</div>
+            <div class="form-question">{% trans %}Territory{% endtrans %}</div>
             <div class="form-answer">
               <select name="work_jurisdiction" class="form-field">
                 <option value="-">---</option>
@@ -107,16 +117,16 @@
 
               <a href="" id="country" class="helpLink">
                 <img src="{{ request.staticdirect('/images/information.png') }}"
-    	         alt="{{ cctrans(locale, 'Information')|safe }}" /></a>
+    	         alt="{% trans %}Information{% endtrans %}" /></a>
               <div class="help-popover">
                 <div class="popover below">
                   <div class="arrow"></div>
                   <div class="inner">
-                    <h3 class="title">{{ cctrans(locale, "util.territory")|safe }}</h3>
+                    <h3 class="title">{% trans %}Territory{% endtrans %}</h3>
                     <a href="#" class="close">&times;</a>
                     <div class="content">
                       <p>
-                        {{ cctrans(locale, "license.zero.country_help")|safe }}
+                        {% trans %}Jurisdiction from which the work is being offered under CC0.{% endtrans %}
                       </p>
                     </div>
                   </div>
@@ -133,7 +143,7 @@
             </div>
             <div class="form-answer">
               <label for="confirm">
-                {{ cctrans(locale, "license.zero.confirm_waiver")|safe }}
+                {% trans %}I hereby waive all copyright and related or neighboring rights together with all associated claims and causes of action with respect to this work to the extent possible under the law.{% endtrans %}
               </label>
             </div>
           </div>
@@ -154,7 +164,7 @@
             </div>
             <div class="form-answer">
               <label for="understand">
-                {{ cctrans(locale, "license.zero.confirm_reading")|safe }}
+                {% trans %}I have read and understand the terms and intended legal effect of CC0, and hereby voluntarily elect to apply it to this work.{% endtrans %}
               </label>
             </div>
           </div>
@@ -168,7 +178,7 @@
             <div class="form-answer">
               <input type="submit" id="details-submit" disabled="disabled"
                      class="btn" name="field1"
-                     value="{{ cctrans(locale, 'util.continue')|safe }}">
+                     value="{% trans %}continue{% endtrans %}">
             </div>
           </div>
 

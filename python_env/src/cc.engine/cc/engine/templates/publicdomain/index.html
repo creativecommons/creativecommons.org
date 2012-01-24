@@ -3,41 +3,41 @@
 {% block title %}Creative Commons Public Domain Tools{% endblock %}
 
 {% block page_header_title %}
-  {{ cctrans(locale, "license.pdtools.title")|safe }}
+  {% trans %}Our Public Domain Tools{% endtrans %}
 {% endblock %}
   
 {% block body %}
   <p>
-    {{ cctrans(locale, "license.pdtools.intro")|safe }}
+    {% trans %}Our licenses help authors keep and manage their copyright on terms they choose. Our public domain tools, on the other hand, enable authors and copyright owners who want to dedicate their works to the worldwide public domain to do so, and facilitate the labeling and discovery of works that are already free of known copyright restrictions.{% endtrans %}
   </p>
 
   <h2>CC0</h2>
 
   <p>
-    {{ cctrans(locale, "license.pdtools.zero")|safe }}
+    {% trans %}Use this universal tool if you are a holder of copyright or database rights, and you wish to waive all your interests in your work worldwide.{% endtrans %}
   </p>
 
   <ul>
     <li>
-      <a href="/about/cc0">{{ cctrans(locale, "util.learn_more")|safe }}</a>
+      <a href="/about/cc0">{% trans %}Learn more{% endtrans %}</a>
     </li>
     <li>
-      <a href="/choose/zero/">{{ cctrans(locale, "util.use_this_tool")|safe }}</a>
+      <a href="/choose/zero/">{% trans %}Use this tool{% endtrans %}</a>
     </li>
   </ul>
 
-  <h2>{{ cctrans(locale, "licenses.publicdomain_mark_title")|safe }}</h2>
+  <h2>{% trans %}Public Domain Mark{% endtrans %}</h2>
 
   <p>
-    {{ cctrans(locale, "license.pdtools.pdm")|safe }}
+    {% trans %}Use this tool if you have identified a work that is free of known copyright restrictions. Creative Commons does not recommend this tool for works that are restricted by copyright laws in one or more jurisdictions.{% endtrans %}
   </p>
 
   <ul>
     <li>
-      <a href="/about/pdm">{{ cctrans(locale, "util.learn_more")|safe }}</a>
+      <a href="/about/pdm">{% trans %}Learn more{% endtrans %}</a>
     </li>
     <li>
-      <a href="/choose/mark">{{ cctrans(locale, "util.use_this_tool")|safe }}</a>
+      <a href="/choose/mark">{% trans %}Use this tool{% endtrans %}</a>
     </li>
   </ul>
 {% endblock body %}

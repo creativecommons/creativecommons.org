@@ -3,27 +3,25 @@
 {% block title %}Choose a License{% endblock title %}
 
 {% block body %}
-  <h1>{{ cctrans(locale, "license.confirm_choice")|safe }}</h1>
+  <h1>{% trans %}confirm choice{% endtrans %}</h1>
 
   <p>
-    {{ cctrans(locale, "license.mark.intro_1")|safe }}
+    {% trans %}Using the Public Domain Mark, you can mark a work that is free of known copyright restrictions and clearly convey that status. When applied properly, the PDM allows the work to be easily discovered, and provides valuable information about the work.{% endtrans %}
   </p>
 
   <p>
-    {{ cctrans(locale, "license.mark.intro_2")|safe }}
+    {% trans %}The PDM is intended for use with old works that are free of copyright restrictions around the world, or works that have been affirmatively placed in the worldwide public domain prior to the expiration of copyright by the rights’ holder. It should not be used to mark works that are in the public domain in some jurisdictions while known to be restricted by copyright in others. Currently, Creative Commons does not recommend the Public Domain Mark for works whose copyright status differs jurisdiction to jurisdiction, though we are developing means for marking and tagging such works. You should consult with your legal advisor if you are unsure whether you should use the PDM for a work you have identified.{% endtrans %}
   </p>
 
   <p>
-    {{ cctrans(locale, "license.mark.intro_3")|safe }}
+    {% trans %}Please note that this is <strong>not a registration process</strong> and Creative Commons does not store or save any of the information you provide. This tool guides you through the process of generating HTML with embedded metadata for marking the work you have identified as free of known copyright restrictions. The work will not be associated with a Public Domain Mark until you publish it marked as being so.{% endtrans %}
   </p>
 
   <p>
-    {{ cctrans(locale, "license.partner.mark.use_cc0_instead",
-               pd_url="/choose/zero/partner?" + get_params)|safe }}
+    {% trans pd_url="/choose/zero/partner?" + get_params %}If you want to free <em>your own work</em> of copyright restrictions, instead use the <a href="{{ pd_url }}">CC0 public domain dedication</a>.{% endtrans %}
   </p>
 
   <p>
-    {{ cctrans(locale, "license.you_may_proceed",
-               processed_exit_url=exit_url)|safe }}
+    {% trans processed_exit_url=exit_url %}You may now <a href="{{ processed_exit_url }}">proceed</a>{% endtrans %}
   </p>
 {% endblock %}

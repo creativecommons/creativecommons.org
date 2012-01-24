@@ -1,20 +1,20 @@
 {% extends "macros_templates/engine.html" %}
 
 {% block title %}
-  {{ cctrans(locale, "util.public_domain_certification")|safe }}
+  {% trans %}Public Domain Certification{% endtrans %}
 {% endblock title %}
 
 {% block page_header_title %}
-  {{ cctrans(locale, "license.pd.identify_a_pd_work")|safe }}
+  {% trans %}Identify a Public Domain Work{% endtrans %}
 {% endblock %}
 
 {% block body %}
   <p>
-    {{ cctrans(locale, "license.mark_pd")|safe }}
+    {% trans %}Now that you've chosen the Public Domain Certification, you should mark the work in the appropriate way.{% endtrans %}
   </p>
 
   <div>
-    {{ cctrans(locale, "license.mark_web")|safe }}
+    {% trans %}To mark content on a web page, the HTML to display the button is as follows and be sure to <a href="/technology/web">follow the guidelines here</a>:{% endtrans %}
     <br /><br />
     
     <div class="textbox">
@@ -27,11 +27,11 @@
             <input type="button"
                    class="btn"
                    onclick="form.html.focus();form.html.select()"
-                   value="{{ cctrans(locale, 'util.Highlight_Text')|safe }}"
+                   value="{% trans %}Highlight Text to Copy{% endtrans %}"
                    name="grab" /> 
             [<a href="work-html-popup?licensecode=pd&pd=true" 
                 onclick="window.open('work-html-popup?licensecode=pd&pd=true', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
-                >{{ cctrans(locale, "license.get_html_email")|safe }}</a>]
+                >{% trans %}Get HTML and email it to yourself{% endtrans %}</a>]
           </p>
           
         </form>
@@ -40,7 +40,6 @@
   </div>
 
   <p>
-    {{ cctrans(locale, "license.pd.to_mark_nonweb",
-               url_vars="pd=1&field_creator=%s&field_worktitle=%s" % (request_form.get('copyright_holder', ''), request_form.get('title', '')))|safe }}
+    {% trans url_vars="pd=1&field_creator=%s&field_worktitle=%s" % (request_form.get('copyright_holder', ''), request_form.get('title', '')) %}To mark a document not on the web, <a href="non-web-popup?{{ url_vars }}" onclick="window.open('non-web-popup?{{ url_vars }}', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">add this text</a> to your work.{% endtrans %}
   </p>
 {% endblock %}

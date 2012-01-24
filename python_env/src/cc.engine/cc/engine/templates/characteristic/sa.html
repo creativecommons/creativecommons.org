@@ -1,6 +1,6 @@
 {% extends "macros_templates/popup.html" %}
 
-{% block title %}{{ cctrans(locale, "char.sa_title")|safe }}{% endblock %}
+{% block title %}{% trans %}Share Alike{% endtrans %}{% endblock %}
 
 {% block body %}
   <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}" >
@@ -9,13 +9,13 @@
   </p>
 
   <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
-    <strong>{{ cctrans(locale, "char.sa_title")|safe }}</strong></p>
+    <strong>{% trans %}Share Alike{% endtrans %}</strong></p>
 
   <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
-    {{ cctrans(locale, "char.sa_description")|safe }}
+    {% trans %}The licensor permits others to distribute derivative works only under the same license or one compatible with the one that governs the licensor's work.{% endtrans %}
   </p>
 
   <div style="text-align:center">
-    <a href="javascript:window.close();">{{ cctrans(locale, "util.Close_window")|safe }}</a>
+    <a href="javascript:window.close();">{% trans %}Close window{% endtrans %}</a>
   </div>
 {% endblock %}

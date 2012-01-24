@@ -97,14 +97,30 @@
             {% block legalcode_block %}
               <!--- hidden disclaimer text -->
             <div id="help_disclaimer_popup" class="help_panel">
-              <div class="hd">{{ cctrans(locale, "util.Disclaimer")|safe }}</div>
+              <div class="hd">{% trans %}Disclaimer{% endtrans %}</div>
               {% if license.jurisdiction.code == 'jp' %}
                 <div class="bd">
-                  {{ cctrans(locale, "deed.disclaimer.jp")|safe }}
+                  {% trans %}<p>
+The Commons Deed is not a license. It is simply a handy reference for understanding the Legal Code (the full License) — it is a human-readable expression of some of its key terms. This Deed itself has no legal value, and its contents do not appear in the actual License.  The actual terms of the license is set forth by the Legal Code.  <a href="legalcode" class="fulltext">Please click here to see the full License</a>.  
+</p>
+
+<p>
+Creative Commons and Creative Commons Japan are not law firms, and distributing of or displaying of, or linking to the Commons Deed does not constitute an offer of legal advice or any other legal services. Creative Commons and Creative Commons Japan are not a party to the License underlying this Commons Deed, and disclaim liablity for damages resulting from any use of the Commons Deed and the underlying License.
+</p>
+
+<p>
+The Product licensed under Creative Commons License is provided by the person who applied the License.  Creative Commons and Creative Commons Japan make no warranties regarding the title of the licensor.  Please read <a href="http://creativecommons.jp/faq/">here</a> for information regarding the application of licenses and exploitation of the Product licensed under Creative Commons licenses.
+</p>{% endtrans %}
                 </div>
               {% else %}
                 <div class="bd">
-                  {{ cctrans(locale, "deed.disclaimer")|safe }}
+                  {% trans %}<p>
+The Commons Deed is not a license. It is simply a handy reference for understanding the Legal Code (the full license) &mdash; it is a human-readable expression of some of its key terms. Think of it as the user-friendly interface to the Legal Code beneath. This Deed itself has no legal value, and its contents do not appear in the actual license.
+</p>
+
+<p>
+Creative Commons is not a law firm and does not provide legal services. Distributing of, displaying of, or linking to this Commons Deed does not create an attorney-client relationship.
+</p>{% endtrans %}
                 </div>
               {% endif %}
             </div>
@@ -112,20 +128,20 @@
             <div id="deed-disclaimer">
               {% if multi_language %}
                 <div class="summary">
-                  {{ cctrans(locale, "deed.human_summary_multilanguage")|safe }}
+                  {% trans %}This is a human-readable summary of the Legal Code (the full license) available in the following languages:{% endtrans %}
                   {% for legalcode_link, legalcode, legalcode_name in legalcodes %}
                     <a href="{{ legalcode_link }}">{{ legalcode_name }}</a>
                   {% endfor %}
                 </div>
               {% else %}
                 <div class="summary">
-                  {{ cctrans(locale, "deed.human_summary")|safe }}
+                  {% trans %}This is a human-readable summary of the <a href="legalcode" class="fulltext">Legal Code (the full license)</a>.{% endtrans %}
                 </div>
               {% endif %}
   
               <div class="disclaimer">
                 <a href="#" id="disclaimer_popup" class="helpLink">
-                  {{ cctrans(locale, "util.Disclaimer")|safe }}
+                  {% trans %}Disclaimer{% endtrans %}
                 </a>
               </div>
             </div>
@@ -143,7 +159,7 @@
         {% if not license.deprecated %}
           {% block use_this_license %}
             <a id="get_this" href="/choose/results-one?license_code={{ license_code_quoted }}&amp;jurisdiction={{ license.jurisdiction.code }}&amp;version={{ license.version }}&amp;lang={{ target_lang }}"
-               >{{ cctrans(locale, "deed.use_this_license")|safe }}</a>
+               >{% trans %}Use this license for your own work.{% endtrans %}</a>
           {% endblock %}
         {% endif %}
       </p>

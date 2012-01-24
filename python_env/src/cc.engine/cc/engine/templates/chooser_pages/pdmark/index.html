@@ -15,27 +15,27 @@
   <div id="page-welcome">
     <div class="bd">
       <div class="pd-explain-differences">
-        {{ cctrans(locale, "license.mark.CC0-difference")|safe }}
+        {% trans %}You are using a tool for labeling works that are free of known copyright restrictions. Creative Commons does not recommend this tool for works that are restricted by copyright laws in one or more jurisdictions. If you want to free <b>your own work</b> of copyright restrictions, instead use the <b><a href="/choose/zero/">CC0 public domain dedication</a></b>.{% endtrans %}
       </div>
 
       <p>
-        {{ cctrans(locale, "license.mark.intro_1")|safe }}
+        {% trans %}Using the Public Domain Mark, you can mark a work that is free of known copyright restrictions and clearly convey that status. When applied properly, the PDM allows the work to be easily discovered, and provides valuable information about the work.{% endtrans %}
       </p>
 
       <p>
-        {{ cctrans(locale, "license.mark.intro_2")|safe }}
+        {% trans %}The PDM is intended for use with old works that are free of copyright restrictions around the world, or works that have been affirmatively placed in the worldwide public domain prior to the expiration of copyright by the rights’ holder. It should not be used to mark works that are in the public domain in some jurisdictions while known to be restricted by copyright in others. Currently, Creative Commons does not recommend the Public Domain Mark for works whose copyright status differs jurisdiction to jurisdiction, though we are developing means for marking and tagging such works. You should consult with your legal advisor if you are unsure whether you should use the PDM for a work you have identified.{% endtrans %}
       </p>
 
       <p>
-        {{ cctrans(locale, "license.mark.intro_3")|safe }}
+        {% trans %}Please note that this is <strong>not a registration process</strong> and Creative Commons does not store or save any of the information you provide. This tool guides you through the process of generating HTML with embedded metadata for marking the work you have identified as free of known copyright restrictions. The work will not be associated with a Public Domain Mark until you publish it marked as being so.{% endtrans %}
       </p>
 
       <p>
         <a class="btn" id="do-learn-more"
-           href="/about/pdm">{{ cctrans(locale, "util.learn_more")|safe }}</a>
+           href="/about/pdm">{% trans %}Learn more{% endtrans %}</a>
 
         <a class="primary btn" href="/choose/mark/details{% if target_lang %}?lang={{ target_lang }}{% endif %}"
-           id="do-begin">{{ cctrans(locale, "util.begin")|safe }} &raquo;</a>
+           id="do-begin">{% trans %}begin{% endtrans %} &raquo;</a>
       </p>
 
       {% include "includes/engine_languages.html" %}

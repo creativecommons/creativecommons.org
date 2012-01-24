@@ -23,7 +23,7 @@
     <div id="libre">
       <a href="http://freedomdefined.org/">
         <img src="/images/deed/seal.png" style="border: 0"
-             alt="{{ cctrans(locale, 'This license is acceptable for Free Cultural Works.')|safe }}" />
+             alt="{% trans %}This license is acceptable for Free Cultural Works.{% endtrans %}" />
       </a>
     </div>
   {% endif %}
@@ -32,7 +32,7 @@
        dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
     {% if license.deprecated %}
       <div id="deed-newer" style="text-align:center">
-        <h3>{{ cctrans(locale, "deed.retired")|safe }}</h3>
+        <h3>{% trans %}Creative Commons has <a href="http://creativecommons.org/retiredlicenses">retired this legal tool</a> and does not recommend that it be applied to works.{% endtrans %}</h3>
       </div>
     {% endif %}
 
@@ -45,25 +45,25 @@
     {% endif %}
 
     <h3 resource="http://creativecommons.org/ns#Reproduction"
-        rel="cc:permits">{{ cctrans(locale, "deed.You_are_free")|safe }}</h3>
+        rel="cc:permits">{% trans %}You are free:{% endtrans %}</h3>
     <ul class="license-properties">
       <li class="license share"
           rel="cc:permits"
           resource="http://creativecommons.org/ns#Distribution">
-        {{ cctrans(locale, "deed.free_copy_distribute")|safe }}
+        {% trans %}<strong>to Share</strong> — to copy, distribute and transmit the work{% endtrans %}
       </li>
 
       {% if not 'nd' in license.license_code %}
         <li class="license remix"
             rel="cc:permits"
             resource="http://creativecommons.org/ns#DerivativeWorks">
-          {{ cctrans(locale, "deed.free_derivative")|safe }}
+          {% trans %}<strong>to Remix</strong> — to adapt the work{% endtrans %}
         </li>
       {% endif %}
 
       {% if "http://creativecommons.org/ns#CommercialUse" not in license.prohibits %}
         <li class="license commercial">
-          {{ cctrans(locale, "deed.free_commercial")|safe }}
+          {% trans %}to make commercial use of the work{% endtrans %}
         </li>
       {% endif %}
       <li id="more-container"
@@ -74,7 +74,7 @@
 
   </div>
   <div id="deed-conditions">
-    <h3>{{ cctrans(locale, "deed.under_conditions")|safe }}</h3>
+    <h3>{% trans %}Under the following conditions:{% endtrans %}</h3>
 
     <ul dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
         class="license-properties">
@@ -96,7 +96,7 @@
           {% if attr['char_code'] == 'by' %}
             <p id="work-attribution-container" style="display:none;">
               <strong>
-                {{ cctrans(locale, "deed.attribute_this_work")|safe }}
+                {% trans %}Attribute this work:{% endtrans %}
               </strong>
               <br/>
               <input id="work-attribution" value="" type="text"
@@ -108,16 +108,16 @@
                      value="{{ license.uri }}" />
               <a href="" id="attribution_help" class="helpLink">
                 <img src="{{ request.staticdirect('images/information.png') }}"
-                     alt="{{ cctrans(locale, 'Information')|safe }}" />
+                     alt="{% trans %}Information{% endtrans %}" />
               </a>
             </p>
   
             <div id="help_attribution_help" class="help_panel">
               <div class="hd">
-                {{ cctrans(locale, 'What does "Attribute this work" mean?')|safe }}
+                {% trans %}What does "Attribute this work" mean?{% endtrans %}
               </div>
               <div class="bd">
-                {{ cctrans(locale, "The page you came from contained embedded licensing metadata, including how the creator wishes to be attributed for re-use. You can use the HTML here to cite the work. Doing so will also include metadata on your page so that others can find the original work as well.")|safe }}
+                {% trans %}The page you came from contained embedded licensing metadata, including how the creator wishes to be attributed for re-use. You can use the HTML here to cite the work. Doing so will also include metadata on your page so that others can find the original work as well.{% endtrans %}
               </div>
             </div>
           {% endif %}
@@ -128,121 +128,126 @@
 
   <div id="deed-understanding">
     <h3>
-      {{ cctrans(locale, "deed.with_the_understanding")|safe }}
+      {% trans %}With the understanding that:{% endtrans %}
     </h3>
 
     <ul class="understanding license-properties">
       <li class="license">
-        <strong>{{ cctrans(locale, "util.waiver")|safe }}</strong>
+        <strong>{% trans %}Waiver{% endtrans %}</strong>
         &mdash;
-        {{ cctrans(locale, "deed.permission")|safe }}
+        {% trans %}Any of the above conditions can be <a href="#" id="waived" class="helpLink">waived</a> if you get permission from the copyright holder.{% endtrans %}
       </li>
 
       <li class="license">
-        <strong>{{ cctrans(locale, "util.Public_Domain")|safe }}</strong>
+        <strong>{% trans %}Public Domain{% endtrans %}</strong>
         &mdash;
-        {{ cctrans(locale, "deed.public_domain")|safe }}
+        {% trans %}Where the work or any of its elements is in the <a href="http://wiki.creativecommons.org/Public_domain" id="public_domain" class="helpLink">public domain</a> under applicable law, that status is in no way affected by the license.{% endtrans %}
       </li>
 
       <li class="license">
-        <strong>{{ cctrans(locale, "util.other_rights")|safe }}</strong>
+        <strong>{% trans %}Other Rights{% endtrans %}</strong>
         &mdash;
-        {{ cctrans(locale, "deed.other_rights")|safe }}
+        {% trans %}In no way are any of the following rights affected by the license:{% endtrans %}
 
         <ul>
           <li>
-            {{ cctrans(locale, "deed.fair_use")|safe }}
+            {% trans %}Your fair dealing or <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Do_Creative_Commons_licenses_affect_fair_use.2C_fair_dealing_or_other_exceptions_to_copyright.3F" id="fair_use" class="helpLink">fair use</a> rights, or other applicable copyright exceptions and limitations;{% endtrans %}
           </li>
 
           {% if license.license_code.find('nd') >= 0 or license.jurisdiction.code != 'us' %}
             <li>
-              {{ cctrans(locale, "deed.moralrights")|safe }}
+              {% trans %}The author's <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#I_don.E2.80.99t_like_the_way_a_person_has_used_my_work_in_a_derivative_work_or_included_it_in_a_collective_work.3B_what_can_I_do.3F" id="moral_rights" class="helpLink">moral</a> rights;{% endtrans %}
             </li>
           {% endif %}
           {% if license.jurisdiction.code == 'us' and license.license_code.find('nd') < 0 %}
             <li>
-              {{ cctrans(locale, "deed.moralrights-remix.us")|safe }}
+              {% trans %}Apart from the remix rights granted under this license, the author's <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#I_don.E2.80.99t_like_the_way_a_person_has_used_my_work_in_a_derivative_work_or_included_it_in_a_collective_work.3B_what_can_I_do.3F" id="moral_rights" class="helpLink">moral</a> rights;{% endtrans %}
             </li>
           {% endif %}
 
           <li>
-            {{ cctrans(locale, "deed.publicity_rights")|safe }}
+            {% trans %}Rights other persons may have either in the work itself or in how the work is used, such as <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F" class="helpLink" id="publicity_rights">publicity</a> or privacy rights.{% endtrans %}
           </li>
         </ul>
       </li>
 
       <li rel="cc:requires"
           resource="http://creativecommons.org/ns#Notice">
-        <strong>{{ cctrans(locale, "util.notice")|safe }}</strong>
+        <strong>{% trans %}Notice{% endtrans %}</strong>
         &mdash;
-        {{ cctrans(locale, "deed.notice")|safe }}
+        {% trans %}For any reuse or distribution, you must make clear to others the license terms of this work. The best way to do this is with a link to this web page.{% endtrans %}
       </li>
     </ul>
 
     {% if license.superseded %}
       <div id="deed-newer" tal:condition="">
         <p>
-          {{ cctrans(locale, "deed.superseded",
-                     current_version_url=license.current_version.uri)|safe }}
+          {% trans current_version_url=license.current_version.uri %}A <a href="{{ current_version_url }}">new version</a> of this license is available. You should use it for new works, and you may want to relicense existing works under it. No works are <em>automatically</em> put under the new license, however.{% endtrans %}
         </p>
       </div>
     {% endif %}
 
     <div id="help_waived" class="help_panel">
       <div class="hd">
-        {{ cctrans(locale, "deed.permission.help.title")|safe }}
+        {% trans %}What does "conditions can be waived" mean?{% endtrans %}
       </div>
       <div class="bd">
         <p>
-          {{ cctrans(locale, "deed.permission.help")|safe }}
+          {% trans %}CC licenses anticipate that a licensor may want to
+		waive compliance with a specific condition, such as
+		attribution.{% endtrans %}
         </p>
         <p>
-          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Can_I_change_the_terms_of_a_CC_license_or_waive_some_of_its_conditions.3F">{{ cctrans(locale, "util.learn_more")|safe }}</a>.
+          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Can_I_change_the_terms_of_a_CC_license_or_waive_some_of_its_conditions.3F">{% trans %}Learn more{% endtrans %}</a>.
         </p>
       </div>
     </div>
 
     <div id="help_public_domain" class="help_panel">
       <div class="hd">
-        {{ cctrans(locale, "deed.public_domain.help.title")|safe }}
+        {% trans %}What does "Public Domain" mean?{% endtrans %}
       </div>
       <div class="bd">
         <p>
-          {{ cctrans(locale, "deed.public_domain.help")|safe }}
+          {% trans %}A work is in the public domain when it is free for use by anyone for any purpose without restriction under copyright.{% endtrans %}
         </p>
 
         <p>
           <a href="http://wiki.creativecommons.org/Public_domain"
-             >{{ cctrans(locale, "util.learn_more")|safe }}</a>.</p>
+             >{% trans %}Learn more{% endtrans %}</a>.</p>
       </div>
 
     </div>
 
     <div id="help_fair_use" class="help_panel">
       <div class="hd">
-        {{ cctrans(locale, "deed.fair_use.help.title")|safe }}
+        {% trans %}What does "Fair use" mean?{% endtrans %}
       </div>
       <div class="bd">
         <p>
-          {{ cctrans(locale, "deed.fair_use.help")|safe }}
+          {% trans %}All jurisdictions
+              allow some limited uses of copyrighted material without
+              permission.  CC licenses do not affect the rights of
+              users under those copyright limitations and exceptions,
+              such as fair use and fair dealing where applicable.{% endtrans %}
         </p>
 
         <p>
-          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Do_Creative_Commons_licenses_affect_fair_use.2C_fair_dealing_or_other_exceptions_to_copyright.3F">{{ cctrans(locale, "util.learn_more")|safe }}</a>.</p>
+          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Do_Creative_Commons_licenses_affect_fair_use.2C_fair_dealing_or_other_exceptions_to_copyright.3F">{% trans %}Learn more{% endtrans %}</a>.</p>
       </div>
     </div>
 
     <div id="help_moral_rights" class="help_panel">
       <div class="hd">
-        {{ cctrans(locale, "deed.moralrights.help.title")|safe }}
+        {% trans %}What are "Moral Rights"?{% endtrans %}
       </div>
       <div class="bd">
         <p>
-          {{ cctrans(locale, "deed.moralrights.help")|safe }}
+          {% trans %}In addition to the right of licensors to request removal of their name from the work when used in a derivative or collective they don't like, copyright laws in most jurisdictions around the world (with the notable exception of the US except in very limited circumstances) grant creators "moral rights" which may provide some redress if a derivative work represents a "derogatory treatment" of the licensor's work.{% endtrans %}
         </p>
 
         <p>
-          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#I_don.E2.80.99t_like_the_way_a_person_has_used_my_work_in_a_derivative_work_or_included_it_in_a_collective_work.3B_what_can_I_do.3F">{{ cctrans(locale, "util.learn_more")|safe }}</a>.
+          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#I_don.E2.80.99t_like_the_way_a_person_has_used_my_work_in_a_derivative_work_or_included_it_in_a_collective_work.3B_what_can_I_do.3F">{% trans %}Learn more{% endtrans %}</a>.
         </p>
 
       </div>
@@ -250,15 +255,21 @@
 
     <div id="help_publicity_rights" class="help_panel">
       <div class="hd">
-        {{ cctrans(locale, "deed.publicity_rights.help.title")|safe }}
+        {% trans %}What are "Publicity Rights"?{% endtrans %}
       </div>
       <div class="bd">
         <p>
-          {{ cctrans(locale, "deed.publicity_rights.help")|safe }}
+          {% trans %}Publicity
+              rights allow individuals to control how their voice,
+              image or likeness is used for commercial purposes in
+              public.  If a CC-licensed work includes the voice or
+              image of anyone other than the licensor, a user of the
+              work may need to get permission from those individuals
+              before using the work for commercial purposes.{% endtrans %}
         </p>
 
         <p>
-          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F">{{ cctrans(locale, "util.learn_more")|safe }}</a>.
+          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_are_publicity_rights_relevant.3F">{% trans %}Learn more{% endtrans %}</a>.
         </p>
       </div>
     </div>

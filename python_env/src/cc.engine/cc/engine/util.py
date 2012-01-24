@@ -16,17 +16,16 @@ from webob import Response
 from zope.component.globalregistry import base
 from zope.i18n.interfaces import ITranslationDomain
 from zope.i18n import translate
-from zope.i18nmessageid import MessageFactory
 
 from cc.license._lib import rdf_helper, all_possible_license_versions
 from cc.license._lib import functions as cclicense_functions
 from cc.i18n import ccorg_i18n_setup
+from cc.i18n import mappers
 from cc.i18n.gettext_i18n import ugettext_for_locale
+from cc.i18n.gettext_i18n import fake_ugettext as _
 from cc.i18n.util import negotiate_locale
 from cc.i18n.util import locale_to_lower_upper
 from cc.i18n.util import get_all_supported_languages
-
-_ = MessageFactory('cc_org')
 
 
 BASE_TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
@@ -68,7 +67,7 @@ TEMPLATE_LOADER = jinja2.PackageLoader('cc.engine', 'templates')
 TEMPLATE_ENV = jinja2.Environment(
     loader=TEMPLATE_LOADER,
     autoescape=True,
-    extensions=['jinja2.ext.autoescape'])
+    extensions=['jinja2.ext.autoescape', 'jinja2.ext.i18n'])
 
 # Add cctrans to the global context
 TEMPLATE_ENV.globals['cctrans'] = cctrans
@@ -89,6 +88,8 @@ def render_template(request, locale, template_path, context):
     template = TEMPLATE_ENV.get_template(template_path)
     context['request'] = request
     context['locale'] = locale
+    if not 'gettext' in context:
+       context['gettext'] = ugettext_for_locale(locale)
 
     rendered = template.render(context)
 
@@ -221,6 +222,8 @@ def get_license_conditions(license, target_language="en_US"):
     conditions on the deeds page.  It kinda sucks... I think we could
     do better with the new api.
     """
+    ugettext = ugettext_for_locale(target_language)
+
     attrs = []
 
     for lic in license.license_code.split('-'):
@@ -230,16 +233,14 @@ def get_license_conditions(license, target_language="en_US"):
             continue
         
         # Go through the chars and build up the HTML and such
-        char_title = unicode_cleaner(
-            translate(
-                'char.%s_title' % lic,
-                domain=ccorg_i18n_setup.I18N_DOMAIN,
-                target_language=negotiate_locale(target_language)))
-        char_brief = unicode_cleaner(
-            translate(
-                'char.%s_brief' % lic,
-                domain=ccorg_i18n_setup.I18N_DOMAIN,
-                target_language=negotiate_locale(target_language)))
+        char_title = None
+        char_brief = None
+        if lic in mappers.CHARACTERISTIC_TITLE_MAP:
+            char_title = ugettext(
+                mappers.CHARACTERISTIC_TITLE_MAP[lic])
+        if lic in mappers.CHARACTERISTIC_BRIEF_DESC_MAP:
+            char_brief = ugettext(
+            mappers.CHARACTERISTIC_BRIEF_DESC_MAP[lic])
 
         icon_name = lic
         predicate = 'cc:requires'
@@ -252,10 +253,10 @@ def get_license_conditions(license, target_language="en_US"):
             object = 'http://creativecommons.org/ns#ShareAlike'
             if license.version == 3.0 and license.code == 'by-sa':
                 char_brief = unicode_cleaner(
-                    translate(
-                        'char.sa_bysa30_brief',
-                        domain=ccorg_i18n_setup.I18N_DOMAIN,
-                        target_language=negotiate_locale(target_language)))
+                    ugettext(
+                        u'If you alter, transform, or build upon this work, '
+                        u'you may distribute the resulting work only under the '
+                        u'same, similar or a compatible license.'))
         elif lic == 'nd':
             predicate = ''
             object = ''
@@ -325,11 +326,9 @@ def active_languages():
 
         if code == 'test': continue
 
-        name = domain.translate(
-            u'lang.%s' % code, target_language=negotiate_locale(code))
-        if name != u'lang.%s' % code:
-            # we have a translation for this name...
-            result.append(dict(code=code, name=name))
+        gettext = ugettext_for_locale(negotiate_locale(code))
+        name = gettext(mappers.LANG_MAP[code])
+        result.append(dict(code=code, name=name))
 
     result = sorted(result, key=lambda lang: lang['name'].lower())
 
@@ -505,16 +504,15 @@ def send_email(from_addr, to_addrs, subject, message_body):
 
 
 LICENSE_INFO_EMAIL_BODY = _(
-    'license.info_email_body',
     """Thank you for using a Creative Commons legal tool for your work.
 
-You have selected ${license_title}.
+You have selected %(license_title)s.
 You should include a reference to this on the web page that includes
 the work in question.
 
 Here is the suggested HTML:
 
-${license_html}
+%(license_html)s
 
 Tips for marking your work can be found at
 http://wiki.creativecommons.org/Marking.  Information on the supplied HTML and
@@ -530,7 +528,6 @@ Creative Commons Support
 info@creativecommons.org""")
 
 LICENSE_INFO_EMAIL_SUBJECT = _(
-    'license.info_email_subject',
     'Your Creative Commons License Information')
 
 
@@ -549,10 +546,10 @@ def send_license_info_email(license_title, license_html,
       A boolean specifying whether or not the email sent successfully
     """
 
-    email_body = string.Template(
-        translate(LICENSE_INFO_EMAIL_BODY, target_language=locale)).substitute(
-        {'license_title': license_title,
-         'license_html': license_html})
+    gettext = ugettext_for_locale(locale)
+    email_body = gettext(LICENSE_INFO_EMAIL_BODY) % {
+            'license_title': license_title,
+            'license_html': license_html}
 
     try:
         send_email(

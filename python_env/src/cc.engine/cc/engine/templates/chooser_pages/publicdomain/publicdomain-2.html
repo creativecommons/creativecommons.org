@@ -1,30 +1,40 @@
 {% extends "macros_templates/engine.html" %}
 
 {% block title %}
-  {{ cctrans(locale, "util.public_domain_certification")|safe }}
+  {% trans %}Public Domain Certification{% endtrans %}
 {% endblock title %}
 
 {% block page_header_title %}
-  {{ cctrans(locale, "license.pd.identify_a_pd_work")|safe }}
+  {% trans %}Identify a Public Domain Work{% endtrans %}
 {% endblock page_header_title %}
 
 {% block body %}
   <p>
     <i>
-      {{ cctrans(locale, "license.pd.retired")|safe }}
+      {% trans %}Creative Commons has <a href="http://creativecommons.org/retiredlicenses">retired this legal tool</a>. CC recommends using a <a href="http://creativecommons.org/publicdomain">current tool</a> for waiving rights or identifying public domain works.{% endtrans %}
     </i>
   </p>
 
   <p>
-    {{ cctrans(locale, "license.pd.intro_1")|safe }}
+    {% trans %}You have selected the Public Domain Certification.  The Public
+    Domain Certification should only be used to certify a work that is
+    already in the public domain.  Creative Commons does not recommend
+    you use the Public Domain Certification for dedicating a work
+    still protected by copyright to the public domain.  To dedicate a
+    work to the public domain, consider
+    using <a href="/license/zero/">CC0</a>.  Please note that if you
+    use the Public Domain Certification to dedicate a work to the
+    public domain, it may not be valid outside of the United States.{% endtrans %}
   </p>
 
   <p>
-    {{ cctrans(locale, "license.pd.intro_3")|safe }}
+    {% trans %}Once you're done filling this out, you will still have the
+    opportunity to confirm your choice before the certification
+    happens.{% endtrans %}
   </p>
 
   <h3>
-    {{ cctrans(locale, "license.pd.about_the_work")|safe }}
+    {% trans %}About the work you are certifying{% endtrans %}
   </h3>
 
   <form id="publicdomain"
@@ -37,14 +47,14 @@
       <tbody>
         <tr>
           <td align="right">
-            {{ cctrans(locale, "util.title_of_work")|safe }}
+            {% trans %}Title of work{% endtrans %}
           </td>
           <td><input type="text" name="title" value="" />
           </td>
         </tr>
         <tr>
           <td align="right">
-            {{ cctrans(locale, "util.author")|safe }}
+            {% trans %}Author{% endtrans %}
           </td>
           <td><input type="text" name="copyright_holder" value="" />
           </td>
@@ -53,7 +63,7 @@
           <td align="right">&nbsp;</td>
           <td>
             <input type="submit" class="btn"
-                   value="{{ cctrans(locale, 'util.proceed')|safe }}" /></td>
+                   value="{% trans %}proceed{% endtrans %}" /></td>
         </tr>
       </tbody>
     </table>

@@ -1,4 +1,3 @@
-import string
 import re
 
 from cc.i18n.gettext_i18n import ugettext_for_locale
@@ -57,13 +56,15 @@ def get_xmp_info(request_form, license, locale):
         else:
             notice = ""
 
-        i18n_work = ugettext('util.work')
-        work_notice_template = string.Template(
-            ugettext('license.work_type_licensed'))
-        work_notice = work_notice_template.substitute(
-            {'license_name': license.title(locale_to_lower_lower(locale)),
-             'license_url': license.uri,
-             'work_type': i18n_work})
+        i18n_work = ugettext('work')
+        work_notice_template = ugettext(
+                u'This %(work_type)s is licensed under a '
+                u'<a rel="license" href="%(license_url)s">Creative Commons '
+                u'%(license_name)s License</a>.')
+        work_notice = work_notice_template % {
+            'license_name': license.title(locale_to_lower_lower(locale)),
+            'license_url': license.uri,
+            'work_type': i18n_work}
 
         notice = notice + work_notice
 
