@@ -26,6 +26,37 @@ class FakeRequest(object):
         self.accept_language = FakeAcceptLanguage(best_matches)
 
 
+def test_get_target_lang_from_request():
+
+    def pick_lang(langs=[], form_lang=None):
+        """Shorthand helper function thing."""
+        environ = {
+            "REQUEST_METHOD" : "GET",
+            "PATH_INFO" : "/",
+            }
+        if form_lang:
+            environ["QUERY_STRING"] = "lang="+form_lang
+        req = Request(environ)
+        req.matchdict = {}
+        req.accept_language = ", ".join(langs)
+        return util.get_target_lang_from_request(req)
+
+    # neutral language case
+    assert pick_lang() == 'en'
+
+    # amurican english
+    assert pick_lang(['en-us', 'en']) == 'en'
+
+    # spanish
+    assert pick_lang(['es']) == 'es'
+
+    # bs
+    assert pick_lang(['total_bs_locale']) == 'en'
+
+    # specific language request
+    assert pick_lang(['es', 'el'], form_lang='jp') == 'jp'
+
+
 def test_get_xpath_attribute():
     tree = etree.parse(
         StringIO.StringIO('<foo><bar><baz basil="herb" /></bar></foo>'))
