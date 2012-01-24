@@ -496,9 +496,9 @@ def work_email_send(request):
     target_lang = util.get_target_lang_from_request(request)
 
     request_form = request.GET or request.POST
-    email_addr = request_form.get('to_email', '').decode('utf-8')
-    license_name = request_form.get('license_name').decode('utf-8')
-    license_html = request_form.get('license_html').decode('utf-8')
+    email_addr = request_form.get('to_email', '')
+    license_name = request_form.get('license_name')
+    license_html = request_form.get('license_html')
 
     util.send_license_info_email(
         license_name, license_html,
