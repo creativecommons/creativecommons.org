@@ -572,12 +572,13 @@ def get_target_lang_from_request(request):
     if request.matchdict.has_key('target_lang'):
         target_lang = request.matchdict['target_lang']
     else:
-        # Appending 'en' to the list of available languages makes english the
-        # chosen locale when the accept_languages field is empty.  Also,
-        # best_match doesn't trip up over duplicates in the list of available
-        # languages.
+        # 'en' is prepended to the list of all supported languages to make it
+        # the first match in a tie breaker.  In the event in which the 
+        # accept_languages field is blank, webob doesn't just return the
+        # default value for some reason.
         target_lang = request.accept_language.best_match(
-            ['en'] + list(get_all_supported_languages()))
+            ['en'] + list(get_all_supported_languages()),
+            default_match="en")
     return locale_to_lower_upper(target_lang)
 
 
