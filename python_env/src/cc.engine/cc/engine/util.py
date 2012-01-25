@@ -563,7 +563,8 @@ def send_license_info_email(license_title, license_html,
         return False
 
 
-def get_target_lang_from_request(request):
+ACCEPT_LANG_CACHE = {}
+def get_target_lang_from_request(request, default_locale='en'):
     request_form = request.GET or request.POST
 
     if request_form.has_key('lang'):
@@ -572,13 +573,50 @@ def get_target_lang_from_request(request):
     if request.matchdict.has_key('target_lang'):
         target_lang = request.matchdict['target_lang']
     else:
-        # 'en' is prepended to the list of all supported languages to make it
-        # the first match in a tie breaker.  In the event in which the 
-        # accept_languages field is blank, webob doesn't just return the
-        # default value for some reason.
-        target_lang = request.accept_language.best_match(
-            ['en'] + list(get_all_supported_languages()),
-            default_match="en")
+        try:
+            header_value = request.accept_language.header_value
+        except AttributeError:
+            # header was not defined
+            header_value = default_locale
+        if ACCEPT_LANG_CACHE.has_key(header_value):
+            return ACCEPT_LANG_CACHE[header_value]
+
+        # clean the header into something we can use
+        accept_lang = []
+        for part in header_value.split(","):
+            try:
+                locale, quality = map(str.strip, part.split(";"))
+                quality = float(quality)
+            except ValueError:
+                locale = part.strip()
+                quality = 1
+            accept_lang.append((locale_to_lower_upper(locale), quality))
+            
+        available = list(get_all_supported_languages())
+
+        def run_matches(accept_lang, available):
+            best = -1
+            target_lang = None
+            for locale, quality in accept_lang:
+                if quality > best and available.count(locale):
+                    best = quality
+                    target_lang = locale
+            return target_lang
+
+        # search for exact matches
+        target_lang = run_matches(accept_lang, available)
+        
+        if not target_lang:
+            # search for near matches
+            reduced_accept = [(v.split("_")[0], q) for v,q in accept_lang]
+            reduced_available = [i.split("_")[0] for i in available]
+            target_lang = run_matches(reduced_accept, reduced_available)
+                              
+        if not target_lang:
+            # screw it
+            target_lang = default_locale
+
+        ACCEPT_LANG_CACHE[header_value] = target_lang
     return locale_to_lower_upper(target_lang)
 
 
