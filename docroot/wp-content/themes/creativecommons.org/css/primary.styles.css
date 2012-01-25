@@ -822,3 +822,8 @@ select,
 .blog {
 	margin-bottom: 2em;
 }
+
+/* Override the #bfbfbf from bootstrap CSS file */
+p small {
+	color: #222222;
+}
