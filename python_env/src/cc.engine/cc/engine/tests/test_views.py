@@ -791,7 +791,7 @@ def test_deed_w3_validation():
         "/licenses/by-nc/3.0/",
         "/licenses/by-nc-sa/3.0/",
         "/licenses/by-nc-nd/3.0/",
-        "/licenses/by-nd/3.0",
+        "/licenses/by-nd/3.0/",
         "/publicdomain/zero/1.0/",
         "/publicdomain/mark/1.0/",
         ]
@@ -817,11 +817,12 @@ def test_deed_w3_validation():
             req = urllib2.Request("http://validator.w3.org/check", 
                                   data, headers)
             try:
-                html = lxml_html.fromstring(urllib2.urlopen(req).read())
+                raw = urllib2.urlopen(req).read()
             except urllib2.HTTPError:
                 print "(proxy error... waiting 30 seconds before retry...)"
                 import time; time.sleep(30)
-                html = lxml_html.fromstring(urllib2.urlopen(req).read())
+                raw = urllib2.urlopen(req).read()
+            html = lxml_html.fromstring(raw)
             result = html.get_element_by_id("result")
             if result.findall("h3")[0].text == "Congratulations":
                 print "\n==>", path, "passes the w3c validator :D\n"
@@ -836,7 +837,7 @@ def test_deed_w3_validation():
                     info = map(str.strip, text.pop(0).split("\n"))
                     info = "".join(info).split(",")
                     info.append("".join(text).strip())
-                    print " {0} {1}\n   {2}\n".format(*info)                    
+                    print " {0} {1}\n   {2}\n".format(*info)
     except:
         # clean up tempfiles before raising an error
         shutil.rmtree(temp_dir)
