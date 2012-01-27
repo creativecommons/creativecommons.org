@@ -47,6 +47,7 @@ setup(
         'flup==1.0.2',
         'simplejson',
         'jinja2',
+        'poster', # for validation tests
         ],
 
     dependency_links = [

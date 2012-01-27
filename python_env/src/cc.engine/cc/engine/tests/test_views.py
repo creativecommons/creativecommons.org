@@ -5,6 +5,12 @@ import urllib
 import unittest
 from lxml import html as lxml_html
 import StringIO
+from poster.encode import multipart_encode
+from poster.streaminghttp import register_openers
+import urllib2
+import shutil
+import tempfile
+import os.path
 
 try:
     import json
@@ -772,3 +778,68 @@ def test_license_catcher():
     assert_equal(
         get_license_links(TESTAPP.get('/publicdomain/zero/', status=404)),
         ['http://creativecommons.org/publicdomain/zero/1.0/'])
+
+
+def test_deed_w3_validation():
+    """
+    Tests to see if the deeds pass the w3c validator.
+    """
+
+    paths = [
+        "/licenses/by/3.0/",
+        "/licenses/by-sa/3.0/",
+        "/licenses/by-nc/3.0/",
+        "/licenses/by-nc-sa/3.0/",
+        "/licenses/by-nc-nd/3.0/",
+        "/licenses/by-nd/3.0",
+        "/publicdomain/zero/1.0/",
+        "/publicdomain/mark/1.0/",
+        ]
+    temp_dir = tempfile.mkdtemp()
+    failures = []
+
+    try:
+        print "\n"
+        for path in paths:
+            view_result = TESTAPP.get(path).text.encode('utf-8')
+            temp_path = os.path.join(temp_dir, "validate_me.html")
+            storage = file(temp_path, mode="w+b")
+            storage.write(view_result)
+            storage.close()
+
+            register_openers()
+            data, headers = multipart_encode({
+                    "uploaded_file" : open(temp_path),
+                    "charset" : "(detect automatically)",
+                    "doctype" : "Inline",
+                    "group" : 0,
+                    })
+            req = urllib2.Request("http://validator.w3.org/check", 
+                                  data, headers)
+            try:
+                html = lxml_html.fromstring(urllib2.urlopen(req).read())
+            except urllib2.HTTPError:
+                print "(proxy error... waiting 30 seconds before retry...)"
+                import time; time.sleep(30)
+                html = lxml_html.fromstring(urllib2.urlopen(req).read())
+            result = html.get_element_by_id("result")
+            if result.findall("h3")[0].text == "Congratulations":
+                print "\n==>", path, "passes the w3c validator :D\n"
+                continue
+            else:
+                print "\n==>", path, "fails the w3c validator:\n"
+                errors = html.get_element_by_id("error_loop").findall("*")
+                error_count = len(errors)
+                failures.append((path, error_count))
+                for error in errors:
+                    text = [i.text for i in error.findall("*") if i.text]
+                    info = map(str.strip, text.pop(0).split("\n"))
+                    info = "".join(info).split(",")
+                    info.append("".join(text).strip())
+                    print " {0} {1}\n   {2}\n".format(*info)                    
+    except:
+        # clean up tempfiles before raising an error
+        shutil.rmtree(temp_dir)
+        raise
+
+    assert not failures
