@@ -838,6 +838,7 @@ def test_deed_w3_validation():
                     info = "".join(info).split(",")
                     info.append("".join(text).strip())
                     print " {0} {1}\n   {2}\n".format(*info)
+                import pdb; pdb.set_trace()
     except:
         # clean up tempfiles before raising an error
         shutil.rmtree(temp_dir)
