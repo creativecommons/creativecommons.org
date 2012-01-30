@@ -33,25 +33,37 @@ def test_get_target_lang_from_request():
         environ = {
             "REQUEST_METHOD" : "GET",
             "PATH_INFO" : "/",
+            "HTTP_ACCEPT_LANGUAGE" : ", ".join(langs),
             }
         if form_lang:
             environ["QUERY_STRING"] = "lang="+form_lang
         req = Request(environ)
         req.matchdict = {}
-        req.accept_language = ", ".join(langs)
-        return util.get_target_lang_from_request(req)
+        return util.get_target_lang_from_request(req, default_locale='default')
 
-    # neutral language case
-    assert pick_lang() == 'en'
+    # default language case
+    assert pick_lang() == 'default'
 
     # amurican english
-    assert pick_lang(['en-us', 'en']) == 'en'
+    assert pick_lang(['en-us', 'en']) == 'en_US'
 
     # spanish
     assert pick_lang(['es']) == 'es'
 
+    # http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4
+    assert pick_lang(['da, en-gb;q=0.8, en;q=0.7']) == 'da'
+
+    # moar english
+    assert pick_lang(['en-bs']) == 'en'
+
     # bs
-    assert pick_lang(['total_bs_locale']) == 'en'
+    assert pick_lang(['total_bs_locale']) == 'default'
+
+    # lower upper
+    assert pick_lang(['es_ES']) == 'es_ES'
+
+    # lower lower
+    assert pick_lang(['es-es']) == 'es_ES'
 
     # specific language request
     assert pick_lang(['es', 'el'], form_lang='jp') == 'jp'
