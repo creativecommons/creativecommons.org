@@ -828,3 +828,8 @@ select,
 p small {
 	color: #222222;
 }
+
+/* Override default color for <li> tesxt in bootstrap CSS file */
+li {
+	color: #000000;
+}
