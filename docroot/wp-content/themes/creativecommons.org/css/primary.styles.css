@@ -8,6 +8,7 @@
 
 html, body {
 	height: 100%;
+	color: #000000;
 }
 
 ::-moz-selection { background: #627D0F; color: #fff; text-shadow: none; }
