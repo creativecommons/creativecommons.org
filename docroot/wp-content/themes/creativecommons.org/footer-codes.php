@@ -17,4 +17,4 @@
 		<script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 	<![endif]-->
 
-	<?php include bloginfo('stylesheet_directory') . '/google-analytics.php'; ?>
+	<?php include 'google-analytics.php'; ?>
