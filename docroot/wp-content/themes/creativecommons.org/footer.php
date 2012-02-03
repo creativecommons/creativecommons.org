@@ -2,6 +2,7 @@
 	</div> <!--! end of #container -->
 
         <?php include 'footer-codes.php'; ?>
+        <?php include 'google-analytics.php'; ?>
 
 	</body>
 </html>
