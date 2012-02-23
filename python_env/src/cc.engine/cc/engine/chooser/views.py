@@ -427,6 +427,9 @@ def chooser_demo_baseview(request, template):
             "format" : "html",
             "badge" : "normal",
             },
+        "misc" : {
+            "lang" : "en",
+            }
         }
     if request_form:
         defaults["license"] = {
@@ -435,7 +438,15 @@ def chooser_demo_baseview(request, template):
             "nd" : request_form['field_derivatives'] == u'n',
             "jurisdiction" : request_form['field_jurisdiction'],
             }
-        #import pdb; pdb.set_trace();
+        defaults["meta"] = {
+            "format" : request_form["field_format"],
+            "title" : request_form["field_worktitle"],
+            "attrib_name" : request_form["field_attribute_to_name"],
+            "attrib_url" : request_form["field_attribute_to_url"],
+            "src_url" : request_form["field_sourceurl"],
+            "permissions" : request_form["field_morepermissionsurl"],
+            }
+        defaults["misc"]["lang"] = request_form["lang"],
 
     # If the license is retired, redirect to info page
     if license.deprecated:
