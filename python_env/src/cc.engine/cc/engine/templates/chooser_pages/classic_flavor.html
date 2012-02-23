@@ -1,0 +1,371 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}Choose a License{% endblock title %}
+
+{% block headers %}
+  <style>
+    #beta h4 {
+      margin-bottom: 0.25em;
+      margin-top: 0.5em;
+      padding-left: 0;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css"
+        href="{{ request.staticdirect('includes/zero.css') }}" />
+  <link rel="stylesheet" type="text/css"
+        href="/wp-content/themes/creativecommons.org/engine.css" />
+{% endblock headers %}
+
+{% block body %}
+
+<div class="chooser">
+  <p>
+    {% trans %}With a Creative Commons license, <strong>you keep your copyright</strong> but allow people to <a href="/learn/licenses/fullrights">copy and distribute your work</a> provided they <a href="#" class="helpLink" id="give_you_credit">give you credit</a> &mdash; and only on the conditions you specify here. For those new to Creative Commons licensing, we've prepared <a href="/about/think">a list of things to think about</a>. If you want to offer your work with no conditions attached, or you want to mark a work that is already free of known copyright restrictions and in the public domain, choose one of our <a href="/publicdomain/">public domain tools</a>.{% endtrans %}
+  </p>
+
+  <p>
+    {% trans %}When you choose a <a href="http://creativecommons.org/about/licenses">license</a>, we provide you with HTML you can use to add the license information to your site and information on how to select a license on one of several free hosting services that have incorporated Creative Commons. This is not a registration and we do not retain a record of your selection.{% endtrans %}
+  </p>
+
+  <div id="help_give_you_credit" class="help_panel">
+    <div class="hd">{% trans %}Attribution{% endtrans %}</div>
+    <div class="bd">
+      {% trans %}You must attribute the
+work in the manner specified by the author or licensor.{% endtrans %}
+    </div>
+  </div>
+
+  <div class="licensebox">
+    <form action="./classic_chooser" method="get" class="form-stacked" >
+      <div>
+        <input type="hidden"  name="q_1" value="2" id="question_1-2"
+               checked="checked" />
+        <input type="hidden" name="q_1" value="1" id="question_1-1" />
+      </div>
+
+      <p>
+        <strong>
+          {% trans %}Allow commercial uses of your work?{% endtrans %}
+        </strong>
+      </p>
+      <ul class="choices">
+        <li>
+          <input type="radio" 
+		 {%- if not form.license.nc %} checked="checked" {% endif -%}
+                 name="field_commercial" value="y" id="question_2-3"/>
+          <label for="question_2-3">{% trans %}Yes{% endtrans %}</label>
+          <a href="" id="commercial" class="helpLink">
+            <img src="{{ request.staticdirect('images/information.png') }}"
+                 alt="{% trans %}Information{% endtrans %}"/>
+          </a>
+          <div class="help-popover">
+            <div class="popover below">
+              <div class="arrow"></div>
+              <div class="inner">
+                <h3 class="title">{% trans %}Commercial Use{% endtrans %}</h3>
+                <a href="#" class="close">&times;</a>
+                <div class="content">
+                  <p>{% trans %}The licensor permits others to copy, distribute, display, and perform the work, including for commercial purposes.{% endtrans %}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <input type="radio"
+		 {%- if form.license.nc %} checked="checked" {% endif -%}
+                 name="field_commercial" value="n" id="question_2-4"/>
+          <label for="question_2-4">{% trans %}No{% endtrans %}</label>
+          <a href="" id="noncommercial" class="helpLink">
+            <img src="{{ request.staticdirect('images/information.png') }}"
+                 alt="{% trans %}Information{% endtrans %}"/>
+          </a>
+          <div class="help-popover">
+            <div class="popover below">
+              <div class="arrow"></div>
+              <div class="inner">
+                <h3 class="title">{% trans %}NonCommercial{% endtrans %}</h3>
+                <a href="#" class="close">&times;</a>
+                <div class="content">
+                  <p>{% trans %}The licensor permits others to copy, distribute, display, and perform the work for non-commercial purposes only.{% endtrans %}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <p>
+        <strong>
+          {% trans %}Allow modifications of your work?{% endtrans %}
+        </strong>
+      </p>
+
+      <ul class="choices">
+        <li>
+          <input type="radio"
+		 {% if not form.license.nd and not form.license.sa -%}
+		 checked="checked"{% endif %}
+                 name="field_derivatives" value="y"
+                 id="question_3-5" />
+          <label for="question_3-5">{% trans %}Yes{% endtrans %}</label>
+          <a href="" id="derivatives" class="helpLink">
+            <img src="{{ request.staticdirect('images/information.png') }}"
+                 alt="{% trans %}Information{% endtrans %}"/>
+          </a>
+          <div class="help-popover">
+            <div class="popover below">
+              <div class="arrow"></div>
+              <div class="inner">
+                <h3 class="title">{% trans %}Allow Derivative Works{% endtrans %}</h3>
+                <a href="#" class="close">&times;</a>
+                <div class="content">
+                  <p>{% trans %}The licensor permits others to copy, distribute, display and perform the work, as well as make derivative works based on it.{% endtrans %}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <input type="radio" name="field_derivatives" value="sa"
+		 {% if form.license.sa %}checked="checked"{% endif %}
+                 id="question_3-6" />
+          <label for="question_3-6">
+            <span>
+              {% trans %}Yes, as long as others share alike{% endtrans %}
+            </span>
+            <a href="" class="helpLink" id="sharealike">
+              <img src="{{ request.staticdirect('images/information.png') }}"
+                   alt="{% trans %}Information{% endtrans %}"/>
+            </a>
+            <div class="help-popover">
+              <div class="popover below">
+                <div class="arrow"></div>
+                <div class="inner">
+                  <h3 class="title">{% trans %}Share Alike{% endtrans %}</h3>
+                  <a href="#" class="close">&times;</a>
+                  <div class="content">
+                    <p>{% trans %}The licensor permits others to distribute derivative works only under the same license or one compatible with the one that governs the licensor's work.{% endtrans %}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </label>
+        </li>
+
+        <li>
+          <input type="radio"  name="field_derivatives" value="n"
+		 {% if form.license.nd %}checked="checked"{% endif %}
+                 id="question_3-7" />
+          <label for="question_3-7">{% trans %}No{% endtrans %}</label>
+          <a href="" id="noderivatives" class="helpLink">
+            <img src="{{ request.staticdirect('images/information.png') }}"
+                 alt="{% trans %}Information{% endtrans %}"/>
+          </a>
+          <div class="help-popover">
+            <div class="popover below">
+              <div class="arrow"></div>
+              <div class="inner">
+                <h3 class="title">{% trans %}No Derivative Works{% endtrans %}</h3>
+                <a href="#" class="close">&times;</a>
+                <div class="content">
+                  <p>{% trans %}The licensor permits others to copy, distribute and transmit only unaltered copies of the work — not derivative works based on it.{% endtrans %}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <p>
+        <div>
+          {% trans %}Jurisdiction of your license{% endtrans %}
+          <a href="" class="helpLink" id="jurisdiction">
+            <img src="{{ request.staticdirect('images/information.png') }}"
+                 alt="{% trans %}Information{% endtrans %}"/>
+          </a>
+          <div class="help-popover">
+            <div class="popover below">
+              <div class="arrow"></div>
+              <div class="inner">
+                <h3 class="title">{% trans %}Jurisdiction{% endtrans %}</h3>
+                <a href="#" class="close">&times;</a>
+                <div class="content">
+                  <p>{% trans %}Use the option "International" if you desire a license using language
+and terminology from international treaties.  If the licenses have
+been ported to your jurisdiction and you feel that your jurisdiction's
+ported licenses account for some aspect of local legislation that the
+international licenses do not, then you may want to consider
+<a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Should_I_choose_an_international_license_or_a_ported_license.3F">which
+license is better suited for your needs</a>.{% endtrans %}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <br />
+
+        <select name="field_jurisdiction">
+          {# If a specific jurisdiction is requested, we'll mark that
+           # as selected.  Otherwise util.International should be selected. #}
+          <option value=""
+                  {% if form.license.jurisdiction == "" -%}
+                    selected="selected"
+                  {%- endif %}>
+            {% trans %}International{% endtrans %}
+          </option>
+
+          {% for juris_code, juris_name in jurisdictions_names %}
+          <option value="{{ juris_code }}"
+                  {% if form.license.jurisdiction == juris_code -%}
+                    selected="selected"
+                  {%- endif %}>
+                {{- juris_name -}}
+              </option>
+          {% endfor %}
+        </select>
+      </p>
+
+      {% include "includes/more_metadata.html" %}
+
+      <div>
+        <input type="hidden" name="lang" value="{{ target_lang }}" />
+        <input type="hidden" name="n_questions" value="3" />
+      </div>
+
+      <div>
+        <p>
+          <input type="submit" class="primary btn submit"
+                 value="{% trans %}Select a License{% endtrans %}" />
+        </p>
+      </div>
+    </form>
+  </div>
+  <br />
+
+
+
+  <p>
+    {% trans %}Choose which style of button you'd like on your webpage:{% endtrans %}
+  </p>
+  
+  <div class="licensebox">
+    <div style="margin-top:10px;" align="center">
+      <table dir="{{ get_ltr_rtl }}">
+        <tr>
+          <td style="text-align:center">
+            <a href="{{ license.uri }}">
+              <img id="licensebutton"
+                   alt="Creative Commons License"
+                   src="{{ license.logo }}"
+                   style="margin-right:10px;margin-bottom:4px; border: 0;" />
+            </a>
+            <br/>
+            <input type="radio" name="button"
+                   checked="checked" onclick="swapbutton('{{ license.logo }}')" />
+          </td>
+          {% if not request.wiki %}
+            <td style="text-align:center" valign="bottom">
+              <a href="{{ license.uri }}">
+                <img id="licensebutton_slim"
+                     alt="Creative Commons License"
+                     src="{{ license_slim_logo }}"
+                     style="margin-right:10px;margin-bottom:4px; border: 0;" /></a>
+              <br/>
+              <input type="radio" name="button"
+                     onclick="swapbutton('{{ license_slim_logo }}')"/>
+            </td>
+          {% endif %}
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    {% trans %}Here's a preview of how your license will appear on your site:{% endtrans %}
+  </div>
+  
+  <div class="preview" id="results-preview">
+    {%- autoescape False -%}
+      {{- license_html -}}
+    {%- endautoescape -%}
+  </div>
+  
+  <div style="margin-top:20px;margin-bottom:30px;">
+    <h4>{% trans %}Have your own website?{% endtrans %}</h4>
+
+    <p>
+      {% trans %}Copy the text below to your Web site to let your visitors know what license applies to your works.{% endtrans %}
+    </p>
+
+    <form action="">
+      <div>
+        <textarea id="codetocopy" name="html" onclick="this.select()" readonly="true" 
+                  style="width:99%;height:150px;resize:vertical" rows="8" cols="20">
+          {{- license_html -}}
+        </textarea>
+      </div>
+    </form>
+
+    <p>
+      <span>
+        {% trans url_vars=request.query_string %}Select the contents of the box above and copy it. Or, have it <a href="/license/work-html-popup?{{ url_vars }}" onclick="window.open('work-html-popup?{{ url_vars }}', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">emailed to yourself.</a>{% endtrans %}
+      </span>
+      <strong>
+        {% trans %}Need more help? <a href="http://wiki.creativecommons.org/Website/Publish">Read our tutorial</a>.{% endtrans %}
+      </strong>
+    </p>
+
+    <div id="chooserDonate">
+      <div>
+        <a href="https://creativecommons.net/donate/"><img src="/images/support/2010/cc-support.png" alt="Donate" title="Donate" border="0"/></a></div>
+        <p>
+          {% trans %}Creative Commons is a non-profit organization.<br /> We need your support to continue providing these tools.<br /> <a href="https://creativecommons.net/donate/">Donate today!</a>{% endtrans %}
+       </p>
+    </div>
+  </div>
+  <!-- <div metal:use-macro="here/license_macros/macros/languages">
+       language box
+       </div>
+  -->
+{% endblock %}
+
+{% block sidebar %}
+  <p>
+    {% trans %}Share your work with an existing community that has enabled Creative Commons licensing.{% endtrans %}
+  </p>
+  
+  <p>
+    {% trans %}Learn where to <a href="http://wiki.creativecommons.org/Publish">publish</a> your <a href="http://wiki.creativecommons.org/Publish/Images">images</a>, <a href="http://wiki.creativecommons.org/Publish/Audio">audio</a>, <a href="http://wiki.creativecommons.org/Publish/Video">video</a>, and <a href="http://wiki.creativecommons.org/Publish/Text">text</a>, including <a href="http://wiki.creativecommons.org/Publish/Text#Blog">blogs</a>.{% endtrans %}
+  </p>
+
+  <h4>{% trans %}Offline Work?{% endtrans %}</h4>
+
+  <ul class="unstyled">
+    <li>
+      <span>
+        {% trans url_vars=request.query_string %}To mark a document not on the web, <a href="non-web-popup?{{ url_vars }}" onclick="window.open('non-web-popup?{{ url_vars }}', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">add this text</a> to your work.{% endtrans %}
+      </span>
+    </li>
+    <li>
+      {% trans url_vars=request.query_string %}Get <a href="/choose/metadata.xmp?{{ url_vars }}">metadata</a> for documents that <a href="http://wiki.creativecommons.org/XMP">support XMP</a>.{% endtrans %}
+    </li>
+    <li>
+      <a href="http://creativecommons.org/about/downloads/">
+        {% trans %}Get high resolution and vector versions of the license graphics.{% endtrans %}
+      </a>
+    </li>
+    <li>
+      <a href="http://wiki.creativecommons.org/Marking/Creators#Marking_Specific_Media">
+        {% trans %}Learn how to mark video and other formats.{% endtrans %}
+      </a>
+    </li>
+  </ul>
+
+
+  {% include "includes/engine_languages.html" %}
+
+{% endblock %}

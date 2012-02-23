@@ -377,6 +377,108 @@ def choose_results_view(request):
                 'chooser_pages/results.html', context))
 
 
+def chooser_demo_baseview(request, template):
+    #
+    #  Used by the new-style chooser demos, for now.
+    #
+    target_lang = util.get_target_lang_from_request(request)
+    context = _base_context(request, target_lang)
+    request_form = request.GET or request.POST
+    gettext = context['gettext']
+
+    available_jurisdiction_codes = [
+        j.code for j in get_selector_jurisdictions('standard')
+        if j.code != '']
+    
+    requested_jurisdiction = None
+    if request.GET.has_key('jurisdiction') and \
+            request.GET['jurisdiction'] in available_jurisdiction_codes:
+        requested_jurisdiction = request.GET['jurisdiction']        
+
+    # Sort the jurisdictions for the dropdown via the translated name
+    jurisdictions_names = [
+        (juris, gettext(mappers.COUNTRY_MAP[juris]))
+        for juris in available_jurisdiction_codes]
+    jurisdictions_names = sorted(
+        jurisdictions_names, key=lambda juris: juris[1])
+
+    show_jurisdiction = request.GET.get('jurisdiction_choose') == '1'
+
+    # Select a license based on the request form
+    license = _issue_license(request_form)
+    
+    # Sets form default values, based on the request form or lack thereof
+    defaults = {
+        "license" : {
+            "nc" : False,
+            "sa" : False,
+            "nd" : False,
+            "jurisdiction" : "",
+            },
+        "meta" : {
+            "format" : "",
+            "title" : "",
+            "attrib_name" : "", 
+            "attrib_url" : "",
+            "src_url" : "",
+            "permissions" : "",
+            },
+        "out" : {
+            "format" : "html",
+            "badge" : "normal",
+            },
+        }
+    if request_form:
+        defaults["license"] = {
+            "nc" : request_form['field_commercial'] == u'n',
+            "sa" : request_form['field_derivatives'] == u'sa',
+            "nd" : request_form['field_derivatives'] == u'n',
+            "jurisdiction" : request_form['field_jurisdiction'],
+            }
+        #import pdb; pdb.set_trace();
+
+    # If the license is retired, redirect to info page
+    if license.deprecated:
+        # Special case: PDCC should redirect to /publicdomain/
+        if license.license_code == 'publicdomain':
+            return exc.HTTPMovedPermanently(location="/publicdomain/")
+        else:
+            return exc.HTTPMovedPermanently(location="/retiredlicenses")
+
+    # Generate the HTML+RDFa for the license + provided work information
+    work_dict = _formatter_work_dict(request_form)
+    license_slim_logo = license.logo_method('80x15')
+
+    license_html = HTML_FORMATTER.format(
+        license, work_dict, target_lang)
+
+    context.update(
+        {'jurisdictions_names': jurisdictions_names,
+         'show_jurisdiction': show_jurisdiction,
+         'requested_jurisdiction': requested_jurisdiction,
+         'referrer': request.headers.get('REFERER',''),
+         'page_style': '2cols',
+         'form' : defaults,
+         'license': license,
+         'license_slim_logo': license_slim_logo,
+         'license_title': license.title(target_lang),
+         'license_html': license_html})
+
+    return Response(util.render_template(
+            request, target_lang,
+            'chooser_pages/'+template, context))
+
+def classic_chooser(request):
+    # New style license chooser demo view.  This one aims to keep all of the
+    # bad ideas from the old chooser by concatinating results_one to the end
+    # of the old chooser, and possibly slinging more information without
+    # removing any of the stale aspects of the old design.
+
+    # The purpose of this view is to make the other demos look better =)
+    return chooser_demo_baseview(request, 'classic_flavor.html')
+
+
+
 def choose_xmp_view(request):
     request_form = request.GET or request.POST
     license = _issue_license(request_form)
