@@ -14,6 +14,146 @@
         href="{{ request.staticdirect('includes/zero.css') }}" />
   <link rel="stylesheet" type="text/css"
         href="/wp-content/themes/creativecommons.org/engine.css" />
+
+  <script src="/wp-content/themes/creativecommons.org/js/libs/jquery-1.6.2.min.js"></script>
+  <script type="text/javascript">
+//
+$(document).ready(function () {
+    "use strict";
+    
+    var getState, update, ping, refreshMetadata;
+    var current_state, watching, metadata, metatemplate;
+
+    refreshMetadata = function () {
+	var name, value, buffer = metatemplate;
+	for (name in metadata) {
+	    if (!metadata.hasOwnProperty(name)) { continue; }
+	    value = metadata[name];
+	    while (buffer.indexOf(name) !== -1) {
+		buffer = buffer.replace(name, value);
+	    }
+	}
+	$("#codetocopy")[0].value = buffer;
+	$("#results-preview")[0].innerHTML = buffer;
+    };
+
+    getState = function (no_redraw) {
+	// returns an object representing the current state of the ui controls.
+
+	var attrib = function (attr, value) { return "["+attr+"="+value+"]"; };
+	var state = {}, query, node, name, type, i, key, found, redraw;
+	redraw = false;
+	for (key in watching) {
+	    if (!watching.hasOwnProperty(key)) { continue; }
+	    if (key === "select") {
+		node = key;
+		type = false;
+	    }
+	    else {
+		node = "input";
+		type = key;
+	    }
+	    for (i=0; i<watching[key].length; i+=1) {
+		name = watching[key][i];	
+		query = node + attrib("name", name);
+		if (!!type) { query += attrib("type", type); }
+		if (type === "radio") { query += attrib("checked", "checked"); }
+		if (type === "select") { 
+		    query += ">option[selected=selected]";
+		}
+		found = $(query);
+		if (found.length === 0) {
+		    console.warn("$( "+query+" ) returned no results!");
+		}
+		else {
+		    found = found[0].value;
+		    if (type === "text") {
+			if (metadata[name] !== found) {
+			    metadata[name] = found;
+			    redraw = true;
+			}
+			found = found === "" ? "" : name;
+		    }
+		    else {
+			console.info(name, found);
+		    }
+		    state[name] = found;
+		}
+	    }
+	}
+	if (redraw && !no_redraw) {
+	    refreshMetadata();
+	}
+	return state;
+    };
+
+    update = function (data) {
+	// Callback to update the UI based on the response from the server.
+	metatemplate = data.license_html;
+	refreshMetadata();
+	console.info("pong!");
+    };
+
+    ping = function () {
+	// Poll the server for license and metadata info.  Checks for relevance, first.
+	
+	var new_state = getState();
+	var nevermind = true;
+	for (var param in new_state) {
+	    if (new_state.hasOwnProperty(param) && new_state[param] !== current_state[param]) {
+		nevermind = false;
+		break;
+	    }
+	}
+	if (nevermind) { 
+	    return;
+	}
+	else {
+	    current_state = new_state;
+	    $.getJSON('./xhr_api', current_state, update);
+	}
+    };
+
+    // setup
+    watching = {
+	'radio' : [
+	    'field_commercial',
+	    'field_derivatives',
+	],
+	'select' : [
+	    'field_jurisdiction',
+	    'field_format',
+	],
+	'text' : [
+	    'field_worktitle',
+	    'field_attribute_to_name',
+	    'field_attribute_to_url',
+	    'field_sourceurl',
+	    'field_morepermissionsurl',
+	],
+    };
+    metadata = {};
+    metatemplate = "";
+    current_state = getState(true);
+    console.info(current_state);
+
+    (function () {
+	// setup events
+	var key, i, k, selected, found;
+	for (key in watching) {
+	    if (!watching.hasOwnProperty(key)) { continue; }
+	    for (i=0; i<watching[key].length; i+=1) {
+		selected = $("[name="+watching[key][i]+"]");
+		selected.change(ping);
+		if (key ==="text") {
+		    selected.keyup(ping);
+		}
+	    }
+	}
+    })();
+});
+//
+  </script>
 {% endblock headers %}
 
 {% block body %}

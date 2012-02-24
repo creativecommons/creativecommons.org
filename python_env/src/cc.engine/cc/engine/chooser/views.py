@@ -1,3 +1,4 @@
+import json
 from lxml import etree
 from urlparse import urlparse, urljoin
 from urllib import quote, unquote_plus, urlencode
@@ -479,6 +480,45 @@ def chooser_demo_baseview(request, template):
             request, target_lang,
             'chooser_pages/'+template, context))
 
+
+def xhr_api(request):
+    target_lang = util.get_target_lang_from_request(request)
+    request_form = request.GET or request.POST
+
+    # Special case: if anyone is linking to GPL/LGPL (mistake on old
+    # deeds), redirect them to gnu.org
+    if request_form.get('license_code') in ("GPL", "LGPL"):
+        return exc.HTTPMovedPermanently(
+            location='http://www.gnu.org/licenses/gpl-howto.html')
+
+    # Select a license based on the request form
+    license = _issue_license(request_form)
+
+    # If the license is retired, redirect to info page
+    if license.deprecated:
+        # Special case: PDCC should redirect to /publicdomain/
+        if license.license_code == 'publicdomain':
+            return exc.HTTPMovedPermanently(location="/publicdomain/")
+        else:
+            return exc.HTTPMovedPermanently(location="/retiredlicenses")
+
+    # Generate the HTML+RDFa for the license + provided work information
+    work_dict = _formatter_work_dict(request_form)
+    license_slim_logo = license.logo_method('80x15')
+
+    license_html = HTML_FORMATTER.format(
+        license, work_dict, target_lang)
+
+    ret = {
+        #'license': license,
+        'license_slim_logo': license_slim_logo,
+        'license_title': license.title(target_lang),
+        'license_html': license_html
+        }
+
+    return Response(json.dumps(ret))
+
+
 def classic_chooser(request):
     # New style license chooser demo view.  This one aims to keep all of the
     # bad ideas from the old chooser by concatinating results_one to the end
@@ -487,7 +527,6 @@ def classic_chooser(request):
 
     # The purpose of this view is to make the other demos look better =)
     return chooser_demo_baseview(request, 'classic_flavor.html')
-
 
 
 def choose_xmp_view(request):
