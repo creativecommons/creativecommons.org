@@ -9,6 +9,20 @@
       margin-top: 0.5em;
       padding-left: 0;
     }
+    .editors_note {
+      background-color: #888;
+      color: black;
+      border: 1px solid red;
+      border-radius: 4px;
+      padding: 1em;
+    }
+    .editors_note p {
+      font-weight: bold;
+    }
+    .editors_note a {
+      color: darkblue;
+      font-weight: bold;
+    }
   </style>
   <link rel="stylesheet" type="text/css"
         href="{{ request.staticdirect('includes/zero.css') }}" />
@@ -41,7 +55,7 @@ $(document).ready(function () {
 	// returns an object representing the current state of the ui controls.
 
 	var attrib = function (attr, value) { return "["+attr+"="+value+"]"; };
-	var state = {}, query, node, name, type, i, key, found, redraw;
+	var state = {}, query, node, name, type, i, k, key, found, redraw, fail;
 	redraw = false;
 	for (key in watching) {
 	    if (!watching.hasOwnProperty(key)) { continue; }
@@ -57,7 +71,6 @@ $(document).ready(function () {
 		name = watching[key][i];	
 		query = node + attrib("name", name);
 		if (!!type) { query += attrib("type", type); }
-		if (type === "radio") { query += attrib("checked", "checked"); }
 		if (type === "select") { 
 		    query += ">option[selected=selected]";
 		}
@@ -66,7 +79,24 @@ $(document).ready(function () {
 		    console.warn("$( "+query+" ) returned no results!");
 		}
 		else {
-		    found = found[0].value;
+		    if (type === "radio") {
+			fail=true;
+			for (k=0; k<found.length; k+=1) {
+			    if (found[k].checked) {
+				found = found[k].value;
+				fail = false;
+				break;
+			    }
+			}
+			if (fail) {
+			    console.warn(
+				"$( "+query+" ) returned no checked results!");
+			    return;
+			}
+		    }
+		    else {
+			found = found[0].value;
+		    }
 		    if (type === "text") {
 			if (metadata[name] !== found) {
 			    metadata[name] = found;
@@ -90,11 +120,16 @@ $(document).ready(function () {
     update = function (data) {
 	// Callback to update the UI based on the response from the server.
 	metatemplate = data.license_html;
+	var slim_badge = data.license_slim_logo;
+	var husky_badge = slim_badge.replace("80x15.png", "88x31.png");
+	$("#licensebutton_slim")[0].src = slim_badge;
+	$("#licensebutton")[0].src = husky_badge;
 	refreshMetadata();
+	$("#approved_for_free_culture")[0].style.display = data.libre ? "block" : "none";
 	console.info("pong!");
     };
 
-    ping = function () {
+    ping = function (force) {
 	// Poll the server for license and metadata info.  Checks for relevance, first.
 	
 	var new_state = getState();
@@ -105,7 +140,7 @@ $(document).ready(function () {
 		break;
 	    }
 	}
-	if (nevermind) { 
+	if (nevermind && !force) { 
 	    return;
 	}
 	else {
@@ -151,12 +186,25 @@ $(document).ready(function () {
 	    }
 	}
     })();
+    ping(true);
 });
 //
   </script>
 {% endblock headers %}
 
 {% block body %}
+
+<div class="editors_note">
+  <p>
+    Please keep in mind that this page is by no means a complete tool, and is intended only to demonstrate real time response from the license chooser.
+  </p>
+  <p>
+    The design of the old license chooser is what we call a "programmer's interface";  easy to implement, and confusing for the end user.  This has led to confusion over if the chooser is a registration tool or not.  The current design is confusing unless you're familiar with the old chooser, and is unnecessarily cluttered.
+  </p>
+  <p>
+    To solve the issue of clarity, the final version of this tool will feature a significantly revised design.  See the wiki <a href="http://wiki.creativecommons.org/Interactive_license_chooser#UI_Draft_Images">proposal page</a> for more details.
+  </p>
+</div>
 
 <div class="chooser">
   <p>
@@ -176,6 +224,12 @@ work in the manner specified by the author or licensor.{% endtrans %}
   </div>
 
   <div class="licensebox">
+    <a href="http://freedomdefined.org/Definition" 
+       id="approved_for_free_culture" style="display:none; float: right;">
+    <img src="http://creativecommons.org/images/deed/seal.png" 
+	 alt="{% trans %}This license is acceptable for Free Cultural Works.{% endtrans %}"/>
+    </a>
+
     <form action="./classic_chooser" method="get" class="form-stacked" >
       <div>
         <input type="hidden"  name="q_1" value="2" id="question_1-2"
@@ -570,12 +624,14 @@ license is better suited for your needs</a>.{% endtrans %}</p>
         <input type="hidden" name="n_questions" value="3" />
       </div>
 
+      <noscript>
       <div>
         <p>
           <input type="submit" class="primary btn submit"
                  value="{% trans %}Select a License{% endtrans %}" />
         </p>
       </div>
+      </noscript>
     </form>
   </div>
   <br />

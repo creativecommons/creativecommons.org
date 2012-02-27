@@ -511,6 +511,7 @@ def xhr_api(request):
 
     ret = {
         #'license': license,
+        'libre' : license.libre,
         'license_slim_logo': license_slim_logo,
         'license_title': license.title(target_lang),
         'license_html': license_html
