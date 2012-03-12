@@ -278,14 +278,14 @@ function output_case_studies ()
  */
 function output_store ()
 {
-    $store_items = get_buckets('CC Store', '');
+    $store_items = get_buckets('Support CC', '');
     if ( count($store_items) > 0 )
     {
 ?>
 						<div class="five columns omega">
 							<div class="bucket">
 								<div class="inner">
-									<h3 class="title">CC Store</h3>
+									<h3 class="title">Support CC</h3>
 									<div class="content">
 										<div class="sample">
 											<div id="store">
@@ -308,7 +308,7 @@ function output_store ()
 										</div>
 										<h5><?php echo $si->link_description; ?></h5>
 										<?php echo nl2br($si->link_notes); ?>
-										<div class="bucket-follow"><a href="https://creativecommons.net/store/">Visit the Store</a></div>
+										<div class="bucket-follow"><a href="https://creativecommons.net/">Ways to support CC...</a></div>
 
 									</div> <!--! end of "content" -->
 								</div> <!--! end of "inner" -->
