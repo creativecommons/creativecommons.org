@@ -1,0 +1,700 @@
+{% extends "macros_templates/engine.html" %}
+{% block title %}Choose a License{% endblock title %}
+{% block headers %}
+  <link rel="stylesheet" type="text/css"
+        href="{{ request.staticdirect('includes/zero.css') }}" />
+  <link rel="stylesheet" type="text/css"
+        href="/wp-content/themes/creativecommons.org/engine.css" />
+  <!--
+  <link rel="stylesheet" type="text/css"
+	href="/wp-content/themes/creativecommons.org/interactive_chooser.css"/>
+  -->
+  <script src="/wp-content/themes/creativecommons.org/js/libs/jquery-1.6.2.min.js"></script>
+
+  <script type="text/javascript">
+//
+$(document).ready(function () {
+    "use strict";
+    
+    var getState, update, update_icons, ping, refreshMetadata;
+    var current_state, watching, metadata, metatemplate;
+    var fc_approved = "/wp-content/themes/creativecommons.org/images/freeculture_approved.png";
+    var fc_denied = "/wp-content/themes/creativecommons.org/images/freeculture_questionable.png";
+    var large_icon = "";
+    var small_icon = "";
+    var icon_is_small = false;
+
+    refreshMetadata = function () {
+	var name, value, buffer = metatemplate;
+	for (name in metadata) {
+	    if (!metadata.hasOwnProperty(name)) { continue; }
+	    value = metadata[name];
+	    while (buffer.indexOf(name) !== -1) {
+		buffer = buffer.replace(name, value);
+	    }
+	}
+        if (icon_is_small) {
+            buffer = buffer.replace("88x31.png", "80x15.png");
+        }
+	$("#codetocopy")[0].value = buffer;
+	$("#results-preview")[0].innerHTML = buffer;
+    };
+
+    getState = function (no_redraw) {
+	// returns an object representing the current state of the ui controls.
+
+	var attrib = function (attr, value) { return "["+attr+"="+value+"]"; };
+	var state = {}, query, node, name, type, i, k, key, found, redraw, fail;
+	redraw = false;
+	for (key in watching) {
+	    if (!watching.hasOwnProperty(key)) { continue; }
+	    if (key === "select") {
+		node = key;
+		type = false;
+	    }
+	    else {
+		node = "input";
+		type = key;
+	    }
+	    for (i=0; i<watching[key].length; i+=1) {
+		name = watching[key][i];	
+		query = node + attrib("name", name);
+		if (!!type) { query += attrib("type", type); }
+		if (type === "select") { 
+		    query += ">option[selected=selected]";
+		}
+		found = $(query);
+		if (found.length === 0) {
+		    console.warn("$( "+query+" ) returned no results!");
+		}
+		else {
+		    if (type === "radio") {
+			fail=true;
+			for (k=0; k<found.length; k+=1) {
+			    if (found[k].checked) {
+				found = found[k].value;
+				fail = false;
+				break;
+			    }
+			}
+			if (fail) {
+			    console.warn(
+				"$( "+query+" ) returned no checked results!");
+			    return;
+			}
+		    }
+		    else {
+			found = found[0].value;
+		    }
+		    if (type === "text") {
+			if (metadata[name] !== found) {
+			    metadata[name] = found;
+			    redraw = true;
+			}
+			found = found === "" ? "" : name;
+		    }
+		    else {
+			console.info(name, found);
+		    }
+		    state[name] = found;
+		}
+	    }
+	}
+	if (redraw && !no_redraw) {
+	    refreshMetadata();
+	}
+	return state;
+    };
+
+    update_icons = function () {
+        icon_is_small = $("[name=field_iconsize]")[1].checked;
+        $("#license #badge")[0].src = icon_is_small?small_icon:large_icon;
+	refreshMetadata();
+    }
+
+    update = function (data) {
+	// Callback to update the UI based on the response from the server.
+	metatemplate = data.license_html;
+        large_icon = data.license_logo;
+        small_icon = data.license_slim_logo;
+        update_icons();
+
+        console.info(data);
+	$("#fc_logo_link")[0].style.display = data.libre?"block":"none";
+	$("#license .whatis")[0].style.display = data.libre?"block":"none";
+	$("#license .whynot")[0].style.display = data.libre?"none":"block";
+	$("#license_title")[0].innerHTML = data.license_title;
+        $("#badge_link")[0].href = data.uri;
+        $("#license_title")[0].href = data.uri;
+	console.info("pong!");
+    };
+
+    ping = function (force) {
+	// Poll the server for license and metadata info.  Checks for relevance, first.
+	
+	var new_state = getState();
+	var nevermind = true;
+	for (var param in new_state) {
+	    if (new_state.hasOwnProperty(param) && new_state[param] !== current_state[param]) {
+		nevermind = false;
+		break;
+	    }
+	}
+	if (nevermind && !force) { 
+	    return;
+	}
+	else {
+	    current_state = new_state;
+	    $.getJSON('./xhr_api', current_state, update);
+	}
+    };
+
+    // setup
+    watching = {
+	'radio' : [
+	    'field_commercial',
+	    'field_derivatives',
+	],
+	'select' : [
+	    'field_jurisdiction',
+	    'field_format',
+	],
+	'text' : [
+	    'field_worktitle',
+	    'field_attribute_to_name',
+	    'field_attribute_to_url',
+	    'field_sourceurl',
+	    'field_morepermissionsurl',
+	],
+    };
+    metadata = {};
+    metatemplate = "";
+    current_state = getState(true);
+    console.info(current_state);
+
+    (function () {
+	// setup events
+	var key, i, k, selected, found;
+	for (key in watching) {
+	    if (!watching.hasOwnProperty(key)) { continue; }
+	    for (i=0; i<watching[key].length; i+=1) {
+		selected = $("[name="+watching[key][i]+"]");
+		selected.change(ping);
+		if (key ==="text") {
+		    selected.keyup(ping);
+		}
+	    }
+	}
+        var icon_inputs = $("[name=field_iconsize]");
+        icon_inputs.change(update_icons);
+    })();
+    ping(true);
+});
+//
+  </script>
+
+
+<style type="text/css">
+
+#instructional_fluff, #copyright_fluff {
+    text-align: center;
+    font-size: 16px;
+    width: 800px;
+    margin: auto;
+    word-spacing: 1px;
+}
+
+#instructional_fluff {
+    letter-spacing: 0px;
+    margin-bottom: .2em;
+}
+
+#copyright_fluff {
+    letter-spacing: 1px;
+    margin-bottom: 1.5em;
+}
+
+#copyright_fluff span:first-of-type {
+    padding-right: 1.6em;
+}
+
+#other_stuff {
+    width: 800px;
+    margin: auto;
+    margin-top: 2em;
+}
+
+.ui_row {
+    display: block;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    min-width: 840px;
+}
+
+#freedoms h4 {
+    margin-left: 2em;
+}
+#freedoms select {
+    margin-left: 5em;
+}
+#freedoms ul {
+    margin-left: 5em;
+    column-count: 2;
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    list-style: none;
+}
+#freedoms ul.no_columns {
+    column-count: 1!important;
+    -moz-column-count: 1!important;
+    -webkit-column-count: 1!important;
+    margin-top: -1em;
+}
+
+#freedoms label {
+    float: none;
+}
+
+#field_jurisdiction {
+    margin-left: 2em;
+}
+
+#license {
+    text-align: center;
+}
+
+#license #badge {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+#fc_logo_link, #badge_link {
+    outline: 0px;
+}
+
+#fc_logo_link {
+    display: block;
+    width: 115px;
+    height: 115px;
+    position: absolute;
+    left: 50%;
+    bottom: 25px;
+    margin-left: -55px;
+}
+
+#license .mini_deed {
+    min-height: 224px;
+    margin-top: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-top: 1px solid #393839;
+    border-bottom: 1px solid #393839;
+    position: relative;
+}
+
+#license .whatis, #license .whynot {
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 1em;
+    text-align: center;
+}
+
+#license .whynot {
+    display: none;
+}
+
+.ui_box {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    display: inline-block;
+    background-color: #f5f5f5;
+    width: 400px;
+    height: 400px;
+    padding: 32px;
+    margin: 10px 7px;
+    border: 1px solid #393839;
+    border-radius: 4px;
+    vertical-align: text-top;
+    text-align: left;
+    position: relative; /* required for the arrows to work right */
+}
+
+.ui_box h2 {
+    text-align: center;
+}
+
+
+.more-metadata {
+}
+.more-metadata label {
+    width: 150px;
+}
+.more-metadata input {
+    width: 170px;
+}
+#metadata ul {
+    list-style: none;
+    text-align: right;
+}
+#metadata li {
+    margin-top: 1.8em;
+}
+#metadata input,
+#format_selection {
+    display: block;
+    width: 190px;
+    float: right;
+    margin-left: 1em;
+    margin-right: -1em;
+}
+#metadata li span {
+    display: inline-block;
+    margin-left: -60px;
+    margin-top: 4px;
+    letter-spacing: -.2px;
+}
+
+#internets {
+    text-align: center;
+    position: relative;
+}
+#results-preview {
+    margin-top: 3em;
+}
+#copy_caption {
+    position: absolute;
+    bottom: 12em;
+    left: 0px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+#codetocopy {
+    display: block;
+    position: absolute;
+    bottom: 2em;
+    left: 20px;
+    width: 350px;
+    height: 9em;
+    resize: none;
+}
+
+/* all arrows */
+#freedoms:before,
+#license:before,
+#metadata:before {
+    display: block;
+    content: "";
+    border: 0px;
+    position: absolute;
+    z-index: 10;
+}
+
+/* left arrow */
+#freedoms:before,
+#metadata:before {
+    background-image: url("/wp-content/themes/creativecommons.org/images/left_arrow.png");
+    width: 53px;
+    height: 98px;
+    top: 50%;
+    right: 0px;
+    margin-right: -53px;
+    margin-top: -49px;
+}
+
+
+/* down arrow */
+#license:before {
+    background-image: url("/wp-content/themes/creativecommons.org/images/down_arrow.png");
+    width: 98px;
+    height: 53px;
+    bottom: 0px;
+    left: 50%;
+    margin-bottom: -53px;
+    margin-left: -49px;
+}
+</style>
+  
+<noscript><style type="text/css">
+.update_bar {
+    background-color: black;
+    color: white;
+    width: 800px;
+    margin: auto;
+    padding: 5px;
+    text-align: center;
+    border-radius: 1em;
+}
+.update_bar input {
+    margin-left: 14em;
+    background-color: white;
+    color: black;
+}
+</style></noscript>
+
+
+{% endblock headers %}
+{% block body %}
+
+<div id="instructional_fluff">
+  <span>{% trans %}New to creative commons?{% endtrans %}</span>
+  <span>[ <a href="/about/think">
+    {%- trans %}Considerations before licensing{% endtrans -%}
+  </a> ]</span>
+  <span>[ <a href="/about/licenses">
+    {%- trans %} How the licenses work {% endtrans -%}
+  </a> ]</span>
+</div>
+<div id="copyright_fluff">
+  <span><strong>
+    {%- trans %}With this tool, you keep your copyright. {% endtrans -%}
+  </strong></span>
+  <span>[ <a href="http://creativecommons.org/publicdomain/">
+    {%- trans %}Want public domain instead?{% endtrans -%}
+  </a> ]</span>
+</div>
+
+
+<form action="./classic_chooser" method="get">
+<noscript>
+  <div class="update_bar">
+    Javascript is disabled.
+    <input type="submit" value="Update Selected License"/>
+  </div>
+</noscript>
+
+<div class="ui_row">
+  <div id="freedoms" class="ui_box">
+    <h2>{% trans %}License Features{% endtrans %}</h2>
+    <h4>{% trans %}Allow modification to your work?{% endtrans %}</h4>
+      <ul>
+	<li>
+	  <input type="radio"
+		 {% if not form.license.nd and not form.license.sa -%}
+		 checked="checked"{% endif %}
+		 name="field_derivatives" value="y"
+		 id="question_3-5" />
+	  <label for="question_3-5">{% trans %}Yes{% endtrans %}</label>
+	</li>
+	<li>
+          <input type="radio"  name="field_derivatives" value="n"
+		 {% if form.license.nd %}checked="checked"{% endif %}
+                 id="question_3-7" />
+          <label for="question_3-7">{% trans %}No{% endtrans %}</label>
+	</li>
+      </ul>
+      <ul class="no_columns">
+	<li>
+	  <input type="radio" name="field_derivatives" value="sa"
+		 {% if form.license.sa %}checked="checked"{% endif %}
+                 id="question_3-6" />
+          <label for="question_3-6">
+              {% trans %}Yes, as long as others share alike{% endtrans %}
+	  </label>
+	</li>
+      </ul>
+
+    <h4>{% trans %}Allow commercial use of your work?{% endtrans %}</h4>
+    <ul>
+      <li>
+	<input type="radio"
+	       {%- if not form.license.nc %} checked="checked" {% endif -%}
+	       name="field_commercial" value="y" id="question_2-3"/>
+	<label for="question_2-3">{% trans %}Yes{% endtrans %}</label>
+      </li>
+      <li>
+	<input type="radio"
+	       {%- if form.license.nc %} checked="checked" {% endif -%}
+               name="field_commercial" value="n" id="question_2-4"/>
+	<label for="question_2-4">{% trans %}No{% endtrans %}</label>
+      </li>
+    </ul>
+    </p>
+    <h4>{% trans %}License Jurisdiction{% endtrans %}:</h4>
+    <select id="field_jurisdiction" name="field_jurisdiction">
+      {# If a specific jurisdiction is requested, we'll mark that
+       # as selected.  Otherwise util.International should be selected. #}
+      <option value=""
+              {% if form.license.jurisdiction == "" -%}
+              selected="selected"
+              {%- endif %}>
+        {% trans %}International{% endtrans %}
+      </option>
+      {% for juris_code, juris_name in jurisdictions_names %}
+      <option value="{{ juris_code }}"
+              {% if form.license.jurisdiction == juris_code -%}
+              selected="selected"
+              {%- endif %}>
+        {{- juris_name -}}
+      </option>
+      {% endfor %}
+    </select>
+    <h4>{% trans %}Icon Size{% endtrans %}:</h4>
+    <ul>
+      <li>
+	<input type="radio"
+	       {%- if not form.tiny_icon %} checked="checked" {% endif -%}
+	       name="field_iconsize" value="Normal" id="extracredit_1-1"/>
+	<label for="extracredit_1-1">{% trans %}Normal{% endtrans %}</label>
+      </li>
+      <li>
+	<input type="radio"
+	       {%- if form.tiny_icon %} checked="checked" {% endif -%}
+               name="field_iconsize" value="n" id="extracredit_1-2"/>
+	<label for="extracredit_1-2">{% trans %}Compact{% endtrans %}</label>
+      </li>
+    </ul>
+  </div>
+
+
+
+
+  <div id="license" class="ui_box">
+    <h2>{% trans %}Selected License{% endtrans %}</h2>
+    <div class="mini_deed">
+      <a id="badge_link" href="">
+        <img id="badge" src="http://i.creativecommons.org/l/by/3.0/88x31.png"/>
+      </a>
+      <a id="license_title" href="http://creativecommons.org/licenses/by/3.0/">
+        Attribution 3.0 Unported
+      </a>
+
+      <a id="fc_logo_link" href="http://freedomdefined.org/Definition">
+        <img src="/wp-content/themes/creativecommons.org/images/fc_approved_small.png" class="logo fc_approved" alt="{% trans %}Approved for free culture!{% endtrans %}" />
+      </a>
+    </div>
+    <div class="whatis">
+      <a href="http://freedomdefined.org/Definition">
+        {%- trans %}What is free culture?{% endtrans -%}
+      </a>
+    </div>
+    <div class="whynot">
+      <a href="http://freedomdefined.org/Definition">
+        {%- trans %}Why is this not a free culture license?{% endtrans -%}
+      </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="ui_row">
+  <div id="metadata" class="ui_box">
+    <h2>{% trans %}Help others attribute you!{% endtrans %}</h2>
+    {% trans %}This part is optional, but filling it out will add machine readable metadata to the embedable HTML!{% endtrans %}
+
+    <ul>
+      <li>
+        <span for="field_format">
+          {% trans %}Format of work{% endtrans %}
+        </span>
+        <select id="format_selection" name="field_format">
+          <option value="" 
+	          {%- if form.meta.format == "" %} selected="selected"
+	          {%- endif %}>
+            {% trans %}Other{% endtrans %}</option>
+          <option value="Sound"
+	          {%- if form.meta.format == "Sound" %} selected="selected"
+	          {%- endif %}>
+            {% trans %}Audio{% endtrans %}</option>
+          <option value="MovingImage"
+	          {%- if form.meta.format == "MovingImage" %} selected="selected"
+	          {%- endif %}>
+            {% trans %}Video{% endtrans %}</option>
+          <option value="StillImage"
+	          {%- if form.meta.format == "StillImage" %} selected="selected"
+	          {%- endif %}>
+            {% trans %}Image{% endtrans %}</option>
+          <option value="Text"
+	          {%- if form.meta.format == "Text" %} selected="selected"
+	          {%- endif %}>
+            {% trans %}Text{% endtrans %}</option>
+          <option value="Dataset"
+	          {%- if form.meta.format == "Dataset" %} selected="selected"
+	          {%- endif %}>
+            {% trans %}Dataset{% endtrans %}</option>
+          <option value="InteractiveResource"
+	          {%- if form.meta.format == "InteractiveResource" %} selected="selected"{% endif %}>
+            {% trans %}Interactive{% endtrans %}</option>
+        </select>
+      </li>
+
+      <li>
+        <span for="field_worktitle">
+          {%- trans %}Title of work{% endtrans -%}
+        </span>
+        <input type="text" name="field_worktitle" 
+               value="{{ form.meta.title }}" />
+      </li>
+
+      <li>
+        <span for="field_attribute_to_name">
+          {%- trans %}Attribute work to name{% endtrans -%}
+        </span>
+        <input type="text" name="field_attribute_to_name" 
+               value="{{ form.meta.attrib_name }}"/>
+      </li>
+      
+      <li>
+        <span for="field_attribute_to_url">
+          {%- trans %}Attribute work to URL{% endtrans -%}
+        </span>
+        <input type="text" name="field_attribute_to_url" 
+               value="{{ form.meta.attrib_url }}" />
+      </li>
+
+      <li>
+        <span for="field_sourceurl">
+          {%- trans %}Source work URL{% endtrans -%}
+        </span>
+        <input type="text" name="field_sourceurl" 
+               value="{{ form.meta.src_url }}"/>
+      </li>
+
+      <li>
+        <span for="field_morepermissionsurl">
+          {%- trans %}More permissions URL{% endtrans -%}
+        </span>
+        <input type="text" name="field_morepermissionsurl"
+               value="{{ form.meta.permissions }}"/>
+      </li>
+    </ul>
+  </div>
+  
+
+  <div id="internets" class="ui_box">
+    <h2>{% trans %}Have a web page?{% endtrans %}</h2>
+    <div id="results-preview"></div>
+    <div id="copy_caption">
+      {%- trans %}Copy this code to let your visitors know!{% endtrans -%}
+    </div>
+    <textarea id="codetocopy" readonly="readonly"></textarea>
+  </div>
+</div>
+
+
+<noscript>
+  <div class="update_bar">
+    Javascript is disabled.
+    <input type="submit" value="Update Selected License"/>
+  </div>
+</noscript>
+</form>
+
+
+<div id="other_stuff">
+  <div id="chooserDonate">
+    <div>
+      <a href="https://creativecommons.net/donate/"><img src="/images/support/2010/cc-support.png" alt="Donate" title="Donate" border="0"/></a></div>
+    <p>
+      {% trans %}Creative Commons is a non-profit organization.<br /> We need your support to continue providing these tools.<br /> <a href="https://creativecommons.net/donate/">Donate today!</a>{% endtrans %}
+    </p>
+  </div>
+  {% include "includes/engine_languages.html" %}
+</div>
+{% endblock %}

@@ -716,11 +716,15 @@ license is better suited for your needs</a>.{% endtrans %}</p>
           {% trans %}Creative Commons is a non-profit organization.<br /> We need your support to continue providing these tools.<br /> <a href="https://creativecommons.net/donate/">Donate today!</a>{% endtrans %}
        </p>
     </div>
+
+  {% include "includes/engine_languages.html" %}
+
   </div>
   <!-- <div metal:use-macro="here/license_macros/macros/languages">
        language box
        </div>
   -->
+
 {% endblock %}
 
 {% block sidebar %}
@@ -754,8 +758,5 @@ license is better suited for your needs</a>.{% endtrans %}</p>
       </a>
     </li>
   </ul>
-
-
-  {% include "includes/engine_languages.html" %}
 
 {% endblock %}

@@ -504,15 +504,16 @@ def xhr_api(request):
 
     # Generate the HTML+RDFa for the license + provided work information
     work_dict = _formatter_work_dict(request_form)
-    license_slim_logo = license.logo_method('80x15')
 
     license_html = HTML_FORMATTER.format(
         license, work_dict, target_lang)
 
     ret = {
         #'license': license,
+        'uri' : license.uri,
         'libre' : license.libre,
-        'license_slim_logo': license_slim_logo,
+        'license_logo': license.logo_method('88x31'),
+        'license_slim_logo': license.logo_method('80x15'),
         'license_title': license.title(target_lang),
         'license_html': license_html
         }
@@ -528,6 +529,14 @@ def classic_chooser(request):
 
     # The purpose of this view is to make the other demos look better =)
     return chooser_demo_baseview(request, 'classic_flavor.html')
+
+
+def interactive_chooser(request):
+    # New style license chooser demo view.  This one is features a fresh and
+    # intuitive design.
+
+    # The purpose of this view is to make the other demos look better =)
+    return chooser_demo_baseview(request, 'interactive_chooser.html')
 
 
 def choose_xmp_view(request):
