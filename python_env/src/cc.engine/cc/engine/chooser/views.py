@@ -432,22 +432,37 @@ def chooser_demo_baseview(request, template):
             "lang" : "en",
             }
         }
+    def equal_or_default(field, value, default=False):
+        if request_form.has_key(field):
+            return request_form[field] == value
+        else:
+            return default
+
+    def value_or_default(field, default=""):
+        if request_form.has_key(field):
+            return request_form[field]
+        else:
+            return default
+
     if request_form:
         defaults["license"] = {
-            "nc" : request_form['field_commercial'] == u'n',
-            "sa" : request_form['field_derivatives'] == u'sa',
-            "nd" : request_form['field_derivatives'] == u'n',
-            "jurisdiction" : request_form['field_jurisdiction'],
+            "nc" : equal_or_default('field_commercial', u'n'),
+            "sa" : equal_or_default('field_derivatives', u'sa'),
+            "nd" : equal_or_default('field_derivatives', u'n'),
+            "jurisdiction" : value_or_default('field_jurisdiction'),
             }
         defaults["meta"] = {
-            "format" : request_form["field_format"],
-            "title" : request_form["field_worktitle"],
-            "attrib_name" : request_form["field_attribute_to_name"],
-            "attrib_url" : request_form["field_attribute_to_url"],
-            "src_url" : request_form["field_sourceurl"],
-            "permissions" : request_form["field_morepermissionsurl"],
+            "format"      : value_or_default("field_format"),
+            "title"       : value_or_default("field_worktitle"),
+            "attrib_name" : value_or_default("field_attribute_to_name"),
+            "attrib_url"  : value_or_default("field_attribute_to_url"),
+            "src_url"     : value_or_default("field_sourceurl"),
+            "permissions" : value_or_default("field_morepermissionsurl"),
             }
-        defaults["misc"]["lang"] = request_form["lang"],
+        defaults["out"]["badge"] = value_or_default("field_iconsize", "normal");
+        defaults["misc"] = {
+            "lang" : value_or_default("lang", "en"),
+            }
 
     # If the license is retired, redirect to info page
     if license.deprecated:
@@ -459,10 +474,18 @@ def chooser_demo_baseview(request, template):
 
     # Generate the HTML+RDFa for the license + provided work information
     work_dict = _formatter_work_dict(request_form)
+    license_norm_logo = license.logo_method('88x13')
     license_slim_logo = license.logo_method('80x15')
+    picked_logo = {
+        "normal" : license_norm_logo,
+        "small" : license_slim_logo
+        }[defaults['out']['badge']]
 
     license_html = HTML_FORMATTER.format(
         license, work_dict, target_lang)
+
+    if defaults['out']['badge'] == u"small":
+        license_html = license_html.replace("88x31.png", "80x15.png")
 
     context.update(
         {'jurisdictions_names': jurisdictions_names,
@@ -472,6 +495,8 @@ def chooser_demo_baseview(request, template):
          'page_style': '2cols',
          'form' : defaults,
          'license': license,
+         'license_logo': picked_logo,
+         'license_norm_logo': license_norm_logo,
          'license_slim_logo': license_slim_logo,
          'license_title': license.title(target_lang),
          'license_html': license_html})
@@ -484,6 +509,10 @@ def chooser_demo_baseview(request, template):
 def xhr_api(request):
     target_lang = util.get_target_lang_from_request(request)
     request_form = request.GET or request.POST
+
+    print "REQ", request
+    print "LANG", target_lang
+    print "FORM", request_form
 
     # Special case: if anyone is linking to GPL/LGPL (mistake on old
     # deeds), redirect them to gnu.org
