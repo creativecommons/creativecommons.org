@@ -24,6 +24,28 @@ $(document).ready(function () {
     var small_icon = "";
     var icon_is_small = false;
 
+    (function () {
+        // height correction on overflowing boxes
+        var max_height = function (lhs, rhs) {
+            var a = lhs.innerHeight();
+            var b = rhs.innerHeight();
+            if (a > b) { return a; }
+            else { return b; }
+        };
+        var query = function (row, col) {
+            var q = ".ui_row:nth-of-type(" + row + ")"
+            q += " .ui_box:nth-of-type(" + col + ")";
+            console.info("query: " + q);
+            console.info($(q));
+            return $(q);
+        }
+        for (var i=1; i<=2; i+=1) {
+            var height = max_height(query(i, 1), query(i, 2));
+            query(i, 1).height(height);
+            query(i, 2).height(height);
+        }
+    })();
+
     refreshMetadata = function () {
 	var name, value, buffer = metatemplate;
 	for (name in metadata) {
@@ -37,7 +59,7 @@ $(document).ready(function () {
             buffer = buffer.replace("88x31.png", "80x15.png");
         }
 	$("#codetocopy")[0].value = buffer;
-	$("#results-preview")[0].innerHTML = buffer;
+	$("#results-preview")[0].innerHTML = "<div>" + buffer + "</div>";
     };
 
     getState = function (no_redraw) {
@@ -103,6 +125,7 @@ $(document).ready(function () {
 	if (redraw && !no_redraw) {
 	    refreshMetadata();
 	}
+        state.lang = "{{ form.misc.lang }}";
 	return state;
     };
 
@@ -120,9 +143,9 @@ $(document).ready(function () {
         update_icons();
 
         console.info(data);
-	$("#fc_logo_link")[0].style.display = data.libre?"block":"none";
-	$("#license .whatis")[0].style.display = data.libre?"block":"none";
-	$("#license .whynot")[0].style.display = data.libre?"none":"block";
+	$("#fc_logo_link")[0].style.display = data.libre ? "block" : "none";
+	$("#license .whatis")[0].style.display = data.libre ? "block" : "none";
+	$("#license .whynot")[0].style.display = data.libre ? "none" : "block";
 	$("#license_title")[0].innerHTML = data.license_title;
         $("#badge_link")[0].href = data.uri;
         $("#license_title")[0].href = data.uri;
@@ -313,8 +336,9 @@ $(document).ready(function () {
     display: inline-block;
     background-color: #f5f5f5;
     width: 400px;
-    height: 400px;
+    min-height: 363px; /* corresponds to height: 400px for some reason */
     padding: 32px;
+    padding-bottom: 1px;
     margin: 10px 7px;
     border: 1px solid #393839;
     border-radius: 4px;
@@ -328,17 +352,12 @@ $(document).ready(function () {
 }
 
 
-.more-metadata {
-}
-.more-metadata label {
-    width: 150px;
-}
-.more-metadata input {
-    width: 170px;
-}
 #metadata ul {
     list-style: none;
     text-align: right;
+    margin: 0px;
+    margin-left: -18px;
+    margin-right: -08px;
 }
 #metadata li {
     margin-top: 1.8em;
@@ -346,16 +365,17 @@ $(document).ready(function () {
 #metadata input,
 #format_selection {
     display: block;
-    width: 190px;
+    width: 170px;
     float: right;
     margin-left: 1em;
-    margin-right: -1em;
 }
 #metadata li span {
     display: inline-block;
-    margin-left: -60px;
     margin-top: 4px;
     letter-spacing: -.2px;
+}
+#metadata li:last-of-type input {
+    margin-bottom: 1em;
 }
 
 #internets {
@@ -363,7 +383,14 @@ $(document).ready(function () {
     position: relative;
 }
 #results-preview {
-    margin-top: 3em;
+    display: table;
+    width: 334px;
+    height: 150px;
+    vertical-align: middle;
+}
+#results-preview div {
+    display: table-cell;
+    vertical-align: middle;
 }
 #copy_caption {
     position: absolute;
@@ -394,9 +421,9 @@ $(document).ready(function () {
     z-index: 10;
 }
 
-/* left arrow */
-#freedoms:before,
-#metadata:before {
+/* left arrows */
+#content[dir="ltr"] #freedoms:before,
+#content[dir="ltr"] #metadata:before {
     background-image: url("/wp-content/themes/creativecommons.org/images/left_arrow.png");
     width: 53px;
     height: 98px;
@@ -406,6 +433,17 @@ $(document).ready(function () {
     margin-top: -49px;
 }
 
+/* right arrows */
+#content[dir="rtl"] #freedoms:before,
+#content[dir="rtl"] #metadata:before {
+    background-image: url("/wp-content/themes/creativecommons.org/images/right_arrow.png");
+    width: 53px;
+    height: 98px;
+    top: 50%;
+    left: 0px;
+    margin-left: -53px;
+    margin-top: -49px;
+}
 
 /* down arrow */
 #license:before {
@@ -429,8 +467,13 @@ $(document).ready(function () {
     text-align: center;
     border-radius: 1em;
 }
-.update_bar input {
+#content[dir="ltr"] .update_bar input {
     margin-left: 14em;
+    background-color: white;
+    color: black;
+}
+#content[dir="rtl"] .update_bar input {
+    margin-right: 14em;
     background-color: white;
     color: black;
 }
@@ -459,12 +502,14 @@ $(document).ready(function () {
 </div>
 
 
-<form action="./classic_chooser" method="get">
+<form action="./interactive_chooser" method="get">
 <noscript>
   <div class="update_bar">
-    Javascript is disabled.
-    <input type="submit" value="Update Selected License"/>
+    {% trans %}Javascript is disabled.{% endtrans %}
+    <input type="submit" 
+           value="{% trans %}Update Selected License{% endtrans %}"/>
   </div>
+  <input type="hidden" name="lang" value="{{ form.misc.lang }}" />
 </noscript>
 
 <div class="ui_row">
@@ -536,15 +581,15 @@ $(document).ready(function () {
     <h4>{% trans %}Icon Size{% endtrans %}:</h4>
     <ul>
       <li>
-	<input type="radio"
-	       {%- if not form.tiny_icon %} checked="checked" {% endif -%}
-	       name="field_iconsize" value="Normal" id="extracredit_1-1"/>
+	<input type="radio" {% if form.out.badge == "normal" -%}
+               checked="checked" {% endif -%}
+	       name="field_iconsize" value="normal" id="extracredit_1-1"/>
 	<label for="extracredit_1-1">{% trans %}Normal{% endtrans %}</label>
       </li>
       <li>
-	<input type="radio"
-	       {%- if form.tiny_icon %} checked="checked" {% endif -%}
-               name="field_iconsize" value="n" id="extracredit_1-2"/>
+	<input type="radio" {% if form.out.badge == "small" -%}
+               checked="checked" {% endif -%}
+               name="field_iconsize" value="small" id="extracredit_1-2"/>
 	<label for="extracredit_1-2">{% trans %}Compact{% endtrans %}</label>
       </li>
     </ul>
@@ -557,22 +602,24 @@ $(document).ready(function () {
     <h2>{% trans %}Selected License{% endtrans %}</h2>
     <div class="mini_deed">
       <a id="badge_link" href="">
-        <img id="badge" src="http://i.creativecommons.org/l/by/3.0/88x31.png"/>
+        <img id="badge" src="{{ license_logo }}"/>
       </a>
-      <a id="license_title" href="http://creativecommons.org/licenses/by/3.0/">
-        Attribution 3.0 Unported
-      </a>
+      <a id="license_title" href="{{ license.uri }}">{{ license_title }}</a>
 
-      <a id="fc_logo_link" href="http://freedomdefined.org/Definition">
+      <a id="fc_logo_link" {% if not license.libre -%}
+         style="display: none" {% endif -%}
+         href="http://freedomdefined.org/Definition">
         <img src="/wp-content/themes/creativecommons.org/images/fc_approved_small.png" class="logo fc_approved" alt="{% trans %}Approved for free culture!{% endtrans %}" />
       </a>
     </div>
-    <div class="whatis">
+    <div class="whatis" {% if not license.libre -%}
+         style="display: none;"{% endif %}>
       <a href="http://freedomdefined.org/Definition">
         {%- trans %}What is free culture?{% endtrans -%}
       </a>
     </div>
-    <div class="whynot">
+    <div class="whynot" {% if not license.libre -%}
+         style="display: block;"{% endif %}>
       <a href="http://freedomdefined.org/Definition">
         {%- trans %}Why is this not a free culture license?{% endtrans -%}
       </a>
@@ -669,19 +716,20 @@ $(document).ready(function () {
 
   <div id="internets" class="ui_box">
     <h2>{% trans %}Have a web page?{% endtrans %}</h2>
-    <div id="results-preview"></div>
+    <div id="results-preview"><div>{{ license_html|safe }}</div></div>
     <div id="copy_caption">
       {%- trans %}Copy this code to let your visitors know!{% endtrans -%}
     </div>
-    <textarea id="codetocopy" readonly="readonly"></textarea>
+    <textarea id="codetocopy" readonly="readonly">{{ license_html }}</textarea>
   </div>
 </div>
 
 
 <noscript>
   <div class="update_bar">
-    Javascript is disabled.
-    <input type="submit" value="Update Selected License"/>
+    {% trans %}Javascript is disabled.{% endtrans %}
+    <input type="submit"
+           value="{% trans %}Update Selected License{% endtrans %}"/>
   </div>
 </noscript>
 </form>
