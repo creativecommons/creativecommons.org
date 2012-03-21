@@ -175,7 +175,6 @@ $(document).ready(function () {
     delayed_ping = function () {
         if (ping_timer === -1) {
             ping_timer = setTimeout(function () {
-                console.info("waiting");
                 ping_timer = -1;
                 ping();
             }, 100);
