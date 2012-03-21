@@ -16,8 +16,8 @@
 $(document).ready(function () {
     "use strict";
     
-    var getState, update, update_icons, ping, refreshMetadata;
-    var current_state, watching, metadata, metatemplate;
+    var getState, update, update_icons, ping, delayed_ping, refreshMetadata;
+    var current_state, watching, metadata, metatemplate, ping_timer = -1;
     var fc_approved = "/wp-content/themes/creativecommons.org/images/freeculture_approved.png";
     var fc_denied = "/wp-content/themes/creativecommons.org/images/freeculture_questionable.png";
     var large_icon = "";
@@ -172,6 +172,16 @@ $(document).ready(function () {
 	}
     };
 
+    delayed_ping = function () {
+        if (ping_timer === -1) {
+            ping_timer = setTimeout(function () {
+                console.info("waiting");
+                ping_timer = -1;
+                ping();
+            }, 100);
+        }
+    };
+
     // setup
     watching = {
 	'radio' : [
@@ -204,7 +214,7 @@ $(document).ready(function () {
 		selected = $("[name="+watching[key][i]+"]");
 		selected.change(ping);
 		if (key ==="text") {
-		    selected.keyup(ping);
+		    selected.keyup(delayed_ping);
 		}
 	    }
 	}
