@@ -510,10 +510,6 @@ def xhr_api(request):
     target_lang = util.get_target_lang_from_request(request)
     request_form = request.GET or request.POST
 
-    print "REQ", request
-    print "LANG", target_lang
-    print "FORM", request_form
-
     # Special case: if anyone is linking to GPL/LGPL (mistake on old
     # deeds), redirect them to gnu.org
     if request_form.get('license_code') in ("GPL", "LGPL"):
