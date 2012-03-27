@@ -7,7 +7,7 @@
         href="/wp-content/themes/creativecommons.org/engine.css" />
   <!--
   <link rel="stylesheet" type="text/css"
-	href="/wp-content/themes/creativecommons.org/interactive_chooser.css"/>
+        href="/wp-content/themes/creativecommons.org/interactive_chooser.css"/>
   -->
   <script src="/wp-content/themes/creativecommons.org/js/libs/jquery-1.6.2.min.js"></script>
 
@@ -18,11 +18,22 @@ $(document).ready(function () {
     
     var getState, update, update_icons, ping, delayed_ping, refreshMetadata;
     var current_state, watching, metadata, metatemplate, ping_timer = -1;
-    var fc_approved = "/wp-content/themes/creativecommons.org/images/freeculture_approved.png";
-    var fc_denied = "/wp-content/themes/creativecommons.org/images/freeculture_questionable.png";
+    var img_path = "/wp-content/themes/creativecommons.org/images/";
+    var fc_approved = img_path + "fc_approved_small.png";
+    var fc_denied = img_path + "fc_questionable.png";
     var large_icon = "";
     var small_icon = "";
     var icon_is_small = false;
+
+    var metadata_standards = {
+        "html+rdfa" : [true, "#for_htmlrdfa"],
+        "xmp" : [false, "#for_xmp"],
+        "offline" : [false, "#for_offline"]
+    };
+
+    var offline_license_notice = '{%- trans license_name="LICENSE_NAME", license_url="LICENSE_URL" %}This work is licensed under the Creative Commons {{ license_name }} License. To view a copy of this license, visit {{ license_url }} or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.{% endtrans -%}';
+
+    var generated_query_string = "";
 
     (function () {
         // height correction on overflowing boxes
@@ -35,8 +46,6 @@ $(document).ready(function () {
         var query = function (row, col) {
             var q = ".ui_row:nth-of-type(" + row + ")"
             q += " .ui_box:nth-of-type(" + col + ")";
-            console.info("query: " + q);
-            console.info($(q));
             return $(q);
         }
         for (var i=1; i<=2; i+=1) {
@@ -47,129 +56,150 @@ $(document).ready(function () {
     })();
 
     refreshMetadata = function () {
-	var name, value, buffer = metatemplate;
-	for (name in metadata) {
-	    if (!metadata.hasOwnProperty(name)) { continue; }
-	    value = metadata[name];
-	    while (buffer.indexOf(name) !== -1) {
-		buffer = buffer.replace(name, value);
-	    }
-	}
+        var name, value, buffer = metatemplate, format, metakind = $("#metadata_format")[0].value;
+        if (!metadata_standards[metakind][0]) {
+            for (format in metadata_standards) {
+                if (metadata_standards.hasOwnProperty(format)) {
+                    metadata_standards[format][0] = format == metakind;
+                    $(metadata_standards[format][1])[0].style.display = format == metakind ? "block" : "none";
+                }
+            }
+        }
+        var xmp_dl = $("#xmp_download_link")[0];
+        xmp_dl.href = "/choose/metadata.xmp?" + generated_query_string;
+        for (name in metadata) {
+            if (!metadata.hasOwnProperty(name)) { continue; }
+            value = metadata[name];
+            while (buffer.indexOf(name) !== -1) {
+                buffer = buffer.replace(name, value);
+            }
+        }
         if (icon_is_small) {
             buffer = buffer.replace("88x31.png", "80x15.png");
         }
-	$("#codetocopy")[0].value = buffer;
-	$("#results-preview")[0].innerHTML = "<div>" + buffer + "</div>";
+        $("#codetocopy")[0].value = buffer;
+        $("#for_htmlrdfa .results-preview")[0].innerHTML = "<div>" + buffer + "</div>";        
     };
 
     getState = function (no_redraw) {
-	// returns an object representing the current state of the ui controls.
+        // returns an object representing the current state of the ui controls.
 
-	var attrib = function (attr, value) { return "["+attr+"="+value+"]"; };
-	var state = {}, query, node, name, type, i, k, key, found, redraw, fail;
-	redraw = false;
-	for (key in watching) {
-	    if (!watching.hasOwnProperty(key)) { continue; }
-	    if (key === "select") {
-		node = key;
-		type = false;
-	    }
-	    else {
-		node = "input";
-		type = key;
-	    }
-	    for (i=0; i<watching[key].length; i+=1) {
-		name = watching[key][i];	
-		query = node + attrib("name", name);
-		if (!!type) { query += attrib("type", type); }
-		if (type === "select") { 
-		    query += ">option[selected=selected]";
-		}
-		found = $(query);
-		if (found.length === 0) {
-		    console.warn("$( "+query+" ) returned no results!");
-		}
-		else {
-		    if (type === "radio") {
-			fail=true;
-			for (k=0; k<found.length; k+=1) {
-			    if (found[k].checked) {
-				found = found[k].value;
-				fail = false;
-				break;
-			    }
-			}
-			if (fail) {
-			    console.warn(
-				"$( "+query+" ) returned no checked results!");
-			    return;
-			}
-		    }
-		    else {
-			found = found[0].value;
-		    }
-		    if (type === "text") {
-			if (metadata[name] !== found) {
-			    metadata[name] = found;
-			    redraw = true;
-			}
-			found = found === "" ? "" : name;
-		    }
-		    else {
-			console.info(name, found);
-		    }
-		    state[name] = found;
-		}
-	    }
-	}
-	if (redraw && !no_redraw) {
-	    refreshMetadata();
-	}
+        var attrib = function (attr, value) { return "["+attr+"="+value+"]"; };
+        var state = {}, query, node, name, type, i, k, key, found, redraw, fail, query_part;
+        generated_query_string = "";
+        redraw = false;
+        for (key in watching) {
+            query_part = "";
+            if (!watching.hasOwnProperty(key)) { continue; }
+            if (key === "select") {
+                node = key;
+                type = false;
+            }
+            else {
+                node = "input";
+                type = key;
+            }
+            for (i=0; i<watching[key].length; i+=1) {
+                name = watching[key][i];        
+                query = node + attrib("name", name);
+                if (!!type) { query += attrib("type", type); }
+                if (type === "select") { 
+                    query += ">option[selected=selected]";
+                }
+                found = $(query);
+                if (found.length === 0) {
+                    console.warn("$( "+query+" ) returned no results!");
+                }
+                else {
+                    if (type === "radio") {
+                        fail=true;
+                        for (k=0; k<found.length; k+=1) {
+                            if (found[k].checked) {
+                                found = found[k].value;
+                                fail = false;
+                                break;
+                            }
+                        }
+                        if (fail) {
+                            console.warn("$( "+query+" ) returned no checked results!");
+                            return;
+                        }
+                    }
+                    else {
+                        found = found[0].value;
+                    }
+                    if (found !== "") {
+                        query_part = name + "=" + found;
+                        if (generated_query_string !== "") {
+                            query_part = "&"+query_part;
+                        }
+                        generated_query_string += query_part;
+                    }
+
+                    if (type === "text") {
+                        if (metadata[name] !== found) {
+                            metadata[name] = found;
+                            redraw = true;
+                        }
+                        found = found === "" ? "" : name;
+                    }
+                    state[name] = found;
+                }
+            }
+        }
+        if (redraw && !no_redraw) {
+            refreshMetadata();
+        }
         state.lang = "{{ form.misc.lang }}";
-	return state;
+        return state;
     };
 
     update_icons = function () {
         icon_is_small = $("[name=field_iconsize]")[1].checked;
         $("#license #badge")[0].src = icon_is_small?small_icon:large_icon;
-	refreshMetadata();
+        refreshMetadata();
     }
 
     update = function (data) {
-	// Callback to update the UI based on the response from the server.
-	metatemplate = data.license_html;
+        // Callback to update the UI based on the response from the server.
+        var buffer;
+        metatemplate = data.license_html;
         large_icon = data.license_logo;
         small_icon = data.license_slim_logo;
         update_icons();
 
-        console.info(data);
-	$("#fc_logo_link")[0].style.display = data.libre ? "block" : "none";
-	$("#license .whatis")[0].style.display = data.libre ? "block" : "none";
-	$("#license .whynot")[0].style.display = data.libre ? "none" : "block";
-	$("#license_title")[0].innerHTML = data.license_title;
+        $(".fc_status")[0].src = data.libre ? fc_approved : fc_denied;
+        $("#license .whatis")[0].style.display = data.libre ? "block" : "none";
+        $("#license .whynot")[0].style.display = data.libre ? "none" : "block";
+        $("#license_title")[0].innerHTML = data.license_title;
+        $("#xmp_license_name")[0].innerHTML = data.license_title;
         $("#badge_link")[0].href = data.uri;
         $("#license_title")[0].href = data.uri;
-	console.info("pong!");
+
+        buffer = offline_license_notice;
+        buffer = buffer.replace("LICENSE_NAME", data.license_title);
+        buffer = buffer.replace("LICENSE_URL", data.uri);
+        $("#infotocopy")[0].value = buffer;
     };
 
     ping = function (force) {
-	// Poll the server for license and metadata info.  Checks for relevance, first.
-	
-	var new_state = getState();
-	var nevermind = true;
-	for (var param in new_state) {
-	    if (new_state.hasOwnProperty(param) && new_state[param] !== current_state[param]) {
-		nevermind = false;
-		break;
-	    }
-	}
-	if (nevermind && !force) { 
-	    return;
-	}
-	else {
-	    current_state = new_state;
-	    $.getJSON('./xhr_api', current_state, update);
-	}
+        // Poll the server for license and metadata info.  Checks for relevance, first.
+        
+        var new_state = getState();
+        var nevermind = true;
+        for (var param in new_state) {
+            if (new_state.hasOwnProperty(param) && new_state[param] !== current_state[param]) {
+                nevermind = false;
+                break;
+            }
+        }
+        if (nevermind && !force) { 
+            return;
+        }
+        else {
+            current_state = new_state;
+            $.getJSON('./xhr_api', current_state, update);
+        }
     };
 
     delayed_ping = function () {
@@ -183,40 +213,42 @@ $(document).ready(function () {
 
     // setup
     watching = {
-	'radio' : [
-	    'field_commercial',
-	    'field_derivatives',
-	],
-	'select' : [
-	    'field_jurisdiction',
-	    'field_format',
-	],
-	'text' : [
-	    'field_worktitle',
-	    'field_attribute_to_name',
-	    'field_attribute_to_url',
-	    'field_sourceurl',
-	    'field_morepermissionsurl',
-	],
+        'radio' : [
+            'field_commercial',
+            'field_derivatives',
+        ],
+        'select' : [
+            'field_jurisdiction',
+            'field_format',
+        ],
+        'text' : [
+            'field_worktitle',
+            'field_attribute_to_name',
+            'field_attribute_to_url',
+            'field_sourceurl',
+            'field_morepermissionsurl',
+        ],
     };
     metadata = {};
     metatemplate = "";
     current_state = getState(true);
-    console.info(current_state);
 
     (function () {
-	// setup events
-	var key, i, k, selected, found;
-	for (key in watching) {
-	    if (!watching.hasOwnProperty(key)) { continue; }
-	    for (i=0; i<watching[key].length; i+=1) {
-		selected = $("[name="+watching[key][i]+"]");
-		selected.change(ping);
-		if (key ==="text") {
-		    selected.keyup(delayed_ping);
-		}
-	    }
-	}
+        // setup events
+        var key, i, k, selected, found;
+        for (key in watching) {
+            if (!watching.hasOwnProperty(key)) { continue; }
+            for (i=0; i<watching[key].length; i+=1) {
+                selected = $("[name="+watching[key][i]+"]");
+                selected.change(ping);
+                if (key ==="text") {
+                    selected.keyup(delayed_ping);
+                }
+            }
+        }
+        selected = $("[name=field_metadata_standard]");
+        selected.change(refreshMetadata);
+
         var icon_inputs = $("[name=field_iconsize]");
         icon_inputs.change(update_icons);
     })();
@@ -369,10 +401,11 @@ $(document).ready(function () {
     margin-right: -08px;
 }
 #metadata li {
-    margin-top: 1.8em;
+    margin-top: 1.2em;
 }
 #metadata input,
-#format_selection {
+#format_selection,
+#metadata_format {
     display: block;
     width: 170px;
     float: right;
@@ -391,16 +424,17 @@ $(document).ready(function () {
     text-align: center;
     position: relative;
 }
-#results-preview {
+.results-preview {
     display: table;
     width: 334px;
     height: 150px;
     vertical-align: middle;
 }
-#results-preview div {
+.results-preview div {
     display: table-cell;
     vertical-align: middle;
 }
+
 #copy_caption {
     position: absolute;
     bottom: 12em;
@@ -409,6 +443,8 @@ $(document).ready(function () {
     text-align: center;
     width: 100%;
 }
+#xmp_download_box,
+#infotocopy,
 #codetocopy {
     display: block;
     position: absolute;
@@ -418,6 +454,18 @@ $(document).ready(function () {
     height: 9em;
     resize: none;
 }
+
+#xmp_download_box {
+    display: table!important;
+    vertical-align: middle;
+    border : 1px solid #444;
+    border-radius: 8px;
+}
+#xmp_download_box div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 
 /* all arrows */
 #freedoms:before,
@@ -526,45 +574,45 @@ $(document).ready(function () {
     <h2>{% trans %}License Features{% endtrans %}</h2>
     <h4>{% trans %}Allow modification to your work?{% endtrans %}</h4>
       <ul>
-	<li>
-	  <input type="radio"
-		 {% if not form.license.nd and not form.license.sa -%}
-		 checked="checked"{% endif %}
-		 name="field_derivatives" value="y"
-		 id="question_3-5" />
-	  <label for="question_3-5">{% trans %}Yes{% endtrans %}</label>
-	</li>
-	<li>
+        <li>
+          <input type="radio"
+                 {% if not form.license.nd and not form.license.sa -%}
+                 checked="checked"{% endif %}
+                 name="field_derivatives" value="y"
+                 id="question_3-5" />
+          <label for="question_3-5">{% trans %}Yes{% endtrans %}</label>
+        </li>
+        <li>
           <input type="radio"  name="field_derivatives" value="n"
-		 {% if form.license.nd %}checked="checked"{% endif %}
+                 {% if form.license.nd %}checked="checked"{% endif %}
                  id="question_3-7" />
           <label for="question_3-7">{% trans %}No{% endtrans %}</label>
-	</li>
+        </li>
       </ul>
       <ul class="no_columns">
-	<li>
-	  <input type="radio" name="field_derivatives" value="sa"
-		 {% if form.license.sa %}checked="checked"{% endif %}
+        <li>
+          <input type="radio" name="field_derivatives" value="sa"
+                 {% if form.license.sa %}checked="checked"{% endif %}
                  id="question_3-6" />
           <label for="question_3-6">
               {% trans %}Yes, as long as others share alike{% endtrans %}
-	  </label>
-	</li>
+          </label>
+        </li>
       </ul>
 
     <h4>{% trans %}Allow commercial use of your work?{% endtrans %}</h4>
     <ul>
       <li>
-	<input type="radio"
-	       {%- if not form.license.nc %} checked="checked" {% endif -%}
-	       name="field_commercial" value="y" id="question_2-3"/>
-	<label for="question_2-3">{% trans %}Yes{% endtrans %}</label>
+        <input type="radio"
+               {%- if not form.license.nc %} checked="checked" {% endif -%}
+               name="field_commercial" value="y" id="question_2-3"/>
+        <label for="question_2-3">{% trans %}Yes{% endtrans %}</label>
       </li>
       <li>
-	<input type="radio"
-	       {%- if form.license.nc %} checked="checked" {% endif -%}
+        <input type="radio"
+               {%- if form.license.nc %} checked="checked" {% endif -%}
                name="field_commercial" value="n" id="question_2-4"/>
-	<label for="question_2-4">{% trans %}No{% endtrans %}</label>
+        <label for="question_2-4">{% trans %}No{% endtrans %}</label>
       </li>
     </ul>
     </p>
@@ -590,16 +638,16 @@ $(document).ready(function () {
     <h4>{% trans %}Icon Size{% endtrans %}:</h4>
     <ul>
       <li>
-	<input type="radio" {% if form.out.badge == "normal" -%}
+        <input type="radio" {% if form.out.badge == "normal" -%}
                checked="checked" {% endif -%}
-	       name="field_iconsize" value="normal" id="extracredit_1-1"/>
-	<label for="extracredit_1-1">{% trans %}Normal{% endtrans %}</label>
+               name="field_iconsize" value="normal" id="extracredit_1-1"/>
+        <label for="extracredit_1-1">{% trans %}Normal{% endtrans %}</label>
       </li>
       <li>
-	<input type="radio" {% if form.out.badge == "small" -%}
+        <input type="radio" {% if form.out.badge == "small" -%}
                checked="checked" {% endif -%}
                name="field_iconsize" value="small" id="extracredit_1-2"/>
-	<label for="extracredit_1-2">{% trans %}Compact{% endtrans %}</label>
+        <label for="extracredit_1-2">{% trans %}Compact{% endtrans %}</label>
       </li>
     </ul>
   </div>
@@ -615,10 +663,11 @@ $(document).ready(function () {
       </a>
       <a id="license_title" href="{{ license.uri }}">{{ license_title }}</a>
 
-      <a id="fc_logo_link" {% if not license.libre -%}
-         style="display: none" {% endif -%}
-         href="http://freedomdefined.org/Definition">
-        <img src="/wp-content/themes/creativecommons.org/images/fc_approved_small.png" class="logo fc_approved" alt="{% trans %}Approved for free culture!{% endtrans %}" />
+      <a id="fc_logo_link" href="http://freedomdefined.org/Definition">
+        <img src="/wp-content/themes/creativecommons.org/images/
+                  {%- if license.libre -%}fc_approved_small.png
+                  {%- else -%}fc_questionable.png{% endif %}"
+             class="logo fc_status" />
       </a>
     </div>
     <div class="whatis" {% if not license.libre -%}
@@ -646,36 +695,51 @@ $(document).ready(function () {
 
     <ul>
       <li>
+        <span>{% trans %}Metadata format{% endtrans %}</span>
+        <select id="metadata_format" name="field_metadata_standard">
+          <option value="html+rdfa" 
+                  {%- if form.meta.standard == "html+rdfa" %} selected="selected"
+                  {%- endif %}>HTML+RDFA</option>
+          <option value="xmp"
+                  {%- if form.meta.standard == "xmp" %} selected="selected"
+                  {%- endif %}>XMP</option>
+          <option value="offline"
+                  {%- if form.meta.standard == "offline" %} selected="selected"
+                  {%- endif %}>{% trans %}Offline{% endtrans %}</option>
+        </select>
+      </li>
+
+      <li>
         <span for="field_format">
           {% trans %}Format of work{% endtrans %}
         </span>
         <select id="format_selection" name="field_format">
           <option value="" 
-	          {%- if form.meta.format == "" %} selected="selected"
-	          {%- endif %}>
+                  {%- if form.meta.format == "" %} selected="selected"
+                  {%- endif %}>
             {% trans %}Other{% endtrans %}</option>
           <option value="Sound"
-	          {%- if form.meta.format == "Sound" %} selected="selected"
-	          {%- endif %}>
+                  {%- if form.meta.format == "Sound" %} selected="selected"
+                  {%- endif %}>
             {% trans %}Audio{% endtrans %}</option>
           <option value="MovingImage"
-	          {%- if form.meta.format == "MovingImage" %} selected="selected"
-	          {%- endif %}>
+                  {%- if form.meta.format == "MovingImage" %} selected="selected"
+                  {%- endif %}>
             {% trans %}Video{% endtrans %}</option>
           <option value="StillImage"
-	          {%- if form.meta.format == "StillImage" %} selected="selected"
-	          {%- endif %}>
+                  {%- if form.meta.format == "StillImage" %} selected="selected"
+                  {%- endif %}>
             {% trans %}Image{% endtrans %}</option>
           <option value="Text"
-	          {%- if form.meta.format == "Text" %} selected="selected"
-	          {%- endif %}>
+                  {%- if form.meta.format == "Text" %} selected="selected"
+                  {%- endif %}>
             {% trans %}Text{% endtrans %}</option>
           <option value="Dataset"
-	          {%- if form.meta.format == "Dataset" %} selected="selected"
-	          {%- endif %}>
+                  {%- if form.meta.format == "Dataset" %} selected="selected"
+                  {%- endif %}>
             {% trans %}Dataset{% endtrans %}</option>
           <option value="InteractiveResource"
-	          {%- if form.meta.format == "InteractiveResource" %} selected="selected"{% endif %}>
+                  {%- if form.meta.format == "InteractiveResource" %} selected="selected"{% endif %}>
             {% trans %}Interactive{% endtrans %}</option>
         </select>
       </li>
@@ -724,13 +788,56 @@ $(document).ready(function () {
   
 
   <div id="internets" class="ui_box">
-    <h2>{% trans %}Have a web page?{% endtrans %}</h2>
-    <div id="results-preview"><div>{{ license_html|safe }}</div></div>
-    <div id="copy_caption">
-      {%- trans %}Copy this code to let your visitors know!{% endtrans -%}
+
+
+    <div id="for_htmlrdfa" {% if form.meta.standard != "html+rdfa" %}style="display:none"{% endif %}>
+      <h2>{% trans %}Have a web page?{% endtrans %}</h2>
+      <div class="results-preview"><div>{{ license_html|safe }}</div></div>
+      <div id="copy_caption">
+        {%- trans %}Copy this code to let your visitors know!{% endtrans -%}
+      </div>
+      <textarea id="codetocopy" readonly="readonly">{{ license_html }}</textarea>
     </div>
-    <textarea id="codetocopy" readonly="readonly">{{ license_html }}</textarea>
+
+
+    <div id="for_xmp" {% if form.meta.standard != "xmp" %}style="display:none"{% endif %}>
+      <h2>{% trans %}XMP Embeded Metadata{% endtrans %}</h2>
+
+      <div class="results-preview"><div>
+          <p>
+            {% trans %}CC metadata can be embedded into images and other many other file formats!  <a href="http://wiki.creativecommons.org/XMP">See the wiki for more info</a>.
+            {% endtrans %}
+          </p>
+      </div></div>
+      <div id="xmp_download_box"><div>
+        {% trans license_name=license.title(target_lang) -%}
+        <a id="xmp_download_link" href="/choose/metadata.xmp?{{ last_query }}">Download metadata.xmp</a> for <br/> <span id="xmp_license_name">{{ license_name }}</span>{% endtrans %}
+      </div></div>
+    </div>
+    
+
+    <div id="for_offline" {% if form.meta.standard != "offline" %}style="display:none"{% endif %}>
+      <h2>{% trans %}Non-digital works?{% endtrans %}</h2>
+      
+      <div class="results-preview"><div>
+          <p><a href="http://creativecommons.org/about/downloads/">
+              {%- trans %}Downloadable license graphics.{% endtrans -%}
+          </a></p>
+          <p><a href="http://wiki.creativecommons.org/Marking/Creators#Marking_Specific_Media">
+              {%- trans %}How to mark video and other media formats.{% endtrans -%}
+          </a></p>
+          <p>{% trans %}To mark a document not on the web, add the following text to your work:{% endtrans %}</p>
+      </div></div>
+          
+      <textarea id="infotocopy" readonly="readonly">
+        {%- trans license_name=license.title(target_lang), license_url=license.uri -%}
+          This work is licensed under the Creative Commons {{ license_name }} License. To view a copy of this license, visit {{ license_url }} or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+        {%- endtrans -%}
+      </textarea>
+    </div>
   </div>
+
+
 </div>
 
 

@@ -417,9 +417,10 @@ def chooser_demo_baseview(request, template):
             "jurisdiction" : "",
             },
         "meta" : {
+            "standard" : "html+rdfa",
             "format" : "",
             "title" : "",
-            "attrib_name" : "", 
+            "attrib_name" : "",
             "attrib_url" : "",
             "src_url" : "",
             "permissions" : "",
@@ -452,6 +453,7 @@ def chooser_demo_baseview(request, template):
             "jurisdiction" : value_or_default('field_jurisdiction'),
             }
         defaults["meta"] = {
+            "standard"    : value_or_default("field_metadata_standard", "html+rdfa"),
             "format"      : value_or_default("field_format"),
             "title"       : value_or_default("field_worktitle"),
             "attrib_name" : value_or_default("field_attribute_to_name"),
@@ -493,6 +495,7 @@ def chooser_demo_baseview(request, template):
          'requested_jurisdiction': requested_jurisdiction,
          'referrer': request.headers.get('REFERER',''),
          'page_style': '2cols',
+         'last_query': request.query_string,
          'form' : defaults,
          'license': license,
          'license_logo': picked_logo,
