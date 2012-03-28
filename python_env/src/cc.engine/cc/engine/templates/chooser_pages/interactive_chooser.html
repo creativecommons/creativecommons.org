@@ -12,7 +12,8 @@
   <script src="/wp-content/themes/creativecommons.org/js/libs/jquery-1.6.2.min.js"></script>
 
   <script type="text/javascript">
-//
+
+// Symbol table for the interactive license chooser.
 var CHOOSER = {
     "WIRING" : {
         // This is used to bind functions to input elements.
@@ -34,24 +35,66 @@ var CHOOSER = {
             ],
         },
         // This is used to set up multiple views for the bottom right panel.
+        // hint -> {"input name" : [default visibility, corresponding #id],}
         "metadata" : {
             "html+rdfa" : [true, "#for_htmlrdfa"],
             "xmp" : [false, "#for_xmp"],
-            "offline" : [false, "#for_offline"]
-        }
+            "offline" : [false, "#for_offline"],
+        },
     },
 
-    // These are values
+    // Timers
+    "TIMER" : {
+        "ping" : -1,
+    },
+
+    // These are values used for generating output
     "STATE" : {
-        "current",
-        "watching"
+        "current" : {},   // current state of input elements
+        "metadata" : {},  // values entered for metadata fields
+        "htmlrdfa_template" : "",
+        "large_icon" : "",
+        "small_icon" : "",
+        "icon_is_small" : false,
+        "query_string" : "",
+    },
+
+    // Constants
+    "CONST" : {
+        "img_path" : "/wp-content/themes/creativecommons.org/images/",
+        "fc_approved" : "/wp-content/themes/creativecommons.org/images/fc_approved_small.png",
+        "fc_denied" : "/wp-content/themes/creativecommons.org/images/fc_questionable.png",
+    },
+
+    // Templates (may or may not be constants)
+    "TEMPLATE" : {
+        "htmlrdfa" : "",
+        "nondigital" : '{%- trans license_name="LICENSE_NAME", license_url="LICENSE_URL" %}This work is licensed under the Creative Commons {{ license_name }} License. To view a copy of this license, visit {{ license_url }} or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.{% endtrans -%}'
+    },
+
+    // Functions
+    "CALL" : {
+        "ping" : false,
+        "delayed_ping" : false,
+        "refresh_ui" : false,
+        "refresh_state" : false,
+    },
+
+    // Callbacks
+    "CALLBACK" : {
+        "main" : false,
+        "ping" : false,
     },
 };
 
 
 
 
-CHOOSER.init = function () {
+// CSS adjustments and ui event wiring.
+$(document).ready(
+CHOOSER.CALLBACK.main = function () {
+    "use strict";
+
     // height correction on overflowing boxes
     var max_height = function (lhs, rhs) {
         var a = lhs.innerHeight();
@@ -70,243 +113,237 @@ CHOOSER.init = function () {
         query(i, 2).height(height);
     }
 
-};
+    // set initial cgi state
+    CHOOSER.CALL.refresh_state();
 
-
-$(document).ready(CHOOSER.init);
-
-
-
-
-
-
-$(document).ready(function () {
-    "use strict";
-    
-    var getState, update, update_icons, ping, delayed_ping, refreshMetadata;
-    var current_state, watching, metadata, metatemplate, ping_timer = -1;
-    var img_path = "/wp-content/themes/creativecommons.org/images/";
-    var fc_approved = img_path + "fc_approved_small.png";
-    var fc_denied = img_path + "fc_questionable.png";
-    var large_icon = "";
-    var small_icon = "";
-    var icon_is_small = false;
-
-    var metadata_standards = {
-        "html+rdfa" : [true, "#for_htmlrdfa"],
-        "xmp" : [false, "#for_xmp"],
-        "offline" : [false, "#for_offline"]
-    };
-
-    var offline_license_notice = '{%- trans license_name="LICENSE_NAME", license_url="LICENSE_URL" %}This work is licensed under the Creative Commons {{ license_name }} License. To view a copy of this license, visit {{ license_url }} or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.{% endtrans -%}';
-
-    var generated_query_string = "";
-
-
-
-
-
-
-    refreshMetadata = function () {
-        var name, value, buffer = metatemplate, format, metakind = $("#metadata_format")[0].value;
-        if (!metadata_standards[metakind][0]) {
-            for (format in metadata_standards) {
-                if (metadata_standards.hasOwnProperty(format)) {
-                    metadata_standards[format][0] = format == metakind;
-                    $(metadata_standards[format][1])[0].style.display = format == metakind ? "block" : "none";
-                }
+    // setup events
+    var key, i, k, watched, selected, found, etc;
+    for (key in CHOOSER.WIRING.watching) {
+        if (!CHOOSER.WIRING.watching.hasOwnProperty(key)) { continue; }
+        watched = CHOOSER.WIRING.watching[key];
+        for (i=0; i<watched.length; i+=1) {
+            selected = $("[name="+watched[i]+"]");
+            selected.change(CHOOSER.CALL.ping);
+            if (key ==="text") {
+                selected.keyup(CHOOSER.CALL.delayed_ping);
             }
         }
-        $("#xmp_download_link")[0].href = "/choose/metadata.xmp?" + generated_query_string;
-        for (name in metadata) {
-            if (!metadata.hasOwnProperty(name)) { continue; }
-            value = metadata[name];
-            while (buffer.indexOf(name) !== -1) {
-                buffer = buffer.replace(name, value);
-            }
-        }
-        if (icon_is_small) {
-            buffer = buffer.replace("88x31.png", "80x15.png");
-        }
-        $("#codetocopy")[0].value = buffer;
-        $("#for_htmlrdfa .results-preview")[0].innerHTML = "<div>" + buffer + "</div>";        
-    };
-
-    getState = function (no_redraw) {
-        // returns an object representing the current state of the ui controls.
-
-        var attrib = function (attr, value) { return "["+attr+"="+value+"]"; };
-        var state = {}, query, node, name, type, i, k, key, found, redraw, fail, query_part;
-        generated_query_string = "";
-        redraw = false;
-        for (key in watching) {
-            query_part = "";
-            if (!watching.hasOwnProperty(key)) { continue; }
-            if (key === "select") {
-                node = key;
-                type = false;
-            }
-            else {
-                node = "input";
-                type = key;
-            }
-            for (i=0; i<watching[key].length; i+=1) {
-                name = watching[key][i];        
-                query = node + attrib("name", name);
-                if (!!type) { query += attrib("type", type); }
-                if (type === "select") { 
-                    query += ">option[selected=selected]";
-                }
-                found = $(query);
-                if (found.length === 0) {
-                    console.warn("$( "+query+" ) returned no results!");
-                }
-                else {
-                    if (type === "radio") {
-                        fail=true;
-                        for (k=0; k<found.length; k+=1) {
-                            if (found[k].checked) {
-                                found = found[k].value;
-                                fail = false;
-                                break;
-                            }
-                        }
-                        if (fail) {
-                            console.warn("$( "+query+" ) returned no checked results!");
-                            return;
-                        }
-                    }
-                    else {
-                        found = found[0].value;
-                    }
-                    if (found !== "") {
-                        query_part = name + "=" + found;
-                        if (generated_query_string !== "") {
-                            query_part = "&"+query_part;
-                        }
-                        generated_query_string += query_part;
-                    }
-
-                    if (type === "text") {
-                        if (metadata[name] !== found) {
-                            metadata[name] = found;
-                            redraw = true;
-                        }
-                        found = found === "" ? "" : name;
-                    }
-                    state[name] = found;
-                }
-            }
-        }
-        if (redraw && !no_redraw) {
-            refreshMetadata();
-        }
-        state.lang = "{{ form.misc.lang }}";
-        return state;
-    };
-
-    update_icons = function () {
-        icon_is_small = $("[name=field_iconsize]")[1].checked;
-        $("#license #badge")[0].src = icon_is_small?small_icon:large_icon;
-        refreshMetadata();
+    }
+    etc = ["field_metadata_standard", "field_iconsize"];
+    for (i=0; i<etc.length; i+=1) {
+        selected = $("[name="+etc[i]+"]");
+        selected.change(CHOOSER.CALL.refresh_ui);
     }
 
-    update = function (data) {
-        // Callback to update the UI based on the response from the server.
-        var buffer;
-        metatemplate = data.license_html;
-        large_icon = data.license_logo;
-        small_icon = data.license_slim_logo;
-        update_icons();
+    // Ping the server for updates.  This populates some of the CHOOSER.STATE vars, too.
+    CHOOSER.CALL.ping(true);
+});
 
-        $(".fc_status")[0].src = data.libre ? fc_approved : fc_denied;
+
+
+
+// Calls to the server are minimized by having the server generate templates,
+// and filling them in here each time the text in a field changes.
+CHOOSER.CALL.refresh_ui = function (event_ctx, data) {
+    "use strict";
+    var name, value, buffer, format, metakind;
+
+    // Update cc badge icons
+    CHOOSER.STATE.icon_is_small = $("[name=field_iconsize]")[1].checked;
+    $("#license #badge")[0].src = CHOOSER.STATE.icon_is_small ? CHOOSER.STATE.small_icon : CHOOSER.STATE.large_icon;
+
+    // Change the bottom right panel for the correct metadata format
+    metakind = $("#metadata_format")[0].value;
+    if (!CHOOSER.WIRING.metadata[metakind][0]) {
+        for (format in CHOOSER.WIRING.metadata) {
+            if (CHOOSER.WIRING.metadata.hasOwnProperty(format)) {
+                CHOOSER.WIRING.metadata[format][0] = format == metakind;
+                $(CHOOSER.WIRING.metadata[format][1])[0].style.display = format == metakind ? "block" : "none";
+            }
+        }
+    }
+
+    // Update xmp download link
+    $("#xmp_download_link")[0].href = "/choose/metadata.xmp?" + CHOOSER.STATE.query_string;
+
+    // Update generated html for html+rdfa
+    buffer = CHOOSER.TEMPLATE.htmlrdfa;
+    for (name in CHOOSER.STATE.metadata) {
+        if (!CHOOSER.STATE.metadata.hasOwnProperty(name)) { continue; }
+        value = CHOOSER.STATE.metadata[name];
+        while (buffer.indexOf(name) !== -1) {
+            buffer = buffer.replace(name, value);
+        }
+    }
+    if (CHOOSER.STATE.icon_is_small) {
+        buffer = buffer.replace("88x31.png", "80x15.png");
+    }
+    $("#codetocopy")[0].value = buffer;
+    $("#for_htmlrdfa .results-preview")[0].innerHTML = "<div>" + buffer + "</div>";
+
+    // If additional callback data is available, update related fields as well:
+    if (data != undefined) {
+        $(".fc_status")[0].src = data.libre ? CHOOSER.CONST.fc_approved : CHOOSER.CONST.fc_denied;
         $("#license .whatis")[0].style.display = data.libre ? "block" : "none";
         $("#license .whynot")[0].style.display = data.libre ? "none" : "block";
         $("#license_title")[0].innerHTML = data.license_title;
         $("#xmp_license_name")[0].innerHTML = data.license_title;
         $("#badge_link")[0].href = data.uri;
         $("#license_title")[0].href = data.uri;
-
-        buffer = offline_license_notice;
+        buffer = CHOOSER.TEMPLATE.nondigital;
         buffer = buffer.replace("LICENSE_NAME", data.license_title);
         buffer = buffer.replace("LICENSE_URL", data.uri);
         $("#infotocopy")[0].value = buffer;
-    };
+    }
+};
 
-    ping = function (force) {
-        // Poll the server for license and metadata info.  Checks for relevance, first.
-        
-        var new_state = getState();
-        var nevermind = true;
-        for (var param in new_state) {
-            if (new_state.hasOwnProperty(param) && new_state[param] !== current_state[param]) {
-                nevermind = false;
-                break;
-            }
-        }
-        if (nevermind && !force) { 
-            return;
+
+
+
+// Callback to update the UI & state based on the response from the server.
+CHOOSER.CALLBACK.ping = function (data) {
+    "use strict";
+
+    // update state
+    CHOOSER.TEMPLATE.htmlrdfa = data.license_html;
+    CHOOSER.STATE.large_icon = data.license_logo;
+    CHOOSER.STATE.small_icon = data.license_slim_logo;
+    
+    // refresh ui
+    CHOOSER.CALL.refresh_ui(undefined, data);
+};
+
+
+
+
+// Poll the server for license and metadata info.  Checks for relevance, first.
+CHOOSER.CALL.ping = function (force) {
+    "use strict";
+
+    var state_changed= CHOOSER.CALL.refresh_state();
+    CHOOSER.CALL.refresh_ui();
+    if (state_changed || force === true) { 
+        $.getJSON('./xhr_api', CHOOSER.STATE.current, CHOOSER.CALLBACK.ping);
+    }
+};
+
+
+
+
+// Calls a ping in 100ms, but don't schedule more than one at a time.
+CHOOSER.CALL.delayed_ping = function () {
+    "use strict";
+
+    if (CHOOSER.TIMER.ping === -1) {
+        CHOOSER.TIMER.ping = setTimeout(function () {
+            CHOOSER.TIMER.ping = -1;
+            CHOOSER.CALL.ping();
+        }, 100);
+    }
+};
+
+
+
+
+// This function updates the values of CHOOSER.state vars current, query_string, and metadata.
+// Returns True if CHOOSER.state has changed, otherwise returns false.
+CHOOSER.CALL.refresh_state = function () {
+    "use strict";
+
+    var attrib = function (attr, value) { return "["+attr+"="+value+"]"; };
+    var state = {}, query, node, name, type, i, k, key, found, fail, query_string, query_part;
+    var field_by_type = [];
+    query_string = "";
+
+    // for each type of form field we are watching...
+    for (key in CHOOSER.WIRING.watching) {
+        if (!CHOOSER.WIRING.watching.hasOwnProperty(key)) { continue; }
+        field_by_type = CHOOSER.WIRING.watching[key];
+        query_part = "";
+
+        // some vars used to generate a jquery query...
+        if (key === "select") {
+            node = key;
+            type = false;
         }
         else {
-            current_state = new_state;
-            $.getJSON('./xhr_api', current_state, update);
+            node = "input";
+            type = key;
         }
-    };
 
-    delayed_ping = function () {
-        if (ping_timer === -1) {
-            ping_timer = setTimeout(function () {
-                ping_timer = -1;
-                ping();
-            }, 100);
-        }
-    };
+        // for each form field in the given type...
+        for (i=0; i<field_by_type.length; i+=1) {
 
-    // setup
-    watching = {
-        'radio' : [
-            'field_commercial',
-            'field_derivatives',
-        ],
-        'select' : [
-            'field_jurisdiction',
-            'field_format',
-        ],
-        'text' : [
-            'field_worktitle',
-            'field_attribute_to_name',
-            'field_attribute_to_url',
-            'field_sourceurl',
-            'field_morepermissionsurl',
-        ],
-    };
-    metadata = {};
-    metatemplate = "";
-    current_state = getState(true);
+            // Build and query the jquery query...
+            name = field_by_type[i];       
+            query = node + attrib("name", name);
+            if (!!type) { query += attrib("type", type); }
+            if (type === "select") { 
+                query += ">option[selected=selected]";
+            }
+            found = $(query);
+            if (found.length === 0) {
+                throw ("$( "+query+" ) returned no results!");
+            }
 
-    (function () {
-        // setup events
-        var key, i, k, selected, found;
-        for (key in watching) {
-            if (!watching.hasOwnProperty(key)) { continue; }
-            for (i=0; i<watching[key].length; i+=1) {
-                selected = $("[name="+watching[key][i]+"]");
-                selected.change(ping);
-                if (key ==="text") {
-                    selected.keyup(delayed_ping);
+            // Then, Extract a useful value from "found"...
+            if (type === "radio") {
+                // If the field type is 'radio', then found is a list.
+                fail=true;
+                // iterate on 'found' list to find the value we care about...
+                for (k=0; k<found.length; k+=1) {
+                    if (found[k].checked) {
+                        found = found[k].value;
+                        fail = false;
+                        break;
+                    }
+                }
+                if (fail) {
+                    throw ("$( "+query+" ) returned no checked radio buttons!");
                 }
             }
-        }
-        selected = $("[name=field_metadata_standard]");
-        selected.change(refreshMetadata);
+            else {
+                // The fiel type was not 'radio', so just grab the value directly
+                found = found[0].value;
+            }
 
-        var icon_inputs = $("[name=field_iconsize]");
-        icon_inputs.change(update_icons);
-    })();
-    ping(true);
-});
-//
-  </script>
+            // Ignore empty text fields when generating the query_string...
+            if (found !== "") {
+                query_part = name + "=" + found;
+                if (query_string !== "") {
+                    query_part = "&"+query_part;
+                }
+                query_string += query_part;
+            }
+            
+            // Store the actual value of the metadata field so we can use it with a template...
+            if (type === "text") {
+                CHOOSER.STATE.metadata[name] = found;
+                found = found === "" ? "" : name;
+            }
+            state[name] = found;
+        }
+    }
+
+    // Finish up, set remaining CHOOSER.STATE vars and return if state has changed
+    state.lang = "{{ form.misc.lang }}";
+    CHOOSER.STATE.query_string = query_string;
+    var state_changed = false;
+
+    for (var param in state) {
+        if (state.hasOwnProperty(param) && state[param] !== CHOOSER.STATE.current[param]) {
+            CHOOSER.STATE.current = state;
+            state_changed = true;
+            break;
+        }
+    }
+
+    return state_changed;
+}
+
+
+////
+</script>
 
 
 <style type="text/css">
