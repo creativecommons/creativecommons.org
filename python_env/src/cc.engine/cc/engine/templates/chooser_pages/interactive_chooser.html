@@ -13,6 +13,73 @@
 
   <script type="text/javascript">
 //
+var CHOOSER = {
+    "WIRING" : {
+        // This is used to bind functions to input elements.
+        "watching" : {
+            'radio' : [
+                'field_commercial',
+                'field_derivatives',
+            ],
+            'select' : [
+                'field_jurisdiction',
+                'field_format',
+            ],
+            'text' : [
+                'field_worktitle',
+                'field_attribute_to_name',
+                'field_attribute_to_url',
+                'field_sourceurl',
+                'field_morepermissionsurl',
+            ],
+        },
+        // This is used to set up multiple views for the bottom right panel.
+        "metadata" : {
+            "html+rdfa" : [true, "#for_htmlrdfa"],
+            "xmp" : [false, "#for_xmp"],
+            "offline" : [false, "#for_offline"]
+        }
+    },
+
+    // These are values
+    "STATE" : {
+        "current",
+        "watching"
+    },
+};
+
+
+
+
+CHOOSER.init = function () {
+    // height correction on overflowing boxes
+    var max_height = function (lhs, rhs) {
+        var a = lhs.innerHeight();
+        var b = rhs.innerHeight();
+        if (a > b) { return a; }
+        else { return b; }
+    };
+    var query = function (row, col) {
+        var q = ".ui_row:nth-of-type(" + row + ")"
+        q += " .ui_box:nth-of-type(" + col + ")";
+        return $(q);
+    }
+    for (var i=1; i<=2; i+=1) {
+        var height = max_height(query(i, 1), query(i, 2));
+        query(i, 1).height(height);
+        query(i, 2).height(height);
+    }
+
+};
+
+
+$(document).ready(CHOOSER.init);
+
+
+
+
+
+
 $(document).ready(function () {
     "use strict";
     
@@ -35,25 +102,10 @@ $(document).ready(function () {
 
     var generated_query_string = "";
 
-    (function () {
-        // height correction on overflowing boxes
-        var max_height = function (lhs, rhs) {
-            var a = lhs.innerHeight();
-            var b = rhs.innerHeight();
-            if (a > b) { return a; }
-            else { return b; }
-        };
-        var query = function (row, col) {
-            var q = ".ui_row:nth-of-type(" + row + ")"
-            q += " .ui_box:nth-of-type(" + col + ")";
-            return $(q);
-        }
-        for (var i=1; i<=2; i+=1) {
-            var height = max_height(query(i, 1), query(i, 2));
-            query(i, 1).height(height);
-            query(i, 2).height(height);
-        }
-    })();
+
+
+
+
 
     refreshMetadata = function () {
         var name, value, buffer = metatemplate, format, metakind = $("#metadata_format")[0].value;
@@ -65,8 +117,7 @@ $(document).ready(function () {
                 }
             }
         }
-        var xmp_dl = $("#xmp_download_link")[0];
-        xmp_dl.href = "/choose/metadata.xmp?" + generated_query_string;
+        $("#xmp_download_link")[0].href = "/choose/metadata.xmp?" + generated_query_string;
         for (name in metadata) {
             if (!metadata.hasOwnProperty(name)) { continue; }
             value = metadata[name];
