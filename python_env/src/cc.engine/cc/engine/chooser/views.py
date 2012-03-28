@@ -278,7 +278,7 @@ def _work_rdf(work_info, license):
     return etree.tostring(rdf_tree)
 
 
-def chooser_view(request):
+def old_chooser_view(request):
     target_lang = util.get_target_lang_from_request(request)
     context = _base_context(request, target_lang)
     gettext = context['gettext']
@@ -378,7 +378,7 @@ def choose_results_view(request):
                 'chooser_pages/results.html', context))
 
 
-def chooser_demo_baseview(request, template):
+def chooser_view(request):
     #
     #  Used by the new-style chooser demos, for now.
     #
@@ -506,7 +506,7 @@ def chooser_demo_baseview(request, template):
 
     return Response(util.render_template(
             request, target_lang,
-            'chooser_pages/'+template, context))
+            'chooser_pages/interactive_chooser.html', context))
 
 
 def xhr_api(request):
@@ -547,24 +547,6 @@ def xhr_api(request):
         }
 
     return Response(json.dumps(ret))
-
-
-def classic_chooser(request):
-    # New style license chooser demo view.  This one aims to keep all of the
-    # bad ideas from the old chooser by concatinating results_one to the end
-    # of the old chooser, and possibly slinging more information without
-    # removing any of the stale aspects of the old design.
-
-    # The purpose of this view is to make the other demos look better =)
-    return chooser_demo_baseview(request, 'classic_flavor.html')
-
-
-def interactive_chooser(request):
-    # New style license chooser demo view.  This one is features a fresh and
-    # intuitive design.
-
-    # The purpose of this view is to make the other demos look better =)
-    return chooser_demo_baseview(request, 'interactive_chooser.html')
 
 
 def choose_xmp_view(request):
