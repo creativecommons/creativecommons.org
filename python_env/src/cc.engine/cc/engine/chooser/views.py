@@ -513,12 +513,6 @@ def xhr_api(request):
     target_lang = util.get_target_lang_from_request(request)
     request_form = request.GET or request.POST
 
-    # Special case: if anyone is linking to GPL/LGPL (mistake on old
-    # deeds), redirect them to gnu.org
-    if request_form.get('license_code') in ("GPL", "LGPL"):
-        return exc.HTTPMovedPermanently(
-            location='http://www.gnu.org/licenses/gpl-howto.html')
-
     # Select a license based on the request form
     license = _issue_license(request_form)
 
