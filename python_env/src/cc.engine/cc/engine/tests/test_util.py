@@ -41,6 +41,11 @@ def test_get_target_lang_from_request():
         req.matchdict = {}
         return util.get_target_lang_from_request(req, default_locale='default')
 
+    # don't crash when the environment variables are blank
+    req = Request.blank("/")
+    lang = util.get_target_lang_from_request(req, default_locale='default')
+    assert lang == 'default'
+
     # default language case
     assert pick_lang() == 'default'
 
