@@ -516,14 +516,6 @@ def xhr_api(request):
     # Select a license based on the request form
     license = _issue_license(request_form)
 
-    # If the license is retired, redirect to info page
-    if license.deprecated:
-        # Special case: PDCC should redirect to /publicdomain/
-        if license.license_code == 'publicdomain':
-            return exc.HTTPMovedPermanently(location="/publicdomain/")
-        else:
-            return exc.HTTPMovedPermanently(location="/retiredlicenses")
-
     # Generate the HTML+RDFa for the license + provided work information
     work_dict = _formatter_work_dict(request_form)
 
