@@ -278,7 +278,7 @@ def _work_rdf(work_info, license):
     return etree.tostring(rdf_tree)
 
 
-def old_chooser_view(request):
+def classic_chooser_view(request):
     target_lang = util.get_target_lang_from_request(request)
     context = _base_context(request, target_lang)
     gettext = context['gettext']
@@ -320,7 +320,7 @@ def old_chooser_view(request):
         return Response(
             util.render_template(
                 request, target_lang,
-                'chooser_pages/index.html', context))
+                'chooser_pages/classic_chooser.html', context))
 
 
 def choose_results_view(request):

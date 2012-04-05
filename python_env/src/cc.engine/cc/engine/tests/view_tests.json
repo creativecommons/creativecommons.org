@@ -129,7 +129,7 @@
       "Creative Commons Legal Code",
       "CC0 1.0 Universal"]},
 
- {"path": "/choose/",
+ {"path": "/choose/classic_chooser/",
   "string_tests": [
       "Allow commercial uses of your work?",
       "Allow modifications of your work?",
@@ -202,7 +202,7 @@
       "The HTML to display your button is as follows",
       "Creative Commons Attribution 3.0 Unported License"]},
 
- {"path": "/choose/?partner=FreeMusicArchive&jurisdiction_choose=1&exit_url=http%3A%2F%2Ffreemusicarchive.org%2Fcontribute%2FccLicense%2FThe_Wild_Tape%3Flicense_url%3D[license_url]%26license_name%3D[license_name]%26license_button%3D[license_button]%26deed_url%3D[deed_url]",
+ {"path": "/choose/classic_chooser/?partner=FreeMusicArchive&jurisdiction_choose=1&exit_url=http%3A%2F%2Ffreemusicarchive.org%2Fcontribute%2FccLicense%2FThe_Wild_Tape%3Flicense_url%3D[license_url]%26license_name%3D[license_name]%26license_button%3D[license_button]%26deed_url%3D[deed_url]",
   "string_tests": [
       "Choose a License",
       "Allow commercial uses of your work?",

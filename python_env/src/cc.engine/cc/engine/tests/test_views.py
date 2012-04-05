@@ -760,7 +760,7 @@ def test_interactive_chooser_gives_correct_licenses():
         """
         util._clear_test_template_context()
         TESTAPP.get(
-            '/choose/interactive_chooser?' +
+            '/choose/?' +
             urllib.urlencode(parameters))
         license = util.TEST_TEMPLATE_CONTEXT[
             'chooser_pages/interactive_chooser.html']['license']
