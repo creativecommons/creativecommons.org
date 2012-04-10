@@ -226,7 +226,7 @@ CHOOSER.CALL.ping = function (force) {
 
 
 
-// Calls a ping in 100ms, but don't schedule more than one at a time.
+// Calls a ping in 100ms, but do not schedule more than one at a time.
 CHOOSER.CALL.delayed_ping = function () {
     "use strict";
 
@@ -476,7 +476,6 @@ CHOOSER.CALL.refresh_state = function () {
     text-align: center;
 }
 
-
 #metadata ul {
     list-style: none;
     text-align: right;
@@ -596,6 +595,156 @@ CHOOSER.CALL.refresh_state = function () {
     margin-bottom: -53px;
     margin-left: -49px;
 }
+
+@media only screen and (max-width: 399px) {
+    /* Draw .ui_boxes in single column mode, remove margins and box sides */
+
+    /* down arrow */
+    #freedoms:before, 
+    #license:before,
+    #metadata:before {
+        background-image: url("/wp-content/themes/creativecommons.org/images/down_arrow.png")!important;
+        width: 98px!important;
+        height: 53px!important;
+        top: inherit!important;
+        bottom: 0px!important;
+        left: 50%!important;
+        margin-bottom: -53px!important;
+        margin-left: -49px!important;
+    }
+    .container,
+    .sixteen.columns,
+    .ui_row,
+    #other_stuff,
+    #chooser_form {
+        min-width: 100%!important;
+        width: 100%!important;
+        margin: 0px!important;
+    }
+    .ui_row {;
+        text-align: center;
+    }
+    .ui_box {
+        width: 100%!important;
+        height: inherit!important;
+        border-radius: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        display: block;
+        margin: 0px;;
+        margin-bottom: 2em;
+    }
+    #license {
+        padding-bottom: 3em;
+    }
+    #metadata {
+        padding-bottom: 1em;
+    }
+    #metadata input,
+    #format_selection,
+    #metadata_format {
+        width: 100%;
+        margin: auto;
+        float: none!important;
+    }
+    #field_jurisdiction {
+        margin: auto!important;
+        width: 100%!important;
+    }
+    .results-preview {
+        width: 100%;
+    }
+    #xmp_download_box,
+    #infotocopy,
+    #codetocopy {
+        left: 0px;
+        margin: auto;
+        width: 95%;
+    }
+    #copyright_fluff,
+    #instructional_fluff {
+        width: inherit!important;
+    }
+    #copyright_fluff span,
+    #instructional_fluff span {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 817px) and (min-width: 400px) {
+    /* Draw .ui_boxes in single column mode, and adjust margins */
+
+    /* down arrow */
+    #freedoms:before, 
+    #license:before,
+    #metadata:before {
+        background-image: url("/wp-content/themes/creativecommons.org/images/down_arrow.png")!important;
+        width: 98px!important;
+        height: 53px!important;
+        top: inherit!important;
+        bottom: 0px!important;
+        left: 50%!important;
+        margin-bottom: -53px!important;
+        margin-left: -49px!important;
+    }
+    .container,
+    .sixteen.columns,
+    .ui_row,
+    #other_stuff,
+    #chooser_form {
+        min-width: 400px!important;
+        width: inherit!important;
+        margin: auto;
+    }
+    .ui_row {;
+        text-align: center;
+    }
+    .ui_box {
+        display: block;
+        margin: auto;
+        margin-bottom: 2em;
+    }
+    #copyright_fluff,
+    #instructional_fluff {
+        width: inherit!important;
+    }
+    #copyright_fluff span,
+    #instructional_fluff span {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 839px) and (min-width: 818px) {
+    /* Ensure entire quad is visible, minus outter margins. */
+    .container,
+    .sixteen.columns,
+    #chooser_form {
+        width: 818px!important;
+        margin: auto!important;
+    }
+    .ui_row {
+        min-width: 818px!important;
+    }
+    #freedoms, #metadata {
+        margin-left: 0px;
+    }
+    #license, #internets {
+        margin-right: 0px;
+    }
+}
+
+@media only screen and (max-width: 960px) and (min-width: 840px) {
+    /* Override page margins, so that the entire quad is visible correctly.*/
+    .container,
+    .sixteen.columns,
+    #chooser_form {
+        width: 840px!important;
+        margin: auto!important;
+    }
+}
+
+
+
 </style>
   
 <noscript><style type="text/css">
@@ -643,7 +792,7 @@ CHOOSER.CALL.refresh_state = function () {
 </div>
 
 
-<form action="." method="get">
+<form action="." method="get" id="chooser_form">
 <noscript>
   <div class="update_bar">
     {% trans %}Javascript is disabled.{% endtrans %}
