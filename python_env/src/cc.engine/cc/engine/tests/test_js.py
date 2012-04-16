@@ -26,6 +26,11 @@ import subprocess
 class JavascriptError (Exception):
     pass
 
+class SyntaxError (JavascriptError):
+    pass
+
+class ReferenceError (JavascriptError):
+    pass
 
 JSTESTLOADER = None
 def jstest_loader():
@@ -38,41 +43,49 @@ def jstest_loader():
         fileno, path = tempfile.mkstemp();
         loader = open(path, "r+w");
         loader.write("""
-var ASSERT = function (statement, hint) {
-     if (!statement) {
-         throw("ASSERTION FAILED: " + hint);
-     }
-};
-(function() {
-    var page = require('webpage').create();
-    if (phantom.args.length !== 2) {
-        console.error("Wrong number of arguments passed.");
-        console.info("args passed: " + phantom.args);
-        phantom.exit();
-    }
-    var page_url = phantom.args[0];
-    var test_path = phantom.args[1];
+var page = require('webpage').create();
+if (phantom.args.length !== 2) {
+    console.error("Wrong number of arguments passed.");
+    console.info("args passed: " + phantom.args);
+    phantom.exit();
+}
+var page_url = phantom.args[0];
+var test_path = phantom.args[1];
 
-    page.open(page_url, function (status) {
-        try {
-            if (status === "fail") {
-                throw("Failed to open url.");
+page.onConsoleMessage = function (msg) {
+    console.log("ERROR: "+msg);
+}
+
+page.onError = function (msg, trace) {
+    console.log("ERROR: "+msg);
+}
+
+page.open(page_url, function (status) {
+    try {
+        if (status === "fail") {
+            throw("Failed to open url.");
+        }
+        else {
+            page.evaluate(function() {
+                window.ASSERT = function (statement, hint) {
+                    if (!statement) {
+                        console.error("ASSERTION FAILED: " + hint);
+                    }
+                };
+            });
+            if (!page.injectJs(test_path)) {
+                throw("Failed to inject test code.");
             }
             else {
-                if (!phantom.injectJs(test_path)) {
-                    throw("Failed to inject test code.");
-                }
-                else {
-                    UNIT_TEST();
-                }
+                page.evaluate(function(){UNIT_TEST()});
             }
         }
-        catch (msg) {
-            console.log("ERROR: " + msg);
-        }
-        phantom.exit();
-    });
-})();
+    }
+    catch (msg) {
+        console.log("ERROR: " + msg);
+    }
+    phantom.exit();
+});
 """);
         loader.close()
         JSTESTLOADER = path
@@ -93,13 +106,17 @@ def jstest(url, test):
     jstemp.close()
     proc = subprocess.Popen(["phantomjs", "--disk-cache=yes", 
                              jstest_loader(), url, path],
-                            stdout=subprocess.PIPE);
+                            stdout=subprocess.PIPE)
     out = proc.communicate()[0].strip()
     if out.count("ERROR")>0:
         for line in out.split("\n"):
             line = line.strip()
             if line.count("ASSERTION FAILED"):
                 raise AssertionError(line)
+            elif line.count("SyntaxError"):
+                raise SyntaxError("\n"+out)
+            elif line.count("ReferenceError"):
+                raise ReferenceError("\n"+out)
             elif line.count("ERROR") or line.count("Error"):
                 # just show the entire output to be more clear of what failed
                 raise JavascriptError("\n"+out)
@@ -120,10 +137,12 @@ def test_jstest():
         
     check_test("ASSERT(true, 'assert true');", True)
     check_test("ASSERT(false, 'assert false');", False)
+    syntax_fail = False
     try:
         check_test("(((((some syntax error(((((", True)
-    except JavascriptError as err:
-        assert str(err).count("undefined:1 SyntaxError: Parse error") == 1
+    except SyntaxError:
+        syntax_fail = True
+    assert syntax_fail
     try:
         check_test("ASSERT(true, 'assert true');", None, "blahlblahbsurl")
     except JavascriptError as err:
