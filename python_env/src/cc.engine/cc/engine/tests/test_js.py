@@ -52,6 +52,63 @@ if (phantom.args.length !== 2) {
 var page_url = phantom.args[0];
 var test_path = phantom.args[1];
 
+var page_setup = function () {
+    window.JSTEST = {
+        "active" : true,
+        "waiting" : false,
+    };
+    window.ASSERT = function (statement, hint) {
+        if (!statement) {
+            console.error("ASSERTION FAILED: " + hint);
+        }
+    };
+    window.WAITFOR = function (check, callback) {
+        window.JSTEST.waiting = true;
+        var start_time = new Date().getTime();
+        var interval = window.setInterval(function () {
+            if (typeof(check) === "string" ? eval(check) : check()) {
+                window.clearInterval(interval);
+                window.JSTEST.waiting = false;
+                try {
+                    callback();
+                }
+                catch (err) {
+                    console.error("ERROR: " + err);
+                }
+                window.JSTEST.active = false;
+            }
+            else {
+                var benchmark = (new Date().getTime()) - start_time;
+                if (benchmark > 10000) {
+                    window.clearInterval(interval);
+                    console.error("ERROR: Timeout while waiting for " + check);
+                    window.JSTEST.waiting = false;
+                    window.JSTEST.active = false;
+                }
+            }
+        });
+    };
+};
+
+var page_payload = function () {
+    var error = false;
+    try {
+        UNIT_TEST();
+    }
+    catch (err) {
+        error = true;
+        console.error("ERROR: " + err);
+        window.JSTEST.waiting = false;
+    }
+    window.JSTEST.active = window.JSTEST.waiting;
+};
+
+var is_active = function () {
+    return page.evaluate(function(){
+        return window.JSTEST.waiting || window.JSTEST.active;
+    });
+};
+
 page.onConsoleMessage = function (msg) {
     console.log("ERROR: "+msg);
 }
@@ -60,32 +117,33 @@ page.onError = function (msg, trace) {
     console.log("ERROR: "+msg);
 }
 
-page.open(page_url, function (status) {
+page.onLoadFinished = function (status) {
     try {
-        if (status === "fail") {
+        if (status !== "success") {
             throw("Failed to open url.");
         }
         else {
-            page.evaluate(function() {
-                window.ASSERT = function (statement, hint) {
-                    if (!statement) {
-                        console.error("ASSERTION FAILED: " + hint);
-                    }
-                };
-            });
+            page.evaluate(page_setup);
             if (!page.injectJs(test_path)) {
                 throw("Failed to inject test code.");
             }
             else {
-                page.evaluate(function(){UNIT_TEST()});
+                page.evaluate(page_payload);
+                setInterval(function () {
+                    if (!is_active()) {
+                        phantom.exit();
+                    }
+                }, 500);
             }
         }
     }
     catch (msg) {
         console.log("ERROR: " + msg);
+        phantom.exit();
     }
-    phantom.exit();
-});
+}
+
+page.open(page_url);
 """);
         loader.close()
         JSTESTLOADER = path
@@ -94,7 +152,7 @@ page.open(page_url, function (status) {
 
     
 
-def jstest(url, test):
+def jstest(url, test, ignore=None):
     """Runs a unit test written in javascript.
     Warning, use 'ASSERT(test, hint)' instead of console.assert.""";
     
@@ -104,6 +162,7 @@ def jstest(url, test):
     jstemp.write(test)
     jstemp.write("};");
     jstemp.close()
+    #proc = subprocess.Popen(["phantomjs", "--disk-cache=yes", jstest_loader(), url, path]); out = ""; proc.communicate();
     proc = subprocess.Popen(["phantomjs", "--disk-cache=yes", 
                              jstest_loader(), url, path],
                             stdout=subprocess.PIPE)
@@ -119,7 +178,19 @@ def jstest(url, test):
                 raise ReferenceError("\n"+out)
             elif line.count("ERROR") or line.count("Error"):
                 # just show the entire output to be more clear of what failed
-                raise JavascriptError("\n"+out)
+                ignored = False
+                if ignore != None:
+                    if type(ignore) in [list, tuple]:
+                        for check in ignore:
+                            if line.count(check) > 0:
+                                ignored = True
+                                break
+                    elif line.count(ignore) > 0:
+                        ignored = True                        
+                if not ignored:
+                    raise JavascriptError("\n"+out)
+
+
 
 
 def test_jstest():
@@ -135,8 +206,6 @@ def test_jstest():
             passed = False
         assert passed == expected
         
-    check_test("ASSERT(true, 'assert true');", True)
-    check_test("ASSERT(false, 'assert false');", False)
     syntax_fail = False
     try:
         check_test("(((((some syntax error(((((", True)
@@ -147,4 +216,26 @@ def test_jstest():
         check_test("ASSERT(true, 'assert true');", None, "blahlblahbsurl")
     except JavascriptError as err:
         assert str(err).count("ERROR: Failed to open url.") == 1
+
+    check_test("ASSERT(true, 'assert true');", True)
+    check_test("ASSERT(false, 'assert false');", False)
+
+    check_test("""
+        window.READY = false;
+        window.setTimeout(function () {
+            window.READY = true;
+        }, 200);
+        WAITFOR("window.READY", function () {
+            ASSERT(true, 'assert true');
+        });
+        """, True)
+
+    try:
+        check_test("""
+            WAITFOR("false", function () {
+                ASSERT(true, 'assert true');
+            });
+            """, None)
+    except JavascriptError as err:
+        assert str(err).count("Timeout while waiting for false") == 1
 
