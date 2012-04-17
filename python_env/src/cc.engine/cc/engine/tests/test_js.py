@@ -55,7 +55,10 @@ var test_path = phantom.args[1];
 var page_setup = function () {
     window.JSTEST = {
         "active" : true,
-        "waiting" : false,
+        "waiting" : [],
+        "is_waiting" : function () {
+            return window.JSTEST.waiting.length > 0;
+        }
     };
     window.ASSERT = function (statement, hint) {
         if (!statement) {
@@ -63,27 +66,31 @@ var page_setup = function () {
         }
     };
     window.WAITFOR = function (check, callback) {
-        window.JSTEST.waiting = true;
+        window.JSTEST.waiting.push(true);
         var start_time = new Date().getTime();
         var interval = window.setInterval(function () {
             if (typeof(check) === "string" ? eval(check) : check()) {
                 window.clearInterval(interval);
-                window.JSTEST.waiting = false;
+                window.JSTEST.waiting.pop();
+                if (window.JSTEST.waiting.length === 0) {
+                    window.JSTEST.active = false;
+                }
                 try {
                     callback();
                 }
                 catch (err) {
                     console.error("ERROR: " + err);
                 }
-                window.JSTEST.active = false;
             }
             else {
                 var benchmark = (new Date().getTime()) - start_time;
                 if (benchmark > 10000) {
                     window.clearInterval(interval);
                     console.error("ERROR: Timeout while waiting for " + check);
-                    window.JSTEST.waiting = false;
-                    window.JSTEST.active = false;
+                    window.JSTEST.waiting.pop();
+                    if (window.JSTEST.waiting.length === 0) {
+                        window.JSTEST.active = false;
+                    }
                 }
             }
         });
@@ -98,24 +105,24 @@ var page_payload = function () {
     catch (err) {
         error = true;
         console.error("ERROR: " + err);
-        window.JSTEST.waiting = false;
+        window.JSTEST.waiting = [];
     }
-    window.JSTEST.active = window.JSTEST.waiting;
+    window.JSTEST.active = window.JSTEST.is_waiting();
 };
 
 var is_active = function () {
     return page.evaluate(function(){
-        return window.JSTEST.waiting || window.JSTEST.active;
+        return window.JSTEST.is_waiting() || window.JSTEST.active;
     });
 };
 
 page.onConsoleMessage = function (msg) {
     console.log("ERROR: "+msg);
-}
+};
 
 page.onError = function (msg, trace) {
     console.log("ERROR: "+msg);
-}
+};
 
 page.onLoadFinished = function (status) {
     try {
@@ -141,7 +148,7 @@ page.onLoadFinished = function (status) {
         console.log("ERROR: " + msg);
         phantom.exit();
     }
-}
+};
 
 page.open(page_url);
 """);
@@ -162,7 +169,6 @@ def jstest(url, test, ignore=None):
     jstemp.write(test)
     jstemp.write("};");
     jstemp.close()
-    #proc = subprocess.Popen(["phantomjs", "--disk-cache=yes", jstest_loader(), url, path]); out = ""; proc.communicate();
     proc = subprocess.Popen(["phantomjs", "--disk-cache=yes", 
                              jstest_loader(), url, path],
                             stdout=subprocess.PIPE)
@@ -196,7 +202,7 @@ def jstest(url, test, ignore=None):
 def test_jstest():
     """Test the test code =)"""
 
-    def check_test(test, expected=True, url="http://google.com"):
+    def check_test(test, expected=True, url="about:blank"):
         """Argument 'expected' is true if the test should pass, and
         is False if the test should fail."""
         passed = True;
@@ -238,4 +244,55 @@ def test_jstest():
             """, None)
     except JavascriptError as err:
         assert str(err).count("Timeout while waiting for false") == 1
+    
+    # WAITFOR should be nestable
+    check_test("""
+        window.READY_A = false;
+        window.READY_B = false;
+        window.setTimeout(function () {
+            window.READY_A = true;
+        }, 200);
+        window.setTimeout(function () {
+            window.READY_B = true;
+        }, 1000);
+        WAITFOR("window.READY_A", function () {
+            WAITFOR("window.READY_B", function () {
+                ASSERT(false, 'assert false');
+            });
+        });
+        """, False)
+
+    # WAITFOR should work concurrently (longer wait asserts false)
+    check_test("""
+        window.READY_A = false;
+        window.READY_B = false;
+        window.setTimeout(function () {
+            window.READY_A = true;
+        }, 200);
+        window.setTimeout(function () {
+            window.READY_B = true;
+        }, 1000);
+        WAITFOR("window.READY_A", function () {
+        });
+        WAITFOR("window.READY_B", function () {
+            ASSERT(false, 'assert false');
+        });
+        """, False)
+
+    # WAITFOR should work concurrently (shorter wait asserts false)
+    check_test("""
+        window.READY_A = false;
+        window.READY_B = false;
+        window.setTimeout(function () {
+            window.READY_A = true;
+        }, 200);
+        window.setTimeout(function () {
+            window.READY_B = true;
+        }, 1000);
+        WAITFOR("window.READY_A", function () {
+            ASSERT(false, 'assert false');
+        });
+        WAITFOR("window.READY_B", function () {
+        });
+        """, False)
 
