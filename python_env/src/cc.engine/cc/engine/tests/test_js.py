@@ -60,16 +60,19 @@ var page_setup = function () {
             return window.JSTEST.waiting.length > 0;
         }
     };
-    window.ASSERT = function (statement, hint) {
-        if (!statement) {
+    var validate = function (test) {
+        return (typeof(test) === "string" ? eval(test) : typeof(test) == "function" ? test() : test);
+    };
+    window.ASSERT = function (circumstance, hint) {
+        if (!validate(circumstance)) {
             console.error("ASSERTION FAILED: " + hint);
         }
     };
-    window.WAITFOR = function (check, callback) {
+    window.WAITFOR = function (check, callback, on_timeout) {
         window.JSTEST.waiting.push(true);
         var start_time = new Date().getTime();
         var interval = window.setInterval(function () {
-            if (typeof(check) === "string" ? eval(check) : check()) {
+            if (validate(check)) {
                 window.clearInterval(interval);
                 window.JSTEST.waiting.pop();
                 if (window.JSTEST.waiting.length === 0) {
@@ -86,13 +89,25 @@ var page_setup = function () {
                 var benchmark = (new Date().getTime()) - start_time;
                 if (benchmark > 10000) {
                     window.clearInterval(interval);
-                    console.error("ERROR: Timeout while waiting for " + check);
+                    if (!!on_timeout && typeof(on_timeout) == "function") {
+                        on_timeout();
+                    }
+                    else {
+                        console.error("ERROR: Timeout while waiting for " + check);
+                    }
                     window.JSTEST.waiting.pop();
                     if (window.JSTEST.waiting.length === 0) {
                         window.JSTEST.active = false;
                     }
                 }
             }
+        }, 200);
+    };
+    window.VIGIL = function (check1, check2, hint) {
+        WAITFOR ( check1, function () {
+            ASSERT( check2, hint );
+        }, function () {
+            ASSERT( check1, hint + " (timed out)" );
         });
     };
 };
@@ -296,3 +311,21 @@ def test_jstest():
         });
         """, False)
 
+    # VIGIL is a combination of WAITFOR and ASSERT.  VIGIL waits for the 
+    # first test case to be true.  If that circumstance is met, then the
+    # second test case is asserted.  If the original wait times out, then 
+    # the first test case is asserted.  The hint refers to both test cases;
+    # in the event of a timeout, " (timeout)" is appended to the hint in
+    # the error message report.
+    check_test("""
+        window.READY = false;
+        window.setTimeout(function () {
+            window.READY = true;
+        }, 500);
+        VIGIL("window.READY === true", false, 'testing VIGIL statement');
+        """, False)
+
+    # Test for timeout.
+    check_test("""
+        VIGIL(false, true, 'testing VIGIL statement');
+        """, False)
