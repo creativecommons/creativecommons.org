@@ -32,18 +32,23 @@ class SyntaxError (JavascriptError):
 class ReferenceError (JavascriptError):
     pass
 
-JSTESTLOADER = None
-def jstest_loader():
+JSTESTLOADER = {}
+def jstest_loader(noscript=False):
     """
     Creates a temporary file containing javascript for running unit tests.
     Returns the path to the script.
     """
     global JSTESTLOADER
-    if not JSTESTLOADER:
+    if not JSTESTLOADER.has_key(noscript):
         fileno, path = tempfile.mkstemp();
         loader = open(path, "r+w");
         loader.write("""
-var page = require('webpage').create();
+var page = require('webpage').create();\n""")
+        if noscript:
+            loader.write("""
+page.settings.javascriptEnabled = False;\n
+""")
+        loader.write("""
 if (phantom.args.length !== 2) {
     console.error("Wrong number of arguments passed.");
     console.info("args passed: " + phantom.args);
@@ -168,13 +173,13 @@ page.onLoadFinished = function (status) {
 page.open(page_url);
 """);
         loader.close()
-        JSTESTLOADER = path
-    return JSTESTLOADER
+        JSTESTLOADER[noscript] = path
+    return JSTESTLOADER[noscript]
 
 
     
 
-def jstest(url, test, ignore=None):
+def jstest(url, test, ignore=None, noscript=False):
     """Runs a unit test written in javascript.
     Warning, use 'ASSERT(test, hint)' instead of console.assert.""";
     
@@ -185,7 +190,7 @@ def jstest(url, test, ignore=None):
     jstemp.write("};");
     jstemp.close()
     proc = subprocess.Popen(["phantomjs", "--disk-cache=yes", 
-                             jstest_loader(), url, path],
+                             jstest_loader(noscript), url, path],
                             stdout=subprocess.PIPE)
     out = proc.communicate()[0].strip()
     if out.count("ERROR")>0:
