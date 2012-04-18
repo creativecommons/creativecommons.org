@@ -11,6 +11,8 @@
 
 // Symbol table for the interactive license chooser.
 var CHOOSER = {
+    "LIVE" : false,
+
     "WIRING" : {
         // This is used to bind functions to input elements.
         "watching" : {
@@ -133,6 +135,7 @@ CHOOSER.CALLBACK.main = function () {
 
     // Ping the server for updates.  This populates some of the CHOOSER.STATE vars, too.
     CHOOSER.CALL.ping(true);
+    CHOOSER.LIVE = true;
 });
 
 
