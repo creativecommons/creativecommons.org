@@ -18,32 +18,32 @@ var CHOOSER = {
         "watching" : {
             'radio' : [
                 'field_commercial',
-                'field_derivatives',
+                'field_derivatives'
             ],
             'select' : [
                 'field_jurisdiction',
-                'field_format',
+                'field_format'
             ],
             'text' : [
                 'field_worktitle',
                 'field_attribute_to_name',
                 'field_attribute_to_url',
                 'field_sourceurl',
-                'field_morepermissionsurl',
-            ],
+                'field_morepermissionsurl'
+            ]
         },
         // This is used to set up multiple views for the bottom right panel.
         // hint -> {"input name" : [default visibility, corresponding #id],}
         "metadata" : {
             "html+rdfa" : [true, "#for_htmlrdfa"],
             "xmp" : [false, "#for_xmp"],
-            "offline" : [false, "#for_offline"],
-        },
+            "offline" : [false, "#for_offline"]
+        }
     },
 
     // Timers
     "TIMER" : {
-        "ping" : -1,
+        "ping" : -1
     },
 
     // These are values used for generating output
@@ -54,14 +54,14 @@ var CHOOSER = {
         "large_icon" : "",
         "small_icon" : "",
         "icon_is_small" : false,
-        "query_string" : "",
+        "query_string" : ""
     },
 
     // Constants
     "CONST" : {
         "img_path" : "/wp-content/themes/creativecommons.org/images/",
         "fc_approved" : "/wp-content/themes/creativecommons.org/images/fc_approved_small.png",
-        "fc_denied" : "/wp-content/themes/creativecommons.org/images/fc_questionable.png",
+        "fc_denied" : "/wp-content/themes/creativecommons.org/images/fc_questionable.png"
     },
 
     // Templates (may or may not be constants)
@@ -75,14 +75,14 @@ var CHOOSER = {
         "ping" : false,
         "delayed_ping" : false,
         "refresh_ui" : false,
-        "refresh_state" : false,
+        "refresh_state" : false
     },
 
     // Callbacks
     "CALLBACK" : {
         "main" : false,
-        "ping" : false,
-    },
+        "ping" : false
+    }
 };
 
 
@@ -101,10 +101,17 @@ CHOOSER.CALLBACK.main = function () {
         else { return b; }
     };
     var query = function (row, col) {
-        var q = ".ui_row:nth-of-type(" + row + ")"
-        q += " .ui_box:nth-of-type(" + col + ")";
-        return $(q);
-    }
+        try {
+            var q = ".ui_row:nth-of-type(" + row + ")";
+            q += " .ui_box:nth-of-type(" + col + ")";
+            return $(q);
+        }
+        catch (err) {
+            // IE8 hack // 8^y
+            console.warn(err);
+            return $("#"+$(".ui_row .ui_box")[col-1 + (row-1)*2].id);
+        }
+    };
     for (var i=1; i<=2; i+=1) {
         var height = max_height(query(i, 1), query(i, 2));
         query(i, 1).height(height);
@@ -346,6 +353,23 @@ CHOOSER.CALL.refresh_state = function () {
 
 
 <style type="text/css">
+
+/* z-order stuff for IE8... */
+#freedoms {
+    z-index: 4;
+}
+#license {
+    z-index: 3;
+}
+#metadata {
+    z-index: 2;
+}
+#internets {
+    z-index: 1;
+}
+
+
+/* everything else: */
 
 #instructional_fluff, #copyright_fluff {
     text-align: center;
