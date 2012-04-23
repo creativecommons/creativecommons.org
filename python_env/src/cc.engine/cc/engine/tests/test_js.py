@@ -191,7 +191,6 @@ def jstest(url, test, ignore=None, noscript=False):
     jstemp.close()
     proc = subprocess.Popen(["phantomjs", "--disk-cache=yes", 
                              jstest_loader(noscript), url, path],
-                            env={"DISPLAY" : ":0"},
                             stdout=subprocess.PIPE)
     out = proc.communicate()[0].strip()
     if out.count("ERROR")>0:
