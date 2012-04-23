@@ -1,11 +1,14 @@
+from cc.engine.tests import TEST_SERVER_PORT
 from test_js import jstest
 
+
+CHOOSER_URL = "http://localhost:"+TEST_SERVER_PORT+"/choose/"
 
 
 
 def test_current_state_initialization():
     def shorthand(test):
-        jstest("http://localhost:6543/choose/", test, 
+        jstest(CHOOSER_URL, test, 
                ignore=["TypeError: 'undefined' is not a function"])
 
     shorthand("""
@@ -17,7 +20,7 @@ VIGIL("CHOOSER.LIVE === true",
 
 def test_license_interactivity():
     def shorthand(test):
-        jstest("http://localhost:6543/choose/", test, 
+        jstest(CHOOSER_URL, test, 
                ignore=["TypeError: 'undefined' is not a function"])
     
     shorthand("""
@@ -39,7 +42,7 @@ WAITFOR("CHOOSER.LIVE === true", function () {
 
 
 def test_metadata_interactivity():
-    jstest("http://localhost:6543/choose/", """
+    jstest(CHOOSER_URL, """
 WAITFOR("CHOOSER.LIVE === true", function () {
     var title_field = $("input[name=field_worktitle][type=text]");
     title_field[0].value="This is a test.  Do not panic.";
@@ -48,7 +51,7 @@ WAITFOR("CHOOSER.LIVE === true", function () {
     VIGIL (function () { return $("#internets .results-preview>div")[0].innerHTML.indexOf("This is a test.  Do not panic.") > -1;}, true, "Check for correct title in metadata output.");
 });
 """, ignore=["TypeError: 'undefined' is not a function"])
-    jstest("http://localhost:6543/choose/", """
+    jstest(CHOOSER_URL, """
 WAITFOR("CHOOSER.LIVE === true", function () {
     var title_field = $("input[name=field_worktitle][type=text]");
     var format_field = $("#format_selection");
@@ -106,7 +109,7 @@ WAITFOR("CHOOSER.LIVE === true", function () {
         VIGIL(wait, true, hint);
     }
     test("""
-        jstest("http://localhost:6543/choose/", common+test+");\n});", 
+        jstest(CHOOSER_URL, common+test+");\n});", 
                ignore=["TypeError: 'undefined' is not a function"])
 
     shorthand("yes_derivs, yes_comm, true, 'is cc-by libre?'")
@@ -118,7 +121,7 @@ WAITFOR("CHOOSER.LIVE === true", function () {
 
 
 def test_cgi_params():
-    jstest("http://localhost:6543/choose/?lang=en&field_derivatives=sa&field_commercial=n&field_jurisdiction=cl&field_iconsize=normal&field_metadata_standard=html%2Brdfa&field_format=Text&field_worktitle=&field_attribute_to_name=Cornelius+Highbrow&field_attribute_to_url=&field_sourceurl=&field_morepermissionsurl=", """
+    jstest(CHOOSER_URL+"?lang=en&field_derivatives=sa&field_commercial=n&field_jurisdiction=cl&field_iconsize=normal&field_metadata_standard=html%2Brdfa&field_format=Text&field_worktitle=&field_attribute_to_name=Cornelius+Highbrow&field_attribute_to_url=&field_sourceurl=&field_morepermissionsurl=", """
 
 WAITFOR("CHOOSER.LIVE === true", function () {
     var yes_derivs = $("#question_3-5")[0].checked;
