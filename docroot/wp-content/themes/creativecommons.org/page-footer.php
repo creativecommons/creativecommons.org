@@ -58,6 +58,7 @@
 								echo '<li><a href="http://creativecommons.org/terms">Terms of Use</a></li>';
 							}
 							?>
+							<li><a href="http://creativecommons.org/contact">Contact CC</a></li>
 							</ul>
 						</div>
 					</div>
