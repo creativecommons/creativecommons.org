@@ -22,7 +22,7 @@
 				    <li class="dropdown">
 				    	<a href="<?php bloginfo('home')?>/about" class="dropdown-toggle">About</a>
 				    	<ul class="menu-dropdown">
-						    <li><a href="<?php bloginfo('home')?>/about">Our Mission</a></li>
+						    <li><a href="<?php bloginfo('home')?>/about">About CC</a></li>
 						    <li><a href="<?php bloginfo('home')?>/about/history">History</a></li>
 						    <li class="divider"></li>
 						    <li><a href="<?php bloginfo('home')?>/who-uses-cc">Who Uses CC?</a></li>
