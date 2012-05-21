@@ -371,6 +371,12 @@ CHOOSER.CALL.refresh_state = function () {
 
 /* everything else: */
 
+select, input, textarea {
+    background-color: white;
+    color: #222;
+    padding: 1px;
+}
+
 #instructional_fluff, #copyright_fluff {
     text-align: center;
     font-size: 16px;
@@ -407,10 +413,15 @@ CHOOSER.CALL.refresh_state = function () {
     min-width: 840px;
 }
 
+#freedoms h2 {
+    margin-bottom: 1em;
+}
+
 #freedoms h4 {
     margin-left: 2em;
 }
 #freedoms select {
+    margin-top: 6px;
     margin-left: 5em;
 }
 #freedoms ul {
@@ -433,6 +444,7 @@ CHOOSER.CALL.refresh_state = function () {
 
 #field_jurisdiction {
     margin-left: 2em;
+    margin-bottom: 2em;
 }
 
 #license {
@@ -455,26 +467,47 @@ CHOOSER.CALL.refresh_state = function () {
     width: 115px;
     height: 115px;
     position: absolute;
-    left: 50%;
+    right: -5px;
     bottom: 25px;
     margin-left: -55px;
 }
+
+#fc_info_box {
+    position: absolute;
+    display: block;
+    width: 200px;
+    left: 10px;
+    top: 135px;
+}
+
+.whatis, .whynot {
+    display: table;
+    width: 200px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+}
+
+.whatis a, .whynot a {
+    display: table-cell;
+    width: 200px;
+    height: 67px;
+    vertical-align: middle;
+}
+
 
 #license .mini_deed {
     min-height: 224px;
     margin-top: 2em;
     padding-top: 1em;
     padding-bottom: 1em;
-    border-top: 1px solid #393839;
-    border-bottom: 1px solid #393839;
+    /*border-top: 1px solid #393839;
+    border-bottom: 1px solid #393839;*/
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
     position: relative;
-}
-
-#license .whatis, #license .whynot {
-    font-size: 16px;
-    font-weight: bold;
-    padding-top: 1em;
-    text-align: center;
 }
 
 #license .whynot {
@@ -547,7 +580,7 @@ CHOOSER.CALL.refresh_state = function () {
 
 #copy_caption {
     position: absolute;
-    bottom: 12em;
+    bottom: 13em;
     left: 0px;
     font-weight: bold;
     text-align: center;
@@ -563,6 +596,28 @@ CHOOSER.CALL.refresh_state = function () {
     width: 350px;
     height: 9em;
     resize: none;
+}
+
+#codetocopy {
+    bottom: 3em!important;
+}
+
+#iconsize_box {
+    display: block;
+    position: absolute;
+    bottom: -.75em;
+    left: 16px;
+    width: 350px;
+    text-align: center;
+}
+#iconsize_box label {
+    float: none;
+}
+#iconsize_box ul {
+    column-count: 2;
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    list-style: none;
 }
 
 #xmp_download_box {
@@ -831,7 +886,7 @@ CHOOSER.CALL.refresh_state = function () {
 
 <div class="ui_row">
   <div id="freedoms" class="ui_box">
-    <h2>{% trans %}License Features{% endtrans %}</h2>
+    <h2>{% trans %}License Conditions{% endtrans %}</h2>
     <h4>{% trans %}Allow modification to your work?{% endtrans %}</h4>
       <ul>
         <li>
@@ -895,21 +950,6 @@ CHOOSER.CALL.refresh_state = function () {
       </option>
       {% endfor %}
     </select>
-    <h4>{% trans %}Icon Size{% endtrans %}:</h4>
-    <ul>
-      <li>
-        <input type="radio" {% if form.out.badge == "normal" -%}
-               checked="checked" {% endif -%}
-               name="field_iconsize" value="normal" id="extracredit_1-1"/>
-        <label for="extracredit_1-1">{% trans %}Normal{% endtrans %}</label>
-      </li>
-      <li>
-        <input type="radio" {% if form.out.badge == "small" -%}
-               checked="checked" {% endif -%}
-               name="field_iconsize" value="small" id="extracredit_1-2"/>
-        <label for="extracredit_1-2">{% trans %}Compact{% endtrans %}</label>
-      </li>
-    </ul>
   </div>
 
 
@@ -929,18 +969,21 @@ CHOOSER.CALL.refresh_state = function () {
                   {%- else -%}fc_questionable.png{% endif %}"
              class="logo fc_status" />
       </a>
-    </div>
-    <div class="whatis" {% if not license.libre -%}
-         style="display: none;"{% endif %}>
-      <a href="http://freedomdefined.org/Definition">
-        {%- trans %}What is free culture?{% endtrans -%}
-      </a>
-    </div>
-    <div class="whynot" {% if not license.libre -%}
-         style="display: block;"{% endif %}>
-      <a href="http://freedomdefined.org/Definition">
-        {%- trans %}Why is this not a free culture license?{% endtrans -%}
-      </a>
+      <div id="fc_info_box">
+        <div class="whatis" {% if not license.libre -%}
+             style="display: none;"{% endif %}>
+          <a href="http://freedomdefined.org/Definition">
+            {%- trans %}What is a free culture license?{% endtrans -%}
+          </a>
+        </div>
+        <div class="whynot" {% if not license.libre -%}
+             style="display: block;"{% endif %}>
+          <a href="http://freedomdefined.org/Definition">
+            {%- trans %}Why is this not a free culture license?{% endtrans -%}
+          </a>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
@@ -954,56 +997,6 @@ CHOOSER.CALL.refresh_state = function () {
     {% trans %}This part is optional, but filling it out will add machine readable metadata to the embedable HTML!{% endtrans %}
 
     <ul>
-      <li>
-        <span>{% trans %}Metadata format{% endtrans %}</span>
-        <select id="metadata_format" name="field_metadata_standard">
-          <option value="html+rdfa" 
-                  {%- if form.meta.standard == "html+rdfa" %} selected="selected"
-                  {%- endif %}>HTML+RDFA</option>
-          <option value="xmp"
-                  {%- if form.meta.standard == "xmp" %} selected="selected"
-                  {%- endif %}>XMP</option>
-          <option value="offline"
-                  {%- if form.meta.standard == "offline" %} selected="selected"
-                  {%- endif %}>{% trans %}Offline{% endtrans %}</option>
-        </select>
-      </li>
-
-      <li>
-        <span for="field_format">
-          {% trans %}Format of work{% endtrans %}
-        </span>
-        <select id="format_selection" name="field_format">
-          <option value="" 
-                  {%- if form.meta.format == "" %} selected="selected"
-                  {%- endif %}>
-            {% trans %}Other{% endtrans %}</option>
-          <option value="Sound"
-                  {%- if form.meta.format == "Sound" %} selected="selected"
-                  {%- endif %}>
-            {% trans %}Audio{% endtrans %}</option>
-          <option value="MovingImage"
-                  {%- if form.meta.format == "MovingImage" %} selected="selected"
-                  {%- endif %}>
-            {% trans %}Video{% endtrans %}</option>
-          <option value="StillImage"
-                  {%- if form.meta.format == "StillImage" %} selected="selected"
-                  {%- endif %}>
-            {% trans %}Image{% endtrans %}</option>
-          <option value="Text"
-                  {%- if form.meta.format == "Text" %} selected="selected"
-                  {%- endif %}>
-            {% trans %}Text{% endtrans %}</option>
-          <option value="Dataset"
-                  {%- if form.meta.format == "Dataset" %} selected="selected"
-                  {%- endif %}>
-            {% trans %}Dataset{% endtrans %}</option>
-          <option value="InteractiveResource"
-                  {%- if form.meta.format == "InteractiveResource" %} selected="selected"{% endif %}>
-            {% trans %}Interactive{% endtrans %}</option>
-        </select>
-      </li>
-
       <li>
         <span for="field_worktitle">
           {%- trans %}Title of work{% endtrans -%}
@@ -1043,6 +1036,56 @@ CHOOSER.CALL.refresh_state = function () {
         <input type="text" name="field_morepermissionsurl"
                value="{{ form.meta.permissions }}"/>
       </li>
+
+      <li>
+        <span for="field_format">
+          {% trans %}Format of work{% endtrans %}
+        </span>
+        <select id="format_selection" name="field_format">
+          <option value="" 
+                  {%- if form.meta.format == "" %} selected="selected"
+                  {%- endif %}>
+            {% trans %}Other / Multiple formats{% endtrans %}</option>
+          <option value="Sound"
+                  {%- if form.meta.format == "Sound" %} selected="selected"
+                  {%- endif %}>
+            {% trans %}Audio{% endtrans %}</option>
+          <option value="MovingImage"
+                  {%- if form.meta.format == "MovingImage" %} selected="selected"
+                  {%- endif %}>
+            {% trans %}Video{% endtrans %}</option>
+          <option value="StillImage"
+                  {%- if form.meta.format == "StillImage" %} selected="selected"
+                  {%- endif %}>
+            {% trans %}Image{% endtrans %}</option>
+          <option value="Text"
+                  {%- if form.meta.format == "Text" %} selected="selected"
+                  {%- endif %}>
+            {% trans %}Text{% endtrans %}</option>
+          <option value="Dataset"
+                  {%- if form.meta.format == "Dataset" %} selected="selected"
+                  {%- endif %}>
+            {% trans %}Dataset{% endtrans %}</option>
+          <option value="InteractiveResource"
+                  {%- if form.meta.format == "InteractiveResource" %} selected="selected"{% endif %}>
+            {% trans %}Interactive{% endtrans %}</option>
+        </select>
+      </li>
+
+      <li>
+        <span>{% trans %}Embeddable license{% endtrans %}</span>
+        <select id="metadata_format" name="field_metadata_standard">
+          <option value="html+rdfa" 
+                  {%- if form.meta.standard == "html+rdfa" %} selected="selected"
+                  {%- endif %}>HTML+RDFA</option>
+          <option value="xmp"
+                  {%- if form.meta.standard == "xmp" %} selected="selected"
+                  {%- endif %}>XMP</option>
+          <option value="offline"
+                  {%- if form.meta.standard == "offline" %} selected="selected"
+                  {%- endif %}>{% trans %}Offline{% endtrans %}</option>
+        </select>
+      </li>
     </ul>
   </div>
   
@@ -1057,6 +1100,22 @@ CHOOSER.CALL.refresh_state = function () {
         {%- trans %}Copy this code to let your visitors know!{% endtrans -%}
       </div>
       <textarea id="codetocopy" readonly="readonly">{{ license_html }}</textarea>
+      <div id="iconsize_box">
+        <ul>
+          <li>
+            <input type="radio" {% if form.out.badge == "normal" -%}
+                   checked="checked" {% endif -%}
+                   name="field_iconsize" value="normal" id="extracredit_1-1"/>
+            <label for="extracredit_1-1">{% trans %}Normal Icon{% endtrans %}</label>
+          </li>
+          <li>
+            <input type="radio" {% if form.out.badge == "small" -%}
+                   checked="checked" {% endif -%}
+                   name="field_iconsize" value="small" id="extracredit_1-2"/>
+            <label for="extracredit_1-2">{% trans %}Compact Icon{% endtrans %}</label>
+            </li>
+        </ul>
+      </div>
     </div>
 
 
