@@ -495,7 +495,7 @@ select, input, textarea {
     min-width: 840px;
 }
 
-#freedoms h2 {
+#freedoms .subtitle {
     margin-bottom: 1em;
 }
 
@@ -965,9 +965,10 @@ select, input, textarea {
 
 <div class="ui_row">
   <div id="freedoms" class="ui_box">
-    <h2>{% trans %}License Conditions{% endtrans %}</h2>
+    <h2>{% trans %}License Features{% endtrans %}</h2>
+    <div class="subtitle">{% trans %}Your choices on this panel will update the other panels in this page in real time.{% endtrans %}</div>
 
-    <img class="help_button" src="http://creativecommons.org/images/information.png"
+    <img class="help_button" src="/images/information.png"
          onclick="CHOOSER.CALL.popup('modifications');"
          title="{% trans %}Click to see help text.{% endtrans %}" />
     <h4>{% trans %}Allow modifications of your work?{% endtrans %}</h4>
@@ -998,7 +999,7 @@ select, input, textarea {
         </li>
       </ul>
 
-    <img class="help_button" src="http://creativecommons.org/images/information.png"
+    <img class="help_button" src="/images/information.png"
          onclick="CHOOSER.CALL.popup('commercial');"
          title="{% trans %}Click to see help text.{% endtrans %}" />
     <h4>{% trans %}Allow commercial uses of your work?{% endtrans %}</h4>
@@ -1018,7 +1019,7 @@ select, input, textarea {
     </ul>
     </p>
 
-    <img class="help_button" src="http://creativecommons.org/images/information.png"
+    <img class="help_button" src="/images/information.png"
          onclick="CHOOSER.CALL.popup('jurisdiction');"
          title="{% trans %}Click to see help text.{% endtrans %}" />
     <h4>{% trans %}License Jurisdiction{% endtrans %}:</h4>
@@ -1083,12 +1084,16 @@ select, input, textarea {
 
 <div class="ui_row">
   <div id="metadata" class="ui_box">
+    <img class="help_button" src="/images/information.png"
+         onclick="CHOOSER.CALL.popup('metadata');"
+         title="{% trans %}Click to see help text.{% endtrans %}" />
+
     <h2>{% trans %}Help others attribute you!{% endtrans %}</h2>
     {% trans %}This part is optional, but filling it out will add machine readable metadata to the embedable HTML!{% endtrans %}
 
     <ul>
       <li>
-        <img class="help_button" src="http://creativecommons.org/images/information.png"
+        <img class="help_button" src="/images/information.png"
              onclick="CHOOSER.CALL.popup('work_title');"
              title="{% trans %}Click to see help text.{% endtrans %}" />
         <span for="field_worktitle">
@@ -1099,7 +1104,7 @@ select, input, textarea {
       </li>
 
       <li>
-        <img class="help_button" src="http://creativecommons.org/images/information.png"
+        <img class="help_button" src="/images/information.png"
              onclick="CHOOSER.CALL.popup('attrib_name');"
              title="{% trans %}Click to see help text.{% endtrans %}" />
         <span for="field_attribute_to_name">
@@ -1110,7 +1115,7 @@ select, input, textarea {
       </li>
       
       <li>
-        <img class="help_button" src="http://creativecommons.org/images/information.png"
+        <img class="help_button" src="/images/information.png"
              onclick="CHOOSER.CALL.popup('attrib_url');"
              title="{% trans %}Click to see help text.{% endtrans %}" />
         <span for="field_attribute_to_url">
@@ -1121,7 +1126,7 @@ select, input, textarea {
       </li>
 
       <li>
-        <img class="help_button" src="http://creativecommons.org/images/information.png"
+        <img class="help_button" src="/images/information.png"
              onclick="CHOOSER.CALL.popup('src_url');"
              title="{% trans %}Click to see help text.{% endtrans %}" />
         <span for="field_sourceurl">
@@ -1132,7 +1137,7 @@ select, input, textarea {
       </li>
 
       <li>
-        <img class="help_button" src="http://creativecommons.org/images/information.png"
+        <img class="help_button" src="/images/information.png"
              onclick="CHOOSER.CALL.popup('permissions_url');"
              title="{% trans %}Click to see help text.{% endtrans %}" />
         <span for="field_morepermissionsurl">
@@ -1143,9 +1148,10 @@ select, input, textarea {
       </li>
 
       <li>
-        <img class="help_button" src="http://creativecommons.org/images/information.png"
+        <img class="help_button" src="/images/information.png"
              onclick="CHOOSER.CALL.popup('work_format');"
              title="{% trans %}Click to see help text.{% endtrans %}" />
+
         <span for="field_format">
           {% trans %}Format of work{% endtrans %}
         </span>
@@ -1181,9 +1187,10 @@ select, input, textarea {
       </li>
 
       <li>
-        <img class="help_button" src="http://creativecommons.org/images/information.png"
+        <img class="help_button" src="/images/information.png"
              onclick="CHOOSER.CALL.popup('license_mark');"
              title="{% trans %}Click to see help text.{% endtrans %}" />
+
         <span>{% trans %}License mark{% endtrans %}</span>
         <select id="metadata_format" name="field_metadata_standard">
           <option value="html+rdfa" 
@@ -1293,7 +1300,7 @@ select, input, textarea {
 </div>
 
 
-<div id="popup_screen"><div id="popup_alignment">
+<div id="popup_screen" onclick="$('#popup_screen').hide();"><div id="popup_alignment">
     <div id="popup_body">
       <h2 id="popup_title">popup title</h2>
       <div id="popup_message">Lorem ipsum dolor sit amet...</div>
@@ -1301,8 +1308,16 @@ select, input, textarea {
     </div>
 </div></div>
 
+
+
+
+
+<!-- This node is used to allow for translation of help popup text. -->
 <div id="help_lookup" style="display:none">
-  {# This node is used to allow for translation of help popup text. #}
+
+
+  <!-- license panel help text -->
+
   <div id="help_modifications">
     <div class="title">{% trans %}Allow modifications of your work?{% endtrans %}</div>
     <div class="msg">
@@ -1324,59 +1339,72 @@ select, input, textarea {
     </div>
   </div>
   <div id="help_jurisdiction">
-    <div class="title"></div>
+    <div class="title">{% trans %}License Jurisdiction:{% endtrans %}</div>
     <div class="msg">
-      <h4>{% trans %}{% endtrans %}</h4>
-      <p>{% trans %}{% endtrans %}</p>
+      {% trans %}Use the option "International" if you desire a license using language
+and terminology from international treaties.  If the licenses have
+been ported to your jurisdiction and you feel that your jurisdiction's
+ported licenses account for some aspect of local legislation that the
+international licenses do not, then you may want to consider
+<a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Should_I_choose_an_international_license_or_a_ported_license.3F">which
+license is better suited for your needs</a>.{% endtrans %}
     </div>
   </div>
+
+
+  <!-- metadata panel help text -->
+
+  <div id="help_metadata">
+    <div class="title">{% trans %}Help others attribute you!{% endtrans %}</div>
+    <div class="msg">{% trans %}<p>
+	  The information is embedded in a software readable format.
+	  This allows search engines to index additional information
+	  about your work and allows people coming to the license deed
+	  from your page to see information on the deed about how to
+	  attribute your work.  
+	</p>
+	<p>
+	  <a href="http://wiki.creativecommons.org/Metadata">More
+	    information</a> on Creative Commons metadata is available if
+	  you want to find out more.
+	</p>{% endtrans %}</div>
+  </div>
+
   <div id="help_work_title">
-    <div class="title"></div>
-    <div class="msg">
-      <h4>{% trans %}{% endtrans %}</h4>
-      <p>{% trans %}{% endtrans %}</p>
-    </div>
+    <div class="title">{% trans %}Title of work{% endtrans %}</div>
+    <div class="msg">{% trans %}The title of the work you are licensing.{% endtrans %}</div>
   </div>
   <div id="help_attrib_name">
-    <div class="title"></div>
-    <div class="msg">
-      <h4>{% trans %}{% endtrans %}</h4>
-      <p>{% trans %}{% endtrans %}</p>
-    </div>
+    <div class="title">{% trans %}Attribute work to name{% endtrans %}</div>
+    <div class="msg">{% trans %}The name users of the work should give attribution to. For example, the name of the work's author.{% endtrans %}</div>
   </div>
   <div id="help_attrib_url">
-    <div class="title"></div>
-    <div class="msg">
-      <h4>{% trans %}{% endtrans %}</h4>
-      <p>{% trans %}{% endtrans %}</p>
-    </div>
+    <div class="title">{% trans %}Attribute work to URL{% endtrans %}</div>
+    <div class="msg">{% trans %}The URL users of the work should link to. For example, the work's page on the author's site.{% endtrans %}</div>
   </div>
   <div id="help_src_url">
-    <div class="title"></div>
-    <div class="msg">
-      <h4>{% trans %}{% endtrans %}</h4>
-      <p>{% trans %}{% endtrans %}</p>
-    </div>
+    <div class="title">{% trans %}Source work URL{% endtrans %}</div>
+    <div class="msg">{% trans %}A work another is derived from.{% endtrans %}</div>
   </div>
   <div id="help_permissions_url">
-    <div class="title"></div>
-    <div class="msg">
-      <h4>{% trans %}{% endtrans %}</h4>
-      <p>{% trans %}{% endtrans %}</p>
-    </div>
+    <div class="title">{% trans %}More permissions URL{% endtrans %}</div>
+    <div class="msg">{% trans %}A URL where a user can obtain information about clearing rights that are not pre-cleared by your CC license.{% endtrans %}</div>
   </div>
+
   <div id="help_work_format">
-    <div class="title"></div>
-    <div class="msg">
-      <h4>{% trans %}{% endtrans %}</h4>
-      <p>{% trans %}{% endtrans %}</p>
-    </div>
+    <div class="title">{% trans %}Format of work{% endtrans %}</div>
+    <div class="msg">{% trans %}This describes what kind of work is being licensed.  For example, a photograph would have the "Image" format.  If unsure, choose "Other / Multiple formats".{% endtrans %}</div>
   </div>
   <div id="help_license_mark">
-    <div class="title"></div>
+    <div class="title">{% trans %}License Mark{% endtrans %}</div>
     <div class="msg">
-      <h4>{% trans %}{% endtrans %}</h4>
-      <p>{% trans %}{% endtrans %}</p>
+      <p>{% trans %}The "License Mark" dropdown menu determines the content of the bottom right panel.  That panel provides a means of marking your work in a consistant or standardized way.{% endtrans %}</p>
+      <h4>HTML + RDFA</h4>
+      <p>{% trans %}HTML is provided that you can copy into your webpage.  The html is annotated with machine readable <a href="http://wiki.creativecommons.org/Metadata">metadata</a>.  This allows for search engines to enable searches for similarly licensed works, and for tools to automatically recognize information about the work (such as who authored it).{% endtrans %}</p>
+      <h4>XMP</h4>
+      <p>{% trans %}An .xmp file can be embedded in a variety of file formats, such as pdfs.{% endtrans %}</p>
+      <h4>{% trans %}OFFLINE{% endtrans %}</h4>
+      <p>{% trans%}Provides a simple notice that can be included in plain text.{% endtrans %}</p>
     </div>
   </div>
 </div>
