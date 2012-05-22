@@ -75,7 +75,8 @@ var CHOOSER = {
         "ping" : false,
         "delayed_ping" : false,
         "refresh_ui" : false,
-        "refresh_state" : false
+        "refresh_state" : false,
+        "popup" : false
     },
 
     // Callbacks
@@ -140,10 +141,24 @@ CHOOSER.CALLBACK.main = function () {
         selected.change(CHOOSER.CALL.refresh_ui);
     }
 
+    // Show help buttons
+    $(".help_button").show()
+
     // Ping the server for updates.  This populates some of the CHOOSER.STATE vars, too.
     CHOOSER.CALL.ping(true);
     CHOOSER.LIVE = true;
 });
+
+
+
+
+// Shows a nice inline popup
+CHOOSER.CALL.popup = function (help_key) {
+    var prefix = "#help_lookup #help_" + help_key + " div.";
+    $("#popup_title")[0].innerHTML = $(prefix+"title")[0].innerHTML;
+    $("#popup_message")[0].innerHTML = $(prefix+"msg")[0].innerHTML;
+    $("#popup_screen")[0].style.display="table";
+};
 
 
 
@@ -377,10 +392,77 @@ select, input, textarea {
     padding: 1px;
 }
 
+.help_button {
+    position: absolute;
+    left: 20px;
+    margin-top: 10px;
+    display: none;
+}
+
+#metadata .help_button {
+    margin-top: 5px!important;
+}
+
+.help_button:hover {
+    cursor: help;
+}
+
+#popup_screen {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 10000;
+    background-color: #4c6404;
+    background-color: rgba(76, 100, 4, .9);
+
+    display: none; /* set to 'table' instead of block to show */
+    margin: auto;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    width: 100%;
+    height: 100%;
+}
+
+#popup_alignment {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#popup_body {
+    background-color: white;
+    background-color: rgba(255, 255, 255, .8);
+    border: 1px solid black;
+    border-radius: 8px;
+    max-width: 500px;
+    padding: 2em;
+    margin: auto;
+    text-align: center;
+}
+
+#popup_title {
+    margin-bottom: 1em;
+}
+
+#popup_message {
+    text-align: justify;
+}
+
+#popup_close {
+    display: inline-block;
+    margin-top: 3em;
+}
+
+#popup_close:hover {
+    cursor: pointer;
+}
+
 #instructional_fluff, #copyright_fluff {
     text-align: center;
     font-size: 16px;
-    width: 800px;
+    max-width: 800px;
     margin: auto;
     word-spacing: 1px;
 }
@@ -884,7 +966,11 @@ select, input, textarea {
 <div class="ui_row">
   <div id="freedoms" class="ui_box">
     <h2>{% trans %}License Conditions{% endtrans %}</h2>
-    <h4>{% trans %}Allow modification to your work?{% endtrans %}</h4>
+
+    <img class="help_button" src="http://creativecommons.org/images/information.png"
+         onclick="CHOOSER.CALL.popup('modifications');"
+         title="{% trans %}Click to see help text.{% endtrans %}" />
+    <h4>{% trans %}Allow modifications of your work?{% endtrans %}</h4>
       <ul>
         <li>
           <input type="radio"
@@ -912,7 +998,10 @@ select, input, textarea {
         </li>
       </ul>
 
-    <h4>{% trans %}Allow commercial use of your work?{% endtrans %}</h4>
+    <img class="help_button" src="http://creativecommons.org/images/information.png"
+         onclick="CHOOSER.CALL.popup('commercial');"
+         title="{% trans %}Click to see help text.{% endtrans %}" />
+    <h4>{% trans %}Allow commercial uses of your work?{% endtrans %}</h4>
     <ul>
       <li>
         <input type="radio"
@@ -928,6 +1017,10 @@ select, input, textarea {
       </li>
     </ul>
     </p>
+
+    <img class="help_button" src="http://creativecommons.org/images/information.png"
+         onclick="CHOOSER.CALL.popup('jurisdiction');"
+         title="{% trans %}Click to see help text.{% endtrans %}" />
     <h4>{% trans %}License Jurisdiction{% endtrans %}:</h4>
     <select id="field_jurisdiction" name="field_jurisdiction">
       {# If a specific jurisdiction is requested, we'll mark that
@@ -995,6 +1088,9 @@ select, input, textarea {
 
     <ul>
       <li>
+        <img class="help_button" src="http://creativecommons.org/images/information.png"
+             onclick="CHOOSER.CALL.popup('work_title');"
+             title="{% trans %}Click to see help text.{% endtrans %}" />
         <span for="field_worktitle">
           {%- trans %}Title of work{% endtrans -%}
         </span>
@@ -1003,6 +1099,9 @@ select, input, textarea {
       </li>
 
       <li>
+        <img class="help_button" src="http://creativecommons.org/images/information.png"
+             onclick="CHOOSER.CALL.popup('attrib_name');"
+             title="{% trans %}Click to see help text.{% endtrans %}" />
         <span for="field_attribute_to_name">
           {%- trans %}Attribute work to name{% endtrans -%}
         </span>
@@ -1011,6 +1110,9 @@ select, input, textarea {
       </li>
       
       <li>
+        <img class="help_button" src="http://creativecommons.org/images/information.png"
+             onclick="CHOOSER.CALL.popup('attrib_url');"
+             title="{% trans %}Click to see help text.{% endtrans %}" />
         <span for="field_attribute_to_url">
           {%- trans %}Attribute work to URL{% endtrans -%}
         </span>
@@ -1019,6 +1121,9 @@ select, input, textarea {
       </li>
 
       <li>
+        <img class="help_button" src="http://creativecommons.org/images/information.png"
+             onclick="CHOOSER.CALL.popup('src_url');"
+             title="{% trans %}Click to see help text.{% endtrans %}" />
         <span for="field_sourceurl">
           {%- trans %}Source work URL{% endtrans -%}
         </span>
@@ -1027,6 +1132,9 @@ select, input, textarea {
       </li>
 
       <li>
+        <img class="help_button" src="http://creativecommons.org/images/information.png"
+             onclick="CHOOSER.CALL.popup('permissions_url');"
+             title="{% trans %}Click to see help text.{% endtrans %}" />
         <span for="field_morepermissionsurl">
           {%- trans %}More permissions URL{% endtrans -%}
         </span>
@@ -1035,6 +1143,9 @@ select, input, textarea {
       </li>
 
       <li>
+        <img class="help_button" src="http://creativecommons.org/images/information.png"
+             onclick="CHOOSER.CALL.popup('work_format');"
+             title="{% trans %}Click to see help text.{% endtrans %}" />
         <span for="field_format">
           {% trans %}Format of work{% endtrans %}
         </span>
@@ -1070,6 +1181,9 @@ select, input, textarea {
       </li>
 
       <li>
+        <img class="help_button" src="http://creativecommons.org/images/information.png"
+             onclick="CHOOSER.CALL.popup('license_mark');"
+             title="{% trans %}Click to see help text.{% endtrans %}" />
         <span>{% trans %}License mark{% endtrans %}</span>
         <select id="metadata_format" name="field_metadata_standard">
           <option value="html+rdfa" 
@@ -1177,4 +1291,94 @@ select, input, textarea {
   </div>
   {% include "includes/engine_languages.html" %}
 </div>
+
+
+<div id="popup_screen"><div id="popup_alignment">
+    <div id="popup_body">
+      <h2 id="popup_title">popup title</h2>
+      <div id="popup_message">Lorem ipsum dolor sit amet...</div>
+      <a id="popup_close" onclick="$('#popup_screen').hide();">{% trans %}Click here to close this popup.{% endtrans %}</a>
+    </div>
+</div></div>
+
+<div id="help_lookup" style="display:none">
+  {# This node is used to allow for translation of help popup text. #}
+  <div id="help_modifications">
+    <div class="title">{% trans %}Allow modifications of your work?{% endtrans %}</div>
+    <div class="msg">
+      <h4>{% trans %}Yes{% endtrans %}</h4>
+      <p>{% trans %}The licensor permits others to copy, distribute, display and perform the work, as well as make derivative works based on it.{% endtrans %}</p>
+      <h4>{% trans %}Yes, as long as others share alike{% endtrans %}</h4>
+      <p>{% trans %}The licensor permits others to distribute derivative works only under the same license or one compatible with the one that governs the licensor's work.{% endtrans %}</p>
+      <h4>{% trans %}No{% endtrans %}</h4>
+      <p>{% trans %}The licensor permits others to copy, distribute and transmit only unaltered copies of the work — not derivative works based on it.{% endtrans %}</p>
+    </div>
+  </div>
+  <div id="help_commercial">
+    <div class="title">{% trans %}Allow commercial uses of your work?{% endtrans %}</div>
+    <div class="msg">
+      <h4>{% trans %}Yes{% endtrans %}</h4>
+      <p>{% trans %}The licensor permits others to copy, distribute, display, and perform the work, including for commercial purposes.{% endtrans %}</p>
+      <h4>{% trans %}No{% endtrans %}</h4>
+      <p>{% trans %}The licensor permits others to copy, distribute, display, and perform the work for non-commercial purposes only.{% endtrans %}</p>
+    </div>
+  </div>
+  <div id="help_jurisdiction">
+    <div class="title"></div>
+    <div class="msg">
+      <h4>{% trans %}{% endtrans %}</h4>
+      <p>{% trans %}{% endtrans %}</p>
+    </div>
+  </div>
+  <div id="help_work_title">
+    <div class="title"></div>
+    <div class="msg">
+      <h4>{% trans %}{% endtrans %}</h4>
+      <p>{% trans %}{% endtrans %}</p>
+    </div>
+  </div>
+  <div id="help_attrib_name">
+    <div class="title"></div>
+    <div class="msg">
+      <h4>{% trans %}{% endtrans %}</h4>
+      <p>{% trans %}{% endtrans %}</p>
+    </div>
+  </div>
+  <div id="help_attrib_url">
+    <div class="title"></div>
+    <div class="msg">
+      <h4>{% trans %}{% endtrans %}</h4>
+      <p>{% trans %}{% endtrans %}</p>
+    </div>
+  </div>
+  <div id="help_src_url">
+    <div class="title"></div>
+    <div class="msg">
+      <h4>{% trans %}{% endtrans %}</h4>
+      <p>{% trans %}{% endtrans %}</p>
+    </div>
+  </div>
+  <div id="help_permissions_url">
+    <div class="title"></div>
+    <div class="msg">
+      <h4>{% trans %}{% endtrans %}</h4>
+      <p>{% trans %}{% endtrans %}</p>
+    </div>
+  </div>
+  <div id="help_work_format">
+    <div class="title"></div>
+    <div class="msg">
+      <h4>{% trans %}{% endtrans %}</h4>
+      <p>{% trans %}{% endtrans %}</p>
+    </div>
+  </div>
+  <div id="help_license_mark">
+    <div class="title"></div>
+    <div class="msg">
+      <h4>{% trans %}{% endtrans %}</h4>
+      <p>{% trans %}{% endtrans %}</p>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
