@@ -32,7 +32,6 @@
 						    <li><strong><span>The Team</span></strong></li>
 						    <li><a href="<?php bloginfo('home')?>/board">Board of Directors</a></li>
 						    <li><a href="<?php bloginfo('home')?>/staff">Staff</a></li>
-						    <li><a href="<?php bloginfo('home')?>/fellows">Fellows</a></li>
 						    <li><a href="http://wiki.creativecommons.org/CC_Affiliate_Network">Affiliate Network</a></li>
 						    <li><a href="<?php bloginfo('home')?>/opportunities">Job Opportunities</a></li>
 						    <li class="divider"></li>
