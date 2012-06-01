@@ -392,15 +392,31 @@ select, input, textarea {
     padding: 1px;
 }
 
+
+.help_highlight {
+    border-radius: 8px;
+    margin-left: -24px;
+    padding-left: 24px;
+    margin-right: -24px;
+    padding-right: 24px;
+}
+
 .help_button {
-    position: absolute;
-    left: 20px;
+    position: absolute; /* prevents help button from influence box packing */
     margin-top: 10px;
     display: none;
 }
 
+
 #metadata .help_button {
     margin-top: 5px!important;
+}
+
+.help_button {
+    display: inline-block;
+    background-image: url("/images/information.png");
+    width: 16px;
+    height: 16px;
 }
 
 .help_button:hover {
@@ -416,7 +432,6 @@ select, input, textarea {
     z-index: 10000;
     background-color: #4c6404;
     background-color: rgba(22, 34, 15, .9);
-    /*background-color: rgba(76, 100, 4, .9);*/
 
     display: none; /* set to 'table' instead of block to show */
     margin: auto;
@@ -452,11 +467,19 @@ select, input, textarea {
 }
 
 #popup_close {
+    position: screen;
+    bottom: 0px;
+    font-size: 20px;
+    display: block;
+    margin-top: 2em;
+    text-align: center;
+}
+#popup_close a {
+    color: white;
     display: inline-block;
-    margin-top: 3em;
 }
 
-#popup_close:hover {
+#popup_close a:hover {
     cursor: pointer;
 }
 
@@ -905,6 +928,36 @@ select, input, textarea {
     }
 }
 
+@media only screen and (min-width: 880px) {
+    /* wide enough for help tabs */
+    .help_button, .mirror{
+        position: absolute;
+        width: 29px;
+        height: 25px;
+    }
+    #content[dir="ltr"] .help_button:not(.mirror), #content[dir="rtl"] .help_button.mirror {
+        background-image: url("/wp-content/themes/creativecommons.org/images/help_ltr.png");
+        left: -30px;
+    }
+    #content[dir="rtl"] .help_button:not(.mirror), #content[dir="ltr"] .help_button.mirror {
+        background-image: url("/wp-content/themes/creativecommons.org/images/help_rtl.png");
+        right: -30px;
+    }
+    #content[dir="ltr"] .help_button:not(.mirror):hover, #content[dir="rtl"] .help_button.mirror:hover {
+        background-image: url("/wp-content/themes/creativecommons.org/images/help_ltr_hover.png");
+    }
+    #content[dir="rtl"] .help_button:not(.mirror):hover, #content[dir="ltr"] .help_button.mirror:hover {
+        background-image: url("/wp-content/themes/creativecommons.org/images/help_rtl_hover.png");
+    }
+}
+
+@media only screen and (max-width: 880px) {
+    /* not wide enough for help tabs */
+    .help_button {
+        left: 20px;
+    }
+}
+
 
 
 </style>
@@ -969,10 +1022,9 @@ select, input, textarea {
     <h2>{% trans %}License Features{% endtrans %}</h2>
     <div class="subtitle">{% trans %}Your choices on this panel will update the other panels in this page in real time.{% endtrans %}</div>
 
-    <img class="help_button" src="/images/information.png"
-         onclick="CHOOSER.CALL.popup('modifications');"
-         title="{% trans %}Click to see help text.{% endtrans %}" />
-    <h4>{% trans %}Allow modifications of your work?{% endtrans %}</h4>
+    <div class="help_highlight">
+      <div class="help_button" onclick="CHOOSER.CALL.popup('modifications');"></div>
+      <h4>{% trans %}Allow modifications of your work?{% endtrans %}</h4>
       <ul>
         <li>
           <input type="radio"
@@ -995,59 +1047,61 @@ select, input, textarea {
                  {% if form.license.sa %}checked="checked"{% endif %}
                  id="question_3-6" />
           <label for="question_3-6">
-              {% trans %}Yes, as long as others share alike{% endtrans %}
+            {% trans %}Yes, as long as others share alike{% endtrans %}
           </label>
         </li>
       </ul>
+    </div>
+      
+    
+    <div class="help_highlight">
+      <div class="help_button" onclick="CHOOSER.CALL.popup('commercial');"></div>
+      <h4>{% trans %}Allow commercial uses of your work?{% endtrans %}</h4>
+      <ul>
+        <li>
+          <input type="radio"
+                 {%- if not form.license.nc %} checked="checked" {% endif -%}
+                 name="field_commercial" value="y" id="question_2-3"/>
+          <label for="question_2-3">{% trans %}Yes{% endtrans %}</label>
+        </li>
+        <li>
+          <input type="radio"
+                 {%- if form.license.nc %} checked="checked" {% endif -%}
+                 name="field_commercial" value="n" id="question_2-4"/>
+          <label for="question_2-4">{% trans %}No{% endtrans %}</label>
+        </li>
+      </ul>
+    </div>
 
-    <img class="help_button" src="/images/information.png"
-         onclick="CHOOSER.CALL.popup('commercial');"
-         title="{% trans %}Click to see help text.{% endtrans %}" />
-    <h4>{% trans %}Allow commercial uses of your work?{% endtrans %}</h4>
-    <ul>
-      <li>
-        <input type="radio"
-               {%- if not form.license.nc %} checked="checked" {% endif -%}
-               name="field_commercial" value="y" id="question_2-3"/>
-        <label for="question_2-3">{% trans %}Yes{% endtrans %}</label>
-      </li>
-      <li>
-        <input type="radio"
-               {%- if form.license.nc %} checked="checked" {% endif -%}
-               name="field_commercial" value="n" id="question_2-4"/>
-        <label for="question_2-4">{% trans %}No{% endtrans %}</label>
-      </li>
-    </ul>
-    </p>
-
-    <img class="help_button" src="/images/information.png"
-         onclick="CHOOSER.CALL.popup('jurisdiction');"
-         title="{% trans %}Click to see help text.{% endtrans %}" />
-    <h4>{% trans %}License Jurisdiction{% endtrans %}:</h4>
-    <select id="field_jurisdiction" name="field_jurisdiction">
-      {# If a specific jurisdiction is requested, we'll mark that
-       # as selected.  Otherwise util.International should be selected. #}
-      <option value=""
-              {% if form.license.jurisdiction == "" -%}
-              selected="selected"
-              {%- endif %}>
-        {% trans %}International{% endtrans %}
-      </option>
-      {% for juris_code, juris_name in jurisdictions_names %}
-      <option value="{{ juris_code }}"
-              {% if form.license.jurisdiction == juris_code -%}
-              selected="selected"
-              {%- endif %}>
-        {{- juris_name -}}
-      </option>
-      {% endfor %}
-    </select>
+    <div class="help_highlight">
+      <div class="help_button" onclick="CHOOSER.CALL.popup('jurisdiction');"></div>
+      <h4>{% trans %}License Jurisdiction{% endtrans %}:</h4>
+      <select id="field_jurisdiction" name="field_jurisdiction">
+        {# If a specific jurisdiction is requested, we'll mark that
+        # as selected.  Otherwise util.International should be selected. #}
+        <option value=""
+                {% if form.license.jurisdiction == "" -%}
+                selected="selected"
+                {%- endif %}>
+          {% trans %}International{% endtrans %}
+        </option>
+        {% for juris_code, juris_name in jurisdictions_names %}
+        <option value="{{ juris_code }}"
+                {% if form.license.jurisdiction == juris_code -%}
+                selected="selected"
+                {%- endif %}>
+          {{- juris_name -}}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
   </div>
 
 
 
 
   <div id="license" class="ui_box">
+    <div class="help_button mirror" onclick="CHOOSER.CALL.popup('selected_license');"></div>
     <h2>{% trans %}Selected License{% endtrans %}</h2>
     <div class="mini_deed">
       <a id="badge_link" href="">
@@ -1085,125 +1139,121 @@ select, input, textarea {
 
 <div class="ui_row">
   <div id="metadata" class="ui_box">
-    <img class="help_button" src="/images/information.png"
-         onclick="CHOOSER.CALL.popup('metadata');"
-         title="{% trans %}Click to see help text.{% endtrans %}" />
+    <div class="help_button" onclick="CHOOSER.CALL.popup('metadata');"></div>
 
     <h2>{% trans %}Help others attribute you!{% endtrans %}</h2>
     {% trans %}This part is optional, but filling it out will add machine readable metadata to the embedable HTML!{% endtrans %}
 
     <ul>
       <li>
-        <img class="help_button" src="/images/information.png"
-             onclick="CHOOSER.CALL.popup('work_title');"
-             title="{% trans %}Click to see help text.{% endtrans %}" />
-        <span for="field_worktitle">
-          {%- trans %}Title of work{% endtrans -%}
-        </span>
-        <input type="text" name="field_worktitle" 
-               value="{{ form.meta.title }}" />
+        <div class="help_highlight">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('work_title');"></div>
+          <span for="field_worktitle">
+            {%- trans %}Title of work{% endtrans -%}
+          </span>
+          <input type="text" name="field_worktitle" 
+                 value="{{ form.meta.title }}" />
+        </div>
       </li>
 
       <li>
-        <img class="help_button" src="/images/information.png"
-             onclick="CHOOSER.CALL.popup('attrib_name');"
-             title="{% trans %}Click to see help text.{% endtrans %}" />
-        <span for="field_attribute_to_name">
-          {%- trans %}Attribute work to name{% endtrans -%}
-        </span>
-        <input type="text" name="field_attribute_to_name" 
-               value="{{ form.meta.attrib_name }}"/>
+        <div class="help_highlight">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_name');"></div>
+          <span for="field_attribute_to_name">
+            {%- trans %}Attribute work to name{% endtrans -%}
+          </span>
+          <input type="text" name="field_attribute_to_name" 
+                 value="{{ form.meta.attrib_name }}"/>
+        </div>
       </li>
       
       <li>
-        <img class="help_button" src="/images/information.png"
-             onclick="CHOOSER.CALL.popup('attrib_url');"
-             title="{% trans %}Click to see help text.{% endtrans %}" />
-        <span for="field_attribute_to_url">
-          {%- trans %}Attribute work to URL{% endtrans -%}
-        </span>
-        <input type="text" name="field_attribute_to_url" 
-               value="{{ form.meta.attrib_url }}" />
+        <div class="help_highlight">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_url');"></div>
+          <span for="field_attribute_to_url">
+            {%- trans %}Attribute work to URL{% endtrans -%}
+          </span>
+          <input type="text" name="field_attribute_to_url" 
+                 value="{{ form.meta.attrib_url }}" />
+        </div>
       </li>
 
       <li>
-        <img class="help_button" src="/images/information.png"
-             onclick="CHOOSER.CALL.popup('src_url');"
-             title="{% trans %}Click to see help text.{% endtrans %}" />
-        <span for="field_sourceurl">
-          {%- trans %}Source work URL{% endtrans -%}
-        </span>
-        <input type="text" name="field_sourceurl" 
-               value="{{ form.meta.src_url }}"/>
+        <div class="help_highlight">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('src_url');"></div>
+          <span for="field_sourceurl">
+            {%- trans %}Source work URL{% endtrans -%}
+          </span>
+          <input type="text" name="field_sourceurl" 
+                 value="{{ form.meta.src_url }}"/>
+        </div>
       </li>
 
       <li>
-        <img class="help_button" src="/images/information.png"
-             onclick="CHOOSER.CALL.popup('permissions_url');"
-             title="{% trans %}Click to see help text.{% endtrans %}" />
-        <span for="field_morepermissionsurl">
-          {%- trans %}More permissions URL{% endtrans -%}
-        </span>
-        <input type="text" name="field_morepermissionsurl"
-               value="{{ form.meta.permissions }}"/>
+        <div class="help_highlight">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('permissions_url');"></div>
+          <span for="field_morepermissionsurl">
+            {%- trans %}More permissions URL{% endtrans -%}
+          </span>
+          <input type="text" name="field_morepermissionsurl"
+                 value="{{ form.meta.permissions }}"/>
+        </div>
       </li>
 
       <li>
-        <img class="help_button" src="/images/information.png"
-             onclick="CHOOSER.CALL.popup('work_format');"
-             title="{% trans %}Click to see help text.{% endtrans %}" />
-
-        <span for="field_format">
-          {% trans %}Format of work{% endtrans %}
-        </span>
-        <select id="format_selection" name="field_format">
-          <option value="" 
-                  {%- if form.meta.format == "" %} selected="selected"
-                  {%- endif %}>
-            {% trans %}Other / Multiple formats{% endtrans %}</option>
-          <option value="Sound"
-                  {%- if form.meta.format == "Sound" %} selected="selected"
-                  {%- endif %}>
-            {% trans %}Audio{% endtrans %}</option>
-          <option value="MovingImage"
-                  {%- if form.meta.format == "MovingImage" %} selected="selected"
-                  {%- endif %}>
-            {% trans %}Video{% endtrans %}</option>
-          <option value="StillImage"
-                  {%- if form.meta.format == "StillImage" %} selected="selected"
-                  {%- endif %}>
-            {% trans %}Image{% endtrans %}</option>
-          <option value="Text"
-                  {%- if form.meta.format == "Text" %} selected="selected"
-                  {%- endif %}>
-            {% trans %}Text{% endtrans %}</option>
-          <option value="Dataset"
-                  {%- if form.meta.format == "Dataset" %} selected="selected"
-                  {%- endif %}>
-            {% trans %}Dataset{% endtrans %}</option>
-          <option value="InteractiveResource"
-                  {%- if form.meta.format == "InteractiveResource" %} selected="selected"{% endif %}>
-            {% trans %}Interactive{% endtrans %}</option>
-        </select>
+        <div class="help_highlight">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('work_format');"></div>
+          <span for="field_format">
+            {% trans %}Format of work{% endtrans %}
+          </span>
+          <select id="format_selection" name="field_format">
+            <option value="" 
+                    {%- if form.meta.format == "" %} selected="selected"
+                    {%- endif %}>
+              {% trans %}Other / Multiple formats{% endtrans %}</option>
+            <option value="Sound"
+                    {%- if form.meta.format == "Sound" %} selected="selected"
+                    {%- endif %}>
+              {% trans %}Audio{% endtrans %}</option>
+            <option value="MovingImage"
+                    {%- if form.meta.format == "MovingImage" %} selected="selected"
+                    {%- endif %}>
+              {% trans %}Video{% endtrans %}</option>
+            <option value="StillImage"
+                    {%- if form.meta.format == "StillImage" %} selected="selected"
+                    {%- endif %}>
+              {% trans %}Image{% endtrans %}</option>
+            <option value="Text"
+                    {%- if form.meta.format == "Text" %} selected="selected"
+                    {%- endif %}>
+              {% trans %}Text{% endtrans %}</option>
+            <option value="Dataset"
+                    {%- if form.meta.format == "Dataset" %} selected="selected"
+                    {%- endif %}>
+              {% trans %}Dataset{% endtrans %}</option>
+            <option value="InteractiveResource"
+                    {%- if form.meta.format == "InteractiveResource" %} selected="selected"{% endif %}>
+              {% trans %}Interactive{% endtrans %}</option>
+          </select>
+        </div>
       </li>
 
       <li>
-        <img class="help_button" src="/images/information.png"
-             onclick="CHOOSER.CALL.popup('license_mark');"
-             title="{% trans %}Click to see help text.{% endtrans %}" />
-
-        <span>{% trans %}License mark{% endtrans %}</span>
-        <select id="metadata_format" name="field_metadata_standard">
-          <option value="html+rdfa" 
-                  {%- if form.meta.standard == "html+rdfa" %} selected="selected"
-                  {%- endif %}>HTML+RDFA</option>
-          <option value="xmp"
-                  {%- if form.meta.standard == "xmp" %} selected="selected"
-                  {%- endif %}>XMP</option>
-          <option value="offline"
-                  {%- if form.meta.standard == "offline" %} selected="selected"
-                  {%- endif %}>{% trans %}Offline{% endtrans %}</option>
-        </select>
+        <div class="help_highlight">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('license_mark');"></div>
+          <span>{% trans %}License mark{% endtrans %}</span>
+          <select id="metadata_format" name="field_metadata_standard">
+            <option value="html+rdfa" 
+                    {%- if form.meta.standard == "html+rdfa" %} selected="selected"
+                    {%- endif %}>HTML+RDFA</option>
+            <option value="xmp"
+                    {%- if form.meta.standard == "xmp" %} selected="selected"
+                    {%- endif %}>XMP</option>
+            <option value="offline"
+                    {%- if form.meta.standard == "offline" %} selected="selected"
+                    {%- endif %}>{% trans %}Offline{% endtrans %}</option>
+          </select>
+        </div>
       </li>
     </ul>
   </div>
@@ -1213,6 +1263,7 @@ select, input, textarea {
 
 
     <div id="for_htmlrdfa" {% if form.meta.standard != "html+rdfa" %}style="display:none"{% endif %}>
+      <div class="help_button mirror" onclick="CHOOSER.CALL.popup('license_mark_html');"></div>
       <h2>{% trans %}Have a web page?{% endtrans %}</h2>
       <div class="results-preview"><div>{{ license_html|safe }}</div></div>
       <div id="copy_caption">
@@ -1239,6 +1290,7 @@ select, input, textarea {
 
 
     <div id="for_xmp" {% if form.meta.standard != "xmp" %}style="display:none"{% endif %}>
+      <div class="help_button mirror" onclick="CHOOSER.CALL.popup('license_mark_xmp');"></div>
       <h2>{% trans %}XMP Embeded Metadata{% endtrans %}</h2>
 
       <div class="results-preview"><div>
@@ -1255,6 +1307,7 @@ select, input, textarea {
     
 
     <div id="for_offline" {% if form.meta.standard != "offline" %}style="display:none"{% endif %}>
+      <div class="help_button mirror" onclick="CHOOSER.CALL.popup('license_mark_offline');"></div>
       <h2>{% trans %}Non-digital works?{% endtrans %}</h2>
       
       <div class="results-preview"><div>
@@ -1305,7 +1358,11 @@ select, input, textarea {
     <div id="popup_body">
       <h2 id="popup_title">popup title</h2>
       <div id="popup_message">Lorem ipsum dolor sit amet...</div>
-      <a id="popup_close" onclick="$('#popup_screen').hide();">{% trans %}Click here to close this popup.{% endtrans %}</a>
+    </div>
+    <div id="popup_close">
+    <a id="popup_close" onclick="$('#popup_screen').hide();">
+      {% trans %}Click here to close this popup.{% endtrans %}
+    </a>
     </div>
 </div></div>
 
@@ -1350,6 +1407,14 @@ international licenses do not, then you may want to consider
 <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Should_I_choose_an_international_license_or_a_ported_license.3F">which
 license is better suited for your needs</a>.{% endtrans %}
     </div>
+  </div>
+
+
+  <!-- selected license panel help text -->
+  
+  <div id="help_selected_license">
+    <div class="title">{% trans %}Selected License{% endtrans %}</div>
+    <div class="msg">{% trans %}{% endtrans %}</div>
   </div>
 
 
@@ -1408,6 +1473,27 @@ license is better suited for your needs</a>.{% endtrans %}
       <p>{% trans%}Provides a simple notice that can be included in plain text.{% endtrans %}</p>
     </div>
   </div>
+
+
+  <!-- selected license panel help text -->
+  
+  <div id="help_license_mark_html">
+    <div class="title">{% trans %}Have a web page?{% endtrans %}</div>
+    <div class="msg">{% trans %}{% endtrans %}</div>
+  </div>
+
+  <div id="help_license_mark_xmp">
+    <div class="title">{% trans %}XMP Embeded Metadata{% endtrans %}</div>
+    <div class="msg">{% trans %}{% endtrans %}</div>
+  </div>
+
+  <div id="help_license_mark_offline">
+    <div class="title">{% trans %}Non-digital works?{% endtrans %}</div>
+    <div class="msg">{% trans %}{% endtrans %}</div>
+  </div>
+
+
+
 </div>
 
 {% endblock %}
