@@ -141,8 +141,8 @@ CHOOSER.CALLBACK.main = function () {
         selected.change(CHOOSER.CALL.refresh_ui);
     }
 
-    // Show help buttons
-    $(".help_button").show()
+    // activate css stuff that is irrelivant without javascript
+    $("body").addClass("require_js")
 
     // Ping the server for updates.  This populates some of the CHOOSER.STATE vars, too.
     CHOOSER.CALL.ping(true);
@@ -392,6 +392,95 @@ select, input, textarea {
     padding: 1px;
 }
 
+#metadata .help_button {
+    margin-top: 5px!important;
+}
+
+.help_button {
+    position: absolute; /* prevents help button from influence box packing */
+    display: none;
+    margin-top: 5px;
+
+    background-image: url("/wp-content/themes/creativecommons.org/images/hint_button.png");
+    width: 25px;
+    height: 25px;
+}
+
+.help_button:hover {
+    background-image: url("/wp-content/themes/creativecommons.org/images/hint_button_hover.png");
+    cursor: pointer;
+}
+
+.require_js .ui_box>.help_button, .require_js #internets .help_button {
+    display: inline-block;
+    left: 20px;
+}
+
+.require_js .help_highlight:hover>.help_button {
+    display: inline-block;
+    margin-top: 10px;
+    left: 20px;
+}
+
+#metadata .help_highlight {
+    position: relative;
+
+    margin-left: -25px;
+    margin-right: -25px;
+    margin-top: -4px;
+    margin-bottom: 8px;
+
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+    border-radius: 8px;
+}
+
+.require_js #metadata .help_highlight:hover {
+    margin-left: -26px;
+    margin-right: -26px;
+    margin-top: -5px;
+    margin-bottom: 7px;
+
+}
+
+.require_js #metadata .help_highlight:hover .help_button {
+    position: absolute;
+    display: inline-block;
+    top: 0px;
+    left: 13px;
+}
+
+#metadata .metatable {
+    display: table;
+    border-collapse: collapse;
+    width: 383px;
+}
+#metadata .metatable>input {
+    display: table-cell !important;
+    width: 170px;
+    height: 17px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 16px;
+}
+#metadata .metatable>select {
+    display: table-cell !important;
+    width: 174px;
+    height: 21px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 16px;
+}
+#metadata .metatable>span {
+    display: table-cell !important;
+    text-align: right;
+    width: 100%;
+    padding-left: 37px;
+    vertical-align: middle;
+}
 
 .help_highlight {
     border-radius: 8px;
@@ -401,26 +490,12 @@ select, input, textarea {
     padding-right: 24px;
 }
 
-.help_button {
-    position: absolute; /* prevents help button from influence box packing */
-    margin-top: 10px;
-    display: none;
-}
-
-
-#metadata .help_button {
-    margin-top: 5px!important;
-}
-
-.help_button {
-    display: inline-block;
-    background-image: url("/images/information.png");
-    width: 16px;
-    height: 16px;
-}
-
-.help_button:hover {
-    cursor: help;
+.require_js .help_highlight:hover {
+    border: 1px solid #aaa;
+    margin-left: -25px;
+    margin-right: -25px;
+    margin-top: -1px;
+    margin-bottom: -1px;
 }
 
 #popup_screen {
@@ -639,16 +714,10 @@ select, input, textarea {
     text-align: center;
 }
 
-#metadata ul {
-    list-style: none;
-    text-align: right;
-    margin: 0px;
-    margin-left: -18px;
-    margin-right: -08px;
+#metadataentry {
+    margin-top: 1em;
 }
-#metadata li {
-    margin-top: 1.2em;
-}
+
 #metadata input,
 #format_selection,
 #metadata_format {
@@ -656,14 +725,6 @@ select, input, textarea {
     width: 170px;
     float: right;
     margin-left: 1em;
-}
-#metadata li span {
-    display: inline-block;
-    margin-top: 4px;
-    letter-spacing: -.2px;
-}
-#metadata li:last-of-type input {
-    margin-bottom: 1em;
 }
 
 #internets {
@@ -928,12 +989,15 @@ select, input, textarea {
     }
 }
 
+{# dummied out for potential future use...?  *sigh* Who am I kidding...
+
 @media only screen and (min-width: 880px) {
     /* wide enough for help tabs */
-    .help_button, .mirror{
+    .help_button, .mirror {
         position: absolute;
         width: 29px;
         height: 25px;
+        cursor: pointer!important;
     }
     #content[dir="ltr"] .help_button:not(.mirror), #content[dir="rtl"] .help_button.mirror {
         background-image: url("/wp-content/themes/creativecommons.org/images/help_ltr.png");
@@ -957,6 +1021,7 @@ select, input, textarea {
         left: 20px;
     }
 }
+#}
 
 
 
@@ -966,7 +1031,7 @@ select, input, textarea {
 .update_bar {
     background-color: black;
     color: white;
-    width: 800px;
+    max-width: 800px;
     margin: auto;
     padding: 5px;
     text-align: center;
@@ -1144,9 +1209,9 @@ select, input, textarea {
     <h2>{% trans %}Help others attribute you!{% endtrans %}</h2>
     {% trans %}This part is optional, but filling it out will add machine readable metadata to the embedable HTML!{% endtrans %}
 
-    <ul>
-      <li>
-        <div class="help_highlight">
+    <div id="metadataentry">
+      <div class="help_highlight">
+        <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('work_title');"></div>
           <span for="field_worktitle">
             {%- trans %}Title of work{% endtrans -%}
@@ -1154,10 +1219,10 @@ select, input, textarea {
           <input type="text" name="field_worktitle" 
                  value="{{ form.meta.title }}" />
         </div>
-      </li>
+      </div>
 
-      <li>
-        <div class="help_highlight">
+      <div class="help_highlight">
+        <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_name');"></div>
           <span for="field_attribute_to_name">
             {%- trans %}Attribute work to name{% endtrans -%}
@@ -1165,10 +1230,10 @@ select, input, textarea {
           <input type="text" name="field_attribute_to_name" 
                  value="{{ form.meta.attrib_name }}"/>
         </div>
-      </li>
-      
-      <li>
-        <div class="help_highlight">
+      </div>
+
+      <div class="help_highlight">
+        <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_url');"></div>
           <span for="field_attribute_to_url">
             {%- trans %}Attribute work to URL{% endtrans -%}
@@ -1176,10 +1241,10 @@ select, input, textarea {
           <input type="text" name="field_attribute_to_url" 
                  value="{{ form.meta.attrib_url }}" />
         </div>
-      </li>
+      </div>
 
-      <li>
-        <div class="help_highlight">
+      <div class="help_highlight">
+        <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('src_url');"></div>
           <span for="field_sourceurl">
             {%- trans %}Source work URL{% endtrans -%}
@@ -1187,10 +1252,10 @@ select, input, textarea {
           <input type="text" name="field_sourceurl" 
                  value="{{ form.meta.src_url }}"/>
         </div>
-      </li>
+      </div>
 
-      <li>
-        <div class="help_highlight">
+      <div class="help_highlight">
+        <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('permissions_url');"></div>
           <span for="field_morepermissionsurl">
             {%- trans %}More permissions URL{% endtrans -%}
@@ -1198,10 +1263,10 @@ select, input, textarea {
           <input type="text" name="field_morepermissionsurl"
                  value="{{ form.meta.permissions }}"/>
         </div>
-      </li>
+      </div>
 
-      <li>
-        <div class="help_highlight">
+      <div class="help_highlight">
+        <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('work_format');"></div>
           <span for="field_format">
             {% trans %}Format of work{% endtrans %}
@@ -1236,10 +1301,10 @@ select, input, textarea {
               {% trans %}Interactive{% endtrans %}</option>
           </select>
         </div>
-      </li>
+      </div>
 
-      <li>
-        <div class="help_highlight">
+      <div class="help_highlight">
+        <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('license_mark');"></div>
           <span>{% trans %}License mark{% endtrans %}</span>
           <select id="metadata_format" name="field_metadata_standard">
@@ -1254,8 +1319,9 @@ select, input, textarea {
                     {%- endif %}>{% trans %}Offline{% endtrans %}</option>
           </select>
         </div>
-      </li>
-    </ul>
+      </div>
+
+    </div>
   </div>
   
 
@@ -1414,7 +1480,11 @@ license is better suited for your needs</a>.{% endtrans %}
   
   <div id="help_selected_license">
     <div class="title">{% trans %}Selected License{% endtrans %}</div>
-    <div class="msg">{% trans %}{% endtrans %}</div>
+    <div class="msg">
+      <p>{% trans %}The "Selected License" panel displays information about the license that was described in the "License Features" panel.  Changing the values in the former panel will update the information displayed here.{% endtrans %}</p>
+      <h4>{% trans %}Approved for Free Cultural Works{% endtrans %}</h4>
+      <p>{% trans %}If the selected license provides the freedoms required of a free culture license, then the "Approved for Free Cultural Works" badge appears on this panel.  As "Non-Commercial" and "No-Derivatives" licenses do not provide the required freedoms, this feature is necessary to assist users in making an informed decision.{% endtrans %}</p>
+    </div>
   </div>
 
 
@@ -1479,7 +1549,10 @@ license is better suited for your needs</a>.{% endtrans %}
   
   <div id="help_license_mark_html">
     <div class="title">{% trans %}Have a web page?{% endtrans %}</div>
-    <div class="msg">{% trans %}{% endtrans %}</div>
+    <div class="msg">
+      <p>
+        {% trans %}This panel contains information that you can include in your website to visitors know that the selected license applies to your work.  Based on the information provided in the "Help others attribute you" panel, this will also provide with attribution information.  The provided html also includes machine-readable information, so that things like search engines can be made aware that a CC license applies to your work.{% endtrans %}</p>
+</div>
   </div>
 
   <div id="help_license_mark_xmp">
