@@ -397,6 +397,15 @@ select, input, textarea {
     padding: 1px;
 }
 
+input[type=radio] {
+    /* fix for webkit browsers on osx */
+    width: 20px;
+    height: 15px;
+
+    /* because ie8 defaults to white for some reason */
+    background-color: transparent;
+}
+
 #metadata .help_button {
     margin-top: 5px!important;
 }
@@ -610,18 +619,18 @@ select, input, textarea {
     margin-top: 6px;
     margin-left: 5em;
 }
-#freedoms ul {
+
+#freedoms ul, #internets ul {
     margin-left: 5em;
-    column-count: 2;
-    -moz-column-count: 2;
-    -webkit-column-count: 2;
     list-style: none;
+    display: table;
 }
-#freedoms ul.no_columns {
-    column-count: 1!important;
-    -moz-column-count: 1!important;
-    -webkit-column-count: 1!important;
-    margin-top: -1em;
+#freedoms li, #internets li {
+    display: table-cell;
+    width: 128px;
+}
+#freedoms li:only-of-type {
+    width: 256px!important;
 }
 
 #freedoms label {
@@ -781,12 +790,6 @@ select, input, textarea {
 }
 #iconsize_box label {
     float: none;
-}
-#iconsize_box ul {
-    column-count: 2;
-    -moz-column-count: 2;
-    -webkit-column-count: 2;
-    list-style: none;
 }
 
 #xmp_download_box {
