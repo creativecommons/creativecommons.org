@@ -129,7 +129,12 @@ CHOOSER.CALLBACK.main = function () {
         watched = CHOOSER.WIRING.watching[key];
         for (i=0; i<watched.length; i+=1) {
             selected = $("[name="+watched[i]+"]");
-            selected.change(CHOOSER.CALL.ping);
+            if (key ==="select" && $("html.ie8").length > 0) {
+                selected.click(CHOOSER.CALL.ping);
+            }
+            else {
+                selected.change(CHOOSER.CALL.ping);
+            }
             if (key ==="text") {
                 selected.keyup(CHOOSER.CALL.delayed_ping);
             }
