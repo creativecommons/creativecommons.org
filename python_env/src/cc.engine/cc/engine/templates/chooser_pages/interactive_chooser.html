@@ -681,12 +681,14 @@ input[type=radio] {
 
 .whatis, .whynot {
     display: table;
-    width: 200px;
+    width: 180px;
     text-align: center;
     font-size: 16px;
     font-weight: bold;
     border: 1px solid #aaa;
     border-radius: 8px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .whatis a, .whynot a {
@@ -1196,7 +1198,7 @@ input[type=radio] {
         <div class="whatis" {% if not license.libre -%}
              style="display: none;"{% endif %}>
           <a href="http://freedomdefined.org/Definition">
-            {%- trans %}What is a free culture license?{% endtrans -%}
+            {%- trans %}Why is this a free culture license?{% endtrans -%}
           </a>
         </div>
         <div class="whynot" {% if not license.libre -%}
@@ -1368,7 +1370,6 @@ input[type=radio] {
 
 
     <div id="for_xmp" {% if form.meta.standard != "xmp" %}style="display:none"{% endif %}>
-      <div class="help_button mirror" onclick="CHOOSER.CALL.popup('license_mark_xmp');"></div>
       <h2>{% trans %}XMP Embeded Metadata{% endtrans %}</h2>
 
       <div class="results-preview"><div>
@@ -1385,7 +1386,6 @@ input[type=radio] {
     
 
     <div id="for_offline" {% if form.meta.standard != "offline" %}style="display:none"{% endif %}>
-      <div class="help_button mirror" onclick="CHOOSER.CALL.popup('license_mark_offline');"></div>
       <h2>{% trans %}Non-digital works?{% endtrans %}</h2>
       
       <div class="results-preview"><div>
@@ -1495,7 +1495,12 @@ license is better suited for your needs</a>.{% endtrans %}
     <div class="msg">
       <p>{% trans %}The "Selected License" panel displays information about the license that was described in the "License Features" panel.  Changing the values in the former panel will update the information displayed here.{% endtrans %}</p>
       <h4>{% trans %}Approved for Free Cultural Works{% endtrans %}</h4>
-      <p>{% trans %}If the selected license provides the freedoms required of a free culture license, then the "Approved for Free Cultural Works" badge appears on this panel.  As "Non-Commercial" and "No-Derivatives" licenses do not provide the required freedoms, this feature is necessary to assist users in making an informed decision.{% endtrans %}</p>
+      <p>
+        {% trans %}If the selected license provides the freedoms required of a free culture license, then the "Approved for Free Cultural Works" badge appears on this panel.  "Non-Commercial" and "No-Derivatives" licenses fall short of providing the required freedoms to be considered free culture licenses.  This feature is intended to assist you in making a more informed decision.  This is not trivial information, as the "Attribution-ShareAlike" and "Attribution-NonCommercial-ShareAlike" licenses are incompatible with one another.  Content released under "Attribution-ShareAlike" and content released under "Attribution-NonCommercial-ShareAlike" may not be combined with one another because of this.{% endtrans %}
+      </p>
+      <p>
+        {% trans %}A practical example of this problem is trying to post "Attribution-NonCommercial-ShareAlike" content on wikipedia, which uses the "Attribution-ShareAlike" license.{% endtrans %}
+      </p>
     </div>
   </div>
 
@@ -1563,19 +1568,14 @@ license is better suited for your needs</a>.{% endtrans %}
     <div class="title">{% trans %}Have a web page?{% endtrans %}</div>
     <div class="msg">
       <p>
-        {% trans %}This panel contains information that you can include in your website to visitors know that the selected license applies to your work.  Based on the information provided in the "Help others attribute you" panel, this will also provide with attribution information.  The provided html also includes machine-readable information, so that things like search engines can be made aware that a CC license applies to your work.{% endtrans %}</p>
-</div>
+        {% trans %}The html fragment provided in this panel may be pasted onto your website to display what license applies to your work, as well as attribution information.  The html fragment combines information provided in the "License Features" panel and the "Help others attribute you!" panel.  The html also contains rdfa metadata, which allows for things like search engines to acknowledge the applicable license and attribution information.{% endtrans %}
+      </p>
+      <p>
+        {% trans %}This panel also contains a preview of what the html will look like when copied on to your website.  The radio buttons at the bottom of the panel can be used to select a different badge image to be used.{% endtrans %}
+      </p>
+    </div>
   </div>
 
-  <div id="help_license_mark_xmp">
-    <div class="title">{% trans %}XMP Embeded Metadata{% endtrans %}</div>
-    <div class="msg">{% trans %}{% endtrans %}</div>
-  </div>
-
-  <div id="help_license_mark_offline">
-    <div class="title">{% trans %}Non-digital works?{% endtrans %}</div>
-    <div class="msg">{% trans %}{% endtrans %}</div>
-  </div>
 
 
 
