@@ -472,21 +472,23 @@ input[type=radio] {
     border-collapse: collapse;
     width: 383px;
 }
-#metadata .metatable>input {
+#metadata .metatable input {
     display: inline-block;
     width: 170px;
     height: 17px;
     margin-top: 3px;
     margin-bottom: 3px;
     margin-right: 16px;
+    margin-left: 0px;
 }
-#metadata .metatable>select {
+#metadata .metatable select {
     display: inline-block;
     width: 174px;
     height: 21px;
     margin-top: 3px;
     margin-bottom: 3px;
     margin-right: 16px;
+    margin-left: 0px;
 }
 #metadata .metatable>span:first-of-type {
     display: table-cell !important;
@@ -1266,7 +1268,7 @@ input[type=radio] {
           <span><label for="field_attribute_to_url">
             {%- trans %}Attribute work to URL{% endtrans -%}
           </label></span>
-          <span><input type="text" name="field_attribute_to_url" id="field_attribute_to_url" 
+          <span><input type="url" name="field_attribute_to_url" id="field_attribute_to_url" 
                  value="{{ form.meta.attrib_url }}" /></span>
         </div>
       </div>
@@ -1277,7 +1279,7 @@ input[type=radio] {
           <span><label for="field_sourceurl">
             {%- trans %}Source work URL{% endtrans -%}
           </label></span>
-          <span><input type="text" name="field_sourceurl" id="field_sourceurl"
+          <span><input type="url" name="field_sourceurl" id="field_sourceurl"
                  value="{{ form.meta.src_url }}"/></span>
         </div>
       </div>
@@ -1288,7 +1290,7 @@ input[type=radio] {
           <span><label for="field_morepermissionsurl">
             {%- trans %}More permissions URL{% endtrans -%}
           </label></span>
-          <span><input type="text" name="field_morepermissionsurl" id="field_morepermissionsurl"
+          <span><input type="url" name="field_morepermissionsurl" id="field_morepermissionsurl"
                  value="{{ form.meta.permissions }}"/></span>
         </div>
       </div>
@@ -1515,7 +1517,7 @@ license is better suited for your needs</a>.{% endtrans %}
         {% trans %}If the selected license provides the freedoms required of a free culture license, then the "Approved for Free Cultural Works" badge appears on this panel.  "Non-Commercial" and "No-Derivatives" licenses fall short of providing the required freedoms to be considered free culture licenses.  This feature is intended to assist you in making a more informed decision.  This is not trivial information, as the "Attribution-ShareAlike" and "Attribution-NonCommercial-ShareAlike" licenses are incompatible with one another.  Content released under "Attribution-ShareAlike" and content released under "Attribution-NonCommercial-ShareAlike" may not be combined with one another because of this.{% endtrans %}
       </p>
       <p>
-        {% trans %}A practical example of this problem is trying to post "Attribution-NonCommercial-ShareAlike" content on wikipedia, which uses the "Attribution-ShareAlike" license.{% endtrans %}
+        {% trans %}A practical example of this problem is trying to post "Attribution-NonCommercial-ShareAlike" content on Wikipedia, which uses the "Attribution-ShareAlike" license.{% endtrans %}
       </p>
     </div>
   </div>
