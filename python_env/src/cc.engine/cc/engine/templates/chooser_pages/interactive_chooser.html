@@ -473,7 +473,7 @@ input[type=radio] {
     width: 383px;
 }
 #metadata .metatable>input {
-    display: table-cell !important;
+    display: inline-block;
     width: 170px;
     height: 17px;
     margin-top: 3px;
@@ -481,19 +481,33 @@ input[type=radio] {
     margin-right: 16px;
 }
 #metadata .metatable>select {
-    display: table-cell !important;
+    display: inline-block;
     width: 174px;
     height: 21px;
     margin-top: 3px;
     margin-bottom: 3px;
     margin-right: 16px;
 }
-#metadata .metatable>span {
+#metadata .metatable>span:first-of-type {
     display: table-cell !important;
     text-align: right;
-    width: 100%;
+    width: 143px;
+    padding: 0px;
     padding-left: 37px;
     vertical-align: middle;
+    min-height: 27px;
+}
+#metadata .metatable>span:last-of-type {
+    display: table-cell !important;
+    text-align: left;
+    width: 203px;
+    padding: 0px;
+    vertical-align: middle;
+}
+#metadata .metatable>span>label {
+    width: 143px;
+    padding: 0px;
+    color: black;
 }
 
 .help_highlight {
@@ -1068,7 +1082,7 @@ input[type=radio] {
 {% block body %}
 
 <div id="instructional_fluff">
-  <span>{% trans %}New to creative commons?{% endtrans %}</span>
+  <span>{% trans %}New to Creative Commons?{% endtrans %}</span>
   <span>[ <a href="/about/think">
     {%- trans %}Considerations before licensing{% endtrans -%}
   </a> ]</span>
@@ -1227,65 +1241,65 @@ input[type=radio] {
       <div class="help_highlight">
         <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('work_title');"></div>
-          <span for="field_worktitle">
+          <span><label for="field_worktitle">
             {%- trans %}Title of work{% endtrans -%}
-          </span>
-          <input type="text" name="field_worktitle" 
-                 value="{{ form.meta.title }}" />
+          </label></span>
+          <span><input type="text" name="field_worktitle" id="field_worktitle"
+                 value="{{ form.meta.title }}" /></span>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_name');"></div>
-          <span for="field_attribute_to_name">
+          <span><label for="field_attribute_to_name">
             {%- trans %}Attribute work to name{% endtrans -%}
-          </span>
-          <input type="text" name="field_attribute_to_name" 
-                 value="{{ form.meta.attrib_name }}"/>
+          </label></span>
+          <span><input type="text" name="field_attribute_to_name" id="field_attribute_to_name" 
+                 value="{{ form.meta.attrib_name }}"/></span>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_url');"></div>
-          <span for="field_attribute_to_url">
+          <span><label for="field_attribute_to_url">
             {%- trans %}Attribute work to URL{% endtrans -%}
-          </span>
-          <input type="text" name="field_attribute_to_url" 
-                 value="{{ form.meta.attrib_url }}" />
+          </label></span>
+          <span><input type="text" name="field_attribute_to_url" id="field_attribute_to_url" 
+                 value="{{ form.meta.attrib_url }}" /></span>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('src_url');"></div>
-          <span for="field_sourceurl">
+          <span><label for="field_sourceurl">
             {%- trans %}Source work URL{% endtrans -%}
-          </span>
-          <input type="text" name="field_sourceurl" 
-                 value="{{ form.meta.src_url }}"/>
+          </label></span>
+          <span><input type="text" name="field_sourceurl" id="field_sourceurl"
+                 value="{{ form.meta.src_url }}"/></span>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('permissions_url');"></div>
-          <span for="field_morepermissionsurl">
+          <span><label for="field_morepermissionsurl">
             {%- trans %}More permissions URL{% endtrans -%}
-          </span>
-          <input type="text" name="field_morepermissionsurl"
-                 value="{{ form.meta.permissions }}"/>
+          </label></span>
+          <span><input type="text" name="field_morepermissionsurl" id="field_morepermissionsurl"
+                 value="{{ form.meta.permissions }}"/></span>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('work_format');"></div>
-          <span for="field_format">
+          <span><label for="format_selection">
             {% trans %}Format of work{% endtrans %}
-          </span>
-          <select id="format_selection" name="field_format">
+          </label></span>
+          <span><select id="format_selection" name="field_format">
             <option value="" 
                     {%- if form.meta.format == "" %} selected="selected"
                     {%- endif %}>
@@ -1313,25 +1327,27 @@ input[type=radio] {
             <option value="InteractiveResource"
                     {%- if form.meta.format == "InteractiveResource" %} selected="selected"{% endif %}>
               {% trans %}Interactive{% endtrans %}</option>
-          </select>
+          </select></span>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
           <div class="help_button" onclick="CHOOSER.CALL.popup('license_mark');"></div>
-          <span>{% trans %}License mark{% endtrans %}</span>
-          <select id="metadata_format" name="field_metadata_standard">
+          <span><label for="metadata_format">
+            {% trans %}License mark{% endtrans %}
+          </label></span>
+          <span><select id="metadata_format" name="field_metadata_standard">
             <option value="html+rdfa" 
                     {%- if form.meta.standard == "html+rdfa" %} selected="selected"
-                    {%- endif %}>HTML+RDFA</option>
+                    {%- endif %}>HTML+RDFa</option>
             <option value="xmp"
                     {%- if form.meta.standard == "xmp" %} selected="selected"
                     {%- endif %}>XMP</option>
             <option value="offline"
                     {%- if form.meta.standard == "offline" %} selected="selected"
                     {%- endif %}>{% trans %}Offline{% endtrans %}</option>
-          </select>
+          </select></span>
         </div>
       </div>
 
@@ -1400,7 +1416,7 @@ input[type=radio] {
           
       <textarea id="infotocopy" readonly="readonly">
         {%- trans license_name=license.title(target_lang), license_url=license.uri -%}
-          This work is licensed under the Creative Commons {{ license_name }} License. To view a copy of this license, visit {{ license_url }} or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+          This work is licensed under the Creative Commons {{ license_name }} License. To view a copy of this license, visit {{ license_url }}.
         {%- endtrans -%}
       </textarea>
     </div>
@@ -1551,8 +1567,8 @@ license is better suited for your needs</a>.{% endtrans %}
   <div id="help_license_mark">
     <div class="title">{% trans %}License Mark{% endtrans %}</div>
     <div class="msg">
-      <p>{% trans %}The "License Mark" dropdown menu determines the content of the bottom right panel.  That panel provides a means of marking your work in a consistant or standardized way.{% endtrans %}</p>
-      <h4>HTML + RDFA</h4>
+      <p>{% trans %}The "License Mark" dropdown menu determines the content of the bottom right panel.  That panel provides a means of marking your work in a consistent or standardized way.{% endtrans %}</p>
+      <h4>HTML + RDFa</h4>
       <p>{% trans %}HTML is provided that you can copy into your webpage.  The html is annotated with machine readable <a href="http://wiki.creativecommons.org/Metadata">metadata</a>.  This allows for search engines to enable searches for similarly licensed works, and for tools to automatically recognize information about the work (such as who authored it).{% endtrans %}</p>
       <h4>XMP</h4>
       <p>{% trans %}An .xmp file can be embedded in a variety of file formats, such as pdfs.{% endtrans %}</p>
