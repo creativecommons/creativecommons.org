@@ -26,7 +26,9 @@ var CHOOSER = {
             ],
             'text' : [
                 'field_worktitle',
-                'field_attribute_to_name',
+                'field_attribute_to_name'
+            ],
+            'url' : [
                 'field_attribute_to_url',
                 'field_sourceurl',
                 'field_morepermissionsurl'
@@ -135,7 +137,7 @@ CHOOSER.CALLBACK.main = function () {
             else {
                 selected.change(CHOOSER.CALL.ping);
             }
-            if (key ==="text") {
+            if (key === "text" || key === "url") {
                 selected.keyup(CHOOSER.CALL.delayed_ping);
             }
         }
@@ -343,7 +345,7 @@ CHOOSER.CALL.refresh_state = function () {
             }
             
             // Store the actual value of the metadata field so we can use it with a template...
-            if (type === "text") {
+            if (type === "text" || type === "url") {
                 CHOOSER.STATE.metadata[name] = found;
                 found = found === "" ? "" : name;
             }
