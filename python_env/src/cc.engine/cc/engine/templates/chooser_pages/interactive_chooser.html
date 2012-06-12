@@ -62,8 +62,7 @@ var CHOOSER = {
     // Constants
     "CONST" : {
         "img_path" : "/wp-content/themes/creativecommons.org/images/",
-        "fc_approved" : "/wp-content/themes/creativecommons.org/images/fc_approved_small.png",
-        "fc_denied" : "/wp-content/themes/creativecommons.org/images/fc_questionable.png"
+        "fc_approved" : "/wp-content/themes/creativecommons.org/images/fc_approved_tiny.png",
     },
 
     // Templates (may or may not be constants)
@@ -211,13 +210,11 @@ CHOOSER.CALL.refresh_ui = function (event_ctx, data) {
 
     // If additional callback data is available, update related fields as well:
     if (data != undefined) {
-        $(".fc_status")[0].src = data.libre ? CHOOSER.CONST.fc_approved : CHOOSER.CONST.fc_denied;
-        $("#license .whatis")[0].style.display = data.libre ? "block" : "none";
-        $("#license .whynot")[0].style.display = data.libre ? "none" : "block";
         $("#license_title")[0].innerHTML = data.license_title;
         $("#xmp_license_name")[0].innerHTML = data.license_title;
         $("#badge_link")[0].href = data.uri;
         $("#license_title")[0].href = data.uri;
+        $("#fc_info_box")[0].style.display = data.libre ? "table" : "none";
         buffer = CHOOSER.TEMPLATE.nondigital;
         buffer = buffer.replace("LICENSE_NAME", data.license_title);
         buffer = buffer.replace("LICENSE_URL", data.uri);
@@ -675,62 +672,60 @@ input[type=radio] {
     margin-bottom: 8px;
 }
 
+#license .mini_deed {
+    min-height: 244px;
+    margin-top: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+
+    position: relative;
+}
+
 #fc_logo_link, #badge_link {
     outline: 0px;
 }
 
-#fc_logo_link {
-    display: block;
-    width: 115px;
-    height: 115px;
-    position: absolute;
-    right: -5px;
-    bottom: 25px;
-    margin-left: -55px;
-}
-
 #fc_info_box {
     position: absolute;
-    display: block;
-    width: 200px;
-    left: 10px;
-    top: 135px;
+    display: table;
+    bottom: 0px;
+    width: 100%;
 }
 
-.whatis, .whynot {
-    display: table;
-    width: 180px;
+#fc_info_box>div {
+    display: table-cell;
     text-align: center;
+}
+
+#fc_logo_link {
+    display: inline-block;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    margin-left: 10px;
+    margin-right: -18px;
+}
+
+.whatis {
     font-size: 16px;
     font-weight: bold;
-    border: 1px solid #aaa;
-    border-radius: 8px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.whatis a, .whynot a {
-    display: table-cell;
-    width: 200px;
-    height: 67px;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
     vertical-align: middle;
 }
 
-
-#license .mini_deed {
-    min-height: 224px;
-    margin-top: 2em;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    /*border-top: 1px solid #393839;
-    border-bottom: 1px solid #393839;*/
-    border-top: 1px solid #aaa;
-    border-bottom: 1px solid #aaa;
-    position: relative;
+.license_icons {
+    display: table;
+    background-color: white;
 }
 
-#license .whynot {
-    display: none;
+.license_icons>div {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.license_icons>img {
+    display: inline-block;
 }
 
 .ui_box {
@@ -1201,17 +1196,31 @@ input[type=radio] {
     <div class="help_button mirror" onclick="CHOOSER.CALL.popup('selected_license');"></div>
     <h2>{% trans %}Selected License{% endtrans %}</h2>
     <div class="mini_deed">
-      <a id="badge_link" href="">
-        <img id="badge" src="{{ license_logo }}"/>
-      </a>
+
       <a id="license_title" href="{{ license.uri }}">{{ license_title }}</a>
 
-      <a id="fc_logo_link" href="http://freedomdefined.org/Definition">
-        <img src="/wp-content/themes/creativecommons.org/images/
-                  {%- if license.libre -%}fc_approved_small.png
-                  {%- else -%}fc_questionable.png{% endif %}"
-             class="logo fc_status" />
-      </a>
+      <div class="license_icons">
+        <div><img src="/wp-content/themes/creativecommons.org/images/chooser_cc.png" /></div>
+        <div><img src="/wp-content/themes/creativecommons.org/images/chooser_by.png" /></div>
+        {% if license_code.nc -%}
+        <div><img src={% if currency == "" -%}
+                  "/wp-content/themes/creativecommons.org/images/chooser_nc.png"
+                  {%- endif -%}
+                  {%- if currency == "jp" -%}
+                  "/wp-content/themes/creativecommons.org/images/chooser_nc_jp.png"
+                  {%- endif -%}
+                  {%- if currency == "eu" -%}
+                  "/wp-content/themes/creativecommons.org/images/chooser_nc_eu.png"
+                  {%- endif %} /></div>
+        {%- endif %}
+        {% if license_code.sa -%}
+        <div><img src="/wp-content/themes/creativecommons.org/images/chooser_sa.png" /></div>
+        {%- endif %}
+        {% if license_code.nd -%}
+        <div><img src="/wp-content/themes/creativecommons.org/images/chooser_nd.png" /></div>
+        {%- endif %}
+      </div>
+      
       <div id="fc_info_box">
         <div class="whatis" {% if not license.libre -%}
              style="display: none;"{% endif %}>
@@ -1219,13 +1228,14 @@ input[type=radio] {
             {%- trans %}Why is this a free culture license?{% endtrans -%}
           </a>
         </div>
-        <div class="whynot" {% if not license.libre -%}
-             style="display: block;"{% endif %}>
-          <a href="http://freedomdefined.org/Definition">
-            {%- trans %}Why is this not a free culture license?{% endtrans -%}
+        <div>
+          <a id="fc_logo_link" href="http://freedomdefined.org/Definition">
+            <img src="/wp-content/themes/creativecommons.org/images/
+                      {%- if license.libre -%}fc_approved_tiny.png
+                      {%- else -%}fc_questionable.png{% endif %}"
+                 class="logo fc_status" />
           </a>
         </div>
-
       </div>
     </div>
   </div>
@@ -1480,7 +1490,8 @@ input[type=radio] {
       <h4>{% trans %}Yes{% endtrans %}</h4>
       <p>{% trans %}The licensor permits others to copy, distribute, display and perform the work, as well as make derivative works based on it.{% endtrans %}</p>
       <h4>{% trans %}Yes, as long as others share alike{% endtrans %}</h4>
-      <p>{% trans %}The licensor permits others to distribute derivative works only under the same license or one compatible with the one that governs the licensor's work.{% endtrans %}</p>
+      <p>{% trans %}The licensor permits others to distribute derivative works only under the same license or one <a
+href="http://creativecommons.org/compatiblelicenses">compatible</a> with the one that governs the licensor's work.{% endtrans %}</p>
       <h4>{% trans %}No{% endtrans %}</h4>
       <p>{% trans %}The licensor permits others to copy, distribute and transmit only unaltered copies of the work — not derivative works based on it.{% endtrans %}</p>
     </div>
@@ -1513,10 +1524,10 @@ license is better suited for your needs</a>.{% endtrans %}
   <div id="help_selected_license">
     <div class="title">{% trans %}Selected License{% endtrans %}</div>
     <div class="msg">
-      <p>{% trans %}The "Selected License" panel displays information about the license that was described in the "License Features" panel.  Changing the values in the former panel will update the information displayed here.{% endtrans %}</p>
+      <p>{% trans %}The "Selected License" panel displays information about the license that was described in the "License Features" panel.  Changing the values in the "License Features" panel will update the information displayed here.{% endtrans %}</p>
       <h4>{% trans %}Approved for Free Cultural Works{% endtrans %}</h4>
       <p>
-        {% trans %}If the selected license provides the freedoms required of a free culture license, then the "Approved for Free Cultural Works" badge appears on this panel.  "Non-Commercial" and "No-Derivatives" licenses fall short of providing the required freedoms to be considered free culture licenses.  This feature is intended to assist you in making a more informed decision.  This is not trivial information, as the "Attribution-ShareAlike" and "Attribution-NonCommercial-ShareAlike" licenses are incompatible with one another.  Content released under "Attribution-ShareAlike" and content released under "Attribution-NonCommercial-ShareAlike" may not be combined with one another because of this.{% endtrans %}
+        {% trans %}If the selected license provides the freedoms required of a free culture license, then the "Approved for Free Cultural Works" icon appears on this panel.  "Non-Commercial" and "No-Derivatives" licenses fall short of providing the required freedoms to be considered free culture licenses.  This feature is intended to assist you in making a more informed decision.  This is not trivial information, as the "Attribution-ShareAlike" and "Attribution-NonCommercial-ShareAlike" licenses are incompatible with one another.  Content released under "Attribution-ShareAlike" and content released under "Attribution-NonCommercial-ShareAlike" may not be combined with one another because of this.{% endtrans %}
       </p>
       <p>
         {% trans %}A practical example of this problem is trying to post "Attribution-NonCommercial-ShareAlike" content on Wikipedia, which uses the "Attribution-ShareAlike" license.{% endtrans %}
@@ -1529,18 +1540,13 @@ license is better suited for your needs</a>.{% endtrans %}
 
   <div id="help_metadata">
     <div class="title">{% trans %}Help others attribute you!{% endtrans %}</div>
-    <div class="msg">{% trans %}<p>
-	  The information is embedded in a software readable format.
-	  This allows search engines to index additional information
-	  about your work and allows people coming to the license deed
-	  from your page to see information on the deed about how to
-	  attribute your work.  
-	</p>
-	<p>
-	  <a href="http://wiki.creativecommons.org/Metadata">More
-	    information</a> on Creative Commons metadata is available if
-	  you want to find out more.
-	</p>{% endtrans %}</div>
+    <div class="msg">
+      <p>
+        {% trans %}The information is embedded in a machine-readable format.  This allows search engines to index additional information about your work and allows people coming to the license deed from your page to see information on the deed about how to attribute your work.{% endtrans %}
+      </p>
+      <p>
+        {% trans %}<a href="http://wiki.creativecommons.org/Metadata">More information</a> on Creative Commons metadata is available.{% endtrans %}
+      </p></div>
   </div>
 
   <div id="help_work_title">
@@ -1549,19 +1555,19 @@ license is better suited for your needs</a>.{% endtrans %}
   </div>
   <div id="help_attrib_name">
     <div class="title">{% trans %}Attribute work to name{% endtrans %}</div>
-    <div class="msg">{% trans %}The name users of the work should give attribution to. For example, the name of the work's author.{% endtrans %}</div>
+    <div class="msg">{% trans %}The name to which the work should be attributed.  For example, the name of the work's author.{% endtrans %}</div>
   </div>
   <div id="help_attrib_url">
     <div class="title">{% trans %}Attribute work to URL{% endtrans %}</div>
-    <div class="msg">{% trans %}The URL users of the work should link to. For example, the work's page on the author's site.{% endtrans %}</div>
+    <div class="msg">{% trans %}The URL to which the work should be attributed. For example, the work's page on the author's site.{% endtrans %}</div>
   </div>
   <div id="help_src_url">
     <div class="title">{% trans %}Source work URL{% endtrans %}</div>
-    <div class="msg">{% trans %}A work another is derived from.{% endtrans %}</div>
+    <div class="msg">{% trans %}The URL of the work upon which this work is based or derived.{% endtrans %}</div>
   </div>
   <div id="help_permissions_url">
     <div class="title">{% trans %}More permissions URL{% endtrans %}</div>
-    <div class="msg">{% trans %}A URL where a user can obtain information about clearing rights that are not pre-cleared by your CC license.{% endtrans %}</div>
+    <div class="msg">{% trans %}A URL where a user can find information about obtaining rights that are not already permitted by the CC license.{% endtrans %}</div>
   </div>
 
   <div id="help_work_format">
@@ -1569,15 +1575,15 @@ license is better suited for your needs</a>.{% endtrans %}
     <div class="msg">{% trans %}This describes what kind of work is being licensed.  For example, a photograph would have the "Image" format.  If unsure, choose "Other / Multiple formats".{% endtrans %}</div>
   </div>
   <div id="help_license_mark">
-    <div class="title">{% trans %}License Mark{% endtrans %}</div>
+    <div class="title">{% trans %}License mark{% endtrans %}</div>
     <div class="msg">
-      <p>{% trans %}The "License Mark" dropdown menu determines the content of the bottom right panel.  That panel provides a means of marking your work in a consistent or standardized way.{% endtrans %}</p>
+      <p>{% trans %}The "License Mark" select box determines the content of the bottom right panel.  That panel provides a means of marking your work in a consistent and standardized way.{% endtrans %}</p>
       <h4>HTML + RDFa</h4>
-      <p>{% trans %}HTML is provided that you can copy into your webpage.  The html is annotated with machine readable <a href="http://wiki.creativecommons.org/Metadata">metadata</a>.  This allows for search engines to enable searches for similarly licensed works, and for tools to automatically recognize information about the work (such as who authored it).{% endtrans %}</p>
+      <p>{% trans %}HTML is provided which you can copy into your webpage.  The HTML is annotated with machine-readable <a href="http://wiki.creativecommons.org/Metadata">metadata</a>.  This allows search engines to find similarly licensed works, and for tools to automatically recognize information about the work (such as who authored it).{% endtrans %}</p>
       <h4>XMP</h4>
-      <p>{% trans %}An .xmp file can be embedded in a variety of file formats, such as pdfs.{% endtrans %}</p>
+      <p>{% trans %}An <a href="http://wiki.creativecommons.org/XMP">XMP</a> file can be embedded in a variety of file formats, such as PDFs.{% endtrans %}</p>
       <h4>{% trans %}OFFLINE{% endtrans %}</h4>
-      <p>{% trans%}Provides a simple notice that can be included in plain text.{% endtrans %}</p>
+      <p>{% trans%}Provides a simple plain text notice which can be used to mark offline works{% endtrans %}</p>
     </div>
   </div>
 
@@ -1588,10 +1594,10 @@ license is better suited for your needs</a>.{% endtrans %}
     <div class="title">{% trans %}Have a web page?{% endtrans %}</div>
     <div class="msg">
       <p>
-        {% trans %}The html fragment provided in this panel may be pasted onto your website to display what license applies to your work, as well as attribution information.  The html fragment combines information provided in the "License Features" panel and the "Help others attribute you!" panel.  The html also contains rdfa metadata, which allows for things like search engines to acknowledge the applicable license and attribution information.{% endtrans %}
+        {% trans %}The HTML fragment provided in this panel may be pasted into your website to display which license applies to your work, as well as attribution information.  The HTML fragment combines information provided in the "License Features" panel and the "Help others attribute you!" panel.  The HTML also contains <a href="http://wiki.creativecommons.org/RDFa">RDFa</a> metadata, which allows search engines to accurately determine which license your work is under, and how you want to be attributed.{% endtrans %}
       </p>
       <p>
-        {% trans %}This panel also contains a preview of what the html will look like when copied on to your website.  The radio buttons at the bottom of the panel can be used to select a different badge image to be used.{% endtrans %}
+        {% trans %}This panel also contains a preview of what the HTML will look like when included in your website.  The radio buttons at the bottom of the panel may be used to change the size and appearance of the license icon in the HTML.{% endtrans %}
       </p>
     </div>
   </div>
