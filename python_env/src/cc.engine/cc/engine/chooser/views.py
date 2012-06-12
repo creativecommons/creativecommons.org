@@ -415,6 +415,7 @@ def chooser_view(request):
             "sa" : False,
             "nd" : False,
             "jurisdiction" : "",
+            "currency" : "",
             },
         "meta" : {
             "standard" : "html+rdfa",
@@ -451,6 +452,7 @@ def chooser_view(request):
             "sa" : equal_or_default('field_derivatives', u'sa'),
             "nd" : equal_or_default('field_derivatives', u'n'),
             "jurisdiction" : value_or_default('field_jurisdiction'),
+            "currency" : util.currency_symbol_from_license(license),
             }
         defaults["meta"] = {
             "standard"    : value_or_default("field_metadata_standard", "html+rdfa"),
@@ -497,6 +499,7 @@ def chooser_view(request):
          'page_style': '2cols',
          'last_query': request.query_string,
          'form' : defaults,
+         'currency' : util.currency_symbol_from_license(license),
          'license': license,
          'license_logo': picked_logo,
          'license_norm_logo': license_norm_logo,
@@ -526,6 +529,7 @@ def xhr_api(request):
         #'license': license,
         'uri' : license.uri,
         'libre' : license.libre,
+        'currency' : util.currency_symbol_from_license(license),
         'license_logo': license.logo_method('88x31'),
         'license_slim_logo': license.logo_method('80x15'),
         'license_title': license.title(target_lang),

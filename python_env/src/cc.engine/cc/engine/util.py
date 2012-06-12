@@ -36,6 +36,38 @@ PERMITS_NAME_MAP = {
 
 LANGUAGE_JURISDICTION_MAPPING = {}
 
+JURISDICTION_CURRENCY_LOOKUP = {
+    "jp" : "jp",
+    "at" : "eu",
+    "be" : "eu",
+    "cy" : "eu",
+    "ee" : "eu",
+    "fi" : "eu",
+    "fr" : "eu",
+    "de" : "eu",
+    "gr" : "eu",
+    "ie" : "eu",
+    "it" : "eu",
+    "lu" : "eu",
+    "mt" : "eu",
+    "nl" : "eu",
+    "pt" : "eu",
+    "sk" : "eu",
+    "si" : "eu",
+    "es" : "eu",
+}
+
+
+def currency_symbol_from_license(license):
+    """Returns 'jp', 'eu', or '' depending on what
+    currency symbol should be used for the nc logo."""
+
+    code = license.jurisdiction.code
+    try:
+        return JURISDICTION_CURRENCY_LOOKUP[code]
+    except KeyError:
+        return ""
+
 
 class Error(Exception): pass
 
