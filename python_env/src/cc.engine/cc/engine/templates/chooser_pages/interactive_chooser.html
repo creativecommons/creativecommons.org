@@ -175,10 +175,6 @@ CHOOSER.CALL.refresh_ui = function (event_ctx, data) {
     "use strict";
     var name, value, buffer, format, metakind;
 
-    // Update cc badge icons
-    CHOOSER.STATE.icon_is_small = $("[name=field_iconsize]")[1].checked;
-    $("#license #badge")[0].src = CHOOSER.STATE.icon_is_small ? CHOOSER.STATE.small_icon : CHOOSER.STATE.large_icon;
-
     // Change the bottom right panel for the correct metadata format
     metakind = $("#metadata_format")[0].value;
     if (!CHOOSER.WIRING.metadata[metakind][0]) {
@@ -202,6 +198,9 @@ CHOOSER.CALL.refresh_ui = function (event_ctx, data) {
             buffer = buffer.replace(name, value);
         }
     }
+
+    // Update html badge icon size
+    CHOOSER.STATE.icon_is_small = $("[name=field_iconsize]")[1].checked;
     if (CHOOSER.STATE.icon_is_small) {
         buffer = buffer.replace("88x31.png", "80x15.png");
     }
@@ -210,11 +209,20 @@ CHOOSER.CALL.refresh_ui = function (event_ctx, data) {
 
     // If additional callback data is available, update related fields as well:
     if (data != undefined) {
-        $("#license_title")[0].innerHTML = data.license_title;
+        $("#nc_icon")[0].style.display = data.license_code.nc ? "table-cell" : "none";
+        $("#nd_icon")[0].style.display = data.license_code.nd ? "table-cell" : "none";
+        $("#sa_icon")[0].style.display = data.license_code.sa ? "table-cell" : "none";
+        if (data.currency !== "") {
+            $("#nc_icon>img")[0].src = CHOOSER.CONST.img_path + "chooser_nc_" + data.currency + ".png";
+        }
+        else {
+            $("#nc_icon>img")[0].src = CHOOSER.CONST.img_path + "chooser_nc.png";
+        }
+        $("#license_title_link")[0].innerHTML = data.license_title;
+        $("#license_title_link")[0].href = data.uri;
         $("#xmp_license_name")[0].innerHTML = data.license_title;
-        $("#badge_link")[0].href = data.uri;
-        $("#license_title")[0].href = data.uri;
-        $("#fc_info_box")[0].style.display = data.libre ? "table" : "none";
+        $("#fc_approved_box")[0].style.display = data.libre ? "table" : "none";
+        $("#fc_dubious_box")[0].style.display = !data.libre ? "table" : "none";
         buffer = CHOOSER.TEMPLATE.nondigital;
         buffer = buffer.replace("LICENSE_NAME", data.license_title);
         buffer = buffer.replace("LICENSE_URL", data.uri);
@@ -424,15 +432,26 @@ input[type=radio] {
     cursor: pointer;
 }
 
-.require_js .ui_box>.help_button, .require_js #internets .help_button {
+.require_js #content[dir="ltr"] .ui_box>.help_button, .require_js #content[dir="ltr"]  #internets .help_button {
     display: inline-block;
     left: 20px;
 }
 
-.require_js .help_highlight:hover>.help_button {
+.require_js #content[dir="rtl"] .ui_box>.help_button, .require_js #content[dir="rtl"]  #internets .help_button {
+    display: inline-block;
+    right: 20px;
+}
+
+.require_js #content[dir="ltr"] .help_highlight:hover>.help_button {
     display: inline-block;
     margin-top: 10px;
     left: 20px;
+}
+
+.require_js #content[dir="rtl"] .help_highlight:hover>.help_button {
+    display: inline-block;
+    margin-top: 10px;
+    right: 20px;
 }
 
 #metadata .help_highlight {
@@ -637,6 +656,7 @@ input[type=radio] {
 #freedoms select {
     margin-top: 6px;
     margin-left: 5em;
+    margin-bottom: 20px;
 }
 
 #freedoms ul, #internets ul {
@@ -662,6 +682,7 @@ input[type=radio] {
 }
 
 #license {
+    position: relative;
     text-align: center;
 }
 
@@ -672,37 +693,43 @@ input[type=radio] {
     margin-bottom: 8px;
 }
 
-#license .mini_deed {
-    min-height: 244px;
-    margin-top: 2em;
-    padding-top: 1em;
-    padding-bottom: 1em;
-
-    position: relative;
-}
-
-#fc_logo_link, #badge_link {
+.fc_logo_link {
     outline: 0px;
 }
 
-#fc_info_box {
+.fc_info_box {
     position: absolute;
     display: table;
-    bottom: 0px;
-    width: 100%;
+    width: 345px;
+    bottom: 30px;
 }
 
-#fc_info_box>div {
+#content[dir="ltr"] .fc_info_box {
+    right: 30px;
+}
+#content[dir="rtl"] .fc_info_box {
+    left: 30px;
+}
+
+.fc_info_box>div {
     display: table-cell;
     text-align: center;
 }
 
-#fc_logo_link {
+.fc_logo_link {
     display: inline-block;
     margin-top: -15px;
     margin-bottom: -15px;
+}
+
+#content[dir="ltr"] .fc_logo_link {
     margin-left: 10px;
     margin-right: -18px;
+}
+
+#content[dir="rtl"] .fc_logo_link {
+    margin-right: 10px;
+    margin-left: -18px;
 }
 
 .whatis {
@@ -711,11 +738,29 @@ input[type=radio] {
     border-top: 1px solid #aaa;
     border-bottom: 1px solid #aaa;
     vertical-align: middle;
+    width: 100%;
+}
+
+#license_title {
+    position: absolute;
+    display: block;
+    top: 68px;
+    left: 30px;
+    right: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    word-spacing: 2px;
+    z-index: 50;
 }
 
 .license_icons {
     display: table;
-    background-color: white;
+    width: 100%;
+    max-width: 334px;
+    margin: auto;
+    margin-top: 93px;
+    margin-bottom: 93px;
 }
 
 .license_icons>div {
@@ -1195,49 +1240,60 @@ input[type=radio] {
   <div id="license" class="ui_box">
     <div class="help_button mirror" onclick="CHOOSER.CALL.popup('selected_license');"></div>
     <h2>{% trans %}Selected License{% endtrans %}</h2>
-    <div class="mini_deed">
 
-      <a id="license_title" href="{{ license.uri }}">{{ license_title }}</a>
-
-      <div class="license_icons">
-        <div><img src="/wp-content/themes/creativecommons.org/images/chooser_cc.png" /></div>
-        <div><img src="/wp-content/themes/creativecommons.org/images/chooser_by.png" /></div>
-        {% if license_code.nc -%}
-        <div><img src={% if currency == "" -%}
-                  "/wp-content/themes/creativecommons.org/images/chooser_nc.png"
-                  {%- endif -%}
-                  {%- if currency == "jp" -%}
-                  "/wp-content/themes/creativecommons.org/images/chooser_nc_jp.png"
-                  {%- endif -%}
-                  {%- if currency == "eu" -%}
-                  "/wp-content/themes/creativecommons.org/images/chooser_nc_eu.png"
-                  {%- endif %} /></div>
-        {%- endif %}
-        {% if license_code.sa -%}
-        <div><img src="/wp-content/themes/creativecommons.org/images/chooser_sa.png" /></div>
-        {%- endif %}
-        {% if license_code.nd -%}
-        <div><img src="/wp-content/themes/creativecommons.org/images/chooser_nd.png" /></div>
-        {%- endif %}
+    <div id="license_title">
+      <a id="license_title_link" href="{{ license.uri }}">{{ license_title }}</a>
+    </div>
+    
+    <div class="license_icons">
+      <div id="cc_icon"><img src="/wp-content/themes/creativecommons.org/images/chooser_cc.png" /></div>
+      <div id="by_icon"><img src="/wp-content/themes/creativecommons.org/images/chooser_by.png" /></div>
+      <div id="nc_icon" style=
+           {%- if license_code.nc %}"display:table-cell"{% else %}"display:none"{% endif %}>
+        <img src=
+             {%- if currency == "eu" %}"/wp-content/themes/creativecommons.org/images/chooser_nc_eu.png"
+             {%- elif currency == "jp" %}"/wp-content/themes/creativecommons.org/images/chooser_nc_jp.png"
+             {%- else %}"/wp-content/themes/creativecommons.org/images/chooser_nc.png"
+             {%- endif %} />
       </div>
-      
-      <div id="fc_info_box">
-        <div class="whatis" {% if not license.libre -%}
-             style="display: none;"{% endif %}>
-          <a href="http://freedomdefined.org/Definition">
-            {%- trans %}Why is this a free culture license?{% endtrans -%}
-          </a>
-        </div>
-        <div>
-          <a id="fc_logo_link" href="http://freedomdefined.org/Definition">
-            <img src="/wp-content/themes/creativecommons.org/images/
-                      {%- if license.libre -%}fc_approved_tiny.png
-                      {%- else -%}fc_questionable.png{% endif %}"
-                 class="logo fc_status" />
-          </a>
-        </div>
+      <div id="sa_icon" style=
+           {%- if license_code.sa %}"display:table-cell"{% else %}"display:none"{% endif %}>
+        <img src="/wp-content/themes/creativecommons.org/images/chooser_sa.png" />
+      </div>
+      <div id="nd_icon" style=
+           {%- if license_code.nd %}"display:table-cell"{% else %}"display:none"{% endif %}>
+        <img src="/wp-content/themes/creativecommons.org/images/chooser_nd.png" />
       </div>
     </div>
+    
+    <div id="fc_approved_box" class="fc_info_box" {% if not license.libre %}style="display: none;"{% endif %}>
+      <div class="whatis">
+        <a href="http://freedomdefined.org/Definition">
+          {%- trans %}This a free culture license!{% endtrans -%}
+        </a>
+      </div>
+      <div>
+        <a class="fc_logo_link" href="http://freedomdefined.org/Definition">
+          <img src="/wp-content/themes/creativecommons.org/images/fc_approved_tiny.png"
+               class="logo fc_status" />
+        </a>
+      </div>
+    </div>
+
+    <div id="fc_dubious_box" class="fc_info_box" {% if license.libre %}style="display: none;"{% endif %}>
+      <div class="whatis">
+        <a href="http://freedomdefined.org/Definition">
+          {%- trans %}This not a free culture license.{% endtrans -%}
+        </a>
+      </div>
+      <div>
+        <a class="fc_logo_link" href="http://freedomdefined.org/Definition">
+          <img src="/wp-content/themes/creativecommons.org/images/fc_dubious.png"
+               class="logo fc_status" />
+        </a>
+      </div>
+    </div>
+
   </div>
 </div>
 

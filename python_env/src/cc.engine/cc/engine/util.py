@@ -58,13 +58,12 @@ JURISDICTION_CURRENCY_LOOKUP = {
 }
 
 
-def currency_symbol_from_license(license):
+def currency_symbol_from_request_form(req_form):
     """Returns 'jp', 'eu', or '' depending on what
     currency symbol should be used for the nc logo."""
 
-    code = license.jurisdiction.code
     try:
-        return JURISDICTION_CURRENCY_LOOKUP[code]
+        return JURISDICTION_CURRENCY_LOOKUP[req_form["field_jurisdiction"]]
     except KeyError:
         return ""
 
