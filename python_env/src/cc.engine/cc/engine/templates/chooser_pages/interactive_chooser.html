@@ -120,6 +120,14 @@ CHOOSER.CALLBACK.main = function () {
         query(i, 2).height(height);
     }
 
+    // Dummy out href links for license characteristic icons
+    var icons = ["by", "sa", "nc", "nd"];
+    for (var i=0; i<icons.length; i+=1) {
+        var found = $("#"+icons[i]+"_icon")[0];
+        found.href = "javascript:void(0)";
+        found.target = "_self";
+    }
+
     // set initial cgi state
     CHOOSER.CALL.refresh_state();
 
@@ -209,14 +217,22 @@ CHOOSER.CALL.refresh_ui = function (event_ctx, data) {
 
     // If additional callback data is available, update related fields as well:
     if (data != undefined) {
-        $("#nc_icon")[0].style.display = data.license_code.nc ? "table-cell" : "none";
-        $("#nd_icon")[0].style.display = data.license_code.nd ? "table-cell" : "none";
-        $("#sa_icon")[0].style.display = data.license_code.sa ? "table-cell" : "none";
+        $("#nc_slot")[0].style.display = data.license_code.nc ? "table-cell" : "none";
+        $("#nd_slot")[0].style.display = data.license_code.nd ? "table-cell" : "none";
+        $("#sa_slot")[0].style.display = data.license_code.sa ? "table-cell" : "none";
         if (data.currency !== "") {
-            $("#nc_icon>img")[0].src = CHOOSER.CONST.img_path + "chooser_nc_" + data.currency + ".png";
+            if (data.currency == "eu") {
+                $("#nc_slot").removeClass("yen");
+                $("#nc_slot").addClass("euro");
+            }
+            if (data.currency == "jp") {
+                $("#nc_slot").removeClass("euro");
+                $("#nc_slot").addClass("yen");
+            }
         }
         else {
-            $("#nc_icon>img")[0].src = CHOOSER.CONST.img_path + "chooser_nc.png";
+            $("#nc_slot").removeClass("yen");
+            $("#nc_slot").removeClass("euro");
         }
         $("#license_title_link")[0].innerHTML = data.license_title;
         $("#license_title_link")[0].href = data.uri;
@@ -693,10 +709,6 @@ input[type=radio] {
     margin-bottom: 8px;
 }
 
-.fc_logo_link {
-    outline: 0px;
-}
-
 .fc_info_box {
     position: absolute;
     display: table;
@@ -720,6 +732,7 @@ input[type=radio] {
     display: inline-block;
     margin-top: -15px;
     margin-bottom: -15px;
+    outline: none!important;
 }
 
 #content[dir="ltr"] .fc_logo_link {
@@ -730,6 +743,26 @@ input[type=radio] {
 #content[dir="rtl"] .fc_logo_link {
     margin-right: 10px;
     margin-left: -18px;
+}
+
+#fc_dubious_box .fc_logo_link {
+    display: block;
+    width: 76px;
+    height: 76px;
+    cursor: pointer;
+    background-image: url('/wp-content/themes/creativecommons.org/images/fc_dubious.png');
+}
+
+.require_js #fc_dubious_box .fc_logo_link:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/fc_dubious_hover.png');
+}
+
+#fc_approved_box .fc_logo_link {
+    display: block;
+    width: 76px;
+    height: 76px;
+    cursor: pointer;
+    background-image: url('/wp-content/themes/creativecommons.org/images/fc_approved_tiny.png');
 }
 
 .whatis {
@@ -768,6 +801,57 @@ input[type=radio] {
     vertical-align: middle;
     text-align: center;
 }
+.license_icons>div>a {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    outline: none;
+}
+
+#cc_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_cc.png');
+}
+#by_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_by.png');
+}
+#sa_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_sa.png');
+}
+#nd_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nd.png');
+}
+#nc_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc.png');
+}
+.euro #nc_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_eu.png')!important;
+}
+.yen #nc_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_jp.png')!important;
+}
+
+#cc_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_cc_hover.png');
+}
+#by_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_by_hover.png');
+}
+#sa_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_sa_hover.png');
+}
+#nd_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nd_hover.png');
+}
+#nc_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_hover.png');
+}
+.euro #nc_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_eu_hover.png')!important;
+}
+.yen #nc_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_jp_hover.png')!important;
+}
+
 
 .license_icons>img {
     display: inline-block;
@@ -1127,10 +1211,10 @@ input[type=radio] {
 
 <div id="instructional_fluff">
   <span>{% trans %}New to Creative Commons?{% endtrans %}</span>
-  <span>[ <a href="/about/think">
+  <span>[ <a target="_blank" href="http://wiki.creativecommons.org/Before_Licensing">
     {%- trans %}Considerations before licensing{% endtrans -%}
   </a> ]</span>
-  <span>[ <a href="/about/licenses">
+  <span>[ <a target="_blank" href="/licenses">
     {%- trans %} How the licenses work {% endtrans -%}
   </a> ]</span>
 </div>
@@ -1142,7 +1226,6 @@ input[type=radio] {
     {%- trans %}Want public domain instead?{% endtrans -%}
   </a> ]</span>
 </div>
-
 
 <form action="." method="get" id="chooser_form">
 <noscript>
@@ -1242,55 +1325,48 @@ input[type=radio] {
     <h2>{% trans %}Selected License{% endtrans %}</h2>
 
     <div id="license_title">
-      <a id="license_title_link" href="{{ license.uri }}">{{ license_title }}</a>
+      <a target="_blank" id="license_title_link" href="{{ license.uri }}">{{ license_title }}</a>
     </div>
     
     <div class="license_icons">
-      <div id="cc_icon"><img src="/wp-content/themes/creativecommons.org/images/chooser_cc.png" /></div>
-      <div id="by_icon"><img src="/wp-content/themes/creativecommons.org/images/chooser_by.png" /></div>
-      <div id="nc_icon" style=
-           {%- if license_code.nc %}"display:table-cell"{% else %}"display:none"{% endif %}>
-        <img src=
-             {%- if currency == "eu" %}"/wp-content/themes/creativecommons.org/images/chooser_nc_eu.png"
-             {%- elif currency == "jp" %}"/wp-content/themes/creativecommons.org/images/chooser_nc_jp.png"
-             {%- else %}"/wp-content/themes/creativecommons.org/images/chooser_nc.png"
-             {%- endif %} />
-      </div>
-      <div id="sa_icon" style=
-           {%- if license_code.sa %}"display:table-cell"{% else %}"display:none"{% endif %}>
-        <img src="/wp-content/themes/creativecommons.org/images/chooser_sa.png" />
-      </div>
-      <div id="nd_icon" style=
-           {%- if license_code.nd %}"display:table-cell"{% else %}"display:none"{% endif %}>
-        <img src="/wp-content/themes/creativecommons.org/images/chooser_nd.png" />
-      </div>
+      <div id="cc_slot"><a target="_blank" id="cc_icon" href="/licenses/"></a></div>
+      <div id="by_slot"><a target="_blank" id="by_icon" href="/characteristic/by"
+                           onclick="CHOOSER.CALL.popup('by_aspect');"></a></div>
+      <div id="nc_slot"
+           style={% if license_code.nc %}"display:table-cell" {% else %}"display:none" {% endif -%}
+           {% if currency == "eu" %}class="euro" {% elif currency == "jp" %}class="yen" {% endif -%}
+           ><a target="_blank" id="nc_icon" href="/characteristic/nc"
+               onclick="CHOOSER.CALL.popup('nc_aspect');"></a></div>
+      <div id="sa_slot"
+           style={%- if license_code.sa %}"display:table-cell" {% else %}"display:none" {% endif -%}
+           ><a target="_blank" id="sa_icon" href="/characteristic/sa"
+               onclick="CHOOSER.CALL.popup('sa_aspect');"></a></div>
+      <div id="nd_slot"
+           style={%- if license_code.nd %}"display:table-cell" {% else %}"display:none" {% endif -%}
+           ><a target="_blank" id="nd_icon" href="/characteristic/nd"
+               onclick="CHOOSER.CALL.popup('nd_aspect');"></a></div>
     </div>
     
     <div id="fc_approved_box" class="fc_info_box" {% if not license.libre %}style="display: none;"{% endif %}>
       <div class="whatis">
-        <a href="http://freedomdefined.org/Definition">
-          {%- trans %}This a free culture license!{% endtrans -%}
+        <a target="_blank" href="http://freedomdefined.org/Definition">
+          {%- trans %}This is a Free Culture License!{% endtrans -%}
         </a>
       </div>
       <div>
-        <a class="fc_logo_link" href="http://freedomdefined.org/Definition">
-          <img src="/wp-content/themes/creativecommons.org/images/fc_approved_tiny.png"
-               class="logo fc_status" />
-        </a>
+        <a target="_blank" class="fc_logo_link" href="http://freedomdefined.org/Definition"></a>
       </div>
     </div>
 
     <div id="fc_dubious_box" class="fc_info_box" {% if license.libre %}style="display: none;"{% endif %}>
       <div class="whatis">
-        <a href="http://freedomdefined.org/Definition">
-          {%- trans %}This not a free culture license.{% endtrans -%}
+        <a target="_blank" href="http://freedomdefined.org/Definition">
+          {%- trans %}This is not a Free Culture License.{% endtrans -%}
+          <!--<h2>ಠ_ಠ</h2>-->
         </a>
       </div>
       <div>
-        <a class="fc_logo_link" href="http://freedomdefined.org/Definition">
-          <img src="/wp-content/themes/creativecommons.org/images/fc_dubious.png"
-               class="logo fc_status" />
-        </a>
+        <a target="_blank" class="fc_logo_link" href="http://freedomdefined.org/Definition"></a>
       </div>
     </div>
 
@@ -1460,7 +1536,7 @@ input[type=radio] {
 
       <div class="results-preview"><div>
           <p>
-            {% trans %}CC metadata can be embedded into images and other many other file formats!  <a href="http://wiki.creativecommons.org/XMP">See the wiki for more info</a>.
+            {% trans %}CC metadata can be embedded into images and other many other file formats!  <a target="_blank" href="http://wiki.creativecommons.org/XMP">See the wiki for more info</a>.
             {% endtrans %}
           </p>
       </div></div>
@@ -1475,10 +1551,10 @@ input[type=radio] {
       <h2>{% trans %}Non-digital works?{% endtrans %}</h2>
       
       <div class="results-preview"><div>
-          <p><a href="http://creativecommons.org/about/downloads/">
+          <p><a target="_blank" href="http://creativecommons.org/about/downloads/">
               {%- trans %}Downloadable license graphics.{% endtrans -%}
           </a></p>
-          <p><a href="http://wiki.creativecommons.org/Marking/Creators#Marking_Specific_Media">
+          <p><a target="_blank" href="http://wiki.creativecommons.org/Marking/Creators#Marking_Specific_Media">
               {%- trans %}How to mark video and other media formats.{% endtrans -%}
           </a></p>
           <p>{% trans %}To mark a document not on the web, add the following text to your work:{% endtrans %}</p>
@@ -1525,7 +1601,7 @@ input[type=radio] {
     </div>
     <div id="popup_close">
     <a id="popup_close" onclick="$('#popup_screen').hide();">
-      {% trans %}Click here to close this popup.{% endtrans %}
+      {% trans %}close popup{% endtrans %}
     </a>
     </div>
 </div></div>
@@ -1547,7 +1623,7 @@ input[type=radio] {
       <p>{% trans %}The licensor permits others to copy, distribute, display and perform the work, as well as make derivative works based on it.{% endtrans %}</p>
       <h4>{% trans %}Yes, as long as others share alike{% endtrans %}</h4>
       <p>{% trans %}The licensor permits others to distribute derivative works only under the same license or one <a
-href="http://creativecommons.org/compatiblelicenses">compatible</a> with the one that governs the licensor's work.{% endtrans %}</p>
+target="_blank" href="http://creativecommons.org/compatiblelicenses">compatible</a> with the one that governs the licensor's work.{% endtrans %}</p>
       <h4>{% trans %}No{% endtrans %}</h4>
       <p>{% trans %}The licensor permits others to copy, distribute and transmit only unaltered copies of the work — not derivative works based on it.{% endtrans %}</p>
     </div>
@@ -1569,7 +1645,7 @@ and terminology from international treaties.  If the licenses have
 been ported to your jurisdiction and you feel that your jurisdiction's
 ported licenses account for some aspect of local legislation that the
 international licenses do not, then you may want to consider
-<a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Should_I_choose_an_international_license_or_a_ported_license.3F">which
+<a target="_blank" href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Should_I_choose_an_international_license_or_a_ported_license.3F">which
 license is better suited for your needs</a>.{% endtrans %}
     </div>
   </div>
@@ -1601,7 +1677,7 @@ license is better suited for your needs</a>.{% endtrans %}
         {% trans %}The information is embedded in a machine-readable format.  This allows search engines to index additional information about your work and allows people coming to the license deed from your page to see information on the deed about how to attribute your work.{% endtrans %}
       </p>
       <p>
-        {% trans %}<a href="http://wiki.creativecommons.org/Metadata">More information</a> on Creative Commons metadata is available.{% endtrans %}
+        {% trans %}<a target="_blank" href="http://wiki.creativecommons.org/Metadata">More information</a> on Creative Commons metadata is available.{% endtrans %}
       </p></div>
   </div>
 
@@ -1635,9 +1711,9 @@ license is better suited for your needs</a>.{% endtrans %}
     <div class="msg">
       <p>{% trans %}The "License Mark" select box determines the content of the bottom right panel.  That panel provides a means of marking your work in a consistent and standardized way.{% endtrans %}</p>
       <h4>HTML + RDFa</h4>
-      <p>{% trans %}HTML is provided which you can copy into your webpage.  The HTML is annotated with machine-readable <a href="http://wiki.creativecommons.org/Metadata">metadata</a>.  This allows search engines to find similarly licensed works, and for tools to automatically recognize information about the work (such as who authored it).{% endtrans %}</p>
+      <p>{% trans %}HTML is provided which you can copy into your webpage.  The HTML is annotated with machine-readable <a target="_blank" href="http://wiki.creativecommons.org/Metadata">metadata</a>.  This allows search engines to find similarly licensed works, and for tools to automatically recognize information about the work (such as who authored it).{% endtrans %}</p>
       <h4>XMP</h4>
-      <p>{% trans %}An <a href="http://wiki.creativecommons.org/XMP">XMP</a> file can be embedded in a variety of file formats, such as PDFs.{% endtrans %}</p>
+      <p>{% trans %}An <a target="_blank" href="http://wiki.creativecommons.org/XMP">XMP</a> file can be embedded in a variety of file formats, such as PDFs.{% endtrans %}</p>
       <h4>{% trans %}OFFLINE{% endtrans %}</h4>
       <p>{% trans%}Provides a simple plain text notice which can be used to mark offline works{% endtrans %}</p>
     </div>
@@ -1650,7 +1726,7 @@ license is better suited for your needs</a>.{% endtrans %}
     <div class="title">{% trans %}Have a web page?{% endtrans %}</div>
     <div class="msg">
       <p>
-        {% trans %}The HTML fragment provided in this panel may be pasted into your website to display which license applies to your work, as well as attribution information.  The HTML fragment combines information provided in the "License Features" panel and the "Help others attribute you!" panel.  The HTML also contains <a href="http://wiki.creativecommons.org/RDFa">RDFa</a> metadata, which allows search engines to accurately determine which license your work is under, and how you want to be attributed.{% endtrans %}
+        {% trans %}The HTML fragment provided in this panel may be pasted into your website to display which license applies to your work, as well as attribution information.  The HTML fragment combines information provided in the "License Features" panel and the "Help others attribute you!" panel.  The HTML also contains <a target="_blank" href="http://wiki.creativecommons.org/RDFa">RDFa</a> metadata, which allows search engines to accurately determine which license your work is under, and how you want to be attributed.{% endtrans %}
       </p>
       <p>
         {% trans %}This panel also contains a preview of what the HTML will look like when included in your website.  The radio buttons at the bottom of the panel may be used to change the size and appearance of the license icon in the HTML.{% endtrans %}
@@ -1658,9 +1734,48 @@ license is better suited for your needs</a>.{% endtrans %}
     </div>
   </div>
 
+  <div id="help_by_aspect">
+    <div class="title">{% trans %}Attribution{% endtrans %}</div>
+    <div class="msg">{% trans %}You must attribute the
+work in the manner specified by the author or licensor.{% endtrans %}</div>
+  </div>
 
+  <div id="help_sa_aspect">
+    <div class="title">{% trans %}Share Alike{% endtrans %}</div>
+    <div class="msg">{% trans %}The licensor permits others to distribute derivative works only under the same license or one compatible with the one that governs the licensor's work.{% endtrans %}</div>
+  </div>
+
+  <div id="help_nd_aspect">
+    <div class="title">{% trans %}No Derivative Works{% endtrans %}</div>
+    <div class="msg">{% trans %}The licensor permits others to copy, distribute and transmit only unaltered copies of the work — not derivative works based on it.{% endtrans %}</div>
+  </div>
+
+  <div id="help_nc_aspect">
+    <div class="title">{% trans %}Noncommercial{% endtrans %}</div>
+    <div class="msg">{% trans %}The licensor permits others to copy, distribute and transmit the work. In return, licensees may not use the work for commercial purposes — unless they get the licensor's permission.{% endtrans %}</div>
+  </div>
 
 
 </div>
+
+<!-- this group of images shouldn't be visible, but exists to cause the browser to cache them -->
+<div style="display: none">
+  <img src="/wp-content/themes/creativecommons.org/images/fc_dubious.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/fc_dubious_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_cc.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_by.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nd.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_eu.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_jp.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_cc_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_by_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nd_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_eu_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_jp_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/hint_button_hover.png" />
+</div>
+
 
 {% endblock %}
