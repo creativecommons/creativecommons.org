@@ -228,7 +228,8 @@ def license_catcher(request):
     context = {'request': request,
                'license_versions': reversed(license_versions),
                'license_class': license_versions[0].license_class,
-               'page_style': 'bare'}
+               'page_style': 'bare',
+               'target_lang': target_lang}
     context.update(util.rtl_context_stuff(target_lang))
 
     # This is a helper page, but it's still for not-found situations.
