@@ -63,6 +63,10 @@ var CHOOSER = {
     "CONST" : {
         "img_path" : "/wp-content/themes/creativecommons.org/images/",
         "fc_approved" : "/wp-content/themes/creativecommons.org/images/fc_approved_tiny.png",
+        "links" : {
+            "fc_by_sa" : "http://freedomdefined.org/Licenses/CC-BY-SA",
+            "fc_by" : "http://freedomdefined.org/Licenses/CC-BY"
+        }
     },
 
     // Templates (may or may not be constants)
@@ -243,6 +247,14 @@ CHOOSER.CALL.refresh_ui = function (event_ctx, data) {
         buffer = buffer.replace("LICENSE_NAME", data.license_title);
         buffer = buffer.replace("LICENSE_URL", data.uri);
         $("#infotocopy")[0].value = buffer;
+
+        if (data.libre) {
+            var update_link = function (query) { 
+                $(query)[0].href = CHOOSER.CONST.links[!!data.license_code.sa ? "fc_by_sa" : "fc_by"];
+            }
+            update_link("#fc_approved_box .whatis a");
+            update_link("#fc_approved_box a.fc_logo_link");
+        }
     }
 };
 
@@ -1360,13 +1372,13 @@ input[type=radio] {
 
     <div id="fc_dubious_box" class="fc_info_box" {% if license.libre %}style="display: none;"{% endif %}>
       <div class="whatis">
-        <a target="_blank" href="http://freedomdefined.org/Definition">
+        <a target="_blank" href="http://freedomdefined.org/Permissible_restrictions">
           {%- trans %}This is not a Free Culture License.{% endtrans -%}
           <!--<h2>ಠ_ಠ</h2>-->
         </a>
       </div>
       <div>
-        <a target="_blank" class="fc_logo_link" href="http://freedomdefined.org/Definition"></a>
+        <a target="_blank" class="fc_logo_link" href="http://freedomdefined.org/Permissible_restrictions"></a>
       </div>
     </div>
 
