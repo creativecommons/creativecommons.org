@@ -801,7 +801,7 @@ def test_deed_w3_validation():
     try:
         print "\n"
         for path in paths:
-            view_result = TESTAPP.get(path).text.encode('utf-8')
+            view_result = TESTAPP.get(path).unicode_body.encode('utf-8')
             temp_path = os.path.join(temp_dir, "validate_me.html")
             storage = file(temp_path, mode="w+b")
             storage.write(view_result)
