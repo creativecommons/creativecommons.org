@@ -160,11 +160,14 @@ CHOOSER.CALLBACK.main = function () {
     }
 
     // activate css stuff that is irrelivant without javascript
-    $("body").addClass("require_js")
+    $("body").addClass("require_js");
 
     // Ping the server for updates.  This populates some of the CHOOSER.STATE vars, too.
     CHOOSER.CALL.ping(true);
     CHOOSER.LIVE = true;
+
+    // Set up text-on-click for textarea elements
+    $("textarea").each(function(i,el) { el.onclick=function () { this.select(); }; })
 });
 
 
@@ -1232,7 +1235,7 @@ input[type=radio] {
 </div>
 <div id="copyright_fluff">
   <span><strong>
-    {%- trans %}With this tool, you keep your copyright. {% endtrans -%}
+    {%- trans %}Explore the Creative Commons licenses.{% endtrans -%}
   </strong></span>
   <span>[ <a href="http://creativecommons.org/publicdomain/">
     {%- trans %}Want public domain instead?{% endtrans -%}
@@ -1252,7 +1255,8 @@ input[type=radio] {
 <div class="ui_row">
   <div id="freedoms" class="ui_box">
     <h2>{% trans %}License Features{% endtrans %}</h2>
-    <div class="subtitle">{% trans %}Your choices on this panel will update the other panels in this page in real time.{% endtrans %}</div>
+    <div class="subtitle">
+{%- trans %}Your choices on this panel will update the other panels on this page.{% endtrans %}</div>
 
     <div class="help_highlight">
       <div class="help_button" onclick="CHOOSER.CALL.popup('modifications');"></div>
@@ -1393,7 +1397,7 @@ input[type=radio] {
     <div class="help_button" onclick="CHOOSER.CALL.popup('metadata');"></div>
 
     <h2>{% trans %}Help others attribute you!{% endtrans %}</h2>
-    {% trans %}This part is optional, but filling it out will add machine-readable metadata to the embedable HTML!{% endtrans %}
+    {% trans %}This part is optional, but filling it out will add machine-readable metadata to the suggested HTML!{% endtrans %}
 
     <div id="metadataentry">
       <div class="help_highlight">
@@ -1686,25 +1690,25 @@ license is better suited for your needs</a>.{% endtrans %}
         If the selected license provides the freedoms required of a free culture license, 
         then the "Approved for Free Cultural Works" icon appears on this panel.  This 
         feature is intended to assist you in making a more informed decision.
-        "Non-Commercial" and "No-Derivatives" licenses include additional restrictions
-        which by definition prevent them from being considered free culture licenses.
+        NonCommercial and NoDerivatives licenses include additional restrictions
+        which, by definition, prevent them from being considered free culture licenses.
       </p>
       <p>
         While our non-free culture licenses are useful in particular circumstances, unintended
-        consqueneces may result from their use (such as license incompatibility).  
+        consequences may result from their use (such as license incompatibility).  
         For example, a work that is under the license "Attribution-NonCommercial-ShareAlike" 
         may not be combined with a work licensed "Attribution-ShareAlike" because putting
         the resulting work under either license violates the other by either
-        adding or removing the non-commercial restriction.
+        adding or removing the NonCommercial restriction.
       </p>
       <p>
-        For a real-world example of license incompatibility:  Works with the non-commercial 
-        or the no-derivatives restriction may not be posted to Wikipedia, because Wikipedia uses
-        "Attribution-ShareAlike" for all of their content.
+        A real world example of license incompatibility:  Works with the NonCommercial
+        or the NoDerivatives restriction may not be posted to Wikipedia, because Wikipedia uses
+        "Attribution-ShareAlike" for all of its content.
       </p>
       {%- endtrans %}
       <p>{% trans -%}
-        Freedomdefined.org is a wonderful source of information about free culture.
+        Freedomdefined.org is a great source of information about free culture.
         The <a href="http://freedomdefined.org/Definition">free culture definition</a> 
         and <a href="http://freedomdefined.org/Permissible_restrictions">permissible restrictions</a>
         pages are wonderful starting points for further learning.
@@ -1719,7 +1723,7 @@ license is better suited for your needs</a>.{% endtrans %}
     <div class="title">{% trans %}Help others attribute you!{% endtrans %}</div>
     <div class="msg">
       <p>
-        {% trans %}The information is embedded in a machine-readable format.  This allows search engines to index additional information about your work and allows people coming to the license deed from your page to see information on the deed about how to attribute your work.{% endtrans %}
+        {% trans %}This information is embedded in a machine-readable format.  This allows search engines to index additional information about your work and allows people coming to the license deed from your page to see information about how to attribute your work.{% endtrans %}
       </p>
       <p>
         {% trans %}<a target="_blank" href="http://wiki.creativecommons.org/Metadata">More information</a> on Creative Commons metadata is available.{% endtrans %}
@@ -1759,7 +1763,7 @@ license is better suited for your needs</a>.{% endtrans %}
       <p>{% trans %}HTML is provided which you can copy into your webpage.  The HTML is annotated with machine-readable <a target="_blank" href="http://wiki.creativecommons.org/Metadata">metadata</a>.  This allows search engines to find similarly licensed works, and for tools to automatically recognize information about the work (such as who authored it).{% endtrans %}</p>
       <h4>XMP</h4>
       <p>{% trans %}An <a target="_blank" href="http://wiki.creativecommons.org/XMP">XMP</a> file can be embedded in a variety of file formats, such as PDFs.{% endtrans %}</p>
-      <h4>{% trans %}OFFLINE{% endtrans %}</h4>
+      <h4>{% trans %}Offline{% endtrans %}</h4>
       <p>{% trans%}Provides a simple plain text notice which can be used to mark offline works{% endtrans %}</p>
     </div>
   </div>
@@ -1771,7 +1775,7 @@ license is better suited for your needs</a>.{% endtrans %}
     <div class="title">{% trans %}Have a web page?{% endtrans %}</div>
     <div class="msg">
       <p>
-        {% trans %}The HTML fragment provided in this panel may be pasted into your website to display which license applies to your work, as well as attribution information.  The HTML fragment combines information provided in the "License Features" panel and the "Help others attribute you!" panel.  The HTML also contains <a target="_blank" href="http://wiki.creativecommons.org/RDFa">RDFa</a> metadata, which allows search engines to accurately determine which license your work is under, and how you want to be attributed.{% endtrans %}
+        {% trans %}The HTML provided in this panel may be pasted into your website to display which license applies to your work, as well as attribution information.  The HTML combines information provided in the "License Features" panel and the "Help others attribute you!" panel.  The HTML also contains <a target="_blank" href="http://wiki.creativecommons.org/RDFa">RDFa</a> metadata, which allows search engines to accurately determine which license your work is under, and how you want to be attributed.{% endtrans %}
       </p>
       <p>
         {% trans %}This panel also contains a preview of what the HTML will look like when included in your website.  The radio buttons at the bottom of the panel may be used to change the size and appearance of the license icon in the HTML.{% endtrans %}
