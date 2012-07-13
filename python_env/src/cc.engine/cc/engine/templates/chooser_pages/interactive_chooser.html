@@ -1645,10 +1645,9 @@ input[type=radio] {
       <h4>{% trans %}Yes{% endtrans %}</h4>
       <p>{% trans %}The licensor permits others to copy, distribute, display and perform the work, as well as make derivative works based on it.{% endtrans %}</p>
       <h4>{% trans %}Yes, as long as others share alike{% endtrans %}</h4>
-      <p>{% trans %}The licensor permits others to distribute derivative works only under the same license or one <a
-target="_blank" href="http://creativecommons.org/compatiblelicenses">compatible</a> with the one that governs the licensor's work.{% endtrans %}</p>
+      <p>{% trans %}The licensor permits others to create and distribute derivative works but only under the same or a <a target="_blank" href="http://creativecommons.org/compatiblelicenses">compatible</a> license.{% endtrans %}</p>
       <h4>{% trans %}No{% endtrans %}</h4>
-      <p>{% trans %}The licensor permits others to copy, distribute and transmit only unaltered copies of the work — not derivative works based on it.{% endtrans %}</p>
+      <p>{% trans %}The licensor permits others to copy, distribute, display and perform only unaltered copies of the work, but not create and distribute derivative works based on it.{% endtrans %}</p>
     </div>
   </div>
   <div id="help_commercial">
@@ -1663,13 +1662,7 @@ target="_blank" href="http://creativecommons.org/compatiblelicenses">compatible<
   <div id="help_jurisdiction">
     <div class="title">{% trans %}License Jurisdiction:{% endtrans %}</div>
     <div class="msg">
-      {% trans %}Use the option "International" if you desire a license using language
-and terminology from international treaties.  If the licenses have
-been ported to your jurisdiction and you feel that your jurisdiction's
-ported licenses account for some aspect of local legislation that the
-international licenses do not, then you may want to consider
-<a target="_blank" href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Should_I_choose_an_international_license_or_a_ported_license.3F">which
-license is better suited for your needs</a>.{% endtrans %}
+      {% trans %}Use the option "International" for the most recent license that is also jurisdiction-neutral and effective globally. If the licenses have been ported to your jurisdiction, you may wish to chose your jurisdiction's ported licenses if they account for some aspect of local law that the international licenses do not address specifically. Note, however, that some of the ported licenses are not of the latest, most up-to-date license version of the CC licenses (currently 3.0). You should consider <a target="_blank" hrf="">which license is better suited to your needs</a>.{% endtrans %}
     </div>
   </div>
 
@@ -1736,7 +1729,8 @@ license is better suited for your needs</a>.{% endtrans %}
   </div>
   <div id="help_attrib_name">
     <div class="title">{% trans %}Attribute work to name{% endtrans %}</div>
-    <div class="msg">{% trans %}The name to which the work should be attributed.  For example, the name of the work's author.{% endtrans %}</div>
+    <div class="msg">{% trans %}The name of the person who should receive attribution for the work. Most often, this is the author.
+{% endtrans %}</div>
   </div>
   <div id="help_attrib_url">
     <div class="title">{% trans %}Attribute work to URL{% endtrans %}</div>
@@ -1760,11 +1754,11 @@ license is better suited for your needs</a>.{% endtrans %}
     <div class="msg">
       <p>{% trans %}The "License Mark" select box determines the content of the bottom right panel.  That panel provides a means of marking your work in a consistent and standardized way.{% endtrans %}</p>
       <h4>HTML + RDFa</h4>
-      <p>{% trans %}HTML is provided which you can copy into your webpage.  The HTML is annotated with machine-readable <a target="_blank" href="http://wiki.creativecommons.org/Metadata">metadata</a>.  This allows search engines to find similarly licensed works, and for tools to automatically recognize information about the work (such as who authored it).{% endtrans %}</p>
+      <p>{% trans %}HTML is provided that you can copy into your webpage.  The HTML is annotated with machine-readable <a target="_blank" href="http://wiki.creativecommons.org/Metadata">metadata</a>.  This allows search engines to find similarly licensed works, and for tools to automatically recognize information about the work (such as who authored it).{% endtrans %}</p>
       <h4>XMP</h4>
       <p>{% trans %}An <a target="_blank" href="http://wiki.creativecommons.org/XMP">XMP</a> file can be embedded in a variety of file formats, such as PDFs.{% endtrans %}</p>
       <h4>{% trans %}Offline{% endtrans %}</h4>
-      <p>{% trans%}Provides a simple plain text notice which can be used to mark offline works{% endtrans %}</p>
+      <p>{% trans%}Provides a simple plain text notice that can be used to mark offline works{% endtrans %}</p>
     </div>
   </div>
 
