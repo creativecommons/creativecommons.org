@@ -606,7 +606,8 @@ def get_html(request):
     work_dict = _formatter_work_dict(request_form)
 
     license_html = HTML_FORMATTER.format(license, work_dict, target_lang)
-    return Response(license_html, content_type='text/html; charset=UTF-8')
+    return Response(license_html, content_type='text/html; charset=UTF-8',
+                    charset='UTF-8')
 
 
 def get_rdf(request):
@@ -615,7 +616,8 @@ def get_rdf(request):
     work_info = _work_info(request_form)
     rdf = _work_rdf(work_info, license)
 
-    return Response(rdf, content_type='application/rdf+xml; charset=UTF-8')
+    return Response(rdf, content_type='application/rdf+xml; charset=UTF-8',
+                    charset='UTF-8')
 
 
 def non_web_popup(request):
