@@ -1,3 +1,4 @@
+import json
 from lxml import etree
 from urlparse import urlparse, urljoin
 from urllib import quote, unquote_plus, urlencode
@@ -277,7 +278,7 @@ def _work_rdf(work_info, license):
     return etree.tostring(rdf_tree)
 
 
-def chooser_view(request):
+def classic_chooser_view(request):
     target_lang = util.get_target_lang_from_request(request)
     context = _base_context(request, target_lang)
     gettext = context['gettext']
@@ -319,7 +320,7 @@ def chooser_view(request):
         return Response(
             util.render_template(
                 request, target_lang,
-                'chooser_pages/index.html', context))
+                'chooser_pages/classic_chooser.html', context))
 
 
 def choose_results_view(request):
@@ -375,6 +376,184 @@ def choose_results_view(request):
             util.render_template(
                 request, target_lang,
                 'chooser_pages/results.html', context))
+
+
+def chooser_view(request):
+    #
+    #  Used by the new-style chooser demos, for now.
+    #
+    target_lang = util.get_target_lang_from_request(request)
+    context = _base_context(request, target_lang)
+    request_form = request.GET or request.POST
+    gettext = context['gettext']
+
+    available_jurisdiction_codes = [
+        j.code for j in get_selector_jurisdictions('standard')
+        if j.code != '']
+    
+    requested_jurisdiction = None
+    if request.GET.has_key('jurisdiction') and \
+            request.GET['jurisdiction'] in available_jurisdiction_codes:
+        requested_jurisdiction = request.GET['jurisdiction']        
+
+    # Sort the jurisdictions for the dropdown via the translated name
+    jurisdictions_names = [
+        (juris, gettext(mappers.COUNTRY_MAP[juris]))
+        for juris in available_jurisdiction_codes]
+    jurisdictions_names = sorted(
+        jurisdictions_names, key=lambda juris: juris[1])
+
+    show_jurisdiction = request.GET.get('jurisdiction_choose') == '1'
+
+    # Select a license based on the request form
+    license = _issue_license(request_form)
+    
+    # Sets form default values, based on the request form or lack thereof
+    defaults = {
+        "license" : {
+            "nc" : False,
+            "sa" : False,
+            "nd" : False,
+            "jurisdiction" : "",
+            "currency" : "",
+            },
+        "meta" : {
+            "standard" : "html+rdfa",
+            "format" : "",
+            "title" : "",
+            "attrib_name" : "",
+            "attrib_url" : "",
+            "src_url" : "",
+            "permissions" : "",
+            },
+        "out" : {
+            "format" : "html",
+            "badge" : "normal",
+            },
+        "misc" : {
+            "lang" : "en",
+            }
+        }
+    def equal_or_default(field, value, default=False):
+        if request_form.has_key(field):
+            return request_form[field] == value
+        else:
+            return default
+
+    def value_or_default(field, default=""):
+        if request_form.has_key(field):
+            return request_form[field]
+        else:
+            return default
+
+    if request_form:
+        defaults["license"] = {
+            "nc" : equal_or_default('field_commercial', u'n'),
+            "sa" : equal_or_default('field_derivatives', u'sa'),
+            "nd" : equal_or_default('field_derivatives', u'n'),
+            "jurisdiction" : value_or_default('field_jurisdiction'),
+            "currency" : util.currency_symbol_from_request_form(request_form),
+            }
+        defaults["meta"] = {
+            "standard"    : value_or_default("field_metadata_standard", "html+rdfa"),
+            "format"      : value_or_default("field_format"),
+            "title"       : value_or_default("field_worktitle"),
+            "attrib_name" : value_or_default("field_attribute_to_name"),
+            "attrib_url"  : value_or_default("field_attribute_to_url"),
+            "src_url"     : value_or_default("field_sourceurl"),
+            "permissions" : value_or_default("field_morepermissionsurl"),
+            }
+        defaults["out"]["badge"] = value_or_default("field_iconsize", "normal");
+        defaults["misc"] = {
+            "lang" : value_or_default("lang", "en"),
+            }
+
+    # If the license is retired, redirect to info page
+    if license.deprecated:
+        # Special case: PDCC should redirect to /publicdomain/
+        if license.license_code == 'publicdomain':
+            return exc.HTTPMovedPermanently(location="/publicdomain/")
+        else:
+            return exc.HTTPMovedPermanently(location="/retiredlicenses")
+
+    # Generate the HTML+RDFa for the license + provided work information
+    work_dict = _formatter_work_dict(request_form)
+    license_norm_logo = license.logo_method('88x13')
+    license_slim_logo = license.logo_method('80x15')
+    picked_logo = {
+        "normal" : license_norm_logo,
+        "small" : license_slim_logo
+        }[defaults['out']['badge']]
+
+    license_html = HTML_FORMATTER.format(
+        license, work_dict, target_lang)
+
+    if defaults['out']['badge'] == u"small":
+        license_html = license_html.replace("88x31.png", "80x15.png")
+
+    def has_code(code):
+        return license.license_code.count(code) >= 1
+
+    context.update(
+        {'jurisdictions_names': jurisdictions_names,
+         'show_jurisdiction': show_jurisdiction,
+         'requested_jurisdiction': requested_jurisdiction,
+         'referrer': request.headers.get('REFERER',''),
+         'page_style': '2cols',
+         'last_query': request.query_string,
+         'form' : defaults,
+         'currency' : util.currency_symbol_from_request_form(request_form),
+         'license': license,
+         'license_logo': picked_logo,
+         'license_norm_logo': license_norm_logo,
+         'license_slim_logo': license_slim_logo,
+         'license_title': license.title(target_lang),
+         'license_html': license_html,
+         'license_code' : {
+                'sa' : has_code('sa'),
+                'nc' : has_code('nc'),
+                'nd' : has_code('nd'),
+                },
+         })
+
+    return Response(util.render_template(
+            request, target_lang,
+            'chooser_pages/interactive_chooser.html', context))
+
+
+def xhr_api(request):
+    target_lang = util.get_target_lang_from_request(request)
+    request_form = request.GET or request.POST
+
+    # Select a license based on the request form
+    license = _issue_license(request_form)
+
+    # Generate the HTML+RDFa for the license + provided work information
+    work_dict = _formatter_work_dict(request_form)
+
+    license_html = HTML_FORMATTER.format(
+        license, work_dict, target_lang)
+
+    def has_code(code):
+        return license.license_code.count(code) >= 1
+
+    ret = {
+        #'license': license,
+        'uri' : license.uri,
+        'libre' : license.libre,
+        'currency' : util.currency_symbol_from_request_form(request_form),
+        'license_logo': license.logo_method('88x31'),
+        'license_slim_logo': license.logo_method('80x15'),
+        'license_title': license.title(target_lang),
+        'license_html': license_html,
+        'license_code' : {
+            'sa' : has_code('sa'),
+            'nc' : has_code('nc'),
+            'nd' : has_code('nd'),
+            },
+        }
+
+    return Response(json.dumps(ret))
 
 
 def choose_xmp_view(request):

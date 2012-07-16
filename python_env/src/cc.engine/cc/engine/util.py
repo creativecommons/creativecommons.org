@@ -36,6 +36,37 @@ PERMITS_NAME_MAP = {
 
 LANGUAGE_JURISDICTION_MAPPING = {}
 
+JURISDICTION_CURRENCY_LOOKUP = {
+    "jp" : "jp",
+    "at" : "eu",
+    "be" : "eu",
+    "cy" : "eu",
+    "ee" : "eu",
+    "fi" : "eu",
+    "fr" : "eu",
+    "de" : "eu",
+    "gr" : "eu",
+    "ie" : "eu",
+    "it" : "eu",
+    "lu" : "eu",
+    "mt" : "eu",
+    "nl" : "eu",
+    "pt" : "eu",
+    "sk" : "eu",
+    "si" : "eu",
+    "es" : "eu",
+}
+
+
+def currency_symbol_from_request_form(req_form):
+    """Returns 'jp', 'eu', or '' depending on what
+    currency symbol should be used for the nc logo."""
+
+    try:
+        return JURISDICTION_CURRENCY_LOOKUP[req_form["field_jurisdiction"]]
+    except KeyError:
+        return ""
+
 
 class Error(Exception): pass
 
@@ -570,53 +601,56 @@ def get_target_lang_from_request(request, default_locale='en'):
     if request_form.has_key('lang'):
         return locale_to_lower_upper(request_form['lang'])
 
-    if request.matchdict.has_key('target_lang'):
-        target_lang = request.matchdict['target_lang']
-    else:
-        try:
+    try:
+        if request.matchdict.has_key('target_lang'):
+            target_lang = request.matchdict['target_lang']
+        else:
             header_value = request.accept_language.header_value
-        except AttributeError:
-            # header was not defined
-            header_value = default_locale
-        if ACCEPT_LANG_CACHE.has_key(header_value):
-            return ACCEPT_LANG_CACHE[header_value]
 
-        # clean the header into something we can use
-        accept_lang = []
-        for part in header_value.split(","):
-            try:
-                locale, quality = map(str.strip, part.split(";"))
-                quality = float(quality)
-            except ValueError:
-                locale = part.strip()
-                quality = 1
-            accept_lang.append((locale_to_lower_upper(locale), quality))
+            if ACCEPT_LANG_CACHE.has_key(header_value):
+                return ACCEPT_LANG_CACHE[header_value]
+
+            # clean the header into something we can use
+            accept_lang = []
+            for part in header_value.split(","):
+                try:
+                    locale, quality = map(str.strip, part.split(";"))
+                    quality = float(quality)
+                except ValueError:
+                    locale = part.strip()
+                    quality = 1
+                accept_lang.append((locale_to_lower_upper(locale), quality))
             
-        available = list(get_all_supported_languages())
+            available = list(get_all_supported_languages())
 
-        def run_matches(accept_lang, available):
-            best = -1
-            target_lang = None
-            for locale, quality in accept_lang:
-                if quality > best and available.count(locale):
-                    best = quality
-                    target_lang = locale
-            return target_lang
+            def run_matches(accept_lang, available):
+                best = -1
+                target_lang = None
+                for locale, quality in accept_lang:
+                    if quality > best and available.count(locale):
+                        best = quality
+                        target_lang = locale
+                return target_lang
 
-        # search for exact matches
-        target_lang = run_matches(accept_lang, available)
+            # search for exact matches
+            target_lang = run_matches(accept_lang, available)
         
-        if not target_lang:
-            # search for near matches
-            reduced_accept = [(v.split("_")[0], q) for v,q in accept_lang]
-            reduced_available = [i.split("_")[0] for i in available]
-            target_lang = run_matches(reduced_accept, reduced_available)
-                              
-        if not target_lang:
-            # screw it
-            target_lang = default_locale
+            if not target_lang:
+                # search for near matches
+                reduced_accept = [(v.split("_")[0], q) for v,q in accept_lang]
+                reduced_available = [i.split("_")[0] for i in available]
+                target_lang = run_matches(reduced_accept, reduced_available)
 
-        ACCEPT_LANG_CACHE[header_value] = target_lang
+    except AttributeError:
+        # header was not defined
+        header_value = default_locale
+        target_lang = None
+                              
+    if not target_lang:
+        # screw it
+        target_lang = default_locale
+
+    ACCEPT_LANG_CACHE[header_value] = target_lang
     return locale_to_lower_upper(target_lang)
 
 

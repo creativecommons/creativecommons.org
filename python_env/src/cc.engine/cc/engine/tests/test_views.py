@@ -611,7 +611,7 @@ def test_choose_retired_redirects():
     response = TESTAPP.get('/choose/results-one').location == None
 
 
-def test_chooser_gives_correct_licenses():
+def test_results_one_gives_correct_licenses():
     """
     Test that the chooser gives us the right licenses.
 
@@ -629,6 +629,141 @@ def test_chooser_gives_correct_licenses():
             urllib.urlencode(parameters))
         license = util.TEST_TEMPLATE_CONTEXT[
             'chooser_pages/results.html']['license']
+        assert_equal(license.uri, expected_url)
+            
+    ###################
+    ### Boring default!
+    ###################
+
+    # default is CC BY 3.0.  Make sure it is!
+    _check_license_url_against_parameters(
+        {}, 'http://creativecommons.org/licenses/by/3.0/')
+
+    ###################
+    ### By license code
+    ###################
+
+    _check_license_url_against_parameters(
+        {'license_code': 'by'},
+        'http://creativecommons.org/licenses/by/3.0/')
+    _check_license_url_against_parameters(
+        {'license_code': 'by-sa'},
+        'http://creativecommons.org/licenses/by-sa/3.0/')
+    _check_license_url_against_parameters(
+        {'license_code': 'by-sa',
+         'version': '2.0'},
+        'http://creativecommons.org/licenses/by-sa/2.0/')
+    _check_license_url_against_parameters(
+        {'license_code': 'by-sa',
+         'version': '2.0'},
+        'http://creativecommons.org/licenses/by-sa/2.0/')
+    _check_license_url_against_parameters(
+        {'license_code': 'by-sa',
+         'version': '2.0'},
+        'http://creativecommons.org/licenses/by-sa/2.0/')
+    _check_license_url_against_parameters(
+        {'license_code': 'by-nc-sa',
+         'version': '2.0',
+         'jurisdiction': 'at'},
+        'http://creativecommons.org/licenses/by-nc-sa/2.0/at/')
+
+    ##################
+    ### By license url
+    ##################
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by/3.0/'},
+        'http://creativecommons.org/licenses/by/3.0/')
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by-nc/3.0/'},
+        'http://creativecommons.org/licenses/by-nc/3.0/')
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by-nd/3.0/'},
+        'http://creativecommons.org/licenses/by-nd/3.0/')
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by-sa/3.0/'},
+        'http://creativecommons.org/licenses/by-sa/3.0/')
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by-nc-nd/3.0/'},
+        'http://creativecommons.org/licenses/by-nc-nd/3.0/')
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by-nc-sa/3.0/'},
+        'http://creativecommons.org/licenses/by-nc-sa/3.0/')
+    _check_license_url_against_parameters(
+        {'license_url': 'http://creativecommons.org/licenses/by-nc-sa/3.0/pl/'},
+        'http://creativecommons.org/licenses/by-nc-sa/3.0/pl/')
+
+    ################
+    ### By "answers"
+    ################
+    _check_license_url_against_parameters(
+        {'field_commercial': 'y',
+         'field_derivatives': 'y'},
+        'http://creativecommons.org/licenses/by/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'n',
+         'field_derivatives': 'y'},
+        'http://creativecommons.org/licenses/by-nc/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'y',
+         'field_derivatives': 'n'},
+        'http://creativecommons.org/licenses/by-nd/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'y',
+         'field_derivatives': 'sa'},
+        'http://creativecommons.org/licenses/by-sa/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'n',
+         'field_derivatives': 'n'},
+        'http://creativecommons.org/licenses/by-nc-nd/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'n',
+         'field_derivatives': 'sa'},
+        'http://creativecommons.org/licenses/by-nc-sa/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'n',
+         'field_derivatives': 'sa',
+         'jurisdiction': 'pl'},
+        'http://creativecommons.org/licenses/by-nc-sa/3.0/pl/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'n',
+         'field_derivatives': 'sa',
+         'field_jurisdiction': 'pl'},
+        'http://creativecommons.org/licenses/by-nc-sa/3.0/pl/')
+
+    # Also, we used to use "yes" instead of "y", make sure that still
+    # means "y"
+    _check_license_url_against_parameters(
+        {'field_commercial': 'yes',
+         'field_derivatives': 'yes'},
+        'http://creativecommons.org/licenses/by/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'n',
+         'field_derivatives': 'yes'},
+        'http://creativecommons.org/licenses/by-nc/3.0/')
+    _check_license_url_against_parameters(
+        {'field_commercial': 'yes',
+         'field_derivatives': 'n'},
+        'http://creativecommons.org/licenses/by-nd/3.0/')
+
+
+def test_interactive_chooser_gives_correct_licenses():
+    """
+    Test that the chooser gives us the right licenses.
+
+    Some of these may need to be updated as we release new version numbers!
+    """
+    
+    def _check_license_url_against_parameters(parameters, expected_url):
+        """
+        See if the license's url given by the chooser for PARAMETERS
+        matches EXPECTED_URL
+        """
+        util._clear_test_template_context()
+        TESTAPP.get(
+            '/choose/?' +
+            urllib.urlencode(parameters))
+        license = util.TEST_TEMPLATE_CONTEXT[
+            'chooser_pages/interactive_chooser.html']['license']
         assert_equal(license.uri, expected_url)
             
     ###################
