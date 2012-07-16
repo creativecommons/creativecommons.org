@@ -156,7 +156,9 @@ def license_deed_view(request):
         'color': color,
         'conditions': conditions,
         'active_languages': active_languages,
-        'target_lang': target_lang}
+        'target_lang': target_lang,
+        'jurisdiction':license.jurisdiction.code,
+        }
     context.update(util.rtl_context_stuff(target_lang))
 
     return Response(

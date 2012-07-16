@@ -2,7 +2,7 @@
 
 {% block title -%}
   Creative Commons &mdash; {{ license.title(target_lang) }}
-  &mdash; CC {{license.license_code.upper() }} {{ license.version }}
+  &mdash; CC {{license.license_code.upper() }} {{ license.version }} {{ jurisdiction.upper() }}
 {%- endblock %}
 
 {% block page_top %}
@@ -14,8 +14,11 @@
 {% block license_name %}
   <span property="dc:title dct:title"
         style="display: inline;">{{ license_title }}</span>
-  (<span property="dc:identifier dct:identifier"
-         style="display: inline;">CC {{ license.license_code.upper() }} {{ license.version }}</span>)
+  <span style="display: inline-block; font-size: 14px; padding-left: 2px;">
+    (<span property="dc:identifier dct:identifier"
+           style="display: inline; font-size: 12px;">CC {{ license.license_code.upper() }} {{ license.version }}
+      {%- if jurisdiction %} {{ jurisdiction.upper() }}{% endif %}</span>)
+  </span>
 {% endblock %}
 
 {% block body %}
