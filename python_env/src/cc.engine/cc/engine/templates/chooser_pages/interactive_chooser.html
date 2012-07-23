@@ -114,7 +114,7 @@ CHOOSER.CALLBACK.main = function () {
         }
         catch (err) {
             // IE8 hack // 8^y
-            console.warn(err);
+            try {console.warn(err);} catch (err) {}
             return $("#"+$(".ui_row .ui_box")[col-1 + (row-1)*2].id);
         }
     };
@@ -259,6 +259,10 @@ CHOOSER.CALL.refresh_ui = function (event_ctx, data) {
             update_link("#fc_approved_box a.fc_logo_link");
         }
     }
+
+    // weird bugfix for IE8 & 9's lackluster css support
+    var panel = $("#license")[0];
+    panel.innerHTML += "";
 };
 
 
