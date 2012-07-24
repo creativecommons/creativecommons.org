@@ -379,6 +379,10 @@ def choose_results_view(request):
 
 
 def chooser_view(request):
+    # Preserve the old partner interface by calling the old chooser view..
+    if request.GET.get('partner'):
+        return classic_chooser_view(request)
+
     #
     #  Used by the new-style chooser demos, for now.
     #
