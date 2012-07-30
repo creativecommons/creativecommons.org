@@ -1,7 +1,7 @@
 import json
 from lxml import etree
 from urlparse import urlparse, urljoin
-from urllib import quote, unquote_plus, urlencode
+from urllib import quote, unquote, unquote_plus, urlencode
 from StringIO import StringIO
 
 from webob import Response, exc
@@ -446,7 +446,7 @@ def chooser_view(request):
 
     def value_or_default(field, default=""):
         if request_form.has_key(field):
-            return unquote_plus(request_form[field]).encode("utf-8")
+            return unquote(request_form[field]).encode("utf-8")
         else:
             return default
 

@@ -1522,7 +1522,7 @@ input[type=radio] {
   
 
   <div id="internets" class="ui_box">
-    <div id="for_htmlrdfa" {% if form.meta.standard != "html rdfa" %}style="display:none"{% endif %}>
+    <div id="for_htmlrdfa" {% if form.meta.standard != "html+rdfa" %}style="display:none"{% endif %}>
       <div class="help_button mirror" onclick="CHOOSER.CALL.popup('license_mark_html');"></div>
       <h2>{% trans %}Have a web page?{% endtrans %}</h2>
       <div class="results-preview"><div>{{ license_html|safe }}</div></div>
