@@ -444,12 +444,9 @@ def chooser_view(request):
         else:
             return default
 
-    def value_or_default(field, default="", is_url=False):
+    def value_or_default(field, default=""):
         if request_form.has_key(field):
-            value = request_form[field]
-            if is_url:
-                return unquote_plus(value).encode("utf-8")
-            return value
+            return unquote_plus(request_form[field]).encode("utf-8")
         else:
             return default
 
@@ -466,9 +463,9 @@ def chooser_view(request):
             "format"      : value_or_default("field_format"),
             "title"       : value_or_default("field_worktitle"),
             "attrib_name" : value_or_default("field_attribute_to_name"),
-            "attrib_url"  : value_or_default("field_attribute_to_url", is_url=True),
-            "src_url"     : value_or_default("field_sourceurl", is_url=True),
-            "permissions" : value_or_default("field_morepermissionsurl", is_url=True),
+            "attrib_url"  : value_or_default("field_attribute_to_url"),
+            "src_url"     : value_or_default("field_sourceurl"),
+            "permissions" : value_or_default("field_morepermissionsurl"),
             }
         defaults["out"]["badge"] = value_or_default("field_iconsize", "normal");
         defaults["misc"] = {
