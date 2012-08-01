@@ -598,7 +598,7 @@ ACCEPT_LANG_CACHE = {}
 def get_target_lang_from_request(request, default_locale='en'):
     request_form = request.GET or request.POST
 
-    if request_form.has_key('lang'):
+    if request_form.has_key('lang') and request_form['lang'] != '':
         return locale_to_lower_upper(request_form['lang'])
 
     try:

@@ -435,7 +435,7 @@ def chooser_view(request):
             "badge" : "normal",
             },
         "misc" : {
-            "lang" : "en",
+            "lang" : "",
             }
         }
     def equal_or_default(field, value, default=False):
@@ -469,7 +469,7 @@ def chooser_view(request):
             }
         defaults["out"]["badge"] = value_or_default("field_iconsize", "normal");
         defaults["misc"] = {
-            "lang" : value_or_default("lang", "en"),
+            "lang" : value_or_default("lang", ""),
             }
 
     # If the license is retired, redirect to info page
