@@ -538,12 +538,17 @@ def xhr_api(request):
     license_html = HTML_FORMATTER.format(
         license, work_dict, target_lang)
 
+    localized_uri = license.uri
+    default_lang = license.jurisdiction.default_language or 'en'
+    if target_lang != default_lang:
+        localized_uri += "deed." + target_lang
+
     def has_code(code):
         return license.license_code.count(code) >= 1
 
     ret = {
         #'license': license,
-        'uri' : license.uri,
+        'uri' : localized_uri,
         'libre' : license.libre,
         'currency' : util.currency_symbol_from_request_form(request_form),
         'license_logo': license.logo_method('88x31'),
