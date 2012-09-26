@@ -12,7 +12,7 @@
     {% block headers %}{% endblock %}
   </head>
 
-  <body>
+  <body {% if is_rtl %}style="direction:rtl"{% endif%}>
     {% set partner_icon_url = request.GET.get('partner_icon_url', '/images/remote_logo.gif') %}
     <div id="main">
       <div id="page-body">
