@@ -1329,7 +1329,7 @@ input[type=radio] {
         </option>
         {% for juris_code, juris_name in jurisdictions_names %}
         <option value="{{ juris_code }}"
-                {% if form.license.jurisdiction == juris_code -%}
+                {% if requested_jurisdiction == juris_code -%}
                 selected="selected"
                 {%- endif %}>
           {{- juris_name -}}
