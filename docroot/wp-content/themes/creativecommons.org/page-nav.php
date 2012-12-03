@@ -80,7 +80,7 @@
 				    </li>
 				    
 				    <li class="dropdown">
-				    	<a href="https://creativecommons.net/donate/" class="OFF_FOR_CAMPAIGNdropdown-toggle">Support CC</a>
+				    	<a href="https://creativecommons.net/donate/" class="OFF_FOR_CAMPAIGNdropdown-toggle">Donate to CC</a>
 				    	<ul class="menu-dropdown">
 				    		<li><a href="https://creativecommons.net/donate/">Donate to Creative Commons</a></li>
 						    <li><a href="https://creativecommons.net/store/">Buy CC Merchandise</a></li>
