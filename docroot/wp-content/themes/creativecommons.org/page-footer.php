@@ -27,7 +27,7 @@
 						      <p>
 							<small>
 							  Except where otherwise
-							  <a class="subfoot" href="/policies#license">noted</a>,
+							  <a class="subfoot" href="http://creativecommons.org/policies#license">noted</a>,
 							  content on
 							  <span 
 							     href="http://creativecommons.org" 
