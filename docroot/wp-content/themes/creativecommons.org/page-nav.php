@@ -103,7 +103,7 @@
 						    <li><a href="http://creativecommons.org/taa-grant-program">Gates OPEN</a></li>
 						    <li><a href="http://wiki.creativecommons.org/LRMI">Learning Resource Metadata Initiative (LRMI) </a></li>
 						    <li><a href="http://creativecommons.org/music-communities">Music Communities</a></li>
-						    <li><a href="http://wiki.creativecommons.org/Open_Policy_Institute">Open Policy Institute</a></li>
+						    <li><a href="http://wiki.creativecommons.org/Open_Policy_Network">Open Policy Network</a></li>
                             <li><a href="http://creativecommons.org/record-labels">Record Labels</a></li>
                             <li><a href="http://schoolofopen.org/">School of Open</a></li>
                             <li><a href="http://wiki.creativecommons.org/4.0">Versioning the license suite</a></li>
