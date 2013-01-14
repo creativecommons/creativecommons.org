@@ -131,5 +131,4 @@
 				</div>
 			</div>
 		</div>
-<?php include 'banner-cc10.php'; ?>
 		</header>
