@@ -37,9 +37,6 @@
 						    <li class="divider"></li>
 						    <li><a href="http://wiki.creativecommons.org/FAQ">Frequently Asked Questions</a></li>
 						    <li><a href="http://creativecommons.org/contact">Contact Us</a></li>
-						    <li class="divider"></li>
-						    <li><a href="https://creativecommons.net/store/">Buy CC Merchandise</a></li>
-				    		    <li><a href="https://creativecommons.net/supporters/">Our Supporters</a></li>
 						    
 				      </ul>
 				    </li>
@@ -80,7 +77,7 @@
 				    </li>
 				    
 				    <li class="dropdown">
-				    	<a href="https://creativecommons.net/donate/" class="OFF_FOR_CAMPAIGNdropdown-toggle">Donate to CC</a>
+				    	<a href="https://creativecommons.net/donate/" class="dropdown-toggle">Support CC</a>
 				    	<ul class="menu-dropdown">
 				    		<li><a href="https://creativecommons.net/donate/">Donate to Creative Commons</a></li>
 						    <li><a href="https://creativecommons.net/store/">Buy CC Merchandise</a></li>
