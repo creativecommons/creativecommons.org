@@ -1,7 +1,4 @@
 <?php
-
-echo '<script src="http://mirrors.creativecommons.org/RIP_aaron.js" type="text/javascript"></script>';
-
 /**
  * This gets buckets of content and has some defaults which allow for the
  * most generic buckets to be laid out for display. Carousels are also
