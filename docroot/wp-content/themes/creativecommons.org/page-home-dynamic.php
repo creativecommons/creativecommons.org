@@ -22,10 +22,10 @@ if ($_GET['stype']) {
             <div class="container">
                 <div class="sixteen columns">
                 <?php 
-                    if ( $_SERVER["REQUEST_URI"] == '/' ||
-                         $_SERVER["REQUEST_URI"] == '/index.php' || 
-                         $_SERVER["REQUEST_URI"] == '/homedev/index.php' ||
-                         $_SERVER["REQUEST_URI"] == '/homedev' ) {
+                    if ( $_SERVER["SCRIPT_URL"] == '/' ||
+                         $_SERVER["SCRIPT_URL"] == '/index.php' || 
+                         $_SERVER["SCRIPT_URL"] == '/homedev/index.php' ||
+                         $_SERVER["SCRIPT_URL"] == '/homedev' ) {
                             include 'home-gestalt.php'; 
 
                     } else { 
