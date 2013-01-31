@@ -19,7 +19,7 @@
 						      <a rel = "license"
 							 href="http://creativecommons.org/licenses/by/3.0/"
 							 title="Creative Commons Attribution 3.0 License"
-							 ><img src="http://i.creativecommons.org/l/by/3.0/88x31.png"
+							 ><img src="//i.creativecommons.org/l/by/3.0/88x31.png"
 							       alt="License"/></a>
 						    </p>
 						    <div style="display: inline;" xmlns:cc="http://creativecommons.org/ns#"
