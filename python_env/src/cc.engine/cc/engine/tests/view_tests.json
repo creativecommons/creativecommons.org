@@ -78,7 +78,7 @@
   "string_tests": [
       "Creative Commons Legal Code",
       "Attribution 3.0 United States"]},
- 
+
  {"path": "/licenses/MIT/rdf",
   "string_tests": [
       "<cc:License rdf:about=\"http://creativecommons.org/licenses/MIT/\">",
@@ -110,7 +110,7 @@
       "<cc:deprecatedOn rdf:datatype=\"http://www.w3.org/2001/XMLSchema-datatypes#date\">2010-10-05</cc:deprecatedOn>",
       "<cc:legalcode rdf:resource=\"http://creativecommons.org/licenses/publicdomain/legalcode\"/>",
       "<dc:title xml:lang=\"en\">Public Domain</dc:title>"]},
- 
+
  {"path": "/publicdomain/zero/1.0/",
   "string_tests": [
       "CC0 1.0 Universal",
@@ -172,7 +172,7 @@
   "string_tests": [
       "xml:lang='es'",
       "xml:lang='en'",
-      "licencia Creative Commons Atribuci",
+      "Licencia Creative Commons Atribución 3.0 Unported",
       "Creative Commons Attribution 3.0 Unported License"]},
  {"path": "/choose/metadata.xmp?field_morepermissionsurl=http%3A%2F%2Ftest.foo",
   "string_tests": [

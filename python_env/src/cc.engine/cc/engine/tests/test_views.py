@@ -125,7 +125,7 @@ def test_deed_legalcodes():
           u'Galician'),
          ('http://creativecommons.org/licenses/by/2.5/es/legalcode.es',
           u'Spanish')])
-    
+
     # Multilegal, non-english
     assert_equal(
         get_legalcode_links('/licenses/by/2.5/es/deed.es'),
@@ -164,7 +164,7 @@ def test_rdf_views():
     _rdf_tester(
         '/licenses/BSD/rdf',
         'licenses/creativecommons.org_licenses_BSD_.rdf')
-    
+
 
 VIEWS_TEST_DATA = json.load(
     file(pkg_resources.resource_filename(
@@ -319,7 +319,7 @@ class TestEmailSenderViews(unittest.TestCase):
     def setUp(self):
         util._clear_test_inboxes()
         util._clear_test_template_context()
-        
+
     def test_work_email_send(self):
         # For doing a POST (email sending time!)
         # --------------------------------------
@@ -329,7 +329,7 @@ class TestEmailSenderViews(unittest.TestCase):
              'work_title': 'Floobie Bletch',
              'license_name': 'Scroll of Charging',
              'license_html': 'You feel charged up!'})
-        
+
         # assert that there's 1 message in the inbox,
         # and that it's the right one
         assert_equal(len(util.EMAIL_TEST_INBOX), 1)
@@ -362,7 +362,7 @@ class TestEmailSenderViews(unittest.TestCase):
         response = TESTAPP.post(
             '/choose/zero/results',
             {'email': 'recipient@example.org'})
-        
+
         # assert that there's 1 message in the inbox,
         # and that it's the right one
         assert_equal(len(util.EMAIL_TEST_INBOX), 1)
@@ -388,7 +388,7 @@ class TestEmailSenderViews(unittest.TestCase):
 
         response = TESTAPP.get(
             '/choose/zero/results?email=recipient@example.org')
-        
+
         # assert that there's no messages in the inbox
         assert_equal(len(util.EMAIL_TEST_INBOX), 0)
 
@@ -403,7 +403,7 @@ class TestEmailSenderViews(unittest.TestCase):
         response = TESTAPP.post(
             '/choose/mark/results',
             {'email': 'recipient@example.org'})
-        
+
         # assert that there's 1 message in the inbox,
         # and that it's the right one
         assert_equal(len(util.EMAIL_TEST_INBOX), 1)
@@ -429,7 +429,7 @@ class TestEmailSenderViews(unittest.TestCase):
 
         response = TESTAPP.get(
             '/choose/mark/results?email=recipient@example.org')
-        
+
         # assert that there's no messages in the inbox
         assert_equal(len(util.EMAIL_TEST_INBOX), 0)
 
@@ -476,7 +476,7 @@ def test_publicdomain_partners_alternatelinks():
         'exit_url=http://nethack.org/return_from_cc?license_url=[license_url]%26license_name=[license_name]&'
         'stylesheet=http://nethack.org/yendor.css&'
         'extraneous_argument=large%20mimic')
-    
+
     response_etree = lxml_html.parse(StringIO.StringIO(response.unicode_body))
     other_pd_href = response_etree.xpath(
         '//a[text()="CC0 public domain dedication"]')[0].attrib['href']
@@ -491,7 +491,7 @@ def test_publicdomain_partners_alternatelinks():
         'exit_url=http://nethack.org/return_from_cc?license_url=[license_url]%26license_name=[license_name]&'
         'stylesheet=http://nethack.org/yendor.css&'
         'extraneous_argument=large%20mimic')
-    
+
     response_etree = lxml_html.parse(StringIO.StringIO(response.unicode_body))
     other_pd_href = response_etree.xpath(
         '//a[text()="Public Domain Mark"]')[0].attrib['href']
@@ -512,7 +512,7 @@ def test_publicdomain_partners_exiturls():
         'exit_url=http://nethack.org/return_from_cc?license_url=[license_url]%26license_name=[license_name]&'
         'stylesheet=http://nethack.org/yendor.css&'
         'extraneous_argument=large%20mimic')
-    
+
     response_etree = lxml_html.parse(StringIO.StringIO(response.unicode_body))
     proceed_href = response_etree.xpath(
         '//a[text()="proceed"]')[0].attrib['href']
@@ -521,7 +521,7 @@ def test_publicdomain_partners_exiturls():
         ('http://nethack.org/return_from_cc?'
          'license_url=http%3A//creativecommons.org/publicdomain/mark/1.0/&'
          'license_name=Public%20Domain%20Mark%201.0'))
-    
+
     # CC0's exit URL
     response = TESTAPP.get(
         '/choose/zero/partner?'
@@ -562,7 +562,7 @@ def test_deed_fallbacks():
     _redirects_expectedly(
         '/licenses/by/3.0/deed.pt_LARGEMIMIC',
         '/licenses/by/3.0/deed.pt')
-        
+
     # Don't redirect when the language is valid
     assert_equal(TESTAPP.get('/licenses/by/3.0/deed.pt').location, None)
 
@@ -617,7 +617,7 @@ def test_results_one_gives_correct_licenses():
 
     Some of these may need to be updated as we release new version numbers!
     """
-    
+
     def _check_license_url_against_parameters(parameters, expected_url):
         """
         See if the license's url given by the chooser for PARAMETERS
@@ -630,7 +630,7 @@ def test_results_one_gives_correct_licenses():
         license = util.TEST_TEMPLATE_CONTEXT[
             'chooser_pages/results.html']['license']
         assert_equal(license.uri, expected_url)
-            
+
     ###################
     ### Boring default!
     ###################
@@ -752,7 +752,7 @@ def test_interactive_chooser_gives_correct_licenses():
 
     Some of these may need to be updated as we release new version numbers!
     """
-    
+
     def _check_license_url_against_parameters(parameters, expected_url):
         """
         See if the license's url given by the chooser for PARAMETERS
@@ -765,7 +765,7 @@ def test_interactive_chooser_gives_correct_licenses():
         license = util.TEST_TEMPLATE_CONTEXT[
             'chooser_pages/interactive_chooser.html']['license']
         assert_equal(license.uri, expected_url)
-            
+
     ###################
     ### Boring default!
     ###################
@@ -949,7 +949,7 @@ def test_deed_w3_validation():
                     "doctype" : "Inline",
                     "group" : 0,
                     })
-            req = urllib2.Request("http://validator.w3.org/check", 
+            req = urllib2.Request("http://validator.w3.org/check",
                                   data, headers)
             try:
                 raw = urllib2.urlopen(req).read()
