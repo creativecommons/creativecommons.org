@@ -22,6 +22,7 @@ var CHOOSER = {
             ],
             'select' : [
                 'field_jurisdiction',
+                'field_language',
                 'field_format'
             ],
             'text' : [
@@ -409,6 +410,23 @@ CHOOSER.CALL.refresh_state = function () {
     return state_changed;
 }
 
+function show_jurisdictions() {
+    CHOOSER.CALL.popup('show_jurisdictions');
+    $('#field_language').val('English');
+    $('#field_jurisdiction').val('International');
+    CHOOSER.CALL.ping();
+    $('#language_section').hide();
+    $('#jurisdiction_section').show();
+}
+
+function show_languages() {
+    $('#field_language').val('English');
+    $('#field_jurisdiction').val('International');
+    CHOOSER.CALL.ping();
+    $('#jurisdiction_section').hide();
+    $('#language_section').show();
+}
+
 
 ////
 </script>
@@ -709,6 +727,10 @@ input[type=radio] {
 
 #freedoms label {
     float: none;
+}
+
+#jurisdiction_section {
+    display: none;
 }
 
 #field_jurisdiction {
@@ -1315,7 +1337,7 @@ input[type=radio] {
       </ul>
     </div>
 
-    <div class="help_highlight">
+    <div id="jurisdiction_section" class="help_highlight">
       <div class="help_button" onclick="CHOOSER.CALL.popup('jurisdiction');"></div>
       <h4>{% trans %}License Jurisdiction{% endtrans %}:</h4>
       <select id="field_jurisdiction" name="field_jurisdiction">
@@ -1336,6 +1358,33 @@ input[type=radio] {
         </option>
         {% endfor %}
       </select>
+      <div class="subtitle"><a href="#" onclick="show_languages();">
+{%- trans %}Looking for the latest license versions?{% endtrans %}</div></a>
+    </div>
+
+    <div id="language_section" class="help_highlight">
+      <div class="help_button" onclick="CHOOSER.CALL.popup('language');"></div>
+      <h4>{% trans %}License Language{% endtrans %}:</h4>
+      <select id="field_language" name="field_language">
+        {# If a specific language is requested, we'll mark that
+        # as selected.  Otherwise util.International should be selected. #}
+        <option value=""
+                {% if form.license.language == "" -%}
+                selected="selected"
+                {%- endif %}>
+          {% trans %}English{% endtrans %}
+        </option>
+        {% for language_code, language_name in language_names %}
+        <option value="{{ language_code }}"
+                {% if requested_language == language_code -%}
+                selected="selected"
+                {%- endif %}>
+          {{- language_name -}}
+        </option>
+        {% endfor %}
+      </select>
+      <div class="subtitle"><a href="#" onclick="show_jurisdictions();">
+{%- trans %}Looking for other license versions or ports?{% endtrans %}</div></a>
     </div>
   </div>
 
@@ -1640,6 +1689,13 @@ input[type=radio] {
 <!-- This node is used to allow for translation of help popup text. -->
 <div id="help_lookup" style="display:none">
 
+
+  <div id="help_show_jurisdictions">
+    <div class="title">{% trans %}About previous versions{% endtrans %}</div>
+    <div class="msg">
+      <p>{% trans %}Our latest and recommended license version is 4.0 and can be used internationally. However, if you need to select a specific port of the license (which use older license versions), you can do so using the "License Jurisdiction" drop-down.{% endtrans %}</p>
+    </div>
+  </div>
 
   <!-- license panel help text -->
 
