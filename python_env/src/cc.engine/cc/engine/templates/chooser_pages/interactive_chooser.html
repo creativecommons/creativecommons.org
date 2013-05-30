@@ -719,6 +719,10 @@ input[type=radio] {
     float: none;
 }
 
+#show_jurisdictions_section {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
 #jurisdiction_section {
     display: none;
 }
@@ -1314,13 +1318,13 @@ input[type=radio] {
       <ul>
         <li>
           <input type="radio"
-                 {%- if not form.license.nc %} checked="checked" {% endif -%}
+                 {% if not form.license.nc %}checked="checked" {% endif -%}
                  name="field_commercial" value="y" id="question_2-3"/>
           <label for="question_2-3">{% trans %}Yes{% endtrans %}</label>
         </li>
         <li>
           <input type="radio"
-                 {%- if form.license.nc %} checked="checked" {% endif -%}
+                 {% if form.license.nc %}checked="checked" {% endif -%}
                  name="field_commercial" value="n" id="question_2-4"/>
           <label for="question_2-4">{% trans %}No{% endtrans %}</label>
         </li>
@@ -1663,28 +1667,28 @@ input[type=radio] {
   <div id="help_jurisdiction">
     <div class="title">{% trans %}About earlier versions{% endtrans %}</div>
     <div class="msg">
-      <p>{% trans %}Our latest and recommended license version is 4.0 and can be used internationally. However, if you need to select a specific port of the license (which use older license versions), you can do so using the "License Jurisdiction" drop-down.{% endtrans %}</p>
+      <p>{% trans %}The most recent license version is 4.0, which can be used internationally. If you are searching for a port of the license for a particular jurisdiction, however, you may still do so.{% endtrans %}</p>
     </div>
   </div>
 
   <div id="help_show_jurisdictions">
     <div class="title">{% trans %}About earlier versions{% endtrans %}</div>
     <div class="msg">
-      <p>{% trans %}Our latest and recommended license version is 4.0 and can be used internationally. However, if you need to select a specific port of the license (which use older license versions), you can do so using the "License Jurisdiction" drop-down.{% endtrans %}</p>
+      <p>{% trans %}The most recent license version is 4.0, which can be used internationally. If you are searching for a port of the license for a particular jurisdiction, however, you may still do so.{% endtrans %}</p>
     </div>
   </div>
 
   <div id="help_change_jurisdictions">
     <div class="title">{% trans %}About earlier versions{% endtrans %}</div>
     <div class="msg">
-      <p>{% trans %}Our latest and recommended license version is 4.0 and can be used internationally. However, if you need to select a specific port of the license (which use older license versions), you can do so using the "License Jurisdiction" drop-down.{% endtrans %}</p>
+      <p>{% trans %}The most recent license version is 4.0, which can be used internationally. If you are searching for a port of the license for a particular jurisdiction, however, you may still do so.{% endtrans %}</p>
     </div>
     <div class="close_buttons">
       <a onclick="$('#popup_screen').hide();">
         {% trans %}use latest{% endtrans %}
       </a>
       <a onclick="show_jurisdiction_section();">
-        {% trans %}show earlier licenses{% endtrans %}
+        {% trans %}show earlier license ports{% endtrans %}
       </a>
     </div>
   </div>
