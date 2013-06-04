@@ -81,7 +81,7 @@
 				    	<ul class="menu-dropdown">
 				    		<li><a href="https://creativecommons.net/">Donate to Creative Commons</a></li>
 						    <li><a href="http://store.creativecommons.org/">Buy CC Merchandise</a></li>
-				    		<li><a href="http://creativecommons.org/supporters/">Our Supporters</a></li>
+				    		<li><a href="http://creativecommons.org/supporters">Our Supporters</a></li>
 						    <li><a href="https://creativecommons.net/testimonials/">Testimonials</a></li>
 				    	</ul>
 				    </li>
