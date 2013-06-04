@@ -419,11 +419,21 @@ CHOOSER.CALL.refresh_state = function () {
 }
 
 function show_jurisdiction_section() {
-    $('#field_jurisdiction').val('International');
+    $('#field_jurisdiction').val('ar');
+    $("#field_jurisdiction :first-child").remove();
     CHOOSER.CALL.ping();
-    $('#language_section').hide();
     $('#show_jurisdictions_section').hide();
+    $('#hide_jurisdictions_section').show();
     $('#jurisdiction_section').show();
+}
+function hide_jurisdiction_section() {
+    $("#field_jurisdiction")
+      .prepend('<option value="">{% trans %}International{% endtrans %}</option>')
+      .val('');
+    CHOOSER.CALL.ping();
+    $('#show_jurisdictions_section').show();
+    $('#hide_jurisdictions_section').hide();
+    $('#jurisdiction_section').hide();
 }
 
 ////
@@ -624,7 +634,6 @@ input[type=radio] {
 }
 
 #popup_body {
-    background-color: white;
     background-color: rgba(255, 255, 255, .8);
     border: 1px solid black;
     border-radius: 8px;
@@ -653,11 +662,14 @@ input[type=radio] {
     text-align: center;
 }
 #popup_close a {
-    color: white;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 8px;
+    margin-right: 1em;
     padding: .5em;
 }
 
-#instructional_fluff, #copyright_fluff, #publishing_fluff {
+#instructional_fluff, #copyright_fluff, #publishing_fluff,
+#show_jurisdictions_section, #hide_jurisdictions_section {
     text-align: center;
     font-size: 16px;
     max-width: 800px;
@@ -665,18 +677,21 @@ input[type=radio] {
     word-spacing: 1px;
 }
 
-#instructional_fluff {
-    letter-spacing: 0px;
-    margin-bottom: .2em;
-}
-
+#instructional_fluff,
 #copyright_fluff {
-    letter-spacing: 1px;
-    margin-bottom: 1.5em;
+    margin-bottom: .2em;
 }
 
 #copyright_fluff span:first-of-type {
     padding-right: 1.6em;
+}
+
+#show_jurisdictions_section,
+#hide_jurisdictions_section {
+    margin-bottom: .5em;
+}
+#hide_jurisdictions_section {
+    display: none;
 }
 
 #other_stuff {
@@ -723,10 +738,6 @@ input[type=radio] {
     float: none;
 }
 
-#show_jurisdictions_section {
-    padding-top: 1em;
-    padding-bottom: 1em;
-}
 #jurisdiction_section {
     display: none;
 }
@@ -1270,6 +1281,14 @@ input[type=radio] {
     {%- trans %}Want public domain instead?{% endtrans -%}
   </a> ]</span>
 </div>
+<div id="show_jurisdictions_section">
+[ <a href="#" onclick="CHOOSER.CALL.popup('change_jurisdictions');">
+{%- trans %}Looking for jurisdiction ports of prior versions?{% endtrans %}</a> ]
+</div>
+<div id="hide_jurisdictions_section">
+[ <a href="#" onclick="hide_jurisdiction_section();">
+{%- trans %}Use latest license version{% endtrans %}</a> ]
+</div>
 
 <form action="." method="get" id="chooser_form">
 <noscript>
@@ -1338,11 +1357,6 @@ input[type=radio] {
       </ul>
     </div>
 
-    <div id="show_jurisdictions_section" class="help_highlight">
-      <div class="help_button" onclick="CHOOSER.CALL.popup('show_jurisdictions');"></div>
-      <h4><a href="#" onclick="CHOOSER.CALL.popup('change_jurisdictions');">
-{%- trans %}View earlier versions and ports{% endtrans %}</a></h4>
-    </div>
     <div id="jurisdiction_section" class="help_highlight">
       <div class="help_button" onclick="CHOOSER.CALL.popup('jurisdiction');"></div>
       <h4>{% trans %}License Jurisdiction{% endtrans %}:</h4>
@@ -1882,5 +1896,9 @@ work in the manner specified by the author or licensor.{% endtrans %}</div>
   <img src="/wp-content/themes/creativecommons.org/images/hint_button_hover.png" />
 </div>
 
-
+<script>
+// Select International on load (in case user selects a port and reloads)
+$("#field_jurisdiction").val('');
+CHOOSER.CALL.ping();
+</script>
 {% endblock %}
