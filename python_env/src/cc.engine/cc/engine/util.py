@@ -247,6 +247,62 @@ def publicdomain_partner_get_params(request_form):
     return get_params
 
 
+def get_license_conditions(license, target_language="en_US"):
+    """
+    This is for compatibility with the way the old cc.engine handled
+    conditions on the deeds page.  It kinda sucks... I think we could
+    do better with the new api.
+    """
+    ugettext = ugettext_for_locale(target_language)
+
+    attrs = []
+
+    for lic in license.license_code.split('-'):
+
+        # bail on sampling
+        if lic.find('sampling') > -1:
+            continue
+        
+        # Go through the chars and build up the HTML and such
+        char_title = None
+        char_brief = None
+        if lic in mappers.CHARACTERISTIC_TITLE_MAP:
+            char_title = ugettext(
+                mappers.CHARACTERISTIC_TITLE_MAP[lic])
+        if lic in mappers.CHARACTERISTIC_BRIEF_DESC_MAP:
+            char_brief = ugettext(
+            mappers.CHARACTERISTIC_BRIEF_DESC_MAP[lic])
+
+        icon_name = lic
+        predicate = 'cc:requires'
+        object = 'http://creativecommons.org/ns#Attribution'
+
+        if lic == 'nc':
+            predicate = 'cc:prohibits'
+            object = 'http://creativecommons.org/ns#CommercialUse'
+        elif lic == 'sa':
+            object = 'http://creativecommons.org/ns#ShareAlike'
+            if license.version == 3.0 and license.code == 'by-sa':
+                char_brief = unicode_cleaner(
+                    ugettext(
+                        u'If you alter, transform, or build upon this work, '
+                        u'you may distribute the resulting work only under the '
+                        u'same, similar or a compatible license.'))
+        elif lic == 'nd':
+            predicate = ''
+            object = ''
+
+        attrs.append(
+            {'char_title': char_title,
+             'char_brief': char_brief,
+             'icon_name': icon_name,
+             'char_code': lic,
+             'predicate': predicate,
+             'object': object})
+
+    return attrs
+
+
 _ACTIVE_LANGUAGES = None
 
 def active_languages():

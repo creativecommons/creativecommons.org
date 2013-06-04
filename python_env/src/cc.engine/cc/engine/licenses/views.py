@@ -127,9 +127,7 @@ def license_deed_view(request):
         # don't have one for that language, use default
         license_title = license.title()
 
-    conditions = {}
-    for code in license.license_code.split('-'):
-        conditions[code] = 1
+    conditions = util.get_license_conditions(license, target_lang)
 
     # Find out all the active languages
     active_languages = get_well_translated_langs()

@@ -176,13 +176,8 @@ CHOOSER.CALLBACK.main = function () {
 // Shows a nice inline popup
 CHOOSER.CALL.popup = function (help_key) {
     var prefix = "#help_lookup #help_" + help_key + " div.";
-
     $("#popup_title")[0].innerHTML = $(prefix+"title")[0].innerHTML;
     $("#popup_message")[0].innerHTML = $(prefix+"msg")[0].innerHTML;
-    $("#popup_close")[0].innerHTML = $(prefix+"close_buttons").length?
-      $(prefix+"close_buttons")[0].innerHTML :
-      $("#popup_close_default")[0].innerHTML;
-
     $("#popup_screen")[0].style.display="table";
 };
 
@@ -414,13 +409,6 @@ CHOOSER.CALL.refresh_state = function () {
     return state_changed;
 }
 
-function show_jurisdiction_section() {
-    $('#field_jurisdiction').val('International');
-    CHOOSER.CALL.ping();
-    $('#language_section').hide();
-    $('#show_jurisdictions_section').hide();
-    $('#jurisdiction_section').show();
-}
 
 ////
 </script>
@@ -650,7 +638,11 @@ input[type=radio] {
 }
 #popup_close a {
     color: white;
-    padding: .5em;
+    display: inline-block;
+}
+
+#popup_close a:hover {
+    cursor: pointer;
 }
 
 #instructional_fluff, #copyright_fluff, #publishing_fluff {
@@ -717,14 +709,6 @@ input[type=radio] {
 
 #freedoms label {
     float: none;
-}
-
-#show_jurisdictions_section {
-    padding-top: 1em;
-    padding-bottom: 1em;
-}
-#jurisdiction_section {
-    display: none;
 }
 
 #field_jurisdiction {
@@ -1318,25 +1302,20 @@ input[type=radio] {
       <ul>
         <li>
           <input type="radio"
-                 {% if not form.license.nc %}checked="checked" {% endif -%}
+                 {%- if not form.license.nc %} checked="checked" {% endif -%}
                  name="field_commercial" value="y" id="question_2-3"/>
           <label for="question_2-3">{% trans %}Yes{% endtrans %}</label>
         </li>
         <li>
           <input type="radio"
-                 {% if form.license.nc %}checked="checked" {% endif -%}
+                 {%- if form.license.nc %} checked="checked" {% endif -%}
                  name="field_commercial" value="n" id="question_2-4"/>
           <label for="question_2-4">{% trans %}No{% endtrans %}</label>
         </li>
       </ul>
     </div>
 
-    <div id="show_jurisdictions_section" class="help_highlight">
-      <div class="help_button" onclick="CHOOSER.CALL.popup('show_jurisdictions');"></div>
-      <h4><a href="#" onclick="CHOOSER.CALL.popup('change_jurisdictions');">
-{%- trans %}View earlier versions and ports{% endtrans %}</a></h4>
-    </div>
-    <div id="jurisdiction_section" class="help_highlight">
+    <div class="help_highlight">
       <div class="help_button" onclick="CHOOSER.CALL.popup('jurisdiction');"></div>
       <h4>{% trans %}License Jurisdiction{% endtrans %}:</h4>
       <select id="field_jurisdiction" name="field_jurisdiction">
@@ -1643,18 +1622,16 @@ input[type=radio] {
 
 
 <div id="popup_screen" onclick="$('#popup_screen').hide();"><div id="popup_alignment">
-  <div id="popup_body">
-    <h2 id="popup_title">popup title</h2>
-    <div id="popup_message">Lorem ipsum dolor sit amet...</div>
-  </div>
-  <div id="popup_close_default" style="display:none">
-    <a onclick="$('#popup_screen').hide();">
+    <div id="popup_body">
+      <h2 id="popup_title">popup title</h2>
+      <div id="popup_message">Lorem ipsum dolor sit amet...</div>
+    </div>
+    <div id="popup_close">
+    <a id="popup_close" onclick="$('#popup_screen').hide();">
       {% trans %}close popup{% endtrans %}
     </a>
-  </div>
-  <div id="popup_close">
-  </div>
-</div>
+    </div>
+</div></div>
 
 
 
@@ -1663,35 +1640,6 @@ input[type=radio] {
 <!-- This node is used to allow for translation of help popup text. -->
 <div id="help_lookup" style="display:none">
 
-
-  <div id="help_jurisdiction">
-    <div class="title">{% trans %}About earlier versions{% endtrans %}</div>
-    <div class="msg">
-      <p>{% trans %}The most recent license version is 4.0, which can be used internationally. If you are searching for a port of the license for a particular jurisdiction, however, you may still do so.{% endtrans %}</p>
-    </div>
-  </div>
-
-  <div id="help_show_jurisdictions">
-    <div class="title">{% trans %}About earlier versions{% endtrans %}</div>
-    <div class="msg">
-      <p>{% trans %}The most recent license version is 4.0, which can be used internationally. If you are searching for a port of the license for a particular jurisdiction, however, you may still do so.{% endtrans %}</p>
-    </div>
-  </div>
-
-  <div id="help_change_jurisdictions">
-    <div class="title">{% trans %}About earlier versions{% endtrans %}</div>
-    <div class="msg">
-      <p>{% trans %}The most recent license version is 4.0, which can be used internationally. If you are searching for a port of the license for a particular jurisdiction, however, you may still do so.{% endtrans %}</p>
-    </div>
-    <div class="close_buttons">
-      <a onclick="$('#popup_screen').hide();">
-        {% trans %}use latest{% endtrans %}
-      </a>
-      <a onclick="show_jurisdiction_section();">
-        {% trans %}show earlier license ports{% endtrans %}
-      </a>
-    </div>
-  </div>
 
   <!-- license panel help text -->
 
