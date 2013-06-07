@@ -1283,7 +1283,7 @@ input[type=radio] {
 </div>
 <div id="show_jurisdictions_section">
 [ <a href="#" onclick="CHOOSER.CALL.popup('change_jurisdictions');">
-{%- trans %}Looking for jurisdiction ports of prior versions?{% endtrans %}</a> ]
+{%- trans %}Looking for jurisdiction ports of earlier versions?{% endtrans %}</a> ]
 </div>
 <div id="hide_jurisdictions_section">
 [ <a href="#" onclick="hide_jurisdiction_section();">
@@ -1380,6 +1380,11 @@ input[type=radio] {
       </select>
     </div>
   </div>
+  <script>
+// Select International on load (in case user selects a port and reloads)
+$("#field_jurisdiction").val('');
+CHOOSER.CALL.ping();
+  </script>
 
 
 
@@ -1690,12 +1695,13 @@ input[type=radio] {
     <div class="msg">
       <p>{% trans %}The most recent license version is 4.0, which can be used internationally. If you are searching for a port of the license for a particular jurisdiction, however, you may still do so.{% endtrans %}</p>
     </div>
-  </div>
-
-  <div id="help_show_jurisdictions">
-    <div class="title">{% trans %}About earlier versions{% endtrans %}</div>
-    <div class="msg">
-      <p>{% trans %}The most recent license version is 4.0, which can be used internationally. If you are searching for a port of the license for a particular jurisdiction, however, you may still do so.{% endtrans %}</p>
+    <div class="close_buttons">
+      <a onclick="hide_jurisdiction_section();">
+        {% trans %}use latest{% endtrans %}
+      </a>
+      <a onclick="$('#popup_screen').hide();">
+        {% trans %}use earlier license ports{% endtrans %}
+      </a>
     </div>
   </div>
 
@@ -1896,9 +1902,4 @@ work in the manner specified by the author or licensor.{% endtrans %}</div>
   <img src="/wp-content/themes/creativecommons.org/images/hint_button_hover.png" />
 </div>
 
-<script>
-// Select International on load (in case user selects a port and reloads)
-$("#field_jurisdiction").val('');
-CHOOSER.CALL.ping();
-</script>
 {% endblock %}
