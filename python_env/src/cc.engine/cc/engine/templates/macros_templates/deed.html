@@ -117,14 +117,14 @@ Creative Commons is not a law firm and does not provide legal services. Distribu
             <div id="deed-disclaimer">
               {% if multi_language %}
                 <div class="summary">
-                  {% trans %}This is a human-readable summary of the license and is not a substitute for the license itself, which is available in the following languages:{% endtrans %}
+                  {% trans %}This is a human-readable summary of (and not a substitute for) the license, which is available in the following languages:{% endtrans %}
                   {% for legalcode_link, legalcode, legalcode_name in legalcodes %}
                     <a href="{{ legalcode_link }}">{{ legalcode_name }}</a>
                   {% endfor %}
                 </div>
               {% else %}
                 <div class="summary">
-                  {% trans %}This is a human-readable summary of the license and is not a substitute for the <a href="legalcode" class="fulltext">license itself</a>.{% endtrans %}
+                  {% trans %}This is a human-readable summary of (and not a substitute for) the <a href="legalcode" class="fulltext">license</a>.{% endtrans %}
                 </div>
               {% endif %}
   
