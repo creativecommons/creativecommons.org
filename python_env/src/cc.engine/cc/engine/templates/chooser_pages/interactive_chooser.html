@@ -424,7 +424,7 @@ function show_jurisdiction_section() {
     CHOOSER.CALL.ping();
     $('#show_jurisdictions_section').hide();
     $('#hide_jurisdictions_section').show();
-    $('.ui_box').animate({'min-height': '32em'}, 500, function() {
+    $('.ui_box').animate({'min-height': '28em'}, 500, function() {
       $('#jurisdiction_section').show();
     });
 }
@@ -1381,7 +1381,6 @@ input[type=radio] {
         </option>
         {% endfor %}
       </select>
-      <p>{% trans %}If you do not see the jurisdiction you are looking for on this list, you can go back to the <a href="#" onclick="hide_jurisdiction_section();">4.0 international license</a>.{% endtrans %}</p>
     </div>
   </div>
   <script>
@@ -1698,6 +1697,7 @@ CHOOSER.CALL.ping();
     <div class="title">{% trans %}About earlier versions{% endtrans %}</div>
     <div class="msg">
       <p>{% trans %}The most recent license version is 4.0, which can be used internationally. If you are searching for a port of the license for a particular jurisdiction, however, you may still do so.{% endtrans %}</p>
+      <p>{% trans %}If you do not see the jurisdiction you are looking for on this list, you can go back to the 4.0 international license</a>.{% endtrans %}</p>
     </div>
     <div class="close_buttons">
       <a onclick="hide_jurisdiction_section();">
