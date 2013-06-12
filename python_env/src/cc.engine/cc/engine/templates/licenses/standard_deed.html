@@ -53,14 +53,14 @@
       <li class="license share"
           rel="cc:permits"
           resource="http://creativecommons.org/ns#Distribution">
-        {% trans %}<strong>Share</strong>  &mdash; copy and redistribute the material in any medium or format.{% endtrans %}
+        {% trans %}<strong>Share</strong>  &mdash; copy and redistribute the material in any medium or format{% endtrans %}
       </li>
 
       {% if not 'nd' in license.license_code %}
         <li class="license remix"
             rel="cc:permits"
             resource="http://creativecommons.org/ns#DerivativeWorks">
-          {% trans %}<strong>Adapt</strong>  &mdash; remix, transform, and build upon the material.{% endtrans %}
+          {% trans %}<strong>Adapt</strong>  &mdash; remix, transform, and build upon the material{% endtrans %}
         </li>
       {% endif %}
 
@@ -69,14 +69,14 @@
           {% trans %}for any purpose, even commercially{% endtrans %}
         </li>
       {% endif %}
-      <li>
-          {% trans %}These freedoms cannot be revoked as long as you follow the license terms.{% endtrans %}
-      </li>
       <li id="more-container"
           class="license-hidden">
         <span id="devnations-container" />
       </li>
     </ul>
+
+  <br />
+  <p>{% trans %}These freedoms cannot be revoked as long as you follow the license terms.{% endtrans %}</p>
 
   </div>
   <div id="deed-conditions">
@@ -89,7 +89,7 @@
           rel="cc:requires"
           resource="http://creativecommons.org/ns#Attribution">
           <p>
-            <strong>Attribution</strong> &mdash; {% trans %}You must give <a href="#" id="appropriate_credit_popup" class="helpLink">appropriate credit</a>, provide a link to the license and <a href="#" id="indicate_changes_popup" class="helpLink">indicate any changes were made</a>.  You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.{% endtrans %}
+            <strong>Attribution</strong> &mdash; {% trans %}You must give <a href="#" id="appropriate_credit_popup" class="helpLink">appropriate credit</a>, provide a link to the license, and <a href="#" id="indicate_changes_popup" class="helpLink">indicate if changes were made</a>.  You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.{% endtrans %}
             <span id="by-more-container"></span>
           </p>
 
@@ -126,7 +126,7 @@
           rel="cc:prohibits"
           resource="http://creativecommons.org/ns#CommercialUse">
           <p>
-            <strong>Noncommercial</strong> &mdash; {% trans %}You may not use the material for <a href="#" id="commercial_purposes_popup" class="helpLink">commercial purposes</a>.{% endtrans %}
+            <strong>NonCommercial</strong> &mdash; {% trans %}You may not use the material for <a href="#" id="commercial_purposes_popup" class="helpLink">commercial purposes</a>.{% endtrans %}
             <span id="nc-more-container"></span>
           </p>
       </li>
@@ -144,25 +144,20 @@
           rel="cc:requires"
           resource="http://creativecommons.org/ns#ShareAlike">
           <p>
-            <strong>Share Alike</strong> &mdash; {% trans %}If you remix, transform, or build upon the material, you must distribute your contributions under the <a href="#" id="same_license_popup" class="helpLink">same license</a> as the original.{% endtrans %}
+            <strong>ShareAlike</strong> &mdash; {% trans %}If you remix, transform, or build upon the material, you must distribute your contributions under the <a href="#" id="same_license_popup" class="helpLink">same license</a> as the original.{% endtrans %}
             <span id="sa-more-container"></span>
           </p>
       </li>
       {% endif %}
-      <li class="license">
-          <p>
-            <strong>No additional terms or conditions</strong> &mdash; {% trans %}You may not apply legal terms or <a href="#" id="technological_measures_popup" class="helpLink">technological measures</a> that legally restrict others from doing anything the license permits.{% endtrans %}
-            <span id="sa-more-container"></span>
-          </p>
-      </li>
-      <li class="license">
-          <p>
-            <strong>Databases</strong> &mdash; {% trans %}If the material is a database, <a href="#" id="databases_popup" class="helpLink">additional terms may apply</a>.{% endtrans %}
-            <span id="sa-more-container"></span>
-          </p>
-      </li>
+
     </ul>
   </div>
+  <p>
+    <strong>No additional terms or conditions</strong> &mdash; {% trans %}You may not apply legal terms or <a href="#" id="technological_measures_popup" class="helpLink">technological measures</a> that legally restrict others from doing anything the license permits.{% endtrans %}
+  </p>
+  <p>
+    <strong>Databases</strong> &mdash; {% trans %}If the material is a database, <a href="#" id="databases_popup" class="helpLink">additional terms may apply</a>.{% endtrans %}
+  </p>
 
   <div id="deed-understanding">
     <h3>
