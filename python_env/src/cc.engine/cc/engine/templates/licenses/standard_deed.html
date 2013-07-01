@@ -134,13 +134,13 @@
       {% trans %}With the understanding that:{% endtrans %}
     </h3>
 
-    {% if license.jurisdiction.code == 'igo' %}
     <ul class="understanding license-properties">
-      <li class="license">{% trans %}This is the IGO license.{% endtrans %}</li>
-    </ul>
+    {% if license.jurisdiction.code == 'igo' %}
+      <li class="license">
+        {% trans %}Arbitration — When the Licensor is an intergovernmental organization, disputes will be resolved by mediation and arbitration unless otherwise agreed.{% endtrans %}
+      </li>
     {% endif %}
 
-    <ul class="understanding license-properties">
       <li class="license">
         <strong>{% trans %}Waiver{% endtrans %}</strong>
         &mdash;
