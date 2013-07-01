@@ -39,7 +39,7 @@
       </div>
     {% endif %}
 
-    {% if license.jurisdiction.code not in ['', 'es'] %}
+    {% if license.jurisdiction.code not in ['', 'es', 'igo'] %}
       <a href="/worldwide/{{ license.jurisdiction.code }}/">
         <img src="/images/international/{{ license.jurisdiction.code }}.png"
              alt="{{ license.jurisdiction.code }}"
@@ -133,6 +133,12 @@
     <h3>
       {% trans %}With the understanding that:{% endtrans %}
     </h3>
+
+    {% if license.jurisdiction.code == 'igo' %}
+    <ul class="understanding license-properties">
+      <li class="license">{% trans %}This is the IGO license.{% endtrans %}</li>
+    </ul>
+    {% endif %}
 
     <ul class="understanding license-properties">
       <li class="license">
