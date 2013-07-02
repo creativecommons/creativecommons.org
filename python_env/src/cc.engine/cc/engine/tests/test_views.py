@@ -571,7 +571,7 @@ def test_deed_fallbacks():
     assert_equal(TESTAPP.get('/licenses/by/3.0/').location, None)
 
 
-USE_LICENSE_TEXT = 'Use this license for your own material.'
+USE_LICENSE_TEXT = 'Use the license for your own material.'
 
 def test_retired_deeds():
     """
