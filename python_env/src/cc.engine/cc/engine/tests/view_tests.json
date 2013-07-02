@@ -12,8 +12,8 @@
       "resource=\"http://creativecommons.org/ns#Distribution\"",
       "copy and redistribute the material in any medium or format",
       "resource=\"http://creativecommons.org/ns#DerivativeWorks\"",
-      "to adapt the work",
-      "to make commercial use of the work"]},
+      "remix, transform, and build upon the material",
+      "for any purpose, even commercially"]},
  {"path": "/licenses/by/3.0/deed",
   "string_tests": [
       "Attribution 3.0 Unported",
@@ -21,8 +21,8 @@
       "resource=\"http://creativecommons.org/ns#Distribution\"",
       "copy and redistribute the material in any medium or format",
       "resource=\"http://creativecommons.org/ns#DerivativeWorks\"",
-      "to adapt the work",
-      "to make commercial use of the work"]},
+      "remix, transform, and build upon the material",
+      "for any purpose, even commercially"]},
  {"path": "/licenses/by/3.0/deed.es",
   "string_tests": [
       "Atribución 3.0 Unported",
@@ -49,8 +49,8 @@
       "resource=\"http://creativecommons.org/ns#Distribution\"",
       "copy and redistribute the material in any medium or format",
       "resource=\"http://creativecommons.org/ns#DerivativeWorks\"",
-      "to adapt the work",
-      "to make commercial use of the work"]},
+      "remix, transform, and build upon the material",
+      "for any purpose, even commercially"]},
  {"path": "/licenses/by/3.0/us/deed",
   "string_tests": [
       "Attribution 3.0 United States",
@@ -58,8 +58,8 @@
       "resource=\"http://creativecommons.org/ns#Distribution\"",
       "copy and redistribute the material in any medium or format",
       "resource=\"http://creativecommons.org/ns#DerivativeWorks\"",
-      "to adapt the work",
-      "to make commercial use of the work"]},
+      "remix, transform, and build upon the material",
+      "for any purpose, even commercially"]},
  {"path": "/licenses/by/3.0/us/deed.es",
   "string_tests": [
       "Atribución 3.0 Estados Unidos de América",
