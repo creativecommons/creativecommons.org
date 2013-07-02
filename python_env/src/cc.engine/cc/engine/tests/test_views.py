@@ -112,7 +112,7 @@ def test_deed_legalcodes():
     # Maybe test for absolute urls later :\
     assert_equal(
         get_legalcode_links('/licenses/by/3.0/'),
-        [('legalcode', 'Legal Code (the full license)')])
+        [('legalcode', 'license')])
 
     # Multilegal, english
     assert_equal(
@@ -571,7 +571,7 @@ def test_deed_fallbacks():
     assert_equal(TESTAPP.get('/licenses/by/3.0/').location, None)
 
 
-USE_LICENSE_TEXT = 'Use this license for your own work.'
+USE_LICENSE_TEXT = 'Use this license for your own material.'
 
 def test_retired_deeds():
     """
