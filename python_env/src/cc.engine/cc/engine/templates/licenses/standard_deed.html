@@ -137,7 +137,7 @@
     <ul class="understanding license-properties">
     {% if license.jurisdiction.code == 'igo' %}
       <li class="license">
-        {% trans %}Arbitration — When the Licensor is an intergovernmental organization, disputes will be resolved by mediation and arbitration unless otherwise agreed.{% endtrans %}
+        {% trans %}When the Licensor is an intergovernmental organization, disputes will be resolved by <a href="#" id="mediation_and_arbitration_popup" class="helpLink">mediation and arbitration</a> unless otherwise agreed.{% endtrans %}
       </li>
     {% endif %}
 
@@ -195,6 +195,33 @@
         </p>
       </div>
     {% endif %}
+
+    <div id="help_mediation_and_arbitration_popup" class="help_panel">
+      <div class="hd">&nbsp;</div>
+      <div class="bd">
+        <p>{% trans %}Unless otherwise designated in a copyright notice attached to the work, the UNCITRAL Arbitration Rules apply to any arbitration.{% endtrans %}</p>
+        <p><a href="#">
+          {%- trans %}More info{% endtrans %}</a>.</p>
+      </div>
+    </div>
+    <div id="help_appropriate_credit_popup" class="help_panel">
+      <div class="hd">&nbsp;</div>
+      <div class="bd">
+        <p>{% trans %}If supplied, you must provide the name of the author or attribution parties, a copyright notice, a notice of warranties or customized disclaimers, and a link to the material.{% endtrans %}</p>
+        <p><a href="#">
+          {%- trans %}More info{% endtrans %}</a>.</p>
+      </div>
+      <div class="bd">
+        <p>
+          {% trans %}CC licenses anticipate that a licensor may want to
+		waive compliance with a specific condition, such as
+		attribution.{% endtrans %}
+        </p>
+        <p>
+          <a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Can_I_change_the_terms_of_a_CC_license_or_waive_some_of_its_conditions.3F">{% trans %}Learn more{% endtrans %}</a>.
+        </p>
+      </div>
+    </div>
 
     <div id="help_waived" class="help_panel">
       <div class="hd">
