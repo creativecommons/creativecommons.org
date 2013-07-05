@@ -789,7 +789,8 @@ def cc0_waiver(request):
     target_lang = util.get_target_lang_from_request(request)
 
     context = _base_context(request, target_lang)
-    context['country_list'] = CODE_COUNTRY_LIST
+    context['country_list'] = sorted(CODE_COUNTRY_LIST,
+                                     key=lambda country: country[1])
 
     return util.render_to_response(
         request, target_lang,
