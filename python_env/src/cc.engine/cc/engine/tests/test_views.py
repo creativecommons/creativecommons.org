@@ -171,28 +171,6 @@ VIEWS_TEST_DATA = json.load(
             'cc.engine.tests', 'view_tests.json')))
 
 
-def test_all_views_simple():
-    """
-    Test all views by checking with the JSON data.
-
-    Possible parameters for view data in the JSON file and what will
-    be tested if present:
-     - path: *required*.  Simple test that the page loads (or
-       redirects) will be done.
-     - string_tests: an array of strings that will be checked for
-       presence in the body of the response.
-    """
-    for view in VIEWS_TEST_DATA:
-        view_result = TESTAPP.get(view['path'])
-
-        if view.has_key('string_tests'):
-            for string_test in view['string_tests']:
-                if not string_test in view_result.unicode_body:
-                    raise StringTestFailed(
-                        'On path "%s" string test failed for: "%s"' % (
-                            view['path'], string_test))
-
-
 def test_license_to_choose_redirect():
     # Make sure we redirect from /license/* to /choose/ and keep the
     # GET parameters
