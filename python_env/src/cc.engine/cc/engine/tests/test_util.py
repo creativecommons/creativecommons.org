@@ -248,7 +248,8 @@ def test_catch_license_versions_from_request():
         ['http://creativecommons.org/licenses/by/1.0/',
          'http://creativecommons.org/licenses/by/2.0/',
          'http://creativecommons.org/licenses/by/2.5/',
-         'http://creativecommons.org/licenses/by/3.0/'])
+         'http://creativecommons.org/licenses/by/3.0/',
+         'http://creativecommons.org/licenses/by/4.0/'])
 
     # Request with a code and valid jurisdiction
     request = Request.blank('/')
@@ -278,7 +279,8 @@ def test_catch_license_versions_from_request():
         ['http://creativecommons.org/licenses/by/1.0/',
          'http://creativecommons.org/licenses/by/2.0/',
          'http://creativecommons.org/licenses/by/2.5/',
-         'http://creativecommons.org/licenses/by/3.0/'])
+         'http://creativecommons.org/licenses/by/3.0/',
+         'http://creativecommons.org/licenses/by/4.0/'])
 
     # Request with a bogus code
     request = Request.blank('/')

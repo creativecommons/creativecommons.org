@@ -9,7 +9,7 @@ def test_issue_license_with_license_code():
     request = Request.blank('/results-one')
     request.GET.add('license_code', 'by')
 
-    assert views._issue_license(request.GET).uri == 'http://creativecommons.org/licenses/by/3.0/'
+    assert views._issue_license(request.GET).uri == 'http://creativecommons.org/licenses/by/4.0/'
 
     # request for CC BY Unported, specific version
     request = Request.blank('/results-one')
