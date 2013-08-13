@@ -147,6 +147,8 @@ def license_deed_view(request):
     else:
         main_template = 'licenses/standard_deed.html'
 
+    get_this = "/choose/results-one?license_code=%s&amp;jurisdiction=%s&amp;version=%s&amp;lang=%s" % (urllib.quote(license.license_code), license.jurisdiction.code, license.version, target_lang)
+
     context = {
         'request': request,
         'license_code': license.license_code,
@@ -160,6 +162,7 @@ def license_deed_view(request):
         'active_languages': active_languages,
         'target_lang': target_lang,
         'jurisdiction':license.jurisdiction.code,
+        'get_this': get_this,
         }
     context.update(util.rtl_context_stuff(target_lang))
 

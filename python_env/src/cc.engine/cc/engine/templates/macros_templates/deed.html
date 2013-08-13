@@ -143,8 +143,9 @@ The Product licensed under Creative Commons License is provided by the person wh
       <p>
         {% if not license.deprecated %}
           {% block use_this_license %}
-            <a id="get_this" href="/choose/results-one?license_code={{ license_code_quoted }}&amp;jurisdiction={{ license.jurisdiction.code }}&amp;version={{ license.version }}&amp;lang={{ target_lang }}"
-               >{% trans %}Use the license for your own material.{% endtrans %}</a>
+            {% trans %}
+        <a href="http://wiki.creativecommons.org/FAQ">Learn more</a> about CC licensing, or <a id="get_this" href="{{ get_this }}">use the license</a> for your own material.
+            {% endtrans %}
           {% endblock %}
         {% endif %}
       </p>

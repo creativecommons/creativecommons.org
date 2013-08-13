@@ -19,9 +19,7 @@
            style="display: inline; font-size: 12px;">CC {{ license.license_code.upper() }} {{ license.version }}
       {%- if jurisdiction %} {{ jurisdiction.upper() }}{% endif %}</span>)
   </span>
-{% endblock %}
 
-{% block body %}
   {% if license.license_code in ('by', 'by-sa') %}
     <div id="libre">
       <a href="http://freedomdefined.org/">
@@ -30,7 +28,9 @@
       </a>
     </div>
   {% endif %}
+{% endblock %}
 
+{% block body %}
   <div id="deed-rights"
        dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
     {% if license.deprecated %}
@@ -75,8 +75,9 @@
       </li>
     </ul>
 
-  <br />
-  <p>{% trans %}These freedoms cannot be revoked as long as you follow the license terms.{% endtrans %}</p>
+    <ul id="license-freedoms-no-icons">
+      <li class="license">{% trans %}The licensor cannot revoke these freedoms as long as you follow the license terms.{% endtrans %}</li>
+    </ul>
 
   </div>
   <div id="deed-conditions">
@@ -152,12 +153,15 @@
 
     </ul>
   </div>
-  <p>
-    <strong>No additional terms or conditions</strong> &mdash; {% trans %}You may not apply legal terms or <a href="#" id="technological_measures_popup" class="helpLink">technological measures</a> that legally restrict others from doing anything the license permits.{% endtrans %}
-  </p>
-  <p>
-    <strong>Databases</strong> &mdash; {% trans %}If the material is a database, <a href="#" id="databases_popup" class="helpLink">additional terms may apply</a>.{% endtrans %}
-  </p>
+
+  <ul id="deed-conditions-no-icons">
+    <li class="license">
+      <strong>No additional restrictions</strong> &mdash; {% trans %}You may not apply legal terms or <a href="#" id="technological_measures_popup" class="helpLink">technological measures</a> that legally restrict others from doing anything the license permits.{% endtrans %}
+    </li>
+    <li class="license">
+      <strong>Databases</strong> &mdash; {% trans %}If the material is a database, <a href="#" id="databases_popup" class="helpLink">other terms may apply</a>.{% endtrans %}
+    </li>
+  </ul>
 
   <div id="deed-understanding">
     <h3>
@@ -253,7 +257,7 @@
     <div id="help_databases_popup" class="help_panel">
       <div class="hd">&nbsp;</div>
       <div class="bd">
-        <p>{% trans %}The treatment of databases depends on which license has been applied, whether the licensor holds sui generis database rights, and whether those rights apply to your use.{% endtrans %}</p>
+        <p>{% trans %}The terms that apply to databases depend on which license was applied and the jurisdictions involved.{% endtrans %}</p>
         <p><a href="#">
           {%- trans %}More info{% endtrans %}</a>.</p>
       </div>
