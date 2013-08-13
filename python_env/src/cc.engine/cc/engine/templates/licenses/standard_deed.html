@@ -19,7 +19,9 @@
            style="display: inline; font-size: 12px;">CC {{ license.license_code.upper() }} {{ license.version }}
       {%- if jurisdiction %} {{ jurisdiction.upper() }}{% endif %}</span>)
   </span>
+{% endblock %}
 
+{% block body %}
   {% if license.license_code in ('by', 'by-sa') %}
     <div id="libre">
       <a href="http://freedomdefined.org/">
@@ -28,9 +30,7 @@
       </a>
     </div>
   {% endif %}
-{% endblock %}
 
-{% block body %}
   <div id="deed-rights"
        dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}">
     {% if license.deprecated %}
