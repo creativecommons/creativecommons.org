@@ -72,7 +72,7 @@ var CHOOSER = {
     // Templates (may or may not be constants)
     "TEMPLATE" : {
         "htmlrdfa" : "",
-        "nondigital" : '{%- trans license_name="LICENSE_NAME", license_url="LICENSE_URL" %}This work is licensed under the Creative Commons {{ license_name }} License. To view a copy of this license, visit {{ license_url }}.{% endtrans -%}'
+        "nondigital" : ""
     },
 
     // Functions
@@ -98,6 +98,9 @@ var CHOOSER = {
 $(document).ready(
 CHOOSER.CALLBACK.main = function () {
     "use strict";
+
+    CHOOSER.TEMPLATE.htmlrdfa = $("#template_htmlrdfa").html();
+    CHOOSER.TEMPLATE.nondigital = $("#template_nondigital").html();
 
     // height correction on overflowing boxes
     var max_height = function (lhs, rhs) {
@@ -1229,6 +1232,9 @@ input[type=radio] {
 
 {% endblock headers %}
 {% block body %}
+
+<span id="template_htmlrdfa" style="display:none;"></span>
+<span id="template_nondigital" style="display:none;">{%- trans license_name="LICENSE_NAME", license_url="LICENSE_URL" %}This work is licensed under the Creative Commons {{ license_name }} License. To view a copy of this license, visit {{ license_url }}.{% endtrans -%}</span>
 
 <div id="instructional_fluff">
   <span>{% trans %}New to Creative Commons?{% endtrans %}</span>
