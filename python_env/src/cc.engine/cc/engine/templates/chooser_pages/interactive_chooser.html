@@ -5,7 +5,8 @@
         href="{{ request.staticdirect('includes/zero.css') }}" />
   <link rel="stylesheet" type="text/css"
         href="/wp-content/themes/creativecommons.org/engine.css" />
-  <script src="/wp-content/themes/creativecommons.org/js/libs/jquery-1.6.2.min.js"></script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
   <script type="text/javascript">
 
@@ -346,10 +347,10 @@ CHOOSER.CALL.refresh_state = function () {
         for (i=0; i<field_by_type.length; i+=1) {
 
             // Build and query the jquery query...
-            name = field_by_type[i];       
+            name = field_by_type[i];
             query = node + attrib("name", name);
             if (!!type) { query += attrib("type", type); }
-            if (type === "select") { 
+            if (type === "select") {
                 query += ">option[selected=selected]";
             }
             found = $(query);
