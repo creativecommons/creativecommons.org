@@ -51,6 +51,7 @@
 		    <li><a href="http://wiki.creativecommons.org/Before_Licensing">Things to know before licensing</a></li>
 		    <li><a href="http://wiki.creativecommons.org/FAQ#Do_I_need_to_sign_something_or_register_to_obtain_a_Creative_Commons_license.3F">Do I need to register my work?</a></li>
 		    <li><a href="http://wiki.creativecommons.org/Marking">Marking my work</a></li>
+		    <li><a href="/examples">License examples</a></li>
 						    <li class="divider"></li>
 		    <li><span>Licensees</span></li>
 			<li><a href="http://wiki.creativecommons.org/FAQ#How_do_I_properly_attribute_a_Creative_Commons_licensed_work.3F">Attributing a work properly</a></li>
