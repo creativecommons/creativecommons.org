@@ -65,8 +65,8 @@ var CHOOSER = {
         "img_path" : "/wp-content/themes/creativecommons.org/images/",
         "fc_approved" : "/wp-content/themes/creativecommons.org/images/fc_approved_tiny.png",
         "links" : {
-            "fc_by_sa" : "http://freedomdefined.org/Licenses/CC-BY-SA",
-            "fc_by" : "http://freedomdefined.org/Licenses/CC-BY"
+            "fc_by_sa" : "/freeworks",
+            "fc_by" : "/freeworks"
         }
     },
 
@@ -1421,24 +1421,24 @@ CHOOSER.CALL.ping();
     
     <div id="fc_approved_box" class="fc_info_box" {% if not license.libre %}style="display: none;"{% endif %}>
       <div class="whatis">
-        <a target="_blank" href="http://freedomdefined.org/Definition">
+        <a target="_blank" href="/freeworks">
           {%- trans %}This is a Free Culture License!{% endtrans -%}
         </a>
       </div>
       <div>
-        <a target="_blank" class="fc_logo_link" href="http://freedomdefined.org/Definition"></a>
+        <a target="_blank" class="fc_logo_link" href="/freeworks"></a>
       </div>
     </div>
 
     <div id="fc_dubious_box" class="fc_info_box" {% if license.libre %}style="display: none;"{% endif %}>
       <div class="whatis">
-        <a target="_blank" href="http://freedomdefined.org/Permissible_restrictions">
+        <a target="_blank" href="/freeworks">
           {%- trans %}This is not a Free Culture License.{% endtrans -%}
           <!--<h2>ಠ_ಠ</h2>-->
         </a>
       </div>
       <div>
-        <a target="_blank" class="fc_logo_link" href="http://freedomdefined.org/Permissible_restrictions"></a>
+        <a target="_blank" class="fc_logo_link" href="/freeworks"></a>
       </div>
     </div>
 
