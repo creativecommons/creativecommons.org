@@ -135,7 +135,7 @@
       {% if conditions['nd'] %}
       <li class="license nd">
           <p>
-            <strong>No Derivative Works</strong> &mdash; {% trans %}You may not <a href="#" id="some_kinds_of_mods_popup" class="helpLink">remix, transform, or build upon</a> the material.{% endtrans %}
+            <strong>NoDerivatives</strong> &mdash; {% trans %}If you <a href="#" id="some_kinds_of_mods_popup" class="helpLink">remix, transform, or build upon</a> the material, you may not distribute the modified material.{% endtrans %}
             <span id="nd-more-container"></span>
           </p>
       </li>
@@ -176,7 +176,7 @@
         {% trans %}You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable <a href="#" id="exception_or_limitation_popup" class="helpLink">exception or limitation</a>.{% endtrans %}
       </li>
       <li class="license">
-        {% trans %}No warranties are given.  The license may not give you all of the permissions necessary for your intended use.  For example, others may have <a href="#" id="publicity_privacy_or_moral_rights_popup" class="helpLink">publicity, privacy, or moral rights</a> that limit how you may use the material.{% endtrans %}
+        {% trans %}No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as <a href="#" id="publicity_privacy_or_moral_rights_popup" class="helpLink">publicity, privacy, or moral rights</a> may limit how you use the material.{% endtrans %}
       </li>
     </ul>
 
@@ -199,7 +199,7 @@
     <div id="help_appropriate_credit_popup" class="help_panel">
       <div class="hd">&nbsp;</div>
       <div class="bd">
-        <p>{% trans %}If supplied, you must provide the name of the author or attribution parties, a copyright notice, a notice of warranties or customized disclaimers, and a link to the material.{% endtrans %}</p>
+        <p>{% trans %}If supplied, you must provide the name of the creator and attribution parties, a copyright notice, a license notice, a disclaimer notice, and a link to the material.{% endtrans %}</p>
         <p><a href="#">
           {%- trans %}More info{% endtrans %}</a>.</p>
       </div>
@@ -216,7 +216,7 @@
     <div id="help_indicate_changes_popup" class="help_panel">
       <div class="hd">&nbsp;</div>
       <div class="bd">
-        <p>{% trans %}In 3.0 and earlier license versions, this is only required if you create a derivative.{% endtrans %}</p>
+        <p>{% trans %}In 4.0, you must indicate if you modified the material and retain an indication of previous modifications. In 3.0 and earlier license versions, the indication of changes is only required if you create a derivative.{% endtrans %}</p>
       </div>
     </div>
     <div id="help_same_license_popup" class="help_panel">
@@ -236,7 +236,7 @@
     <div id="help_some_kinds_of_mods_popup" class="help_panel">
       <div class="hd">&nbsp;</div>
       <div class="bd">
-        <p>{% trans %}You may modify the material so long as you do not create a derivative. Merely changing the format never creates a derivative.{% endtrans %}</p>
+        <p>{% trans %}Merely changing the format never creates a derivative.{% endtrans %}</p>
         <p><a href="#">
           {%- trans %}More info{% endtrans %}</a>.</p>
       </div>
@@ -252,7 +252,7 @@
     <div id="help_exception_or_limitation_popup" class="help_panel">
       <div class="hd">&nbsp;</div>
       <div class="bd">
-        <p>{% trans %}All jurisdictions allow some uses of copyrighted material without permission. The rights of users under those limitations and exceptions, such as fair use and fair dealing, are not affected by the CC licenses.{% endtrans %}</p>
+        <p>{% trans %}The rights of users under limitations and exceptions, such as fair use and fair dealing, are not affected by the CC licenses.{% endtrans %}</p>
         <p><a href="#">
           {%- trans %}More info{% endtrans %}</a>.</p>
       </div>
@@ -260,7 +260,7 @@
     <div id="help_publicity_privacy_or_moral_rights_popup" class="help_panel">
       <div class="hd">&nbsp;</div>
       <div class="bd">
-        <p>{% trans %}The licensor can only license rights he or she controls. You may need to get permission from others before using the material as you intend.{% endtrans %}</p>
+        <p>{% trans %}You may need to get additional permissions before using the material as you intend.{% endtrans %}</p>
         <p><a href="#">
           {%- trans %}More info{% endtrans %}</a>.</p>
       </div>
