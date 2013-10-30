@@ -1,0 +1,18 @@
+[submodule "WordPress"]
+	path = WordPress
+	url = https://github.com/WordPress/WordPress.git
+[submodule "wordpress"]
+	path = wordpress
+	url = https://github.com/WordPress/WordPress.git
+[submodule "legalcode"]
+	path = legalcode
+	url = https://github.com/creativecommons/legalcode.git
+[submodule "license.rdf"]
+	path = license.rdf
+	url = https://github.com/creativecommons/license.rdf.git
+[submodule "includes/i18n"]
+	path = includes/i18n
+	url = https://github.com/creativecommons/svn-i18n
+[submodule "wp-content/themes/creativecommons.org"]
+	path = wp-content/themes/creativecommons.org
+	url = https://github.com/creativecommons/theme-creativecommons.org.git
