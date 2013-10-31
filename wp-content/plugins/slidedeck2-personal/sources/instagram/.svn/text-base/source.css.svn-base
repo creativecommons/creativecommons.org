@@ -1,0 +1,7 @@
+.slidedeck-content-source.source-instagram { min-width: 430px; }
+.slidedeck-content-source .fancy-select { color: #333; }
+.slidedeck-content-source #content-source-instagram ul.content-source-fields li input[type="text"],
+.slidedeck-content-source #content-source-instagram ul.content-source-fields li input[type="password"],
+.slidedeck-content-source #content-source-instagram ul.content-source-fields li input[type="email"] {
+	min-width: 200px;
+}

@@ -1,0 +1,18 @@
+a#update-video-meta {
+    width: 84px;
+    height: 14px;
+    padding-top: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 16px;
+}
+
+li#video-url-input { padding-bottom: 20px; }
+
+li#video-url-input label {
+    display: inline;
+}
+
+li#video-url-input input {
+    width: 302px;
+}

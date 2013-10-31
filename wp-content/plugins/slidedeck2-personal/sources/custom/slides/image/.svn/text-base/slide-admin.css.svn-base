@@ -1,0 +1,104 @@
+.slide-content-fields li.select-source { overflow: hidden; }
+.slide-content-fields li.select-source input[type="radio"] {
+    position: absolute;
+    top: 0;
+    left: -9999em;
+}
+
+#slidedeck-custom-slide-editor .slide-content-fields li.select-source .fancy-radios label a {
+    color: #5A5D67;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 12px;
+    margin: 0 -12px;
+}
+#slidedeck-custom-slide-editor .slide-content-fields li.select-source .fancy-radios .on a { color: #fff; }
+
+a#update-image-url {
+    width: 84px;
+    height: 14px;
+    padding-top: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 16px;
+}
+
+li#sd-image-url { padding-bottom: 20px; }
+li#sd-image-url label { display: inline; }
+li#sd-image-url input { width: 302px; }
+
+/* Image uploader */
+
+#sd-image-upload-container { height: 48px; }
+
+#sd-image-upload {
+    position: absolute;
+    top: 150px;
+    left: 35px;
+    overflow: hidden;
+}
+
+#sd-image-upload strong {
+    display: inline-block;
+    float: left;
+    margin: 15px 10px 15px 0;
+    color: #5a5d67;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#sd-image-upload #slidedeck-slide-upload-browse,
+#sd-image-upload #slidedeck-slide-upload-upload {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-top: 9px;
+}
+
+#sd-image-upload #slidedeck-slide-upload-browse {
+    float: left;
+    margin-right: 10px;
+}
+
+#sd-image-upload #slidedeck-slide-upload-files {
+    display: inline;
+    float: left;
+    width: 245px;
+    padding-right: 85px;
+}
+#sd-image-upload #slidedeck-slide-upload-files .file-upload {
+    position: relative;
+    width: 100%;
+    height: 48px;
+}
+#sd-image-upload #slidedeck-slide-upload-files .file-upload .label {
+    position: absolute;
+    z-index: 1;
+    display: inline-block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-indent: 10px;
+    color: #333;
+    line-height: 48px;
+}
+#sd-image-upload #slidedeck-slide-upload-files .file-upload .progress {
+    position: absolute;
+    z-index: 10;
+    display: inline-block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    text-indent: 10px;
+    width: 0%;
+    color: #fff;
+    background-color: #3D83E0;
+    overflow: hidden;
+    line-height: 48px;
+}
+#sd-image-upload #slidedeck-slide-upload-upload {
+    position: relative;
+    float: right;
+    margin-right: -85px;
+}

@@ -1,0 +1,7 @@
+.slidedeck-content-source ul.content-source-fields li input#options-twitter_username,
+.slidedeck-content-source ul.content-source-fields li input#options-twitter_q {
+	min-width: 200px;
+}
+.slidedeck-content-source ul.content-source-fields li.twitter-useGeolocationImage span.label {
+	width: 185px;
+}

@@ -1,0 +1,542 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yet Another Related Posts Plugin v3.5.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-03-04 10:58+0000\n"
+"Last-Translator: Zdenek Hejl <zdenek@zdenek-hejl.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-Country: CZECH REPUBLIC\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: class-admin.php:55
+#: class-widget.php:7
+#: class-widget.php:59
+#@ yarpp
+msgid "Related Posts (YARPP)"
+msgstr "Podobné články (YARPP)"
+
+#: class-admin.php:63
+#@ yarpp
+msgid "Related Posts"
+msgstr "Podobné články"
+
+#: class-admin.php:63
+#@ default
+msgid "Configure"
+msgstr ""
+
+#: class-admin.php:89
+#@ yarpp
+msgid "Thank you for installing <span>Yet Another Related Posts Plugin</span>!"
+msgstr "Děkuji, že jste si nainstalovali <span>Yet Another Related Posts Plugin</span>!"
+
+#: class-admin.php:90
+#@ yarpp
+msgid "Make sure to visit the <a>Related Posts settings page</a> to customize YARPP."
+msgstr "Navštivte stránku s <a>nastavením podobných článků</a>, abyste mohli upravit YARPP."
+
+#: class-admin.php:136
+#@ default
+msgid "Settings"
+msgstr ""
+
+#: class-admin.php:162
+#@ yarpp
+msgid "Related entries may be displayed once you save your entry"
+msgstr "Podobné články mohou být zobrazeny, jakmile článek uložíte"
+
+#: class-cache.php:522
+#@ yarpp
+msgid "Example post "
+msgstr "Ukázkový článek "
+
+#: class-core.php:71
+#: class-core.php:81
+#: class-core.php:267
+#: class-core.php:278
+#@ yarpp
+msgid "Related posts:"
+msgstr "Podobné články:"
+
+#: class-core.php:73
+#: class-core.php:83
+#: class-core.php:269
+#: class-core.php:280
+#: template-metabox.php:30
+#: template-widget.php:13
+#@ yarpp
+msgid "No related posts."
+msgstr "Žádné podobné články."
+
+#: class-core.php:565
+#: class-core.php:680
+#: options-meta-boxes.php:229
+#: options-meta-boxes.php:284
+#, php-format
+#@ yarpp
+msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
+msgstr "Podobné články vám přináší <a href='%s'>Yet Another Related Posts Plugin</a>."
+
+#: class-widget.php:69
+#@ default
+msgid "Title:"
+msgstr ""
+
+#: class-widget.php:75
+#: options-meta-boxes.php:17
+#@ yarpp
+msgid "Display using a custom template file"
+msgstr "Zobrazit pomocí vlastní šablony."
+
+#: class-widget.php:76
+#: options-meta-boxes.php:196
+#: options-meta-boxes.php:258
+#@ yarpp
+msgid "Template file:"
+msgstr "Soubor se šablonou:"
+
+#: class-widget.php:98
+#: options-meta-boxes.php:227
+#: options-meta-boxes.php:283
+#@ yarpp
+msgid "Help promote Yet Another Related Posts Plugin?"
+msgstr "Chcete pomoci propagovat Yet Another Related Posts Plugin?"
+
+#: options-meta-boxes.php:17
+#: options-meta-boxes.php:113
+#: options-meta-boxes.php:153
+#: options-meta-boxes.php:169
+#: options-meta-boxes.php:187
+#: options-meta-boxes.php:228
+#: options-meta-boxes.php:245
+#: options-meta-boxes.php:247
+#: options-meta-boxes.php:283
+#@ yarpp
+msgid "more&gt;"
+msgstr "více&gt;"
+
+#: options-meta-boxes.php:17
+#@ yarpp
+msgid "This advanced option gives you full power to customize how your related posts are displayed. Templates (stored in your theme folder) are written in PHP."
+msgstr "Pomocí této funkce získáte naprostou kontrolu nad tím, jak budou vaše podobné články zobrazeny. Šablony (uložené ve složce s vaší WordPress šablonou) jsou napsány v PHP."
+
+#: options-meta-boxes.php:47
+#: options-meta-boxes.php:59
+#@ yarpp
+msgid "do not consider"
+msgstr "nezahrnovat"
+
+#: options-meta-boxes.php:48
+#: options-meta-boxes.php:60
+#@ yarpp
+msgid "consider"
+msgstr "zahrnout"
+
+#: options-meta-boxes.php:49
+#: options-meta-boxes.php:61
+#@ yarpp
+msgid "consider with extra weight"
+msgstr "klást zvýšený důraz"
+
+#: options-meta-boxes.php:50
+#, php-format
+#@ yarpp
+msgid "require at least one %s in common"
+msgstr "alespoň jeden společná/jeden společný %s"
+
+#: options-meta-boxes.php:51
+#, php-format
+#@ yarpp
+msgid "require more than one %s in common"
+msgstr "nutnost více společných %s"
+
+#: options-meta-boxes.php:68
+#@ yarpp
+msgid "Order results:"
+msgstr "Řazení výsledků:"
+
+#: options-meta-boxes.php:71
+#@ yarpp
+msgid "score (high relevance to low)"
+msgstr "dle relevance (od nejrelevantnějšího po nejméně relevantní)"
+
+#: options-meta-boxes.php:72
+#@ yarpp
+msgid "score (low relevance to high)"
+msgstr "dle relevance (od nejméně relevantního po nejrelevantnější)"
+
+#: options-meta-boxes.php:73
+#@ yarpp
+msgid "date (new to old)"
+msgstr "dle data (od nejnovějšího po nejstarší)"
+
+#: options-meta-boxes.php:74
+#@ yarpp
+msgid "date (old to new)"
+msgstr "dle data (od nejstaršího po nejnovější)"
+
+#: options-meta-boxes.php:75
+#@ yarpp
+msgid "title (alphabetical)"
+msgstr "dle titulku (od A po Z)"
+
+#: options-meta-boxes.php:76
+#@ yarpp
+msgid "title (reverse alphabetical)"
+msgstr "dle titulku (od Z po A)"
+
+#: options-meta-boxes.php:109
+#@ yarpp
+msgid "\"The Pool\" refers to the pool of posts and pages that are candidates for display as related to the current entry."
+msgstr "\"The Pool\" označuje množinu článků, které jsou potenciálními kandidáty na podobné články pro konkrétní článek."
+
+#: options-meta-boxes.php:113
+#@ yarpp
+msgid "Post types considered:"
+msgstr "Zahrnuté typy článků:"
+
+#: options-meta-boxes.php:116
+#, php-format
+#@ yarpp
+msgid "Disallow by %s:"
+msgstr "Nezobrazovat články z %s:"
+
+#: options-meta-boxes.php:118
+#@ yarpp
+msgid "Show password protected posts?"
+msgstr "Zobrazit články chráněné heslem?"
+
+#: options-meta-boxes.php:129
+#@ yarpp
+msgid "day(s)"
+msgstr "dnů"
+
+#: options-meta-boxes.php:130
+#@ yarpp
+msgid "week(s)"
+msgstr "týdnů"
+
+#: options-meta-boxes.php:131
+#@ yarpp
+msgid "month(s)"
+msgstr "měsíců"
+
+#: options-meta-boxes.php:137
+#@ yarpp
+msgid "Show only posts from the past NUMBER UNITS"
+msgstr "Zobrazit pouze články z předchozích NUMBER UNITS"
+
+#: options-meta-boxes.php:147
+#@ yarpp
+msgid "\"The Pool\""
+msgstr "\"The Pool\""
+
+#: options-meta-boxes.php:153
+#@ yarpp
+msgid "YARPP limits the related posts list by (1) a maximum number and (2) a <em>match threshold</em>."
+msgstr "YARPP omezuje seznam podobných článků na základě (1) nastaveného maximálního počtu článku a (3) <em>prahové hodnoty</em>."
+
+#: options-meta-boxes.php:153
+#@ yarpp
+msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
+msgstr "Čím vyšší prahovou hodnotu (tj. přísnější omezení) nastavíte, tím méně se většinou podobných článků zobrazí. Standardní prahová hodnota je nastavena na hodnotu 5. Jestliže chcete najít odpovídající prahovou hodnotu, prohlédněte si, jaké články s jakou prahovou hodnotou se zobrazují jako podobné články na webu. Zjistíte tak, jaké druhy článků jsou zobrazovány mezi podobnými články a jaké mají skóre relevance (zobrazuje se v závorce za názvem článku), což vám pomůže nastavit prahovou hodnotu pro váš web."
+
+#: options-meta-boxes.php:159
+#@ yarpp
+msgid "Match threshold:"
+msgstr "Prahová hodnota:"
+
+#: options-meta-boxes.php:160
+#@ yarpp
+msgid "Titles: "
+msgstr "Titulky: "
+
+#: options-meta-boxes.php:162
+#@ yarpp
+msgid "Bodies: "
+msgstr "Texty: "
+
+#: options-meta-boxes.php:169
+#@ yarpp
+msgid "Display results from all post types"
+msgstr "Zobrazit výsledky bez ohledu na typ článku"
+
+#: options-meta-boxes.php:169
+#@ yarpp
+msgid "When \"display results from all post types\" is off, only posts will be displayed as related to a post, only pages will be displayed as related to a page, etc."
+msgstr "Jakmile je možnost \\\"zobrazit výsledky bez ohledu na typ článku\\\" vypnutá, zobrazí se u příspěvků mezi podobnými články pouze jiné příspěvky, u stránek pouze jiné stránky apod."
+
+#: options-meta-boxes.php:170
+#@ yarpp
+msgid "Show only previous posts?"
+msgstr "Zobrazit pouze starší články?"
+
+#: options-meta-boxes.php:178
+#@ yarpp
+msgid "\"Relatedness\" options"
+msgstr "Nastavení podobnosti článků"
+
+#: options-meta-boxes.php:187
+#@ yarpp
+msgid "Automatically display related posts?"
+msgstr "Automaticky zobrazovat podobné články?"
+
+#: options-meta-boxes.php:187
+#@ yarpp
+msgid "This option automatically displays related posts right after the content on single entry pages. If this option is off, you will need to manually insert <code>related_posts()</code> or variants (<code>related_pages()</code> and <code>related_entries()</code>) into your theme files."
+msgstr "Podobné články budou automaticky zobrazovány ihned za textem článku. Jestliže je tato možnost vypnutá, budete muset ručně vložit <code>related_posts()</code> nebo varianty (<code>related_pages()</code> nebo <code>related_entries()</code>) do své WordPress šablony."
+
+#: options-meta-boxes.php:188
+#@ yarpp
+msgid "Website display code example"
+msgstr "Ukázka výsledného HTML kódu"
+
+#: options-meta-boxes.php:188
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "(Update options to reload.)"
+msgstr "(Pro aktualizaci kódu uložte nastavení.)"
+
+#: options-meta-boxes.php:190
+#: options-meta-boxes.php:250
+#@ yarpp
+msgid "Maximum number of related posts:"
+msgstr "Maximální počet podobných článků:"
+
+#: options-meta-boxes.php:208
+#: options-meta-boxes.php:271
+#@ yarpp
+msgid "Before / after related entries:"
+msgstr "Před / po výpisu podobných článků:"
+
+#: options-meta-boxes.php:208
+#: options-meta-boxes.php:209
+#: options-meta-boxes.php:217
+#: options-meta-boxes.php:271
+#: options-meta-boxes.php:272
+#: options-meta-boxes.php:277
+#@ yarpp
+msgid "For example:"
+msgstr "Například:"
+
+#: options-meta-boxes.php:208
+#: options-meta-boxes.php:209
+#: options-meta-boxes.php:217
+#: options-meta-boxes.php:271
+#: options-meta-boxes.php:272
+#: options-meta-boxes.php:277
+#@ yarpp
+msgid " or "
+msgstr " nebo "
+
+#: options-meta-boxes.php:209
+#: options-meta-boxes.php:272
+#@ yarpp
+msgid "Before / after each related entry:"
+msgstr "Před / po výpisu každého podobného článku:"
+
+#: options-meta-boxes.php:211
+#: options-meta-boxes.php:274
+#@ yarpp
+msgid "Show excerpt?"
+msgstr "Zobrazit anotaci?"
+
+#: options-meta-boxes.php:212
+#: options-meta-boxes.php:275
+#@ yarpp
+msgid "Excerpt length (No. of words):"
+msgstr "Délka anotace (počet slov):"
+
+#: options-meta-boxes.php:216
+#@ yarpp
+msgid "Before / after (Excerpt):"
+msgstr "Před / po anotaci:"
+
+#: options-meta-boxes.php:224
+#: options-meta-boxes.php:281
+#@ yarpp
+msgid "Default display if no results:"
+msgstr "Co zobrazit, když nebudou nalezeny žádné podobné články:"
+
+#: options-meta-boxes.php:229
+#: options-meta-boxes.php:284
+#, php-format
+#@ yarpp
+msgid "This option will add the code %s. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated."
+msgstr "Povolením této možnosti přidáte automaticky do šablony kód %s. Uložte nastavení a prohlédněte si HTML kód v příkladu napravo. Děkuji za všechny odkazy a finanční příspěvky."
+
+#: options-meta-boxes.php:236
+#@ yarpp
+msgid "Display options <small>for your website</small>"
+msgstr "Nastavení zobrazení <small>pro váš web</small>"
+
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "Display related posts in feeds?"
+msgstr "Zobrazit podobné články v RSS feedech?"
+
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "This option displays related posts at the end of each item in your RSS and Atom feeds. No template changes are needed."
+msgstr "Zajistí zobrazení podobných článků za každou položkou v RSS / Atom feedu. Nejsou potřeba žádné změny šablony."
+
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "RSS display code example"
+msgstr "Ukázka HTML kódu pro RSS feedy"
+
+#: options-meta-boxes.php:247
+#@ yarpp
+msgid "Display related posts in the descriptions?"
+msgstr "Zobrazit podobné články v popiscích RSS feedů?"
+
+#: options-meta-boxes.php:247
+#@ yarpp
+msgid "This option displays the related posts in the RSS description fields, not just the content. If your feeds are set up to only display excerpts, however, only the description field is used, so this option is required for any display at all."
+msgstr "Zajistí zobrazení podobných článků v popiscích článků v RSS feedech, ne jen v rámci obsahu článků. Jestliže jsou vaše RSS feedy nastaveny, aby zobrazovaly pouze anotace, tato možnost zajistí zobrazování podobných článků."
+
+#: options-meta-boxes.php:277
+#@ yarpp
+msgid "Before / after (excerpt):"
+msgstr "Před / po anotaci:"
+
+#: options-meta-boxes.php:291
+#@ yarpp
+msgid "Display options <small>for RSS</small>"
+msgstr "Nastavení zobrazení pro <small>RSS feedy</small>"
+
+#: options-meta-boxes.php:298
+#@ yarpp
+msgid "YARPP Forum"
+msgstr "Diskuzní fórum YARPP"
+
+#: options-meta-boxes.php:299
+#@ yarpp
+msgid "YARPP on Twitter"
+msgstr "YARPP na Twitteru"
+
+#: options-meta-boxes.php:300
+#@ yarpp
+msgid "YARPP on the Web"
+msgstr "Web YARPP"
+
+#: options-meta-boxes.php:301
+#@ yarpp
+msgid "Rate YARPP on WordPress.org"
+msgstr "Ohodnotit YARPP na WordPress.org"
+
+#: options-meta-boxes.php:302
+#@ default
+#@ yarpp
+msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
+msgstr "Poslat finanční příspěvek autorovi pluginu pomocí PayPalu - mitcho (Michael Yoshitaka Erlewine)"
+
+#: options-meta-boxes.php:337
+#@ yarpp
+msgid "Contact YARPP"
+msgstr "Kontaktovat YARPP"
+
+#: options.php:34
+#, php-format
+#@ default
+msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
+msgstr ""
+
+#: options.php:38
+#, php-format
+#@ yarpp
+msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
+msgstr "K dispozici je nová beta verze (%s) pluginu Yet Another Related Posts Plugin. Můžete si ji <a href=\"%s\">stáhnout zde</a>, na vlastní nebezpečí."
+
+#: options.php:46
+#@ yarpp
+msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
+msgstr "MyISAM kontrola byla přepsána. Nyní můžete použít kritéria relevance - \"zahrnout titulky\" a \"zahrnout texty článků\"."
+
+#: options.php:54
+#, php-format
+#@ yarpp
+msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
+msgstr "Kritéria relevance \"zahrnout titulky\" a \"zahrnout texty článků\" vyžadují, aby vaše <code>%s</code> tabulka využívala <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>databázový systém MyISAM</a>, ale vypadá to, že využívá systém <code>%s</code>. Tyto dvě možnosti byly zakázány."
+
+#: options.php:56
+#, php-format
+#@ yarpp
+msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
+msgstr "Pro zprovoznění těchto funkcí, updatujte <code>%s</code> tabulku prostřednictvím následujícího SQL příkazu: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . Žádná data nebudou při změně smazána, ačkoliv může dojít k výkonnostním důsledkům."
+
+#: options.php:58
+#, php-format
+#@ yarpp
+msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
+msgstr "Jestliže jste si jistí, že tabulka <code>%s</code> používá MyISAM engine, klikněte na kouzelné tlačítko:"
+
+#: options.php:61
+#@ yarpp
+msgid "Trust me. Let me use MyISAM features."
+msgstr "Věřte mi. Nechte mě využít možnosti MyISAM."
+
+#: options.php:76
+#@ yarpp
+msgid "The YARPP database had an error but has been fixed."
+msgstr "V databázi YARPP vznikla chyba, ale je již opravena."
+
+#: options.php:78
+#@ yarpp
+msgid "The YARPP database has an error which could not be fixed."
+msgstr "V databázi YARPP vznikla chyba, která nemohla být opravena."
+
+#: options.php:79
+#, php-format
+#@ yarpp
+msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
+msgstr "Prosím, vyzkoušejte <a href=\"%s\" target=\"_blank\">ruční nastavení SQL</a>."
+
+#: options.php:135
+#@ yarpp
+msgid "Options saved!"
+msgstr "Nastavení uloženo!"
+
+#: options.php:141
+#@ yarpp
+msgid "Yet Another Related Posts Plugin Options"
+msgstr "Nastavení Yet Another Related Posts Plugin"
+
+#: options.php:149
+#, php-format
+#@ yarpp
+msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+msgstr "autor <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+
+#: options.php:178
+#@ default
+msgid "Save Changes"
+msgstr ""
+
+#: template-builtin.php:21
+#, php-format
+#@ yarpp
+msgid "%f is the YARPP match score between the current entry and this related entry. You are seeing this value because you are logged in to WordPress as an administrator. It is not shown to regular visitors."
+msgstr "%f je YARPP skóre relevance mezi aktuálním článkem a podobným článkem. Vidíte tuto hodnotu, protože jste přihlášen do WordPressu jako administrátor. Tyto hodnoty nejsou zobrazovány běžným návštěvníkům."
+
+#: template-metabox.php:12
+#@ yarpp
+msgid "These are the related entries for this entry. Updating this post may change these related posts."
+msgstr "Existují podobné články k tomuto článku. Aktualizace tohoto článku může změnit přiřazené podobné články."
+
+#: template-metabox.php:28
+#@ yarpp
+msgid "Whether all of these related entries are actually displayed and how they are displayed depends on your YARPP display options."
+msgstr "Záleží na nastavení zobrazení YARPP, zda a jak se zobrazí všechny podobné články."
+

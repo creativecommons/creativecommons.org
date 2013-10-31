@@ -1,0 +1,533 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenID 3.3.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-11-07 18:55+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Team Blogos <wordpress@blogos.dk>\n"
+"Language-Team: Team Blogos <wordpress@blogos.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2;plural=n != 1;\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_c;__ngettext_noop:1,2;_n:1,2;_nc:1,2;_n_noop:1,2\n"
+"X-Poedit-Basepath: d:\\wordpress\\plugins\\openid\n"
+"X-Poedit-SearchPath-0: d:\\wordpress\\plugins\\openid\n"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:25
+msgid "OpenID options"
+msgstr "OpenID indstillinger"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:25
+msgid "OpenID"
+msgstr "OpenID"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:30
+msgid "Your OpenIDs"
+msgstr "Dine OpenID'er"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:44
+#: d:\wordpress\plugins\openid/admin_panels.php:45
+#: d:\wordpress\plugins\openid/admin_panels.php:430
+msgid "Your Trusted Sites"
+msgstr "Steder, du har tillid til"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:60
+#: d:\wordpress\plugins\openid/admin_panels.php:66
+#: d:\wordpress\plugins\openid/admin_panels.php:156
+msgid "OpenID Settings"
+msgstr "OpenID-indstillinger"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:119
+msgid "Settings"
+msgstr "Indstillinger"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:140
+msgid "OpenID cache refreshed."
+msgstr "OpenID's cache blev opdateret."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:158
+msgid "Please note that all OpenID Consumer options have been moved to their respective sections of the <a href=\"options-general.php\">General Settings</a> and <a href=\"options-discussion.php\">Discussion Settings</a> pages."
+msgstr "Bemærk venligst, at alle OpenID's brugerindstillinger er blevet flyttet til de respektiver sektioner på <a href=\"options-general.php\">Generelle indstillinger</a> og <a href=\"options-discussion.php\">Diskussion</a>."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:167
+msgid "The OpenID Provider allows authorized users to use their author URL as an OpenID, either using their local WordPress username and password, or by delegating to another OpenID Provider."
+msgstr "En OpenID-leverandør tillader godkendte brugere at bruge deres forfatter-ULR som OpenID, enten ved at bruge deres lokale WordPress-brugernavn og -adgangskode, eller ved at sende videre til en anden OpenID-leverandør."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:173
+msgid "Enable OpenID"
+msgstr "Aktivér OpenID"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:176
+msgid "Enable the local OpenID Provider for these roles:"
+msgstr "Aktivér OpenID-leverandør for følgende roller:"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:199
+msgid "Blog Owner"
+msgstr "Blogejer"
+
+# tjekket - ser ok ud
+#: d:\wordpress\plugins\openid/admin_panels.php:202
+#, php-format
+msgid "Authorized accounts on this blog can use their author URL (i.e. <em>%1$s</em>) as an OpenID. The Blog Owner will be able to use the blog address (%2$s) as their OpenID.  If this is a single-user blog, you should set this to your account."
+msgstr "Godkendte brugerkonti på denne blog kan bruge deres forfatter-URL (dvs. <em>%1$s</em>) som OpenID. Blogejeren vil kunne bruge bloggens adresse (%2$s) som sin OpenID. Hvis denne er en blog med kun én bruger, bør du knytte den til din brugerkonto."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:212
+msgid "A Blog Owner cannot be set for this blog.  To set a Blog Owner, first remove the following line from your <code>wp-config.php</code>:"
+msgstr "En Blogejer kan ikke angives for denne blog. Hvis du skal gøre det, skal du først fjerne følgende linje fra din <code>wp-config.php</code>:"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:220
+msgid "(none)"
+msgstr "(ingen)"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:230
+#, php-format
+msgid "Only the current Blog Owner (%s) can change this setting."
+msgstr "Kun den nuværende Blogejer (%s) kan ændre denne indstilling."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:242
+msgid "Troubleshooting"
+msgstr "Problemløsning"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:246
+#, php-format
+msgid "If users are experiencing problems logging in with OpenID, it may help to %1$srefresh the cache%2$s."
+msgstr "Hvis brugere oplever problemer med at logge på med OpenID, kan det hjælpe at %1$sopdatere cachen%2$s."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:253
+msgid "Save Changes"
+msgstr "Gem ændringer"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:273
+msgid "Success:"
+msgstr "Gennemført:"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:276
+msgid "Warning:"
+msgstr "Advarsel:"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:279
+#: d:\wordpress\plugins\openid/admin_panels.php:283
+msgid "Error:"
+msgstr "Fejl:"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:295
+msgid "Your Verified OpenIDs"
+msgstr "Dine verificerede OpenID'er"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:297
+msgid "You may associate one or more OpenIDs with your account.  This will allow you to login to WordPress with your OpenID instead of a username and password.  <a href=\"http://openid.net/what/\" target=\"_blank\">Learn more...</a>"
+msgstr "Du kan forbinde en eller flere OpenID'er med din brugerkonto. Dette vil lade dig logge ind på WordPress med din OpenID i stedet for brugernavn og adgangskode.  <a href=\"http://openid.net/what/\" target=\"_blank\">Yderligere information ...</a>"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:304
+#: d:\wordpress\plugins\openid/admin_panels.php:439
+msgid "Bulk Actions"
+msgstr "Massehandling"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:305
+#: d:\wordpress\plugins\openid/admin_panels.php:440
+msgid "Delete"
+msgstr "Slet"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:307
+#: d:\wordpress\plugins\openid/admin_panels.php:442
+msgid "Apply"
+msgstr "Anvend"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:319
+msgid "Account"
+msgstr "Brugerkonto"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:328
+msgid "No Verified Accounts."
+msgstr "Ingen verificerede brugerkonti"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:347
+#: d:\wordpress\plugins\openid/admin_panels.php:353
+msgid "Add OpenID"
+msgstr "Tilføj OpenID"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:394
+#, php-format
+msgid "Added %d trusted site."
+msgid_plural "Added %d trusted sites."
+msgstr[0] "Tilføjede %d sted med tillid"
+msgstr[1] "Tilføjede %d steder med tillid"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:417
+#, php-format
+msgid "Deleted %d trusted site."
+msgid_plural "Deleted %d trusted sites."
+msgstr[0] "Slettede %d sted med tillid til"
+msgstr[1] "Slettede %d steder med tillid til"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:432
+msgid "This is a list of sites that you can automatically login to using your OpenID account.  You will not be asked to approve OpenID login requests for your trusted sites."
+msgstr "Dette er en liste af websteder, hvor du automatisk kan logge på ved at bruger din OpenID-brugerkonto. Du vil ikke blive bedt om at godkende OpenID-loginforespørgsler fra de steder, der er tillid til."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:454
+msgid "URL"
+msgstr "URL"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:455
+msgid "Last Login"
+msgstr "Seneste log-ind"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:463
+msgid "No Trusted Sites."
+msgstr "Ingen steder, der er tillid til."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:494
+msgid "Import Trusted Sites"
+msgstr "Importér Steder, der er tillid til"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:496
+msgid "Enter a list of URLs to be added to your Trusted Sites."
+msgstr "Indtast en liste med URL'er, der skal tilføjes til dine Steder, du har tillid til"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:500
+#: d:\wordpress\plugins\openid/admin_panels.php:510
+msgid "Add Sites"
+msgstr "Tilføj websteder"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:502
+msgid "(One URL per line)"
+msgstr "(Én URL per linje)"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:596
+msgid "Status information:"
+msgstr "Information om status:"
+
+# tjek
+#: d:\wordpress\plugins\openid/admin_panels.php:596
+msgid "All Systems Nominal"
+msgstr "Alle systemindstillinger (Systems Nominal)"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:597
+msgid "System Status"
+msgstr "Systemstatus"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:597
+msgid "Toggle More/Less"
+msgstr "Vis mere/mindre"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:599
+msgid "Plugin is currently disabled. Fix the problem, then Deactivate/Reactivate the plugin."
+msgstr "Pluginnet er i øjeblikket deaktiveret. Løs problemet. Deaktivér og reaktivér så pluginnet."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:607
+msgid "FAIL"
+msgstr "Gennemførtes ikke"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:609
+msgid "OK"
+msgstr "OK"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:611
+msgid "INFO"
+msgstr "Info"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:645
+msgid "You already have this OpenID!"
+msgstr "Du har allerede denne OpenID!"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:647
+msgid "This OpenID is already associated with another user."
+msgstr "Denne OpenID er allerede tilknyttet en anden bruger"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:668
+msgid "Unable to authenticate OpenID."
+msgstr "Ikke i stand til at autentificere OpenId."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:669
+msgid "OpenID assertion successful, but this URL is already associated with another user on this blog."
+msgstr "OpenId-henvendelse lykkedes, men denne URL er allerede knyttet til en anden bruger på denne blog."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:670
+msgid "Added association with OpenID."
+msgstr "Tilføjede tilknytning med OpenId."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:682
+#: d:\wordpress\plugins\openid/admin_panels.php:752
+msgid "<strong>Note:</strong> For security reasons, your profile URL has been updated to match your OpenID."
+msgstr "<strong>Bemærk:</strong> Af sikkerhedshensyn er din profil-URL blevet opdateret, så det svarer til din OpenID."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:708
+#: d:\wordpress\plugins\openid/admin_panels.php:725
+msgid "OpenID Warning"
+msgstr "OpenID-advarsel"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:710
+msgid "Are you sure you want to delete all of your OpenID associations? Doing so may prevent you from logging in."
+msgstr "Er du sikker på, at du ønsker at slette alle dine OpenID-tilknytninger? Det kan medføre, at du ikke kan logge ind."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:712
+msgid "Yes I'm sure. Delete."
+msgstr "Ja, jeg er sikker. Slet!"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:713
+msgid "No, don't delete."
+msgstr "Nej, slet ikke!"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:740
+#, php-format
+msgid "Deleted %d OpenID association."
+msgid_plural "Deleted %d OpenID associations."
+msgstr[0] "Slettede %d OpenID-association."
+msgstr[1] "Slettede %d OpenID-associationer."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:758
+msgid "OpenID association delete failed: Unknown reason."
+msgstr "Sletning af OpenID-tilknytningerne mislykkedes. Årsag ukendt."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:814
+#, php-format
+msgid "For security reasons, your profile URL must be one of your claimed OpenIDs: %s"
+msgstr "Af sikkerhedshensyn skal din profil-URL være en af de OpenID's, som du kan gøre krav på: %s"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:851
+msgid "OpenID Delegation"
+msgstr "OpenID-viderestilling"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:853
+msgid "OpenID Delegation allows you to use an external OpenID provider of your choice."
+msgstr "OpenID-viderestilling lader dig vælge og bruge en ekstern OpenID-leverandør."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:856
+msgid "To delegate, enter a valid OpenID. Otherwise leave this blank."
+msgstr "For at delegere (bruge ekstern OpenID-leverandør) skal du bruge en gyldig OpenId. Ellers skal du lade feltet stå tomt."
+
+# tjek
+#: d:\wordpress\plugins\openid/admin_panels.php:893
+#, php-format
+msgid "Unable to find any OpenID information for delegate URL %s"
+msgstr "Kunne ikke findes OpenID-information for viderestillende URL %s"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:903
+msgid "You cannot delegate to an OpenID provider which uses Identifier Select."
+msgstr "Du kan ikke viderestille til en OpenId-leverandør, som bruger \"Identifier Select\"."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:924
+msgid "New accounts can only be created with verified OpenIDs."
+msgstr "Ny brugerkonti kan kun oprettes med verificerede OpenID'er."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:963
+msgid "New accounts can only be created with verified OpenIDs"
+msgstr "Nye brugerkonti kan kun oprettes med verificerede OpenID'er."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:986
+msgid "Enable OpenID for comments"
+msgstr "Aktivér OpenID for kommentarer"
+
+#: d:\wordpress\plugins\openid/admin_panels.php:996
+msgid "Do not require name and e-mail for comments left with a verified OpenID"
+msgstr "Kræv ikke navn og e-mail for kommentarer afgivet med en verificeret OpenID."
+
+#: d:\wordpress\plugins\openid/admin_panels.php:1004
+msgid "Always approve comments left with a verified OpenID"
+msgstr "Godkend altid kommentarer indsendt med verificerede OpenID'er."
+
+#: d:\wordpress\plugins\openid/comments.php:106
+msgid "Error: please fill the required fields (name, email)."
+msgstr "Fejl: Udfyld venligst de krævede felter (navn, e-mail)."
+
+#: d:\wordpress\plugins\openid/comments.php:108
+msgid "Error: please enter a valid email address."
+msgstr "Fejl: Udfyld venligst med en gyldig e-mail-adresse."
+
+#: d:\wordpress\plugins\openid/comments.php:258
+msgid "Authenticate this comment using <span class=\"openid_link\">OpenID</span>."
+msgstr "Brug <span class=\"openid_link\">OpenID</span> til at autentificere denne kommentar."
+
+#: d:\wordpress\plugins\openid/comments.php:271
+#: d:\wordpress\plugins\openid/comments.php:289
+msgid "OpenID Authentication Error"
+msgstr "Fejl ved autentificering af OpenID"
+
+#: d:\wordpress\plugins\openid/comments.php:272
+msgid "We were unable to authenticate your claimed OpenID, however you can continue to post your comment without OpenID:"
+msgstr "Vi var ikke i stand til at autentificere den OpenID, du gjorde krav på, men du kan fortsætte med at indsende din kommentar uden OpenID:"
+
+#: d:\wordpress\plugins\openid/comments.php:280
+msgid "Submit Comment"
+msgstr "Indsend kommentar"
+
+#: d:\wordpress\plugins\openid/common.php:342
+msgid "User was created fine, but wp_login() for the new user failed. This is probably a bug."
+msgstr "Brugerkonto blev godt nok oprettet, men wp_login() for den nye bruger mislykkedes. Der er sikkert tale om en bug."
+
+#: d:\wordpress\plugins\openid/common.php:363
+msgid "OpenID authentication successful, but failed to create WordPress user. This is probably a bug."
+msgstr "OpenID-autentificering lykkedes, men det mislykkedes at oprette en WordPress-bruger. Der er formentlig tale om en bug."
+
+#: d:\wordpress\plugins\openid/common.php:680
+msgid "Since your browser does not support JavaScript, you must press the Continue button once to proceed."
+msgstr "Da din browswer ikke understøtter JavaScript (i al fald på dette websted), skal du trykke på Fortsæt-knappen for at fortsætte."
+
+#: d:\wordpress\plugins\openid/common.php:688
+#: d:\wordpress\plugins\openid/server.php:236
+#: d:\wordpress\plugins\openid/server.php:480
+msgid "Continue"
+msgstr "Fortsæt"
+
+#: d:\wordpress\plugins\openid/common.php:692
+msgid "Please Wait..."
+msgstr "Vent venligst ..."
+
+#: d:\wordpress\plugins\openid/common.php:696
+msgid "OpenID Authentication Redirect"
+msgstr "Redirigering af OpenID-autentificering"
+
+#: d:\wordpress\plugins\openid/consumer.php:90
+msgid "OpenID login was cancelled."
+msgstr "OpenID-login blev annulleret."
+
+#: d:\wordpress\plugins\openid/consumer.php:95
+#, php-format
+msgid "OpenID login failed: %s"
+msgstr "OpenID-login mislykkedes: %s"
+
+#: d:\wordpress\plugins\openid/consumer.php:100
+msgid "OpenID login successful"
+msgstr "OpenID-login lykkedes"
+
+#: d:\wordpress\plugins\openid/consumer.php:108
+msgid "Unknown Status. Bind not successful. This is probably a bug."
+msgstr "Ukendt status. Opkobling lykkedes ikke. Der er sikker tale om en bug."
+
+#: d:\wordpress\plugins\openid/consumer.php:155
+#, php-format
+msgid "Could not discover an OpenID identity server endpoint at the url: %s"
+msgstr "Kunne ikke finde en OpenID-identitetsserver-endestation på url'en: %s"
+
+#: d:\wordpress\plugins\openid/login.php:47
+msgid "Your have entered a valid OpenID, but this site is not currently accepting new accounts."
+msgstr "Du har indtastet en gyldig OpenID, men dette websted accepterer i øjeblikket ikke nye brugerkonti."
+
+#: d:\wordpress\plugins\openid/login.php:126
+msgid "Or login using an OpenID"
+msgstr "Eller log ind med OpenID"
+
+#: d:\wordpress\plugins\openid/login.php:131
+#: d:\wordpress\plugins\openid/login.php:179
+msgid "Learn about OpenID"
+msgstr "Yderligere information om OpenID"
+
+#: d:\wordpress\plugins\openid/login.php:146
+msgid "Register using an OpenID:"
+msgstr "Registrér dig med OpenID:"
+
+#: d:\wordpress\plugins\openid/login.php:159
+msgid "Or register using an OpenID:"
+msgstr "Eller registrér dig med en OpenID"
+
+#: d:\wordpress\plugins\openid/login.php:205
+#: d:\wordpress\plugins\openid/login.php:216
+msgid "<strong>ERROR</strong>: "
+msgstr "<strong>FEJL</strong>: "
+
+#: d:\wordpress\plugins\openid/login.php:205
+msgid "New users must register using OpenID."
+msgstr "Nye brugere skal registrere sig med OpenID."
+
+#: d:\wordpress\plugins\openid/server.php:227
+msgid "OpenID Login Error"
+msgstr "Fejl under log-ind med OpenID"
+
+#: d:\wordpress\plugins\openid/server.php:229
+#, php-format
+msgid "Because you have delegated your OpenID, you cannot login with the URL <strong>%s</strong>. Instead, you must use your full OpenID when logging in."
+msgstr "Du har valgt at viderestille din OpenID. Derfor kan du ikke logge ind med ULR'en <strong>%s</strong>. Du skal i stedet logge ind med din fulde OpenID."
+
+#: d:\wordpress\plugins\openid/server.php:231
+#, php-format
+msgid "Your full OpenID is: %s"
+msgstr "Din fulde OpenID er: %s"
+
+#: d:\wordpress\plugins\openid/server.php:459
+#, php-format
+msgid "Logged in as %1$s (%2$s). <a href=\"%3$s\">Use a different account?</a>"
+msgstr "Logget ind som %1$s (%2$s). <a href=\"%3$s\">Brug en anden brugerkonto?</a>"
+
+#: d:\wordpress\plugins\openid/server.php:466
+#: d:\wordpress\plugins\openid/server.php:500
+msgid "Verify Your Identity"
+msgstr "Bekræft din identitet"
+
+#: d:\wordpress\plugins\openid/server.php:468
+#, php-format
+msgid "%s has asked to verify your identity."
+msgstr "%s har anmodet om at få bekræftet din identitet."
+
+#: d:\wordpress\plugins\openid/server.php:472
+msgid "Click <strong>Continue</strong> to verify your identity and login without creating a new password."
+msgstr "Klik <strong>Fortsæt</strong> for at få bekræftet din identitet og logge ind uden at oprette ny adgangskode."
+
+#: d:\wordpress\plugins\openid/server.php:479
+msgid "Cancel and go back"
+msgstr "Annullér og gå tilbage"
+
+#: d:\wordpress\plugins\openid/server.php:484
+#, php-format
+msgid "Manage or remove access on the <a href=\"%s\" target=\"_blank\">Trusted Sites</a> page."
+msgstr "Håndtér eller fjern adgang på <a href=\"%s\" target=\"_blank\">Steder, der er tillid til</a>-siden."
+
+#: d:\wordpress\plugins\openid/server.php:488
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">Edit your profile</a> to change the information that gets shared with Trusted Sites."
+msgstr "<a href=\"%s\" target=\"_blank\">Redigér din profile</a> for at ændre den information, som deles med Steder, der er tillid til."
+
+#: d:\wordpress\plugins\openid/server_ext.php:63
+#, php-format
+msgid "Also grant access to see my %s."
+msgstr "Giv også adgang til at se min %s."
+
+#~ msgid "What is OpenID?"
+#~ msgstr "Hvad er OpenID?"
+#~ msgid "The WordPress OpenID plugin is not active."
+#~ msgstr "OpenID-pluginnet til WordPress er ikke aktivt."
+#~ msgid "Check %sOpenID Options%s for a full diagnositic report."
+#~ msgstr "Tjek %sOpenID%s for at få en komplet diagnostisk rapport."
+#~ msgid "OpenID Consumer Options"
+#~ msgstr "Brugerindstillinger for OpenID"
+#~ msgid "Comment Approval"
+#~ msgstr "Kommentargodkendelse"
+#~ msgid ""
+#~ "Automatically approve comments left with verified OpenIDs.  These "
+#~ "comments will bypass all comment moderation."
+#~ msgstr ""
+#~ "Godkend automatisk kommentarer skrevet af verificerede OpenID'er. Disse "
+#~ "kommentarer vil ikke blive udsat for kommentargodkendelse."
+#~ msgid "Comment Form"
+#~ msgstr "Kommentarform"
+#~ msgid "Add OpenID help text to the comment form."
+#~ msgstr "Tilføj hjælpetekst for OpenID til kommentarformen"
+#~ msgid ""
+#~ "This will work for most themes derived from Kubrick or Sandbox.  Template "
+#~ "authors can tweak the comment form as described in the %sreadme%s."
+#~ msgstr ""
+#~ "Dette vil fungere for de fleste teamer bygget på Kubrick eller Sandbox. "
+#~ "Udviklere af temaskabeloner kan tilpasse kommentarformen som beskrevet i %"
+#~ "sreadme%s."
+#~ msgid "Require OpenID"
+#~ msgstr "Kræv OpenID"
+#~ msgid "OpenID Provider Options"
+#~ msgstr "Leverandørindstillinger for OpenID"
+#~ msgid "Gathered OpenID information for delegate URL %s"
+#~ msgstr "Indhentet OpenID-information om viderestillende URL %s"
+#~ msgid ""
+#~ "It looks like you entered an email address, but it was not able to be "
+#~ "transformed into a valid OpenID."
+#~ msgstr ""
+#~ "Det ser ud, som om du indtastede en e-mail-adresse, men den kunne ikke "
+#~ "omformes til en gyldig OpenID."
+#~ msgid "Update Options"
+#~ msgstr "Opdateringsindstillinger"
+#~ msgid "Added "
+#~ msgstr "Tilføjet"
+#~ msgid "Deleted "
+#~ msgstr "Slettet"
+

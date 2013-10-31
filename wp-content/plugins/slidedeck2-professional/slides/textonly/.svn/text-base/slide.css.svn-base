@@ -1,0 +1,166 @@
+.slide-source-custom.slide-type-textonly .sd2-node-caption {
+    position: absolute;
+    display: none;
+    padding: 20px 30px 0;
+    background: rgb(0,0,0);
+    background: rgba(0,0,0,0.75);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+/* Basic */
+.slide-source-custom.slide-type-textonly .sd2-node-caption .sd2-slide-text {
+    display: none;
+    font-size: 1.5em;
+    line-height: 1.6em;
+    margin: 0;
+    color: #fff;
+}
+.sd2-medium .slide-source-custom.slide-type-textonly .sd2-node-caption .sd2-slide-text {
+    font-size: 1.4em;
+}
+.sd2-small .slide-source-custom.slide-type-textonly .sd2-node-caption .sd2-slide-text {
+    font-size: 1.1em;
+}
+/* Block Quote */
+.slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption {
+    padding: 0;
+}
+.slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-slide-text {
+    margin: 0 55px;
+    font-size: 3.6em;
+    line-height: 1.3em;
+    text-align: center;
+}
+.sd2-medium .slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-slide-text {
+    font-size: 2.4em;
+    line-height: 1.3em
+}
+.sd2-small .slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-slide-text {
+    font-size: 1.4em;
+    margin: 0 30px;
+}
+.slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-vertical-center-outer {
+    position: relative;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+}
+.slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-vertical-center-outer {
+    display: table;
+    position: static;
+    overflow: visible;
+}
+.slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-vertical-center-middle {
+    top: 50%;
+    overflow: visible;
+}
+.msie-7 .slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-vertical-center-middle {
+    position: absolute;
+}
+.slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-vertical-center-middle {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    overflow: visible;
+}
+.msie-7 .slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-vertical-center-middle { width: auto; }
+.slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-vertical-center-inner {
+    position: relative;
+    top: -50%;
+}
+.slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-vertical-center-inner {
+    position: static;
+}
+.msie-7 .slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-vertical-center-inner {
+    position: relative;
+}
+
+.slide-source-custom.slide-type-textonly .sd2-node-caption .sd2-slide-text p { margin: 0 0 1em; }
+.slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-slide-title {
+    text-align: center;
+    padding: 0 45px;
+}
+.slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-slide-text {
+    display: none;
+}
+/* Multi-Column */
+.slide-source-custom.slide-type-textonly.custom-layout-multi-column .sd2-node-caption .sd2-slide-text {
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 20px;
+    column-count: 3;
+    column-gap: 20px;
+}
+.sd2-hyphenate .slide-source-custom.slide-type-textonly .sd2-node-caption .sd2-slide-title,
+.sd2-hyphenate .slide-source-custom.slide-type-textonly .sd2-node-caption .sd2-slide-text {
+    word-break: break-all;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+}
+.slide-source-custom.slide-type-textonly .sd2-slide-title {
+    display: none;
+    font-size: 4.8em;
+    line-height: 1em;
+    font-weight: bold;
+    margin: 0 0 5px;
+}
+.sd2-medium .slide-source-custom.slide-type-textonly .sd2-slide-title {
+    font-size: 3.0em;
+}
+.sd2-small .slide-source-custom.slide-type-textonly .sd2-slide-title {
+    font-size: 1.6em;
+}
+.sd2-small .slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-slide-title {
+    font-size: 1.9em;
+}
+.sd2-show-title .slide-source-custom.slide-type-textonly .sd2-slide-title { display: block; }
+.slide-source-custom.slide-type-textonly .sd2-slide-title a,
+.slide-source-custom.slide-type-textonly .sd2-slide-title a:link,
+.slide-source-custom.slide-type-textonly .sd2-slide-title a:visited{
+    text-decoration: none;
+}
+.slide-source-custom.slide-type-textonly .sd2-slide-title a:hover{
+    text-decoration: underline;
+}
+.slide-source-custom.slide-type-textonly .sd2-slide-meta {
+    position: relative;
+    display: block;
+    font-size: 1.4em;
+    margin: 0;
+    color: #ddd;
+}
+.slide-source-custom.slide-type-textonly .sd2-slide-meta img.slide-author-avatar {
+    position: relative;
+    display: none;
+    top: 5px;
+    width: 20px;
+    margin-right: 0.4em;
+    padding: 1px;
+    border: 1px solid #666;
+}
+.sd2-show-author-avatar .slide-source-custom.slide-type-textonly .sd2-slide-meta img.slide-author-avatar { display: inline; }
+.slide-source-custom.slide-type-textonly .sd2-slide-meta .slide-author {
+    display: none;
+    font-weight: bold;
+    font-size: 0.85em;
+    margin-right: 0.4em;
+}
+.sd2-show-author .slide-source-custom.slide-type-textonly .sd2-slide-meta .slide-author { display: inline; }
+.slide-source-custom.slide-type-textonly .sd2-slide-meta .slide-author a {
+    color: #ddd;
+    text-decoration: none;
+}
+.slide-source-custom.slide-type-textonly .sd2-slide-meta .slide-author a:hover,
+.slide-source-custom.slide-type-textonly .sd2-slide-meta .slide-author a:active { color: #fff; }
+
+.sd2-show-excerpt .slide-source-custom.slide-type-textonly .sd2-node-caption,
+.sd2-show-excerpt .slide-source-custom.slide-type-textonly.has-excerpt .sd2-node-caption .sd2-slide-text,
+.sd2-show-title .slide-source-custom.slide-type-textonly .sd2-node-caption,
+.sd2-show-title .slide-source-custom.slide-type-textonly.has-title .sd2-node-caption .sd2-slide-title { display: block; }
+.slide-source-custom.custom-layout-none.slide-type-textonly .sd2-node-caption { display: none; }

@@ -1,0 +1,12 @@
+_("Basic: Form for *dark-rounded.css* Theme")
+_("This will switch your current cforms theme to the dark-rounded.css one and will get you going with a set of basic contact form input fields.")
+ff~~~My First Fieldset$#$fieldsetstart$#$0$#$0$#$0$#$0
+ff~~~Leave me a note|newcaptionclass$#$textonly$#$0$#$0$#$0$#$0
+ff~~~Your Name|Your Name$#$textfield$#$1$#$0$#$1$#$0
+ff~~~Email$#$textfield$#$1$#$1$#$0$#$0
+ff~~~Website|http://$#$textfield$#$0$#$0$#$0$#$0
+ff~~~Message$#$textarea$#$0$#$0$#$0$#$0
+ri~~~(required)
+re~~~(valid email required)
+tf~~~0
+cs~~~dark-rounded.css

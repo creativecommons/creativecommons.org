@@ -1,0 +1,126 @@
+    <p>
+     <input type="checkbox" name="<?php echo $this->get_field_name('showPostCount'); ?>" <?php if ($showPostCount=='yes')  echo 'checked'; ?> id="<?php echo $this->get_field_id('collapsArch'); ?>"></input> <label for="collapsArchShowPostCount"><?php _e('Show Post Count', 'collapsArch'); ?> </label>
+     <input type="checkbox" name="<?php echo $this->get_field_name('showPages'); ?>" <?php if ($showPages=='yes')  echo 'checked'; ?>
+     id="<?php echo $this->get_field_id('showPages'); ?>"></input> <label
+     for="collapsArchShowPages"><?php _e('Show Pages as well as posts', 'collapsArch'); ?> </label>
+    </p>
+     <p><?php _e('Display archives in', 'collapsArch'); ?> 
+     <select name="<?php echo $this->get_field_name('sort'); ?>">
+     <option  <?php if($sort=='ASC') echo 'selected'; ?>
+     id="<?php echo $this->get_field_id('sort'); ?>"
+     value='ASC'><?php _e('Chronological order', 'collapsArch'); ?></option>
+     <option  <?php if($sort=='DESC') echo 'selected'; ?>
+     id="<?php echo $this->get_field_id('sort'); ?>"
+     value='DESC'><?php _e('Reverse Chronological order', 'collapsArch'); ?></option>
+     </select>
+    </p>
+    <p><?php _e('Expanding and collapse characters:', 'collapsArch');?><br />
+     <strong>html:</strong> <input type="radio" name="<?php echo $this->get_field_name('expand'); ?>" <?php if($expand==0) echo 'checked'; ?> id="expand0" value='0'></input> <label for="expand0">&#9658;&nbsp;&#9660;</label>
+     <input type="radio" name="<?php echo $this->get_field_name('expand'); ?>" <?php if($expand==1) echo 'checked'; ?> id="expand1" value='1'></input> <label for="expand1">+&nbsp;&mdash;</label>
+     <input type="radio" name="<?php echo $this->get_field_name('expand'); ?>"
+     <?php if($expand==2) echo 'checked'; ?> id="expand2" value='2'></input>
+     <label for="expand2">[+]&nbsp;[&mdash;]</label>&nbsp;&nbsp;
+
+     <input type="radio" name="<?php echo $this->get_field_name('expand'); ?>"
+     <?php if($expand==4) echo 'checked'; ?> id="expand4" value='4'></input>
+     <label for="expand4">custom</label>
+     <?php _e('expand:', 'collapsArch'); ?>
+     <input type="text" size='1' name="<?php echo $this->get_field_name('customExpand'); ?>" value="<?php echo $customExpand ?>" id="<?php echo $this->get_field_id('customExpand'); ?>"></input> 
+     <?php _e('collapse:', 'collapsArch'); ?>
+     <input type="text" size='1' name="<?php echo $this->get_field_name('customCollapse'); ?>" value="<?php echo $customCollapse ?>" id="<?php echo $this->get_field_id('customCollapse'); ?>"></input> 
+     <?php _e('<strong>images:</strong>', 'collapsArch');?>
+     <input type="radio" name="<?php echo $this->get_field_name('expand'); ?>"
+     <?php if($expand==3) echo 'checked'; ?> id="expand0" value='3'></input>
+     <label for="expand3"><img src='<?php echo get_settings('siteurl') .
+     "/wp-content/plugins/collapsArch/" ?>img/collapse.gif' />&nbsp;<img
+     src='<?php echo get_settings('siteurl') .
+     "/wp-content/plugins/collapsArch/" ?>img/expand.gif' /></label>
+    </p>
+    <p>
+     <select name="<?php echo $this->get_field_name('inExcludePage'); ?>">
+     <option  <?php if($inExcludePage=='include') echo 'selected'; ?> id="<?php echo $this->get_field_id(''); ?>" value='include'><?php _e('Include', 'collapsArch');?></option>
+     <option  <?php if($inExcludePage=='exclude') echo 'selected'; ?> id="<?php echo $this->get_field_id(''); ?>" value='exclude'><?php _e('Exclude', 'collapsArch');?></option>
+     </select>
+     <?php _e('these years (separated by commas):', 'collapsArch');?><br />
+    <input type="text" name="<?php echo $this->get_field_name('inExcludeYears'); ?>" value="<?php echo $inExcludeYears ?>"  
+    id="<?php echo $this->get_field_id('inExcludeYears'); ?>"></input> 
+    </p>
+    <p> 
+     <select name="<?php echo $this->get_field_name('inExcludeCat'); ?>">
+     <option  <?php if($inExcludeCat=='include') echo 'selected'; ?> id="<?php echo $this->get_field_id('inExcludeCatInclude') ?>" value='include'>Include</option>
+     <option  <?php if($inExcludeCat=='exclude') echo 'selected'; ?> id="<?php echo $this->get_field_id('inExcludeCatExclude') ?>" value='exclude'>Exclude</option>
+     </select>
+     <?php _e('these categories (input slug or ID separated by commas):', 'collapsArch') ?><br />
+    <input type="text" name="<?php echo $this->get_field_name('inExcludeCats'); ?>" value="<?php echo $inExcludeCats ?>" id="<?php echo $this->get_field_id('inExcludeCats') ?>"</input> 
+    </p>
+    <p><?php _e('Clicking on year/month', 'collapsArch'); ?>:<br />
+     <input type="radio" name="<?php echo $this->get_field_name('linkToArch'); ?>"
+     <?php if($linkToArch) echo 'checked'; ?>
+     id="<?php echo $this->get_field_id('collapsArch'); ?>"
+     value='yes'></input> <label for="collapsArch-linkToArchYes"><?php _e('Links to archive', 'collapsArch'); ?></label>
+     <input type="radio" name="<?php echo $this->get_field_name('linkToArch'); ?>"
+     <?php if(!$linkToArch) echo 'checked'; ?>
+     id="<?php echo $this->get_field_id('collapsArch'); ?>"
+     value='no'></input> <label for="linkToArchNo"><?php _e('Expands list', 'collapsArch'); ?></label>
+    </p>
+   <p>
+     <p>
+     <input type="checkbox" name="<?php echo $this->get_field_name('expandCurrentYear'); ?>" <?php if ($expandCurrentYear)  echo
+     'checked'; ?> id="<?php echo $this->get_field_id('expandCurrentYear'); ?>"></input> <label for="expandCurrentYear"><?php _e('Leave Current Year Expanded by Default', 'collapsArch'); ?></label>
+    </p>
+    <p>
+     <input type="checkbox" name="<?php echo $this->get_field_name('showYearCount'); ?>" <?php if ($showYearCount)  echo 'checked'; ?>
+     id="<?php echo $this->get_field_id(''); ?>"></input> <label for="showYearCount"><?php _e('Show Post Count in Year Links', 'collapsArch'); ?></label>
+    </p>
+    <p>
+     <input type="checkbox" name="<?php echo $this->get_field_name('expandYears'); ?>" <?php if ($expandYears)  echo 'checked'; ?>
+     id="<?php echo $this->get_field_id('expandYears'); ?>"></input> <label for="expandYears"><?php _e('Show Month Link', 'collapsArch'); ?></label>
+   </p>
+   <p>
+      &nbsp;&nbsp;<input type="checkbox" name="<?php echo $this->get_field_name('showMonthCount'); ?>" <?php if ($showMonthCount == 'yes') echo
+      'checked'; ?> id="<?php echo $this->get_field_id('showMonthCount'); ?>"></input> <label
+      for="showMonthCount"><?php _e('Show Post Count in Month Links', 'collapsArch'); ?></label><br />
+
+        &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="<?php echo $this->get_field_name('expandMonths'); ?>" <?php if($expandMonths) echo
+        'checked'; ?> id="<?php echo $this->get_field_id('expandMonths'); ?>"></input> <label
+        for="expandMonths"><?php _e('Month Links should expand to show Posts', 'collapsArch'); ?></label><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"
+          name="<?php echo $this->get_field_name('expandCurrentMonth'); ?>" <?
+          if ($expandCurrentMonth) echo 'checked'; ?>
+          id="<?php echo $this->get_field_id('expandCurrentMonth'); ?>"></input> <label
+          for="expandCurrentMonth"><?php _e('Leave Current Month Expanded by Default', 'collapsArch'); ?></label>
+   </p>
+   <p>
+   <input type="checkbox" name="<?php echo $this->get_field_name('showPostTitle'); ?>" <?php if ($showPostTitle) echo
+   'checked'; ?> id="<?php echo $this->get_field_id('showPostTitle'); ?>"></input> <label
+   for="showPostTitle"><?php _e('Show Post Title', 'collapsArch'); ?></label>
+   | <?php _e('Truncate Post Title to', 'collapsArch'); ?>
+   <input type="text" size='3' name="<?php echo $this->get_field_name('postTitleLength'); ?>"
+   id="<?php echo $this->get_field_id('postTitleLength'); ?>" value="<?php echo
+   $postTitleLength; ?>"></input> <label
+   for="postTitleLength"> <?php _e('characters', 'collapsArch'); ?></label>
+   </p>
+   <p>
+   <input type="checkbox" name="<?php echo $this->get_field_name('showPostDate'); ?>" <?php if ($showPostDate) echo
+   'checked'; ?> id="<?php echo $this->get_field_id('showPostDate'); ?>"></input> <label
+   for="showPostDate"><?php _e('Show Post Date', 'collapsArch'); ?></label> | 
+     <select name="<?php echo $this->get_field_name('postDateAppend'); ?>">
+     <option  <?php if($postDateAppend=='before') echo 'selected'; ?> id="<?php echo $this->get_field_id('postDateAppendBefore') ?>" value='before'><?php _e('Before post title', 'collapsArch') ?></option>
+     <option  <?php if($postDateAppend=='after') echo 'selected'; ?> id="<?php echo $this->get_field_id('postDateAppendAfter') ?>" value='after'><?php _e('After post title', 'collapsArch') ?></option>
+     </select>
+   <label for="postDateFormat"><a href='http://php.net/date'
+    title='information about date formatting syntax' target='_blank'>
+    <?php _e('as', 'collapsArch'); ?></a>:</label>
+   <input type="text" size='8' name="<?php echo $this->get_field_name('postDateFormat'); ?>" value="<?php echo $postDateFormat; ?>" 
+   id="<?php echo $this->get_field_id('postDateFormat'); ?>"></input> 
+   </p>
+<p>
+   <input type="checkbox" name="<?php echo $this->get_field_name('animate'); ?>" <?php if ($animate==1) echo
+   'checked'; ?> id="<?php echo $this->get_field_id(''); ?>"></input> <label
+   for="animate"><?php _e('Animate collapsing and expanding', 'collapsArch');?></label>
+   </p>
+    <p>
+     <input type="checkbox" name="<?php echo $this->get_field_name('debug'); ?>"
+<?php if ($debug=='1')  echo 'checked'; ?> id="<?php echo $this->get_field_id('collapsArch'); ?>"></input> <label for="collapsArchDebug"><?php _e('Show debugging information
+(shows up as a hidden pre right after the title)', 'collapsArch');?></label>
+    </p>

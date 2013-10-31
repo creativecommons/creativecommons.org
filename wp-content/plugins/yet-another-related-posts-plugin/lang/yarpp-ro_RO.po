@@ -1,0 +1,568 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yet Another Related Posts Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-02-10 17:27+0100\n"
+"Last-Translator: Peter <blog@uhrenstore.de>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Romanian\n"
+"X-Poedit-Country: Romania\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#@ yarpp
+#: includes.php:149
+#: includes.php:194
+#: includes.php:215
+msgid "Related Posts (YARPP)"
+msgstr "legate de posturi(YARPP)"
+
+#@ yarpp
+#: includes.php:376
+msgid "Related Posts"
+msgstr "legate de posturi"
+
+#@ yarpp
+#: template-builtin.php:35
+#, php-format
+msgid "%f is the YARPP match score between the current entry and this related entry. You are seeing this value because you are logged in to WordPress as an administrator. It is not shown to regular visitors."
+msgstr "%f - YARPP este coeficientul similitudinii a postului curent și celui asociat. Vedeți  aceasta deoarece, că sunteţi conectat în Wordpress admin. Aceasta  nu se arată unui vizitator simplu"
+
+#@ yarpp
+#: magic.php:297
+#: options-meta-boxes.php:205
+#: options-meta-boxes.php:269
+#, php-format
+msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
+msgstr "Lista de posturi similare este prezentată de plugin-ul <a href='%s'>Yet Another Related Posts Plugin</a>."
+
+#@ yarpp
+#: options.php:54
+msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
+msgstr "Verificarea  MyISAM a fost efectuată. Acum puteți utiliza criteriile de similaritate \"consider titles\" și \"consider bodies\"."
+
+#@ yarpp
+#: options.php:63
+#, php-format
+msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
+msgstr "Utilizarea funcțiilor YARPP \"consider titles\" și \"consider bodies\" necesită, ca tabelul dvs. <code>%s</code> să utilizeze motorul <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM</a>, însă, probabil că tabelul utilizează motorul <code>%s</code>. Aceste două funcții  sunt dezactivate."
+
+#@ yarpp
+#: options.php:65
+#, fuzzy, php-format, php-format
+msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
+msgstr " Pentru a restabili aceste funcţii, vă rugăm să modificaţi tabelul <code>%s</code> cu următoarea instrucțiune  SQL e&nbsp;: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code>. La schimbarea  tabelului datele nu ar trebui să dispară, dar, cu toate acestea, pot apărea diferite posibile consecințe."
+
+#@ yarpp
+#: options.php:67
+#, php-format
+msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
+msgstr " În cazul în care, indiferent de această opţiune, sunteţi sigur că tabelul <code>%s</code> utilizează MyISAM, faceţi clic pe acest buton magic:"
+
+#@ yarpp
+#: options.php:70
+msgid "Trust me. Let me use MyISAM features."
+msgstr " Aveți  încredere în mine. Permiteţi-mi de a utiliza MyISAM."
+
+#@ yarpp
+#: options.php:83
+msgid "The YARPP database had an error but has been fixed."
+msgstr "Baza de date YARPP coonținea erori, dar acestea au fost corectate."
+
+#@ yarpp
+#: options.php:85
+msgid "The YARPP database has an error which could not be fixed."
+msgstr "Baza de date  YARPP conține o eroare, care nu poate fi corectată."
+
+#@ yarpp
+#: options-meta-boxes.php:45
+#: options-meta-boxes.php:63
+#: options-meta-boxes.php:76
+msgid "do not consider"
+msgstr "a nu lua în considerare"
+
+#@ yarpp
+#: options-meta-boxes.php:46
+#: options-meta-boxes.php:64
+#: options-meta-boxes.php:78
+msgid "consider"
+msgstr "a lua în considerare"
+
+#@ yarpp
+#: options-meta-boxes.php:65
+msgid "consider with extra weight"
+msgstr " a lua în considerare cu greutate suplimentară "
+
+#@ default
+#@ yarpp
+#: options-meta-boxes.php:286
+msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
+msgstr "A dona producătorului  mitcho (Michael Yoshitaka Erlewine), prin PayPal"
+
+#@ yarpp
+#: options.php:178
+msgid "Yet Another Related Posts Plugin Options"
+msgstr "Opțiuni YARPP"
+
+#@ yarpp
+#: options-meta-boxes.php:118
+msgid "\"The Pool\""
+msgstr "<em>Content</em>"
+
+#@ yarpp
+#: options-meta-boxes.php:91
+msgid "\"The Pool\" refers to the pool of posts and pages that are candidates for display as related to the current entry."
+msgstr "\"The Pool\" înţeleasă ca un set de mesaje şi pagini, care sunt candidaţi pentru afișarea în blocul de înregistrări aferente. "
+
+#@ yarpp
+#: options-meta-boxes.php:96
+msgid "Disallow by category:"
+msgstr "A exclude categorii:"
+
+#@ yarpp
+#: options-meta-boxes.php:98
+msgid "Disallow by tag:"
+msgstr "A exclude tag-uri:"
+
+#@ yarpp
+#: options-meta-boxes.php:101
+msgid "Show password protected posts?"
+msgstr " Afişare posturi protejate cu parolă? "
+
+#@ yarpp
+#: options-meta-boxes.php:140
+msgid "Show only previous posts?"
+msgstr " Afişare doar posturi anterioare? "
+
+#@ yarpp
+#: options-meta-boxes.php:148
+msgid "\"Relatedness\" options"
+msgstr "Criterii de similitudine"
+
+#@ yarpp
+#: options-meta-boxes.php:124
+#: options-meta-boxes.php:139
+#: options-meta-boxes.php:157
+#: options-meta-boxes.php:161
+#: options-meta-boxes.php:204
+#: options-meta-boxes.php:221
+#: options-meta-boxes.php:223
+#: options-meta-boxes.php:228
+#: options-meta-boxes.php:268
+msgid "more&gt;"
+msgstr "detailat&gt;"
+
+#@ yarpp
+#: options-meta-boxes.php:130
+msgid "Match threshold:"
+msgstr "Pragul de similitudine:"
+
+#@ yarpp
+#: options-meta-boxes.php:131
+msgid "Titles: "
+msgstr "Titluri:"
+
+#@ yarpp
+#: options-meta-boxes.php:133
+msgid "Bodies: "
+msgstr "Texte:"
+
+#@ yarpp
+#: options-meta-boxes.php:135
+msgid "Tags: "
+msgstr "Тag-uri:"
+
+#@ yarpp
+#: options-meta-boxes.php:137
+msgid "Categories: "
+msgstr "Categorii:"
+
+#@ yarpp
+#: options-meta-boxes.php:139
+msgid "Cross-relate posts and pages?"
+msgstr "A face o conexiune  încrucișată de posturi și pagini?"
+
+#@ yarpp
+#: options-meta-boxes.php:139
+msgid "When the \"Cross-relate posts and pages\" option is selected, the <code>related_posts()</code>, <code>related_pages()</code>, and <code>related_entries()</code> all will give the same output, returning both related pages and posts."
+msgstr "Când este selectată opțiunea \"Cross-relate posts and pages\",  funcțiile <code>related_posts()</code>, <code>related_pages()</code> și <code>related_entries()</code> dau același randament, ce conține și posturi și pagini"
+
+#@ yarpp
+#: options-meta-boxes.php:212
+msgid "Display options <small>for your website</small>"
+msgstr "Vizualizare opțiuni <small>pentru site-ul Web al dvs.</small>"
+
+#@ yarpp
+#: options-meta-boxes.php:157
+msgid "Automatically display related posts?"
+msgstr "Afișare în mod automat de posturi conectate?"
+
+#@ yarpp
+#: options-meta-boxes.php:157
+msgid "This option automatically displays related posts right after the content on single entry pages. If this option is off, you will need to manually insert <code>related_posts()</code> or variants (<code>related_pages()</code> and <code>related_entries()</code>) into your theme files."
+msgstr " Această opţiune afişează automat  posturile conectate între ele hgzvj după conținutul  unui singur mesaj de pe pagină. Dacă această opţiune este dezactivată va trebui să introduceţi manual <code>related_posts()</code> sau ceva similar (<code>related_pages()</code> și<code>related_entries()</code>) în tema dvs."
+
+#@ yarpp
+#: options-meta-boxes.php:158
+msgid "Website display code example"
+msgstr " Exemplu de cod pe site-ul  Web"
+
+#@ yarpp
+#: options-meta-boxes.php:158
+#: options-meta-boxes.php:221
+msgid "(Update options to reload.)"
+msgstr "( Salvaţi opţiuni pentru a reporni.)"
+
+#@ yarpp
+#: options-meta-boxes.php:160
+#: options-meta-boxes.php:226
+msgid "Maximum number of related posts:"
+msgstr " Numărul maxim de posturi aferente "
+
+#@ yarpp
+#: options-meta-boxes.php:175
+#: options-meta-boxes.php:244
+msgid "Before / after related entries:"
+msgstr "Pînă / după <br />posturi aferente:"
+
+#@ yarpp
+#: options-meta-boxes.php:175
+#: options-meta-boxes.php:176
+#: options-meta-boxes.php:184
+#: options-meta-boxes.php:244
+#: options-meta-boxes.php:245
+#: options-meta-boxes.php:250
+msgid "For example:"
+msgstr "Exemplu:"
+
+#@ yarpp
+#: options-meta-boxes.php:176
+#: options-meta-boxes.php:245
+msgid "Before / after each related entry:"
+msgstr "Pînă /după<br />fiecare post aferent:"
+
+#@ yarpp
+#: options-meta-boxes.php:178
+#: options-meta-boxes.php:247
+msgid "Show excerpt?"
+msgstr "Afișare fragment?"
+
+#@ yarpp
+#: options-meta-boxes.php:179
+#: options-meta-boxes.php:248
+msgid "Excerpt length (No. of words):"
+msgstr "Lungimea fragmentului(cantit. de cuvinte):"
+
+#@ yarpp
+#: options-meta-boxes.php:183
+msgid "Before / after (Excerpt):"
+msgstr "Pînă /după<br />fragmente"
+
+#@ yarpp
+#: options-meta-boxes.php:189
+#: options-meta-boxes.php:254
+msgid "Order results:"
+msgstr "Sortare rezultate:"
+
+#@ yarpp
+#: options-meta-boxes.php:191
+#: options-meta-boxes.php:256
+msgid "score (high relevance to low)"
+msgstr " Similitudine (în ordine descrescătoare) "
+
+#@ yarpp
+#: options-meta-boxes.php:192
+#: options-meta-boxes.php:257
+msgid "score (low relevance to high)"
+msgstr " Similitudine (în ordine crescătoare) "
+
+#@ yarpp
+#: options-meta-boxes.php:193
+#: options-meta-boxes.php:258
+msgid "date (new to old)"
+msgstr "Data(în ordine descrescătoare)"
+
+#@ yarpp
+#: options-meta-boxes.php:194
+#: options-meta-boxes.php:259
+msgid "date (old to new)"
+msgstr " Data(în ordine crescătoare)"
+
+#@ yarpp
+#: options-meta-boxes.php:195
+#: options-meta-boxes.php:260
+msgid "title (alphabetical)"
+msgstr "Titlu (după alfabet)"
+
+#@ yarpp
+#: options-meta-boxes.php:196
+#: options-meta-boxes.php:261
+msgid "title (reverse alphabetical)"
+msgstr "Titlu(în ordine inversă)"
+
+#@ yarpp
+#: options-meta-boxes.php:201
+#: options-meta-boxes.php:266
+msgid "Default display if no results:"
+msgstr "Afișare default dacă nu sunt rezultate:"
+
+#@ yarpp
+#: includes.php:257
+#: options-meta-boxes.php:203
+#: options-meta-boxes.php:268
+msgid "Help promote Yet Another Related Posts Plugin?"
+msgstr "A contribui la promovarea plugin YARPP?"
+
+#@ yarpp
+#: options-meta-boxes.php:205
+#: options-meta-boxes.php:269
+#, php-format
+msgid "This option will add the code %s. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated."
+msgstr "Această opțiune va adăuga codul %s. Încercați să o conectați, modificați opțiunile și  veți vedea ex. de cod pe dreapta.  Aceste linkuri și butoane sunt extrem de importante."
+
+#@ yarpp
+#: options-meta-boxes.php:276
+msgid "Display options <small>for RSS</small>"
+msgstr "Vizualizare opțiuni <small>pentru RSS</small>"
+
+#@ yarpp
+#: options-meta-boxes.php:221
+msgid "Display related posts in feeds?"
+msgstr "Afișare posturi aferente în  RSS?"
+
+#@ yarpp
+#: options-meta-boxes.php:223
+msgid "Display related posts in the descriptions?"
+msgstr "Afișare posturi aferente în descrieri?"
+
+#@ yarpp
+#: options-meta-boxes.php:223
+msgid "This option displays the related posts in the RSS description fields, not just the content. If your feeds are set up to only display excerpts, however, only the description field is used, so this option is required for any display at all."
+msgstr "Această opțiune nu reflectă numai conținutul dar și posturile aferente la acesta în RSS. În cazul în care canalele sunt configurate pentru a afişa doar fragmentele,  în acest caz este utilizat doar câmpul de descriere. "
+
+#@ yarpp
+#: options-meta-boxes.php:221
+msgid "RSS display code example"
+msgstr "Exemplu de cod în RSS"
+
+#@ yarpp
+#: options-meta-boxes.php:250
+msgid "Before / after (excerpt):"
+msgstr "Pînă / după<br />fragment:"
+
+#@ yarpp
+#: options-meta-boxes.php:38
+msgid "word"
+msgstr "cuvînt"
+
+#@ yarpp
+#: options-meta-boxes.php:39
+msgid "tag"
+msgstr "tag"
+
+#@ yarpp
+#: options-meta-boxes.php:40
+msgid "category"
+msgstr "categorie"
+
+#@ yarpp
+#: options-meta-boxes.php:48
+#: options-meta-boxes.php:80
+#, php-format
+msgid "require at least one %s in common"
+msgstr "doar unul %s   trebuie să fie comun"
+
+#@ yarpp
+#: options-meta-boxes.php:50
+#: options-meta-boxes.php:82
+#, php-format
+msgid "require more than one %s in common"
+msgstr "mai mult de unul  %s  trebuie să fie comun"
+
+#@ yarpp
+#: options.php:114
+msgid "Options saved!"
+msgstr "Opțiuni salvate!"
+
+#@ yarpp
+#: options-meta-boxes.php:124
+msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
+msgstr "Cu cât e mai mare pragul de similitudine, cu atât e mai strictă proba, și în final vor fi primite mai puține rezultate. Pragul defult este de5.  Dacă doriţi să găsiţi praguri acceptabile, experimentați cu mai multe posturi. Astfel veți putea vedea   ce tipuri de posturi aferente vin ți care sunt valorile similare, care pot determina un nivel acceptabil pentru site-ul dvs."
+
+#@ yarpp
+#: options.php:279
+msgid "Update options"
+msgstr "Modificare opțiuni"
+
+#@ yarpp
+#: options.php:280
+msgid "Do you really want to reset your configuration?"
+msgstr "Sunteți sigur că doriți să resetați configurațiile dvs.?"
+
+#@ yarpp
+#: options.php:280
+msgid "Reset options"
+msgstr "Resetare opțiuni"
+
+#@ yarpp
+#: cache-postmeta.php:105
+#: cache-tables.php:131
+msgid "Example post "
+msgstr "Exemplu de post"
+
+#@ yarpp
+#: options-meta-boxes.php:105
+msgid "day(s)"
+msgstr "zi(le)"
+
+#@ yarpp
+#: options-meta-boxes.php:106
+msgid "week(s)"
+msgstr "luni"
+
+#@ yarpp
+#: options-meta-boxes.php:107
+msgid "month(s)"
+msgstr "an(i)"
+
+#@ yarpp
+#: options-meta-boxes.php:109
+msgid "Show only posts from the past NUMBER UNITS"
+msgstr " Afişare posturi doar în ultimul NUMBER UNITS"
+
+#@ yarpp
+#: options.php:46
+#, php-format
+msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
+msgstr "Aceasta este noua beta (%s) plugin YARPP. Puteți să o <a href=\"%s\">descărcați aici</a> pe propriul risc."
+
+#@ yarpp
+#: includes.php:248
+#: options-meta-boxes.php:161
+#: options-meta-boxes.php:228
+msgid "Display using a custom template file"
+msgstr " Afişareautilizând un fişier şablon particularizat "
+
+#@ yarpp
+#: includes.php:249
+#: options-meta-boxes.php:165
+#: options-meta-boxes.php:233
+msgid "Template file:"
+msgstr "Fișierul șablon:"
+
+#@ yarpp
+#: options-meta-boxes.php:221
+msgid "This option displays related posts at the end of each item in your RSS and Atom feeds. No template changes are needed."
+msgstr " Această opţiune afişează posturile asociate la sfârşitul fiecărui element în RSS si Atom. Modificarea șablonului nu este necesară."
+
+#@ yarpp
+#: template-metabox.php:12
+msgid "These are the related entries for this entry. Updating this post may change these related posts."
+msgstr "Acestea sunt posturi aferente pentru postul dat. Modificarea postului dat poate schomba setul de posturi aferente."
+
+#@ yarpp
+#: template-metabox.php:25
+msgid "Whether all of these related entries are actually displayed and how they are displayed depends on your YARPP display options."
+msgstr " Com vor fi afişate toate aceste posturi  şi modul în care acestea vor fi afişate, depinde de  opțiunile dvs. YARPP."
+
+#@ yarpp
+#: includes.php:28
+#: includes.php:39
+#: template-metabox.php:27
+#: template-widget.php:13
+msgid "No related posts."
+msgstr "Nu sunt posturi aferente"
+
+#@ yarpp
+#: options-meta-boxes.php:228
+msgid "NEW!"
+msgstr "NOU!"
+
+#@ yarpp
+#: options-meta-boxes.php:161
+#: options-meta-boxes.php:228
+msgid "This advanced option gives you full power to customize how your related posts are displayed. Templates (stored in your theme folder) are written in PHP."
+msgstr " Această opţiune avansată vă oferă putere deplină de a personaliza modul în care posturile dvs. aferente sunt afişate. Şabloanele (stocat în tema folderu), sunt scrise în PHP. "
+
+#@ yarpp
+#: includes.php:26
+#: includes.php:37
+msgid "Related posts:"
+msgstr "Posturi aferente"
+
+#@ yarpp
+#: includes.php:169
+msgid "Settings"
+msgstr "Setări"
+
+#@ default
+#: includes.php:243
+msgid "Title:"
+msgstr "Titlu"
+
+#@ yarpp
+#: includes.php:385
+msgid "Related entries may be displayed once you save your entry"
+msgstr " Înregistrările pot fi afişate în cazul când veți salva înregistrarea dvs. "
+
+#@ yarpp
+#: options-meta-boxes.php:124
+msgid "YARPP limits the related posts list by (1) a maximum number and (2) a <em>match threshold</em>."
+msgstr " YARPP limitează lista de posturi aferente de (1) numărul maxim și (2) <em>pragul corespunzător</em>."
+
+#@ yarpp
+#: options-meta-boxes.php:175
+#: options-meta-boxes.php:176
+#: options-meta-boxes.php:184
+#: options-meta-boxes.php:244
+#: options-meta-boxes.php:245
+#: options-meta-boxes.php:250
+msgid " or "
+msgstr "sau"
+
+#@ yarpp
+#: options-meta-boxes.php:283
+msgid "YARPP Forum"
+msgstr "Forum YARPP"
+
+#@ yarpp
+#: options-meta-boxes.php:284
+msgid "YARPP on Twitter"
+msgstr "YARPP în Twiter"
+
+#@ yarpp
+#: options-meta-boxes.php:285
+msgid "YARPP on the Web"
+msgstr " YARPP pe Web "
+
+#@ yarpp
+#: options-meta-boxes.php:292
+msgid "Contact YARPP"
+msgstr "Contact YARPP "
+
+#@ default
+#: options.php:42
+#, php-format
+msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
+msgstr " Aceasta e o nouă versiune a %1$s valabilă.<a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">Vezi versiunea %4$s detalii</a> sau<a href=\"%5$s\">actualizare automată</a>."
+
+#@ yarpp
+#: options.php:86
+#, php-format
+msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
+msgstr " Vă rugăm să încercaţi <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
+
+#@ yarpp
+#: options.php:188
+#, php-format
+msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+msgstr "de <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+

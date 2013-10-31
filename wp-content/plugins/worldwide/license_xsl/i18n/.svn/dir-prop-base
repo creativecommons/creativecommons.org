@@ -1,0 +1,12 @@
+K 13
+svn:externals
+V 64
+i18n_po http://code.creativecommons.org/svnroot/i18n/trunk/i18n
+
+K 10
+svn:ignore
+V 14
+*.pyc
+*.pyo
+*~
+END

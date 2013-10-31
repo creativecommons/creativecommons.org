@@ -1,0 +1,196 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Collapsing Archives by Robert Felty\n"
+"PO-Revision-Date: 2009-04-21 16:26-0600\n"
+"Last-Translator: Karin Sequen <karin.sequen@bumerang180.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: GUATEMALA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;__ngettext_noop:1,2;_c\n"
+"X-Poedit-Basepath: .\n"
+"POT-Creation-Date: \n"
+"Language-Team: Karin Sequén || Bumerang 180 <info@bumerang180.com>\n"
+"X-Poedit-SearchPath-0: .\n"
+": "
+
+#: collapsArch.php:72
+#: collapsArch.php:72
+msgid "Collapsing Archives"
+msgstr "Archivos Colapsables"
+
+#: collapsArchUI.php:65
+msgid "Collapsing Archives Options"
+msgstr "Opciones de Colapso de Archivos"
+
+#: collapsArchUI.php:149
+msgid "Update options"
+msgstr "Actualizar opciones"
+
+#: defaults.php:3
+#: processOptions.php:4
+msgid "Archives"
+msgstr "Archivos"
+
+#: collapsArchList.php:191
+#: collapsArchList.php:192
+msgid "click to expand"
+msgstr "haga clic para ampliar"
+
+#: collapsArchList.php:203
+#: collapsArchList.php:301
+msgid "click to collapse"
+msgstr "haga clic para ocultar"
+
+#: options.php:2
+msgid "Show Post Count"
+msgstr "Mostrar Conteo de Entradas"
+
+#: options.php:7
+msgid "Display archives in"
+msgstr "Mostrar archivos en"
+
+#: options.php:11
+msgid "Chronological order"
+msgstr "Orden Cronológico"
+
+#: options.php:14
+msgid "Reverse Chronological order"
+msgstr "Orden Cronológico Inverso"
+
+#: options.php:48
+msgid "Clicking on year/month"
+msgstr "Al hacer clic en el año/mes"
+
+#: options.php:52
+msgid "Links to archive"
+msgstr "Se enlaza al Archivo"
+
+#: options.php:56
+msgid "Expands list"
+msgstr "Se expande el Listado"
+
+#: options.php:41
+msgid "Include"
+msgstr "Incluir"
+
+#: options.php:42
+msgid "Exclude"
+msgstr "Excluir"
+
+#: options.php:61
+msgid "Leave Current Year Expanded by Default"
+msgstr "Dejar el año en curso expandido de manera predeterminada"
+
+#: options.php:65
+msgid "Show Post Count in Year Links"
+msgstr "Mostrar conteo de entradas en los enlaces de Año"
+
+#: options.php:69
+msgid "Show Month Link"
+msgstr "Montrar enlace de Mes"
+
+#: options.php:74
+msgid "Show Post Count in Month Links"
+msgstr "Mostrar conteo de entradas en los enlaces de mes"
+
+#: options.php:78
+msgid "Month Links should expand to show Posts"
+msgstr "Los Enlaces de Mes se deberán expandir para mostrar las Entradas"
+
+#: options.php:83
+msgid "Leave Current Month Expanded by Default"
+msgstr "Dejar el mes en curso expandido de manera predeterminada"
+
+#: options.php:88
+msgid "Show Post Title"
+msgstr "Mostrar Título de la Entrada"
+
+#: options.php:89
+msgid "Truncate Post Title to"
+msgstr "Limitar el Título de la Entrada a"
+
+#: options.php:93
+msgid "characters"
+msgstr "caracteres"
+
+#: options.php:98
+msgid "Show Post Date"
+msgstr "Mostrar Fecha de la Entrada"
+
+#: options.php:101
+msgid "Post Date Format"
+msgstr "Formato de Fecha"
+
+#: options.php:108
+msgid "Animate collapsing and expanding"
+msgstr "Animar el colapso y expansión de archivos"
+
+#: collapsArchUI.php:68
+msgid "Id of the sidebar where collapsing pages appears:"
+msgstr "ID de la barra lateral donde desea mostrar las páginas colapsables:"
+
+#: collapsArchUI.php:78
+msgid "Select style:"
+msgstr "Seleccione un estilo:"
+
+#: collapsArchUI.php:102
+msgid "Preview"
+msgstr "Vista Previa"
+
+#: collapsArchUI.php:107
+msgid "You may also customize your style below if you wish"
+msgstr "También es posible personalizar el estilo, si lo desea"
+
+#: collapsArchUI.php:108
+msgid "restore current style"
+msgstr "restaurar estilo actual"
+
+#: options.php:5
+msgid "Show Pages as well as posts"
+msgstr "Mostrar las Páginas al igual que las Entradas"
+
+#: options.php:17
+msgid "Expanding and collapse characters:"
+msgstr "Caracteres para expandir y colapsar:"
+
+#: options.php:27
+msgid "expand:"
+msgstr "expandir:"
+
+#: options.php:29
+msgid "collapse:"
+msgstr "colapsar:"
+
+#: options.php:31
+msgid "<strong>images:</strong>"
+msgstr "<strong>imágenes:</strong>"
+
+#: options.php:44
+msgid "these years (input slug or ID separated by commas):"
+msgstr "estos años (ingrese ruta o ID separado por comas):"
+
+#: options.php:112
+msgid ""
+"Show debugging information\n"
+"(shows up as a hidden pre right after the title)"
+msgstr ""
+"Mostrar información de programación\n"
+"(como un pre oculta después del título)"
+
+#: collapsArchWidget.php:41
+msgid "Title"
+msgstr "Título"
+
+#: collapsArchWidget.php:45
+#, php-format
+msgid "Style can be set from the <a href=\"%s\">options page</a>"
+msgstr "Puede definir el estilo desde la <a href=\"%s\">página de opciones</a>"
+
+#: collapsArchWidget.php:5
+msgid "Collapsible archives listing"
+msgstr "Listado de archivos colapsables"
+

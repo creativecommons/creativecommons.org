@@ -1,0 +1,14 @@
+_("Basic: Tell A Friend Form")
+_("If you would like to setup a special T-A-F form, then please use this preset as a basis. It comes with the necessary (special) TAF input fields, verifies and sets the TAF option, switches the current theme and sets a generic tell-a-friend message.")
+ff~~~Tell A Friend$#$fieldsetstart$#$0$#$0$#$0$#$0
+ff~~~Your Name|Your Name$#$yourname$#$1$#$0$#$1$#$0
+ff~~~Your Email$#$youremail$#$1$#$1$#$0$#$0
+ff~~~Your Friend's Name$#$friendsname$#$1$#$0$#$0$#$0
+ff~~~Your Friend's Email$#$friendsemail$#$1$#$1$#$0$#$0
+ff~~~Optional Comment$#$textarea$#$0$#$0$#$0$#$0
+ri~~~(required)
+re~~~(valid email required)
+tf~~~11
+tt~~~Hello {Your Friend's Name},|nl|{Your Name} left you this message: {Optional Comment}|nl||nl|The message was sent in reference to "{Title}":|nl|{Excerpt}|nl|{Permalink}|nl||nl|--|nl|This email is sent, as a courtesy of website.com, located at http://website.com. The person who sent this email to you, {Your Name}, gave an email address of {Your Email}. {Your Name} logged into website.com from IP {IP}, and sent the email at {Time}.
+su~~~Tell a friend
+cs~~~wide_form.css

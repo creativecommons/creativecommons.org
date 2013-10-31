@@ -1,0 +1,634 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yet Another Related Posts Plugin v3.5.4b4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-09-30 05:09+0100\n"
+"Last-Translator: \n"
+"Language-Team: GoCroatia.com <admin@gocroatia.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"Language: hr\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ yarpp
+#: class-admin.php:56 class-widget.php:7 class-widget.php:59
+msgid "Related Posts (YARPP)"
+msgstr "Vezani članci (YARPP)"
+
+# @ yarpp
+#: class-admin.php:62
+msgid "Related Posts"
+msgstr "Vezani Članci"
+
+# @ default
+#: class-admin.php:62
+msgid "Configure"
+msgstr "Podesi"
+
+# @ yarpp
+#: class-admin.php:78
+msgid "Frequently Asked Questions"
+msgstr "Često Postavljana Pitanja"
+
+# @ yarpp
+#: class-admin.php:84 class-admin.php:112
+msgid "Developing with YARPP"
+msgstr "Razvijanje sa YARPP"
+
+# @ yarpp
+#: class-admin.php:100
+msgid "FAQ"
+msgstr "FAQ"
+
+# @ yarpp
+#: class-admin.php:167
+msgid "Thank you for installing <span>Yet Another Related Posts Plugin</span>!"
+msgstr ""
+"Hvala što ste instalirali <span>Yet Another Related Posts Plugin</span>!"
+
+# @ yarpp
+#: class-admin.php:168
+msgid ""
+"Make sure to visit the <a>Related Posts settings page</a> to customize YARPP."
+msgstr ""
+"Obavezno posjetite <a>stranicu s postavkama povezanih članaka</a> da biste "
+"podesili YARPP."
+
+# @ default
+#: class-admin.php:214
+msgid "Settings"
+msgstr "Postavke"
+
+# @ yarpp
+#: class-admin.php:240
+msgid "Related entries may be displayed once you save your entry"
+msgstr "Vezani članci se mogu prikazati tek kad snimite ovaj članak"
+
+# @ yarpp
+#: class-cache.php:530
+msgid "Example post "
+msgstr "Primjer članka "
+
+# @ yarpp
+#: class-core.php:70 class-core.php:80 class-core.php:281 class-core.php:292
+msgid "Related posts:"
+msgstr "Vezani članci:"
+
+# @ yarpp
+#: class-core.php:72 class-core.php:82 class-core.php:283 class-core.php:294
+#: template-metabox.php:30 template-widget.php:13
+msgid "No related posts."
+msgstr "Nema vezanih članaka."
+
+# @ yarpp
+#: class-core.php:612 class-core.php:733 options-meta-boxes.php:229
+#: options-meta-boxes.php:284
+#, php-format
+msgid ""
+"Related posts brought to you by <a href='%s'>Yet Another Related Posts "
+"Plugin</a>."
+msgstr ""
+"Vezane članke je omogućio <a href='%s'>Yet Another Related Posts Plugin</a>."
+
+# @ default
+#: class-widget.php:69
+msgid "Title:"
+msgstr "Naslov:"
+
+# @ yarpp
+#: class-widget.php:75 options-meta-boxes.php:17
+msgid "Display using a custom template file"
+msgstr "Prikaži koristeći moj predložak"
+
+# @ yarpp
+#: class-widget.php:76 options-meta-boxes.php:196 options-meta-boxes.php:258
+msgid "Template file:"
+msgstr "Datoteka predloška:"
+
+# @ yarpp
+#: class-widget.php:98 options-meta-boxes.php:227 options-meta-boxes.php:283
+msgid "Help promote Yet Another Related Posts Plugin?"
+msgstr "Pomozite promovirati YARPP dodatak?"
+
+# @ yarpp
+#: options-meta-boxes.php:17 options-meta-boxes.php:113
+#: options-meta-boxes.php:153 options-meta-boxes.php:169
+#: options-meta-boxes.php:187 options-meta-boxes.php:228
+#: options-meta-boxes.php:245 options-meta-boxes.php:247
+#: options-meta-boxes.php:283
+msgid "more&gt;"
+msgstr "više&gt;"
+
+# @ yarpp
+#: options-meta-boxes.php:17
+msgid ""
+"This advanced option gives you full power to customize how your related "
+"posts are displayed. Templates (stored in your theme folder) are written in "
+"PHP."
+msgstr ""
+"Ova napredna opcija daje vam potpune mogućnosti da sami odredite sve "
+"postavke prikazivanja vezanih članaka. Predlošci (nalaze se u direktoriju "
+"teme) su pisani u PHP-u."
+
+# @ yarpp
+#: options-meta-boxes.php:47 options-meta-boxes.php:59
+msgid "do not consider"
+msgstr "ne uzimaj u obzir"
+
+# @ yarpp
+#: options-meta-boxes.php:48 options-meta-boxes.php:60
+msgid "consider"
+msgstr "uzmi u obzir"
+
+# @ yarpp
+#: options-meta-boxes.php:49 options-meta-boxes.php:61
+msgid "consider with extra weight"
+msgstr "posebno obrati pažnju na"
+
+# @ yarpp
+#: options-meta-boxes.php:50
+#, php-format
+msgid "require at least one %s in common"
+msgstr "traži barem jednu zajedničku %s"
+
+# @ yarpp
+#: options-meta-boxes.php:51
+#, php-format
+msgid "require more than one %s in common"
+msgstr "traži više od jedne zajedničke %s"
+
+# @ yarpp
+#: options-meta-boxes.php:68
+msgid "Order results:"
+msgstr "Redoslijed rezultata:"
+
+# @ yarpp
+#: options-meta-boxes.php:71
+msgid "score (high relevance to low)"
+msgstr "rezultat (više relevantno prije)"
+
+# @ yarpp
+#: options-meta-boxes.php:72
+msgid "score (low relevance to high)"
+msgstr "rezultat (manje relevantno prije)"
+
+# @ yarpp
+#: options-meta-boxes.php:73
+msgid "date (new to old)"
+msgstr "datum (noviji prije)"
+
+# @ yarpp
+#: options-meta-boxes.php:74
+msgid "date (old to new)"
+msgstr "datum (stariji prije)"
+
+# @ yarpp
+#: options-meta-boxes.php:75
+msgid "title (alphabetical)"
+msgstr "naslov (abecednim redom)"
+
+# @ yarpp
+#: options-meta-boxes.php:76
+msgid "title (reverse alphabetical)"
+msgstr "naslov (obrnuto abecednim redom)"
+
+# @ yarpp
+#: options-meta-boxes.php:109
+msgid ""
+"\"The Pool\" refers to the pool of posts and pages that are candidates for "
+"display as related to the current entry."
+msgstr ""
+"\"Članci\" označava koji članci i stranice će biti uzete u obzir za prikaz "
+"vezanih uz trenutni članak."
+
+# @ yarpp
+#: options-meta-boxes.php:113
+msgid "Post types considered:"
+msgstr "Uzmi u obzir tip članka:"
+
+# @ yarpp
+#: options-meta-boxes.php:116
+#, php-format
+msgid "Disallow by %s:"
+msgstr "Onemogući po %s:"
+
+# @ yarpp
+#: options-meta-boxes.php:118
+msgid "Show password protected posts?"
+msgstr "Prikaži članke s lozinkom?"
+
+# @ yarpp
+#: options-meta-boxes.php:129
+msgid "day(s)"
+msgstr "dan(a)"
+
+# @ yarpp
+#: options-meta-boxes.php:130
+msgid "week(s)"
+msgstr "tjedan(a)"
+
+# @ yarpp
+#: options-meta-boxes.php:131
+msgid "month(s)"
+msgstr "mjesec(i)"
+
+# @ yarpp
+#: options-meta-boxes.php:137
+msgid "Show only posts from the past NUMBER UNITS"
+msgstr "Prikaži samo članke iz posljednjih"
+
+# @ yarpp
+#: options-meta-boxes.php:147
+msgid "\"The Pool\""
+msgstr "\"Članci\""
+
+# @ yarpp
+#: options-meta-boxes.php:153
+msgid ""
+"YARPP limits the related posts list by (1) a maximum number and (2) a "
+"<em>match threshold</em>."
+msgstr ""
+"YARPP limitira broj vezanih članaka po njihovom broju i <em>pragu "
+"povezanosti</em>."
+
+# @ yarpp
+#: options-meta-boxes.php:153
+msgid ""
+"The higher the match threshold, the more restrictive, and you get less "
+"related posts overall. The default match threshold is 5. If you want to find "
+"an appropriate match threshhold, take a look at some post's related posts "
+"display and their scores. You can see what kinds of related posts are being "
+"picked up and with what kind of match scores, and determine an appropriate "
+"threshold for your site."
+msgstr ""
+"Čim je veći prag povezanosti, prikazuje se manje članaka, ali su više "
+"relevantni. Osnovni prag povezanosti je 5. Ukoliko želite naći idealni prag "
+"povezanosti, pogledajte vezane članke nekog od vaših članaka i njihove "
+"rezultate. Možete vidjeti kakvi vezani članci se prikazuju i sa kakvim "
+"rezultatima, da biste utvrdili prikladan prag povezanosti za vašu stranicu."
+
+# @ yarpp
+#: options-meta-boxes.php:159
+msgid "Match threshold:"
+msgstr "Prag povezanosti:"
+
+# @ yarpp
+#: options-meta-boxes.php:160
+msgid "Titles: "
+msgstr "Naslovi: "
+
+# @ yarpp
+#: options-meta-boxes.php:162
+msgid "Bodies: "
+msgstr "Sadržaj: "
+
+# @ yarpp
+#: options-meta-boxes.php:169
+msgid "Display results from all post types"
+msgstr "Prikaži rezultate iz svih tipova članaka"
+
+# @ yarpp
+#: options-meta-boxes.php:169
+msgid ""
+"When \"display results from all post types\" is off, only posts will be "
+"displayed as related to a post, only pages will be displayed as related to a "
+"page, etc."
+msgstr ""
+"Kada je \"prikaži rezultate iz svih tipova članaka\" isključeno, samo članci "
+"(postevi) će biti prikazani na člancima, i samo stranice će biti prikazane "
+"na drugim stranicama, itd."
+
+# @ yarpp
+#: options-meta-boxes.php:170
+msgid "Show only previous posts?"
+msgstr "Prikaži samo starije članke?"
+
+# @ yarpp
+#: options-meta-boxes.php:178
+msgid "\"Relatedness\" options"
+msgstr "\"Povezanost\" opcije"
+
+# @ yarpp
+#: options-meta-boxes.php:187
+msgid "Automatically display related posts?"
+msgstr "Automatski prikaži vezane članke?"
+
+# @ yarpp
+#: options-meta-boxes.php:187
+msgid ""
+"This option automatically displays related posts right after the content on "
+"single entry pages. If this option is off, you will need to manually insert "
+"<code>related_posts()</code> or variants (<code>related_pages()</code> and "
+"<code>related_entries()</code>) into your theme files."
+msgstr ""
+"Ova opcija automatski prikazuje vezane članke odmah nakon sadržaja članaka. "
+"Ako je ova opcija isključena, morati ćete ručno unijeti kod "
+"<code>related_posts()</code> ili varijante koda (<code>related_pages()</"
+"code> ili <code>related_entries()</code>) u datoteke vaše teme."
+
+# @ yarpp
+#: options-meta-boxes.php:188
+msgid "Website display code example"
+msgstr "Primjer koda za prikaz na stranici"
+
+# @ yarpp
+#: options-meta-boxes.php:188 options-meta-boxes.php:245
+msgid "(Update options to reload.)"
+msgstr "(Potvrdite opcije za ponovni prikaz.)"
+
+# @ yarpp
+#: options-meta-boxes.php:190 options-meta-boxes.php:250
+msgid "Maximum number of related posts:"
+msgstr "Najveći broj vezanih članaka:"
+
+# @ yarpp
+#: options-meta-boxes.php:208 options-meta-boxes.php:271
+msgid "Before / after related entries:"
+msgstr "Prije / poslije vezanih članaka:"
+
+# @ yarpp
+#: options-meta-boxes.php:208 options-meta-boxes.php:209
+#: options-meta-boxes.php:217 options-meta-boxes.php:271
+#: options-meta-boxes.php:272 options-meta-boxes.php:277
+msgid "For example:"
+msgstr "Na primjer:"
+
+# @ yarpp
+#: options-meta-boxes.php:208 options-meta-boxes.php:209
+#: options-meta-boxes.php:217 options-meta-boxes.php:271
+#: options-meta-boxes.php:272 options-meta-boxes.php:277
+msgid " or "
+msgstr " ili "
+
+# @ yarpp
+#: options-meta-boxes.php:209 options-meta-boxes.php:272
+msgid "Before / after each related entry:"
+msgstr "Prije / poslije svakog vezanog članka:"
+
+# @ yarpp
+#: options-meta-boxes.php:211 options-meta-boxes.php:274
+msgid "Show excerpt?"
+msgstr "Prikaži kratak sadržaj?"
+
+# @ yarpp
+#: options-meta-boxes.php:212 options-meta-boxes.php:275
+msgid "Excerpt length (No. of words):"
+msgstr "Duljina kratkog sadržaja (broj riječi):"
+
+# @ yarpp
+#: options-meta-boxes.php:216
+msgid "Before / after (Excerpt):"
+msgstr "Prije / poslije (kratkog sadržaja):"
+
+# @ yarpp
+#: options-meta-boxes.php:224 options-meta-boxes.php:281
+msgid "Default display if no results:"
+msgstr "Osnovni prikaz ako nema rezultata:"
+
+# @ yarpp
+#: options-meta-boxes.php:229 options-meta-boxes.php:284
+#, php-format
+msgid ""
+"This option will add the code %s. Try turning it on, updating your options, "
+"and see the code in the code example to the right. These links and donations "
+"are greatly appreciated."
+msgstr ""
+"Ova opcija će dodati kod %s. Pokušajte je uključiti, snimiti sve opcije, i "
+"provjerite kod u primjeru koda desno. Ovi linkovi i donacije su veoma "
+"dobrodošle."
+
+# @ yarpp
+#: options-meta-boxes.php:236
+msgid "Display options <small>for your website</small>"
+msgstr "Opcije prikaza <small>za vašu web stranicu</small>"
+
+# @ yarpp
+#: options-meta-boxes.php:245
+msgid "Display related posts in feeds?"
+msgstr "Prikaži vezane članke u RSS feedu?"
+
+# @ yarpp
+#: options-meta-boxes.php:245
+msgid ""
+"This option displays related posts at the end of each item in your RSS and "
+"Atom feeds. No template changes are needed."
+msgstr ""
+"Ova opcija prikazuje vezane članke na kraju svakog članka u RSS ili Atom "
+"feed-u. Nikakve promjene u predlošcima vaše teme nisu potrebne."
+
+# @ yarpp
+#: options-meta-boxes.php:245
+msgid "RSS display code example"
+msgstr "RSS primjer prikaza"
+
+# @ yarpp
+#: options-meta-boxes.php:247
+msgid "Display related posts in the descriptions?"
+msgstr "Prikaži vezane članke u opisima?"
+
+# @ yarpp
+#: options-meta-boxes.php:247
+msgid ""
+"This option displays the related posts in the RSS description fields, not "
+"just the content. If your feeds are set up to only display excerpts, "
+"however, only the description field is used, so this option is required for "
+"any display at all."
+msgstr ""
+"Ova opcija prikazuje vezane članke u polju za opise u RSS feedu, ne samo "
+"sadržaju. Ako vaši RSS feedovi ne prikazuju cijelokupni sadržaj članaka, "
+"samo polje s opisom se koristi, tako da ova opcija nije potrebna uopće."
+
+# @ yarpp
+#: options-meta-boxes.php:277
+msgid "Before / after (excerpt):"
+msgstr "Prije / poslije (kratkog sadržaja):"
+
+# @ yarpp
+#: options-meta-boxes.php:291
+msgid "Display options <small>for RSS</small>"
+msgstr "Prikaži opcije <small>za RSS</small>"
+
+# @ yarpp
+#: options-meta-boxes.php:299
+msgid "YARPP Forum"
+msgstr "YARPP Forum"
+
+# @ yarpp
+#: options-meta-boxes.php:300
+msgid "YARPP on Twitter"
+msgstr "YARPP na Twitteru"
+
+# @ yarpp
+#: options-meta-boxes.php:301
+msgid "YARPP on the Web"
+msgstr "YARPP na Webu"
+
+# @ yarpp
+#: options-meta-boxes.php:302
+msgid "Rate YARPP on WordPress.org"
+msgstr "Ocijeni YARPP na WordPress.org"
+
+# @ default
+# @ yarpp
+#: options-meta-boxes.php:303
+msgid ""
+"Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
+msgstr ""
+"Doniraj mitcho (Michael Yoshitaka Erlewine) za ovaj dodatak preko PayPal-a"
+
+# @ yarpp
+#: options-meta-boxes.php:337
+msgid "Contact YARPP"
+msgstr "Kontaktiraj YARPP"
+
+# @ default
+#: options.php:31
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox"
+"\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update "
+"automatically</a>."
+msgstr ""
+"Novija verzija %1$s je dostupna. <a href=\"%2$s\" class=\"thickbox\" title="
+"\"%3$s\">Vidi detalje %4$s verzije</a> ili <a href=\"%5$s\">ažuriraj "
+"automatski</a>."
+
+# @ yarpp
+#: options.php:35
+#, php-format
+msgid ""
+"There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a "
+"href=\"%s\">download it here</a> at your own risk."
+msgstr ""
+"Postoji nova beta (%s) dodatka Yet Another Related Posts Plugin. Možete ju "
+"<a href=\"%s\">preuzeti ovdje</a> na svoj rizik."
+
+# @ yarpp
+#: options.php:43
+msgid ""
+"The MyISAM check has been overridden. You may now use the \"consider titles"
+"\" and \"consider bodies\" relatedness criteria."
+msgstr ""
+"MyISAM provjera je premoštena. Sada možete koristiti \"consider titles\" i "
+"\"consider bodies\" kao kriterije za relevantnost."
+
+# @ yarpp
+#: options.php:51
+#, php-format
+msgid ""
+"YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria "
+"require your <code>%s</code> table to use the <a href='http://dev.mysql.com/"
+"doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the "
+"table seems to be using the <code>%s</code> engine. These two options have "
+"been disabled."
+msgstr ""
+"YARPPs \"Koristi naslove\" i \"Koristi sadržaj\" kriteriji za relevantnost "
+"članaka trebaju vašu <code>%s</code> tablicu da bi koristili <a href='http://"
+"dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM Storage Engine</"
+"a> ali izgleda da tablice koristi <code>%s</code> engine. Ove dvije opcije "
+"nisu dostupne."
+
+# @ yarpp
+#: options.php:53
+#, php-format
+msgid ""
+"To restore these features, please update your <code>%s</code> table by "
+"executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = "
+"MyISAM;</code> . No data will be erased by altering the table's engine, "
+"although there are performance implications."
+msgstr ""
+"Da biste koristili ove opcije, molimo ažurirajte vašu <code>%s</code> "
+"tablicu korištenjem sljedeće SQL naredbe: <code>ALTER TABLE `%s` ENGINE = "
+"MyISAM;</code>. Nikakvi podaci neće biti izbrisani mijenjanjem engine-a "
+"tablice, iako može doći do usporavanja stranice."
+
+# @ yarpp
+#: options.php:55
+#, php-format
+msgid ""
+"If, despite this check, you are sure that <code>%s</code> is using the "
+"MyISAM engine, press this magic button:"
+msgstr ""
+"Ako bez obzira na ovu provjeru ste sigurni da <code>%s</code> koristi MyISAM "
+"engine, kliknite ovo magično dugme:"
+
+# @ yarpp
+#: options.php:58
+msgid "Trust me. Let me use MyISAM features."
+msgstr "Vjeruj mi. Želim koristiti MyISAM značajke."
+
+# @ yarpp
+#: options.php:73
+msgid "The YARPP database had an error but has been fixed."
+msgstr "YARPP baza podataka je imala grešku ali je popravljena."
+
+# @ yarpp
+#: options.php:75
+msgid "The YARPP database has an error which could not be fixed."
+msgstr "YARPP baza podataka je imala grešku koja nije mogla biti popravljena."
+
+# @ yarpp
+#: options.php:76
+#, php-format
+msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
+msgstr ""
+"Molimo pokušajte <a href=\"%s\" target=\"_blank\">ručno podesiti SQL</a>."
+
+# @ yarpp
+#: options.php:132
+msgid "Options saved!"
+msgstr "Postavke spremljene!"
+
+# @ yarpp
+#: options.php:138
+msgid "Yet Another Related Posts Plugin Options"
+msgstr "Postavke Dodatka za Vezane Članke (YARPP)"
+
+# @ yarpp
+#: options.php:146
+#, php-format
+msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+msgstr "od <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+
+# @ default
+#: options.php:175
+msgid "Save Changes"
+msgstr "Snimi Promjene"
+
+# @ yarpp
+#: template-builtin.php:21
+#, php-format
+msgid ""
+"%f is the YARPP match score between the current entry and this related "
+"entry. You are seeing this value because you are logged in to WordPress as "
+"an administrator. It is not shown to regular visitors."
+msgstr ""
+"%f je YARPP odgovarajuća vrijednost između trenutnog unosa i ovoj vezanog "
+"unosa. Vi vidite ovu vrijednost jer ste logirani u WordPress kao "
+"administrator. Ovo se ne prikazuje običnim posjetiteljima."
+
+# @ yarpp
+#: template-metabox.php:12
+msgid ""
+"These are the related entries for this entry. Updating this post may change "
+"these related posts."
+msgstr ""
+"Ovo su vezani članci za ovaj članak. Mijenjanjem ovog članka mogu biti "
+"prikazani drugi vezani članci."
+
+# @ yarpp
+#: template-metabox.php:28
+msgid ""
+"Whether all of these related entries are actually displayed and how they are "
+"displayed depends on your YARPP display options."
+msgstr ""
+"Da li su svi ovi vezani članci zapravo prikazani i kako su prikazani ovisi o "
+"vašim postavljenim YARPP opcijama prikaza."

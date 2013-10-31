@@ -1,0 +1,16 @@
+.slidedeck-content-source.source-dailymotion .fancy-select { color: #333; }
+.slidedeck-content-source #dailymotion-user-playlists label {
+    font-weight: bold;
+    display: inline-block;
+    width: 142px;
+    font-size: 13px;
+    line-height: 31px;
+    margin-top: -23px;
+}
+.slidedeck-content-source ul.content-source-fields li input#options-dailymotion_username {
+	min-width: 130px;
+	width: 130px;
+}
+form.slidedeck-form #dailymotion-user-playlists select {
+	width: 160px;
+}

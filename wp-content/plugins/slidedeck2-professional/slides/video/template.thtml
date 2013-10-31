@@ -1,0 +1,45 @@
+<div class="video-wrapper">
+    <?php echo $video_container; ?>
+    <div class="cover" style="background-image: url('<?php echo $video_meta['full_image']; ?>');">
+    
+        <div class="sd2-node-caption">
+        	
+        	<?php if( empty( $image ) || $size == 'small' ): ?>
+        	    
+                <div class="sd2-vertical-center-outer">
+                    <div class="sd2-vertical-center-middle">
+                        <div class="sd2-vertical-center-inner">	
+        	
+        	<?php endif; ?>
+        	
+        	<div class="sd2-slide-title accent-color">
+        	    <span class="sd2-slide-title-inner">
+                    <?php if( !empty( $permalink ) ): ?><a class="accent-color" href="<?php echo $permalink; ?>" target="<?php echo $target; ?>"><?php endif; ?>
+                        <?php echo $title; ?>
+                    <?php if( !empty( $permalink ) ): ?></a><?php endif; ?>
+                </span>
+        	</div>
+            
+            <?php if( !empty( $content ) ): ?>
+        		<div class="sd2-slide-text">
+        		    <?php echo $filtered_content; ?>
+    		    </div>
+        
+                <a href="<?php echo $permalink; ?>" class="readmore play-video-alternative" target="<?php echo $target; ?>"><?php _e( "Play Video", $this->namespace ); ?></a>
+        	<?php endif; ?>
+        	
+        	<?php if( empty( $image ) || $size == 'small' ): ?>
+        	    
+                        </div>
+                    </div>
+                </div>
+                
+        	<?php endif; ?>
+        	
+        </div>
+        
+        <a class="play-video-button play" href="#play">Click To Play</a>
+    </div>
+
+    <div class="sd2-slide-background" style="background-image: url(<?php echo $image; ?>);"></div>
+</div>

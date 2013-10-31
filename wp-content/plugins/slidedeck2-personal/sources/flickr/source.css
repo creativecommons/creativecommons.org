@@ -1,0 +1,58 @@
+.slidedeck-content-source.source-flickr .fancy-select{ color: #333; }
+.slidedeck-content-source #options-flickr_userid { min-width: 153px; }
+
+#content-source-flickr { min-width: 465px; }
+#content-source-flickr em {
+    display: block;
+    line-height: normal;
+    margin-left: 140px;
+    max-width: 270px;
+}
+.content-source-fields .add-button-li a.flickr-tag-add{
+    line-height: 2em;
+}
+.slidedeck-content-source.source-flickr ul.content-source-fields #flickr-add-tag-field { min-width: 157px; }
+.flickr.add-button-wrapper{
+    padding-bottom: 9px;
+}
+#flickr-tags-wrapper{
+    clear: both;
+    width: 230px;
+    padding-left: 142px;
+    overflow: hidden;
+}
+#flickr-tags-wrapper span {
+    background: none repeat scroll 0 0 #eee;
+    border-radius: 3px;
+    display: block;
+    color: #acacac;
+    border: solid 1px #cbcbcb;
+    height: 14px;
+    font-size: 12px;
+    line-height: 14px;
+    overflow: hidden;
+    float: left;
+    padding: 0 5px;
+    margin-right: 7px;
+    margin-bottom: 6px;
+}
+#flickr-tags-wrapper span .delete,
+#flickr-tags-wrapper span .delete:link
+#flickr-tags-wrapper span .delete:visited {
+    display: block;
+    margin-right: 4px;
+    width: 10px;
+    float: left;
+    height: 0;
+    position: relative;
+    top: 2px;
+    padding-top: 10px;
+    background: url('images/delete-x.png') no-repeat -25px -25px;
+    overflow: hidden;
+}
+#flickr-tags-wrapper span .delete:hover {
+    background-position: -25px -85px;
+}
+#flickr-tags-wrapper span .delete:active {
+    background-position: -25px -145px;
+}

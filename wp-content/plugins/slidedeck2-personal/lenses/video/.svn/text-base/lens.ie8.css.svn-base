@@ -1,0 +1,16 @@
+/*IE8 Specific Styles*/
+.lens-video a.deck-navigation {
+	background:transparent;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#50000000,endColorstr=#50000000);
+	zoom: 1;
+}
+.lens-video a.deck-navigation:hover {
+	background:transparent;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000);
+	zoom: 1;
+}
+.lens-video a.deck-navigation:active {
+	background:transparent;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#90000000,endColorstr=#90000000);
+	zoom: 1;
+}

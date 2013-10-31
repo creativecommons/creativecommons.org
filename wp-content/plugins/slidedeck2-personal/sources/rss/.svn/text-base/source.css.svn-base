@@ -1,0 +1,28 @@
+#content-source-rss .content-source-fields li em {
+    display: block;
+    margin-left: 120px;
+    width: 308px;
+    line-height: 1.7em;
+    font-size: 11px;
+}
+.slidedeck-content-source #content-source-rss ul.content-source-fields li span.label, 
+.slidedeck-content-source #content-source-rss ul.content-source-fields li > label.label {
+	width: 180px;
+}
+.slidedeck-content-source #content-source-rss ul.content-source-fields li:first-child span.label, 
+.slidedeck-content-source #content-source-rss ul.content-source-fields li:first-child > label.label {
+	width: 120px;
+}
+.slidedeck-content-source #content-source-rss ul.content-source-fields li input[type="text"], 
+.slidedeck-content-source #content-source-rss ul.content-source-fields li input[type="password"], 
+.slidedeck-content-source #content-source-rss ul.content-source-fields li input[type="email"] {
+	width: 240px;
+	min-width: 240px;
+}
+.slidedeck-content-source #content-source-rss ul.content-source-fields li #options-feedUrl {
+	width: 306px;
+	min-width: 306px;
+}
+form.slidedeck-form #content-source-rss select#options-rssImageSource {
+	width: 216px;
+}

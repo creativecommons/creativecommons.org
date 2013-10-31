@@ -1,0 +1,93 @@
+.slidedeck-content-source.source-posts.open { min-width: 770px; }
+#slidedeck-filters {
+    overflow: auto;
+    max-height: 300px;
+}
+#slidedeck-filters ul,
+#slidedeck-filters ul li{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+#content-source-posts .slidedeck-ajax-loading {
+    color: #999999;
+    font-style: italic;
+    padding: 1em;
+    text-align: center;
+}
+#content-source-posts .right .slidedeck-ajax-loading {
+    text-align: left;
+}
+#content-source-posts .trailblazer{
+    color: #999999;
+    font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+    font-weight: normal;
+    font-size: 1.7em;
+    font-style: italic;
+    line-height: 1.2em;
+}
+#slidedeck-terms{
+	width: 255px;
+}
+#options-query_any_all {
+	width: 227px;
+}
+#content-source-posts .right .fancy-select {
+	display: block;
+	margin-bottom: 17px;
+}
+#content-source-posts .left{
+	float: left;
+	width: 400px;
+}
+#content-source-posts .right{
+	float: right;
+	padding-left: 50px;
+	width: 255px;
+}
+#content-source-posts li.taxonomy span.label {
+	display: block;
+	float: left;
+	font-size: 13px;
+	font-weight: bold;
+	padding-right: 10px;
+	text-align: right;
+	width: 170px;
+	line-height: 33px;
+	white-space: nowrap;
+}
+#content-source-posts li.taxonomy {
+	overflow: hidden;
+	margin-bottom: 12px;
+}
+#slidedeck-terms h3{
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1;
+    margin: 0;
+    padding: 7px 10px;
+    cursor: default;
+    font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+    height: auto;
+}
+#slidedeck-terms .tabs-panel {
+	margin: 0;
+	height: auto;
+	max-height: 220px;
+	overflow: auto;
+}
+#slidedeck-terms .category-tabs {
+	padding: 0;
+	margin: 8px 0 3px;
+}
+#slidedeck-terms .category-tabs li {
+	display: inline;
+	line-height: 1.35em;
+}
+#slidedeck-terms .category-tabs li a {
+	line-height: 17px;
+}
+.slidedeck-content-source #content-source-posts ul.content-source-fields li span.label, 
+.slidedeck-content-source #content-source-posts ul.content-source-fields li > label.label {
+	width: 180px;
+}

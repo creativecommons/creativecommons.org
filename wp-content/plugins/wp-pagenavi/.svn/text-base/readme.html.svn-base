@@ -1,0 +1,460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>WP-PageNavi 2.50 Readme</title>
+	<style type="text/css" media="screen">
+		/* Default Style */
+		BODY {
+			font-family: Verdana, Arial;
+			font-size: 12px;
+			color: #000000;
+			background: #FFFFFF;
+		}
+		P {
+			padding-left: 10px;
+		}
+		BLOCKQUOTE {
+			margin: 10px 20px 0px 20px;
+			padding: 10px;
+			border: 1px solid #8d8d8d;
+			background-color: #f5f5f5;
+		}
+		LI {
+			margin-top: 20px;
+		}
+		UL LI UL LI {
+			margin-top: 10px;
+		}
+		A, A:active, A:link, A:visited {
+			color: #2d3a4c;
+			text-decoration: none;
+		}
+		A:hover {
+			color: #5577a5;
+			text-decoration: underline;
+		}
+		/* Place Holder Style */
+		#Container {
+			width: 780px;
+			margin-left: auto;
+			margin-right: auto; 
+		}
+		#Content {
+			background-color: #fafafa;
+			border: 1px solid #a2b6cb;
+			padding: 10px;
+			margin-top: -13px;
+		}
+		/* Title Style */
+		#Title {
+			font-family: Verdana, Arial;
+			font-size: 22px;
+			font-weight: bold;
+			color: #389aff;
+			border-bottom: 1px solid #389aff;
+			margin-bottom: 10px;
+		}
+		.SubTitle {
+			font-family: Verdana, Arial;
+			font-size: 18px;
+			font-weight: bold;
+			color: #5b87b4;
+		}
+		.SubSubTitle {
+			font-family: Verdana, Arial;
+			font-size: 14px;
+			font-weight: bold;
+			color: #73a4d6;
+		}
+		/* Tabs */
+		UL#Tabs {
+			font-family: Verdana, Arial;
+			font-size: 12px;
+			font-weight: bold;
+			list-style-type: none;
+			padding-bottom: 28px;
+			border-bottom: 1px solid #a2b6cb;
+			margin-bottom: 12px;
+			z-index: 1;
+		}
+		#Tabs LI.Tab {
+			float: right;
+			height: 25px;
+			background-color: #deedfb;
+			margin: 2px 0px 0px 5px;
+			border: 1px solid #a2b6cb;
+		}
+		#Tabs LI.Tab A {
+			float: left;
+			display: block;
+			color: #666666;
+			text-decoration: none;
+			padding: 5px;
+		}
+		#Tabs LI.Tab A:hover {
+			background-color: #bfe0fe;
+			border-bottom: 1px solid #bfe0fe;
+		}
+		/* Selected Tab */
+		#Tabs LI.SelectedTab {
+			float: right;
+			height: 25px;
+			background-color: #fafafa;
+			margin: 2px 0px 0px 5px;
+			border-top: 1px solid #a2b6cb;
+			border-right: 1px solid #a2b6cb;
+			border-bottom: 1px solid #fafafa;
+			border-left: 1px solid #a2b6cb;
+		}
+		#Tabs LI.SelectedTab A {
+			float: left;
+			display: block;
+			color: #666666;
+			text-decoration: none;
+			padding: 5px;
+			cursor: default;
+		}
+		/* Copyright */
+		#Copyright {
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript">
+	/* <![CDATA[*/
+		// Index Page
+		function index() {
+			// Tab
+			document.getElementById('IndexTab').className = 'SelectedTab';
+			document.getElementById('ChangelogTab').className = 'Tab';
+			document.getElementById('InstallTab').className = 'Tab';
+			document.getElementById('UpgradeTab').className = 'Tab';
+			document.getElementById('UsageTab').className = 'Tab';
+			// Page
+			document.getElementById('Index').style.display= 'block';
+			document.getElementById('Changelog').style.display = 'none';
+			document.getElementById('Install').style.display = 'none';
+			document.getElementById('Upgrade').style.display = 'none';
+			document.getElementById('Usage').style.display = 'none';
+		}
+		// Changelog Page
+		function changelog() {
+			// Tab
+			document.getElementById('IndexTab').className = 'Tab';
+			document.getElementById('ChangelogTab').className = 'SelectedTab';
+			document.getElementById('InstallTab').className = 'Tab';
+			document.getElementById('UpgradeTab').className = 'Tab';
+			document.getElementById('UsageTab').className = 'Tab';
+			// Page
+			document.getElementById('Index').style.display = 'none';
+			document.getElementById('Changelog').style.display = 'block';
+			document.getElementById('Install').style.display = 'none';
+			document.getElementById('Upgrade').style.display = 'none';
+			document.getElementById('Usage').style.display = 'none';
+		}
+		// Installation Page
+		function install() {
+			// Tab
+			document.getElementById('IndexTab').className = 'Tab';
+			document.getElementById('ChangelogTab').className = 'Tab';
+			document.getElementById('InstallTab').className = 'SelectedTab';
+			document.getElementById('UpgradeTab').className = 'Tab';
+			document.getElementById('UsageTab').className = 'Tab';
+			// Page
+			document.getElementById('Index').style.display= 'none';
+			document.getElementById('Changelog').style.display = 'none';
+			document.getElementById('Install').style.display = 'block';
+			document.getElementById('Upgrade').style.display = 'none';
+			document.getElementById('Usage').style.display = 'none';
+		}
+		// Upgrade Page
+		function upgrade() {
+			// Tab
+			document.getElementById('IndexTab').className = 'Tab';
+			document.getElementById('ChangelogTab').className = 'Tab';
+			document.getElementById('InstallTab').className = 'Tab';
+			document.getElementById('UpgradeTab').className = 'SelectedTab';
+			document.getElementById('UsageTab').className = 'Tab';
+			// Page
+			document.getElementById('Index').style.display= 'none';
+			document.getElementById('Changelog').style.display = 'none';
+			document.getElementById('Install').style.display = 'none';
+			document.getElementById('Upgrade').style.display = 'block';
+			document.getElementById('Usage').style.display = 'none';
+		}
+		// Usage Page
+		function usage() {
+			// Tab
+			document.getElementById('IndexTab').className = 'Tab';
+			document.getElementById('ChangelogTab').className = 'Tab';
+			document.getElementById('InstallTab').className = 'Tab';
+			document.getElementById('UpgradeTab').className = 'Tab';
+			document.getElementById('UsageTab').className = 'SelectedTab';
+			// Page
+			document.getElementById('Index').style.display= 'none';
+			document.getElementById('Changelog').style.display = 'none';
+			document.getElementById('Install').style.display = 'none';
+			document.getElementById('Upgrade').style.display = 'none';
+			document.getElementById('Usage').style.display = 'block';
+		}
+	/* ]]> */
+	</script>
+</head>
+<body>
+<div id="Container">
+	<!-- Title -->
+	<div id="Title">WP-PageNavi 2.50&nbsp;&nbsp;&nbsp;<span style="color: #aaaaaa;">Readme</span></div>
+
+	<!-- Tabs -->
+	<ul id="Tabs">
+		<li id="UsageTab" class="Tab"><a href="#Usage" onclick="usage(); return false;" title="Usage Instructions">Usage</a></li>
+		<li id="UpgradeTab" class="Tab"><a href="#Upgrade" onclick="upgrade(); return false;" title="Upgrade Instructions">Upgrade</a></li>
+		<li id="InstallTab" class="Tab"><a href="#Installation" onclick="install(); return false;" title="Installation Instructions">Installation</a></li>
+		<li id="ChangelogTab" class="Tab"><a href="#Changelog" onclick="changelog(); return false;" title="Changelog">Changelog</a></li>
+		<li id="IndexTab" class="SelectedTab"><a href="#Index" onclick="index(); return false;" title="Index Instructions">Index</a></li>
+	</ul>
+
+	<!-- Content -->
+	<div id="Content">
+		<!-- Index -->
+		<div id="Index">
+			<div class="SubTitle">&raquo; Index</div>
+			<div class="SubSubTitle">Plugin Information</div>
+			<p>
+				<strong>Author:</strong><br />
+				<strong>&raquo;</strong> Lester 'GaMerZ' Chan
+			</p>
+			<p>
+				<strong>Website:</strong><br />
+				<strong>&raquo;</strong> <a href="http://lesterchan.net/" title="http://lesterchan.net/">http://lesterchan.net/</a>
+			</p>
+			<p>
+				<strong>Features:</strong><br />
+				<strong>&raquo;</strong> Adds a more advanced paging navigation your WordPress blog.<br /><strong>&raquo;</strong> Example: <strong>Pages (17): [1] 2 3 4 &raquo; ... Last &raquo;</strong>
+			</p>
+			<p>
+				<strong>Download:</strong><br />
+				<strong>&raquo;</strong> <a href="http://downloads.wordpress.org/plugin/wp-pagenavi.2.50.zip" title="http://downloads.wordpress.org/plugin/wp-pagenavi.2.50.zip">WP-PageNavi 2.50 For WordPress 2.8.x</a><br />
+				<strong>&raquo;</strong> <a href="http://downloads.wordpress.org/plugin/wp-pagenavi.2.40.zip" title="http://downloads.wordpress.org/plugin/wp-pagenavi.2.40.zip">WP-PageNavi 2.40 For WordPress 2.7.x</a><br />
+				<strong>&raquo;</strong> <a href="http://downloads.wordpress.org/plugin/wp-pagenavi.2.31.zip" title="http://downloads.wordpress.org/plugin/wp-pagenavi.2.31.zip">WP-PageNavi 2.31 For WordPress 2.1.x To WordPress 2.6.x</a><br />
+				<strong>&raquo;</strong> <a href="http://downloads.wordpress.org/plugin/wp-pagenavi.2.03.zip" title="http://downloads.wordpress.org/plugin/wp-pagenavi.2.03.zip">WP-PageNavi 2.03 For WordPress 2.0.x</a><br />
+				<strong>&raquo;</strong> <a href="http://downloads.wordpress.org/plugin/wp-pagenavi.1.00.zip" title="http://downloads.wordpress.org/plugin/wp-pagenavi.1.00.zip">WP-PageNavi 1.00 For WordPress 1.5.2</a>
+			</p>
+			<p>
+				<strong>Screenshots:</strong><br />
+				<strong>&raquo;</strong> <a href="http://lesterchan.net/wordpress/screenshots/browse/wp-pagenavi/" title="http://lesterchan.net/wordpress/screenshots/browse/wp-pagenavi/">http://lesterchan.net/wordpress/screenshots/browse/wp-pagenavi/</a>
+			</p>
+			<p>
+				<strong>Demo:</strong><br />
+				<strong>&raquo;</strong> <a href="http://lesterchan.net/wordpress/" title="http://lesterchan.net/wordpress/">http://lesterchan.net/wordpress/</a>
+			</p>
+			<p>
+				<strong>Development:</strong><br />
+				<strong>&raquo;</strong> <a href="http://dev.wp-plugins.org/browser/wp-pagenavi/" title="http://dev.wp-plugins.org/browser/wp-pagenavi/">http://dev.wp-plugins.org/browser/wp-pagenavi/</a>
+			</p>
+			<p>
+				<strong>Translations:</strong><br />
+				<strong>&raquo;</strong> <a href="http://dev.wp-plugins.org/browser/wp-pagenavi/i18n/" title="http://dev.wp-plugins.org/browser/wp-pagenavi/i18n/">http://dev.wp-plugins.org/browser/wp-pagenavi/i18n/</a>
+			</p>
+			<p><strong>Support Forums:</strong><br />
+				<strong>&raquo;</strong> <a href="http://forums.lesterchan.net/index.php?board=14.0" title="http://forums.lesterchan.net/index.php?board=14.0">http://forums.lesterchan.net/index.php?board=14.0</a>
+			</p>
+			<p>
+				<strong>Credits:</strong><br />
+				<strong>&raquo;</strong> Right To Left Language Support by <a href="http://persian-programming.com/" title="http://persian-programming.com/">Kambiz R. Khojasteh</a>.
+			</p>
+			<p>
+				<strong>Note:</strong><br />
+				<strong>&raquo;</strong> The <strong>Changelog</strong>, <strong>Installation</strong>, <strong>Upgrade</strong>, <strong>Usage</strong> Tab at the top of the page.
+			</p>
+			<p>
+				<strong>Donations:</strong><br />
+				<strong>&raquo;</strong> I spent most of my free time creating, updating, maintaining and supporting these plugins, if you really love my plugins and could spare me a couple of bucks as my school allowance, I will really appericiate it. If not feel free to use it without any obligations. Thank You. My Paypal account is 
+				<script type="text/javascript">
+					/* <![CDATA[*/
+					document.write(' <strong>lesterchan@gmail.com</strong>.');
+					/* ]]> */
+				</script>
+			</p>
+		</div>
+
+		<!-- Changelog -->
+		<div id="Changelog" style="display: none;">
+			<div class="SubTitle">&raquo; Changelog</div>
+			<ul>
+				<li>
+					<strong>Version 2.50 (01-06-2009)</strong>
+					<ul>
+						<li>NEW: Works For WordPress 2.8</li>
+						<li>NEW: Added Larger Page Number Pagination</li>
+						<li>NEW: Added "first", "page" and "last" CSS Name To Link<li>
+						<li>FIXED: Removed "&amp;#8201;" Entity</li>
+						<li>FIXED: Uses $_SERVER['PHP_SELF'] With plugin_basename(__FILE__) Instead Of Just $_SERVER['REQUEST_URI']</li>
+					</ul>
+				</li>
+				<li>
+					<strong>Version 2.40 (12-12-2008)</strong>
+					<ul>
+						<li>NEW: Works For WordPress 2.7 Only</li>
+						<li>NEW: Right To Left Language Support by <a href="http://persian-programming.com/" title="http://persian-programming.com/">Kambiz R. Khojasteh</a></li>
+						<li>NEW: Called pagenavi_textdomain() In pagenavi_init() by <a href="http://persian-programming.com/" title="http://persian-programming.com/">Kambiz R. Khojasteh</a></li>
+					</ul>
+				</li>
+				<li>
+					<strong>Version 2.31 (16-07-2008)</strong>
+					<ul>
+						<li>NEW: Works For WordPress 2.6</li>
+					</ul>
+				</li>
+				<li>
+					<strong>Version 2.30 (01-06-2008)</strong>
+					<ul>
+						<li>NEW: WP-PageNavi Will Load 'pagenavi-css.css' Inside Your Theme Directory If It Exists. If Not, It Will Just Load The Default 'pagenavi-css.css' By WP-PageNavi</li>
+						<li>NEW: Uses /wp-pagenavi/ Folder Instead Of /pagenavi/</li>
+						<li>NEW: Uses wp-pagenavi.php Instead Of pagenavi.php</li>
+						<li>NEW: Added "wp-pagenavi a:visited" Style In pagenavi-css.css</li>
+						<li>NEW: Added $before And $after Function Arguments To wp_pagenavi();</li>
+						<li>FIXED: Rearranged CSS Classes In pagenavi-css.css</li>
+						<li>FIXED: "First" Text Does Not Always Appear If Page 1 Is Not Shown</li>
+					</ul>
+				</li>
+				<li>
+					<strong>Version 2.20 (01-10-2007)</strong>
+					<ul>
+						<li>NEW: Supports query_posts(); Variables</li>
+						<li>NEW: Ability To Uninstall WP-PageNavi</li>
+					</ul>
+				</li>
+				<li>
+					<strong>Version 2.11 (01-06-2007)</strong>
+					<ul>
+						<li>NEW: Page Navigation Now Is Customizable Via <strong>'WP-Admin -> Options -> PageNavi'</strong> And pagenavi-css.css</li>
+						<li>NEW: Default Style Navigation Is Now Boxed Navigation (Similar To <a href="http://www.digg.com/">Digg.com</a>)</li>
+						<li>FIXED: Fix For Ultimate Tag Warrior By Oliver Kastler &amp; Stephan (<a href="http://www.netconcepts.com">Netconcepts</a>)</li>
+					</ul>
+				</li>
+				<li>
+					<strong>Version 2.10 (01-02-2007)</strong>
+					<ul>
+						<li>NEW: Works For WordPress 2.1 Only</li>
+						<li>NEW: Move pagenavi.php To pagenavi Folder</li>
+					</ul>
+				</li>
+				<li>
+					<strong>Version 2.03 (01-10-2006)</strong>
+					<ul>
+						<li>FIXED: Now Compatible With WordPress 2.1</li>				
+					</ul>
+				</li>
+				<li>
+					<strong>Version 2.02 (01-06-2006)</strong>
+					<ul>
+						<li>NEW: Added Drop Down Menu Style Of Page Navigation</li>				
+					</ul>
+				</li>
+				<li>
+					<strong>Version 2.01 (01-03-2006)</strong>
+					<ul>
+						<li>FIXED: Paging Show If There Is Only 1 Page</li>
+					</ul>
+				</li>
+				<li>
+					<strong>Version 2.00 (01-01-2006)</strong>
+					<ul>
+						<li>NEW: Compatible With WordPress 2.0</li>
+						<li>FIXED: Space Issues</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Installation Instructions -->
+		<div id="Install" style="display: none;">
+			<div class="SubTitle">&raquo; Installation Instructions</div>
+			<ol>
+				<li>
+					Open <strong>wp-content/plugins</strong> Folder
+				</li>
+				<li>
+					Put:
+					<blockquote>Folder: wp-pagenavi</blockquote>
+				</li>
+				<li>
+					<strong>Activate</strong> WP-PageNavi Plugin
+				</li>
+				<li>
+					Refer To <strong>Usage</strong> For Further Instructions
+				</li>
+			</ol>
+		</div>
+
+		<!-- Upgrade Instructions -->	
+		<div id="Upgrade" style="display: none;">
+			<div class="SubTitle">&raquo; Upgrade Instructions</div>
+			<div class="SubSubTitle">From v2.0x To v2.50</div>
+			<ol>
+				<li>
+					<strong>Deactivate</strong> WP-PageNavi Plugin
+				</li>
+				<li>
+					Open <strong>wp-content/plugins</strong> Folder
+				</li>
+				<li>
+					Put/Overwrite:
+					<blockquote>Folder: wp-pagenavi</blockquote>
+				</li>
+				<li>
+					Delete this folder if exists:
+					<blockquote>
+						Folder: pagenavi
+					</blockquote>
+				</li>
+				<li>
+					<strong>Activate</strong> WP-PageNavi Plugin
+				</li>
+				<li>
+					Refer To <strong>Usage</strong> For Further Instructions
+				</li>
+			</ol>
+		</div>
+
+		<!-- Usage Instructions -->	
+		<div id="Usage" style="display: none;">
+			<div class="SubTitle">&raquo; Usage Instructions</div>
+			<div class="SubSubTitle">General Usage</div>
+			<ol>
+				<li>
+					Open <strong>wp-content/themes/&lt;YOUR THEME NAME&gt;/footer.php</strong>
+				</li>
+				<li>
+					Add Anywhere:
+					<blockquote>
+						&lt;?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } ?&gt;
+					</blockquote>
+				</li>
+				<li>
+					Go to <strong>'WP-Admin -> Settings -> PageNavi'</strong> to configure WP-PageNavi.
+				</li>
+				<li>
+					If you need to configure the CSS style of WP-PageNavi, open and edit:
+					<blockquote>
+					/wp-content/plugins/wp-pagenavi/pagenavi-css.css
+					</blockquote>
+				</li>
+			</ol>
+			<div class="SubSubTitle">Note</div>
+			<ul>
+				<li>
+					WP-PageNavi will load '<strong>pagenavi-css.css</strong>' from your theme's directory if it exists.
+					<ul>
+						<li>If it doesn't exists, it will just load the default 'pagenavi-css.css' that comes with WP-PageNavi.</li>
+						<li>This will allow you to upgrade WP-PageNavi without worrying about overwriting your page navigation styles that you have created.</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<p id="Copyright">WP-PageNavi 2.50<br />Copyright &copy; 2009 Lester 'GaMerZ' Chan. All Rights Reserved.</p>
+</body>
+</html>

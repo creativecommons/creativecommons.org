@@ -1,0 +1,24 @@
+/*IE8 Specific Styles*/
+.lens-classic dl.slidedeck > dt.active ul.verticalSlideNav { top: 6px; }
+.lens-classic dl.slidedeck > dt.spine span.sd2-spine-inner {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	border: 0;
+}
+.lens-classic dl.slidedeck > dt.spine.last span.sd2-spine-inner {
+	border-bottom: 0;
+}
+
+.lens-classic dl.slidedeck > dt.spine .index {
+    background-color: #f6f6f6;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Chroma(color='#f6f6f6')";
+    filter: progid:DXImageTransform.Microsoft.Chroma(color='#f6f6f6');
+}
+.lens-classic dl.slidedeck > dt.spine.active .index {
+    background-color: #181818;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Chroma(color='#181818')";
+}

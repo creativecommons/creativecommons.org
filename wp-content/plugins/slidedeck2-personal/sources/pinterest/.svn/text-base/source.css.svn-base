@@ -1,0 +1,15 @@
+.slidedeck-content-source ul.content-source-fields li input#options-pinterest_url {
+	min-width: 280px;
+	width: 280px;
+}
+.slidedeck-content-source #content-source-pinterest {
+	width: 500px;
+}
+.slidedeck-content-source .note-below {
+	margin-bottom: 1em;
+	padding: 0;
+}
+.slidedeck-content-source .note-below.disclaimer {
+	padding-top: 10px;
+	display: block;
+}

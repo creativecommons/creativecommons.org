@@ -1,0 +1,6 @@
+# Pootle preferences for project cc_org, language en_US
+
+rights:
+  default = u'view, suggest, archive, pocompile'
+  nathan = u'view, suggest, translate, review, archive, pocompile, admin, commit'
+  nobody = u'view'

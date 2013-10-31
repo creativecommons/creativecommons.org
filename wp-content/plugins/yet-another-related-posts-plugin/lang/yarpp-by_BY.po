@@ -1,0 +1,569 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yet Another Related Posts Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2009-07-02 14:00+0300\n"
+"Last-Translator: Fat Cow <zhr@tut.by>\n"
+"Language-Team: Fat Cow <zhr@tut.by>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Belarusian\n"
+"X-Poedit-Country: BELARUS\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: includes.php:149
+#: includes.php:194
+#: includes.php:215
+#@ yarpp
+msgid "Related Posts (YARPP)"
+msgstr "Звязаныя пасты (YARPP)"
+
+#: includes.php:376
+#@ yarpp
+msgid "Related Posts"
+msgstr "Звязаныя пасты"
+
+#: template-builtin.php:35
+#, php-format
+#@ yarpp
+msgid "%f is the YARPP match score between the current entry and this related entry. You are seeing this value because you are logged in to WordPress as an administrator. It is not shown to regular visitors."
+msgstr "%f - гэта каэфіцыент \"падобнасці\" паста і звязанага з ім. Вы бачыце гэта таму, што вы зашлі ў Wordpress адміністратарам. Гэта не паказваецца простым наведвальнікам"
+
+#: magic.php:297
+#: options-meta-boxes.php:205
+#: options-meta-boxes.php:269
+#, php-format
+#@ yarpp
+msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
+msgstr "Спіс падобных пастоў прадстаўлены вам убудовай <a href='%s'>YARPP</a>."
+
+#: options.php:54
+#@ yarpp
+msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
+msgstr "Праверка MyISAM была выкананая. Зараз вы можаце выкарыстаць крытэры падобнасці Разглядаць загалоўкі і Разглядаць тэкст."
+
+#: options.php:63
+#, php-format
+#@ yarpp
+msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
+msgstr "Выкарыстанне опцый YARPP Разглядаць загалоўкі і Разглядаць тэкст патрабуе, каб ваша табліца <code>%s</code> выкарыстала рухавічок <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM</a>, але табліца мабыць выкарыстае рухавічок <code>%s</code>. Гэтыя дзве опцыі адключаныя."
+
+#: options.php:65
+#, fuzzy, php-format, php-format
+#@ yarpp
+msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
+msgstr "Для аднаўлення гэтых опцый, калі ласка, зменіце вашу табліцу <code>%s</code>наступнай  SQL інструкцыяй e&nbsp;: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code><br />Пры змене табліцы дадзеныя не павінны прорва, аднак магчымыя наступствы."
+
+#: options.php:67
+#, php-format
+#@ yarpp
+msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
+msgstr "Калі, незалежна ад гэтай опцыі, вы ўпэўненыя што табліца <code>%s</code> выкарыстае MyISAM, націсніце на гэтую чароўную кнопку&nbsp;:"
+
+#: options.php:70
+#@ yarpp
+msgid "Trust me. Let me use MyISAM features."
+msgstr "Паверце мне. Дазвольце мне выкарыстаць MyISAM."
+
+#: options.php:83
+#@ yarpp
+msgid "The YARPP database had an error but has been fixed."
+msgstr "База дадзеных YARPP утрымоўвала памылкі, але яны былі выпраўленыя."
+
+#: options.php:85
+#@ yarpp
+msgid "The YARPP database has an error which could not be fixed."
+msgstr "База дадзеных YARPP утрымоўвае памылку, якая не можа быць выпраўленая."
+
+#: options-meta-boxes.php:45
+#: options-meta-boxes.php:63
+#: options-meta-boxes.php:76
+#@ yarpp
+msgid "do not consider"
+msgstr "не разглядаць"
+
+#: options-meta-boxes.php:46
+#: options-meta-boxes.php:64
+#: options-meta-boxes.php:78
+#@ yarpp
+msgid "consider"
+msgstr "разглядаць"
+
+#: options-meta-boxes.php:65
+#@ yarpp
+msgid "consider with extra weight"
+msgstr "разглядаць з дадатковай вагай"
+
+#: options-meta-boxes.php:286
+#@ default
+#@ yarpp
+msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
+msgstr "Ахвяраваць распрацоўніку  mitcho (Michael Yoshitaka Erlewine), праз PayPal"
+
+#: options.php:178
+#@ yarpp
+msgid "Yet Another Related Posts Plugin Options"
+msgstr "Опцыі YARPP"
+
+#: options-meta-boxes.php:118
+#@ yarpp
+msgid "\"The Pool\""
+msgstr "<em>Кантэнт</em>"
+
+#: options-meta-boxes.php:91
+#@ yarpp
+msgid "\"The Pool\" refers to the pool of posts and pages that are candidates for display as related to the current entry."
+msgstr "<em>Кантэнт</em> разумеецца як набор паведамленняў і старонак, якія з'яўляюцца кандыдатамі на паказ у блоку звязаных запісаў."
+
+#: options-meta-boxes.php:96
+#@ yarpp
+msgid "Disallow by category:"
+msgstr "Выключыць катэгорыі:"
+
+#: options-meta-boxes.php:98
+#@ yarpp
+msgid "Disallow by tag:"
+msgstr "Выключыць тэгі:"
+
+#: options-meta-boxes.php:101
+#@ yarpp
+msgid "Show password protected posts?"
+msgstr "Паказваць паведамленні, абароненыя паролем?"
+
+#: options-meta-boxes.php:140
+#@ yarpp
+msgid "Show only previous posts?"
+msgstr "Паказваць толькі папярэднія паведамленні?"
+
+#: options-meta-boxes.php:148
+#@ yarpp
+msgid "\"Relatedness\" options"
+msgstr "Крытэры падобнасці"
+
+#: options-meta-boxes.php:124
+#: options-meta-boxes.php:139
+#: options-meta-boxes.php:157
+#: options-meta-boxes.php:161
+#: options-meta-boxes.php:204
+#: options-meta-boxes.php:221
+#: options-meta-boxes.php:223
+#: options-meta-boxes.php:228
+#: options-meta-boxes.php:268
+#@ yarpp
+msgid "more&gt;"
+msgstr "падрабязней&gt;"
+
+#: options-meta-boxes.php:130
+#@ yarpp
+msgid "Match threshold:"
+msgstr "Парог падобнасці:"
+
+#: options-meta-boxes.php:131
+#@ yarpp
+msgid "Titles: "
+msgstr "Загалоўкі:"
+
+#: options-meta-boxes.php:133
+#@ yarpp
+msgid "Bodies: "
+msgstr "Тэксты:"
+
+#: options-meta-boxes.php:135
+#@ yarpp
+msgid "Tags: "
+msgstr "Тэгі:"
+
+#: options-meta-boxes.php:137
+#@ yarpp
+msgid "Categories: "
+msgstr "Катэгорыі:"
+
+#: options-meta-boxes.php:139
+#@ yarpp
+msgid "Cross-relate posts and pages?"
+msgstr "Рабіць крыжаваную пералінкоўку старонак і паведамленняў?"
+
+#: options-meta-boxes.php:139
+#@ yarpp
+msgid "When the \"Cross-relate posts and pages\" option is selected, the <code>related_posts()</code>, <code>related_pages()</code>, and <code>related_entries()</code> all will give the same output, returning both related pages and posts."
+msgstr "Калі вылучаная опцыя Рабіць крыжаваную пералінкоўку старонак і паведамленняў?, функцыі <code>related_posts()</code>, <code>related_pages()</code> і <code>related_entries()</code> выдаюць аднолькавы набор, які змяшчае і старонкі і паведамленні"
+
+#: options-meta-boxes.php:212
+#@ yarpp
+msgid "Display options <small>for your website</small>"
+msgstr "Прагляд опцый <small>для вашага сайта</small>"
+
+#: options-meta-boxes.php:157
+#@ yarpp
+msgid "Automatically display related posts?"
+msgstr "Аўтаматычна паказваць звязаныя пасты?"
+
+#: options-meta-boxes.php:157
+#@ yarpp
+msgid "This option automatically displays related posts right after the content on single entry pages. If this option is off, you will need to manually insert <code>related_posts()</code> or variants (<code>related_pages()</code> and <code>related_entries()</code>) into your theme files."
+msgstr "Гэта опцыя аўтаматычна паказвае звязаныя паведамленні hgzvj пасля змесціва на старонцы адзінкавага паведамлення. Калі гэтую опцыю адключыць, вам спатрэбіцца ўручную ўставіць  <code>related_posts()</code> або нешта падобнае (<code>related_pages()</code> і <code>related_entries()</code>) у вашай тэме."
+
+#: options-meta-boxes.php:158
+#@ yarpp
+msgid "Website display code example"
+msgstr "Прыклад кода на web-сайце "
+
+#: options-meta-boxes.php:158
+#: options-meta-boxes.php:221
+#@ yarpp
+msgid "(Update options to reload.)"
+msgstr "(Захаваеце опцыі для перазагрузкі.)"
+
+#: options-meta-boxes.php:160
+#: options-meta-boxes.php:226
+#@ yarpp
+msgid "Maximum number of related posts:"
+msgstr "Максімальная колькасць звязаных пастоў:"
+
+#: options-meta-boxes.php:175
+#: options-meta-boxes.php:244
+#@ yarpp
+msgid "Before / after related entries:"
+msgstr "Да / пасля <br />звязаных пастоў:"
+
+#: options-meta-boxes.php:175
+#: options-meta-boxes.php:176
+#: options-meta-boxes.php:184
+#: options-meta-boxes.php:244
+#: options-meta-boxes.php:245
+#: options-meta-boxes.php:250
+#@ yarpp
+msgid "For example:"
+msgstr "Напрыклад:"
+
+#: options-meta-boxes.php:176
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "Before / after each related entry:"
+msgstr "Да / пасля<br />кожнага звязанага паста:"
+
+#: options-meta-boxes.php:178
+#: options-meta-boxes.php:247
+#@ yarpp
+msgid "Show excerpt?"
+msgstr "Паказаць вытрымку?"
+
+#: options-meta-boxes.php:179
+#: options-meta-boxes.php:248
+#@ yarpp
+msgid "Excerpt length (No. of words):"
+msgstr "Даўжыня вытрымкі(кол-у слоў):"
+
+#: options-meta-boxes.php:183
+#@ yarpp
+msgid "Before / after (Excerpt):"
+msgstr "Да /пасля<br />вытрымкі"
+
+#: options-meta-boxes.php:189
+#: options-meta-boxes.php:254
+#@ yarpp
+msgid "Order results:"
+msgstr "Сартаванне вынікаў:"
+
+#: options-meta-boxes.php:191
+#: options-meta-boxes.php:256
+#@ yarpp
+msgid "score (high relevance to low)"
+msgstr "Падобнасць (па-змяншэнню)"
+
+#: options-meta-boxes.php:192
+#: options-meta-boxes.php:257
+#@ yarpp
+msgid "score (low relevance to high)"
+msgstr "Падобнасць (па-узрастанню)"
+
+#: options-meta-boxes.php:193
+#: options-meta-boxes.php:258
+#@ yarpp
+msgid "date (new to old)"
+msgstr "Дата (па-змяншэнню)"
+
+#: options-meta-boxes.php:194
+#: options-meta-boxes.php:259
+#@ yarpp
+msgid "date (old to new)"
+msgstr "Дата (па ўзрастанні)"
+
+#: options-meta-boxes.php:195
+#: options-meta-boxes.php:260
+#@ yarpp
+msgid "title (alphabetical)"
+msgstr "Загаловак (па алфавіце)"
+
+#: options-meta-boxes.php:196
+#: options-meta-boxes.php:261
+#@ yarpp
+msgid "title (reverse alphabetical)"
+msgstr "Загаловак (у зваротным парадку)"
+
+#: options-meta-boxes.php:201
+#: options-meta-boxes.php:266
+#@ yarpp
+msgid "Default display if no results:"
+msgstr "Па-змаўчанню паказваць калі пуста:"
+
+#: includes.php:257
+#: options-meta-boxes.php:203
+#: options-meta-boxes.php:268
+#@ yarpp
+msgid "Help promote Yet Another Related Posts Plugin?"
+msgstr "Дапамагчы прасоўваць убудову YARPP?"
+
+#: options-meta-boxes.php:205
+#: options-meta-boxes.php:269
+#, php-format
+#@ yarpp
+msgid "This option will add the code %s. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated."
+msgstr "Гэтая опцыя дадасць код %s. Паспрабуйце ўключыць яе, зменіце опцыі і глядзіце прыклад кода справа. Гэтыя спасылкі і кнопкі вельмі важныя."
+
+#: options-meta-boxes.php:276
+#@ yarpp
+msgid "Display options <small>for RSS</small>"
+msgstr "Прагляд налад <small>для RSS</small>"
+
+#: options-meta-boxes.php:221
+#@ yarpp
+msgid "Display related posts in feeds?"
+msgstr "Паказваць звязаныя пасты  ў  RSS?"
+
+#: options-meta-boxes.php:223
+#@ yarpp
+msgid "Display related posts in the descriptions?"
+msgstr "Паказваць звязаныя пасты ў апісанні?"
+
+#: options-meta-boxes.php:223
+#@ yarpp
+msgid "This option displays the related posts in the RSS description fields, not just the content. If your feeds are set up to only display excerpts, however, only the description field is used, so this option is required for any display at all."
+msgstr "This option displays the related posts in the RSS description fields, not just the content. If your feeds are set up to only display excerpts, however, only the description field is used, so this option is required for any display at all."
+
+#: options-meta-boxes.php:221
+#@ yarpp
+msgid "RSS display code example"
+msgstr "Прыклад кода ў RSS"
+
+#: options-meta-boxes.php:250
+#@ yarpp
+msgid "Before / after (excerpt):"
+msgstr "Да / пасля<br />вытрымкі:"
+
+#: options-meta-boxes.php:38
+#@ yarpp
+msgid "word"
+msgstr "слова"
+
+#: options-meta-boxes.php:39
+#@ yarpp
+msgid "tag"
+msgstr "тэг"
+
+#: options-meta-boxes.php:40
+#@ yarpp
+msgid "category"
+msgstr "катэгорыя"
+
+#: options-meta-boxes.php:48
+#: options-meta-boxes.php:80
+#, php-format
+#@ yarpp
+msgid "require at least one %s in common"
+msgstr "хоць бы адзін \"%s\"  павінен быць агульным"
+
+#: options-meta-boxes.php:50
+#: options-meta-boxes.php:82
+#, php-format
+#@ yarpp
+msgid "require more than one %s in common"
+msgstr "больш аднаго  \"%s\"  павінна быць агульным"
+
+#: options.php:114
+#@ yarpp
+msgid "Options saved!"
+msgstr "Налады захаваныя!"
+
+#: options-meta-boxes.php:124
+#@ yarpp
+msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
+msgstr "Чым вышэй парог падобнасці, тым стражэй выбарка, і тым менш атрымаеце запісаў на выхадзе. Па-змаўчанню парог роўны 5. Калі жадаеце знайсці приемлимые парогавыя значэнні, паэксперыментуйце з некалькімі паведамленнямі. Вы зможаце ўбачыць, якія паведамленні выходзяць наверх і якія ў іх значэння падабенства, па якіх можна вызначыць приемлимый узровень для вашага сайта."
+
+#: options.php:279
+#@ yarpp
+msgid "Update options"
+msgstr "Змяніць налады"
+
+#: options.php:280
+#@ yarpp
+msgid "Do you really want to reset your configuration?"
+msgstr "Вы сапраўды жадаеце скінуць вашы налады?"
+
+#: options.php:280
+#@ yarpp
+msgid "Reset options"
+msgstr "Скінуць налады"
+
+#: cache-postmeta.php:105
+#: cache-tables.php:131
+#@ yarpp
+msgid "Example post "
+msgstr "Прыклад паста"
+
+#: options-meta-boxes.php:105
+#@ yarpp
+msgid "day(s)"
+msgstr "дзён"
+
+#: options-meta-boxes.php:106
+#@ yarpp
+msgid "week(s)"
+msgstr "месяцаў"
+
+#: options-meta-boxes.php:107
+#@ yarpp
+msgid "month(s)"
+msgstr "гадоў"
+
+#: options-meta-boxes.php:109
+#@ yarpp
+msgid "Show only posts from the past NUMBER UNITS"
+msgstr "Паказваць толькі пасты за апошнія  NUMBER UNITS"
+
+#: options.php:46
+#, php-format
+#@ yarpp
+msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
+msgstr "Выйшла новая beta (%s) убудовы YARPP. Вы можаце <a href=\"%s\">запампаваць яе тут</a> на сваю рызыку."
+
+#: includes.php:248
+#: options-meta-boxes.php:161
+#: options-meta-boxes.php:228
+#@ yarpp
+msgid "Display using a custom template file"
+msgstr "Паказваць з шаблонам карыстача"
+
+#: includes.php:249
+#: options-meta-boxes.php:165
+#: options-meta-boxes.php:233
+#@ yarpp
+msgid "Template file:"
+msgstr "Файл шаблону:"
+
+#: options-meta-boxes.php:221
+#@ yarpp
+msgid "This option displays related posts at the end of each item in your RSS and Atom feeds. No template changes are needed."
+msgstr "Гэтая опцыя паказвае звязаныя паведамленні ў канцы кожнага пункта вашага струменя RSS і Atom. Змены шаблону не патрабуюцца."
+
+#: template-metabox.php:12
+#@ yarpp
+msgid "These are the related entries for this entry. Updating this post may change these related posts."
+msgstr "Гэта звязаныя пасты для гэтага паста. Змена гэтага паста можа змяніць набор звязаных пастоў."
+
+#: template-metabox.php:25
+#@ yarpp
+msgid "Whether all of these related entries are actually displayed and how they are displayed depends on your YARPP display options."
+msgstr "Ці будуць адлюстроўвацца ўсе гэтыя пасты і як яны будуць адлюстроўвацца, залежыць ад вашых налад адлюстравання YARPP."
+
+#: includes.php:28
+#: includes.php:39
+#: template-metabox.php:27
+#: template-widget.php:13
+#@ yarpp
+msgid "No related posts."
+msgstr "Няма звязаных паведамленняў"
+
+#: options-meta-boxes.php:228
+#@ yarpp
+msgid "NEW!"
+msgstr "НОВАЕ!"
+
+#: options-meta-boxes.php:161
+#: options-meta-boxes.php:228
+#@ yarpp
+msgid "This advanced option gives you full power to customize how your related posts are displayed. Templates (stored in your theme folder) are written in PHP."
+msgstr "Гэтыя дадатковыя налады даюць вам поўную моц для налады адлюстравання звязаных паведамленняў. Шаблоны (захоўваюцца ў тэчцы выкарыстоўванай тэмы) напісаныя на PHP."
+
+#: includes.php:26
+#: includes.php:37
+#@ yarpp
+msgid "Related posts:"
+msgstr ""
+
+#: includes.php:169
+#@ yarpp
+msgid "Settings"
+msgstr ""
+
+#: includes.php:243
+#@ default
+msgid "Title:"
+msgstr ""
+
+#: includes.php:385
+#@ yarpp
+msgid "Related entries may be displayed once you save your entry"
+msgstr ""
+
+#: options-meta-boxes.php:124
+#@ yarpp
+msgid "YARPP limits the related posts list by (1) a maximum number and (2) a <em>match threshold</em>."
+msgstr ""
+
+#: options-meta-boxes.php:175
+#: options-meta-boxes.php:176
+#: options-meta-boxes.php:184
+#: options-meta-boxes.php:244
+#: options-meta-boxes.php:245
+#: options-meta-boxes.php:250
+#@ yarpp
+msgid " or "
+msgstr ""
+
+#: options-meta-boxes.php:283
+#@ yarpp
+msgid "YARPP Forum"
+msgstr ""
+
+#: options-meta-boxes.php:284
+#@ yarpp
+msgid "YARPP on Twitter"
+msgstr ""
+
+#: options-meta-boxes.php:285
+#@ yarpp
+msgid "YARPP on the Web"
+msgstr ""
+
+#: options-meta-boxes.php:292
+#@ yarpp
+msgid "Contact YARPP"
+msgstr ""
+
+#: options.php:42
+#, php-format
+#@ default
+msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
+msgstr ""
+
+#: options.php:86
+#, php-format
+#@ yarpp
+msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
+msgstr ""
+
+#: options.php:188
+#, php-format
+#@ yarpp
+msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+msgstr ""
+

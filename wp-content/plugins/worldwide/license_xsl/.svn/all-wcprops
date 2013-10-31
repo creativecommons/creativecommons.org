@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svnroot/!svn/ver/14556/license_xsl/trunk
+END
+support.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svnroot/!svn/ver/14493/license_xsl/trunk/support.xsl
+END
+licenses.xml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/!svn/ver/14556/license_xsl/trunk/licenses.xml
+END
+buildout.cfg
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/!svn/ver/11748/license_xsl/trunk/buildout.cfg
+END
+licenselocale.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/!svn/ver/14465/license_xsl/trunk/licenselocale.xsl
+END
+questions.xml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/!svn/ver/14465/license_xsl/trunk/questions.xml
+END

@@ -1,0 +1,544 @@
+# Language file for OpenID WordPress plugin
+# Copyright (C) 2009 DiSo Development Team
+# This file is distributed under the same license as the WordPress OpenID plugin.
+# Will Norris <will@willnorris.com>, 2009
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenID trunk\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/openid\n"
+"POT-Creation-Date: 2009-03-18 14:06-0700\n"
+"PO-Revision-Date: 2009-03-18 21:08Z\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: admin_panels.php:24
+msgid "The WordPress OpenID plugin is not active."
+msgstr ""
+
+#: admin_panels.php:25
+#, php-format
+msgid "Check %sOpenID Options%s for a full diagnositic report."
+msgstr ""
+
+#: admin_panels.php:37
+msgid "OpenID options"
+msgstr ""
+
+#. #-#-#-#-#  openid.pot (OpenID trunk)  #-#-#-#-#
+#. Plugin Name of an extension
+#: admin_panels.php:37
+msgid "OpenID"
+msgstr ""
+
+#: admin_panels.php:47
+msgid "Your OpenIDs"
+msgstr ""
+
+#: admin_panels.php:61 admin_panels.php:62 admin_panels.php:494
+msgid "Your Trusted Sites"
+msgstr ""
+
+#: admin_panels.php:98
+msgid "Settings"
+msgstr ""
+
+#: admin_panels.php:119
+msgid "OpenID cache refreshed."
+msgstr ""
+
+#: admin_panels.php:147
+msgid "OpenID Consumer Options"
+msgstr ""
+
+#: admin_panels.php:150 admin_panels.php:313
+msgid "Save Changes"
+msgstr ""
+
+#: admin_panels.php:155
+msgid "Comment Approval"
+msgstr ""
+
+#: admin_panels.php:159
+msgid ""
+"Automatically approve comments left with verified OpenIDs.  These comments "
+"will bypass all comment moderation."
+msgstr ""
+
+#: admin_panels.php:166
+msgid "Don't require name and e-mail for comments left with verified OpenIDs."
+msgstr ""
+
+#: admin_panels.php:174
+msgid "Comment Form"
+msgstr ""
+
+#: admin_panels.php:179
+msgid "Add OpenID help text to the comment form."
+msgstr ""
+
+#: admin_panels.php:181
+#, php-format
+msgid ""
+"This will work for most themes derived from Kubrick or Sandbox.  Template "
+"authors can tweak the comment form as described in the %sreadme%s."
+msgstr ""
+
+#: admin_panels.php:189
+msgid "Require OpenID"
+msgstr ""
+
+#: admin_panels.php:194
+msgid "New accounts can only be created with verified OpenIDs."
+msgstr ""
+
+#: admin_panels.php:218
+msgid "Troubleshooting"
+msgstr ""
+
+#: admin_panels.php:222
+#, php-format
+msgid ""
+"If users are experiencing problems logging in with OpenID, it may help to %1"
+"$srefresh the cache%2$s."
+msgstr ""
+
+#: admin_panels.php:232
+msgid "OpenID Provider Options"
+msgstr ""
+
+#: admin_panels.php:238
+msgid ""
+"The OpenID Provider allows authorized users to use their author URL as an "
+"OpenID, either using their local WordPress username and password, or by "
+"delegating to another OpenID Provider."
+msgstr ""
+
+#: admin_panels.php:244
+msgid "Enable OpenID"
+msgstr ""
+
+#: admin_panels.php:247
+msgid "Enable the local OpenID Provider for these roles:"
+msgstr ""
+
+#: admin_panels.php:269
+msgid "Blog Owner"
+msgstr ""
+
+#: admin_panels.php:272
+#, php-format
+msgid ""
+"Authorized accounts on this blog can use their author URL (i.e. <em>%1$s</"
+"em>) as an OpenID. The Blog Owner will be able to use the blog address (%2"
+"$s) as their OpenID.  If this is a single-user blog, you should set this to "
+"your account."
+msgstr ""
+
+#: admin_panels.php:282
+msgid ""
+"A Blog Owner cannot be set for this blog.  To set a Blog Owner, first remove "
+"the following line from your <code>wp-config.php</code>:"
+msgstr ""
+
+#: admin_panels.php:290
+msgid "(none)"
+msgstr ""
+
+#: admin_panels.php:300
+#, php-format
+msgid "Only the current Blog Owner (%s) can change this setting."
+msgstr ""
+
+#: admin_panels.php:333
+msgid "Success:"
+msgstr ""
+
+#: admin_panels.php:336
+msgid "Warning:"
+msgstr ""
+
+#: admin_panels.php:339 admin_panels.php:343
+msgid "Error:"
+msgstr ""
+
+#: admin_panels.php:357
+msgid "Your Verified OpenIDs"
+msgstr ""
+
+#: admin_panels.php:359
+msgid ""
+"You may associate one or more OpenIDs with your account.  This will allow "
+"you to login to WordPress with your OpenID instead of a username and "
+"password.  <a href=\"http://openid.net/what/\" target=\"_blank\">Learn "
+"more...</a>"
+msgstr ""
+
+#: admin_panels.php:366 admin_panels.php:503
+msgid "Bulk Actions"
+msgstr ""
+
+#: admin_panels.php:367 admin_panels.php:504
+msgid "Delete"
+msgstr ""
+
+#: admin_panels.php:369 admin_panels.php:506
+msgid "Apply"
+msgstr ""
+
+#: admin_panels.php:381
+msgid "Account"
+msgstr ""
+
+#: admin_panels.php:390
+msgid "No Verified Accounts."
+msgstr ""
+
+#: admin_panels.php:409 admin_panels.php:415
+msgid "Add OpenID"
+msgstr ""
+
+#: admin_panels.php:456
+#, php-format
+msgid "Added %d trusted site."
+msgid_plural "Added %d trusted sites."
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin_panels.php:479
+#, php-format
+msgid "Deleted %d trusted site."
+msgid_plural "Deleted %d trusted sites."
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin_panels.php:496
+msgid ""
+"This is a list of sites that you can automatically login to using your "
+"OpenID account.  You will not be asked to approve OpenID login requests for "
+"your trusted sites."
+msgstr ""
+
+#: admin_panels.php:518
+msgid "URL"
+msgstr ""
+
+#: admin_panels.php:519
+msgid "Last Login"
+msgstr ""
+
+#: admin_panels.php:527
+msgid "No Trusted Sites."
+msgstr ""
+
+#: admin_panels.php:558
+msgid "Import Trusted Sites"
+msgstr ""
+
+#: admin_panels.php:560
+msgid "Enter a list of URLs to be added to your Trusted Sites."
+msgstr ""
+
+#: admin_panels.php:564 admin_panels.php:574
+msgid "Add Sites"
+msgstr ""
+
+#: admin_panels.php:566
+msgid "(One URL per line)"
+msgstr ""
+
+#: admin_panels.php:660
+msgid "Status information:"
+msgstr ""
+
+#: admin_panels.php:660
+msgid "All Systems Nominal"
+msgstr ""
+
+#: admin_panels.php:661
+msgid "Toggle More/Less"
+msgstr ""
+
+#: admin_panels.php:663
+msgid ""
+"Plugin is currently disabled. Fix the problem, then Deactivate/Reactivate "
+"the plugin."
+msgstr ""
+
+#: admin_panels.php:671
+msgid "FAIL"
+msgstr ""
+
+#: admin_panels.php:673
+msgid "OK"
+msgstr ""
+
+#: admin_panels.php:675
+msgid "INFO"
+msgstr ""
+
+#: admin_panels.php:718
+msgid "You already have this OpenID!"
+msgstr ""
+
+#: admin_panels.php:720
+msgid "This OpenID is already associated with another user."
+msgstr ""
+
+#: admin_panels.php:752 admin_panels.php:822
+msgid ""
+"<strong>Note:</strong> For security reasons, your profile URL has been "
+"updated to match your OpenID."
+msgstr ""
+
+#: admin_panels.php:778 admin_panels.php:795
+msgid "OpenID Warning"
+msgstr ""
+
+#: admin_panels.php:780
+msgid ""
+"Are you sure you want to delete all of your OpenID associations? Doing so "
+"may prevent you from logging in."
+msgstr ""
+
+#: admin_panels.php:782
+msgid "Yes I'm sure. Delete."
+msgstr ""
+
+#: admin_panels.php:783
+msgid "No, don't delete."
+msgstr ""
+
+#: admin_panels.php:810
+#, php-format
+msgid "Deleted %d OpenID association."
+msgid_plural "Deleted %d OpenID associations."
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin_panels.php:828
+msgid "OpenID association delete failed: Unknown reason."
+msgstr ""
+
+#: admin_panels.php:902
+#, php-format
+msgid ""
+"For security reasons, your profile URL must be one of your claimed OpenIDs: %"
+"s"
+msgstr ""
+
+#: admin_panels.php:936
+msgid "OpenID Delegation"
+msgstr ""
+
+#: admin_panels.php:938
+msgid ""
+"OpenID Delegation allows you to use an external OpenID provider of your "
+"choice."
+msgstr ""
+
+#: admin_panels.php:957
+#, php-format
+msgid "Gathered OpenID information for delegate URL %s"
+msgstr ""
+
+#: admin_panels.php:960
+#, php-format
+msgid "Unable to find any OpenID information for delegate URL %s"
+msgstr ""
+
+#: comments.php:90
+msgid "Error: please fill the required fields (name, email)."
+msgstr ""
+
+#: comments.php:92
+msgid "Error: please enter a valid email address."
+msgstr ""
+
+#: comments.php:253 comments.php:271
+msgid "OpenID Authentication Error"
+msgstr ""
+
+#: comments.php:254
+msgid ""
+"We were unable to authenticate your claimed OpenID, however you can continue "
+"to post your comment without OpenID:"
+msgstr ""
+
+#: comments.php:262
+msgid "Submit Comment"
+msgstr ""
+
+#: common.php:324
+msgid "OpenID login was cancelled."
+msgstr ""
+
+#: common.php:329
+#, php-format
+msgid "OpenID login failed: %s"
+msgstr ""
+
+#: common.php:334
+msgid "OpenID login successful"
+msgstr ""
+
+#: common.php:342
+msgid "Unknown Status. Bind not successful. This is probably a bug."
+msgstr ""
+
+#: common.php:441
+#, php-format
+msgid "Could not discover an OpenID identity server endpoint at the url: %s"
+msgstr ""
+
+#: common.php:445
+msgid ""
+"It looks like you entered an email address, but it was not able to be "
+"transformed into a valid OpenID."
+msgstr ""
+
+#: common.php:618
+msgid ""
+"User was created fine, but wp_login() for the new user failed. This is "
+"probably a bug."
+msgstr ""
+
+#: common.php:639
+msgid ""
+"OpenID authentication successful, but failed to create WordPress user. This "
+"is probably a bug."
+msgstr ""
+
+#: common.php:1009
+msgid ""
+"Since your browser does not support JavaScript, you must press the Continue "
+"button once to proceed."
+msgstr ""
+
+#: common.php:1017 server.php:227 server.php:471
+msgid "Continue"
+msgstr ""
+
+#: common.php:1021
+msgid "Please Wait..."
+msgstr ""
+
+#: common.php:1025
+msgid "OpenID Authentication Redirect"
+msgstr ""
+
+#: login.php:58
+msgid ""
+"Your have entered a valid OpenID, but this site is not currently accepting "
+"new accounts."
+msgstr ""
+
+#: login.php:86
+msgid "Or login using an OpenID"
+msgstr ""
+
+#: login.php:91
+msgid "Learn about OpenID"
+msgstr ""
+
+#: login.php:108
+msgid "Register using an OpenID:"
+msgstr ""
+
+#: login.php:121
+msgid "Or register using an OpenID:"
+msgstr ""
+
+#: login.php:141
+msgid "What is OpenID?"
+msgstr ""
+
+#: login.php:233 login.php:244
+msgid "<strong>ERROR</strong>: "
+msgstr ""
+
+#: login.php:233
+msgid "New users must register using OpenID."
+msgstr ""
+
+#: server.php:218
+msgid "OpenID Login Error"
+msgstr ""
+
+#: server.php:220
+#, php-format
+msgid ""
+"Because you have delegated your OpenID, you cannot login with the URL "
+"<strong>%s</strong>. Instead, you must use your full OpenID when logging in."
+msgstr ""
+
+#: server.php:222
+#, php-format
+msgid "Your full OpenID is: %s"
+msgstr ""
+
+#: server.php:450
+#, php-format
+msgid "Logged in as %1$s (%2$s). <a href=\"%3$s\">Use a different account?</a>"
+msgstr ""
+
+#: server.php:457 server.php:491
+msgid "Verify Your Identity"
+msgstr ""
+
+#: server.php:459
+#, php-format
+msgid "%s has asked to verify your identity."
+msgstr ""
+
+#: server.php:463
+msgid ""
+"Click <strong>Continue</strong> to verify your identity and login without "
+"creating a new password."
+msgstr ""
+
+#: server.php:470
+msgid "Cancel and go back"
+msgstr ""
+
+#: server.php:475
+#, php-format
+msgid ""
+"Manage or remove access on the <a href=\"%s\" target=\"_blank\">Trusted "
+"Sites</a> page."
+msgstr ""
+
+#: server.php:479
+#, php-format
+msgid ""
+"<a href=\"%s\" target=\"_blank\">Edit your profile</a> to change the "
+"information that gets shared with Trusted Sites."
+msgstr ""
+
+#: server_ext.php:50
+#, php-format
+msgid "Also grant access to see my %s."
+msgstr ""
+
+#. Plugin URI of an extension
+msgid "http://wordpress.org/extend/plugins/openid"
+msgstr ""
+
+#. Description of an extension
+msgid ""
+"Allows the use of OpenID for account registration, authentication, and "
+"commenting.  Also includes an OpenID provider which can turn WordPress "
+"author URLs into OpenIDs."
+msgstr ""
+
+#. Author of an extension
+msgid "DiSo Development Team"
+msgstr ""
+
+#. Author URI of an extension
+msgid "http://diso-project.org/"
+msgstr ""

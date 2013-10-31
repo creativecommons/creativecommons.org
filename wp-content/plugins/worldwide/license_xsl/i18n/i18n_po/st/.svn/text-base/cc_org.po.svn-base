@@ -1,0 +1,2099 @@
+
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2008-09-03 11:19+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.0dev\n"
+
+msgid "country.nz"
+msgstr "New Zealand"
+
+msgid "country.gr"
+msgstr "Greece"
+
+#: c/engine/chooser_pages/index.pt:104
+msgid "Allow Derivative Works"
+msgstr ""
+
+#: c/engine/chooser_pages/index.pt:107
+msgid ""
+"The licensor permits others to copy, distribute, display and perform the "
+"work, as well as make derivative works based on it."
+msgstr ""
+
+#: c/engine/chooser_pages/index.pt:56
+msgid "Commercial Use"
+msgstr ""
+
+#: c/engine/chooser_pages/index.pt:59
+msgid ""
+"The licensor permits others to copy, distribute, display, and perform the"
+" work, including for commercial purposes."
+msgstr ""
+
+#: c/engine/chooser_pages/index.pt:70
+msgid ""
+"The licensor permits others to copy, distribute, display, and perform the"
+" work for non-commercial purposes only."
+msgstr ""
+
+#: c/engine/chooser_pages/index.pt:88
+msgid "Yes, as long as others share alike"
+msgstr ""
+
+#: c/engine/licenses/sampling_templates/deed.pt:31
+msgid "deed.free_copy_distribute_noncommercial"
+msgstr ""
+"To perform, display, and distribute copies of this whole work for "
+"noncommercial purposes (e.g., file-sharing or noncommercial webcasting)."
+
+#: c/engine/pd/templates/publicdomain-waiting-email-verification.pt:37
+msgid "license.pd_awaiting_confirmation"
+msgstr ""
+"<h1>Public Domain Dedication - Email Confirmation</h1>\n"
+"\n"
+"<p>\n"
+"An email has been sent to you at <b>${email}</b>. You should receive it\n"
+"within a few minutes.\n"
+"</p>\n"
+"\n"
+"<p>\n"
+"This email includes a confirmation of your public domain\n"
+"dedication. It should include the title of your work\n"
+"(\"<b>${title}</b>\"), and the copyright holder of the work\n"
+"(\"<b>${copyright_holder}</b>\").\n"
+"</p>\n"
+"\n"
+"<p>\n"
+"The email will also include a link with an embedded confirmation\n"
+"code. This confirmation code enables us to verify that you are indeed\n"
+"the person eligible to receive email at <b>${email}</b>. Clicking\n"
+"through on this confirmation link will constitute an \"overt act of\n"
+"relinquishment\" by which you will actually be placing your work in the\n"
+"public domain.\n"
+"</p>\n"
+"\n"
+"<p>\n"
+"<b>Until you click the confirmation link, your work will not be\n"
+"dedicated to the public domain.</b>\n"
+"</p>\n"
+"\n"
+"<p>\n"
+"If for some reason you haven't received this email within 30-45 minutes, "
+"please <a href=\"mailto:pd@creativecommons.org\">let us know</a>.\n"
+"</p>\n"
+"\n"
+"<p>\n"
+"After clicking on the confirmation link, you'll find out how to mark your"
+" content with a public domain dedication and publicize your work.\n"
+"</p>"
+
+msgid "country.bg"
+msgstr "Bulgaria"
+
+#: c/engine/pd/templates/publicdomain-4.pt:32
+msgid "license.mark_web"
+msgstr ""
+"Mark your content on a web page, the HTML to display your button is as "
+"follows and be sure to <a href=\"/technology/web\">follow the guidelines "
+"here</a>:"
+
+msgid "util.copyright_date"
+msgstr "copyright date"
+
+#: c/engine/chooser_pages/index.pt:168 c/engine/chooser_pages/sampling.pt:104
+msgid "util.Jurisdiction"
+msgstr "Jurisdiction"
+
+#: c/engine/chooser_pages/sampling.pt:80 c/engine/chooser_pages/sampling.pt:92
+msgid "country.br"
+msgstr "Brazil"
+
+msgid "util.Creative_Commons_License"
+msgstr "Creative Commons License"
+
+#: c/engine/chooser_pages/sampling.pt:41
+#: c/engine/macros_templates/support.pt:145
+#: c/engine/macros_templates/support.pt:152
+#: c/engine/macros_templates/support.pt:154
+#: c/engine/pd/templates/publicdomain-4.pt:25
+msgid "license.mark_content"
+msgstr "mark content"
+
+#: c/engine/licenses/fsf_templates/deed.pt:48
+msgid "deed.gpl_under_conditions"
+msgstr ""
+"You may exercise the freedoms specified here provided that you comply "
+"with the express conditions of this license. The principal conditions "
+"are:"
+
+msgid "country.be"
+msgstr "Belgium"
+
+msgid "license.work_type_dedicated"
+msgstr ""
+"This ${work_type} is dedicated to the <a rel=\"license\" "
+"href=\"http://creativecommons.org/licenses/publicdomain/\">Public "
+"Domain</a>."
+
+#: c/engine/chooser_pages/index.pt:77
+msgid "api.derivatives"
+msgstr "Allow modifications of your work?"
+
+msgid "deed.fair_use.jp"
+msgstr ""
+"Your rights to exploit the work based on the limitations to copyright "
+"clauses and other rights are in no way affected by the above."
+
+msgid "deed.back_to_cc"
+msgstr "back to <a href=\"/\">Creative Commons</a>"
+
+#: c/engine/chooser_pages/gpl.pt:63 c/engine/chooser_pages/lgpl.pt:66
+msgid "license.fsf_how_it_works"
+msgstr ""
+"Here's how the CC-GNU ${license_code} works: A user clicking on the "
+"Creative Commons icon gets the CC-GNU ${license_code} \"<a "
+"href=\"/licenses/${license_code}/${version_title}/\">Commons Deed</a>\" —"
+" a human readable version of the license. From that she can link to \"<a "
+"href=\"http://www.gnu.org/licenses/old-"
+"licenses/${license_name_lower}.html\">Legal Code</a>\" — the full text of"
+" the GNU ${license_code}, in English and <a "
+"href=\"/licenses/${license_code}/${version_title}/legalcode.pt\">Portuguese</a>."
+" And hidden in the tag is \"Machine-Readable Code\" — metadata — that "
+"will enable others to find your software."
+
+#: c/engine/licenses/mitbsd_templates/deed.pt:46
+msgid "deed.bsd_notice"
+msgstr ""
+"You must retain the license terms and copyright notice in any source code"
+" distribution and reproduce them in documentation for binary "
+"distributions."
+
+msgid "licenses.pretty_nd"
+msgstr "NoDerivs"
+
+msgid "jswidget.Updated_license_version_generic"
+msgstr ""
+"We have updated the version of your license to the most recent one "
+"available."
+
+#: c/engine/chooser_pages/index.pt:67
+msgid "licenses.pretty_nc"
+msgstr "NonCommercial"
+
+#: c/engine/macros_templates/deed.pt:103
+msgid "lang.ca"
+msgstr "Catalan"
+
+#: c/engine/chooser_pages/gpl.pt:66 c/engine/chooser_pages/lgpl.pt:69
+msgid "license.fsf_mark_software"
+msgstr ""
+"<h1>Mark Software</h1>\n"
+"\n"
+"<p>Display the icon on any site you offer your software for download "
+"using the following markup:</p>"
+
+msgid "license.work_type_licensed"
+msgstr ""
+"This ${work_type} is licensed under a <a rel=\"license\" "
+"href=\"${license_url}\">Creative Commons ${license_name} License</a>."
+
+msgid "license.rdfa_licensed_no_title"
+msgstr ""
+"This ${work_type} by ${work_author} is licensed under a <a "
+"rel=\"license\" href=\"${license_url}\">Creative Commons ${license_name} "
+"License</a>."
+
+#: c/engine/chooser_pages/gpl.pt:46 c/engine/chooser_pages/lgpl.pt:47
+msgid "license.human-readable_commons_deed"
+msgstr ""
+"Human-Readable<br />\n"
+"Commons Deed"
+
+#: c/engine/macros_templates/support.pt:93
+#: c/engine/macros_templates/support.pt:97
+#: c/engine/pd/templates/publicdomain-partner.pt:22
+msgid "license.confirm_choice"
+msgstr "confirm choice"
+
+#: c/engine/chooser_pages/sampling.pt:54
+msgid "license.sampling_explain"
+msgstr ""
+"<p>The Sampling licenses let you invite other people to use a part of "
+"your work and make it new.</p>\n"
+"\n"
+"<p>For example:</p>\n"
+"\n"
+"<ul>\n"
+"<li>To take a sample from your song and include it in their own.</li>\n"
+"<li>To use a clip from your film.</li>\n"
+"<li>To take a piece of your photograph and put it into a collage.</li>\n"
+"</ul>\n"
+"\n"
+"<p>Think of it as a way to reward people for transforming your work into "
+"something it wasn't before.</p>\n"
+"\n"
+"<p>On certain conditions, that is. There are two flavors of the Sampling "
+"license. Pick the one that reflects your creative style:</p>"
+
+msgid "license.pd_dedication_email"
+msgstr ""
+"This is a record of a Public Domain Dedication.\n"
+"\n"
+"On ${sysdate}, ${copyright_holder} dedicated to the public domain the\n"
+"work \"${title}.\" Before making the dedication, ${copyright_holder}\n"
+"represented that ${copyright_holder} owned all copyrights in the\n"
+"work. By making the dedication, ${copyright_holder} made an overt act\n"
+"of relinquishment in perpetuity of all present and future rights under\n"
+"copyright law, whether vested or contingent, in \"${title}.\"\n"
+"\n"
+"${copyright_holder} understands that such relinquishment of all rights\n"
+"includes the relinquishment of all rights to enforce (by lawsuit or\n"
+"otherwise) those copyrights in the Work.\n"
+"\n"
+"${copyright_holder} recognizes that, once placed in the public domain,\n"
+"\"${title}\" may be freely reproduced, distributed, transmitted, used,\n"
+"modified, built upon, or otherwise exploited by anyone for any\n"
+"purpose, commercial or non-commercial, and in any way, including by\n"
+"methods that have not yet been invented or conceived.\n"
+"\n"
+"For more information, please see\n"
+"<http://creativecommons.org/licenses/publicdomain/>."
+
+msgid "lang.bg"
+msgstr "Bulgarian"
+
+#: c/engine/chooser_pages/gpl.pt:37 c/engine/chooser_pages/gpl.pt:79
+#: c/engine/chooser_pages/lgpl.pt:38 c/engine/chooser_pages/lgpl.pt:82
+msgid "license.fsf_software_licensed"
+msgstr ""
+"This software is licensed under the <a href=\"${license_url}\">CC-GNU "
+"${license_code}</a> version ${license_version} or later."
+
+#: c/engine/pd/templates/publicdomain-2.pt:34
+#: c/engine/macros_templates/metadata.pt:46
+msgid "util.title_of_work"
+msgstr "Title of work"
+
+#: c/engine/licenses/fsf_templates/deed.pt:61
+msgid "deed.gpl_sharealike"
+msgstr ""
+"If you modify your copy or copies of the program or any portion of it, or"
+" develop a program based upon it, you may distribute the resulting work "
+"provided you do so under the ${license_name_full}. Any translation of the"
+" ${license_name_full} must be accompanied by the ${license_name_full}."
+
+msgid "country.ie"
+msgstr "Ireland"
+
+#: c/engine/macros_templates/engine.pt:111
+msgid "license.License_Your_Work"
+msgstr "License Your Work"
+
+msgid "licenses.pretty_by-nc"
+msgstr "Attribution-NonCommercial"
+
+msgid "licenses.pretty_by-nd"
+msgstr "Attribution-NoDerivs"
+
+msgid "lang.es_PE"
+msgstr "Spanish (PE)"
+
+#: c/engine/licenses/sampling_templates/deed.pt:29
+msgid "deed.free_sample"
+msgstr ""
+"To sample, mash-up, or otherwise creatively transform this work for "
+"commercial or noncommercial purposes."
+
+msgid "country.il"
+msgstr "Israel"
+
+msgid "license.more_perms_available"
+msgstr ""
+"Permissions beyond the scope of this license may be available at "
+"${more_perms_link}."
+
+msgid "country.in"
+msgstr "India"
+
+msgid "lang.mk"
+msgstr "Macedonian"
+
+msgid "license.how_it_works"
+msgstr ""
+"Here's how it works: A user clicking on the Creative Commons icon gets "
+"your\n"
+"\"<a href=\"${license_url}\">Commons Deed</a>\" &mdash; a human readable "
+"version of the\n"
+"license. From that she can link to \"<a "
+"href=\"${license_url}legalcode\">Legal Code</a>\" &mdash;  the\n"
+"actual license you have offered your content under.\n"
+"And hidden in the tag is \"<a href=\"/license/work-html-"
+"popup?${url_vars}\" onclick=\"window.open('work-html-popup?${url_vars}', "
+"'html_help', "
+"'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\">Machine-Readable Code</a>\" &mdash; metadata &mdash; that will "
+"enable others to find your\n"
+"content. <a href=\"/learn/licenses/how1\">An illustration of the "
+"process</a> can be found in our comics."
+
+msgid "country.it"
+msgstr "Italy"
+
+msgid "country.pl"
+msgstr "Poland"
+
+msgid "lang.ms"
+msgstr "Malay"
+
+msgid "country.ph"
+msgstr "Philippines"
+
+#: c/engine/licenses/sampling_templates/deed.pt:42
+msgid "char.na_brief"
+msgstr ""
+"You may not use this work to advertise for or promote anything but the "
+"work you create from it."
+
+msgid "country.pe"
+msgstr "Peru"
+
+msgid "deed.permission.jp"
+msgstr ""
+"Any of the above conditions can be waived if you get permission from the "
+"rights holders to this work."
+
+msgid "util.Sampling"
+msgstr "Sampling"
+
+msgid "licenses.pretty_sampling"
+msgstr "Sampling"
+
+#: c/engine/macros_templates/support.pt:30
+#: c/engine/macros_templates/support.pt:56
+msgid "util.page_other_languages"
+msgstr "This page is available in the following languages:"
+
+#: c/engine/macros_templates/support.pt:30
+#: c/engine/macros_templates/support.pt:56
+msgid "deed.view_in"
+msgstr "This page is available in the following languages:"
+
+msgid "lang.en_GB"
+msgstr "English (GB)"
+
+#: c/engine/licenses/standard_templates/deed.pt:69
+msgid "deed.moralrights-remix.us"
+msgstr ""
+"Apart from the remix rights granted under this license, nothing in this "
+"license impairs or restricts the author's moral rights."
+
+msgid "lang.pl"
+msgstr "Polish"
+
+#: c/engine/pd/templates/publicdomain-3.pt:87
+msgid "util.confirm"
+msgstr "confirm"
+
+msgid "util.Do_you_want_to"
+msgstr "Do you want to:"
+
+msgid "util.year_of_copyright"
+msgstr ""
+"<a href=\"/jargon/copyright_date\" class=\"jargon\" "
+"onClick=\"window.open('/jargon/copyright_date', 'jargon_term_lookup', "
+"'width=300,height=400,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');"
+" return false;\">year of copyright</a>"
+
+#: c/engine/chooser_pages/index.pt:29 c/engine/chooser_pages/sampling.pt:32
+#: c/engine/macros_templates/support.pt:82
+#: c/engine/macros_templates/support.pt:86
+msgid "license.choose_license"
+msgstr "choose license"
+
+#: c/engine/licenses/fsf_templates/deed.pt:38
+msgid "deed.gpl_free_redistribute"
+msgstr "The freedom to redistribute copies so you can help your neighbor."
+
+#: c/engine/pd/templates/publicdomain-4.pt:47
+msgid "license.mark_mp3"
+msgstr "Mark an mp3, <a href=\"/technology/mp3\">follow these guidelines</a>."
+
+#: c/engine/licenses/devnations_templates/deed.pt:40
+#: c/engine/licenses/mitbsd_templates/deed.pt:33
+#: c/engine/licenses/sampling_templates/deed.pt:39
+#: c/engine/licenses/standard_templates/deed.pt:45
+msgid "deed.under_conditions"
+msgstr "Under the following conditions:"
+
+#: c/engine/chooser_pages/gpl.pt:48 c/engine/chooser_pages/lgpl.pt:49
+msgid "license.machine-readable_digital_code"
+msgstr ""
+"Machine-Readable<br />\n"
+"Digital Code"
+
+msgid "util.copyright_holders_name"
+msgstr ""
+"<a href=\"/jargon/copyright\" class=\"jargon\" "
+"onClick=\"window.open('/jargon/copyright', 'jargon_term_lookup', "
+"'width=300,height=400,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');"
+" return false;\">copyright</a> holder's name"
+
+#: c/engine/macros_templates/metadata.pt:58
+msgid "util.attribute_to_url"
+msgstr "Attribute work to URL"
+
+#: c/engine/chooser_pages/index.pt:195
+msgid "license.view_explanation"
+msgstr "View an explanation of all our licenses."
+
+msgid "jargon.copyright_description"
+msgstr ""
+"Copyright. A set of limited monopoly rights that governments grant to "
+"encourage the production of creative works. A copyright includes the "
+"rights to copy, distribute, transmit (including broadcast), market, and "
+"make derivative works out of a creative work. It also includes the right "
+"to sue to enforce these rights, and to authorize others to exercise them."
+" Copyright does not apply to facts or ideas, but to the original "
+"expression of those facts or ideas."
+
+#: c/engine/licenses/fsf_templates/deed.pt:50
+msgid "deed.lgpl_under_conditions"
+msgstr ""
+"You may exercise the freedoms specified here provided that you comply "
+"with the express conditions of this license. The LGPL is intended for "
+"software libraries, rather than executable programs. The principal "
+"conditions are:"
+
+msgid "license.mark_license"
+msgstr ""
+"Now that you've chosen a Creative Commons license, you must mark your "
+"work in the appropriate way."
+
+msgid "country.lu"
+msgstr "Luxembourg"
+
+#: c/engine/macros_templates/metadata.pt:23
+msgid "license.tell_format"
+msgstr "Tell us the format of your work:"
+
+msgid "country.cl"
+msgstr "Chile"
+
+msgid "lang.nso"
+msgstr "Northern Sotho"
+
+#: c/engine/chooser_pages/index.pt:222
+msgid "util.CC_GNU_LGPL"
+msgstr "CC-GNU LGPL"
+
+msgid "license.sampling_a_sampling"
+msgstr ""
+"<strong>Sampling</strong>: People can take and transform "
+"<strong>pieces</strong> of your work for any purpose other than "
+"advertising, which is prohibited. Copying and distribution of the "
+"<strong>entire work</strong> is also prohibited."
+
+#: c/engine/chooser_pages/results.pt:98
+msgid "license.publish_audio_ia"
+msgstr "Publishing your licensed music to the Internet Archive"
+
+#: c/engine/chooser_pages/results.pt:92
+msgid "license.no_web_site"
+msgstr "No web site?"
+
+msgid "country.rs"
+msgstr "Serbia"
+
+msgid "country.kr"
+msgstr "Korea"
+
+#: c/engine/chooser_pages/partner/index.pt:69
+msgid "license.a6"
+msgstr ""
+"Yes, as long as others share alike (<a "
+"href=\"/characteristic/sa?lang=${lang}\" "
+"onclick=\"window.open('/characteristic/sa?lang=${lang}', "
+"'characteristic_help', "
+"'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\">more info</a> <a href=\"/characteristic/sa?lang=${lang}\" "
+"onclick=\"window.open('/characteristic/sa?lang=${lang}', "
+"'characteristic_help', "
+"'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\"><img src=\"/images/popup.gif\" width=\"15\" height=\"13\" "
+"alt=\"more information\" border=\"0\" /></a>)"
+
+msgid "lang.ko"
+msgstr "Korean"
+
+msgid "deed.gpl_disclaimer"
+msgstr ""
+"<div style=\"text-align:center\"><a href=\"/licenses/disclaimer-popup\" "
+"onclick=\"window.open('/licenses/disclaimer-popup', "
+"'characteristic_help', "
+"'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\">Disclaimer</a> <a href=\"/licenses/disclaimer-popup\" "
+"onclick=\"window.open('/licenses/disclaimer-popup', "
+"'characteristic_help', "
+"'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\"><img src=\"/images/popup.gif\" width=\"15\" height=\"13\" "
+"alt=\"disclaimer\" border=\"0\"></a></div>"
+
+msgid "license.no_license"
+msgstr "Sorry, no license matches your criteria."
+
+msgid "lang.it"
+msgstr "Italian"
+
+msgid "country.ro"
+msgstr "Romania"
+
+#: c/engine/chooser_pages/index.pt:191
+msgid "license.what_you"
+msgstr "What You Can Do Here"
+
+msgid "jargon.copyright_date_description"
+msgstr ""
+"If you have not officially registered for a copyright on your work the "
+"default date is the date you created the work, or completed it."
+
+msgid "licenses.pretty_by-nd-nc"
+msgstr "Attribution-NoDerivs-NonCommercial"
+
+#: c/engine/macros_templates/deed.pt:110
+msgid "lang.gl"
+msgstr "Galician"
+
+msgid "license.proceed_pd"
+msgstr ""
+"You may now <a href=\"publicdomain-2?${url_vars}\">proceed and enrich the"
+" public domain with your work</a>."
+
+#: c/engine/pd/templates/publicdomain-2.pt:29
+msgid "util.your_email"
+msgstr "your email"
+
+#: c/engine/chooser_pages/index.pt:46 c/engine/chooser_pages/index.pt:81
+#: c/engine/chooser_pages/partner/index.pt:54
+#: c/engine/chooser_pages/partner/index.pt:65
+msgid "util.Yes"
+msgstr "Yes"
+
+msgid "deed.free_copy_distribute.jp"
+msgstr ""
+"to copy, distribute, display, perform, present, publicly transmit, and "
+"recite the work"
+
+#: c/engine/pd/templates/publicdomain-partner.pt:24
+msgid "license.pd_choice"
+msgstr ""
+"<p>Your choice suggests you want to dedicate your work to the public "
+"domain, the commons of information and expression where nothing is owned "
+"and all is permitted.</p>\n"
+"\n"
+"        <p>The Public Domain Dedication is not a license. By using it, "
+"you do not simply carve out exceptions to your copyright; you grant your "
+"entire copyright to the public without condition. This grant is permanent"
+" and irreversible.</p>"
+
+#: c/engine/macros_templates/metadata.pt:30
+msgid "util.Audio"
+msgstr "Audio"
+
+#: c/engine/macros_templates/deed.pt:92
+msgid "deed.fair_use"
+msgstr "Your fair dealing and other rights are in no way affected by the above."
+
+msgid "country.nl"
+msgstr "Netherlands"
+
+#: c/engine/pd/templates/publicdomain-4.pt:29
+msgid "license.in_order_to"
+msgstr "In order to:"
+
+#: c/engine/licenses/fsf_templates/deed.pt:67
+msgid "deed.gpl_source"
+msgstr ""
+"If you copy or distribute the program, you must accompany it with the "
+"complete corresponding machine-readable source code or with a written "
+"offer, valid for at least three years, to furnish the complete "
+"corresponding machine-readable source code."
+
+#: c/engine/macros_templates/partner.pt:29
+msgid "util.Creative_Commons"
+msgstr "Creative Commons"
+
+msgid "country.uk"
+msgstr "UK: England & Wales"
+
+msgid "country.ng"
+msgstr "Nigeria"
+
+msgid "jswidget.Licensor_permits_others_to_make_derivative_works"
+msgstr "Licensor permits others to make derivative works"
+
+msgid "country.us"
+msgstr "United States"
+
+#: c/engine/chooser_pages/results.pt:70
+msgid "license.select_text"
+msgstr ""
+"Select the contents of the box above and copy it. Or, have it <a "
+"href=\"/license/work-html-popup?${url_vars}\" onclick=\"window.open"
+"('work-html-popup?${url_vars}', 'html_help', "
+"'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\">emailed to yourself.</a>"
+
+msgid "license.q1"
+msgstr ""
+"<strong>Require attribution?</strong> (<a "
+"href=\"/characteristic/by?lang=${lang}\" "
+"onclick=\"window.open('/characteristic/by?lang=${lang}', "
+"'characteristic_help', "
+"'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\">more info</a> <a href=\"/characteristic/by?lang=${lang}\" "
+"onclick=\"window.open('/characteristic/by?lang=${lang}', "
+"'characteristic_help', "
+"'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\"><img src=\"/images/popup.gif\" width=\"15\" height=\"13\" "
+"alt=\"more information\" border=\"0\" /></a>)"
+
+#: c/engine/chooser_pages/partner/index.pt:50
+msgid "license.q2"
+msgstr ""
+"<strong>Allow commercial uses of your work?</strong> (<a "
+"href=\"/characteristic/nc?lang=${lang}\" "
+"onclick=\"window.open('/characteristic/nc?lang=${lang}', "
+"'characteristic_help', "
+"'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\">more info</a> <a href=\"/characteristic/nc?lang=${lang}\" "
+"onclick=\"window.open('/characteristic/nc?lang=${lang}', "
+"'characteristic_help', "
+"'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\"><img src=\"/images/popup.gif\" width=\"15\" height=\"13\" "
+"alt=\"more information\" border=\"0\" /></a>)"
+
+#: c/engine/chooser_pages/partner/index.pt:61
+msgid "license.q3"
+msgstr ""
+"<strong>Allow modifications of your work?</strong> (<a "
+"href=\"/characteristic/nd?lang=${lang}\" "
+"onclick=\"window.open('/characteristic/nd?lang=${lang}', "
+"'characteristic_help', "
+"'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\">more info</a> <a href=\"/characteristic/nd?lang=${lang}\" "
+"onclick=\"window.open('/characteristic/nd?lang=${lang}', "
+"'characteristic_help', "
+"'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\"><img src=\"/images/popup.gif\" width=\"15\" height=\"13\" "
+"alt=\"more information\" border=\"0\" /></a>)"
+
+#: c/engine/chooser_pages/htmlpopup.pt:24
+msgid "license.html_directions"
+msgstr ""
+"Simply copy the text, then paste it into your web documents containing "
+"information about your works. <a href=\"/learn/technology/usingmarkup\" "
+"target=\"_blank\">More information about adding HTML to your documents "
+"here</a>."
+
+#: c/engine/chooser_pages/index.pt:178
+#: c/engine/chooser_pages/partner/index.pt:114
+msgid "license.Select_a_License"
+msgstr "Select a License"
+
+msgid "license.rdfa_licensed"
+msgstr ""
+"${work_title} by ${work_author} is licensed under a <a rel=\"license\" "
+"href=\"${license_url}\">Creative Commons ${license_name} License</a>."
+
+msgid "util.description"
+msgstr "description"
+
+#: c/engine/chooser_pages/results.pt:114
+msgid "license.publish_video_ia"
+msgstr "Publishing your licensed video at the Internet Archive"
+
+#: c/engine/chooser_pages/partner/results.pt:29
+msgid "license.partner_selected"
+msgstr ""
+"You have selected the <a target=\"cc_other\" "
+"href=\"${license_deed_url}\"><b>${license_pretty_name} "
+"License</b></a>.<br>\n"
+"This license is permanently located at<br>\n"
+"<b><tt>${license_url}</tt></b>."
+
+#: c/engine/licenses/sampling_templates/deed.pt:45
+msgid "deed.notice_withoutdistribution"
+msgstr ""
+"For any reuse, you must make clear to others the license terms of this "
+"work."
+
+#: c/engine/macros_templates/deed.pt:124
+msgid "lang.nl"
+msgstr "Dutch"
+
+#: c/engine/chooser_pages/results.pt:101
+msgid "license.publish_soundclick"
+msgstr "Publishing your licensed music to Soundclick"
+
+msgid "util.weblog"
+msgstr "weblog"
+
+msgid "country.es"
+msgstr "Spain"
+
+#: c/engine/pd/templates/publicdomain-4.pt:49
+#: c/engine/chooser_pages/results.pt:127
+msgid "license.mark_nonweb"
+msgstr ""
+"Mark a document not on the web, <a href=\"non-web-popup?${url_vars}\" "
+"onclick=\"window.open('non-web-popup?${url_vars}', 'html_help', "
+"'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\">add this text</a> to your work."
+
+msgid "char.nc_description"
+msgstr ""
+"The licensor permits others to copy, distribute and transmit the work. In"
+" return, licensees may not use the work for commercial purposes — unless "
+"they get the licensor's permission."
+
+msgid "lang.es_MX"
+msgstr "Spanish (MX)"
+
+msgid "util.publish"
+msgstr "publish"
+
+#: c/engine/macros_templates/deed.pt:153
+msgid "deed.human_summary"
+msgstr ""
+"This is a human-readable summary of the <a href=\"legalcode\" "
+"class=\"fulltext\">Legal Code (the full license)</a>."
+
+#: c/engine/pd/templates/publicdomain-2.pt:46
+msgid "util.proceed"
+msgstr "proceed"
+
+msgid "license.LGPL_name_full"
+msgstr "GNU Lesser General Public License"
+
+msgid "util.more"
+msgstr "more"
+
+msgid "lang.en_US"
+msgstr "English (US)"
+
+#: c/engine/macros_templates/metadata.pt:52
+msgid "util.attribute_to_name"
+msgstr "Attribute work to name"
+
+msgid "api.sampling_flavor_help"
+msgstr ""
+"The Sampling Flavor determines how much freedom licensees have. Sampling "
+"only allows pieces to be used and prohibits sharing of the entire work.  "
+"Sampling Plus allows licensees to take and transform pieces of the work, "
+"as well as share the entire work for non-commercial purposes.  "
+"Noncommercial Sampling Plus further restricts the Sampling Plus license "
+"by only authorizing non-commercial derivatives to be created from the "
+"pieces of your work."
+
+#: c/engine/macros_templates/deed.pt:117
+msgid "lang.en"
+msgstr "English"
+
+msgid "lang.eo"
+msgstr "Esperanto"
+
+msgid "licenses.draft_notice"
+msgstr ""
+"This is a draft license published for public review. Do not use this "
+"license until this notice has been removed. Direct comments on this draft"
+" license to licenses@creativecommons.org."
+
+#: c/engine/chooser_pages/index.pt:170 c/engine/chooser_pages/sampling.pt:106
+msgid "license.jurisdiction_help"
+msgstr ""
+"If you desire a license governed by the Copyright Law of a specific "
+"jurisdiction, please select the appropriate jurisdiction."
+
+#: c/engine/licenses/fsf_templates/deed.pt:34
+msgid "deed.gpl_free_run"
+msgstr "The freedom to run the program for any purpose."
+
+#: c/engine/chooser_pages/index.pt:128 c/engine/chooser_pages/sampling.pt:72
+#: c/engine/chooser_pages/partner/index.pt:79
+msgid "license.jurisdiction_question"
+msgstr "Jurisdiction of your license"
+
+#: c/engine/pd/templates/publicdomain-2.pt:39
+msgid "util.copyright_holder"
+msgstr "copyright holder"
+
+#: c/engine/chooser_pages/sampling.pt:118
+msgid "license.sampling_alternatives"
+msgstr ""
+"<p>If you <strong>want</strong> to invite people to make "
+"<strong>any</strong> commercial re-use of your work &mdash; "
+"transformative or not &mdash; you should consider either the <a "
+"href=\"/license/results-one?license%5fcode=by%2dsa\">Attribution-"
+"ShareAlike</a> license or simply the <a href=\"/license/results-"
+"one?license%5fcode=by\">Attribution</a> license.</p>"
+
+msgid "lang.sv"
+msgstr "Swedish"
+
+#: c/engine/chooser_pages/htmlpopup.pt:15
+msgid "license.html_display"
+msgstr "The HTML to display your button is as follows:"
+
+#: c/engine/macros_templates/deed.pt:109
+msgid "lang.eu"
+msgstr "Basque"
+
+msgid "lang.en_CA"
+msgstr "English (CA)"
+
+#: c/engine/macros_templates/deed.pt:104
+msgid "lang.es"
+msgstr "Spanish"
+
+#: c/engine/templates/by.pt:8 c/engine/templates/by.pt:23
+#: c/engine/licenses/devnations_templates/deed.pt:47
+msgid "char.by_title"
+msgstr "Attribution"
+
+#: c/engine/templates/by.pt:8 c/engine/templates/by.pt:23
+#: c/engine/licenses/devnations_templates/deed.pt:47
+msgid "licenses.pretty_by"
+msgstr "Attribution"
+
+#: c/engine/chooser_pages/sampling.pt:65
+msgid "license.sampling_a_nc-sampling+"
+msgstr ""
+"<strong>Noncommercial Sampling Plus</strong>: People can take and "
+"transform <strong>pieces</strong> of your work for "
+"<strong>noncommercial</strong> purposes only. "
+"<strong>Noncommercial</strong> copying and distribution (like file-"
+"sharing) of the <strong>entire work</strong> are also allowed."
+
+#: c/engine/chooser_pages/results.pt:21
+msgid "license.selected"
+msgstr ""
+"You have selected the Creative Commons ${license_pretty_name} "
+"License${country_name}. <a href=\"${license_url}\">See how the license "
+"will look</a> to your site's visitors."
+
+#: c/engine/macros_templates/metadata.pt:32
+msgid "util.Video"
+msgstr "Video"
+
+msgid "license.rdfa_licensed_no_attrib"
+msgstr ""
+"${work_title} is licensed under a <a rel=\"license\" "
+"href=\"${license_url}\">Creative Commons ${license_name} License</a>."
+
+msgid "country.hu"
+msgstr "Hungary"
+
+msgid "country.hr"
+msgstr "Croatia"
+
+#: c/engine/chooser_pages/gpl.pt:118 c/engine/chooser_pages/lgpl.pt:121
+msgid "license.fsf_more_info"
+msgstr ""
+"For more information about the Free Software Foundation, visit their <a "
+"href=\"http://www.fsf.org\">web page</a>."
+
+#: c/engine/chooser_pages/sampling.pt:111
+msgid "license.sampling_get"
+msgstr "Get your Sampling License"
+
+#: c/engine/licenses/fsf_templates/deed.pt:16
+msgid "deed.gpl_title"
+msgstr ""
+"${license_name_full}, <a href=\"http://www.gnu.org/\">Free Software "
+"Foundation</a>"
+
+msgid "license.devnations_licensed"
+msgstr ""
+"This work is licensed under a <a href=\"${license_url}\">Creative Commons"
+" Developing Nations license</a>."
+
+#: c/engine/chooser_pages/index.pt:32
+msgid "license.what"
+msgstr ""
+"With a Creative Commons license, <strong>you keep your copyright</strong>"
+" but allow people to <a href=\"/learn/licenses/fullrights\">copy and "
+"distribute your work</a> provided they <a "
+"href=\"/characteristic/by?lang=${lang}\" "
+"onclick=\"window.open('/characteristic/by?lang=${lang}', "
+"'characteristic_help', "
+"'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\">give you credit</a> — and only on the conditions you specify "
+"here. For those new to Creative Commons licensing, we've prepared <a "
+"href=\"/about/think\">a list of things to think about</a>. If you want to"
+" offer your work with no conditions, choose the <a "
+"href=\"publicdomain-2\">public domain</a>."
+
+msgid "char.by_brief.jp"
+msgstr "You must give the original author and the performer credit."
+
+#: c/engine/chooser_pages/results.pt:94
+msgid "license.learn_host"
+msgstr ""
+"Learn about other places you can host your licensed files. These sites "
+"work with your Creative Commons license."
+
+msgid "lang.es_CO"
+msgstr "Spanish (CO)"
+
+#: c/engine/pd/templates/publicdomain-4.pt:42 c/engine/chooser_pages/gpl.pt:110
+#: c/engine/chooser_pages/lgpl.pt:113
+msgid "license.get_html_email"
+msgstr "Get HTML and email it to yourself"
+
+#: c/engine/macros_templates/metadata.pt:38
+msgid "util.Interactive"
+msgstr "Interactive"
+
+#: c/engine/chooser_pages/htmlpopup.pt:27
+msgid "license.html_email"
+msgstr "Enter your email address to get the HTML by email:"
+
+msgid "util.Next_step"
+msgstr "Next step:"
+
+#: c/engine/chooser_pages/index.pt:198
+msgid "license.or_choose"
+msgstr "Or Choose:"
+
+msgid "licenses.pretty_by-nc-nd"
+msgstr "Attribution-NonCommercial-NoDerivs"
+
+#: c/engine/licenses/catalog_pages/disclaimer-popup.pt:19
+msgid "deed.disclaimer"
+msgstr ""
+"<p>\n"
+"The Commons Deed is not a license. It is simply a handy reference for "
+"understanding the Legal Code (the full license) &mdash; it is a human-"
+"readable expression of some of its key terms. Think of it as the user-"
+"friendly interface to the Legal Code beneath. This Deed itself has no "
+"legal value, and its contents do not appear in the actual license.\n"
+"</p>\n"
+"\n"
+"<p>\n"
+"Creative Commons is not a law firm and does not provide legal services. "
+"Distributing of, displaying of, or linking to this Commons Deed does not "
+"create an attorney-client relationship.\n"
+"</p>"
+
+#: c/engine/chooser_pages/results.pt:15
+msgid "license.here_chosen"
+msgstr "Here is the license you've chosen"
+
+#: c/engine/macros_templates/deed.pt:161
+msgid "deed.learn"
+msgstr "Learn how to distribute your work using this license"
+
+#: c/engine/chooser_pages/htmlpopup.pt:41
+msgid "util.Send"
+msgstr "Send"
+
+#: c/engine/licenses/fsf_templates/deed.pt:40
+msgid "deed.gpl_free_improve"
+msgstr ""
+"The freedom to improve the program and release your improvements to the "
+"public, so that the whole community benefits."
+
+msgid "lang.zh_TW"
+msgstr "Chinese (Taiwan)"
+
+#: c/engine/macros_templates/metadata.pt:84
+msgid "jargon.source_work_description"
+msgstr "A work another is derived from."
+
+msgid "lang.zu"
+msgstr "Zulu"
+
+msgid "license.pd_confirmation_email"
+msgstr ""
+"On our site <http://creativecommons.org>, you chose to dedicate your\n"
+"work, \"${title}\", to the public domain. We're sending you this email to"
+"\n"
+"make sure that you intended to do this.\n"
+"\n"
+"If not, you may choose to simply ignore this email or forward it to\n"
+"pd@creativecommons.org to let us know that someone is abusing our system."
+"\n"
+"\n"
+"If you did intend this public domain dedication, please click through\n"
+"on the link below. When you do, you will be given a summary screen and\n"
+"a final chance to confirm your public domain dedication:\n"
+"\n"
+"${clickthrough_url}\n"
+"\n"
+"\n"
+"If you have any issues, let us know by emailing pd@creativecommons.org.\n"
+"\n"
+"\n"
+"Thank you for using Creative Commons!"
+
+#: c/engine/chooser_pages/gpl.pt:25 c/engine/chooser_pages/lgpl.pt:26
+msgid "license.fsf_explain"
+msgstr ""
+"<h1>Creative Commons GNU ${license_code}</h1>\n"
+"\n"
+"<p>The CC-GNU ${license_code} adds the Creative Commons' metadata and "
+"Commons Deed to the Free Software Foundation's ${license_name_full}. The "
+"license is the official FSF ${license_code}, and includes a Portuguese "
+"translation.</p>\n"
+"\n"
+"<p>To signal to others that you are using a Creative Commons license, you"
+" can use a Creative Commons logo, which links to the CC-GNU "
+"${license_code}. The result will look like this:</p>"
+
+#: c/engine/chooser_pages/index.pt:124
+msgid "char.sa_description"
+msgstr ""
+"The licensor permits others to distribute derivative works only under the"
+" same license or one compatible with the one that governs the licensor's "
+"work."
+
+#: c/engine/macros_templates/metadata.pt:34
+msgid "util.Image"
+msgstr "Image"
+
+#: c/engine/macros_templates/metadata.pt:28
+msgid "util.Other"
+msgstr "Other"
+
+#: c/engine/pd/templates/publicdomain-partner.pt:31
+#: c/engine/chooser_pages/partner/results.pt:35
+msgid "license.you_may_proceed"
+msgstr "You may now <a href=\"${processed_exit_url}\">proceed</a>"
+
+msgid "char.nc_title"
+msgstr "Noncommercial"
+
+#: c/engine/chooser_pages/index.pt:204
+msgid "licenses.pretty_publicdomain"
+msgstr "Public Domain"
+
+#: c/engine/chooser_pages/index.pt:204
+msgid "util.Public_Domain"
+msgstr "Public Domain"
+
+msgid "lang.zh"
+msgstr "Chinese"
+
+msgid "lang.zh_CN"
+msgstr "Chinese"
+
+#: c/engine/chooser_pages/results.pt:59
+msgid "license.have_your_own_website"
+msgstr "Have your own website?"
+
+msgid "license.review_choice_directions"
+msgstr ""
+"<h1>Review Choice</h1>\n"
+"\n"
+"<p>Congratulations, you have selected the Creative Commons <a "
+"href=\"${license_url}\">${license_pretty_name} "
+"License${country_name}</a>. </p>\n"
+"\n"
+"<p>To signal to others that you are using a Creative Commons license, you"
+" can use a Creative Commons logo. The result will look like this:</p>"
+
+msgid "lang.ja"
+msgstr "Japanese"
+
+#: c/engine/chooser_pages/sampling.pt:53
+msgid "license.sampling_title"
+msgstr "Choose Your Sampling License Options"
+
+msgid "country.jp"
+msgstr "Japan"
+
+msgid "deed.free_commercial"
+msgstr "to make commercial use of the work"
+
+#: c/engine/chooser_pages/index.pt:47 c/engine/chooser_pages/index.pt:50
+#: c/engine/chooser_pages/index.pt:82 c/engine/chooser_pages/index.pt:89
+#: c/engine/chooser_pages/index.pt:97 c/engine/chooser_pages/index.pt:130
+#: c/engine/chooser_pages/sampling.pt:74
+msgid "util.more_info"
+msgstr "more info"
+
+msgid "nav.select_a_jurisdiction"
+msgstr "Select a jurisdiction"
+
+#: c/engine/chooser_pages/sampling.pt:61
+msgid "license.sampling_a_sampling+"
+msgstr ""
+"<strong>Sampling Plus</strong>: People can take and transform "
+"<strong>pieces</strong> of your work for any purpose other than "
+"advertising, which is prohibited. <strong>Noncommercial</strong> copying "
+"and distribution (like file-sharing) of the <strong>entire work</strong> "
+"are also allowed. Hence, \"<strong>plus</strong>\"."
+
+#: c/engine/macros_templates/deed.pt:98
+msgid "deed.human_summary_multilanguage"
+msgstr ""
+"This is a human-readable summary of the Legal Code (the full license) "
+"available in the following languages:"
+
+msgid "country.jo"
+msgstr "Jordan"
+
+msgid "country.es-ca"
+msgstr "Catalonia"
+
+#: c/engine/pd/templates/publicdomain-4.pt:41 c/engine/chooser_pages/gpl.pt:107
+#: c/engine/chooser_pages/lgpl.pt:110 c/engine/chooser_pages/nonweb_popup.pt:31
+#: c/engine/chooser_pages/htmlpopup.pt:20
+msgid "util.Highlight_Text"
+msgstr "Highlight Text to Copy"
+
+msgid "char.nd_brief"
+msgstr "You may not alter, transform, or build upon this work."
+
+#: c/engine/chooser_pages/sampling.pt:78 c/engine/chooser_pages/sampling.pt:90
+#: c/engine/chooser_pages/partner/index.pt:83
+#: c/engine/chooser_pages/partner/index.pt:86
+msgid "util.Generic"
+msgstr "Generic"
+
+msgid "lang.es_AR"
+msgstr "Spanish (AR)"
+
+#: c/engine/macros_templates/metadata.pt:66
+#: c/engine/macros_templates/metadata.pt:82
+msgid "util.source_work"
+msgstr "Source work URL"
+
+#: c/engine/chooser_pages/sampling.pt:115
+msgid "license.sampling_note"
+msgstr ""
+"Note: The sampling license isn't just for music. It can apply to all "
+"types of copyrighted work: images, film, etc."
+
+msgid "country.au"
+msgstr "Australia"
+
+msgid "country.at"
+msgstr "Austria"
+
+#: c/engine/chooser_pages/nonweb_popup.pt:19
+msgid "license.non_web_pd"
+msgstr ""
+"This work is hereby released into the Public Domain. To view a copy of "
+"the public domain dedication, visit "
+"http://creativecommons.org/licenses/publicdomain/ or send a letter to "
+"Creative Commons, 171 Second Street, Suite 300, San Francisco, "
+"California, 94105, USA."
+
+msgid "country.ar"
+msgstr "Argentina"
+
+#: c/engine/licenses/standard_templates/deed.pt:77
+msgid "deed.superseded"
+msgstr ""
+"A <a href=\"${current_version_url}\">new version</a> of this license is "
+"available. You should use it for new works, and you may want to relicense"
+" existing works under it. No works are <em>automatically</em> put under "
+"the new license, however."
+
+#: c/engine/chooser_pages/index.pt:209
+msgid "licenses.pretty_sampling+"
+msgstr "Sampling Plus"
+
+#: c/engine/chooser_pages/index.pt:42
+msgid "api.commercial"
+msgstr "Allow commercial uses of your work?"
+
+#: c/engine/macros_templates/support.pt:103
+#: c/engine/macros_templates/support.pt:107
+msgid "license.enter_information"
+msgstr "enter information"
+
+msgid "jswidget.Allow_Remixing"
+msgstr "Allow Remixing"
+
+#: c/engine/macros_templates/metadata.pt:16
+msgid "license.hide_optional_fields"
+msgstr "Hide these fields (All fields are optional)"
+
+msgid "country.pt"
+msgstr "Portugal"
+
+msgid "license.GPL_name_full"
+msgstr "GNU General Public License"
+
+#: c/engine/licenses/fsf_templates/deed.pt:36
+msgid "deed.gpl_free_study"
+msgstr "The freedom to study how the program works and adapt it to your needs."
+
+msgid "lang.af"
+msgstr "Afrikaans"
+
+#: c/engine/licenses/mitbsd_templates/deed.pt:54
+msgid "deed.mit_notice"
+msgstr ""
+"The copyright notice and license shall be included in all copies or\n"
+"substantial portions of the software."
+
+msgid "jswidget.Remix"
+msgstr "Remix"
+
+msgid "char.nc_brief"
+msgstr "You may not use this work for commercial purposes."
+
+#: c/engine/macros_templates/metadata.pt:72
+msgid "util.more_permissions_url"
+msgstr "More permissions URL"
+
+#: c/engine/licenses/standard_templates/deed.pt:64
+msgid "deed.moralrights"
+msgstr "Nothing in this license impairs or restricts the author's moral rights."
+
+msgid "country.sk"
+msgstr "Slovak Republic"
+
+#: c/engine/chooser_pages/results.pt:61
+msgid "license.copy_text"
+msgstr ""
+"Copy the text below to your Web site to let your visitors know what "
+"license applies to your works."
+
+msgid "lang.he"
+msgstr "Hebrew"
+
+msgid "license.learn_mark"
+msgstr "learn how to mark your content"
+
+msgid "country.sg"
+msgstr "Singapore"
+
+msgid "country.se"
+msgstr "Sweden"
+
+#: c/engine/chooser_pages/sampling.pt:82 c/engine/chooser_pages/sampling.pt:94
+msgid "country.de"
+msgstr "Germany"
+
+msgid "lang.hu"
+msgstr "Hungarian"
+
+msgid "country.dk"
+msgstr "Denmark"
+
+#: c/engine/chooser_pages/nonweb_popup.pt:37
+#: c/engine/chooser_pages/htmlpopup.pt:46
+#: c/engine/chooser_templates/emailhtml.pt:19 c/engine/templates/by.pt:31
+#: c/engine/licenses/catalog_pages/disclaimer-popup.pt:21
+msgid "util.Close_window"
+msgstr "Close window"
+
+msgid "country.si"
+msgstr "Slovenia"
+
+msgid "lang.hr"
+msgstr "Croatian"
+
+msgid "country.scotland"
+msgstr "UK: Scotland"
+
+msgid "country.ua"
+msgstr "Ukraine"
+
+#: c/engine/licenses/fsf_templates/deed.pt:24
+#: c/engine/licenses/devnations_templates/deed.pt:25
+#: c/engine/licenses/sampling_templates/deed.pt:23
+#: c/engine/licenses/standard_templates/deed.pt:31
+msgid "deed.retired"
+msgstr ""
+"This license is <a href=\"/retiredlicenses\">retired</a>. Do not use for "
+"new works."
+
+msgid "country.ca"
+msgstr "Canada"
+
+msgid "country.co"
+msgstr "Colombia"
+
+msgid "country.cn"
+msgstr "China Mainland"
+
+msgid "licenses.pretty_GPL"
+msgstr "GPL"
+
+#: c/engine/macros_templates/deed.pt:76
+msgid "deed.disclaimer.jp"
+msgstr ""
+"<p>\n"
+"The Commons Deed is not a license. It is simply a handy reference for "
+"understanding the Legal Code (the full License) — it is a human-readable "
+"expression of some of its key terms. This Deed itself has no legal value,"
+" and its contents do not appear in the actual License.  The actual terms "
+"of the license is set forth by the Legal Code.  <a href=\"legalcode\" "
+"class=\"fulltext\">Please click here to see the full License</a>.  \n"
+"</p>\n"
+"\n"
+"<p>\n"
+"Creative Commons and Creative Commons Japan are not law firms, and "
+"distributing of or displaying of, or linking to the Commons Deed does not"
+" constitute an offer of legal advice or any other legal services. "
+"Creative Commons and Creative Commons Japan are not a party to the "
+"License underlying this Commons Deed, and disclaim liablity for damages "
+"resulting from any use of the Commons Deed and the underlying License.\n"
+"</p>\n"
+"\n"
+"<p>\n"
+"The Product licensed under Creative Commons License is provided by the "
+"person who applied the License.  Creative Commons and Creative Commons "
+"Japan make no warranties regarding the title of the licensor.  Please "
+"read <a href=\"http://creativecommons.jp/faq/\">here</a> for information "
+"regarding the application of licenses and exploitation of the Product "
+"licensed under Creative Commons licenses.\n"
+"</p>"
+
+msgid "country.ch"
+msgstr "Switzerland"
+
+#: c/engine/chooser_pages/results.pt:105
+msgid "license.publish_flickr"
+msgstr "Posting your licensed images at Flickr"
+
+msgid "jswidget.Updated_license_jurisdiction"
+msgstr ""
+"We have updated the version of your license to the most recent one "
+"available in your jurisdiction."
+
+msgid "country.cz"
+msgstr "Czech Republic"
+
+msgid "licenses.pretty_nd-nc"
+msgstr "NoDerivs-NonCommercial"
+
+msgid "licenses.pretty_by-nc-sa"
+msgstr "Attribution-NonCommercial-ShareAlike"
+
+msgid "country.fr"
+msgstr "France"
+
+msgid "util.creators_name"
+msgstr "creator's name"
+
+msgid "country.za"
+msgstr "South Africa"
+
+msgid "lang.sr"
+msgstr "Serbian"
+
+msgid "lang.st"
+msgstr "Sotho"
+
+msgid "util.source_work_url"
+msgstr ""
+"<a href=\"/jargon/source_work\" class=\"jargon\" "
+"onClick=\"window.open('/jargon/source_work', 'jargon_term_lookup', "
+"'width=300,height=400,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');"
+" return false;\">source work</a> URL"
+
+msgid "license.Final_step"
+msgstr "Final step:"
+
+#: c/engine/licenses/fsf_templates/deed.pt:55
+msgid "deed.gpl_notice"
+msgstr ""
+"You must conspicuously and appropriately publish on each copy distributed"
+" an appropriate copyright notice and disclaimer of warranty and keep "
+"intact all the notices that refer to this License and to the absence of "
+"any warranty; and give any other recipients of the Program a copy of the "
+"${license_name_full} along with the Program. Any translation of the "
+"${license_name_full} must be accompanied by the ${license_name_full}."
+
+#: c/engine/licenses/devnations_templates/deed.pt:30
+#: c/engine/licenses/mitbsd_templates/deed.pt:25
+#: c/engine/licenses/standard_templates/deed.pt:38
+msgid "deed.free_copy_distribute"
+msgstr "<strong>to Share</strong> — to copy, distribute and transmit the work"
+
+#: c/engine/chooser_pages/index.pt:115
+msgid "char.nd_title"
+msgstr "No Derivative Works"
+
+#: c/engine/licenses/devnations_templates/deed.pt:50
+#: c/engine/licenses/sampling_templates/deed.pt:43
+#: c/engine/licenses/standard_templates/deed.pt:56
+msgid "deed.notice"
+msgstr ""
+"For any reuse or distribution, you must make clear to others the license "
+"terms of this work. The best way to do this is with a link to this web "
+"page."
+
+msgid "lang.sl"
+msgstr "Slovenian"
+
+msgid "util.copyright"
+msgstr "copyright"
+
+#: c/engine/chooser_pages/nonweb_popup.pt:27
+msgid "license.non_web_statement"
+msgstr ""
+"This work is licensed under the Creative Commons ${license_name} License."
+" To view a copy of this license, visit ${license_url} or send a letter to"
+" Creative Commons, 171 Second Street, Suite 300, San Francisco, "
+"California, 94105, USA."
+
+#: c/engine/licenses/mitbsd_templates/deed.pt:40
+msgid "deed.no_endorsement"
+msgstr ""
+"<strong>No Endorsement</strong>. The name of the author may not be used "
+"to endorse or promote products derived from this software without "
+"specific prior written permission."
+
+msgid "jswidget.Prohibit_Commercial_Use"
+msgstr "Prohibit Commercial Use"
+
+#: c/engine/chooser_pages/results.pt:56
+msgid "license.what_to_do_next"
+msgstr "What to do next"
+
+#: c/engine/pd/templates/publicdomain-4.pt:52
+msgid "license.mark_rss"
+msgstr ""
+"Add your license information to a RSS feed, use <a "
+"href=\"http://web.resource.org/rss/1.0/modules/cc/\">the RSS 1.0 "
+"module</a>, or <a "
+"href=\"http://backend.userland.com/creativeCommonsRssModule\">the RSS 2.0"
+" module</a>."
+
+msgid "lang.es_CL"
+msgstr "Spanish (CL)"
+
+#: c/engine/chooser_pages/sampling.pt:36
+#: c/engine/macros_templates/support.pt:127
+#: c/engine/macros_templates/support.pt:134
+#: c/engine/macros_templates/support.pt:136
+msgid "license.review_choice"
+msgstr "review choice"
+
+msgid "deed.lgpl_sharealike"
+msgstr ""
+"If you modify your copy or copies of the library or any portion of it, "
+"you may distribute the resulting library provided you do so under the GNU"
+" Lesser General Public License.  However, programs that  link to the "
+"library may be licensed under terms of your choice, so long as the "
+"library itself can be changed.  Any translation of the GNU Lesser General"
+" Public License must be accompanied by the GNU Lesser General Public "
+"License."
+
+msgid "util.Share_Music"
+msgstr "Share Music"
+
+#: c/engine/chooser_pages/index.pt:122
+msgid "char.sa_title"
+msgstr "Share Alike"
+
+#: c/engine/chooser_pages/index.pt:193
+msgid "license.explain"
+msgstr ""
+"Creative Commons helps you publish your work online while letting others "
+"know exactly what they can and can't do with your work. When you choose a"
+" license, we provide you with tools and tutorials that let you add "
+"license information to your own site, or to one of several free hosting "
+"services that have incorporated Creative Commons."
+
+#: c/engine/pd/templates/publicdomain-4.pt:27
+msgid "license.mark_pd"
+msgstr ""
+"Now that you've chosen the public domain dedication, you must mark your "
+"work in the appropriate way."
+
+msgid "util.Try_again"
+msgstr "Try again!"
+
+#: c/engine/chooser_pages/index.pt:214
+msgid "util.Founders_Copyright"
+msgstr "Founder's Copyright"
+
+msgid "licenses.pretty_nc-sa"
+msgstr "NonCommercial-ShareAlike"
+
+#: c/engine/pd/templates/publicdomain-3.pt:40
+msgid "license.pd_confirm"
+msgstr ""
+"<h1>Confirm Your Public Domain Dedication</h1>\n"
+"\n"
+"        <p>\n"
+"You have successfully confirmed your email address (<b>${email}</b>) for "
+"dedicating <b>${title}</b>, a work copyrighted by "
+"<b>${copyright_holder}</b>, to the public domain. To finalize this "
+"process, please click the button below.\n"
+"</p>\n"
+"\n"
+"        <div class=\"licensebox\">\n"
+"${pd_deed_text}\n"
+"        </div>"
+
+#: c/engine/chooser_pages/results.pt:78
+msgid "license.after_support_cc"
+msgstr ""
+"After publishing your license, please consider <a "
+"href=\"http://creativecommons.org/support/\">supporting Creative "
+"Commons</a>."
+
+#: c/engine/pd/templates/publicdomain-3.pt:93
+#: c/engine/pd/templates/publicdomain-waiting-email-verification.pt:59
+msgid "license.pd_bad_confirmation"
+msgstr ""
+"<h1>Public Domain Dedication - Bad Confirmation</h1>\n"
+"\n"
+"<p>\n"
+"It seems you are trying to confirm your public domain dedication with\n"
+"an incorrect confirmation code.</p>\n"
+"\n"
+"<p>\n"
+"This probably happened because you were not able to click through on\n"
+"the URL sent in your email, and you copy and pasted the URL\n"
+"incorrectly into your browser. Make sure to include <b>all\n"
+"characters</b> from the URL sent to you.\n"
+"</p>\n"
+"\n"
+"<p>\n"
+"If this is not what happened, or if you continue to have trouble\n"
+"confirming your public domain dedication in any way, please <a\n"
+"href=\"mailto:pd@creativecommons.org\">let us know</a>.\n"
+"</p>"
+
+#: c/engine/templates/by.pt:25
+msgid "char.by_description"
+msgstr ""
+"You must attribute the\n"
+"work in the manner specified by the author or licensor."
+
+#: c/engine/macros_templates/metadata.pt:36
+msgid "util.Text"
+msgstr "Text"
+
+#: c/engine/licenses/devnations_templates/deed.pt:48
+#: c/engine/licenses/sampling_templates/deed.pt:41
+msgid "char.by_brief"
+msgstr ""
+"You must attribute the work in the manner specified by the author or "
+"licensor (but not in any way that suggests that they endorse you or your "
+"use of the work)."
+
+#: c/engine/chooser_pages/results.pt:117
+msgid "license.publish_morpheus"
+msgstr "Publishing your licensed music to the Morpheus P2P network"
+
+#: c/engine/chooser_pages/results.pt:108
+msgid "license.publish_buzznet"
+msgstr "Posting your licensed images at Buzznet"
+
+msgid "deed.lgpl_source"
+msgstr ""
+"If you copy or distribute the library, you must accompany it with the "
+"complete corresponding machine-readable source code or with a written "
+"offer, valid for at least three years, to furnish the complete "
+"corresponding machine-readable source code.  You need not provide source "
+"code to programs which link to the library."
+
+#: c/engine/chooser_pages/results.pt:76
+msgid "license.read_tutorial"
+msgstr ""
+"Need more help? <a href=\"/education/publish-website\">Read our "
+"tutorial</a>."
+
+msgid "country.fi"
+msgstr "Finland"
+
+#: c/engine/chooser_pages/partner/index.pt:25
+msgid "license.partner_what"
+msgstr ""
+"<p>You've made a work you're proud of. Now it's time to get creative with"
+" how you make it available.</p>\n"
+"\n"
+"<p>Creative Commons licenses help you share your work while keeping\n"
+"your copyright. Other people can copy and distribute your work provided "
+"they <a href=\"/characteristic/by?lang=${lang}\" "
+"onclick=\"window.open('/characteristic/by?lang=${lang}', "
+"'characteristic_help', "
+"'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return"
+" false;\">give you credit</a> — and only on the conditions you specify "
+"here. This page helps you choose those conditions. If you want to offer "
+"your work with no conditions, choose the <a "
+"href=\"${results_pd_url}\">public domain</a>.</p>"
+
+#: c/engine/chooser_pages/index.pt:49 c/engine/chooser_pages/index.pt:96
+#: c/engine/chooser_pages/partner/index.pt:56
+#: c/engine/chooser_pages/partner/index.pt:73
+msgid "util.No"
+msgstr "No"
+
+msgid "util.find"
+msgstr "find"
+
+msgid "api.sampling_flavor"
+msgstr "What flavor of Sampling license?"
+
+msgid "jswidget.no_license_chosen"
+msgstr "No license chosen"
+
+msgid "lang.fi"
+msgstr "Finnish"
+
+msgid "jswidget.short"
+msgstr ""
+"With a Creative Commons license, you keep your copyright but allow people"
+" to copy and distribute your work provided they give you credit — and "
+"only on the conditions you specify here.', 'If you desire a license "
+"governed by the Copyright Law of a specific jurisdiction, please select "
+"the appropriate jurisdiction."
+
+#: c/engine/macros_templates/metadata.pt:15
+msgid "license.include_more"
+msgstr "Click to include more information about your work."
+
+#: c/engine/chooser_templates/emailhtml.pt:16
+msgid "license.link_emailed"
+msgstr ""
+"<p>\n"
+"The information concerning your choice has been emailed to you at "
+"<strong>${email}</strong>.\n"
+"</p>\n"
+"\n"
+"<p>Place the link or the HTML on your website, right next to the work you"
+" intend to license.  </p>"
+
+#: c/engine/macros_templates/deed.pt:118 c/engine/macros_templates/deed.pt:123
+msgid "lang.fr"
+msgstr "French"
+
+#: c/engine/chooser_pages/index.pt:218
+msgid "util.CC_GNU_GPL"
+msgstr "CC-GNU GPL"
+
+msgid "license.or_return"
+msgstr "Or, you can <a href=\"./\">return to the questions</a>."
+
+msgid "char.sa_bysa30_brief"
+msgstr ""
+"If you alter, transform, or build upon this work, you may distribute the "
+"resulting work only under the same, similar or a compatible license."
+
+msgid "country.mk"
+msgstr "Macedonia"
+
+msgid "licenses.pretty_sa"
+msgstr "ShareAlike"
+
+#: c/engine/chooser_pages/results.pt:111
+msgid "license.publish_blog"
+msgstr ""
+"Adding a Creative Commons license to your blog (Blogger, Movable Type, "
+"and Typepad)"
+
+msgid "lang.pt"
+msgstr "Portugese"
+
+msgid "lang.pt_BR"
+msgstr "Portugese"
+
+#: c/engine/licenses/fsf_templates/deed.pt:75
+#: c/engine/licenses/devnations_templates/deed.pt:51
+#: c/engine/licenses/mitbsd_templates/deed.pt:60
+#: c/engine/licenses/standard_templates/deed.pt:60
+msgid "deed.permission"
+msgstr ""
+"Any of the above conditions can be waived if you get permission from the "
+"copyright holder."
+
+msgid "country.my"
+msgstr "Malaysia"
+
+msgid "country.mx"
+msgstr "Mexico"
+
+#: c/engine/chooser_pages/sampling.pt:84 c/engine/chooser_pages/sampling.pt:96
+msgid "country.tw"
+msgstr "Taiwan"
+
+#: c/engine/macros_templates/deed.pt:81
+#: c/engine/licenses/catalog_pages/disclaimer-popup.pt:15
+msgid "util.Disclaimer"
+msgstr "Disclaimer"
+
+msgid "licenses.pretty_by-sa"
+msgstr "Attribution-ShareAlike"
+
+msgid "license.back_to_licenses"
+msgstr "back to licenses"
+
+msgid "country.mt"
+msgstr "Malta"
+
+msgid "util.work"
+msgstr "work"
+
+#: c/engine/licenses/fsf_templates/deed.pt:29
+msgid "deed.gpl_freedoms"
+msgstr ""
+"The ${license_name_full} is a <a href=\"http://www.gnu.org/philosophy"
+"/free-sw.html\">Free Software</a> license. Like any Free Software "
+"license, it grants to you the four following freedoms:"
+
+#: c/engine/chooser_pages/index.pt:117
+msgid "char.nd_description"
+msgstr ""
+"The licensor permits others to copy, distribute and transmit only "
+"unaltered copies of the work — not derivative works based on it."
+
+msgid "license.learn_publicize"
+msgstr "Learn how to publicize and share your work"
+
+#: c/engine/macros_templates/deed.pt:135
+msgid "deed.lgpl_human_summary"
+msgstr ""
+"This is a human-readable summary of the Legal Code (the full <a "
+"href=\"http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html\">GNU "
+"Lesser General Public License</a>). A <a href=\"legalcode.pt\">Portuguese"
+" translation</a> is also available."
+
+#: c/engine/macros_templates/deed.pt:145
+msgid "deed.gpl_human_summary"
+msgstr ""
+"This is a human-readable summary of the Legal Code (the full <a "
+"href=\"http://www.gnu.org/licenses/old-licenses/gpl-2.0.html\">GNU "
+"General Public License</a>). A <a href=\"legalcode.pt\">Portuguese "
+"translation</a> is also available."
+
+#: c/engine/chooser_pages/partner/index.pt:117
+msgid "license.partner_note"
+msgstr ""
+"<p>\n"
+"<em>Note:</em> To license a work, you must be its copyright holder or "
+"have express authorization from its copyright holder to do so.</p>\n"
+"\n"
+"<p>\n"
+"Creative Commons does not provide legal advice or services. We provide "
+"form legal documents; the rest is up to you.\n"
+"</p>"
+
+msgid "util.Developing_Nations"
+msgstr "Developing Nations"
+
+#: c/engine/pd/templates/publicdomain-4.pt:54
+#: c/engine/chooser_pages/results.pt:122
+msgid "license.mark_xmp"
+msgstr ""
+"To mark a PDF or other XMP-supported file, <a "
+"href=\"xmp?${url_vars}\">save this template</a> following these <a "
+"href=\"/technology/xmp-help\">instructions</a>."
+
+msgid "licenses.pretty_nc-sampling+"
+msgstr "NonCommercial Sampling Plus"
+
+#: c/engine/licenses/sampling_templates/deed.pt:47
+msgid "char.no_brief"
+msgstr ""
+"You may not perform, display, or distribute copies of this whole work for"
+" any purpose."
+
+#: c/engine/chooser_pages/index.pt:232
+msgid "util.Wiki"
+msgstr "Wiki"
+
+msgid "lang.da"
+msgstr "Danish"
+
+msgid "util.Unported"
+msgstr "Unported"
+
+msgid "license.work_based_on"
+msgstr "Based on a work at ${source_link}."
+
+#: c/engine/macros_templates/deed.pt:129
+msgid "lang.de"
+msgstr "German"
+
+#: c/engine/chooser_pages/sampling.pt:31 c/engine/chooser_pages/sampling.pt:35
+#: c/engine/chooser_pages/sampling.pt:40 c/engine/chooser_pages/sampling.pt:45
+#: c/engine/macros_templates/support.pt:81
+#: c/engine/macros_templates/support.pt:85
+#: c/engine/macros_templates/support.pt:92
+#: c/engine/macros_templates/support.pt:96
+#: c/engine/macros_templates/support.pt:102
+#: c/engine/macros_templates/support.pt:106
+#: c/engine/macros_templates/support.pt:112
+#: c/engine/macros_templates/support.pt:116
+#: c/engine/macros_templates/support.pt:126
+#: c/engine/macros_templates/support.pt:130
+#: c/engine/macros_templates/support.pt:144
+#: c/engine/macros_templates/support.pt:148
+#: c/engine/macros_templates/support.pt:160
+#: c/engine/macros_templates/support.pt:164
+msgid "util.step"
+msgstr "step"
+
+#: c/engine/licenses/devnations_templates/deed.pt:27
+#: c/engine/licenses/mitbsd_templates/deed.pt:23
+#: c/engine/licenses/sampling_templates/deed.pt:25
+#: c/engine/licenses/standard_templates/deed.pt:34
+msgid "deed.You_are_free"
+msgstr "You are free:"
+
+msgid "char.sa_brief"
+msgstr ""
+"If you alter, transform, or build upon this work, you may distribute the "
+"resulting work only under the same or similar license to this one."
+
+#: c/engine/chooser_pages/index.pt:236
+msgid "util.Music_Sharing"
+msgstr "Music Sharing"
+
+msgid "licenses.pretty_LGPL"
+msgstr "LGPL"
+
+msgid "lang.fr_CA"
+msgstr "French (CA)"
+
+#: c/engine/chooser_pages/gpl.pt:47 c/engine/chooser_pages/lgpl.pt:48
+msgid "license.lawyer-readable_legal_code"
+msgstr ""
+"Lawyer-Readable<br/>\n"
+"Legal Code"
+
+msgid "jswidget.Require_Share-Alike"
+msgstr "Require Share-Alike"
+
+#: c/engine/licenses/devnations_templates/deed.pt:34
+#: c/engine/licenses/mitbsd_templates/deed.pt:26
+#: c/engine/licenses/standard_templates/deed.pt:39
+msgid "deed.free_derivative"
+msgstr "<strong>to Remix</strong> — to adapt the work"
+
+msgid "nav.find_title"
+msgstr "Find music, photos and more"
+
+msgid "country.ve"
+msgstr "Venezuela"
+
+#: c/engine/chooser_pages/sampling.pt:46
+#: c/engine/macros_templates/support.pt:161
+#: c/engine/macros_templates/support.pt:165
+msgid "license.publicize"
+msgstr "publicize"
+
+#: c/engine/pd/templates/publicdomain-3.pt:41
+#: c/engine/licenses/publicdomain_templates/deed.pt:19
+msgid "deed.pd"
+msgstr ""
+"<p style=\"text-align:center\"><em>Copyright-Only Dedication (based on "
+"United States law) or Public Domain Certification</em></p>\n"
+"\n"
+"        <p>The person or persons who have associated work with this "
+"document (the \"Dedicator\" or \"Certifier\") hereby either (a) certifies"
+" that, to the best of his knowledge, the work of authorship identified is"
+" in the public domain of the country from which the work is published, or"
+" (b) hereby dedicates whatever copyright the dedicators holds in the work"
+" of authorship identified below (the \"Work\") to the public domain. A "
+"certifier, moreover, dedicates any copyright interest he may have in the "
+"associated work, and for these purposes, is described as a \"dedicator\" "
+"below.</p>\n"
+"\n"
+"        <p>A certifier has taken reasonable steps to verify the copyright"
+" status of this work. Certifier recognizes that his good faith efforts "
+"may not shield him from liability if in fact the work certified is not in"
+" the public domain.</p>\n"
+"\n"
+"        <p>Dedicator makes this dedication for the benefit of the public "
+"at large and to the detriment of the Dedicator's heirs and successors. "
+"Dedicator intends this dedication to be an overt act of relinquishment in"
+" perpetuity of all present and future rights under copyright law, whether"
+" vested or contingent, in the Work. Dedicator understands that such "
+"relinquishment of all rights includes the relinquishment of all rights to"
+" enforce (by lawsuit or otherwise) those copyrights in the Work.</p>\n"
+"\n"
+"        <p>Dedicator recognizes that, once placed in the public domain, "
+"the Work may be freely reproduced, distributed, transmitted, used, "
+"modified, built upon, or otherwise exploited by anyone for any purpose, "
+"commercial or non-commercial, and in any way, including by methods that "
+"have not yet been invented or conceived.</p>"
+
+#: c/engine/pd/templates/publicdomain-2.pt:24
+msgid "license.pd_enter_info"
+msgstr ""
+"<h1>Enter Information</h1>\n"
+"\n"
+"        <p>You have selected the <a "
+"href=\"/licenses/publicdomain/\">Public Domain Dedication</a>.  Please "
+"note  that the Public Domain Dedication may not be valid outside of the "
+"United States.</p>\n"
+"\n"
+"        <p>Please fill out the information below to dedicate your work. "
+"Creative Commons will use the information to email you and ourselves a "
+"public domain receipt for this Dedication.</p>\n"
+"\n"
+"        <p>Once you're done filling this out, you'll still have a chance "
+"to think it over before the dedication happens.</p>\n"
+"\n"
+"        <p><strong>About your work</strong></p>\n"
+"\n"
+"        <p>all fields are required</p>"
+
+#: c/engine/licenses/sampling_templates/deed.pt:27
+msgid "deed.free_sample_nc"
+msgstr ""
+"To sample, mash-up, or otherwise creatively transform this work for "
+"noncommercial purposes."
+
+#: c/engine/chooser_pages/sampling.pt:116
+msgid "license.sampling_before"
+msgstr ""
+"Before you apply the Sampling License to your work, make sure you have "
+"the authority to license all the rights involved. Musical works, for "
+"example, often consist of multiple copyrights (composition, recording, "
+"lyrics)."
+
+msgid "api.jurisdiction"
+msgstr "Jurisdiction of your license:"
+
+msgid "util.home"
+msgstr "home"
+
+#: c/engine/pd/templates/publicdomain-2.pt:53
+msgid "license.proceed_email_note"
+msgstr ""
+"<b>NOTE:</b> clicking on \"proceed\" will send a confirmation request to "
+"the email address you entered. Make sure the address is correct!"
+
+msgid "lang.sr_LATN"
+msgstr "Serbian (Latin)"
+
+msgid "country.pr"
+msgstr "Puerto Rico"
+
+msgid "lang.el"
+msgstr "Greek"
+
+msgid "lang.ro"
+msgstr "Romanian"
+
+msgid "lang.es_EC"
+msgstr "Spanish (Ecuador)"
+
+#: e/macros_templates/metadata.pt:107
+msgid "Embedded Metadata"
+msgstr ""
+
+#. Default: ""
+#. "<p>\n"
+#. "\t  The information is embedded in a software readable format.\n"
+#. "\t  This allows search engines to index additional information\n"
+#. "\t  about your work and allows people coming to the license deed\n"
+#. "\t  from your page to see information on the deed about how to\n"
+#. "\t  attribute your work.  \n"
+#. "\t</p>\n"
+#. "\t<p>\n"
+#. "\t  <a href=\"http://wiki.creativecommons.org/Metadata\">More\n"
+#. "\t    information</a> on Creative Commons metadata is available if\n"
+#. "\t  you want to find out more.\n"
+#. "\t</p>"
+#: e/macros_templates/metadata.pt:108
+msgid "license.metadata_help"
+msgstr ""
+"<p>\n"
+"\t  The information is embedded in a software readable format.\n"
+"\t  This allows search engines to index additional information\n"
+"\t  about your work and allows people coming to the license deed\n"
+"\t  from your page to see information on the deed about how to\n"
+"\t  attribute your work.  \n"
+"\t</p>\n"
+"\t<p>\n"
+"\t  <a href=\"http://wiki.creativecommons.org/Metadata\">More\n"
+"\t    information</a> on Creative Commons metadata is available if\n"
+"\t  you want to find out more.\n"
+"\t</p>"
+
+#: e/macros_templates/metadata.pt:140
+msgid "The title of the work you are licensing."
+msgstr ""
+
+#: e/macros_templates/metadata.pt:152
+msgid ""
+"The name users of the work should give attribution to. For example, the "
+"name of the work's author."
+msgstr ""
+
+#: e/macros_templates/metadata.pt:165
+msgid ""
+"The URL users of the work should link to. For example, the work's page on"
+" the author's site."
+msgstr ""
+
+#: e/macros_templates/metadata.pt:178
+msgid ""
+"A URL where a user can obtain information about clearing rights that are "
+"not pre-cleared by your CC license."
+msgstr ""
+
+#: e/licenses/standard_templates/deed.pt:126
+msgid "What does \"Attribute this work\" mean?"
+msgstr ""
+
+#: e/licenses/standard_templates/deed.pt:129
+msgid ""
+"The page you came from contained embedded licensing metadata, including "
+"how the creator wishes to be attributed for re-use. You can use the HTML "
+"here to cite the work. Doing so will also include metadata on your page "
+"so that others can find the original work as well."
+msgstr ""
+
+msgid "country.ec"
+msgstr "Ecuador"
+
+#: e/macros_templates/metadata.pt:13
+msgid "license.additional_info"
+msgstr "Additional Information"
+
+#: e/macros_templates/metadata.pt:16
+msgid "license.additional_fields_optional"
+msgstr ""
+"The additional fields are <strong>optional</strong>, but will be embedded"
+" in the HTML generated for your license. This allows users of your work "
+"to determine how to attribute it or where to go for more information "
+"about the work."
+
+msgid "country.no"
+msgstr "Norway"
+
+msgid "lang.no"
+msgstr "Norwegian"
+
+msgid "license.mark_software"
+msgstr "Mark Software"
+
+msgid "license.fsf_instructions"
+msgstr ""
+"Read the <a href=\"http://www.gnu.org/licenses/gpl-howto.html\">FSF's "
+"instructions for including the license with your software</a>."
+
+msgid "license.display_software_icon"
+msgstr ""
+"You can display the icon on any site you offer your software for download"
+" using the following markup:"
+
+#: c/engine/macros_templates/deed.pt:206
+msgid "deed.use_this_license"
+msgstr "Use this license for your own work."
+

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+mv %(directory)s/../licenses.rdf %(directory)s/../licenses.rdf.old
+%(executable)s %(bin-directory)s/makerdf -v -l %(directory)s/licenses.xml %(directory)s/../../licenses.rdf
+

@@ -1,0 +1,25 @@
+<div class="sd2-content-wrapper">
+    <div class="sd2-node-caption">
+    	
+        <div class="sd2-vertical-center-outer">
+            <div class="sd2-vertical-center-middle">
+                <div class="sd2-vertical-center-inner">	
+                
+                	<div class="sd2-slide-title accent-color">
+                        <span class="sd2-slide-title-inner">
+                            <?php if( !empty( $permalink ) ): ?><a class="accent-color" href="<?php echo $permalink; ?>" target="<?php echo $target; ?>"><?php endif; ?>
+                                <?php echo $title; ?>
+                            <?php if( !empty( $permalink ) ): ?></a><?php endif; ?>
+                        </span>
+                	</div>
+                    
+                    <?php if( !empty( $content ) ): ?>
+                		<div class="sd2-slide-text"><?php echo $filtered_content; ?></div>
+                	<?php endif; ?>
+                
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,8 @@
+[PHP]
+
+;
+;this is critical for gmails ssl support
+;
+
+extension_dir = "/usr/local/lib/php_modules/5-STABLE/"
+extension=openssl.so

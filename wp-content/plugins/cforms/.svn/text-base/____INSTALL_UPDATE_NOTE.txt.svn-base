@@ -1,0 +1,37 @@
+
+ ======================================================================================
+ Installing the plugin:
+ ======================================================================================
+  Please upload the complete plugin folder /cforms/, contained in this zip file, to
+  your WP plugin directory!
+
+  If there is no /cforms/ root folder in this zip file, please create one in your
+  WordPress plugins/ folder.
+
+
+ ======================================================================================
+ Upgrading the plugin:
+ ======================================================================================
+        v9.0+ introduces a completely new method of storing its settings,
+            ***** please make a WP database backup first (!) *****
+        and then migrate your settings (cforms will provide guidance!)
+
+  Then commence with a manual upgrade, including proper plugin deactivation and
+  reactivation, followed by the guided data migration.
+
+
+ ======================================================================================
+ Did you modify any cforms theme (CSS) files, images etc?
+ ======================================================================================
+  Create a custom folder under /plugins/ & call it "/cforms-custom/". Move all your
+  custom files into it. This folder will protect your changes going forward.
+
+  Also note that it is always advisable to make or keep a backup of your
+  current plugin directory just in case you need to revert back to a
+  previous release!
+
+
+ ======================================================================================
+ Localization:
+ ======================================================================================
+  Please see:  ____Plugin_Localization/____LANGUAGE-SUPPORT.txt

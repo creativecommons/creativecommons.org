@@ -1,0 +1,10 @@
+_("Advanced: Contact Form with Custom Err Messages")
+_("This form preset is based on the default preset, however, coming with field specific custom error texts. Please check your fancy error message settings, to make sure they're actually displayed.")
+ff~~~Contact Us$#$fieldsetstart$#$0$#$0$#$0$#$0
+ff~~~Your Name|err:Please provide your name.$#$textfield$#$1$#$0$#$1$#$0
+ff~~~Email|err:A valid email address is required!$#$textfield$#$1$#$1$#$0$#$0
+ff~~~Website|http://$#$textfield$#$0$#$0$#$0$#$0
+ff~~~Message|err: 'Have nothing to say?$#$textarea$#$1$#$0$#$0$#$0
+ri~~~(required)
+re~~~(valid email required)
+tf~~~0

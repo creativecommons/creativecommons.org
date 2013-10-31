@@ -1,0 +1,582 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yet Another Related Posts Plugin v3.1.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2010-03-25 01:09+0000\n"
+"Last-Translator: Maza <admin@cdmazika.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Arabic\n"
+"X-Poedit-Country: EGYPT\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: includes.php:24
+#: includes.php:35
+#@ yarpp
+msgid "Related posts:"
+msgstr "محتويات ذات الصلة:"
+
+#: includes.php:26
+#: includes.php:37
+#: template-metabox.php:28
+#: template-widget.php:13
+#@ yarpp
+msgid "No related posts."
+msgstr "لا يوجد محتويات ذات الصلة"
+
+#: includes.php:93
+#@ yarpp
+msgid "MySQL error on adding yarpp_title"
+msgstr "خطأ في قاعدة البيانات اثناء إضافة yarpp_title"
+
+#: includes.php:98
+#@ yarpp
+msgid "MySQL error on adding yarpp_content"
+msgstr "خطأ في قاعدة البيانات أثناء إضافة yarpp_content"
+
+#: includes.php:109
+#@ yarpp
+msgid "MySQL error on creating yarpp_keyword_cache table"
+msgstr "خطأ في قاعدة البيانات أثناء إنشاء yarpp_keyword_cache table"
+
+#: includes.php:120
+#@ yarpp
+msgid "MySQL error on creating yarpp_related_cache table"
+msgstr "خطأ في قاعدة البيانات أثناء إنشاء yarpp_related_cache table"
+
+#: includes.php:195
+#: includes.php:229
+#: includes.php:243
+#@ yarpp
+msgid "Related Posts (YARPP)"
+msgstr "محتويات ذات الصلة: (YARPP)"
+
+#: includes.php:205
+#@ yarpp
+msgid "Settings"
+msgstr "إعدادات"
+
+#: includes.php:262
+msgid "Title:"
+msgstr ""
+
+#: includes.php:263
+#: options.php:457
+#: options.php:526
+#@ yarpp
+msgid "Help promote Yet Another Related Posts Plugin?"
+msgstr "ساهم في تطوير الإضافة؟"
+
+#: includes.php:440
+#@ yarpp
+msgid "Related Posts"
+msgstr "محتويات ذات الصلة"
+
+#: magic.php:71
+#@ yarpp
+msgid "Example post "
+msgstr "مثال مشاركة"
+
+#: magic.php:344
+#: options.php:459
+#: options.php:527
+#@ yarpp
+msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
+msgstr "إضافة المحتويات ذات الصلة مقدم لكم بواسطة <a href='%s'>Yet Another Related Posts Plugin</a>. <br /> قام بالترجة للغة العربية <a href='http://www.cdmazika.com'>CDMazika.com</a>"
+
+#: options.php:10
+#@ yarpp
+msgid "Please move the YARPP template files into your theme to complete installation. Simply move the sample template files (currently in <code>wp-content/plugins/yet-another-related-posts-plugin/yarpp-templates/</code>) to the <code>TEMPLATEPATH</code> directory."
+msgstr "برجاء نفل ملفات القوالب إلي مجلد التصميم للإنتهاء من عملية التثبيت. فقط قم بنقل الملفات الموجودة داخال المجلد <code>wp-content/plugins/yet-another-related-posts-plugin/yarpp-templates/</code> إلى المجلد <code>TEMPLATEPATH</code>"
+
+#: options.php:15
+#@ yarpp
+msgid "No YARPP template files were found in your theme (<code>TEMPLATEPATH</code>)  so the templating feature has been turned off."
+msgstr "لم يتم العثور على القوالب بداخل مجلد التصميم الخاص بك (<code>TEMPLATEPATH</code>) لذلك سوف يتم إيقاف خاصية القوالب"
+
+#: options.php:26
+#@ yarpp
+msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
+msgstr "لقد تم لإستبدال الMyISAM. يمكنك الآن إستخدام \"consider titles\" و \"consider bodies\" كمعايير للتشابه"
+
+#: options.php:35
+#, php-format
+#@ yarpp
+msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
+msgstr "معايير التشابه \"consider titles\" و \"consider bodies\" تحتاج إلى جدول <code>%s</code> الخاص بك لإستخدام <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>محرك التخزين MyISAM</a>, و لكن الجدول الآن يستخدم  <code>%s</code>. لقد تم إيقاف هاتان الخاصياتان."
+
+#: options.php:37
+#, php-format
+#@ yarpp
+msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
+msgstr "لإستعاد هذه الخواص, برجاء تحديث جدول <code>%s</code> الخاص بك عن طريق تنفيذ التوجيه التالي للSQL:  <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . وسوف لا تمحى البيانات عن طريق تغيير الجدول المحرك ، وبالرغم من وجود آثار للأداء."
+
+#: options.php:39
+#, php-format
+#@ yarpp
+msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
+msgstr "إذا ، على الرغم من هذا الاختيار ، كنت متأكدا من أن <code>%s</code> يستخدم المحرك MyISAM ، اضغط على هذا الزر السحري :"
+
+#: options.php:42
+#@ yarpp
+msgid "Trust me. Let me use MyISAM features."
+msgstr "ثق بي. اسمحوا لي أن استخدام ميزات MyISAM."
+
+#: options.php:65
+#@ yarpp
+msgid "The YARPP database had an error but has been fixed."
+msgstr "قاعدة بيانات YARPP حدث بها خطأ ولكن تم إصلاحه."
+
+#: options.php:67
+#@ yarpp
+msgid "The YARPP database has an error which could not be fixed."
+msgstr "قاعدة بيانات YARPP  قد حدث بها خطأ لم نتمكن من إصلاحه."
+
+#: options.php:68
+#@ yarpp
+msgid "Please try <A>manual SQL setup</a>."
+msgstr "يرجى محاولة <A>دليل مزود إعدادات SQL.</a>"
+
+#: options.php:99
+#@ yarpp
+msgid "Options saved!"
+msgstr "تم حفظ الخيارات!"
+
+#: options.php:135
+#@ yarpp
+msgid "word"
+msgstr "كلمة"
+
+#: options.php:136
+#@ yarpp
+msgid "tag"
+msgstr "علامة"
+
+#: options.php:137
+#@ yarpp
+msgid "category"
+msgstr "فئة"
+
+#: options.php:141
+#: options.php:158
+#: options.php:170
+#@ yarpp
+msgid "do not consider"
+msgstr "لا تنظر"
+
+#: options.php:142
+#: options.php:159
+#: options.php:172
+#@ yarpp
+msgid "consider"
+msgstr "إنظر"
+
+#: options.php:144
+#: options.php:174
+#, php-format
+#@ yarpp
+msgid "require at least one %s in common"
+msgstr "تتطلب ٪ واحدة على الأقل مشتركة"
+
+#: options.php:146
+#: options.php:176
+#, php-format
+#@ yarpp
+msgid "require more than one %s in common"
+msgstr "تتطلب أكثر من ٪ واحدة مشتركة"
+
+#: options.php:160
+#@ yarpp
+msgid "consider with extra weight"
+msgstr "النظر مع الإعتبار الزائد"
+
+#: options.php:188
+#@ yarpp
+msgid "Yet Another Related Posts Plugin version history (RSS 2.0)"
+msgstr "تاريخ إصدار إضافة المحتويات ذات الصلة YARPP (RSS 2.0)"
+
+#: options.php:242
+#@ yarpp
+msgid "Yet Another Related Posts Plugin Options"
+msgstr "إعدادات إضافة المحتويات ذات الصلة YARPP"
+
+#: options.php:253
+#@ yarpp
+msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
+msgstr "تبرع لmitcho (مايكل يوشيتاكا إرلوين) لدعم هذه الإضافة عن طريق باي بال"
+
+#: options.php:255
+#@ yarpp
+msgid "by <a href=\"http://mitcho.com/code/\">mitcho (Michael 芳貴 Erlewine)</a>"
+msgstr "من <a href=\\\"http://mitcho.com/code/\\\">mitcho (مايكل芳贵Erlewine)</a>"
+
+#: options.php:255
+#@ yarpp
+msgid "Follow <a href=\"http://twitter.com/yarpp/\">Yet Another Related Posts Plugin on Twitter</a>"
+msgstr "متابعة <a href=\\\"http://twitter.com/yarpp/\\\">آخر أخبار إضافة المحتويات ذات الصلة على Twitter</a>"
+
+#: options.php:271
+#: options.php:304
+#: options.php:398
+#: options.php:466
+msgid "Click to toggle"
+msgstr ""
+
+#: options.php:274
+#@ yarpp
+msgid "\"The Pool\""
+msgstr "\"التجمع\""
+
+#: options.php:276
+#@ yarpp
+msgid "\"The Pool\" refers to the pool of posts and pages that are candidates for display as related to the current entry."
+msgstr "\"التجمع\" يشير إلى مجموعة من الأقسام والصفحات التي يتم ترشيحها للعرض."
+
+#: options.php:281
+#@ yarpp
+msgid "Disallow by category:"
+msgstr "عدم السماح حسب الفئة :"
+
+#: options.php:283
+#@ yarpp
+msgid "Disallow by tag:"
+msgstr "عدم السماح حسب العلامات :"
+
+#: options.php:285
+#@ yarpp
+msgid "Show password protected posts?"
+msgstr "إظهار الموضوعات المحمية بكلمات سرية؟"
+
+#: options.php:291
+#@ yarpp
+msgid "day(s)"
+msgstr "أيام"
+
+#: options.php:292
+#@ yarpp
+msgid "week(s)"
+msgstr "أسابيع"
+
+#: options.php:293
+#@ yarpp
+msgid "month(s)"
+msgstr "شهور"
+
+#: options.php:295
+#@ yarpp
+msgid "Show only posts from the past NUMBER UNITS"
+msgstr "إظهار المشاركات من الNUMBER UNITS الماضية"
+
+#: options.php:307
+#@ yarpp
+msgid "\"Relatedness\" options"
+msgstr "خيارات \"العلاقة\""
+
+#: options.php:310
+#, php-format
+#@ yarpp
+msgid "YARPP is different than the <a href=\"http://wasabi.pbwiki.com/Related%20Entries\">previous plugins it is based on</a> as it limits the related posts list by (1) a maximum number and (2) a <em>match threshold</em>."
+msgstr "YARPP مختلفة عن <a href=\\\"http://wasabi.pbwiki.com/Related%20Entries\\\">الإضافات السابقة و ما تستند إليه</a> لأنه يحد من المحتويات المتشابهه قائمة من قبل (1) والحد الأقصى لعدد (2) على <em>عتبة المباراة.</em>"
+
+#: options.php:310
+#: options.php:324
+#: options.php:406
+#: options.php:411
+#: options.php:458
+#: options.php:475
+#: options.php:476
+#: options.php:480
+#: options.php:526
+#@ yarpp
+msgid "more&gt;"
+msgstr "المزيد&gt;"
+
+#: options.php:310
+#@ yarpp
+msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
+msgstr "كلما ذاد ارتفاع نسبة التشابه ، كلما إزداد التقيد ، وتحصل على عدد أقل من المحتويات المتشابهه عموما. الافتراضي 5. إذا كنت تريد معرفة الرقم المناسب لك ، إنظر على المحتوياات ذات الصلة لأي من مشاراكاتك ودرجاتهم. يمكنك ان ترى ما هي أنواع المحتوياات ذات الصلة ويجري انتقاؤها ورقم التشابه الخاص بكل مشاركة ، ثم على هذا الأساس حدد نسبة مناسبة لموقعك."
+
+#: options.php:315
+#@ yarpp
+msgid "Match threshold:"
+msgstr "نسبة التشابه:"
+
+#: options.php:316
+#@ yarpp
+msgid "Titles: "
+msgstr "العناوين :"
+
+#: options.php:318
+#@ yarpp
+msgid "Bodies: "
+msgstr "المحتويات:"
+
+#: options.php:320
+#@ yarpp
+msgid "Tags: "
+msgstr "العلامات"
+
+#: options.php:322
+#@ yarpp
+msgid "Categories: "
+msgstr "الأقسام:"
+
+#: options.php:324
+#@ yarpp
+msgid "Cross-relate posts and pages?"
+msgstr "إوصل بين المشاراكات والصفحات؟"
+
+#: options.php:324
+#@ yarpp
+msgid "When the \"Cross-relate posts and pages\" option is selected, the <code>related_posts()</code>, <code>related_pages()</code>, and <code>related_entries()</code> all will give the same output, returning both related pages and posts."
+msgstr "عندما  \"توصل بين المشاركات و الصفحات\", سوف يصبح لـ<code>related_posts()</code> و <code>related_pages()</code> و <code>related_entries()</code> نتيجة واحدة لإظهار المشاركات و الاصفحات المتشابهة معاً"
+
+#: options.php:385
+#@ yarpp
+msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
+msgstr "تم إصدار نسخة تجريبية جديدة من إضافة المحتويات المتشابهه (%s). يمكنك <a href=\"%s\">تحميلها من هنا</a> على مسؤوليتك الخاصة."
+
+#: options.php:387
+#@ yarpp
+msgid "There is a new version (VERSION) of Yet Another Related Posts Plugin available! You can <A>download it here</a>."
+msgstr "تم إصدار نسخة جديدة من إضافة المحتويات المتشابهه (YARPP)! يمكنك <A>تحميلها من هنا</a>."
+
+#: options.php:401
+#@ yarpp
+msgid "Display options <small>for your website</small>"
+msgstr "عرض الخيارات <small>للموقع الخاص بك</small>"
+
+#: options.php:406
+#@ yarpp
+msgid "Automatically display related posts?"
+msgstr "عرض المحتويات ذات الصلة تلقائيا؟"
+
+#: options.php:406
+#@ yarpp
+msgid "This option automatically displays related posts right after the content on single entry pages. If this option is off, you will need to manually insert <code>related_posts()</code> or variants (<code>related_pages()</code> and <code>related_entries()</code>) into your theme files."
+msgstr "هذة الخاصية تظهر المحتويات ذات الصلة تلقائياً مباشرتاً بعد المحتوي الأساسي في المشاراكات الفردية. إذا قمت بإيقاف هذه الخاصية سوف تحتاج إلى تعديل القوالب الخاصة بتصميم موقعك و إضافة <code>related_posts()</code> أو (<code>related_pages()</code> and <code>related_entries()</code>) بها."
+
+#: options.php:407
+#@ yarpp
+msgid "Website display code example"
+msgstr "مثال كود العرض بالموقع"
+
+#: options.php:407
+#: options.php:477
+#@ yarpp
+msgid "(Update options to reload.)"
+msgstr "(حدث الخيارات لإعادة التحميل.)"
+
+#: options.php:410
+#: options.php:479
+#@ yarpp
+msgid "Maximum number of related posts:"
+msgstr "الحد الأقصى لعدد المحتويات ذات الصلة:"
+
+#: options.php:411
+#: options.php:480
+#@ yarpp
+msgid "Display using a custom template file"
+msgstr "عرض باستخدام قالب مخصص"
+
+#: options.php:411
+#: options.php:480
+#@ yarpp
+msgid "NEW!"
+msgstr "جديد!"
+
+#: options.php:411
+#: options.php:480
+#@ yarpp
+msgid "This advanced option gives you full power to customize how your related posts are displayed. Templates (stored in your theme folder) are written in PHP."
+msgstr "هذا الخيار المتقدم يعطيك القوة الكاملة لتخصيص كيف يتم عرض المحتويات ذات الصلة. القوالب (المحفوظة في مجلد التصميم) مكتوبة بلغة PHP."
+
+#: options.php:413
+#: options.php:482
+#@ yarpp
+msgid "Template file:"
+msgstr "ملف القالب :"
+
+#: options.php:423
+#@ yarpp
+msgid "Before / after related entries:"
+msgstr "قبل / بعد الإدخالات ذات الصلة :"
+
+#: options.php:424
+#: options.php:429
+#: options.php:438
+#: options.php:493
+#: options.php:498
+#: options.php:507
+#@ yarpp
+msgid "For example:"
+msgstr "مثال:"
+
+#: options.php:424
+#: options.php:429
+#: options.php:438
+#: options.php:493
+#: options.php:498
+#: options.php:507
+#@ yarpp
+msgid " or "
+msgstr "أو"
+
+#: options.php:428
+#: options.php:497
+#@ yarpp
+msgid "Before / after each related entry:"
+msgstr "قبل / بعد كل مدخل ذات الصلة :"
+
+#: options.php:432
+#: options.php:501
+#@ yarpp
+msgid "Show excerpt?"
+msgstr "إظهار المقتطفات؟"
+
+#: options.php:433
+#: options.php:502
+#@ yarpp
+msgid "Excerpt length (No. of words):"
+msgstr "الحد الأقصى لعدد الكلمات في المقتطفات:"
+
+#: options.php:437
+#@ yarpp
+msgid "Before / after (Excerpt):"
+msgstr "قبل / بعد (المقتطفات) :"
+
+#: options.php:443
+#: options.php:512
+#@ yarpp
+msgid "Order results:"
+msgstr "ترتيب النتائج:"
+
+#: options.php:445
+#: options.php:514
+#@ yarpp
+msgid "score (high relevance to low)"
+msgstr "النتيجة (الأكثر ثم الأقل)"
+
+#: options.php:446
+#: options.php:515
+#@ yarpp
+msgid "score (low relevance to high)"
+msgstr "النتيجة (الأقل ثم الأكثر)"
+
+#: options.php:447
+#: options.php:516
+#@ yarpp
+msgid "date (new to old)"
+msgstr "التاريخ (الجديد إلى القديم)"
+
+#: options.php:448
+#: options.php:517
+#@ yarpp
+msgid "date (old to new)"
+msgstr "التاريخ (القديم الى الجديد)"
+
+#: options.php:449
+#: options.php:518
+#@ yarpp
+msgid "title (alphabetical)"
+msgstr "العناوين (أبجديا)"
+
+#: options.php:450
+#: options.php:519
+#@ yarpp
+msgid "title (reverse alphabetical)"
+msgstr "العناوين (عكس الأبجدي)"
+
+#: options.php:455
+#: options.php:524
+#@ yarpp
+msgid "Default display if no results:"
+msgstr "العرض الافتراضي إذا لم يتم لبعثور على نتائج:"
+
+#: options.php:459
+#: options.php:527
+#, php-format
+#@ yarpp
+msgid "This option will add the code %s. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated."
+msgstr "هذه الخاصية يوف تضيف %s. قم بتفعيلها, و تحديث خياراتك ثم إلقي نظرة على مثال كود العرض الظاهر على اليمين. هذه الروابط و التبرعات تقدر بإمتنان"
+
+#: options.php:469
+#@ yarpp
+msgid "Display options <small>for RSS</small>"
+msgstr "عرض خيارات <small>الـRSS</small>"
+
+#: options.php:475
+#@ yarpp
+msgid "Display related posts in feeds?"
+msgstr "عرض المحتويات ذات الصلة في تحديثات الـRSS؟"
+
+#: options.php:475
+#@ yarpp
+msgid "This option displays related posts at the end of each item in your RSS and Atom feeds. No template changes are needed."
+msgstr "هذا الخيار يعرض المحتويات ذات الصلة في نهاية كل من تحديثات الآر إس إس والأتوم. لن تحتاج لتحديث أي قوالب."
+
+#: options.php:476
+#@ yarpp
+msgid "Display related posts in the descriptions?"
+msgstr "عرض المحتويات ذات الصلة في الوصف؟"
+
+#: options.php:476
+#@ yarpp
+msgid "This option displays the related posts in the RSS description fields, not just the content. If your feeds are set up to only display excerpts, however, only the description field is used, so this option is required for any display at all."
+msgstr "هذا الخيار يتيح لك عرض المحتويات ذات الصلة في خانات الوصف الخاصة بالـRSS, و ليس فقط المحتوى الخاص بها. إذا كانت الإعدادات الخاصة بتحديثات الـRSSتظهر فقط مقتطفات المواضيع إذا فيتم عرض خانة الوصف هذه فقط. في هذه الحالة فسوف يكون هذا الخيار مطلوب لأي عرض على الإطلاق."
+
+#: options.php:477
+#@ yarpp
+msgid "RSS display code example"
+msgstr "مثال الكود الخاص بالأر إس إس."
+
+#: options.php:492
+#@ yarpp
+msgid "Before / after related entries display:"
+msgstr "قبل / بعد عرض المدخلات ذات الصلة :"
+
+#: options.php:506
+#@ yarpp
+msgid "Before / after (excerpt):"
+msgstr "قبل / بعد (المقتطفات) :"
+
+#: options.php:535
+#@ yarpp
+msgid "Update options"
+msgstr "خيارات التحديث"
+
+#: options.php:536
+#@ yarpp
+msgid "Do you really want to reset your configuration?"
+msgstr "هل تريد حقا إعادة الخيارات الخاصة بك إلى الخيارات الإفتراضية؟"
+
+#: options.php:536
+#@ yarpp
+msgid "Reset options"
+msgstr "إستيعاد الخيارات"
+
+#: template-builtin.php:35
+#, php-format
+#@ yarpp
+msgid "%f is the YARPP match score between the current entry and this related entry. You are seeing this value because you are logged in to WordPress as an administrator. It is not shown to regular visitors."
+msgstr "%f هي نسبة التشابه بين المحتوى الحالي و المحتويات ذات الصلة. أنت تراه لأنك سجلت دخول كأدمين للورد بريس. لن يتم إظهار هذه النسبة للعامة. "
+
+#: template-metabox.php:12
+#@ yarpp
+msgid "These are the related entries for this entry. Updating this post may change these related posts."
+msgstr "هذه هي المحتويات ذات الصلة لهذا الموضوع. في حالة التعديل في هذه المشاركة قد تتغير المحتويات ذات الصلة."
+
+#: template-metabox.php:26
+#@ yarpp
+msgid "Whether all of these related entries are actually displayed and how they are displayed depends on your YARPP display options."
+msgstr "إذا كانت جميع هذه المحتويات ذات الصلة هي في الواقع معروضة و كيفية عرضها فهذه تتوقف على الخيارات الخاصة بــYARPP."
+

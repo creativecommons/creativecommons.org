@@ -1,0 +1,169 @@
+#gplus-posts-how-to-steps {
+    position: relative;
+    width: 670px;
+    height: 36px;
+    margin: 0 auto;
+}
+#gplus-posts-how-to-steps a {
+    position: relative;
+    display: block;
+    float: left;
+    width: 222px;
+    height: 35px;
+    font: bold 16px/35px sans-serif;
+    color: #666;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid #d0d0d0;
+    border-right: none;
+    background: #fff;
+}
+#gplus-posts-how-to-steps a.step-1 {
+    z-index: 30;
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    border-top-left-radius: 5px;
+}
+#gplus-posts-how-to-steps a.step-2 { z-index: 20; }
+#gplus-posts-how-to-steps a.step-3 {
+    z-index: 10;
+    border-right: 1px solid #d0d0d0;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
+}
+#gplus-posts-how-to-steps a.current {
+    color: #fff;
+    text-shadow: 1px 1px 1px #1f487f;
+    background: url('../images/gplus-how-to/nav-sprite.png') 0 -75px repeat-x;
+    border-color: #2c5081;
+}
+#gplus-posts-how-to-steps a:after {
+    position: absolute;
+    content: " ";
+    display: block;
+    top: 0;
+    right: -11px;
+    bottom: 0;
+    width: 12px;
+    background: url('../images/gplus-how-to/nav-sprite.png') 0 -37px;
+}
+#gplus-posts-how-to-steps a.current:after { background-position: 0 0; }
+#gplus-posts-how-to-steps a.step-3:after { display: none; }
+
+#gplus-posts-how-to {
+    width: 668px;
+    height: 469px;
+    margin: 0 auto 30px;
+    background: #fff;
+    border: 1px solid #d0d0d0;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#gplus-posts-how-to dt { display: none; }
+#gplus-posts-how-to dd {
+    margin: 0;
+    font-size: 10px;
+    color: #666;
+}
+#gplus-posts-how-to dd .section {
+    position: relative;
+    clear: both;
+    margin: 0;
+    padding: 40px 50px 20px;
+    border-top: 1px solid #d0d0d0;
+}
+#gplus-posts-how-to dd .section:first-child { border-top: none; }
+#gplus-posts-how-to dd h3 {
+    font-size: 1.6em;
+    margin: 0 0 15px;
+}
+#gplus-posts-how-to dd p {
+    font-size: 1.4em;
+    margin: 0 0 20px;
+}
+#gplus-posts-how-to dd a {
+    color: #357ace;
+    padding-left: 18px;
+    background: url('../images/icon-external.png') center left no-repeat;
+}
+#gplus-posts-how-to dd img { border: 5px solid #d0d0d0; }
+#gplus-posts-how-to dd img.align-left { float: left; }
+#gplus-posts-how-to dd img.align-right { float: right; }
+
+#gplus-modal-nav {
+    position: relative;
+    margin: 0 0 10px;
+}
+#gplus-how-to-why-link {
+    position: relative;
+    display: inline-block;
+    color: #999;
+    padding-left: 18px;
+    font-size: 14px;
+    line-height: 27px;
+    height: 27px;
+}
+#gplus-how-to-why-link .twirly {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    background: url('../images/gplus-how-to/arrow.png') center center no-repeat;
+    -webkit-transition: -webkit-transform 0.25s;
+    -moz-transition: -moz-transform 0.25s;
+    -o-transition: -o-transform 0.25s;
+    transition: transform 0.25s;
+}
+#gplus-how-to-why-link.open .twirly {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+#gplus-how-to-why {
+    position: relative;
+    display: block;
+    margin: 0 16px;
+    font: normal 12px/19px sans-serif;
+    color: #666;
+    height: 0;
+    overflow: hidden;
+    -webkit-transition: height 0.5s;
+    -moz-transition: height 0.5s;
+    -o-transition: height 0.5s;
+    transition: height 0.5s;
+}
+#gplus-how-to-why.open {
+    height: 60px;
+}
+
+#gplus-how-to-step {
+    position: absolute;
+    top: 0;
+    left: 465px;
+    color: #999;
+    font: normal 13px/27px sans-serif;
+}
+
+#gplus-how-to-next {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 93px;
+    height: 31px;
+    background: url('../images/gplus-how-to/next.png') 0 0;
+    font: normal 14px/27px sans-serif;
+    padding: 0 0 0 19px;
+    text-decoration: none;
+    color: #fff;
+    text-shadow: 0 1px 1px #1f487f;
+}
+#gplus-how-to-next:hover { background-position: 0 -31px; }

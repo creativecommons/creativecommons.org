@@ -1,0 +1,573 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: YARPP_GB\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-17 14:23+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ashish Jha <ashish@outshinesolutions.com>\n"
+"Language-Team: Letsbefamous.com <ray@letsbefamous.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Irish\n"
+"X-Poedit-Country: IRELAND\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: includes.php:149
+#: includes.php:194
+#: includes.php:215
+#@ yarpp
+msgid "Related Posts (YARPP)"
+msgstr "Related Poist (YARPP)"
+
+#: includes.php:380
+#@ yarpp
+msgid "Related Posts"
+msgstr "Related Poist "
+
+#: template-builtin.php:35
+#, php-format
+#@ yarpp
+msgid "%f is the YARPP match score between the current entry and this related entry. You are seeing this value because you are logged in to WordPress as an administrator. It is not shown to regular visitors."
+msgstr "Is %f den scór cluiche YARPP idir an iontráil reatha agus ar an iontráil seo  a bhaineann leo. Tá tú ag  féachaint ar  an luacha seo toisc go bhfuil tú logáilte  isteach chun  WordPress  mar riarthóir. Níl sé léirithe le cuairteoirí rialta."
+
+#: options.php:26
+#@ yarpp
+msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
+msgstr "Tá an seiceáil MyISAM a shárú. Is féidir leat úsáid a bhaint anois  \"teidil a mheas \" agus  \"comhlachtaí a mheas \" critéir relatedness."
+
+#: options.php:35
+#, php-format
+#@ yarpp
+msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
+msgstr "YARPP s \"a mheas teidil \" agus \"comhlachtaí a mheas \" a cheangal ar  na critéir  relatedness  do<code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>,ach is cosúil leis an tábla a bheidh le baint úsáide as an <code>%s</code>inneall. Tá an dá rogha a bheith curtha faoi mhíchumas."
+
+#: options.php:37
+#, php-format
+#@ yarpp
+msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
+msgstr "A chur ar ais na gnéithe seo, le do thoil do thabhairt suas chun dáta <code>%s</code> tábla ag forghníomhaitheach an méid seo a leanas  treoir  SQL:<code>ALTER TABLE `%s` ENGINE = MyISAM;</code>. Ní dhéanfar aon sonraí a scriosadh ag athrú an tábla's inneall, cé go bhfuil impleachtaí feidhmíochta."
+
+#: options.php:39
+#, php-format
+#@ yarpp
+msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
+msgstr "ás rud é, in ainneoin seo a sheiceáil, go bhfuil tú cinnte go <code>%s</code> Tá baint úsáide as an inneall MyISAM, brúigh an cnaipe draíochta:"
+
+#: options.php:42
+#@ yarpp
+msgid "Trust me. Let me use MyISAM features."
+msgstr "Iontaobhas dom. Lig dom úsáid gnéithe MyISAM."
+
+#: options.php:55
+#@ yarpp
+msgid "The YARPP database had an error but has been fixed."
+msgstr "Tá an bunachar sonraí YARPP raibh earráid ach tá socraithe."
+
+#: options.php:57
+#@ yarpp
+msgid "The YARPP database has an error which could not be fixed."
+msgstr "Tá an bunachar sonraí  YARPP  earráid  nach bhféadfaí a bheith seasta."
+
+#: options-meta-boxes.php:45
+#: options-meta-boxes.php:63
+#: options-meta-boxes.php:76
+#@ yarpp
+msgid "do not consider"
+msgstr "ná a mheas"
+
+#: options-meta-boxes.php:46
+#: options-meta-boxes.php:64
+#: options-meta-boxes.php:78
+#@ yarpp
+msgid "consider"
+msgstr "machnamh"
+
+#: options-meta-boxes.php:65
+#@ yarpp
+msgid "consider with extra weight"
+msgstr "a mheas le meáchan breise"
+
+#: options-meta-boxes.php:286
+#@ default
+#@ yarpp
+msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
+msgstr "Síntiúis a mitcho (Michael Yoshitaka Erlewine) mbreiseán seo  trí PayPal"
+
+#: options.php:150
+#@ yarpp
+msgid "Yet Another Related Posts Plugin Options"
+msgstr "Ach eile Related Poist  Roghanna  Bhreiseáin"
+
+#: options-meta-boxes.php:118
+#@ yarpp
+msgid "\"The Pool\""
+msgstr " \"An Linn \""
+
+#: options-meta-boxes.php:91
+#@ yarpp
+msgid "\"The Pool\" refers to the pool of posts and pages that are candidates for display as related to the current entry."
+msgstr " \"An Díorma \" Tagraíonn an linn na bpost agus leathanaigh sin is iarrthóirí ar  taispeáint  mar a bhaineann  leis an  iontráil  ann faoi láthair."
+
+#: options-meta-boxes.php:96
+#@ yarpp
+msgid "Disallow by category:"
+msgstr "Dhícheadú de réir catagóire:"
+
+#: options-meta-boxes.php:98
+#@ yarpp
+msgid "Disallow by tag:"
+msgstr "Dhícheadú ag tag:"
+
+#: options-meta-boxes.php:101
+#@ yarpp
+msgid "Show password protected posts?"
+msgstr "Taispeáin phasfhocal post a chosaint?"
+
+#: options-meta-boxes.php:140
+#@ yarpp
+msgid "Show only previous posts?"
+msgstr "Taispeáin ach post roimhe seo?"
+
+#: options-meta-boxes.php:148
+#@ yarpp
+msgid "\"Relatedness\" options"
+msgstr "\"Relatedness\" roghanna"
+
+#: options-meta-boxes.php:124
+#: options-meta-boxes.php:139
+#: options-meta-boxes.php:157
+#: options-meta-boxes.php:161
+#: options-meta-boxes.php:204
+#: options-meta-boxes.php:221
+#: options-meta-boxes.php:223
+#: options-meta-boxes.php:228
+#: options-meta-boxes.php:268
+#@ yarpp
+msgid "more&gt;"
+msgstr "more&gt;"
+
+#: options-meta-boxes.php:130
+#@ yarpp
+msgid "Match threshold:"
+msgstr "Tairseach Match:"
+
+#: options-meta-boxes.php:131
+#@ yarpp
+msgid "Titles: "
+msgstr "Teideal:"
+
+#: options-meta-boxes.php:133
+#@ yarpp
+msgid "Bodies: "
+msgstr "Comhlachtaí:"
+
+#: options-meta-boxes.php:135
+#@ yarpp
+msgid "Tags: "
+msgstr "Tags:"
+
+#: options-meta-boxes.php:137
+#@ yarpp
+msgid "Categories: "
+msgstr "Catagóirí:"
+
+#: options-meta-boxes.php:139
+#@ yarpp
+msgid "Cross-relate posts and pages?"
+msgstr "Tras-Baineann post agus leathanaigh?"
+
+#: options-meta-boxes.php:139
+#@ yarpp
+msgid "When the \"Cross-relate posts and pages\" option is selected, the <code>related_posts()</code>, <code>related_pages()</code>, and <code>related_entries()</code> all will give the same output, returning both related pages and posts."
+msgstr "Nuair a bheidh an  \"Tras-phoist agus na leathanaigh  a bhaineann  \" tá an rogha roghnaithe, leis an <code>related_posts()</code>, <code>related_pages()</code>, and <code>related_entries()</code>Beidh go léir a thabhairt ar  an aschur céanna, ag filleadh ar  an dá lth  gaolmhar  agus post."
+
+#: options-meta-boxes.php:212
+#@ yarpp
+msgid "Display options <small>for your website</small>"
+msgstr "Taispeáin roghanna <small>  ar do láithreán gréasáin </small>"
+
+#: options-meta-boxes.php:157
+#@ yarpp
+msgid "Automatically display related posts?"
+msgstr "Thaispeáint go huathoibríoch  post a bhaineann?"
+
+#: options-meta-boxes.php:157
+#@ yarpp
+msgid "This option automatically displays related posts right after the content on single entry pages. If this option is off, you will need to manually insert <code>related_posts()</code> or variants (<code>related_pages()</code> and <code>related_entries()</code>) into your theme files."
+msgstr "Taispeánann an rogha seo  go huathoibríoch post a bhaineann le ceart tar éis an t-ábhar ar leathanaigh iontrála aonair. Má tá an rogha seo  amach, beidh ort isteach de láimh <code>related_posts()</code> Leaganacha Tor (<code>related_pages()</code> oder <code>related_entries()</code>) isteach i do chuid comhad téama.."
+
+#: options-meta-boxes.php:158
+#@ yarpp
+msgid "Website display code example"
+msgstr "Suíomh Gréasáin an Cód mar shampla taispeáint"
+
+#: options-meta-boxes.php:158
+#: options-meta-boxes.php:221
+#@ yarpp
+msgid "(Update options to reload.)"
+msgstr "(roghanna Nuashonrú a athluchtú.)"
+
+#: options-meta-boxes.php:160
+#: options-meta-boxes.php:226
+#@ yarpp
+msgid "Maximum number of related posts:"
+msgstr "Uasmhéid an líon post  a bhaineann le:"
+
+#: options-meta-boxes.php:175
+#: options-meta-boxes.php:244
+#@ yarpp
+msgid "Before / after related entries:"
+msgstr "Sula / i ndiaidh iontrálacha  a bhaineann le:"
+
+#: options-meta-boxes.php:175
+#: options-meta-boxes.php:176
+#: options-meta-boxes.php:184
+#: options-meta-boxes.php:244
+#: options-meta-boxes.php:245
+#: options-meta-boxes.php:250
+#@ yarpp
+msgid "For example:"
+msgstr "Mar shampla:"
+
+#: options-meta-boxes.php:176
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "Before / after each related entry:"
+msgstr "Roimh / tar éis gach iontráil a bhaineann le:"
+
+#: options-meta-boxes.php:178
+#: options-meta-boxes.php:247
+#@ yarpp
+msgid "Show excerpt?"
+msgstr "Taispeáin Sliocht?"
+
+#: options-meta-boxes.php:179
+#: options-meta-boxes.php:248
+#@ yarpp
+msgid "Excerpt length (No. of words):"
+msgstr "Sliocht fad (Uimh. de na focail):"
+
+#: options-meta-boxes.php:183
+#@ yarpp
+msgid "Before / after (Excerpt):"
+msgstr "Sula / i ndiaidh (Sliocht):"
+
+#: options-meta-boxes.php:189
+#: options-meta-boxes.php:254
+#@ yarpp
+msgid "Order results:"
+msgstr "Ordú na torthaí:"
+
+#: options-meta-boxes.php:191
+#: options-meta-boxes.php:256
+#@ yarpp
+msgid "score (high relevance to low)"
+msgstr "scór (ábhartha maidir leis an ard go híseal)"
+
+#: options-meta-boxes.php:192
+#: options-meta-boxes.php:257
+#@ yarpp
+msgid "score (low relevance to high)"
+msgstr "scór (ábharthacht íseal ard)"
+
+#: options-meta-boxes.php:193
+#: options-meta-boxes.php:258
+#@ yarpp
+msgid "date (new to old)"
+msgstr "Dáta (nua chun d'aois)"
+
+#: options-meta-boxes.php:194
+#: options-meta-boxes.php:259
+#@ yarpp
+msgid "date (old to new)"
+msgstr "Dáta (sean go nua)"
+
+#: options-meta-boxes.php:195
+#: options-meta-boxes.php:260
+#@ yarpp
+msgid "title (alphabetical)"
+msgstr "teideal (aibítreach)"
+
+#: options-meta-boxes.php:196
+#: options-meta-boxes.php:261
+#@ yarpp
+msgid "title (reverse alphabetical)"
+msgstr "teideal (mhalairt aibítreach)"
+
+#: options-meta-boxes.php:201
+#: options-meta-boxes.php:266
+#@ yarpp
+msgid "Default display if no results:"
+msgstr "Default taispeáint más rud é gan torthaí:"
+
+#: includes.php:257
+#: options-meta-boxes.php:203
+#: options-meta-boxes.php:268
+#@ yarpp
+msgid "Help promote Yet Another Related Posts Plugin?"
+msgstr "Cabhair cinn Ach eile Related Poist  Plugin?"
+
+#: options-meta-boxes.php:205
+#: options-meta-boxes.php:269
+#, php-format
+#@ yarpp
+msgid "This option will add the code %s. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated."
+msgstr "Beidh an rogha seo  a chur  leis an  gcód% s. Bain triail as  casadh  ar sé,  do roghanna a thabhairt cothrom le dáta,  agus ar  an cód sa sampla cód a bhfeiceann  leis an gceart.  Tá na  naisc  agus na  síntiúis  a bhfuil meas mór."
+
+#: options-meta-boxes.php:276
+#@ yarpp
+msgid "Display options <small>for RSS</small>"
+msgstr "Taispeáin roghanna<small>(RSS)</small>"
+
+#: options-meta-boxes.php:221
+#@ yarpp
+msgid "Display related posts in feeds?"
+msgstr "Post Taispeáin gaolmhara Fothaí in?"
+
+#: options-meta-boxes.php:223
+#@ yarpp
+msgid "Display related posts in the descriptions?"
+msgstr "Taispeáin bhaineann le  post sa tuairiscí?"
+
+#: options-meta-boxes.php:223
+#@ yarpp
+msgid "This option displays the related posts in the RSS description fields, not just the content. If your feeds are set up to only display excerpts, however, only the description field is used, so this option is required for any display at all."
+msgstr "Taispeánann an rogha seo  an post a bhaineann i réimsí an  tuairisc  RSS, ní hamháin ar an ábhar. Má tá do feeds ar bun a thaispeáint ach sleachta, áfach, tá cur síos ar an réimse a úsáid ach amháin, agus mar sin tá an rogha seo ag teastáil le haghaidh  aon taispeáint ar chor ar bith."
+
+#: options-meta-boxes.php:221
+#@ yarpp
+msgid "RSS display code example"
+msgstr "RSS Cód thaispeáint mar shampla"
+
+#: options-meta-boxes.php:250
+#@ yarpp
+msgid "Before / after (excerpt):"
+msgstr "Sula / i ndiaidh (sliocht):"
+
+#: options-meta-boxes.php:38
+#@ yarpp
+msgid "word"
+msgstr "focal"
+
+#: options-meta-boxes.php:39
+#@ yarpp
+msgid "tag"
+msgstr "tag"
+
+#: options-meta-boxes.php:40
+#@ yarpp
+msgid "category"
+msgstr "Catagóir"
+
+#: options-meta-boxes.php:48
+#: options-meta-boxes.php:80
+#, php-format
+#@ yarpp
+msgid "require at least one %s in common"
+msgstr "a cheangal ar amháin ar a laghad  i gcoiteann% s"
+
+#: options-meta-boxes.php:50
+#: options-meta-boxes.php:82
+#, php-format
+#@ yarpp
+msgid "require more than one %s in common"
+msgstr "a cheangal ar níos mó ná aon %s i bpáirt"
+
+#: options.php:86
+#@ yarpp
+msgid "Options saved!"
+msgstr "Roghanna shábháil!"
+
+#: options-meta-boxes.php:124
+#@ yarpp
+msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
+msgstr "Dá airde an tairseach do mhargadh an níos sriantaí, agus gheobhaidh tú post níos lú a bhaineann  iomlán. Tá an tairseach do  chluiche  réamhshocraithe  5. Más mian leat teacht ar an tairseach chluiche iomchuí, a chur le breathnú ar roinnt iar's post a bhaineann le  taispeáint  agus a n-scóir. Is féidir leat a fheiceáil cad iad na cineálacha post a bhaineann mbailítear agus le cén cineál na scóir mheaitseáil, agus tairseach chuí ar do shuíomh a chinneadh."
+
+#: options.php:268
+#@ yarpp
+msgid "Update options"
+msgstr "Roghanna Nuashonraithe"
+
+#: options.php:269
+#@ yarpp
+msgid "Do you really want to reset your configuration?"
+msgstr "An bhfuil tú cinnte gur mhaith leat a athshocrú do chumraíocht?"
+
+#: options.php:269
+#@ yarpp
+msgid "Reset options"
+msgstr "Roghanna Athshocraigh"
+
+#: includes.php:26
+#: includes.php:37
+#@ yarpp
+msgid "Related posts:"
+msgstr "Poist ghaolmhara:"
+
+#: includes.php:28
+#: includes.php:39
+#: template-metabox.php:27
+#: template-widget.php:13
+#@ yarpp
+msgid "No related posts."
+msgstr "Uimh phoist a bhaineann leo."
+
+#: cache-postmeta.php:105
+#: cache-tables.php:131
+#@ yarpp
+msgid "Example post "
+msgstr "Sampla post"
+
+#: options-meta-boxes.php:105
+#@ yarpp
+msgid "day(s)"
+msgstr "lá (í)"
+
+#: options-meta-boxes.php:106
+#@ yarpp
+msgid "week(s)"
+msgstr "tseachtain (í)"
+
+#: options-meta-boxes.php:107
+#@ yarpp
+msgid "month(s)"
+msgstr "mí (í)"
+
+#: options-meta-boxes.php:109
+#@ yarpp
+msgid "Show only posts from the past NUMBER UNITS"
+msgstr "Taispeáin post amháin ón am atá thart UIMHIR AONAID"
+
+#: includes.php:248
+#: options-meta-boxes.php:161
+#: options-meta-boxes.php:228
+#@ yarpp
+msgid "Display using a custom template file"
+msgstr "Taispeáin ag baint úsáide as  comhad  teimpléad  saincheaptha"
+
+#: options-meta-boxes.php:228
+#@ yarpp
+msgid "NEW!"
+msgstr "NUA!"
+
+#: options-meta-boxes.php:161
+#: options-meta-boxes.php:228
+#@ yarpp
+msgid "This advanced option gives you full power to customize how your related posts are displayed. Templates (stored in your theme folder) are written in PHP."
+msgstr "Tugann an rogha seo  chun cinn  duit chumhacht iomlán a shaincheapadh  conas  do phoist a  bhaineann leis ar taispeáint. Teimpléid (stóráilte i do fhillteán téama) atá scríofa i PHP."
+
+#: includes.php:249
+#: options-meta-boxes.php:165
+#: options-meta-boxes.php:233
+#@ yarpp
+msgid "Template file:"
+msgstr "Teimpléad Saghas comhaid:"
+
+#: options-meta-boxes.php:175
+#: options-meta-boxes.php:176
+#: options-meta-boxes.php:184
+#: options-meta-boxes.php:244
+#: options-meta-boxes.php:245
+#: options-meta-boxes.php:250
+#@ yarpp
+msgid " or "
+msgstr "nó"
+
+#: options-meta-boxes.php:221
+#@ yarpp
+msgid "This option displays related posts at the end of each item in your RSS and Atom feeds. No template changes are needed."
+msgstr "Taispeánann an rogha seo  a bhaineann le post  ag deireadh gach míre i do RSS agus Atom feeds. Aon athrú a teimpléad atá ag teastáil."
+
+#: template-metabox.php:12
+#@ yarpp
+msgid "These are the related entries for this entry. Updating this post may change these related posts."
+msgstr "s iad seo na hiontrálacha a bhaineann leis  an iontráil seo.  D'fhéadfadh  athrú a  thabhairt cothrom le dáta an post seo na poist a bhaineann leo."
+
+#: template-metabox.php:25
+#@ yarpp
+msgid "Whether all of these related entries are actually displayed and how they are displayed depends on your YARPP display options."
+msgstr "Cibé acu a bhaineann le gach ceann de na  hiontrálacha  ar taispeáint iarbhír agus an chaoi a gcuirtear ar taispeáint iad ag brath ar  do roghanna taispeána YARPP."
+
+#: includes.php:169
+#@ yarpp
+msgid "Settings"
+msgstr ""
+
+#: includes.php:243
+#@ default
+msgid "Title:"
+msgstr ""
+
+#: includes.php:389
+#@ yarpp
+msgid "Related entries may be displayed once you save your entry"
+msgstr ""
+
+#: magic.php:297
+#, php-format
+#@ yarpp
+msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
+msgstr ""
+
+#: options-meta-boxes.php:124
+#@ yarpp
+msgid "YARPP limits the related posts list by (1) a maximum number and (2) a <em>match threshold</em>."
+msgstr ""
+
+#: options-meta-boxes.php:205
+#: options-meta-boxes.php:269
+#@ yarpp
+msgid "Related posts brought to you by <a href='http://yarpp.org'>Yet Another Related Posts Plugin</a>."
+msgstr ""
+
+#: options-meta-boxes.php:283
+#@ yarpp
+msgid "YARPP Forum"
+msgstr ""
+
+#: options-meta-boxes.php:284
+#@ yarpp
+msgid "YARPP on Twitter"
+msgstr ""
+
+#: options-meta-boxes.php:285
+#@ yarpp
+msgid "YARPP on the Web"
+msgstr ""
+
+#: options-meta-boxes.php:292
+#@ yarpp
+msgid "Contact YARPP"
+msgstr ""
+
+#: options.php:58
+#, php-format
+#@ yarpp
+msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
+msgstr ""
+
+#: options.php:160
+#, php-format
+#@ yarpp
+msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+msgstr ""
+
+#: options.php:251
+#, php-format
+#@ yarpp
+msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
+msgstr ""
+
+#: options.php:256
+#, php-format
+#@ yarpp
+msgid "There is a new version (%s) of Yet Another Related Posts Plugin available! You can <a href=\"%s\">download it here</a>."
+msgstr ""
+

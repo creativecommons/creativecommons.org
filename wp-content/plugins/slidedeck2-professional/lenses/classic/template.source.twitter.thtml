@@ -1,0 +1,26 @@
+ <div class="slide-content">
+    <div class="slide-content-inner">
+        
+        <div class="slidedeck-vertical-center-outer">
+            <div class="slidedeck-vertical-center-middle">
+                <div class="slidedeck-vertical-center-inner">
+                    
+                    <h3 class="slide-title">
+                        <?php echo $excerpt; ?>
+                    </h3>
+                    <div class="slide-meta">
+                        <?php if( !empty( $author_avatar ) ): ?>
+                            <img src="<?php echo $author_avatar; ?>" alt="<?php echo $author_name; ?>" class="slide-author-avatar" />
+                        <?php endif; ?>
+                        <span class="slide-author">
+                            <a class="accent-color" href="http://twitter.com/<?php echo $author_username; ?>" target="_blank"><?php echo $author_name; ?></a>
+                        </span>
+                        <span class="slide-date"><a class="accent-color" href="<?php echo $permalink; ?>" target="_blank"><?php echo $created_at; ?></a></span>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

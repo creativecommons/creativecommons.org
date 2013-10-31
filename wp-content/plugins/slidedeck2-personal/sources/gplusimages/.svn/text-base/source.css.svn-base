@@ -1,0 +1,7 @@
+.slidedeck-content-source.source-gplusimages { min-width: 470px; }
+.slidedeck-content-source.source-gplusimages .fancy-select { color: #333; }
+.slidedeck-content-source ul.content-source-fields li input#options-gplus_user_id {
+	min-width: 170px;
+	width: 170px;
+}
+form.slidedeck-form .slidedeck-content-source.source-gplusimages select { width: 210px; }

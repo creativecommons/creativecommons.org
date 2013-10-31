@@ -1,0 +1,32 @@
+{
+    "name": "Twitter",
+    "uri": "http://www.slidedeck.com/",
+    "sources": ["twitter"],
+    "author": "dtelepathy",
+    "author_uri": "http://www.dtelepathy.com/",
+    "contributors": ["dtrenkner", "oriontimbers", "kynatro", "jamie3d"],
+    "description": "The Twitter Lens",
+    "version": "1.0",
+    "sizes": {
+        "small": {
+            "label": "Small",
+            "width": 225,
+            "height": 240
+        },
+        "medium": {
+            "label": "Medium",
+            "width": 455,
+            "height": 240
+        },
+        "large": {
+            "label": "Large",
+            "width": 960,
+            "height": 165
+        },
+        "custom": {
+        	"label": "Custom",
+        	"width": 960,
+        	"height": 165
+        }
+    }
+}

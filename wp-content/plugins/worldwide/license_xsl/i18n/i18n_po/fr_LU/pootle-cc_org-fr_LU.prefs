@@ -1,0 +1,6 @@
+# Pootle preferences for project cc_org, language fr_LU
+
+rights:
+  default = u'view, suggest, archive, pocompile'
+  nobody = u'view'
+  ppeiffer = u'view, suggest, translate, review, archive, pocompile, assign, commit'

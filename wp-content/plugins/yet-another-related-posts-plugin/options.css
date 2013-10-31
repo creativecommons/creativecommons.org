@@ -1,0 +1,338 @@
+#yarpp_author_text {
+	width: 900px;
+}
+
+.form-table td {
+  line-height: 11px; /* to match the th's */
+}
+
+ul.yarpp_contacts li {
+	padding: 0px 0px 0px 30px;
+	line-height: 22px;
+}
+body.rtl ul.yarpp_contacts li {
+	padding: 0px 30px 0px 0px;	
+}
+
+ul.yarpp_contacts li a img {
+	vertical-align: bottom;
+}
+
+/* hide pointer dismiss buttons on this page */
+.postbox .wp-pointer-buttons {
+	display: none;
+}
+
+#tab-panel-faq, #tab-panel-dev {
+	direction: ltr;
+}
+
+.icon {
+	width: 22px;
+	height: 22px;
+	position: absolute;
+	margin-left: -29px;
+	margin-top: -1px;
+	background-image: url('sprites.png');
+}
+body.rtl .icon {
+	margin-left: none;
+	margin-right: -29px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+	.icon {
+		background-image: url('sprites-2x.png');
+		background-size: 110px 22px;
+	}
+}
+.icon-wordpress {
+	background-position: 0 0;
+}
+.icon-twitter {
+	background-position: -22px 0;
+}
+.icon-plugin {
+	background-position: -44px 0;
+}
+.icon-star {
+	background-position: -66px 0;
+}
+.icon-paypal {
+	background-position: -88px 0;
+}
+
+.icon.spin, .icon-star:hover {
+	transform-origin: 11px 12px;
+	-o-transform-origin: 11px 12px;
+	-webkit-transform-origin: 11px 12px;
+	-moz-transform-origin: 11px 12px;
+	animation: 3s ease 2s normal none 1 yarpp-spin;
+	-o-animation: 3s ease 2s normal none 1 yarpp-spin;
+	-webkit-animation: 3s ease 2s normal none 1 yarpp-spin;
+	-moz-animation: 3s ease 2s normal none 1 yarpp-spin;
+	z-index: 1;
+}
+
+@keyframes yarpp-spin {
+	0% { transform: rotate(0deg) scale(1); }
+	5% { transform: rotate(0deg) scale(1.5); }
+	100% { transform: rotate(360deg) scale(1);}
+}
+@-moz-keyframes yarpp-spin {
+	0% { -moz-transform: rotate(0deg) scale(1); }
+	5% { -moz-transform: rotate(0deg) scale(1.5); }
+	100% { -moz-transform: rotate(360deg) scale(1);}
+}
+@-webkit-keyframes yarpp-spin {
+	0% { -webkit-transform: rotate(0deg) scale(1); }
+	5% { -webkit-transform: rotate(0deg) scale(1.5); }
+	100% { -webkit-transform: rotate(360deg) scale(1);}
+}
+
+a.info{
+	position:relative;
+	z-index:24;
+}
+
+.yarpp_help {
+	display: inline-block;
+	cursor: default;
+	background-image: url('../../../wp-includes/images/wpicons-2x.png?ver=20120720');
+	background-size: 560px 40px;
+	background-position: -520px -20px;
+	cursor: default;
+	vertical-align: baseline;
+	width: 20px;
+	height: 20px;
+}
+a.yarpp_help {
+	text-decoration: none;
+	cursor: pointer;
+}
+a.yarpp_help:hover {
+	text-decoration: none;
+	background-position: -520px -0px;
+}
+
+.branch-3-4 .yarpp_help, .branch-3-3 .yarpp-help {
+	background-image: url('../../../wp-includes/images/wpicons.png?ver=20120720');
+}
+
+.exclude_terms span {
+	display: inline-block;
+}
+
+#yarpp_display_optin.yarpp_attention {
+	border: 2px solid #bbb;
+}
+
+.yarpp_subbox {
+	margin-bottom: 5px;
+	background: #fdfdfd;
+}
+.yarpp_form_row {
+	overflow: visible;
+	padding: 8px;
+}
+.yarpp_form_row > div {
+	display: inline-block;
+	*display: inline;
+	vertical-align: baseline;
+}
+.yarpp_form_checkbox > div {
+}
+.yarpp_form_select > div {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.yarpp_form_select + .yarpp_form_select {
+	padding-top: 0px;
+}
+.yarpp_form_label {
+	width: 190px;
+}
+.yarpp_form_label + div {
+	padding-left: 16px;
+}
+.yarpp_form_textbox > .yarpp_form_label {
+}
+.yarpp_form_select > .yarpp_form_label {
+	padding-top: 8px;
+}
+.yarpp_form_post_types label {
+	padding-right: 15px;
+	line-height: 20px;
+	display: inline-block;
+}
+body.rtl .yarpp_form_post_types label {
+	padding-right: inherit;
+	padding-left: 15px;
+}
+.yarpp_form_exclude label {
+	padding-right: 5px;
+	line-height: 15px;
+}
+body.rtl .yarpp_form_exclude label {
+	padding-right: inherit;
+	padding-left: 5px;
+}
+.yarpp_form_template_file > .yarpp_form_label {
+	vertical-align: top;
+	padding-top: 5px;
+}
+
+.yarpp_code_display {
+	border-left: 8px transparent solid;
+	width: 50%;
+	float: right;
+}
+body.rtl .yarpp_code_display {
+	float: left;
+}
+.yarpp_code_display div {
+	overflow: auto;
+	max-height: 300px;
+}
+.yarpp_code_display pre {
+	direction: ltr;
+}
+.yarpp_scroll_wrapper {
+	overflow: auto;
+	max-height: 100px;
+	width: 60%;
+}
+
+@media all and (max-width:1200px) {
+	.yarpp_scroll_wrapper {
+		width: 50%;
+	}
+	.yarpp_code_display {
+		max-width: 60%;
+	}	
+}
+
+.yarpp_copy_templates_button {
+	float: right;
+}
+body.rtl .yarpp_copy_templates_button {
+	float: left;
+}
+
+#yarpp-optin-learnmore {
+	float: right;
+}
+body.rtl #yarpp-optin-learnmore {
+	float: left;
+}
+
+.template_file_wrap, .template_author_wrap, .template_description_wrap {
+	margin: 3px 0;
+}
+
+.template_file_wrap {
+	font-family: monospace;
+}
+
+.yarpp_subbox input[type=text], .yarpp_subbox input[type=text] {
+	font-family: monospace;
+}
+
+.yarpp_form_template_buttons {
+	padding: 0px;
+}
+.yarpp_template_button {
+	position: relative;
+	height: 60px;
+	width: 70px;
+	padding: 8px;
+	-webkit-border-radius: 3px;
+	border-radius: 7px;
+	border: 1px solid #aaa;
+	margin: 10px;
+	margin-right: 5px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	background: #f3f3f3;
+	background-image: -webkit-linear-gradient(top, #FEFEFE, #F4F4F4);
+	background-image: -moz-linear-gradient(top, #FEFEFE, #F4F4F4);
+	background-image: -o-linear-gradient(top, #FEFEFE, #F4F4F4);
+	background-image: linear-gradient(top, #FEFEFE, #F4F4F4);
+	color: #333;
+	text-shadow: 0 1px 0 white;
+	-webkit-box-shadow: 1px 1px 7px 1px #bbb;
+	box-shadow: 1px 1px 7px 1px #bbb;
+}
+.yarpp_template_button.disabled, .yarpp_template_button.disabled:hover, .yarpp_template_button.disabled:active {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-color: #ddd;
+	background: #f3f3f3;
+	background-image: -webkit-linear-gradient(top, #FEFEFE, #F4F4F4) !important;
+	background-image: -moz-linear-gradient(top, #FEFEFE, #F4F4F4) !important;
+	background-image: -o-linear-gradient(top, #FEFEFE, #F4F4F4) !important;
+	background-image: linear-gradient(top, #FEFEFE, #F4F4F4) !important;
+}
+.yarpp_template_button.disabled > div.label {
+	color: #bbb !important;
+}
+.yarpp_template_button:hover {
+	border-color: #999;
+	color: #222;
+}
+.yarpp_template_button:active, .yarpp_template_button.active {
+	background: #eee;
+	background-image: -webkit-linear-gradient(top, #eee, #f4f4f4);
+	background-image: -moz-linear-gradient(top, #eee, #f4f4f4);
+	background-image: -o-linear-gradient(top, #eee, #f4f4f4);
+	background-image: linear-gradient(top, #eee, #f4f4f4);
+	border-color: #999;
+	text-shadow: 0 -1px 0 white;
+	-webkit-box-shadow: inset 0 2px 8px -2px rgba( 0, 0, 0, 0.5 );
+	box-shadow: inset 0 2px 8px -2px rgba( 0, 0, 0, 0.5 );
+}
+.yarpp_template_button > div.label {
+	width: 70px;
+	bottom: 8px;
+	text-align: center;
+	position: absolute;
+}
+
+.yarpp_template_button > div.image {
+	width: 70px;
+	height: 40px;
+	background-image: url('template-buttons-2x.png');
+	background-size: 210px 40px;
+	opacity: 0.8;
+}
+.yarpp_template_button.disabled > div.image {
+	opacity: 0.2 !important;
+}
+.yarpp_template_button:active > div.image {
+	opacity: 1;
+}
+.yarpp_template_button[data-value=builtin] > div.image {
+	background-position: 0px 0px;
+}
+.yarpp_template_button[data-value=thumbnails] > div.image {
+	background-position: -70px 0px;
+}
+.yarpp_template_button[data-value=custom] > div.image {
+	background-position: -140px 0px;
+}
+
+#optin_data_frame {
+	overflow: scroll;
+	max-height: 300px;
+	direction: ltr;
+}
+
+#yarpp_extra_screen_settings {
+	border-top: 1px solid #e0e0e0;
+}
+
+.help-tab-content {
+	max-height: 500px;
+	width: 100%;
+	overflow: auto;
+}

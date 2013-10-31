@@ -1,0 +1,558 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yet Another Related Posts Plugin v3.5.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-11-09 15:19:57+0000\n"
+"Last-Translator: Pseric <pserics@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: TAIWAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: class-admin.php:56
+#: class-widget.php:7
+#: class-widget.php:59
+#@ yarpp
+msgid "Related Posts (YARPP)"
+msgstr "相關文章 (YARPP)"
+
+#: class-admin.php:62
+#@ yarpp
+msgid "Related Posts"
+msgstr "Related Posts"
+
+#: class-admin.php:62
+#@ default
+msgid "Configure"
+msgstr ""
+
+#: class-admin.php:80
+#@ yarpp
+msgid "Frequently Asked Questions"
+msgstr "常見問題"
+
+#: class-admin.php:85
+#: class-admin.php:116
+#@ yarpp
+msgid "Developing with YARPP"
+msgstr "YARPP 開發"
+
+#: class-admin.php:104
+#@ yarpp
+msgid "FAQ"
+msgstr "FAQ"
+
+#: class-admin.php:171
+#@ yarpp
+msgid "Thank you for installing <span>Yet Another Related Posts Plugin</span>!"
+msgstr "感謝您安裝 <span>Yet Another Related Posts Plugin</span> ！"
+
+#: class-admin.php:172
+#@ yarpp
+msgid "Make sure to visit the <a>Related Posts settings page</a> to customize YARPP."
+msgstr "請務必前往<a>相關文章設定頁面</a>來自訂 YARPP。"
+
+#: class-admin.php:218
+#@ default
+msgid "Settings"
+msgstr ""
+
+#: class-admin.php:244
+#@ yarpp
+msgid "Related entries may be displayed once you save your entry"
+msgstr "當你儲存你的內容後，相關文章就可能顯示出來。"
+
+#: class-cache.php:530
+#@ yarpp
+msgid "Example post "
+msgstr "範例文章 "
+
+#: class-core.php:70
+#: class-core.php:80
+#: class-core.php:281
+#: class-core.php:292
+#@ yarpp
+msgid "Related posts:"
+msgstr "相關文章："
+
+#: class-core.php:72
+#: class-core.php:82
+#: class-core.php:283
+#: class-core.php:294
+#: template-metabox.php:30
+#: template-widget.php:13
+#@ yarpp
+msgid "No related posts."
+msgstr "沒有相關文章。"
+
+#: class-core.php:612
+#: class-core.php:733
+#: options-meta-boxes.php:229
+#: options-meta-boxes.php:284
+#, php-format
+#@ yarpp
+msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
+msgstr "相關文章由 <a href='%s'>Yet Another Related Posts Plugin</a>提供。"
+
+#: class-widget.php:69
+#@ default
+msgid "Title:"
+msgstr ""
+
+#: class-widget.php:75
+#: options-meta-boxes.php:17
+#@ yarpp
+msgid "Display using a custom template file"
+msgstr "以一個自訂模版檔案來顯示"
+
+#: class-widget.php:76
+#: options-meta-boxes.php:196
+#: options-meta-boxes.php:258
+#@ yarpp
+msgid "Template file:"
+msgstr "模版檔案："
+
+#: class-widget.php:98
+#: options-meta-boxes.php:227
+#: options-meta-boxes.php:283
+#@ yarpp
+msgid "Help promote Yet Another Related Posts Plugin?"
+msgstr "協助推廣 Yet Another Related Posts Plugin？"
+
+#: options-meta-boxes.php:17
+#: options-meta-boxes.php:113
+#: options-meta-boxes.php:153
+#: options-meta-boxes.php:169
+#: options-meta-boxes.php:187
+#: options-meta-boxes.php:228
+#: options-meta-boxes.php:245
+#: options-meta-boxes.php:247
+#: options-meta-boxes.php:283
+#@ yarpp
+msgid "more&gt;"
+msgstr "更多 &gt;"
+
+#: options-meta-boxes.php:17
+#@ yarpp
+msgid "This advanced option gives you full power to customize how your related posts are displayed. Templates (stored in your theme folder) are written in PHP."
+msgstr "這個進階選項提供完整的權限讓你自訂如何顯示你的相關文章。模版（儲存在你的佈景主題資料夾）必須使用 PHP 語法。"
+
+#: options-meta-boxes.php:47
+#: options-meta-boxes.php:59
+#@ yarpp
+msgid "do not consider"
+msgstr "不參考"
+
+#: options-meta-boxes.php:48
+#: options-meta-boxes.php:60
+#@ yarpp
+msgid "consider"
+msgstr "參考"
+
+#: options-meta-boxes.php:49
+#: options-meta-boxes.php:61
+#@ yarpp
+msgid "consider with extra weight"
+msgstr "作為主要參考指標"
+
+#: options-meta-boxes.php:50
+#, php-format
+#@ yarpp
+msgid "require at least one %s in common"
+msgstr "至少從一個 %s 中考慮關聯"
+
+#: options-meta-boxes.php:51
+#, php-format
+#@ yarpp
+msgid "require more than one %s in common"
+msgstr "至少從一個以上 %s 中考慮關聯"
+
+#: options-meta-boxes.php:68
+#@ yarpp
+msgid "Order results:"
+msgstr "排序方式："
+
+#: options-meta-boxes.php:71
+#@ yarpp
+msgid "score (high relevance to low)"
+msgstr "相關性（由高至低）"
+
+#: options-meta-boxes.php:72
+#@ yarpp
+msgid "score (low relevance to high)"
+msgstr "相關性（由低至高）"
+
+#: options-meta-boxes.php:73
+#@ yarpp
+msgid "date (new to old)"
+msgstr "日期（由新到舊）"
+
+#: options-meta-boxes.php:74
+#@ yarpp
+msgid "date (old to new)"
+msgstr "日期（由舊到新）"
+
+#: options-meta-boxes.php:75
+#@ yarpp
+msgid "title (alphabetical)"
+msgstr "標題（按字母順向排序）"
+
+#: options-meta-boxes.php:76
+#@ yarpp
+msgid "title (reverse alphabetical)"
+msgstr "標題（按字母逆向排序）"
+
+#: options-meta-boxes.php:109
+#@ yarpp
+msgid "\"The Pool\" refers to the pool of posts and pages that are candidates for display as related to the current entry."
+msgstr "你可以在「全域設定」裡排除關聯某些分類或標籤，使 YARPP 不再關聯顯示它們。"
+
+#: options-meta-boxes.php:113
+#@ yarpp
+msgid "Post types considered:"
+msgstr "文章類型考慮："
+
+#: options-meta-boxes.php:116
+#, php-format
+#@ yarpp
+msgid "Disallow by %s:"
+msgstr "禁止關聯 %s："
+
+#: options-meta-boxes.php:118
+#@ yarpp
+msgid "Show password protected posts?"
+msgstr "顯示密碼保護的文章？"
+
+#: options-meta-boxes.php:129
+#@ yarpp
+msgid "day(s)"
+msgstr "天"
+
+#: options-meta-boxes.php:130
+#@ yarpp
+msgid "week(s)"
+msgstr "周"
+
+#: options-meta-boxes.php:131
+#@ yarpp
+msgid "month(s)"
+msgstr "月"
+
+#: options-meta-boxes.php:137
+#@ yarpp
+msgid "Show only posts from the past NUMBER UNITS"
+msgstr "僅關聯顯示 NUMBER UNITS 內的文章"
+
+#: options-meta-boxes.php:147
+#@ yarpp
+msgid "\"The Pool\""
+msgstr "全域設定"
+
+#: options-meta-boxes.php:153
+#@ yarpp
+msgid "YARPP limits the related posts list by (1) a maximum number and (2) a <em>match threshold</em>."
+msgstr "YARPP 相關文章列表受兩項因素限制：(1) 最大值和 (2) <em>相關值</em>。"
+
+#: options-meta-boxes.php:153
+#@ yarpp
+msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
+msgstr "相關值越高，篩選上也會更加嚴格，對整體來說顯示的相關文章會越少。在預設情況下，相關值是 5 分。如果你想找出一個理想的相關值，可以看看目前站內相關文章的顯示情形，試著找出一個最合適的相關值設定。"
+
+#: options-meta-boxes.php:159
+#@ yarpp
+msgid "Match threshold:"
+msgstr "相關值："
+
+#: options-meta-boxes.php:160
+#@ yarpp
+msgid "Titles: "
+msgstr "標題： "
+
+#: options-meta-boxes.php:162
+#@ yarpp
+msgid "Bodies: "
+msgstr "內容： "
+
+#: options-meta-boxes.php:169
+#@ yarpp
+msgid "Display results from all post types"
+msgstr "從所有文章類型顯示結果"
+
+#: options-meta-boxes.php:169
+#@ yarpp
+msgid "When \"display results from all post types\" is off, only posts will be displayed as related to a post, only pages will be displayed as related to a page, etc."
+msgstr "當關閉「從所有文章類型顯示結果」選項，在文章裡只會顯示相關文章，在頁面裡只會顯示相關頁面，以此類推。"
+
+#: options-meta-boxes.php:170
+#@ yarpp
+msgid "Show only previous posts?"
+msgstr "只顯示以前的文章？"
+
+#: options-meta-boxes.php:178
+#@ yarpp
+msgid "\"Relatedness\" options"
+msgstr "關聯設定"
+
+#: options-meta-boxes.php:187
+#@ yarpp
+msgid "Automatically display related posts?"
+msgstr "自動顯示相關文章？"
+
+#: options-meta-boxes.php:187
+#@ yarpp
+msgid "This option automatically displays related posts right after the content on single entry pages. If this option is off, you will need to manually insert <code>related_posts()</code> or variants (<code>related_pages()</code> and <code>related_entries()</code>) into your theme files."
+msgstr "這個選項會自動在每篇文章內容的後方顯示相關文章。如果停用此選項，你必須手動在佈景主題檔案內插入 <code>related_posts()</code> 或變數（<code>related_pages()</code> 和 <code>related_entries()</code>）。"
+
+#: options-meta-boxes.php:188
+#@ yarpp
+msgid "Website display code example"
+msgstr "網站顯示語法範例"
+
+#: options-meta-boxes.php:188
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "(Update options to reload.)"
+msgstr "（儲存設定後生效。）"
+
+#: options-meta-boxes.php:190
+#: options-meta-boxes.php:250
+#@ yarpp
+msgid "Maximum number of related posts:"
+msgstr "最大相關文章數："
+
+#: options-meta-boxes.php:208
+#: options-meta-boxes.php:271
+#@ yarpp
+msgid "Before / after related entries:"
+msgstr "在相關文章的前／後："
+
+#: options-meta-boxes.php:208
+#: options-meta-boxes.php:209
+#: options-meta-boxes.php:217
+#: options-meta-boxes.php:271
+#: options-meta-boxes.php:272
+#: options-meta-boxes.php:277
+#@ yarpp
+msgid "For example:"
+msgstr "例如："
+
+#: options-meta-boxes.php:208
+#: options-meta-boxes.php:209
+#: options-meta-boxes.php:217
+#: options-meta-boxes.php:271
+#: options-meta-boxes.php:272
+#: options-meta-boxes.php:277
+#@ yarpp
+msgid " or "
+msgstr "或 "
+
+#: options-meta-boxes.php:209
+#: options-meta-boxes.php:272
+#@ yarpp
+msgid "Before / after each related entry:"
+msgstr "在每個相關文章標題的前／後："
+
+#: options-meta-boxes.php:211
+#: options-meta-boxes.php:274
+#@ yarpp
+msgid "Show excerpt?"
+msgstr "顯示摘要？"
+
+#: options-meta-boxes.php:212
+#: options-meta-boxes.php:275
+#@ yarpp
+msgid "Excerpt length (No. of words):"
+msgstr "摘要長度（字元數）："
+
+#: options-meta-boxes.php:216
+#@ yarpp
+msgid "Before / after (Excerpt):"
+msgstr "前／後（摘要）："
+
+#: options-meta-boxes.php:224
+#: options-meta-boxes.php:281
+#@ yarpp
+msgid "Default display if no results:"
+msgstr "如果沒有相關文章，預設顯示："
+
+#: options-meta-boxes.php:229
+#: options-meta-boxes.php:284
+#, php-format
+#@ yarpp
+msgid "This option will add the code %s. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated."
+msgstr "這個選項會加入語法：%s。試著開啟它、儲存設定，然後在右邊的語法範例看看它所顯示的樣子。誠摯地感謝你的推廣和贊助。"
+
+#: options-meta-boxes.php:236
+#@ yarpp
+msgid "Display options <small>for your website</small>"
+msgstr "顯示設定"
+
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "Display related posts in feeds?"
+msgstr "在 RSS 中顯示相關文章？"
+
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "This option displays related posts at the end of each item in your RSS and Atom feeds. No template changes are needed."
+msgstr "這個選項會在你的 RSS 和 Atom 底部加入相關文章。無需修改模版。"
+
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "RSS display code example"
+msgstr "RSS 顯示語法範例"
+
+#: options-meta-boxes.php:247
+#@ yarpp
+msgid "Display related posts in the descriptions?"
+msgstr "在摘要中顯示相關文章？（當 RSS 只輸出摘要時）"
+
+#: options-meta-boxes.php:247
+#@ yarpp
+msgid "This option displays the related posts in the RSS description fields, not just the content. If your feeds are set up to only display excerpts, however, only the description field is used, so this option is required for any display at all."
+msgstr "這個選項會將相關文章顯示於 RSS 的摘要欄位，而不是在全文範圍。如果你的 RSS 設定只顯示摘要，那麼請啟用此選項。"
+
+#: options-meta-boxes.php:277
+#@ yarpp
+msgid "Before / after (excerpt):"
+msgstr "前／後（摘要）："
+
+#: options-meta-boxes.php:291
+#@ yarpp
+msgid "Display options <small>for RSS</small>"
+msgstr "RSS 相關設定"
+
+#: options-meta-boxes.php:299
+#@ yarpp
+msgid "YARPP Forum"
+msgstr "YARPP 討論區"
+
+#: options-meta-boxes.php:300
+#@ yarpp
+msgid "YARPP on Twitter"
+msgstr "YARPP Twitter"
+
+#: options-meta-boxes.php:301
+#@ yarpp
+msgid "YARPP on the Web"
+msgstr "YARPP 官方網站"
+
+#: options-meta-boxes.php:302
+#@ yarpp
+msgid "Rate YARPP on WordPress.org"
+msgstr "在 WordPress.org 給 YARPP 評分"
+
+#: options-meta-boxes.php:303
+#@ default
+#@ yarpp
+msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
+msgstr "以 Paypal 捐款給本外掛作者 mitcho (Michael Yoshitaka Erlewine)"
+
+#: options-meta-boxes.php:337
+#@ yarpp
+msgid "Contact YARPP"
+msgstr "聯絡 YARPP"
+
+#: options.php:31
+#, php-format
+#@ default
+msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
+msgstr ""
+
+#: options.php:35
+#, php-format
+#@ yarpp
+msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
+msgstr "這是 Yet Another Related Posts Plugin 程式的新 beta 版本 (%s)。你可以<a href=\"%s\">點這裡下載</a>。"
+
+#: options.php:43
+#@ yarpp
+msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
+msgstr "MyISAM 檢查已被重寫。你現在也許可以用 \"consider titles\" 和 \"consider bodies\" 關聯的標準。"
+
+#: options.php:51
+#, php-format
+#@ yarpp
+msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
+msgstr ""
+
+#: options.php:53
+#, php-format
+#@ yarpp
+msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
+msgstr "要還原此功能，請執行以下的 SQL 來更新你的 <code>%s</code> 資料表：<code>ALTER TABLE `%s` ENGINE = MyISAM;</code>。不會有任何資料被刪除，但可能會影響到執行效能。"
+
+#: options.php:55
+#, php-format
+#@ yarpp
+msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
+msgstr ""
+
+#: options.php:58
+#@ yarpp
+msgid "Trust me. Let me use MyISAM features."
+msgstr "相信我。讓我使用 MyISAM 功能。"
+
+#: options.php:73
+#@ yarpp
+msgid "The YARPP database had an error but has been fixed."
+msgstr "YARPP 資料庫發生錯誤，但已經修復。"
+
+#: options.php:75
+#@ yarpp
+msgid "The YARPP database has an error which could not be fixed."
+msgstr "YARPP 資料庫發生一個無法修復的錯誤。"
+
+#: options.php:76
+#, php-format
+#@ yarpp
+msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
+msgstr "請嘗試<a href=\"%s\" target=\"_blank\">手動 SQL 設定</a>。"
+
+#: options.php:132
+#@ yarpp
+msgid "Options saved!"
+msgstr "設定已儲存！"
+
+#: options.php:138
+#@ yarpp
+msgid "Yet Another Related Posts Plugin Options"
+msgstr "Yet Another Related Posts 設定"
+
+#: options.php:146
+#, php-format
+#@ yarpp
+msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+msgstr "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+
+#: options.php:175
+#@ default
+msgid "Save Changes"
+msgstr ""
+
+#: template-builtin.php:21
+#, php-format
+#@ yarpp
+msgid "%f is the YARPP match score between the current entry and this related entry. You are seeing this value because you are logged in to WordPress as an administrator. It is not shown to regular visitors."
+msgstr "%f 是當前內容和這篇文章的 YARPP 相關性評分。你以 WordPress 系統管理員權限登入所以看得到此數值。它不會被一般的使用者看到。"
+
+#: template-metabox.php:12
+#@ yarpp
+msgid "These are the related entries for this entry. Updating this post may change these related posts."
+msgstr "這是此內容的相關文章。更新這篇文章，可能會改變這些相關內容。"
+
+#: template-metabox.php:28
+#@ yarpp
+msgid "Whether all of these related entries are actually displayed and how they are displayed depends on your YARPP display options."
+msgstr "所有相關文章怎麼顯示、以及實際顯示的樣式，取決於你的 YARPP 設定。"
+

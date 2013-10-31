@@ -1,0 +1,9 @@
+# Pootle preferences for project cc_org, language el
+
+rights:
+  default = u'view, suggest, archive, pocompile'
+  nobody = u'view'
+  theodoros = u'view, suggest, translate, archive, pocompile, admin'
+  prodromos = u'view, suggest, translate, archive, pocompile, admin'
+  alexios = u'view, suggest, translate, archive, pocompile, admin'
+  marinos = u'view, suggest, translate, archive, pocompile, admin'

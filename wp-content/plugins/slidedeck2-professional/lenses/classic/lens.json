@@ -1,0 +1,36 @@
+{
+    "name": "Classic",
+    "uri": "http://www.slidedeck.com/",
+    "sources": ["posts","gplus","rss","instagram","dribbble","gplusimages","flickr","twitter","youtube","dailymotion","vimeo","fivehundredpixels","pinterest","custom"],
+    "author": "dtelepathy",
+    "author_uri": "http://www.dtelepathy.com/",
+    "contributors": ["dtrenkner", "oriontimbers", "kynatro"],
+    "description": "The Classic SlideDeck Spined Lens",
+    "version": "1.0",
+    "sizes": {
+        "small": {
+            "label": "Small",
+            "width": 300,
+            "height": 200
+        },
+        "medium": {
+            "label": "Medium",
+            "width": 600,
+            "height": 350
+        },
+        "large": {
+            "label": "Large",
+            "width": 850,
+            "height": 500
+        }
+    },
+    "variations": false,
+    "fonts": {
+        "bitter": {
+            "label": "Bitter",
+            "stack": "Bitter, serif",
+            "import": "http://fonts.googleapis.com/css?family=Bitter:400,400italic",
+            "weight": "400"
+        }
+    }
+}

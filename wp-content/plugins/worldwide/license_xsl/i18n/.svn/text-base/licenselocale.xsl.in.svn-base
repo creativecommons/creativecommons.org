@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+xmlns:metal="http://xml.zope.org/namespaces/metal"
+xmlns:tal="http://xml.zope.org/namespaces/tal">
+
+  <xsl:variable name="license-locale">
+    <xsl:value-of select="/answers/locale" />
+  </xsl:variable>
+
+
+  <xsl:template name="license-jurisdiction">
+    <xsl:param name="jurisdiction" />
+
+    <xsl:choose>
+         <!-- Generic codes -->
+         <xsl:when test="$jurisdiction='' or $jurisdiction='-'" >
+            <xsl:choose>
+               <!-- generated locale-specific jurisdiction choice lines -->
+            <metal:repeat tal:repeat="l locales">
+               <xsl:when test="$license-locale='en'"
+                    tal:attributes="test python:'''$license-locale='%s' '''%l"
+                    tal:content="structure python: lookupString('util.Unported', l)">
+                    Jurisdiction</xsl:when>
+            </metal:repeat>
+
+            </xsl:choose>
+         </xsl:when>
+
+      <metal:repeat tal:repeat="j jurisdictions">
+         <xsl:when test="$jurisdiction="
+                   tal:attributes="test python:'''$jurisdiction='%s' ''' % j">
+
+            <xsl:choose>
+               <!-- generated locale-specific jurisdiction choice lines -->
+            <metal:repeat tal:repeat="l locales">
+               <xsl:when test="$license-locale='en'"
+                    tal:attributes="test python:'''$license-locale='%s' '''%l"
+                    tal:content="structure python: lookupString('country.%s' % j, l)">
+                    Jurisdiction</xsl:when>
+            </metal:repeat>
+
+            </xsl:choose>
+
+         </xsl:when>
+
+      </metal:repeat>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="attribution">
+    <xsl:choose>
+       <!-- generated locale choice lines -->
+       <metal:repeat tal:repeat="l locales">
+         <xsl:when test="$license-locale='en'"
+           tal:attributes="test python:'''$license-locale='%s' '''%l"
+           tal:content="structure python: lookupString('char.by_title', l)">
+         Attribution</xsl:when>
+       </metal:repeat>
+       <xsl:otherwise>Attribution</xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="derivatives">
+    <xsl:param name="derivs" />
+
+    <xsl:variable name="prettystring">
+
+      <xsl:choose>
+        <xsl:when test="$derivs='n'">
+          <xsl:choose>
+            <!-- generated locale choice lines -->
+            <metal:repeat tal:repeat="locale locales">
+              <xsl:when test="$license-locale='en'"
+                tal:attributes="test python:'''$license-locale='%s' '''%locale"
+                tal:content="structure python: lookupString('char.nd_title', locale)">
+              NoDerivs</xsl:when>
+            </metal:repeat>
+
+            <xsl:otherwise>NoDerivs</xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
+ 
+        <xsl:when test="$derivs='sa'">
+          <xsl:choose>
+            <!-- generated locale choice lines -->
+            <metal:repeat tal:repeat="locale locales">
+              <xsl:when test="$license-locale='en'"
+                tal:attributes="test python:'''$license-locale='%s' ''' % locale"
+                tal:content="structure python: lookupString('char.sa_title', locale)">
+              ShareAlike</xsl:when>
+            </metal:repeat>
+
+            <xsl:otherwise>ShareAlike</xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
+
+      </xsl:choose>
+
+    </xsl:variable>
+
+    <xsl:if test="string-length($prettystring) &gt; 0">
+      <xsl:value-of select="concat('-', $prettystring)" />
+    </xsl:if>
+
+  </xsl:template>
+
+  <xsl:template name="noncommercial">
+    <xsl:param name="commercial" />
+
+    <xsl:variable name="prettystring">
+      <xsl:if test="./commercial='n'">
+        <xsl:choose>
+          <!-- generated locale choice lines -->
+          <metal:repeat tal:repeat="locale locales">
+            <xsl:when test="$license-locale='en'"
+              tal:attributes="test python:'''$license-locale='%s' ''' % locale"
+              tal:content="structure python: lookupString('char.nc_title', locale)">
+            NonCommercial</xsl:when>
+          </metal:repeat>
+          <xsl:otherwise>NonCommercial</xsl:otherwise>
+        </xsl:choose>
+      </xsl:if>
+    </xsl:variable>
+
+    <xsl:if test="string-length($prettystring) &gt; 0">
+      <xsl:value-of select="concat('-', $prettystring)" />
+    </xsl:if>
+
+  </xsl:template>
+
+  <xsl:template name="thiswork">
+     <xsl:param name="license_name" />
+     <xsl:param name="license_url" />
+
+     <xsl:variable name="work_type_raw" select="/answers/work-info/type" />
+     <xsl:variable name="work_title_raw" select="/answers/work-info/title" />
+
+     <xsl:variable name="attribution_name" select="/answers/work-info/attribution_name" />
+     <xsl:variable name="attribution_url" select="/answers/work-info/attribution_url" />
+     <xsl:variable name="more_perms_url" select="/answers/work-info/more_permissions_url" />
+     <xsl:variable name="source_url" select="/answers/work-info/source_work_url" />
+     <xsl:variable name="source_domain" select="/answers/work-info/source_work_domain" />
+
+<xsl:variable name="work_title">
+   <xsl:choose>
+      <xsl:when test="$work_title_raw != ''">
+
+       <xsl:choose>
+	 <xsl:when test="$work_type_raw=''">
+	   <!-- no work type provided -->
+           <span xmlns:dc="http://purl.org/dc/elements/1.1/" property="dc:title"><xsl:value-of select="$work_title_raw" /></span>
+	 </xsl:when>
+
+	 <xsl:otherwise>
+           <span xmlns:dc="http://purl.org/dc/elements/1.1/" 
+                 property="dc:title" 
+                 rel="dc:type" 
+                 href="http://purl.org/dc/dcmitype/{$work_type_raw}">
+              <xsl:value-of select="$work_title_raw" />
+           </span>
+	 </xsl:otherwise>
+
+       </xsl:choose>
+      </xsl:when>
+
+      <xsl:otherwise></xsl:otherwise>
+   </xsl:choose>
+</xsl:variable>
+
+<xsl:variable name="work_author">
+   <xsl:choose>
+      <xsl:when test="$attribution_url != ''">
+        <a xmlns:cc="http://creativecommons.org/ns#"
+           rel="cc:attributionURL" property="cc:attributionName"
+           href="{$attribution_url}">
+         <xsl:choose>
+            <xsl:when test="$attribution_name != ''">
+              <xsl:value-of select="$attribution_name" />
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:value-of select="$attribution_url" />
+            </xsl:otherwise>
+         </xsl:choose></a>
+      </xsl:when>
+      <xsl:when test="$attribution_name != ''">
+        <span xmlns:cc="http://creativecommons.org/ns#"
+           property="cc:attributionName">
+          <xsl:value-of select="$attribution_name" />
+        </span>
+      </xsl:when>
+      <xsl:otherwise></xsl:otherwise>
+   </xsl:choose>
+</xsl:variable>
+
+<xsl:variable name="more_perms_link">
+   <xsl:choose>
+      <xsl:when test="$more_perms_url != ''">
+         <a xmlns:cc="http://creativecommons.org/ns#" rel="cc:morePermissions" href="{$more_perms_url}"><xsl:value-of select="$more_perms_url" /></a>
+      </xsl:when>
+      <xsl:otherwise></xsl:otherwise>
+   </xsl:choose>
+</xsl:variable>
+
+     <xsl:variable name="work_type_word">
+
+       <!-- translate "work" -->
+       <xsl:choose>
+	 <metal:repeat tal:repeat="locale locales">
+           <xsl:when test="$license-locale='en'"
+              tal:attributes="test python:'''$license-locale='%s' ''' % locale"
+              tal:content="structure python: lookupString('util.work', locale)">
+           </xsl:when>
+         </metal:repeat>
+
+         <xsl:otherwise 
+              tal:content="structure python:lookupString('util.work', 'en')">
+         </xsl:otherwise>
+       </xsl:choose>
+
+     </xsl:variable>
+
+     <xsl:variable name="work_type">
+       <xsl:choose>
+	 <xsl:when test="$work_type_raw=''">
+	   <!-- no work type provided, don't create any RDFa -->
+	   <xsl:value-of select="$work_type_word" />
+	 </xsl:when>
+
+	 <xsl:otherwise>
+	   <span xmlns:dc="http://purl.org/dc/elements/1.1/" rel="dc:type" href="http://purl.org/dc/dcmitype/{$work_type_raw}">
+	     <xsl:value-of select="$work_type_word" /></span>
+	 </xsl:otherwise>
+
+       </xsl:choose>
+     </xsl:variable>
+
+
+<!-- actual selection of appropriate string occurs in the following block -->
+<xsl:choose>
+  <xsl:when test="$work_author != ''">
+    <!-- attribution -->
+
+    <xsl:choose>
+       <xsl:when test="$work_title != ''">
+          <!-- title -->
+
+      <xsl:choose>
+       <!-- generated locale choice lines -->
+       <metal:repeat tal:repeat="locale locales">
+
+            <xsl:when test="$license-locale='en'"
+              tal:attributes="test python:'''$license-locale='%s' ''' % locale"
+              tal:content="structure python: lookupString('license.rdfa_licensed', locale)">
+This work is licensed under a <a href="{$license-uri}" rel="license">Creative Commons <xsl:value-of select="$licensename"/> License</a>.
+
+            </xsl:when>
+
+       </metal:repeat>
+            <xsl:otherwise tal:content="structure python:lookupString('license.rdfa_licensed', 'en')">
+This work is licensed under a <a href="{$license-uri}" rel="license">Creative Commons <xsl:value-of select="$licensename"/> License</a>.
+            </xsl:otherwise>
+      </xsl:choose>
+
+
+       </xsl:when>
+       <xsl:otherwise>
+          <!-- no title -->
+
+      <xsl:choose>
+       <!-- generated locale choice lines -->
+       <metal:repeat tal:repeat="locale locales">
+
+            <xsl:when test="$license-locale='en'"
+              tal:attributes="test python:'''$license-locale='%s' ''' % locale"
+              tal:content="structure python: lookupString('license.rdfa_licensed_no_title', locale)">
+This work is licensed under a <a href="{$license-uri}" rel="license">Creative Commons <xsl:value-of select="$licensename"/> License</a>.
+
+            </xsl:when>
+
+       </metal:repeat>
+            <xsl:otherwise tal:content="structure python:lookupString('license.rdfa_licensed_no_title', 'en')">
+This work is licensed under a <a href="{$license-uri}" rel="license">Creative Commons <xsl:value-of select="$licensename"/> License</a>.
+            </xsl:otherwise>
+      </xsl:choose>
+
+
+       </xsl:otherwise>
+
+    </xsl:choose>
+
+  </xsl:when>
+  <xsl:otherwise>
+    <!-- no attribution -->
+
+    <xsl:choose>
+       <xsl:when test="$work_title != ''">
+          <!-- title -->
+
+
+      <xsl:choose>
+       <!-- generated locale choice lines -->
+       <metal:repeat tal:repeat="locale locales">
+
+            <xsl:when test="$license-locale='en'"
+              tal:attributes="test python:'''$license-locale='%s' ''' % locale"
+              tal:content="structure python: lookupString('license.rdfa_licensed_no_attrib', locale)">
+This work is licensed under a <a href="{$license-uri}" rel="license">Creative Commons <xsl:value-of select="$licensename"/> License</a>.
+
+            </xsl:when>
+
+       </metal:repeat>
+            <xsl:otherwise tal:content="structure python:lookupString('license.rdfa_licensed_no_attrib', 'en')">
+This work is licensed under a <a href="{$license-uri}" rel="license">Creative Commons <xsl:value-of select="$licensename"/> License</a>.
+            </xsl:otherwise>
+      </xsl:choose>
+
+
+       </xsl:when>
+       <xsl:otherwise>
+          <!-- no title -->
+
+
+      <xsl:choose>
+       <!-- generated locale choice lines -->
+       <metal:repeat tal:repeat="locale locales">
+
+            <xsl:when test="$license-locale='en'"
+              tal:attributes="test python:'''$license-locale='%s' ''' % locale"
+              tal:content="structure python: lookupString('license.work_type_licensed', locale)">
+This work is licensed under a <a href="{$license-uri}" rel="license">Creative Commons <xsl:value-of select="$licensename"/> License</a>.
+
+            </xsl:when>
+
+       </metal:repeat>
+            <xsl:otherwise tal:content="structure python:lookupString('license.work_type_licensed', 'en')">
+This work is licensed under a <a href="{$license-uri}" rel="license">Creative Commons <xsl:value-of select="$licensename"/> License</a>.
+            </xsl:otherwise>
+      </xsl:choose>
+
+
+       </xsl:otherwise>
+
+    </xsl:choose>
+
+  </xsl:otherwise>
+</xsl:choose>
+
+<!-- Source Information -->
+   <xsl:if test="$source_url != ''">
+<br/>
+
+<xsl:variable name="source_link">
+   <a xmlns:dc="http://purl.org/dc/elements/1.1/" rel="dc:source" href="{$source_url}"><xsl:value-of select="$source_domain" /></a>
+</xsl:variable>
+
+
+      <xsl:choose>
+       <!-- generated locale choice lines -->
+       <metal:repeat tal:repeat="locale locales">
+	
+            <xsl:when test="$license-locale='en'"
+              tal:attributes="test python:'''$license-locale='%s' ''' % locale"
+              tal:content="structure python: lookupString('license.work_based_on', locale)">
+
+            </xsl:when>
+
+       </metal:repeat>
+            <xsl:otherwise tal:content="structure python:lookupString('license.work_based_on', 'en')">
+            </xsl:otherwise>
+      </xsl:choose>
+      
+   </xsl:if>
+
+<!-- More Permissions Information -->
+   <xsl:if test="$more_perms_link != ''">
+<br/>
+      <xsl:choose>
+       <!-- generated locale choice lines -->
+       <metal:repeat tal:repeat="locale locales">
+	
+            <xsl:when test="$license-locale='en'"
+              tal:attributes="test python:'''$license-locale='%s' ''' % locale"
+              tal:content="structure python: lookupString('license.more_perms_available', locale)">
+Permissions beyond the scope of this license may be available at ${more_perms_link}.
+
+            </xsl:when>
+
+       </metal:repeat>
+            <xsl:otherwise tal:content="structure python:lookupString('license.more_perms_available', 'en')">
+Permissions beyond the scope of this license may be available at ${more_perms_link}.
+            </xsl:otherwise>
+      </xsl:choose>
+      
+   </xsl:if>
+
+  </xsl:template>
+
+</xsl:stylesheet>
+

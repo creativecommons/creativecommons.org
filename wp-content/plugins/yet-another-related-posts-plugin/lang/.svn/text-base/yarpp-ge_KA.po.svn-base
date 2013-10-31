@@ -1,0 +1,569 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yet Another Related Posts Plugin v3.0.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2011-03-17 22:55+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Georgian\n"
+"X-Poedit-Country: GEORGIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: includes.php:149
+#: includes.php:194
+#: includes.php:215
+#@ yarpp
+msgid "Related Posts (YARPP)"
+msgstr "დაკავშირებული ჩანაწერები (YARPP)"
+
+#: includes.php:376
+#@ yarpp
+msgid "Related Posts"
+msgstr "დაკავშირებული ჩანაწერები"
+
+#: template-builtin.php:35
+#, php-format
+#@ yarpp
+msgid "%f is the YARPP match score between the current entry and this related entry. You are seeing this value because you are logged in to WordPress as an administrator. It is not shown to regular visitors."
+msgstr "%f არის მიმდინარე და მსგავსი ჩანაწერების მსგავსების კოეფიციენტი. თქვენ მას იმიტომ ხედავთ, რომ Wordpress-ში შეხვედრით ადმინისტრატორის უფლებით. ამას ვერ ხედავენ ჩვეულებრივი სტუმრები."
+
+#: magic.php:297
+#: options-meta-boxes.php:205
+#: options-meta-boxes.php:269
+#, php-format
+#@ yarpp
+msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
+msgstr "მსგავსი ჩანაწერები შეგიძლიათ ნახოთ <a href='%s'>მსგავსი ჩანაწერებისთვის ჩაშენებული პროგრამით</a>."
+
+#: options.php:54
+#@ yarpp
+msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
+msgstr "MyISAM შემოწმდა. ახლა შეგიძლიათ გამოიყენოთ “სათაურების განხილვისა” და “ტექტების განხილვის” შესაბამისი კრიტერიუმები."
+
+#: options.php:63
+#, php-format
+#@ yarpp
+msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
+msgstr "YARPP “სათაურების განხილვისა” და “ტექსტის განხილვის” მსგავსების კრიტერიუმების გამოყენებისთვის საჭიროა, რომ თქვენმა <code>%s</code> ცხრილმა გამოიყენოს <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM შემნახავი სისტემა</a>, მაგრამ, როგორც ჩანს, ცხრილი იყენებს <code>%s</code> სისტემას. ეს ორი ოფცია გამორთულია."
+
+#: options.php:65
+#, php-format
+#@ yarpp
+msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
+msgstr "თუ გსურთ აღადგინოთ ეს იფციები, გთხოვთ, შეცვალოთ თქვენი ცხრილი <code>%s</code>შემდეგი SQL ინსტრუქციით: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code><br />ცხრილის შეცვლის დროს მონაცემები არ უნდა დაიკარგის, მაგრამ შესაძლოა გაუთვალისწინებელი რამ მოხდეს."
+
+#: options.php:67
+#, php-format
+#@ yarpp
+msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
+msgstr "თუ ამ ოფციის მიუხედავად დარწმუნებული ხართ, რომ ცხრილი <code>%s</code> გამოიყენებს MyISAM-ს, დააჭირეთ ამ ჯადოსნურ ღილაკს:"
+
+#: options.php:70
+#@ yarpp
+msgid "Trust me. Let me use MyISAM features."
+msgstr "მენდეთ. ნება მომეცით გამოვიყენო MyISAM."
+
+#: options.php:83
+#@ yarpp
+msgid "The YARPP database had an error but has been fixed."
+msgstr "YARPP მონაცემთა ბაზა შეიცავდა შეცდომას, მაგრამ ის გასწორდა."
+
+#: options.php:85
+#@ yarpp
+msgid "The YARPP database has an error which could not be fixed."
+msgstr "YARPP მონაცემთა ბაზა შეიცავდა შეცდომას, რომელიც არ გასწორდა.."
+
+#: options-meta-boxes.php:45
+#: options-meta-boxes.php:63
+#: options-meta-boxes.php:76
+#@ yarpp
+msgid "do not consider"
+msgstr "არ განიხილო"
+
+#: options-meta-boxes.php:46
+#: options-meta-boxes.php:64
+#: options-meta-boxes.php:78
+#@ yarpp
+msgid "consider"
+msgstr "განიხილე"
+
+#: options-meta-boxes.php:65
+#@ yarpp
+msgid "consider with extra weight"
+msgstr "განიხილე დამატებითი წონით"
+
+#: options-meta-boxes.php:286
+#@ default
+#@ yarpp
+msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
+msgstr "შემოწირულობით დაეხმარეთ mitcho (Michael Yoshitaka Erlewine)-ს, PayPal-ის საშუალებით"
+
+#: options.php:178
+#@ yarpp
+msgid "Yet Another Related Posts Plugin Options"
+msgstr "YARPP-ის სხვა შესაბამისი ჩანაწერები"
+
+#: options-meta-boxes.php:118
+#@ yarpp
+msgid "\"The Pool\""
+msgstr "<em>შიგთავსი</em>"
+
+#: options-meta-boxes.php:91
+#@ yarpp
+msgid "\"The Pool\" refers to the pool of posts and pages that are candidates for display as related to the current entry."
+msgstr "<em>შიგთავსი</em> აღნიშნავს ჩანაწერებისა და გვერდების ნაკრებს, რომლებიც წარმოადგენს მიმდინარე ჩანაწერთან გამოსაჩენ კანდიდატებს."
+
+#: options-meta-boxes.php:96
+#@ yarpp
+msgid "Disallow by category:"
+msgstr "გამორიცხული კატეგორია:"
+
+#: options-meta-boxes.php:98
+#@ yarpp
+msgid "Disallow by tag:"
+msgstr "გამორიცხული თეგი:"
+
+#: options-meta-boxes.php:101
+#@ yarpp
+msgid "Show password protected posts?"
+msgstr "გსურთ ნახოთ პაროლით დაცული ჩანაწერები?"
+
+#: options-meta-boxes.php:140
+#@ yarpp
+msgid "Show only previous posts?"
+msgstr "გსურთ ნახოთ მხოლოდ ადრინდელი ჩანაწერები?"
+
+#: options-meta-boxes.php:148
+#@ yarpp
+msgid "\"Relatedness\" options"
+msgstr "მსგავსების კრიტერიუმები"
+
+#: options-meta-boxes.php:124
+#: options-meta-boxes.php:139
+#: options-meta-boxes.php:157
+#: options-meta-boxes.php:161
+#: options-meta-boxes.php:204
+#: options-meta-boxes.php:221
+#: options-meta-boxes.php:223
+#: options-meta-boxes.php:228
+#: options-meta-boxes.php:268
+#@ yarpp
+msgid "more&gt;"
+msgstr "ვრცლად&gt;"
+
+#: options-meta-boxes.php:130
+#@ yarpp
+msgid "Match threshold:"
+msgstr "მსგავსების ზღურბლი:"
+
+#: options-meta-boxes.php:131
+#@ yarpp
+msgid "Titles: "
+msgstr "სათაურები:"
+
+#: options-meta-boxes.php:133
+#@ yarpp
+msgid "Bodies: "
+msgstr "ტექსტები:"
+
+#: options-meta-boxes.php:135
+#@ yarpp
+msgid "Tags: "
+msgstr "თეგები:"
+
+#: options-meta-boxes.php:137
+#@ yarpp
+msgid "Categories: "
+msgstr "კატეგორიები:"
+
+#: options-meta-boxes.php:139
+#@ yarpp
+msgid "Cross-relate posts and pages?"
+msgstr "დაკავშირდეს შესატყვისი ჩანაწერები და გვერდები?"
+
+#: options-meta-boxes.php:139
+#@ yarpp
+msgid "When the \"Cross-relate posts and pages\" option is selected, the <code>related_posts()</code>, <code>related_pages()</code>, and <code>related_entries()</code> all will give the same output, returning both related pages and posts."
+msgstr "როდესაც არჩეულია ოფცია “დაკავშირდეს შესატყვისი ჩანაწერები და გვერდები?”, ფუნქციები <code>related_posts()</code>, <code>related_pages()</code> და <code>related_entries()</code> იძლევა გვერდებისა და შეტყობინებების ერთნაირ ნაკრებს."
+
+#: options-meta-boxes.php:212
+#@ yarpp
+msgid "Display options <small>for your website</small>"
+msgstr "აჩვენეთ ოფციები <small>თქვენი საიტისთვის</small>"
+
+#: options-meta-boxes.php:157
+#@ yarpp
+msgid "Automatically display related posts?"
+msgstr "ავტომატურად გამოჩნდეს დაკავშირებული ჩანაწერები?"
+
+#: options-meta-boxes.php:157
+#@ yarpp
+msgid "This option automatically displays related posts right after the content on single entry pages. If this option is off, you will need to manually insert <code>related_posts()</code> or variants (<code>related_pages()</code> and <code>related_entries()</code>) into your theme files."
+msgstr "ეს ოფცია ავტომატურად აჩვენებს დაკავშირებულ შეტყობინებებს, საერთო გვერდზე პირდაპირ ჩანაწერების შემდეგ. თუ ეს ოფცია გამორთული გაქვთ, მექანიკურად უნდა ჩასვათ <code>related_posts()</code> ან ვარიანტები (<code>related_pages()</code> და <code>related_entries()</code>) თქვენს თემაში."
+
+#: options-meta-boxes.php:158
+#@ yarpp
+msgid "Website display code example"
+msgstr "კოდის მაგალითი ვებსაიტზე"
+
+#: options-meta-boxes.php:158
+#: options-meta-boxes.php:221
+#@ yarpp
+msgid "(Update options to reload.)"
+msgstr "(შეინახეთ ოფციები გადასატვირთად.)"
+
+#: options-meta-boxes.php:160
+#: options-meta-boxes.php:226
+#@ yarpp
+msgid "Maximum number of related posts:"
+msgstr "შესატყვისი ჩანაწერების მაქსიმალური რაოდენობა:"
+
+#: options-meta-boxes.php:175
+#: options-meta-boxes.php:244
+#@ yarpp
+msgid "Before / after related entries:"
+msgstr "შესატყვის ჩანაწერებამდე ან მათ შემდეგ:"
+
+#: options-meta-boxes.php:175
+#: options-meta-boxes.php:176
+#: options-meta-boxes.php:184
+#: options-meta-boxes.php:244
+#: options-meta-boxes.php:245
+#: options-meta-boxes.php:250
+#@ yarpp
+msgid "For example:"
+msgstr "მაგალითად:"
+
+#: options-meta-boxes.php:176
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "Before / after each related entry:"
+msgstr "თითოეულ შესატყვის ჩანაწერამდე ან მის შემდეგ:"
+
+#: options-meta-boxes.php:178
+#: options-meta-boxes.php:247
+#@ yarpp
+msgid "Show excerpt?"
+msgstr "ნახავთ ამონაწერს?"
+
+#: options-meta-boxes.php:179
+#: options-meta-boxes.php:248
+#@ yarpp
+msgid "Excerpt length (No. of words):"
+msgstr "ამონაწერის სიგრძე (სიტყვების რაოდენობა):"
+
+#: options-meta-boxes.php:183
+#@ yarpp
+msgid "Before / after (Excerpt):"
+msgstr "ამონაწერამდე ან მის შემდეგ"
+
+#: options-meta-boxes.php:189
+#: options-meta-boxes.php:254
+#@ yarpp
+msgid "Order results:"
+msgstr "შედეგების დალაგება:"
+
+#: options-meta-boxes.php:191
+#: options-meta-boxes.php:256
+#@ yarpp
+msgid "score (high relevance to low)"
+msgstr "მსგავსება (კლებადობით)"
+
+#: options-meta-boxes.php:192
+#: options-meta-boxes.php:257
+#@ yarpp
+msgid "score (low relevance to high)"
+msgstr "მსგავსება (ზრდადობით)"
+
+#: options-meta-boxes.php:193
+#: options-meta-boxes.php:258
+#@ yarpp
+msgid "date (new to old)"
+msgstr "თარიღი (კლებადობით)"
+
+#: options-meta-boxes.php:194
+#: options-meta-boxes.php:259
+#@ yarpp
+msgid "date (old to new)"
+msgstr "თარიღი (ზრდადობით)"
+
+#: options-meta-boxes.php:195
+#: options-meta-boxes.php:260
+#@ yarpp
+msgid "title (alphabetical)"
+msgstr "სათაური (ანბანით)"
+
+#: options-meta-boxes.php:196
+#: options-meta-boxes.php:261
+#@ yarpp
+msgid "title (reverse alphabetical)"
+msgstr "სათაური (ანბანი უკუღმა წყობით)"
+
+#: options-meta-boxes.php:201
+#: options-meta-boxes.php:266
+#@ yarpp
+msgid "Default display if no results:"
+msgstr "თუ შედეგები არ არის, ავტომატურად გამოჩნდეს:"
+
+#: includes.php:257
+#: options-meta-boxes.php:203
+#: options-meta-boxes.php:268
+#@ yarpp
+msgid "Help promote Yet Another Related Posts Plugin?"
+msgstr "გსურთ დახმარება YARPP-ის რეკლამირებაში?"
+
+#: options-meta-boxes.php:205
+#: options-meta-boxes.php:269
+#, php-format
+#@ yarpp
+msgid "This option will add the code %s. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated."
+msgstr "ამ ოფციით დაემატება კოდი %s. შეეცადეთ ჩართოთ იგი, განაახლეთ თქვენი ოფციები და ნახეთ კოდის მაგალითი მარჯვნივ. ეს ბმულები და ღილაკები ძალზე მნიშვნელოვანია."
+
+#: options-meta-boxes.php:276
+#@ yarpp
+msgid "Display options <small>for RSS</small>"
+msgstr "პარამეტრების დათვალიერება <small>RSS-ისთვის</small>"
+
+#: options-meta-boxes.php:221
+#@ yarpp
+msgid "Display related posts in feeds?"
+msgstr "ნახავთ დაკავშირებულ ჩანაწერებს ვებ-არხზე?"
+
+#: options-meta-boxes.php:223
+#@ yarpp
+msgid "Display related posts in the descriptions?"
+msgstr "ნახავთ დაკავშირებულ ჩანაწერებს აღწერაში?"
+
+#: options-meta-boxes.php:223
+#@ yarpp
+msgid "This option displays the related posts in the RSS description fields, not just the content. If your feeds are set up to only display excerpts, however, only the description field is used, so this option is required for any display at all."
+msgstr "ეს ოფცია აჩვენებს დაკავშირებულ ჩანაწერებს ვებ-არხის აღწერის ველებში და არამარტო მასალას. ამასთან, თუ თქვენი ვებ-არხისთვის არჩეული გაქვთ მხოლოდ ამონაწერების ჩვენება და მხოლოდ აღწერის ველი გაქვთ გამოყენებული, ეს ოფცია მოითხოვება ნებისმიერი ჩვენებისთვის."
+
+#: options-meta-boxes.php:221
+#@ yarpp
+msgid "RSS display code example"
+msgstr "კოდის მაგალითი RSS-ში"
+
+#: options-meta-boxes.php:250
+#@ yarpp
+msgid "Before / after (excerpt):"
+msgstr "ამონაწერამდე ან მის შემდეგ:"
+
+#: options-meta-boxes.php:38
+#@ yarpp
+msgid "word"
+msgstr "სიტყვა"
+
+#: options-meta-boxes.php:39
+#@ yarpp
+msgid "tag"
+msgstr "თეგი"
+
+#: options-meta-boxes.php:40
+#@ yarpp
+msgid "category"
+msgstr "კატეგორია"
+
+#: options-meta-boxes.php:48
+#: options-meta-boxes.php:80
+#, php-format
+#@ yarpp
+msgid "require at least one %s in common"
+msgstr "მინიმუმ ერთი %s უნდა იყოს საერთო"
+
+#: options-meta-boxes.php:50
+#: options-meta-boxes.php:82
+#, php-format
+#@ yarpp
+msgid "require more than one %s in common"
+msgstr "ერთზე მეტი %s უნდა იყოს საერთო"
+
+#: options.php:114
+#@ yarpp
+msgid "Options saved!"
+msgstr "პარამეტრები შენახულია!"
+
+#: options-meta-boxes.php:124
+#@ yarpp
+msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
+msgstr "რაც მეტია მსგავსების ზღურბლი, მით უფრო მკაცრად ხდება არჩევა და მით უფრო ნაკლები ჩანაწერი იძებნება. ზღურბლის ნაგულისხმევი ზომაა 5. თუ გსურთ მოძებნოთ ზღურბლის დასაშვები მნიშვნელობები, მოსინჯეთ ზოგიერთი შეტყობინებების მაგალითზე. შეძლებთ ნახოთ რომელი ჩანაწერები გამოდის ზემოთ და მსგავსების რა მნიშვნელობა აქვს მათ, რის მიხედვითაც შეგიძლიათ განსაზღვროთ თქვენი საიტისთვის მისაღები დონე."
+
+#: options.php:279
+#@ yarpp
+msgid "Update options"
+msgstr "პარამეტრების შეცვლა"
+
+#: options.php:280
+#@ yarpp
+msgid "Do you really want to reset your configuration?"
+msgstr "ნამდვილად გსურთ საწყისი პარამეტრების დაბრუნება?"
+
+#: options.php:280
+#@ yarpp
+msgid "Reset options"
+msgstr "საწყისი პარამეტრების დაბრუნება"
+
+#: cache-postmeta.php:105
+#: cache-tables.php:131
+#@ yarpp
+msgid "Example post "
+msgstr "ჩანაწერის მაგალითი"
+
+#: options-meta-boxes.php:105
+#@ yarpp
+msgid "day(s)"
+msgstr "დღე"
+
+#: options-meta-boxes.php:106
+#@ yarpp
+msgid "week(s)"
+msgstr "კვირა"
+
+#: options-meta-boxes.php:107
+#@ yarpp
+msgid "month(s)"
+msgstr "თვე"
+
+#: options-meta-boxes.php:109
+#@ yarpp
+msgid "Show only posts from the past NUMBER UNITS"
+msgstr "ნაჩვენები იქნას მხოლოდ შემდეგიდან დაწყებული ჩანაწერები:  NUMBER UNITS"
+
+#: options.php:46
+#, php-format
+#@ yarpp
+msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
+msgstr "გამოვიდა YARPP-ის ახალი ბეტა ვერსია. შეგიძლიათ <A>ჩამოტვირთოთ იგი აქედან</a>, საკუთარი რისკით."
+
+#: includes.php:248
+#: options-meta-boxes.php:161
+#: options-meta-boxes.php:228
+#@ yarpp
+msgid "Display using a custom template file"
+msgstr "გამოჩნდეს მომხმარებლის მიერ შერჩეული შაბლონით"
+
+#: includes.php:249
+#: options-meta-boxes.php:165
+#: options-meta-boxes.php:233
+#@ yarpp
+msgid "Template file:"
+msgstr "შაბლონის ფაილი:"
+
+#: options-meta-boxes.php:221
+#@ yarpp
+msgid "This option displays related posts at the end of each item in your RSS and Atom feeds. No template changes are needed."
+msgstr "ეს ოფცია აჩვენებს დაკავშირებულ შეტყობინებებს თქვენი RSS ვებ-არხისა და Atom-ის თითოეული პუნქტის შემდეგ. შაბლოინის შეცვლა არ არის საჭირო."
+
+#: template-metabox.php:12
+#@ yarpp
+msgid "These are the related entries for this entry. Updating this post may change these related posts."
+msgstr "ეს არის ამ ჩანაწერთან დაკავშირებული შეტყობინებები. ამ ჩანაწერის შეცვლამ შეიძლება გამოიწვიოს დაკავშირებული ჩანაწერების შეცვლა."
+
+#: template-metabox.php:25
+#@ yarpp
+msgid "Whether all of these related entries are actually displayed and how they are displayed depends on your YARPP display options."
+msgstr "გამოჩნდება თუ არა ყველა ეს ჩანაწერი და თუ როგორ გამოჩნდება ისინი დამოკიდებულია თქვენს მიერ არჩეულ YARPP პარამეტრებზე."
+
+#: includes.php:28
+#: includes.php:39
+#: template-metabox.php:27
+#: template-widget.php:13
+#@ yarpp
+msgid "No related posts."
+msgstr "დაკავშირებული შეტყობინებები არ არის"
+
+#: options-meta-boxes.php:228
+#@ yarpp
+msgid "NEW!"
+msgstr "ახალი!"
+
+#: options-meta-boxes.php:161
+#: options-meta-boxes.php:228
+#@ yarpp
+msgid "This advanced option gives you full power to customize how your related posts are displayed. Templates (stored in your theme folder) are written in PHP."
+msgstr "ეს დამატებითი პარამეტრები მნიშვნელოვან შესაძლებლობას გაძლევთ აირჩიოთ, როგორ გამოჩნდეს დაკავშირებული შეტყობინებები. შაბლონები (რომლებიც შენახულია თემების საქაღალდეში) დაწერილია PHP-ზე."
+
+#: includes.php:26
+#: includes.php:37
+#@ yarpp
+msgid "Related posts:"
+msgstr ""
+
+#: includes.php:169
+#@ yarpp
+msgid "Settings"
+msgstr ""
+
+#: includes.php:243
+#@ default
+msgid "Title:"
+msgstr ""
+
+#: includes.php:385
+#@ yarpp
+msgid "Related entries may be displayed once you save your entry"
+msgstr ""
+
+#: options-meta-boxes.php:124
+#@ yarpp
+msgid "YARPP limits the related posts list by (1) a maximum number and (2) a <em>match threshold</em>."
+msgstr ""
+
+#: options-meta-boxes.php:175
+#: options-meta-boxes.php:176
+#: options-meta-boxes.php:184
+#: options-meta-boxes.php:244
+#: options-meta-boxes.php:245
+#: options-meta-boxes.php:250
+#@ yarpp
+msgid " or "
+msgstr ""
+
+#: options-meta-boxes.php:283
+#@ yarpp
+msgid "YARPP Forum"
+msgstr ""
+
+#: options-meta-boxes.php:284
+#@ yarpp
+msgid "YARPP on Twitter"
+msgstr ""
+
+#: options-meta-boxes.php:285
+#@ yarpp
+msgid "YARPP on the Web"
+msgstr ""
+
+#: options-meta-boxes.php:292
+#@ yarpp
+msgid "Contact YARPP"
+msgstr ""
+
+#: options.php:42
+#, php-format
+#@ default
+msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
+msgstr ""
+
+#: options.php:86
+#, php-format
+#@ yarpp
+msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
+msgstr ""
+
+#: options.php:188
+#, php-format
+#@ yarpp
+msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+msgstr ""
+

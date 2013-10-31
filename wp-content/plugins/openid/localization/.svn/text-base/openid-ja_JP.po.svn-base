@@ -1,0 +1,610 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenID\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/openid\n"
+"POT-Creation-Date: 2009-10-01 15:34-0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: ROCA <rocaznet@gmail.com>\n"
+"Language-Team: ROCA <rocaznet@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Japanese\n"
+"X-Poedit-Country: JAPAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=2; plural=n>1\n"
+
+#: admin_panels.php:25
+msgid "OpenID options"
+msgstr "OpenID オプション"
+
+#. #-#-#-#-#  openid.pot (OpenID 3.4-trunk)  #-#-#-#-#
+#. Plugin Name of an extension
+#: admin_panels.php:25
+msgid "OpenID"
+msgstr "OpenID"
+
+#: admin_panels.php:30
+msgid "Your OpenIDs"
+msgstr "あなたのOpenID"
+
+#: admin_panels.php:44
+#: admin_panels.php:45
+#: admin_panels.php:423
+msgid "Your Trusted Sites"
+msgstr "信頼するサイト"
+
+#: admin_panels.php:57
+#: admin_panels.php:61
+#: admin_panels.php:149
+msgid "OpenID Settings"
+msgstr "OpenID設定"
+
+#: admin_panels.php:112
+msgid "Settings"
+msgstr "設定項目"
+
+#: admin_panels.php:133
+msgid "OpenID cache refreshed."
+msgstr "OpenIDのキャッシュ更新"
+
+#: admin_panels.php:151
+msgid "Please note that all OpenID Consumer options have been moved to their respective sections of the <a href=\"options-general.php\">General Settings</a> and <a href=\"options-discussion.php\">Discussion Settings</a> pages."
+msgstr "[注意] すべてのOpenIDコンシューマ・オプションはそれぞれ<a href=\"options-general.php\">一般</a> と <a href=\"options-discussion.php\">ディスカッション</a>セクションへ移動しています。"
+
+#: admin_panels.php:160
+msgid "The OpenID Provider allows authorized users to use their author URL as an OpenID, either using their local WordPress username and password, or by delegating to another OpenID Provider."
+msgstr "OpenIDプロバイダーは作成者URLをOpenID認証のために使用することをユーザーに許可します。あるいはローカルのWordPressユーザー名とパスワードを用いるか、若しくは他のOpenIDプロバイダーのデリゲート(代理アクセス)によっても可能です。"
+
+#: admin_panels.php:166
+msgid "Enable OpenID"
+msgstr "OpenIDを有効にする"
+
+#: admin_panels.php:169
+msgid "Enable the local OpenID Provider for these roles:"
+msgstr "以下のロールとしてローカルOpenIDプロバイダーを有効にする:"
+
+#: admin_panels.php:192
+msgid "Blog Owner"
+msgstr "ブログ・オーナー"
+
+#: admin_panels.php:195
+#, php-format
+msgid "Authorized accounts on this blog can use their author URL (i.e. <em>%1$s</em>) as an OpenID. The Blog Owner will be able to use the blog address (%2$s) as their OpenID.  If this is a single-user blog, you should set this to your account."
+msgstr "このブログで認証されたアカウントではOpenIDとして作成者URL (例: <em>%1$s</em>)を使用することができます。ブログ・オーナーはブログのアドレス(%2$s)を使用することができます。もしシングルユーザー・ブログの場合にはこれをあなたのアカウントとして設定するべきです"
+#: admin_panels.php:205
+msgid "A Blog Owner cannot be set for this blog.  To set a Blog Owner, first remove the following line from your <code>wp-config.php</code>:"
+msgstr "ブログ・オーナーをこのブログを設定できません。ブログ・オーナーを設定するには、まず<code>wp-config.php</code>から以下を削除してください:"
+
+#: admin_panels.php:213
+msgid "(none)"
+msgstr "(なし)"
+
+#: admin_panels.php:223
+#, php-format
+msgid "Only the current Blog Owner (%s) can change this setting."
+msgstr "現在のブログ・オーナー(%s)だけがこの設定を変更できます"
+
+#: admin_panels.php:235
+msgid "Troubleshooting"
+msgstr "トラブルシューティング"
+
+#: admin_panels.php:239
+#, php-format
+msgid "If users are experiencing problems logging in with OpenID, it may help to %1$srefresh the cache%2$s."
+msgstr "もしOpenIDによるログイン時にトラブルに見舞われたら、%1$sキャッシュのリフレッシュ%2$sにより解決できるかも知れません"
+
+#: admin_panels.php:246
+msgid "Save Changes"
+msgstr "保存"
+
+#: admin_panels.php:266
+msgid "Success:"
+msgstr "成功:"
+
+#: admin_panels.php:269
+msgid "Warning:"
+msgstr "警告:"
+
+#: admin_panels.php:272
+#: admin_panels.php:276
+msgid "Error:"
+msgstr "エラー;"
+
+#: admin_panels.php:288
+msgid "Your Verified OpenIDs"
+msgstr "確認済みOpenID"
+
+#: admin_panels.php:290
+msgid "You may associate one or more OpenIDs with your account.  This will allow you to login to WordPress with your OpenID instead of a username and password.  <a href=\"http://openid.net/what/\" target=\"_blank\">Learn more...</a>"
+msgstr "あなたは一つ以上のOpenIDが取得でき、それらを用いてユーザー名とパスワードの代わりにWordPressへログインすることができるようになります <a href=\"http://openid.net/what/\" target=\"_blank\">更に詳しく</a>"
+
+#: admin_panels.php:297
+#: admin_panels.php:432
+msgid "Bulk Actions"
+msgstr "複数処理"
+
+#: admin_panels.php:298
+#: admin_panels.php:433
+msgid "Delete"
+msgstr "削除"
+
+#: admin_panels.php:300
+#: admin_panels.php:435
+msgid "Apply"
+msgstr "反映"
+
+#: admin_panels.php:312
+msgid "Account"
+msgstr "アカウント"
+
+#: admin_panels.php:321
+msgid "No Verified Accounts."
+msgstr "確認アカウントなし"
+
+#: admin_panels.php:340
+#: admin_panels.php:346
+msgid "Add OpenID"
+msgstr "OpenIDの追加"
+
+#: admin_panels.php:387
+#, php-format
+msgid "Added %d trusted site."
+msgid_plural "Added %d trusted sites."
+msgstr[0] "%d個の信頼サイトを追加"
+msgstr[1] "%d個の信頼サイトを追加"
+
+#: admin_panels.php:410
+#, php-format
+msgid "Deleted %d trusted site."
+msgid_plural "Deleted %d trusted sites."
+msgstr[0] "%d個の信頼サイトを削除"
+msgstr[1] "%d個の信頼サイトを削除"
+
+#: admin_panels.php:425
+msgid "This is a list of sites that you can automatically login to using your OpenID account.  You will not be asked to approve OpenID login requests for your trusted sites."
+msgstr "以下はあなたがOpenIDアカウントを用いて自動的にログインできるサイトの一覧です。ログインの許可を尋ねられることなくログインが可能になります"
+
+#: admin_panels.php:447
+msgid "URL"
+msgstr "URL"
+
+#: admin_panels.php:448
+msgid "Last Login"
+msgstr "最終ログイン"
+
+#: admin_panels.php:456
+msgid "No Trusted Sites."
+msgstr "信頼していないサイト"
+
+#: admin_panels.php:487
+msgid "Import Trusted Sites"
+msgstr "信頼サイトのインポート"
+
+#: admin_panels.php:489
+msgid "Enter a list of URLs to be added to your Trusted Sites."
+msgstr "信頼サイトへ追加されるサイトの一覧"
+
+#: admin_panels.php:493
+#: admin_panels.php:503
+msgid "Add Sites"
+msgstr "サイトの追加"
+
+#: admin_panels.php:495
+msgid "(One URL per line)"
+msgstr "(1行につき1URL)"
+
+#: admin_panels.php:589
+msgid "Status information:"
+msgstr "ステータス情報:"
+
+#: admin_panels.php:589
+msgid "All Systems Nominal"
+msgstr "全システム状況"
+
+#: admin_panels.php:590
+msgid "System Status"
+msgstr "システムステータス"
+
+#: admin_panels.php:590
+msgid "Toggle More/Less"
+msgstr "開く/閉じる"
+
+#: admin_panels.php:592
+msgid "Plugin is currently disabled. Fix the problem, then Deactivate/Reactivate the plugin."
+msgstr "プラグインは現在無効です。問題を解決してからプラグインを再有効化してください"
+
+#: admin_panels.php:600
+msgid "FAIL"
+msgstr "FAIL"
+
+#: admin_panels.php:602
+msgid "OK"
+msgstr "OK"
+
+#: admin_panels.php:604
+msgid "INFO"
+msgstr "INFO"
+
+#: admin_panels.php:638
+msgid "You already have this OpenID!"
+msgstr "あなたはこのOpenIDをもう持っています!"
+
+#: admin_panels.php:640
+msgid "This OpenID is already associated with another user."
+msgstr "このOpenIDはすでに他のユーザーに割り当てられています"
+
+#: admin_panels.php:661
+msgid "Unable to authenticate OpenID."
+msgstr "OpenIDを認証できません"
+
+#: admin_panels.php:662
+msgid "OpenID assertion successful, but this URL is already associated with another user on this blog."
+msgstr "OpenIDアサーションは成功しましたが、このURLはすでにこのブログの他のユーザーに割り当てられています"
+
+#: admin_panels.php:663
+msgid "Added association with OpenID."
+msgstr "OpenIDを割り当てました"
+
+#: admin_panels.php:675
+#: admin_panels.php:745
+msgid "<strong>Note:</strong> For security reasons, your profile URL has been updated to match your OpenID."
+msgstr "<strong>注意:</strong> セキュリティ上の理由により、あなたのプロフィールURLは変更されました"
+
+#: admin_panels.php:701
+#: admin_panels.php:718
+msgid "OpenID Warning"
+msgstr "警告"
+
+#: admin_panels.php:703
+msgid "Are you sure you want to delete all of your OpenID associations? Doing so may prevent you from logging in."
+msgstr "すべてのあなたのOpenIDへの割り当てを削除してもよいですか? ログインはできなくなります"
+
+#: admin_panels.php:705
+msgid "Yes I'm sure. Delete."
+msgstr "はい、削除してください"
+
+#: admin_panels.php:706
+msgid "No, don't delete."
+msgstr "いいえ、削除しないでください"
+
+#: admin_panels.php:733
+#, php-format
+msgid "Deleted %d OpenID association."
+msgid_plural "Deleted %d OpenID associations."
+msgstr[0] "%d個のOpenIDへの割り当てを削除"
+msgstr[1] "%d個のOpenIDへの割り当てを削除"
+
+#: admin_panels.php:751
+msgid "OpenID association delete failed: Unknown reason."
+msgstr "OpenIDへの割り当ての削除に失敗しました: 理由は不明です"
+
+#: admin_panels.php:807
+#, php-format
+msgid "For security reasons, your profile URL must be one of your claimed OpenIDs: %s"
+msgstr "セキュリティ上の理由からあなたのプロフィールURLはOpenIDのうちの一つは含むべきです: %s"
+
+#: admin_panels.php:844
+msgid "OpenID Delegation"
+msgstr "OpenIDデリゲート(代理アクセス)"
+
+#: admin_panels.php:846
+msgid "OpenID Delegation allows you to use an external OpenID provider of your choice."
+msgstr "OpenIDデリゲートによって、あなたは外部OpenIDプロバイダーも選べます"
+
+#: admin_panels.php:849
+msgid "To delegate, enter a valid OpenID. Otherwise leave this blank."
+msgstr "OpenIDデリゲートを使用するには有効なOpenIDを入力してください。使用しないなら空白のままにしてください"
+
+#: admin_panels.php:886
+#, php-format
+msgid "Unable to find any OpenID information for delegate URL %s"
+msgstr "デリゲートURL(%s)のためのOpenIDの情報が見つけられません"
+
+#: admin_panels.php:896
+msgid "You cannot delegate to an OpenID provider which uses Identifier Select."
+msgstr "選択したIdentifierを使用するOpenIDプロバイダーを利用できません"
+
+#: admin_panels.php:917
+msgid "New accounts can only be created with verified OpenIDs."
+msgstr "新しいアカウントは認証されたOpenIDによってのみ作成できます"
+
+#: admin_panels.php:956
+msgid "New accounts can only be created with verified OpenIDs"
+msgstr "新しいアカウントは認証されたOpenIDによってのみ作成できます"
+
+#: admin_panels.php:979
+msgid "Enable OpenID for comments"
+msgstr "OpenIDでコメントできるようにする"
+
+#: admin_panels.php:989
+#, fuzzy
+msgid "Do not require name and e-mail for comments left with a verified OpenID"
+msgstr "OpenIDによる認証時にはコメントの名前とメールアドレスを必須にはできません"
+
+#: admin_panels.php:997
+#, fuzzy
+msgid "Always approve comments left with a verified OpenID"
+msgstr "OpenIDによる認証でのコメントを常に許可する"
+
+#: comments.php:106
+msgid "Error: please fill the required fields (name, email)."
+msgstr "エラー: 必須項目を入力してください (名前, メールアドレス)."
+
+#: comments.php:108
+msgid "Error: please enter a valid email address."
+msgstr "エラー: 有効なメールアドレスを入力してください"
+
+#: comments.php:258
+msgid "Authenticate this comment using <span class=\"openid_link\">OpenID</span>."
+msgstr "<span class=\"openid_link\">OpenID</span>を使用してコメントする"
+
+#: comments.php:271
+#: comments.php:289
+msgid "OpenID Authentication Error"
+msgstr "OpenID認証エラー"
+
+#: comments.php:272
+msgid "We were unable to authenticate your claimed OpenID, however you can continue to post your comment without OpenID:"
+msgstr "あなたが認証を求めたOpenIDを認証できません。OpenIDを使用せずにコメントしてください"
+
+#: comments.php:280
+msgid "Submit Comment"
+msgstr "コメントを投稿"
+
+#: common.php:342
+msgid "User was created fine, but wp_login() for the new user failed. This is probably a bug."
+msgstr "ユーザーは正常に作成されました。しかし <code>wp_login()</code> は失敗しました。これはバグの可能性があります"
+
+#: common.php:363
+msgid "OpenID authentication successful, but failed to create WordPress user. This is probably a bug."
+msgstr "OpenID認証は成功しました。しかしWordPressユーザーの作成には失敗しました。これはバグの可能性があります"
+
+#: common.php:680
+msgid "Since your browser does not support JavaScript, you must press the Continue button once to proceed."
+msgstr "JavaScriptをサポートしていていないブラウザです。[続ける]ボタンを押してください"
+
+#: common.php:688
+#: server.php:236
+#: server.php:480
+msgid "Continue"
+msgstr "続ける"
+
+#: common.php:692
+msgid "Please Wait..."
+msgstr "お待ちください..."
+
+#: common.php:696
+msgid "OpenID Authentication Redirect"
+msgstr "OpenID認証のリダイレクト"
+
+#: consumer.php:90
+msgid "OpenID login was cancelled."
+msgstr "OpenIDによるログインはキャンセルされました"
+
+#: consumer.php:95
+#, php-format
+msgid "OpenID login failed: %s"
+msgstr "OpenIDログインは失敗しました: %s"
+
+#: consumer.php:100
+msgid "OpenID login successful"
+msgstr "OpenIDログインに成功しました"
+
+#: consumer.php:108
+#, fuzzy
+msgid "Unknown Status. Bind not successful. This is probably a bug."
+msgstr "不明なステータスです。バインドが失敗しました。これはバグの可能性があります"
+
+#: consumer.php:155
+#, php-format
+msgid "Could not discover an OpenID identity server endpoint at the url: %s"
+msgstr "エンドポイントURL(%s)からOpenID Identifierを見つけられませんでした"
+
+#: login.php:47
+msgid "Your have entered a valid OpenID, but this site is not currently accepting new accounts."
+msgstr "有効なOpenIDが入力されていますが、このサイトは新しいアカウントを受け入れません"
+
+#: login.php:126
+msgid "Or login using an OpenID"
+msgstr "またはOpenIDでログインする"
+
+#: login.php:131
+#: login.php:179
+msgid "Learn about OpenID"
+msgstr "OpenIDについて"
+
+#: login.php:146
+msgid "Register using an OpenID:"
+msgstr "OpenIDで登録:"
+
+#: login.php:159
+msgid "Or register using an OpenID:"
+msgstr "またはOpenIDで登録:"
+
+#: login.php:205
+#: login.php:216
+msgid "<strong>ERROR</strong>: "
+msgstr "<strong>エラー</strong>: "
+
+#: login.php:205
+msgid "New users must register using OpenID."
+msgstr "OpenIDで新しいアカウントを作成する"
+
+#: server.php:227
+msgid "OpenID Login Error"
+msgstr "OpenIDログインエラー"
+
+#: server.php:229
+#, php-format
+msgid "Because you have delegated your OpenID, you cannot login with the URL <strong>%s</strong>. Instead, you must use your full OpenID when logging in."
+msgstr "あなたはデリゲートを使用しているので、このURL(<strong>%s</strong>)ではログインできません。代わりにログイン時に使ったOpenIDを使用する必要があります"
+
+#: server.php:231
+#, php-format
+msgid "Your full OpenID is: %s"
+msgstr "あなたのOpenID: %s"
+
+#: server.php:459
+#, php-format
+msgid "Logged in as %1$s (%2$s). <a href=\"%3$s\">Use a different account?</a>"
+msgstr "%1$s (%2$s) としてログイン中。 <a href=\"%3$s\">他のユーザーへ変更</a>"
+
+#: server.php:466
+#: server.php:500
+msgid "Verify Your Identity"
+msgstr "認証の確認"
+
+#: server.php:468
+#, php-format
+msgid "%s has asked to verify your identity."
+msgstr "%s があなたのアイデンティティの確認を求めています"
+
+#: server.php:472
+msgid "Click <strong>Continue</strong> to verify your identity and login without creating a new password."
+msgstr "<strong>続ける</strong> を押して、新しいパスワードを作成せずに確認とログインを続けてください"
+
+#: server.php:479
+msgid "Cancel and go back"
+msgstr "キャンセルして戻る"
+
+#: server.php:484
+#, php-format
+msgid "Manage or remove access on the <a href=\"%s\" target=\"_blank\">Trusted Sites</a> page."
+msgstr "<a href=\"%s\" target=\"_blank\">信頼サイト</a>ページで信頼サイトの管理または削除ができます"
+
+# Target=_blank non conforme a XHTML 1.1
+#: server.php:488
+#, php-format
+msgid "<a href=\"%s\" target=\"_blank\">Edit your profile</a> to change the information that gets shared with Trusted Sites."
+msgstr "<a href=\"%s\" target=\"_blank\">プロフィール編集</a>で信頼サイトの情報を変更できます"
+
+#: server_ext.php:63
+#, fuzzy, php-format
+msgid "Also grant access to see my %s."
+msgstr "また%sの閲覧権限"
+
+#. Plugin URI of an extension
+msgid "http://wordpress.org/extend/plugins/openid"
+msgstr "http://wordpress.org/extend/plugins/openid"
+
+#. Description of an extension
+msgid "Allows the use of OpenID for account registration, authentication, and commenting.  Also includes an OpenID provider which can turn WordPress author URLs into OpenIDs."
+msgstr "アカウントの登録や認証、コメント投稿にOpenIDを使用できるようにします。またWordPressの作成者URLによるOpenIDプロバイダー機能も追加します。"
+
+#. Author of an extension
+msgid "DiSo Development Team"
+msgstr "DiSo Development Team"
+
+#. Author URI of an extension
+msgid "http://diso-project.org/"
+msgstr "http://diso-project.org/"
+
+#~ msgid "The WordPress OpenID plugin is not active."
+#~ msgstr "WordPress OpenIDプラグインは使用中ではありません"
+#~ msgid "Check %sOpenID Options%s for a full diagnositic report."
+#~ msgstr "%soptions OpenID%sのdiagnositicレポートを参照してください"
+#~ msgid "OpenID Consumer Options"
+#~ msgstr "OpenIDコンシューマ オプション"
+#~ msgid "Comment Approval"
+#~ msgstr "コメントの承認"
+#~ msgid ""
+#~ "Automatically approve comments left with verified OpenIDs.  These "
+#~ "comments will bypass all comment moderation."
+#~ msgstr ""
+#~ "自動的に認証されたOpenIDでのコメントを承認します"
+#~ "これらのコメントはすべてのモデレーションをバイパスします"
+#~ msgid "Comment Form"
+#~ msgstr "コメントフォーム"
+#~ msgid "Add OpenID help text to the comment form."
+#~ msgstr "コメントフォームにヘルプを追加する"
+#~ msgid ""
+#~ "This will work for most themes derived from Kubrick or Sandbox.  Template "
+#~ "authors can tweak the comment form as described in the %sreadme%s."
+#~ msgstr ""
+#~ "KubrickやSandboxから生成された多くのテーマで動作するでしょう。"
+#~ "テンプレート作者は%sreadme%sに記載された調整を行うことができます。"
+#~ msgid "Require OpenID"
+#~ msgstr "OpenIDが必要"
+#~ msgid "OpenID Provider Options"
+#~ msgstr "OpenIDプロバイダー オプション"
+#~ msgid "Gathered OpenID information for delegate URL %s"
+#~ msgstr "デリゲートURL(%s)から収集されたOpenID情報"
+#~ msgid ""
+#~ "It looks like you entered an email address, but it was not able to be "
+#~ "transformed into a valid OpenID."
+#~ msgstr ""
+#~ "メールアドレスが入力されたようですが、"
+#~ "有効なメールアドレスには変換できません"
+#~ msgid "What is OpenID?"
+#~ msgstr "OpenIDとは?"
+#~ msgid "At least one of OpenID options was NOT updated"
+#~ msgstr ""
+#~ "OpenIDオプションは変更されませんでした"
+
+#, fuzzy
+#~ msgid "OpenID options updated"
+#~ msgstr "OpenIDオプションが変更されました"
+#~ msgid "Update Options"
+#~ msgstr "オプションの変更"
+
+#, fuzzy
+#~ msgid "Added "
+#~ msgstr "追加しました"
+
+#, fuzzy
+#~ msgid "Deleted "
+#~ msgstr "削除しました"
+#~ msgid "For faster registration, just %s login with %s."
+#~ msgstr "迅速な登録のために%sを%sとしてログインしてください"
+#~ msgid "WP-OpenID"
+#~ msgstr "WP-OpenID"
+#~ msgid "OpenID tables rebuilt."
+#~ msgstr "OpenID テーブル リビルド"
+#~ msgid "WP-OpenID Registration Options"
+#~ msgstr "WP-OpenID登録オプション"
+#~ msgid "Behavior"
+#~ msgstr "隠しオプション"
+#~ msgid ""
+#~ "For now this option will cause comments made with OpenIDs to be "
+#~ "automatically approved.  Since most spammers haven't started using OpenID "
+#~ "yet, this is probably pretty safe.  More importantly however, this could "
+#~ "be a foundation on which to build more advanced automatic approval such "
+#~ "as whitelists or a third-party trust service."
+#~ msgstr ""
+#~ "現在このオプションはOpenIDによってコメントを自動承認します。"
+#~ "スパマーたちはまだあまりOpenIDを用いていません。"
+#~ "このことには少しだけ安心できます。"
+#~ "しかしより重要なことはホワイトリストやサードパーティ製の承認サービスなど"
+#~ "より優れた自動承認の基盤を築けることです。"
+#~ ""
+#~ msgid "Look and Feel"
+#~ msgstr "ルック・アンド・フィール"
+#~ msgid ""
+#~ "Occasionally, the WP-OpenID tables don't get setup properly, and it may "
+#~ "help to %srebuild the tables%s.  Don't worry, this won't cause you to "
+#~ "lose any data... it just rebuilds a couple of tables that hold only "
+#~ "temprory data."
+#~ msgstr ""
+#~ "時々WP-OpenIDのテーブルはきちんとセットアップされないことがあり、"
+#~ "%sテーブルの再構築%sが重宝がられます。"
+#~ "しかし気にしないでください。"
+#~ "あなたは何らデータを失うことはありません。 "
+#~ "単に幾つかの一時テーブルを再構築するに過ぎないからです。"
+#~ msgid ""
+#~ "The following Identity URLs %s are tied to this user account. You can "
+#~ "login with equivalent permissions using any of the following identities."
+#~ msgstr ""
+#~ "以下のアイデンティティURL(%s)はこのユーザーアカウントに結びついています。"
+#~ "これらのアイデンティティを用いてその権限でログインすることが可能です。"
+#~ msgid "?"
+#~ msgstr "?"
+#~ msgid "ID"
+#~ msgstr "ID"
+#~ msgid "Identity Url"
+#~ msgstr "アイデンティティURL"
+#~ msgid "Add identity:"
+#~ msgstr "アイデンティティの追加;"
+#~ msgid "Sorry, comments are closed for this item."
+#~ msgstr "コメントはできません"
+

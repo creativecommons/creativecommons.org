@@ -1,0 +1,18 @@
+.slidedeck-content-source.source-youtube .fancy-select{ color: #333; }
+.slidedeck-content-source.source-youtube #youtube-user-playlists label {
+    font-weight: bold;
+    display: inline-block;
+    width: 142px;
+    font-size: 13px;
+    line-height: 31px;
+    margin-top: -23px;
+}
+.slidedeck-content-source ul.content-source-fields li input#options-youtube_username {
+	min-width: 130px;
+	width: 130px;
+}
+.slidedeck-content-source ul.content-source-fields li input#options-youtube_q {
+	min-width: 200px;
+	width: 200px;
+}
+form.slidedeck-form .slidedeck-content-source.source-youtube select { width: 160px; }

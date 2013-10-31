@@ -1,0 +1,451 @@
+/*                                                    */
+/*  this theme is for slim(mer) forms                 */
+/*                                                    */
+@import "calendar.css";
+
+
+/*                                                    */
+/*  main 'top-level' form elements                    */
+/*                                                    */
+
+.cform { 
+	margin:10px auto 0 auto; 
+	width: 185px; 
+	overflow:hidden;
+}
+
+.cform fieldset	{ 
+	margin-top:10px; 
+	padding:5px 0 15px 0; 
+	border:1px solid #adadad; 
+	border-left-color:#ececec; 
+	border-top-color:#ececec; 
+	background:#f7f7f7; }
+
+.cform .cf_hidden {
+	display:none; 
+	border:none!important;
+	background:none!important;
+	padding:0!important;
+	margin:0!important;
+}
+
+.cform legend { 
+	margin-left:10px;
+	padding: 0 2px; 
+	font:normal 14px Times; 
+	font-variant:small-caps;
+	color:#666666;
+}
+
+ol.cf-ol { 
+	margin:0!important; 
+	padding:0 10px!important; 
+}
+ol.cf-ol li	{
+	background:none!important; 
+	margin:5px 0px!important; /*some themes may interfere otherwise*/
+	padding:0; 
+	list-style:none!important; 
+	text-align:left;
+	line-height:1.3em;
+	overflow:hidden;
+}
+
+
+/*                                                    */
+/* just for text-only fields (no input)               */
+/*                                                    */
+
+ol.cf-ol li.textonly {
+	padding:3px 0; 
+	text-align:center;
+}
+
+
+/*                                                    */
+/* global definitions for field labels                */
+/*                                                    */
+
+.cform label {
+	width:155px; 
+	margin:2px 10px 0 0; 
+	display:-moz-inline-box; /*for mozilla*/
+	display:inline-block; /*for Opera & IE*/
+	text-align:left;
+	vertical-align:top;
+	font-size:11px;
+	letter-spacing:1px;
+}
+.cform label span {
+	width:155px; /* must be the same as above!*/
+	display:block;
+}
+
+label.cf-before {
+	width:50px;
+	margin:4px 10px 0 0; 
+}
+label.cf-before span {
+	width:50px;
+}
+
+label.cf-after 	{
+	font-size:10px;
+	letter-spacing:0pt;
+	margin:4px 5px 4px 6px;
+	text-align:left;
+	width:45px;
+}
+
+label.cf-after span {
+	width:45px;
+	display:block;
+}
+
+label.cf-group-after {
+	margin:5px 0 4px 2px;
+	width:130px;
+	text-align:left;
+}
+label.cf-group-after span {
+	width:130px;
+	display:block;
+}
+
+/*                                                    */
+/*   FORM FIELDS general formatting                   */
+/*                                                    */
+
+.cform input,
+.cform textarea,
+.cform select { 
+	padding:3px;
+	background: #f9f9f9; 
+	border:1px solid #888888; 
+	vertical-align:top;
+}
+.cform input:hover,
+.cform textarea:hover,
+.cform select:hover	{
+	background:#CEDDDF; 
+}
+
+.cform input:focus,
+.cform textarea:focus,
+.cform select:focus	{ 
+	background:#F3F8F8; 
+}
+
+.cform textarea,
+.cform input {
+	width:150px; 
+}
+.cform select {
+	width:158px; /* attempt to have equal length */
+}  
+
+.cform select.cfselectmulti	{ 
+	height:7.5em; 
+}
+
+.cform textarea {
+	font-family: arial;
+	font-size: 0.9em;
+	height:5em;
+	overflow:auto;
+	display:block;
+}
+
+.cform input.cf_date {
+	width:128px;
+}
+
+/*                                                    */
+/* formatting for text:  "(required)"  & other        */
+/*                                                    */
+
+span.reqtxt,
+span.emailreqtxt { 
+	display:none; 
+}
+
+
+/*                                                    */
+/*   radio button title                               */
+/*                                                    */
+
+ol.cf-ol li.cf-box-title {
+	padding-left:10px; /* check with label 'width' incl. */
+}
+
+/*                                                    */
+/*   check boxes                                      */
+/*                                                    */
+
+input.cf-box-a,
+input.cf-box-b 	{ 
+	margin:2px 0 0 0; 
+	width:16px; 
+	height:22px;
+	border:none!important;
+	background:none; 
+}
+
+input.cf-box-a 	{ 
+	margin-left:5px; /* check with label 'width' incl. */
+} 
+
+
+/*                                                    */
+/* check box groups                                   */
+/*                                                    */
+
+ol.cf-ol li.cf-box-group {
+	padding: 0 0 5px 10px; 
+} 
+
+
+/*                                                    */
+/*   FORM submit button                               */
+/*                                                    */
+
+p.cf-sb {
+	padding: 0!important;
+	margin: 0;
+	text-align:right;
+}
+.cform input.backbutton,
+.cform input.resetbutton,
+.cform input.sendbutton	{ 
+	width:100px;  
+	padding:2px; 
+	margin: 10px 3px 0;
+	font-size:0.8em;
+	background:url(../images/button-bg.gif) repeat-x; 
+	border:1px solid #adadad!important;
+	border-left-color:#ececec!important; 
+	border-top-color:#ececec!important;
+}
+.cform input.resetbutton {
+	width: auto;
+	padding:5px 1em;
+}
+.cform input.backbutton {
+	width: auto;
+	padding:5px 1em;
+}
+
+
+/*                                                    */
+/*   FORM FIELDS enhanced error display               */
+/*                                                    */
+ol.cf-ol li.cf_li_err {
+	background:#FFDFDF url(li-err-bg.png) repeat!important;
+	border-color:#DF7D7D;
+	border-style:solid;
+	border-width:1px 0pt;
+	padding:5px 0!important;
+	margin:5px 0!important;
+}
+
+ol.cf-ol li ul.cf_li_text_err {
+	margin:0 0 0 10px;
+	padding:0;
+	color:#333;
+}
+
+ol.cf-ol ul.cf_li_text_err li {
+	background:url(icon-alert.png) no-repeat left 1px!important;
+	list-style:none!important;
+	font-weight:bold;
+	text-indent:0;
+	margin:0 0 2px!important;
+	padding-left:15px;
+	font-size:9px;
+}
+ol.cf-ol ul.cf_li_text_err li:before {
+	content:'';
+}
+
+
+/*                                                    */
+/* 'visitor verification' related styles              */
+/*                                                    */
+
+label.secq,
+label.seccap,
+input.secinput {
+	vertical-align:text-bottom;
+}
+
+#cforms_captcha6,
+#cforms_captcha5,
+#cforms_captcha4,
+#cforms_captcha3,
+#cforms_captcha2,
+#cforms_captcha {
+	height:15px;
+	width:30px;
+	padding: 4px 4px;
+	margin: 0;
+	vertical-align:text-bottom;
+}
+
+img.captcha	{
+	vertical-align:text-bottom;
+	margin:0 0 0 2px!important;
+	padding:0!important;
+	border:none!important;
+	float:none!important;
+}
+
+img.captcha-reset {
+	vertical-align:text-bottom;
+	background:	url(captcha_reset_grey.gif) no-repeat;
+	margin:0 0 2px 3px;
+	width:21px;
+	height:21px;
+}
+
+img.imgcalendar {
+	border:none;
+}
+
+/*                                                    */
+/* change formatting of response msgs here            */
+/*                                                    */
+
+div.cf_info {
+	display:none;
+	color:#333333;
+	display:none;
+	font-family:Tahoma;
+	font-size:10px;
+	margin:10px auto;
+	padding:10px 5px !important;
+	text-align:left;
+	width:175px;
+}
+div.cf_info ol {
+	margin:0;
+	padding:5px 5px 0pt 20px;
+}
+div.cf_info ol li {
+	padding:1px 0;
+	margin:2px 0;
+}
+div.cf_info a	{
+	color:#ad2929!important;
+	text-decoration:underline!important;
+}
+div.success {
+	color:#AAAAAA;
+	display:block;
+	letter-spacing:1px;
+}
+div.failure {
+	display:block;
+	background:#FFDFDF url(li-err-bg.png) repeat!important;
+	border-color:#DF7D7D;
+	border-style:solid;
+	border-width:1px 0pt;
+}
+div.waiting {
+	background:#F9F9F9;
+	color:#AAAAAA;
+	display:block;
+}
+/*                                                    */
+/*   formatting for invalid user inputs               */
+/*                                                    */
+
+.cform .cf_error { 
+	color:#ad2929; 
+	border:1px solid #ad2929; 
+}
+div.mailerr {
+	display:block;
+}
+.mailerr,
+.cform .cf_errortxt {
+	color:#ad2929; 
+}
+
+/*                                                    */
+/* disabled fields [disabled] does not work on IE!    */
+/*                                                    */
+
+[disabled] {
+	color:#dddddd;
+	border-color:#dddddd!important;
+	background:none!important;
+}
+.disabled {
+	border-color:#dddddd!important;
+}
+
+/*                                                    */
+/* upload box styling                                 */
+/*                                                    */
+
+.cform input.cf_upload  {
+	width:220px;
+	background: #f9f9f9;
+	border:1px solid #888888;
+}
+
+/*                                                    */
+/*  Other: link love                                  */
+/*                                                    */
+.linklove {
+	margin:0 0 10px 0!important;
+	padding:0!important;	
+	text-align:center!important;
+}
+.linklove a,
+.linklove a:visited {
+	font-size: 0.8em;
+	font-family: Tahoma;
+	color:#aaaaaa;
+}
+
+/*                                                    */
+/*  Other: browser hacks                              */
+/*                                                    */
+* html .cform fieldset {
+	position: relative;
+	margin-top:15px;
+	padding-top:25px; 
+}
+* html .cform legend { 
+	position:absolute; 
+	top: -8px; 
+	left: 6px; 
+	margin-left:0;
+}
+*+html .cform fieldset {
+	position: relative;
+	margin-top:15px;
+	padding-top:25px; 
+}
+*+html .cform legend { 
+	position:absolute; 
+	top: -8px; 
+	left: 6px; 
+	margin-left:0;
+}
+* html ol.cf-ol,
+* html ol.cf-ol li	{
+	display: inline-block;  /*for ie6*/
+}
+*+html ol.cf-ol,
+*+html ol.cf-ol li	{
+	display: inline-block;  /*for ie7*/
+}
+* html img.captcha {
+	margin-bottom:1px!important;
+}
+*+html img.captcha {
+	margin-bottom:1px!important;
+}

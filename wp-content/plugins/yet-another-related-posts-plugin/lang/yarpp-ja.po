@@ -1,0 +1,739 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yet Another Related Posts Plugin v4.0b9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-10 16:00-0500\n"
+"PO-Revision-Date: 2012-12-10 16:18-0500\n"
+"Last-Translator: Michael 芳貴 Erlewine <mitcho@mitcho.com>\n"
+"Language-Team: \n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ yarpp
+#: class-admin.php:90 class-widget.php:7 class-widget.php:72
+msgid "Related Posts (YARPP)"
+msgstr "関連記事 (YARPP)"
+
+# @ yarpp
+#: class-admin.php:96
+msgid "Related Posts"
+msgstr "関連記事"
+
+# @ default
+#: class-admin.php:96
+msgid "Configure"
+msgstr ""
+
+# @ yarpp
+#: class-admin.php:114
+msgid "Frequently Asked Questions"
+msgstr "よくある質問"
+
+# @ yarpp
+#: class-admin.php:119 class-admin.php:155
+msgid "Developing with YARPP"
+msgstr "YARPP の API"
+
+# @ yarpp
+#: class-admin.php:124
+msgid "Optional Data Collection"
+msgstr "利用データ収集"
+
+# @ yarpp
+#: class-admin.php:143
+msgid "FAQ"
+msgstr "よくある質問"
+
+# @ yarpp
+#: class-admin.php:160
+#, php-format
+msgid ""
+"With your permission, YARPP will send information about YARPP's settings, "
+"usage, and environment back to a central server at %s."
+msgstr ""
+"YARPP は色々なユーザの設定項目、利用データ、環境設定などを %s サーバで集め始"
+"めました。"
+
+# @ yarpp
+#: class-admin.php:161
+msgid ""
+"This information will be used to improve YARPP in the future and help decide "
+"future development decisions for YARPP."
+msgstr "この情報はこれからの YARPP 開発、改善のために使われます。"
+
+# @ yarpp
+#: class-admin.php:162
+msgid ""
+"Contributing this data will help make YARPP better for you and for other "
+"YARPP users."
+msgstr " "
+
+# @ yarpp
+#: class-admin.php:170
+msgid "If you opt-in, the following information is sent back to YARPP:"
+msgstr "情報提供に参加すれば、下記のデータが YARPP に送られます。"
+
+# @ yarpp
+#: class-admin.php:172
+msgid ""
+"In addition, YARPP also loads an invisible pixel image with your YARPP "
+"results to know how often YARPP is being used."
+msgstr ""
+"最後に、情報提供に参加すれば、 YARPP の利用率を知るために関連記事結果とともに"
+"見えない画像が読み込まれます。"
+
+# @ yarpp
+#: class-admin.php:176 options-meta-boxes.php:424
+msgid "Send settings and usage data back to YARPP"
+msgstr "設定と利用データを YARPP に提供する"
+
+# @ yarpp
+#: class-admin.php:176
+msgid "Thank you!"
+msgstr "ありがとうございます"
+
+#: class-admin.php:205
+msgid ""
+"<strong>Help make YARPP better</strong> by sending information about YARPP's "
+"settings and usage statistics."
+msgstr ""
+"<strong>より良い YARPP の開発のために</strong> YARPP の設定と利用データを提供"
+"してください。"
+
+# @ yarpp
+#: class-admin.php:209 options-meta-boxes.php:428
+msgid "Learn More"
+msgstr "詳しい説明"
+
+# @ yarpp
+#: class-admin.php:252
+msgid "Show example code output"
+msgstr "コード出力例を表示"
+
+# @ yarpp
+#: class-admin.php:279
+msgid "Thank you for installing <span>Yet Another Related Posts Plugin</span>!"
+msgstr "関連記事プラグイン (YARPP) がインストールされました！"
+
+# @ yarpp
+#: class-admin.php:280
+msgid ""
+"Make sure to visit the <a>Related Posts settings page</a> to customize YARPP."
+msgstr "<a>関連記事設定ページ</a>をご覧ください。"
+
+# @ default
+#: class-admin.php:326
+msgid "Settings"
+msgstr "設定"
+
+# @ yarpp
+#: class-admin.php:352
+msgid "Related entries may be displayed once you save your entry"
+msgstr "関連記事は保存後更新されます。"
+
+# @ yarpp
+#: class-cache.php:530
+msgid "Example post "
+msgstr "例:"
+
+# @ yarpp
+#: class-core.php:80 class-core.php:90 class-core.php:117 class-core.php:119
+#: class-core.php:378 class-core.php:389 class-core.php:686
+msgid "Related posts:"
+msgstr "関連記事:"
+
+# @ yarpp
+#: class-core.php:82 class-core.php:92 class-core.php:380 class-core.php:391
+#: template-metabox.php:30 template-widget.php:13
+msgid "No related posts."
+msgstr "関連記事はありません。"
+
+# @ yarpp
+#: class-core.php:839 class-core.php:982 options-meta-boxes.php:295
+#: options-meta-boxes.php:356
+#, php-format
+msgid ""
+"Related posts brought to you by <a href='%s'>Yet Another Related Posts "
+"Plugin</a>."
+msgstr ""
+"関連記事は<a href='%s'>YARPP関連記事プラグイン</a>によって表示されています。"
+
+# @ yarpp
+#: class-widget.php:92 options-meta-boxes.php:35
+msgid "List"
+msgstr "リスト"
+
+# @ yarpp
+#: class-widget.php:94 options-meta-boxes.php:45
+msgid "Thumbnails"
+msgstr "サムネイル"
+
+# @ yarpp
+#: class-widget.php:96 options-meta-boxes.php:59
+msgid "Custom"
+msgstr "カスタム"
+
+# @ default
+#: class-widget.php:99
+msgid "Title:"
+msgstr ""
+
+# @ yarpp
+#: class-widget.php:101 options-meta-boxes.php:70
+msgid "Template file:"
+msgstr "テンプレートファイル:"
+
+# @ yarpp
+#: class-widget.php:119 options-meta-boxes.php:294 options-meta-boxes.php:356
+msgid "Help promote Yet Another Related Posts Plugin?"
+msgstr "この関連記事プラグイン(YARPP)を宣伝しますか？"
+
+# @ yarpp
+#: options-meta-boxes.php:7
+msgid ""
+"This advanced option gives you full power to customize how your related "
+"posts are displayed. Templates (stored in your theme folder) are written in "
+"PHP."
+msgstr ""
+"この新機能で関連記事の表示を完全にカスタマイズする事が出来ます。テンプレート"
+"ファイルは PHP でかき、使用テーマのフォルダにいれます。"
+
+# @ yarpp
+#: options-meta-boxes.php:44
+msgid ""
+"This option is disabled because your theme does not support post thumbnails."
+msgstr "現在お使いのテーマでは投稿サムネイル機能が無効になっています。"
+
+# @ yarpp
+#: options-meta-boxes.php:54
+msgid ""
+"This option is disabled because no YARPP templates were found in your theme."
+msgstr ""
+"現在お使いのテーマフォルダでは YARPP 用のテンプレートファイルが見つかりません"
+"でした。"
+
+# @ yarpp
+#: options-meta-boxes.php:56
+msgid ""
+"Would you like to copy some sample templates bundled with YARPP into your "
+"theme?"
+msgstr "YARPP テンプレートの使用例をこのテーマのフォルダに移動しますか？"
+
+# @ yarpp
+#: options-meta-boxes.php:56
+msgid "Copy Templates"
+msgstr "テンプレートを移動"
+
+# @ default
+#: options-meta-boxes.php:79
+msgid "Author:"
+msgstr ""
+
+# @ yarpp
+#: options-meta-boxes.php:105 options-meta-boxes.php:123
+msgid "do not consider"
+msgstr "検討しない"
+
+# @ yarpp
+#: options-meta-boxes.php:106 options-meta-boxes.php:124
+msgid "consider"
+msgstr "検討する"
+
+# @ yarpp
+#: options-meta-boxes.php:107 options-meta-boxes.php:125
+msgid "consider with extra weight"
+msgstr "検討する（重要視）"
+
+# @ yarpp
+#: options-meta-boxes.php:108
+#, php-format
+msgid "require at least one %s in common"
+msgstr "共有の%sをひとつ以上必要とする"
+
+# @ yarpp
+#: options-meta-boxes.php:109
+#, php-format
+msgid "require more than one %s in common"
+msgstr "共有の%sをふたつ以上必要とする"
+
+# @ yarpp
+#: options-meta-boxes.php:131
+msgid "Order results:"
+msgstr "表示順番:"
+
+# @ yarpp
+#: options-meta-boxes.php:135
+msgid "score (high relevance to low)"
+msgstr "関連スコアの高い順"
+
+# @ yarpp
+#: options-meta-boxes.php:136
+msgid "score (low relevance to high)"
+msgstr "関連スコアの低い順"
+
+# @ yarpp
+#: options-meta-boxes.php:137
+msgid "date (new to old)"
+msgstr "新しい日付順（降順）"
+
+# @ yarpp
+#: options-meta-boxes.php:138
+msgid "date (old to new)"
+msgstr "古い日付順（昇順）"
+
+# @ yarpp
+#: options-meta-boxes.php:139
+msgid "title (alphabetical)"
+msgstr "タイトル順（昇順）"
+
+# @ yarpp
+#: options-meta-boxes.php:140
+msgid "title (reverse alphabetical)"
+msgstr "タイトル順（降順）"
+
+# @ yarpp
+#: options-meta-boxes.php:170
+msgid ""
+"\"The Pool\" refers to the pool of posts and pages that are candidates for "
+"display as related to the current entry."
+msgstr "関連記事として表示したい記事を制限します。"
+
+# @ yarpp
+#: options-meta-boxes.php:173
+msgid "Post types considered:"
+msgstr "投稿タイプ："
+
+# @ yarpp
+#: options-meta-boxes.php:177
+#, php-format
+msgid "Disallow by %s:"
+msgstr "この%sの記事を表示しない"
+
+# @ yarpp
+#: options-meta-boxes.php:179
+msgid "Show password protected posts?"
+msgstr "パスワードで保護されている記事も表示"
+
+# @ yarpp
+#: options-meta-boxes.php:190
+msgid "day(s)"
+msgstr "日間"
+
+# @ yarpp
+#: options-meta-boxes.php:191
+msgid "week(s)"
+msgstr "週間"
+
+# @ yarpp
+#: options-meta-boxes.php:192
+msgid "month(s)"
+msgstr "ヶ月間"
+
+# @ yarpp
+#: options-meta-boxes.php:198
+msgid "Show only posts from the past NUMBER UNITS"
+msgstr "過去 NUMBER UNITS の記事だけを表示"
+
+# @ yarpp
+#: options-meta-boxes.php:204
+msgid "\"The Pool\""
+msgstr "フィルター設定"
+
+# @ yarpp
+#: options-meta-boxes.php:210
+msgid ""
+"YARPP limits the related posts list by (1) a maximum number and (2) a "
+"<em>match threshold</em>."
+msgstr ""
+"この関連記事プラグイン（YARPP）は各対象記事の関連スコアを計算し、ある関連スコ"
+"ア以上の記事だけを表示します。"
+
+# @ yarpp
+#: options-meta-boxes.php:210
+msgid ""
+"The higher the match threshold, the more restrictive, and you get less "
+"related posts overall. The default match threshold is 5. If you want to find "
+"an appropriate match threshhold, take a look at some post's related posts "
+"display and their scores. You can see what kinds of related posts are being "
+"picked up and with what kind of match scores, and determine an appropriate "
+"threshold for your site."
+msgstr ""
+"より関連性の高い記事だけを表示したい場合は、最低関連スコアを上げてください。"
+"初期設定は5です。"
+
+# @ yarpp
+#: options-meta-boxes.php:213
+msgid "Match threshold:"
+msgstr "表示する最低関連スコア"
+
+# @ yarpp
+#: options-meta-boxes.php:214
+msgid "Titles: "
+msgstr "タイトル:"
+
+# @ yarpp
+#: options-meta-boxes.php:215
+msgid "Bodies: "
+msgstr "内容:"
+
+# @ yarpp
+#: options-meta-boxes.php:221
+msgid "Display results from all post types"
+msgstr "全ての投稿タイプの結果を表示"
+
+# @ yarpp
+#: options-meta-boxes.php:221
+msgid ""
+"When \"display results from all post types\" is off, only posts will be "
+"displayed as related to a post, only pages will be displayed as related to a "
+"page, etc."
+msgstr ""
+"「全ての投稿タイプの結果を表示」が無効な場合、同じ投稿タイプの結果 (投稿には"
+"関連投稿、ページには関連ページ...) だけが表示されます。"
+
+# @ yarpp
+#: options-meta-boxes.php:222
+msgid "Show only previous posts?"
+msgstr "過去の記事だけを表示"
+
+# @ yarpp
+#: options-meta-boxes.php:226
+msgid "\"Relatedness\" options"
+msgstr "関連スコア設定"
+
+# @ yarpp
+#: options-meta-boxes.php:236
+msgid "Website display code example"
+msgstr "ウェブサイト表示のソース例"
+
+# @ yarpp
+#: options-meta-boxes.php:236 options-meta-boxes.php:309
+msgid "(Update options to reload.)"
+msgstr "（設定保存時に更新されます）"
+
+# @ yarpp
+#: options-meta-boxes.php:239
+msgid "Automatically display:"
+msgstr "自動表示:"
+
+# @ yarpp
+#: options-meta-boxes.php:240
+msgid ""
+"This option automatically displays related posts right after the content on "
+"single entry pages. If this option is off, you will need to manually insert "
+"<code>related_posts()</code> or variants (<code>related_pages()</code> and "
+"<code>related_entries()</code>) into your theme files."
+msgstr ""
+"単体記事表示時に自動的に関連記事を表示します。この自動表示を無効にすると、"
+"テーマファイルに<code>related_posts()</code>を入れる必要があります。"
+
+# @ yarpp
+#: options-meta-boxes.php:250
+msgid "Also display in archives"
+msgstr "アーカイブでも表示"
+
+# @ yarpp
+#: options-meta-boxes.php:252 options-meta-boxes.php:314
+msgid "Maximum number of related posts:"
+msgstr "一度に表示する関連記事数"
+
+# @ yarpp
+#: options-meta-boxes.php:272 options-meta-boxes.php:334
+msgid "Heading:"
+msgstr "ヘッダー:"
+
+# @ yarpp
+#: options-meta-boxes.php:273 options-meta-boxes.php:335
+msgid "Default image (URL):"
+msgstr "デフォルト画像 (URL):"
+
+# @ yarpp
+#: options-meta-boxes.php:274 options-meta-boxes.php:289
+#: options-meta-boxes.php:336 options-meta-boxes.php:351
+msgid "Default display if no results:"
+msgstr "関連記事がない時のメッセージ:"
+
+# @ yarpp
+#: options-meta-boxes.php:281 options-meta-boxes.php:343
+msgid "Before / after related entries:"
+msgstr "関連記事表示を囲むタグ:"
+
+# @ yarpp
+#: options-meta-boxes.php:281 options-meta-boxes.php:282
+#: options-meta-boxes.php:287 options-meta-boxes.php:343
+#: options-meta-boxes.php:344 options-meta-boxes.php:349
+msgid "For example:"
+msgstr "例:"
+
+# @ yarpp
+#: options-meta-boxes.php:281 options-meta-boxes.php:282
+#: options-meta-boxes.php:287 options-meta-boxes.php:343
+#: options-meta-boxes.php:344 options-meta-boxes.php:349
+msgid " or "
+msgstr "、"
+
+# @ yarpp
+#: options-meta-boxes.php:282 options-meta-boxes.php:344
+msgid "Before / after each related entry:"
+msgstr "各関連記事を囲むタグ:"
+
+# @ yarpp
+#: options-meta-boxes.php:284 options-meta-boxes.php:346
+msgid "Show excerpt?"
+msgstr "抜粋を表示？"
+
+# @ yarpp
+#: options-meta-boxes.php:285 options-meta-boxes.php:347
+msgid "Excerpt length (No. of words):"
+msgstr "抜粋の長さ（単語数）:"
+
+# @ yarpp
+#: options-meta-boxes.php:287 options-meta-boxes.php:349
+msgid "Before / after (excerpt):"
+msgstr "抜粋を囲むタグ:"
+
+# @ yarpp
+#: options-meta-boxes.php:295 options-meta-boxes.php:356
+#, php-format
+msgid ""
+"This option will add the code %s. Try turning it on, updating your options, "
+"and see the code in the code example to the right. These links and donations "
+"are greatly appreciated."
+msgstr "関連記事表示の下に「%s」というコードを挿入します。"
+
+# @ yarpp
+#: options-meta-boxes.php:299
+msgid "Display options <small>for your website</small>"
+msgstr "表示設定 <small>ウェブサイト用</small>"
+
+# @ yarpp
+#: options-meta-boxes.php:309
+msgid "RSS display code example"
+msgstr "RSS表示のソース例"
+
+# @ yarpp
+#: options-meta-boxes.php:311
+msgid "Display related posts in feeds?"
+msgstr "自動的にフィードで関連記事を表示する"
+
+# @ yarpp
+#: options-meta-boxes.php:311
+msgid ""
+"This option displays related posts at the end of each item in your RSS and "
+"Atom feeds. No template changes are needed."
+msgstr "RSSとAtomフィード内に関連記事を表示。テーマの変更は必要ありません。"
+
+# @ yarpp
+#: options-meta-boxes.php:312
+msgid "Display related posts in the descriptions?"
+msgstr "フィード内の抜粋にも自動的に関連記事を表示する"
+
+# @ yarpp
+#: options-meta-boxes.php:312
+msgid ""
+"This option displays the related posts in the RSS description fields, not "
+"just the content. If your feeds are set up to only display excerpts, "
+"however, only the description field is used, so this option is required for "
+"any display at all."
+msgstr ""
+"フィード内の全文表示に関連記事を表示するだけでなく、フィード内の抜粋でも関連"
+"記事が表示されます。WordPressの設定によりフィードに抜粋のみを表示している場合"
+"は、このオプションが無効の場合関連記事がフィード内で表示されません。"
+
+# @ yarpp
+#: options-meta-boxes.php:360
+msgid "Display options <small>for RSS</small>"
+msgstr "表示設定 <small>RSS/Atom フィード用</small>"
+
+# @ yarpp
+#: options-meta-boxes.php:368
+msgid "YARPP Forum"
+msgstr "YARPP フォーラム"
+
+# @ yarpp
+#: options-meta-boxes.php:369
+msgid "YARPP on Twitter"
+msgstr "YARPP Twitter"
+
+# @ yarpp
+#: options-meta-boxes.php:370
+msgid "YARPP on the Web"
+msgstr "ウェブサイト"
+
+# @ yarpp
+#: options-meta-boxes.php:371
+msgid "Review YARPP on WordPress.org"
+msgstr "WordPress.org で YARPP の感想を書く"
+
+# @ default
+# @ yarpp
+#: options-meta-boxes.php:372
+msgid ""
+"Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
+msgstr "YARPPの作成者（ミッチョ）にPayPalで寄付をする"
+
+# @ yarpp
+#: options-meta-boxes.php:405
+msgid "Help Improve YARPP"
+msgstr "より良い YARPP を目指して"
+
+# @ yarpp
+#: options-meta-boxes.php:427
+msgid ""
+"This is entirely optional, but will help improve future versions of YARPP."
+msgstr "この情報はこれからの YARPP 開発、改善のために使われます。"
+
+# @ yarpp
+#: options-meta-boxes.php:432
+msgid "Contact YARPP"
+msgstr "YARPP 情報"
+
+# @ default
+#: options.php:31
+#, php-format
+msgid ""
+"There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox"
+"\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update "
+"automatically</a>."
+msgstr ""
+"%1$s の新しいβ版があります。 <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s"
+"\">%4$s の詳細を読む</a>、あるいは<a href=\"%5$s\">インストールする</a>。"
+
+# @ yarpp
+#: options.php:35
+#, php-format
+msgid ""
+"There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a "
+"href=\"%s\">download it here</a> at your own risk."
+msgstr ""
+"関連記事プラグイン（YARPP）の新しいベータ（%s）があります。是非<a href=\"%s"
+"\">ダウンロード</a>してみてください。"
+
+# @ yarpp
+#: options.php:43
+msgid ""
+"The MyISAM check has been overridden. You may now use the \"consider titles"
+"\" and \"consider bodies\" relatedness criteria."
+msgstr ""
+"MyISAM専用機能を強制的に有効にしました。「タイトルを検討」と「内容を検討」機"
+"能が使えるようになりました。"
+
+# @ yarpp
+#: options.php:51
+#, php-format
+msgid ""
+"YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria "
+"require your <code>%s</code> table to use the <a href='http://dev.mysql.com/"
+"doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the "
+"table seems to be using the <code>%s</code> engine. These two options have "
+"been disabled."
+msgstr ""
+"YARPPの関連スコア計算の「タイトルを検討する」、「内容を検討する」オプションは"
+"データベースの <code>%1$s</code> テーブルが <a href='http://dev.mysql.com/"
+"doc/refman/4.1/ja/myisam.html'>MyISAM</a> を使用する必要があります。 <code>"
+"%1$s</code> テーブルは現在 <code>%2$s</code> ストーレージエンジンを使用してい"
+"るので、このふたつのオプションは使えません。"
+
+# @ yarpp
+#: options.php:53
+#, php-format
+msgid ""
+"To restore these features, please update your <code>%s</code> table by "
+"executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = "
+"MyISAM;</code> . No data will be erased by altering the table's engine, "
+"although there are performance implications."
+msgstr ""
+"このオプションを使用したければ、<code>%s</code>テーブルに対してこのようなクエ"
+"リを実行してください：<code>ALTER TABLE `%s` ENGINE = MyISAM;</code>。このク"
+"エリはデータは一切消しません。"
+
+# @ yarpp
+#: options.php:55
+#, php-format
+msgid ""
+"If, despite this check, you are sure that <code>%s</code> is using the "
+"MyISAM engine, press this magic button:"
+msgstr ""
+"<code>%s</code>テーブルが絶対MyISAMを使用していると思う方はこちらの魔法のボタ"
+"ンをどうぞ："
+
+# @ yarpp
+#: options.php:58
+msgid "Trust me. Let me use MyISAM features."
+msgstr "MyISAM を使ってます。嘘じゃないから。"
+
+# @ yarpp
+#: options.php:73
+msgid "The YARPP database had an error but has been fixed."
+msgstr "YARPPのデータベースは修正されました。"
+
+# @ yarpp
+#: options.php:75
+msgid "The YARPP database has an error which could not be fixed."
+msgstr "YARPPのデータベースに修正できないエラーが発生しました。"
+
+# @ yarpp
+#: options.php:76
+#, php-format
+msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
+msgstr "<a href=\"%s\" target=\"_blank\">手動 SQL 設定</a>を参考ください。"
+
+# @ yarpp
+#: options.php:139
+msgid "Options saved!"
+msgstr "設定の変更は保存されました。"
+
+# @ yarpp
+#: options.php:145
+msgid "Yet Another Related Posts Plugin Options"
+msgstr "関連記事 (YARPP) 設定"
+
+# @ yarpp
+#: options.php:153
+#, php-format
+msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+msgstr ""
+"by <a href=\"%s\" target=\"_blank\">みっちょ (アーリーワイン・マイケル芳貴)</"
+"a>"
+
+# @ default
+#: options.php:194
+msgid "Save Changes"
+msgstr ""
+
+# @ yarpp
+#: template-builtin.php:22
+#, php-format
+msgid ""
+"%f is the YARPP match score between the current entry and this related "
+"entry. You are seeing this value because you are logged in to WordPress as "
+"an administrator. It is not shown to regular visitors."
+msgstr ""
+"%fは現在表示の記事とこの関連記事の関連スコアです。この関連スコアはログイン済"
+"みのサイト管理者のみに表示されます。"
+
+# @ yarpp
+#: template-metabox.php:12
+msgid ""
+"These are the related entries for this entry. Updating this post may change "
+"these related posts."
+msgstr "この投稿の関連記事。投稿を更新すると関連記事も変わる可能性があります。"
+
+# @ yarpp
+#: template-metabox.php:28
+msgid ""
+"Whether all of these related entries are actually displayed and how they are "
+"displayed depends on your YARPP display options."
+msgstr ""
+"関連記事候補が全て表示されるかどうかは YARPP (関連記事) オプションの表示設定"
+"によって異なります。"

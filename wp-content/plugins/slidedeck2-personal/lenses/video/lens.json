@@ -1,0 +1,53 @@
+{
+    "name": "Proto Video",
+    "uri": "http://www.slidedeck.com/",
+    "sources": ["listofvideos","youtube","dailymotion","vimeo"],
+    "author": "dtelepathy",
+    "author_uri": "http://www.dtelepathy.com/",
+    "contributors": ["dtrenkner", "oriontimbers", "kynatro", "jamie3d"],
+    "description": "The Prototype Video Lens",
+    "version": "1.0",
+    "sizes": {
+        "small": {
+            "label": "Small",
+            "width": 320,
+            "height": 240
+        },
+        "medium": {
+            "label": "Medium",
+            "width": 480,
+            "height": 360
+        },
+        "large": {
+            "label": "Large",
+            "width": 850,
+            "height": 350
+        },
+        "custom": {
+            "label": "Custom",
+            "width": 900,
+            "height": 450
+        }
+    },
+    "variations": {
+        "dark": "Dark",
+        "light": "Light"
+    },
+    "fonts": {
+        "bitter": {
+            "label": "Bitter",
+            "stack": "Bitter, serif",
+            "import": "//fonts.googleapis.com/css?family=Bitter:400,400italic"
+        },
+        "Droid Sans": {
+            "label": "Droid Sans",
+            "stack": "Droid Sans, sans-serif",
+            "import": "//fonts.googleapis.com/css?family=Droid+Sans"
+        },
+        "oswald": {
+            "label": "Oswald",
+            "stack": "Oswald, sans-serif",
+            "import": "//fonts.googleapis.com/css?family=Oswald"
+        }
+    }
+}

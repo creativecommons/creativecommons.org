@@ -1,0 +1,542 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Korean by Soul\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-17 14:23+0100\n"
+"PO-Revision-Date: 2012-01-20 03:53+0900\n"
+"Last-Translator: Jong-In Kim <soulofpure@hotmail.com>\n"
+"Language-Team: Jong-In Kim <soulofpure@hotmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Korean\n"
+"X-Poedit-Country: KOREA, REPUBLIC OF\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: class-admin.php:55
+#: class-widget.php:7
+#: class-widget.php:56
+#@ yarpp
+msgid "Related Posts (YARPP)"
+msgstr "관련 글 (YARPP)"
+
+#: class-admin.php:63
+#@ yarpp
+msgid "Related Posts"
+msgstr "관련 글"
+
+#: template-builtin.php:21
+#, php-format
+#@ yarpp
+msgid "%f is the YARPP match score between the current entry and this related entry. You are seeing this value because you are logged in to WordPress as an administrator. It is not shown to regular visitors."
+msgstr "%f 는 현재 글과 관련 글 사이의 YARPP 매치 점수입니다. 워드프레스의 관리자로 로그인을 하셨기 때문에 이 값을 보시는 것 입니다. 일반 방문자는 볼 수 없습니다."
+
+#: class-core.php:564
+#: class-core.php:679
+#: options-meta-boxes.php:228
+#: options-meta-boxes.php:283
+#, php-format
+#@ yarpp
+msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
+msgstr "관련 글은 <a href='%s'>Yet Another Related Posts 플러그인</a>에 의해 제공됩니다."
+
+#: options.php:46
+#@ yarpp
+msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
+msgstr "MyISAM 전용 기능을 강제로 사용했습니다. \"제목을 검토\"와 \"내용을 검토\" 기능을 사용할 수 있습니다."
+
+#: options.php:54
+#, php-format
+#@ yarpp
+msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
+msgstr "YARPP의 \"제목을 검토\", \"내용을 검토\" 옵션은 데이터베이스 <code>%s</code> 테이블이 <a href ='http://dev.mysql.com/doc/refman/4.1/ja/myisam.html'>MyISAM</a>이 아닌 경우에 사용할 수 없습니다. 현재 <code>%s</code> 스토레지엔진를 사용하고 있기 때문에,이 두 옵션은 사용할 수 없습니다."
+
+#: options.php:56
+#, php-format
+#@ yarpp
+msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
+msgstr "이 기능을 복원하려면, 당신의 <code>%s</code> 테이블을 다음 SQL 지시어를 실행하여 업데이트하세요: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . 성능에 영향을 줄 수 있지만 어떤 데이터도 테이블의 엔진을 변경하여 삭제되진 않습니다."
+
+#: options.php:58
+#, php-format
+#@ yarpp
+msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
+msgstr "만약, 이 체크에도 불구하고, 당신은 <code>%s</code> (이)가 MyISAM을 사용하고 있다고 생각한다면, 이 매직 버튼을 누르세요:"
+
+#: options.php:61
+#@ yarpp
+msgid "Trust me. Let me use MyISAM features."
+msgstr "믿으세요. 제가 MyISAM 기능을 사용할 수 있게 해주세요."
+
+#: options.php:76
+#@ yarpp
+msgid "The YARPP database had an error but has been fixed."
+msgstr "YARPP 데이터베이스에 에러가 있었으나 고쳐졌습니다."
+
+#: options.php:78
+#@ yarpp
+msgid "The YARPP database has an error which could not be fixed."
+msgstr "YARPP 데이터베이스에 에러가 있으며 고칠 수가 없습니다."
+
+#: options-meta-boxes.php:47
+#: options-meta-boxes.php:59
+#@ yarpp
+msgid "do not consider"
+msgstr "검토하지 않음"
+
+#: options-meta-boxes.php:48
+#: options-meta-boxes.php:60
+#@ yarpp
+msgid "consider"
+msgstr "검토함"
+
+#: options-meta-boxes.php:49
+#: options-meta-boxes.php:61
+#@ yarpp
+msgid "consider with extra weight"
+msgstr "신중히 검토함"
+
+#: options-meta-boxes.php:301
+#@ default
+#@ yarpp
+msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
+msgstr "이 플러그인을 위해 mitcho (Michael Yoshitaka Erlewine) 에게 페이팔을 통한 기부"
+
+#: options.php:139
+#@ yarpp
+msgid "Yet Another Related Posts Plugin Options"
+msgstr "Yet Another Related Posts 플러그인 옵션"
+
+#: options-meta-boxes.php:147
+#@ yarpp
+msgid "\"The Pool\""
+msgstr "\"필터 설정\""
+
+#: options-meta-boxes.php:109
+#@ yarpp
+msgid "\"The Pool\" refers to the pool of posts and pages that are candidates for display as related to the current entry."
+msgstr "\"필터 설정\" 은 관련 글로 나타낼 글이나 페이지를 제한하는 것입니다."
+
+#: options-meta-boxes.php:118
+#@ yarpp
+msgid "Show password protected posts?"
+msgstr "비밀번호로 보호된 글을 보여줄까요?"
+
+#: options-meta-boxes.php:170
+#@ yarpp
+msgid "Show only previous posts?"
+msgstr "이전 글만 보여줄까요?"
+
+#: options-meta-boxes.php:178
+#@ yarpp
+msgid "\"Relatedness\" options"
+msgstr "\"관련\" 옵션"
+
+#: options-meta-boxes.php:17
+#: options-meta-boxes.php:113
+#: options-meta-boxes.php:153
+#: options-meta-boxes.php:169
+#: options-meta-boxes.php:187
+#: options-meta-boxes.php:227
+#: options-meta-boxes.php:244
+#: options-meta-boxes.php:246
+#: options-meta-boxes.php:282
+#@ yarpp
+msgid "more&gt;"
+msgstr "설명&gt;"
+
+#: options-meta-boxes.php:159
+#@ yarpp
+msgid "Match threshold:"
+msgstr "일치 임계값:"
+
+#: options-meta-boxes.php:160
+#@ yarpp
+msgid "Titles: "
+msgstr "제목: "
+
+#: options-meta-boxes.php:162
+#@ yarpp
+msgid "Bodies: "
+msgstr "본문: "
+
+#: options-meta-boxes.php:235
+#@ yarpp
+msgid "Display options <small>for your website</small>"
+msgstr "당신의 사이트를 위해 옵션을 표시합니다"
+
+#: options-meta-boxes.php:187
+#@ yarpp
+msgid "Automatically display related posts?"
+msgstr "관련 글을 자동으로 표시하시겠습니까?"
+
+#: options-meta-boxes.php:187
+#@ yarpp
+msgid "This option automatically displays related posts right after the content on single entry pages. If this option is off, you will need to manually insert <code>related_posts()</code> or variants (<code>related_pages()</code> and <code>related_entries()</code>) into your theme files."
+msgstr "이 옵션은 단일 글 페이지 직후에 관련 글을 자동으로 표시합니다. 만약 이 옵션이 꺼져있다면, <code>related_posts()</code> 를 수동으로 넣어주시거나, 테마 파일에 (<code>related_pages()</code> 와 <code>related_entries()</code>를 추가해야됩니다."
+
+#: options-meta-boxes.php:188
+#@ yarpp
+msgid "Website display code example"
+msgstr "웹사이트 표시 코드 예제"
+
+#: options-meta-boxes.php:188
+#: options-meta-boxes.php:244
+#@ yarpp
+msgid "(Update options to reload.)"
+msgstr "(옵션을 새로 업데이트)"
+
+#: options-meta-boxes.php:190
+#: options-meta-boxes.php:249
+#@ yarpp
+msgid "Maximum number of related posts:"
+msgstr "관련 글의 최대 수:"
+
+#: options-meta-boxes.php:207
+#: options-meta-boxes.php:270
+#@ yarpp
+msgid "Before / after related entries:"
+msgstr "전 / 후 관련 글:"
+
+#: options-meta-boxes.php:207
+#: options-meta-boxes.php:208
+#: options-meta-boxes.php:216
+#: options-meta-boxes.php:270
+#: options-meta-boxes.php:271
+#: options-meta-boxes.php:276
+#@ yarpp
+msgid "For example:"
+msgstr "예를 들면:"
+
+#: options-meta-boxes.php:208
+#: options-meta-boxes.php:271
+#@ yarpp
+msgid "Before / after each related entry:"
+msgstr "전 / 후 각 관련 글:"
+
+#: options-meta-boxes.php:210
+#: options-meta-boxes.php:273
+#@ yarpp
+msgid "Show excerpt?"
+msgstr "발췌를 보여줄까요?"
+
+#: options-meta-boxes.php:211
+#: options-meta-boxes.php:274
+#@ yarpp
+msgid "Excerpt length (No. of words):"
+msgstr "발췌 길이 (단어수):"
+
+#: options-meta-boxes.php:215
+#@ yarpp
+msgid "Before / after (Excerpt):"
+msgstr "전 / 후 (발췌):"
+
+#: options-meta-boxes.php:68
+#@ yarpp
+msgid "Order results:"
+msgstr "순서 결과:"
+
+#: options-meta-boxes.php:71
+#@ yarpp
+msgid "score (high relevance to low)"
+msgstr "점수 (높은것에서 낮은것)"
+
+#: options-meta-boxes.php:72
+#@ yarpp
+msgid "score (low relevance to high)"
+msgstr "점수 (낮은것부터 높은것)"
+
+#: options-meta-boxes.php:73
+#@ yarpp
+msgid "date (new to old)"
+msgstr "날짜 (최근에서 예전)"
+
+#: options-meta-boxes.php:74
+#@ yarpp
+msgid "date (old to new)"
+msgstr "날짜 (예전에서 최근)"
+
+#: options-meta-boxes.php:75
+#@ yarpp
+msgid "title (alphabetical)"
+msgstr "제목 (알파벳순)"
+
+#: options-meta-boxes.php:76
+#@ yarpp
+msgid "title (reverse alphabetical)"
+msgstr "제목 (알파벳역순)"
+
+#: options-meta-boxes.php:223
+#: options-meta-boxes.php:280
+#@ yarpp
+msgid "Default display if no results:"
+msgstr "만약 결과가 없으면 기본 표시:"
+
+#: class-widget.php:95
+#: options-meta-boxes.php:226
+#: options-meta-boxes.php:282
+#@ yarpp
+msgid "Help promote Yet Another Related Posts Plugin?"
+msgstr "YARPP 홍보를 도우시겠습니까?"
+
+#: options-meta-boxes.php:228
+#: options-meta-boxes.php:283
+#, php-format
+#@ yarpp
+msgid "This option will add the code %s. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated."
+msgstr "이 옵션은 %s 코드를 추가할 것입니다. 켜시고, 옵션을 업데이트 하시고, 우측의 코드 예제를 보십시오. 이 링크들과 기부는 매우 감사하게 생각합니다."
+
+#: options-meta-boxes.php:290
+#@ yarpp
+msgid "Display options <small>for RSS</small>"
+msgstr "<small>RSS</small>의 옵션 표시"
+
+#: options-meta-boxes.php:244
+#@ yarpp
+msgid "Display related posts in feeds?"
+msgstr "피드 관련 글을 표시할까요?"
+
+#: options-meta-boxes.php:246
+#@ yarpp
+msgid "Display related posts in the descriptions?"
+msgstr "설명 관련 글을 표시할까요?"
+
+#: options-meta-boxes.php:246
+#@ yarpp
+msgid "This option displays the related posts in the RSS description fields, not just the content. If your feeds are set up to only display excerpts, however, only the description field is used, so this option is required for any display at all."
+msgstr "이 옵션은 컨텐츠 외에 RSS 설명 필드의 관련 글을 표시합니다. 만약 피드가 발췌만 표시하게 되어있지만 설명필드만 사용하고 있다면, 이 옵션은 모든 표시를 필요로 합니다. "
+
+#: options-meta-boxes.php:244
+#@ yarpp
+msgid "RSS display code example"
+msgstr "RSS 표시 코드 예제"
+
+#: options-meta-boxes.php:276
+#@ yarpp
+msgid "Before / after (excerpt):"
+msgstr "전 / 후 (발췌):"
+
+#: options-meta-boxes.php:50
+#, php-format
+#@ yarpp
+msgid "require at least one %s in common"
+msgstr "최소한 하나의 %s의 공통점이 필요"
+
+#: options-meta-boxes.php:51
+#, php-format
+#@ yarpp
+msgid "require more than one %s in common"
+msgstr "하나 이상의 %s의 공통점이 필요"
+
+#: options.php:133
+#@ yarpp
+msgid "Options saved!"
+msgstr "옵션이 저장되었습니다!"
+
+#: options-meta-boxes.php:153
+#@ yarpp
+msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
+msgstr "일치 임계값이 높을수록, 더 많은 제한을 할수록, 전체적으로 적은 관련 글들을 얻습니다. 기본적인 일치 임계값은 5입니다. 적절히 일치하는 임계값을 찾으려면, 일부 글의 관련 글 화면 및 점수를 보시기 바랍니다. 당신은 어떤 류의 관련된 글이 포착되고 있고 어떤 종류의 일치하는 점수인지를 확인할 수 있으며 당신의 사이트에 대한 적절한 임계값을 결정할 수 있습니다."
+
+#: class-core.php:71
+#: class-core.php:81
+#: class-core.php:267
+#: class-core.php:278
+#@ yarpp
+msgid "Related posts:"
+msgstr "관련된 글:"
+
+#: class-core.php:73
+#: class-core.php:83
+#: class-core.php:269
+#: class-core.php:280
+#: template-metabox.php:30
+#: template-widget.php:13
+#@ yarpp
+msgid "No related posts."
+msgstr "관련된 글이 없습니다."
+
+#: class-cache.php:522
+#@ yarpp
+msgid "Example post "
+msgstr "예제 글 "
+
+#: options-meta-boxes.php:129
+#@ yarpp
+msgid "day(s)"
+msgstr "일간"
+
+#: options-meta-boxes.php:130
+#@ yarpp
+msgid "week(s)"
+msgstr "주간"
+
+#: options-meta-boxes.php:131
+#@ yarpp
+msgid "month(s)"
+msgstr "월간"
+
+#: options-meta-boxes.php:137
+#@ yarpp
+msgid "Show only posts from the past NUMBER UNITS"
+msgstr "이전 NUMBER UNITS 에서의 글만 보기"
+
+#: options.php:38
+#, php-format
+#@ yarpp
+msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
+msgstr "Yet Another Related Posts Plugin의 베타 (%s) 버전이 있습니다! <a href=\"%s\">여기에서 다운로드받으세요</a>."
+
+#: class-widget.php:72
+#: options-meta-boxes.php:17
+#@ yarpp
+msgid "Display using a custom template file"
+msgstr "사용자정의 템플릿 파일을 사용해서 표시"
+
+#: options-meta-boxes.php:17
+#@ yarpp
+msgid "This advanced option gives you full power to customize how your related posts are displayed. Templates (stored in your theme folder) are written in PHP."
+msgstr "이 고급 옵션은 관련된 글을 표시하는 모든 권한을 줍니다. 템플릿(테마 폴더에 저장되어 있는)은 PHP 로 작성되어있습니다."
+
+#: class-widget.php:73
+#: options-meta-boxes.php:196
+#: options-meta-boxes.php:257
+#@ yarpp
+msgid "Template file:"
+msgstr "템플릿 파일:"
+
+#: options-meta-boxes.php:207
+#: options-meta-boxes.php:208
+#: options-meta-boxes.php:216
+#: options-meta-boxes.php:270
+#: options-meta-boxes.php:271
+#: options-meta-boxes.php:276
+#@ yarpp
+msgid " or "
+msgstr " 또는 "
+
+#: options-meta-boxes.php:244
+#@ yarpp
+msgid "This option displays related posts at the end of each item in your RSS and Atom feeds. No template changes are needed."
+msgstr "이 옵션은 RSS와 Atom 피드의 각 아이템 끝에 관련된 글을 표시합니다. 템플릿의 변경이 필요하지 않습니다."
+
+#: template-metabox.php:12
+#@ yarpp
+msgid "These are the related entries for this entry. Updating this post may change these related posts."
+msgstr "이 글에 대한 관련된 글들입니다. 이 글의 업데이트는 이 관련된 글들도 변경될 수 있습니다."
+
+#: template-metabox.php:28
+#@ yarpp
+msgid "Whether all of these related entries are actually displayed and how they are displayed depends on your YARPP display options."
+msgstr "YARPP 표시 옵션에 따라서 이 모든 관련된 글들을 표시하는 방법이 다를 수 있습니다."
+
+#: class-admin.php:136
+#@ default
+msgid "Settings"
+msgstr "설정"
+
+#: class-widget.php:66
+#@ default
+msgid "Title:"
+msgstr "제목:"
+
+#: class-admin.php:162
+#@ yarpp
+msgid "Related entries may be displayed once you save your entry"
+msgstr "관련이 있는 항목들은 일단 당신의 항목을 저장한 후 표시됩니다"
+
+#: options-meta-boxes.php:153
+#@ yarpp
+msgid "YARPP limits the related posts list by (1) a maximum number and (2) a <em>match threshold</em>."
+msgstr "YARPP는 (1) 최대 갯수와 (2) 열 <em> 일치하는 임계값 </ em>으로부터 관련이 있는 글 목록을 제한하고 있습니다."
+
+#: options-meta-boxes.php:297
+#@ yarpp
+msgid "YARPP Forum"
+msgstr "YARPP 포럼"
+
+#: options-meta-boxes.php:298
+#@ yarpp
+msgid "YARPP on Twitter"
+msgstr "YARPP 트위터"
+
+#: options-meta-boxes.php:299
+#@ yarpp
+msgid "YARPP on the Web"
+msgstr "YARPP 웹"
+
+#: options-meta-boxes.php:336
+#@ yarpp
+msgid "Contact YARPP"
+msgstr "YARPP 연락"
+
+#: options.php:34
+#, php-format
+#@ default
+msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
+msgstr "%1$s의 새로운 버전이 사용가능합니다. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">버전 %4$s 세부사항 보기</a> 또는 <a href=\"%5$s\">자동으로 업데이트</a>."
+
+#: options.php:79
+#, php-format
+#@ yarpp
+msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
+msgstr "<a href=\"%s\" target=\"_blank\">수동 SQL 설정</a>을 시도해보세요."
+
+#: options.php:147
+#, php-format
+#@ yarpp
+msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+msgstr "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+
+#: class-admin.php:63
+#@ default
+msgid "Configure"
+msgstr "구성"
+
+#: class-admin.php:89
+#@ yarpp
+msgid "Thank you for installing <span>Yet Another Related Posts Plugin</span>!"
+msgstr "<span>Yet Another Related Posts 플러그인</span>을 설치해주셔서 감사합니다!"
+
+#: class-admin.php:90
+#@ yarpp
+msgid "Make sure to visit the <a>Related Posts settings page</a> to customize YARPP."
+msgstr "YARPP의 설정을 위해서 <a>관련 글 설정 페이지</a>를 방문하세요."
+
+#: options-meta-boxes.php:116
+#, php-format
+#@ yarpp
+msgid "Disallow by %s:"
+msgstr "%s로부터 비허용:"
+
+#: options-meta-boxes.php:300
+#@ yarpp
+msgid "Rate YARPP on WordPress.org"
+msgstr "WordPress.org에서 YARPP 평가"
+
+#: options.php:176
+#@ default
+msgid "Save Changes"
+msgstr "변경 저장"
+
+#: options-meta-boxes.php:113
+#@ yarpp
+msgid "Post types considered:"
+msgstr "글 유형 검토됨:"
+
+#: options-meta-boxes.php:169
+#@ yarpp
+msgid "Display results from all post types"
+msgstr "모든 글 유형으로부터의 표시 결과"
+
+#: options-meta-boxes.php:169
+#@ yarpp
+msgid "When \"display results from all post types\" is off, only posts will be displayed as related to a post, only pages will be displayed as related to a page, etc."
+msgstr "\\ \\\"모든 글 유형 \\의 표시 결과가\\\"꺼져, 오직 게시물로 게시에 관한 표시됩니다 때, 전용 페이지는 페이지 등 관련으로 표시됩니다When \"모든 글 유형으로부터 표시 결과\" is off, only posts will be displayed as related to a post, only pages will be displayed as related to a page, etc."
+

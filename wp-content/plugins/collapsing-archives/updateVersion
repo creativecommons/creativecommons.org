@@ -1,0 +1,15 @@
+#!/bin/bash
+# this script updates the version number in all relevant files in the directory
+if [ $# -ne 1 ]
+  then echo 'usage: ./updateVersion versionNum'
+  exit 1
+else
+  VER=$1
+fi
+
+for file in *.{php,js,txt,css}; do
+  perl -pe "s/(version|stable tag): [0-9a-zA-Z\.]+( |$)/\$1: $VER/gi" < $file > ${file}TEMP
+done
+for file in *TEMP; do
+  mv -f $file `echo $file|perl -pe 's/TEMP//'`
+done

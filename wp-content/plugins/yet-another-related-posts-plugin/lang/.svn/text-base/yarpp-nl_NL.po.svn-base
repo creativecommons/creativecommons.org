@@ -1,0 +1,542 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yet Another Related Posts Plugin v3.5.2b3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2012-08-24 10:22:57+0000\n"
+"Last-Translator: admin <werf75@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: class-admin.php:55
+#: class-widget.php:7
+#: class-widget.php:59
+#@ yarpp
+msgid "Related Posts (YARPP)"
+msgstr "Gerelateerde bijdragen (YARPP)"
+
+#: class-admin.php:63
+#@ yarpp
+msgid "Related Posts"
+msgstr "Gerelateerde bijdragen"
+
+#: class-cache.php:522
+#@ yarpp
+msgid "Example post "
+msgstr "Voorbeeld bijdrage"
+
+#: class-core.php:586
+#: class-core.php:701
+#: options-meta-boxes.php:229
+#: options-meta-boxes.php:284
+#, php-format
+#@ yarpp
+msgid "Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>."
+msgstr "Gerelateerde bijdragen mogelijk gemaakt door <a href='%s'>Yet Another Related Posts Plugin</a>."
+
+#: options.php:46
+#@ yarpp
+msgid "The MyISAM check has been overridden. You may now use the \"consider titles\" and \"consider bodies\" relatedness criteria."
+msgstr "De MyISAM controle is overgeslagen. Je kunt nu de \"overweeg titels\" en \"overweeg bijdrage\" criteria relateren."
+
+#: options.php:54
+#, php-format
+#@ yarpp
+msgid "YARPP's \"consider titles\" and \"consider bodies\" relatedness criteria require your <code>%s</code> table to use the <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM storage engine</a>, but the table seems to be using the <code>%s</code> engine. These two options have been disabled."
+msgstr "YARPP's \"Overweeg titels\" en \"overweeg bijdragen\" gerelateerdheidscriteria vereisen je <code>%s</code> tabel om de <a href='http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html'>MyISAM engine</a> te gebruiken, maar de tabel lijkt de <code>%s</code> engine te gebruiken. Deze twee opties zijn uitgeschakeld."
+
+#: options.php:56
+#, php-format
+#@ yarpp
+msgid "To restore these features, please update your <code>%s</code> table by executing the following SQL directive: <code>ALTER TABLE `%s` ENGINE = MyISAM;</code> . No data will be erased by altering the table's engine, although there are performance implications."
+msgstr "Om de mogelijkheden te herstellen, werk je <code>%s</code> tabel bij door het volgende SQL uit te voeren:<code>ALTER TABLE `%s` ENGINE = MyISAM;</code> .Er zullen geen gegevens gewist worden door de tabel-engine te wijzigen, maar er kunnen snelheidsproblemen optreden. "
+
+#: options.php:58
+#, php-format
+#@ yarpp
+msgid "If, despite this check, you are sure that <code>%s</code> is using the MyISAM engine, press this magic button:"
+msgstr "Als, ondanks deze controle, je zeker bent dat <code>%s</code> gebruikt maakt van de MyISAM engine, klik op de magische knop:"
+
+#: options.php:61
+#@ yarpp
+msgid "Trust me. Let me use MyISAM features."
+msgstr "Vertrouw me. Laat mij MyISAM mogelijkheden gebruiken."
+
+#: options.php:76
+#@ yarpp
+msgid "The YARPP database had an error but has been fixed."
+msgstr "De YARPP database had een foutje maar is hersteld."
+
+#: options.php:78
+#@ yarpp
+msgid "The YARPP database has an error which could not be fixed."
+msgstr "De YARPP database heeft en fout die niet opgelost kon worden."
+
+#: options.php:135
+#@ yarpp
+msgid "Options saved!"
+msgstr "Instellingen opgeslagen!"
+
+#: options-meta-boxes.php:47
+#: options-meta-boxes.php:59
+#@ yarpp
+msgid "do not consider"
+msgstr "overweeg niet"
+
+#: options-meta-boxes.php:48
+#: options-meta-boxes.php:60
+#@ yarpp
+msgid "consider"
+msgstr "overweeg"
+
+#: options-meta-boxes.php:50
+#, php-format
+#@ yarpp
+msgid "require at least one %s in common"
+msgstr "ten minste een % s overeenkomstig"
+
+#: options-meta-boxes.php:51
+#, php-format
+#@ yarpp
+msgid "require more than one %s in common"
+msgstr "vereist meer dan een % s overeenkomstig"
+
+#: options-meta-boxes.php:49
+#: options-meta-boxes.php:61
+#@ yarpp
+msgid "consider with extra weight"
+msgstr "overweeg met extra gewicht"
+
+#: options.php:141
+#@ yarpp
+msgid "Yet Another Related Posts Plugin Options"
+msgstr "Yet Another Related Posts Plugin opties"
+
+#: options-meta-boxes.php:302
+#@ default
+#@ yarpp
+msgid "Donate to mitcho (Michael Yoshitaka Erlewine) for this plugin via PayPal"
+msgstr "Doneer mitcho (Michael Yoshitaka Erlewine) voor deze plugin via PayPal"
+
+#: options-meta-boxes.php:147
+#@ yarpp
+msgid "\"The Pool\""
+msgstr "\"Het zwembad\""
+
+#: options-meta-boxes.php:109
+#@ yarpp
+msgid "\"The Pool\" refers to the pool of posts and pages that are candidates for display as related to the current entry."
+msgstr "\"Het zwembad\" verwijst naar het bad met bijdragen en pagina's die kandidaat zijn voor het vertonen als gerelateerd."
+
+#: options-meta-boxes.php:118
+#@ yarpp
+msgid "Show password protected posts?"
+msgstr "Toon paswoordbeveiligde bijdragen?"
+
+#: options-meta-boxes.php:170
+#@ yarpp
+msgid "Show only previous posts?"
+msgstr "Toon alleen vorige bijdragen?"
+
+#: options-meta-boxes.php:129
+#@ yarpp
+msgid "day(s)"
+msgstr "dag (en)"
+
+#: options-meta-boxes.php:130
+#@ yarpp
+msgid "week(s)"
+msgstr "we(e)k(en)"
+
+#: options-meta-boxes.php:131
+#@ yarpp
+msgid "month(s)"
+msgstr "maand (en)"
+
+#: options-meta-boxes.php:137
+#@ yarpp
+msgid "Show only posts from the past NUMBER UNITS"
+msgstr "Toon alleen bijdragen van de afgelopen NUMBER UNITS"
+
+#: options-meta-boxes.php:178
+#@ yarpp
+msgid "\"Relatedness\" options"
+msgstr "\"Gerelateerdheid\" opties"
+
+#: options-meta-boxes.php:17
+#: options-meta-boxes.php:113
+#: options-meta-boxes.php:153
+#: options-meta-boxes.php:169
+#: options-meta-boxes.php:187
+#: options-meta-boxes.php:228
+#: options-meta-boxes.php:245
+#: options-meta-boxes.php:247
+#: options-meta-boxes.php:283
+#@ yarpp
+msgid "more&gt;"
+msgstr "meer&gt;"
+
+#: options-meta-boxes.php:153
+#@ yarpp
+msgid "The higher the match threshold, the more restrictive, and you get less related posts overall. The default match threshold is 5. If you want to find an appropriate match threshhold, take a look at some post's related posts display and their scores. You can see what kinds of related posts are being picked up and with what kind of match scores, and determine an appropriate threshold for your site."
+msgstr "Hoe hoger de overeenkomstdrempel hoe meer restricties en hoe minder gerelateerde bijdragen. De standaard overeenkomstdrempel is 5. Als je zoekt naar een goede drempel bekijk dan enkele gerelateerde  bijdragen van de bijdragen en de scores. Je kunt zien wat voor soort gerelateerde er zijn opgepikt, wat de soort overeenkomst is en zo een juiste drempel instellen voor je website."
+
+#: options-meta-boxes.php:159
+#@ yarpp
+msgid "Match threshold:"
+msgstr "Overeenkomst-drempel:"
+
+#: options-meta-boxes.php:160
+#@ yarpp
+msgid "Titles: "
+msgstr "Titels: "
+
+#: options-meta-boxes.php:162
+#@ yarpp
+msgid "Bodies: "
+msgstr "Bijdragen: "
+
+#: options.php:38
+#, php-format
+#@ yarpp
+msgid "There is a new beta (%s) of Yet Another Related Posts Plugin. You can <a href=\"%s\">download it here</a> at your own risk."
+msgstr "Er is een nieuwe beta (%s) van Yet Another Related Posts Plugin. Je kunt het <a href=\"%s\">Hier downloaden</a> op eigen risico."
+
+#: options-meta-boxes.php:236
+#@ yarpp
+msgid "Display options <small>for your website</small>"
+msgstr "Toon opties <small> voor je website </small>"
+
+#: options-meta-boxes.php:187
+#@ yarpp
+msgid "Automatically display related posts?"
+msgstr "Automatisch gerelateerde bijdragen tonen?"
+
+#: options-meta-boxes.php:187
+#@ yarpp
+msgid "This option automatically displays related posts right after the content on single entry pages. If this option is off, you will need to manually insert <code>related_posts()</code> or variants (<code>related_pages()</code> and <code>related_entries()</code>) into your theme files."
+msgstr "Deze optie toont automatisch gerelateerde bijdragen meteen na de inhoud van een bijdrage op een enkele pagina. Als deze optie is uitgeschakeld zul je de voglende code handmatig in moeten voegen: <code>related_posts()</code> of variaties (<code>related_pages()</code> en <code>related_entries()</code>) in je themabestanden."
+
+#: options-meta-boxes.php:188
+#@ yarpp
+msgid "Website display code example"
+msgstr "Websitevertoning code voorbeeld"
+
+#: options-meta-boxes.php:188
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "(Update options to reload.)"
+msgstr "(Bewaar opties om te herladen.)"
+
+#: options-meta-boxes.php:190
+#: options-meta-boxes.php:250
+#@ yarpp
+msgid "Maximum number of related posts:"
+msgstr "Maximum aantal gerelateerde bijdragen:"
+
+#: class-widget.php:75
+#: options-meta-boxes.php:17
+#@ yarpp
+msgid "Display using a custom template file"
+msgstr "Toon met een eigen sjabloonbestand"
+
+#: options-meta-boxes.php:17
+#@ yarpp
+msgid "This advanced option gives you full power to customize how your related posts are displayed. Templates (stored in your theme folder) are written in PHP."
+msgstr "Deze uitgebreide opties geeft je volledige kracht om te kiezen hoe de gerelateerde bijdragen getoond worden. Sjablonen (opgeslagen in de map van je thema) zijn geschreven in PHP."
+
+#: class-widget.php:76
+#: options-meta-boxes.php:196
+#: options-meta-boxes.php:258
+#@ yarpp
+msgid "Template file:"
+msgstr "Sjabloonbestand:"
+
+#: options-meta-boxes.php:208
+#: options-meta-boxes.php:271
+#@ yarpp
+msgid "Before / after related entries:"
+msgstr "Voor / na gerelateerde bijdrages:"
+
+#: options-meta-boxes.php:208
+#: options-meta-boxes.php:209
+#: options-meta-boxes.php:217
+#: options-meta-boxes.php:271
+#: options-meta-boxes.php:272
+#: options-meta-boxes.php:277
+#@ yarpp
+msgid "For example:"
+msgstr "Bijvoorbeeld:"
+
+#: options-meta-boxes.php:209
+#: options-meta-boxes.php:272
+#@ yarpp
+msgid "Before / after each related entry:"
+msgstr "Voor / na elke gerelateerde bijdrage:"
+
+#: options-meta-boxes.php:211
+#: options-meta-boxes.php:274
+#@ yarpp
+msgid "Show excerpt?"
+msgstr "Toon uittreksel?"
+
+#: options-meta-boxes.php:212
+#: options-meta-boxes.php:275
+#@ yarpp
+msgid "Excerpt length (No. of words):"
+msgstr "Lengte uittreksel (aantal woorden):"
+
+#: options-meta-boxes.php:216
+#@ yarpp
+msgid "Before / after (Excerpt):"
+msgstr "Voor / na (uittreksel):"
+
+#: options-meta-boxes.php:68
+#@ yarpp
+msgid "Order results:"
+msgstr "Sorteer resultaten:"
+
+#: options-meta-boxes.php:71
+#@ yarpp
+msgid "score (high relevance to low)"
+msgstr "Waardering (hoge naar lage relevantie)"
+
+#: options-meta-boxes.php:72
+#@ yarpp
+msgid "score (low relevance to high)"
+msgstr "Waardering (lage naar hoge relevantie)"
+
+#: options-meta-boxes.php:73
+#@ yarpp
+msgid "date (new to old)"
+msgstr "datum (nieuw naar oud)"
+
+#: options-meta-boxes.php:74
+#@ yarpp
+msgid "date (old to new)"
+msgstr "datum (oud naar nieuw)"
+
+#: options-meta-boxes.php:75
+#@ yarpp
+msgid "title (alphabetical)"
+msgstr "titel (alfabetisch)"
+
+#: options-meta-boxes.php:76
+#@ yarpp
+msgid "title (reverse alphabetical)"
+msgstr "titel (omgekeerd alfabetisch)"
+
+#: options-meta-boxes.php:224
+#: options-meta-boxes.php:281
+#@ yarpp
+msgid "Default display if no results:"
+msgstr "Standaard tonen indien geen resultaten:"
+
+#: class-widget.php:98
+#: options-meta-boxes.php:227
+#: options-meta-boxes.php:283
+#@ yarpp
+msgid "Help promote Yet Another Related Posts Plugin?"
+msgstr "Help Yet Another Related Posts Plugin promoten?"
+
+#: options-meta-boxes.php:229
+#: options-meta-boxes.php:284
+#, php-format
+#@ yarpp
+msgid "This option will add the code %s. Try turning it on, updating your options, and see the code in the code example to the right. These links and donations are greatly appreciated."
+msgstr "Deze optie voegt de code %s toe. Probeer het aan te zetten, je opties bij te werken en zie de code in het codevoorbeeld rechts. Deze links en donaties worden gewaardeerd."
+
+#: options-meta-boxes.php:291
+#@ yarpp
+msgid "Display options <small>for RSS</small>"
+msgstr "Vertoningsopties <small>voor RSS</small>"
+
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "Display related posts in feeds?"
+msgstr "Toon gerelateerde bijdragen in feeds?"
+
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "This option displays related posts at the end of each item in your RSS and Atom feeds. No template changes are needed."
+msgstr "Deze optie toont gerelateerde bijdragen aan het einde van ieder item in je RSS en ATOM feeds. Sjabloonwijzigingen niet nodig."
+
+#: options-meta-boxes.php:247
+#@ yarpp
+msgid "Display related posts in the descriptions?"
+msgstr "Toon gerelateerde bijdragen in de omschrijving?"
+
+#: options-meta-boxes.php:247
+#@ yarpp
+msgid "This option displays the related posts in the RSS description fields, not just the content. If your feeds are set up to only display excerpts, however, only the description field is used, so this option is required for any display at all."
+msgstr "Deze optie toont de gerelateerde bijdragen in de RSS beschrijving, niet alleen de inhoud. Als je feed is ingesteld om alleen uittreksels te tonen, hoe dan ook, alleen het omschrijvingsveld wordt gebruikt, dus deze optie is vereist voor iedere vertoning."
+
+#: options-meta-boxes.php:245
+#@ yarpp
+msgid "RSS display code example"
+msgstr "Voorbeeld RSS-vertoningscode "
+
+#: options-meta-boxes.php:277
+#@ yarpp
+msgid "Before / after (excerpt):"
+msgstr "Voor / na (uittreksel):"
+
+#: template-builtin.php:21
+#, php-format
+#@ yarpp
+msgid "%f is the YARPP match score between the current entry and this related entry. You are seeing this value because you are logged in to WordPress as an administrator. It is not shown to regular visitors."
+msgstr "%f is de YARPP overeenkomst tussen de huidige bijdrage en de gerelateerde bijdrage. Je ziet deze resultaten omdat je ingelogd bent in WordPress als Administrator. Dit wordt niet getoond aan normale bezoekers."
+
+#: template-metabox.php:12
+#@ yarpp
+msgid "These are the related entries for this entry. Updating this post may change these related posts."
+msgstr "Er zijn gerelateerde bijdragen voor deze bijdrage. Het bijwerken van deze bijdrage kan de gerelateerde bijdragen veranderen."
+
+#: template-metabox.php:28
+#@ yarpp
+msgid "Whether all of these related entries are actually displayed and how they are displayed depends on your YARPP display options."
+msgstr "Of al deze gelateerde bijdragen getoond worden op de manier zoals je ze getoond wilt hebben hangt af van je YARPP instellingen."
+
+#: class-core.php:73
+#: class-core.php:83
+#: class-core.php:273
+#: class-core.php:284
+#: template-metabox.php:30
+#: template-widget.php:13
+#@ yarpp
+msgid "No related posts."
+msgstr "Geen gerelateerde bijdragen."
+
+#: class-core.php:71
+#: class-core.php:81
+#: class-core.php:271
+#: class-core.php:282
+#@ yarpp
+msgid "Related posts:"
+msgstr "Gerelateerde bijdragen"
+
+#: options-meta-boxes.php:208
+#: options-meta-boxes.php:209
+#: options-meta-boxes.php:217
+#: options-meta-boxes.php:271
+#: options-meta-boxes.php:272
+#: options-meta-boxes.php:277
+#@ yarpp
+msgid " or "
+msgstr "of "
+
+#: class-admin.php:136
+#@ default
+msgid "Settings"
+msgstr ""
+
+#: class-widget.php:69
+#@ default
+msgid "Title:"
+msgstr ""
+
+#: class-admin.php:162
+#@ yarpp
+msgid "Related entries may be displayed once you save your entry"
+msgstr ""
+
+#: options-meta-boxes.php:153
+#@ yarpp
+msgid "YARPP limits the related posts list by (1) a maximum number and (2) a <em>match threshold</em>."
+msgstr ""
+
+#: options-meta-boxes.php:298
+#@ yarpp
+msgid "YARPP Forum"
+msgstr ""
+
+#: options-meta-boxes.php:299
+#@ yarpp
+msgid "YARPP on Twitter"
+msgstr ""
+
+#: options-meta-boxes.php:300
+#@ yarpp
+msgid "YARPP on the Web"
+msgstr ""
+
+#: options-meta-boxes.php:337
+#@ yarpp
+msgid "Contact YARPP"
+msgstr ""
+
+#: options.php:34
+#, php-format
+#@ default
+msgid "There is a new version of %1$s available. <a href=\"%2$s\" class=\"thickbox\" title=\"%3$s\">View version %4$s details</a> or <a href=\"%5$s\">update automatically</a>."
+msgstr ""
+
+#: options.php:79
+#, php-format
+#@ yarpp
+msgid "Please try <a href=\"%s\" target=\"_blank\">manual SQL setup</a>."
+msgstr ""
+
+#: options.php:149
+#, php-format
+#@ yarpp
+msgid "by <a href=\"%s\" target=\"_blank\">mitcho (Michael 芳貴 Erlewine)</a>"
+msgstr ""
+
+#: class-admin.php:63
+#@ default
+msgid "Configure"
+msgstr ""
+
+#: class-admin.php:89
+#@ yarpp
+msgid "Thank you for installing <span>Yet Another Related Posts Plugin</span>!"
+msgstr ""
+
+#: class-admin.php:90
+#@ yarpp
+msgid "Make sure to visit the <a>Related Posts settings page</a> to customize YARPP."
+msgstr ""
+
+#: options-meta-boxes.php:113
+#@ yarpp
+msgid "Post types considered:"
+msgstr ""
+
+#: options-meta-boxes.php:116
+#, php-format
+#@ yarpp
+msgid "Disallow by %s:"
+msgstr ""
+
+#: options-meta-boxes.php:169
+#@ yarpp
+msgid "Display results from all post types"
+msgstr ""
+
+#: options-meta-boxes.php:169
+#@ yarpp
+msgid "When \"display results from all post types\" is off, only posts will be displayed as related to a post, only pages will be displayed as related to a page, etc."
+msgstr ""
+
+#: options-meta-boxes.php:301
+#@ yarpp
+msgid "Rate YARPP on WordPress.org"
+msgstr ""
+
+#: options.php:178
+#@ default
+msgid "Save Changes"
+msgstr ""
+

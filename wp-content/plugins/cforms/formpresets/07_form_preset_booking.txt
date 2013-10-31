@@ -1,0 +1,35 @@
+_("Advanced: Online booking form")
+_("Features a quite impressive number of fields, useful for online booking forms. Including custom inline styles, 'must-agree' disclaimers with external link to disclaimer text & anti spam field. <br /><em>Note: Please use this preset with your first form as it does some nifty things with its CSS.</em>")
+ff~~~Guest Information$#$fieldsetstart$#$0$#$0$#$0$#$0
+ff~~~Guest Information|newlegend$#$textonly$#$0$#$0$#$0$#$0
+ff~~~<font face=\"arial\" color=\"#663300\" size=\"4\">I</font>Mandatory fields <font face=\"arial\" color=\"#D56A00\" size=\"4\">I</font>A valid email is required||font-size:9px;$#$textonly$#$0$#$0$#$0$#$0
+ff~~~Salutation#Mr.#Mrs.$#$radiobuttons$#$0$#$0$#$0$#$0
+ff~~~First  Name$#$textfield$#$1$#$0$#$1$#$0
+ff~~~Last Name$#$textfield$#$0$#$0$#$0$#$0
+ff~~~EMail$#$textfield$#$1$#$1$#$0$#$0
+ff~~~Telephone$#$textfield$#$0$#$0$#$0$#$0
+ff~~~Street$#$textfield$#$1$#$0$#$0$#$0
+ff~~~Zip Code$#$textfield$#$1$#$0$#$0$#$0
+ff~~~City$#$textfield$#$1$#$0$#$0$#$0
+ff~~~Country$#$textfield$#$1$#$0$#$0$#$0
+ff~~~Hotel & Room Information$#$fieldsetstart$#$0$#$0$#$0$#$0
+ff~~~Hotel & Room Information|newlegend$#$textonly$#$0$#$0$#$0$#$0
+ff~~~Check In|mm/dd/yyyy|^[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]$$#$datepicker$#$1$#$0$#$1$#$0
+ff~~~Check Out|mm/dd/yyyy|^[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]$$#$datepicker$#$1$#$0$#$0$#$0
+ff~~~Rooms#Please pick|-#1#2#3#4#5#6#7#8#9#10$#$selectbox$#$1$#$0$#$0$#$0
+ff~~~Adults per Room#Please pick|-#1#2#3#4#5#6#7#8#9#10$#$selectbox$#$1$#$0$#$0$#$0
+ff~~~Features#non-smoking#hot tub#free breakfast##pets allowed#pool#high speed internet$#$checkboxgroup$#$0$#$0$#$0$#$0
+ff~~~Arrival By#Car#Air#Train#Other$#$selectbox$#$0$#$0$#$0$#$0
+ff~~~Other$#$fieldsetstart$#$0$#$0$#$0$#$0
+ff~~~Other|newlegend$#$textonly$#$0$#$0$#$0$#$0
+ff~~~Leave Us A Note$#$textarea$#$0$#$0$#$0$#$0
+ff~~~CC#I\'d like to receive a copy$#$ccbox$#$0$#$0$#$0$#$0
+ff~~~Submit Your Reservation$#$fieldsetstart$#$0$#$0$#$0$#$0
+ff~~~Submit Your Reservation|newlegend$#$textonly$#$0$#$0$#$0$#$0
+ff~~~#I agree to the <a href=\"http://\">terms and conditions</a>|err:Please agree to the terms and conditions.$#$checkbox$#$1$#$0$#$0$#$0
+ff~~~Please provide security code$#$captcha$#$0$#$0$#$0$#$0
+ri~~~
+re~~~
+tf~~~0
+cs~~~wide_brown_light.css
+dp~~~1

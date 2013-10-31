@@ -1,0 +1,46 @@
+{
+    "name": "Half Moon Lens",
+    "uri": "http://www.slidedeck.com/",
+    "sources": ["posts","gplus","rss","instagram","dribbble","gplusimages","flickr","twitter","youtube","dailymotion","vimeo","fivehundredpixels","pinterest","custom"],
+    "author": "dtelepathy",
+    "author_uri": "http://www.dtelepathy.com/",
+    "contributors": ["jmoon", "burkett", "kynatro"],
+    "description": "Split lens that combines both images and text",
+    "version": "1.0",
+    "sizes": {
+        "small": {
+            "label": "Small",
+            "width": 300,
+            "height": 220
+        },
+        "medium": {
+            "label": "Medium",
+            "width": 620,
+            "height": 410
+        },
+        "large": {
+            "label": "Large",
+            "width": 860,
+            "height": 500
+        }
+    },
+    "variations": {
+        "dark": "Dark",
+        "light": "Light"
+    },
+    "fonts": {
+        "bitter": {
+            "label": "Bitter",
+            "stack": "Bitter, serif",
+            "import": "//fonts.googleapis.com/css?family=Bitter:400,400italic",
+            "weight": "400"
+        },
+        "oswald": {
+            "label": "Oswald",
+            "stack": "Oswald, sans-serif",
+            "import": "//fonts.googleapis.com/css?family=Oswald",
+            "weight": "400"
+        }
+    },
+    "default_nav_styles": false
+}

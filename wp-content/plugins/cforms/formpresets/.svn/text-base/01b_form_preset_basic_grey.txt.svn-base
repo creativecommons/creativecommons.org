@@ -1,0 +1,11 @@
+_("Basic: Preset for *GREY BLOCKS* Theme")
+_("This preset will switch your current cforms theme to 'Grey Blocks'. It comes with basic contact form input fields and a custom error message example.")
+ff~~~Say it$#$fieldsetstart$#$0$#$0$#$0$#$0
+ff~~~Your Name|Your Name$#$textfield$#$1$#$0$#$1$#$0
+ff~~~Email||err:Please provide a valid email address!$#$textfield$#$1$#$1$#$0$#$0
+ff~~~Website|http://$#$textfield$#$0$#$0$#$0$#$0
+ff~~~Message$#$textarea$#$0$#$0$#$0$#$0
+ri~~~
+re~~~
+tf~~~0
+cs~~~grey_blocks.css

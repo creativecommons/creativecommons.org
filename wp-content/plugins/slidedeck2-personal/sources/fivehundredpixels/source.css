@@ -1,0 +1,9 @@
+.slidedeck-content-source ul.content-source-fields li input {
+	min-width: 200px;
+	width: 200px;
+}
+.source-fivehundredpixels #options-fivehundredpixels_username,
+.source-fivehundredpixels #options-fivehundredpixels_feed_type,
+.source-fivehundredpixels #options-fivehundredpixels_category {
+	min-width: 200px;
+}

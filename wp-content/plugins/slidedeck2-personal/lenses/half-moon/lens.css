@@ -1,0 +1,923 @@
+.lens-half-moon {
+	position: relative;
+	overflow: hidden;
+	margin: 0;
+}
+
+.lens-half-moon dl {
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+}
+
+.lens-half-moon.sd2-light dl {
+	border: 1px solid #FFF;
+}
+
+.lens-half-moon.sd2-dark dl {
+	border: 1px solid #000;
+}
+
+.lens-half-moon dd {
+	width: 500px;
+	height: 351px;
+    background-position: center center;
+    background-repeat: no-repeat;
+	position: relative;
+	background-size: cover;
+	overflow: hidden;
+	background-color: #000000;
+}
+.lens-half-moon.sd2-dark dd { background-color: #000000; }
+.lens-half-moon.sd2-light dd { background-color: #999999; }
+
+.lens-half-moon dd .slide-content,
+.lens-half-moon dd.slide-source-custom .sd2-node-caption {
+	background: #FFFFFF;
+	background: rgba(255,255,255,.9);
+	position: absolute;
+	z-index: 5;
+	right: 0px;
+	left: 50%;
+	bottom: 0px;
+	top:0px;
+	margin: 0px;
+	padding: 40px 36px 10px;
+	font-size: 14px;
+	line-height: 24px;
+	display: none;
+}
+.lens-half-moon.sd2-hyphenate dd .slide-content,
+.lens-half-moon.sd2-hyphenate dd .sd2-node-caption {
+    word-break: break-all;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+}
+
+/* Start video stuff */
+.lens-half-moon dl.slidedeck dd.slide-type-video {
+    overflow: hidden;
+}
+.lens-half-moon dl.slidedeck .slide-type-video .video-wrapper{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.lens-half-moon dl.slidedeck .slide-type-video .video-container{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.lens-half-moon dl.slidedeck .slide-type-video .video-wrapper .cover{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.lens-half-moon.sd2-dark dl.slidedeck .slide-type-video .video-wrapper .cover { background-color: #000; }
+.lens-half-moon.sd2-light dl.slidedeck .slide-type-video .video-wrapper .cover { background-color: #999; }
+.lens-half-moon dl.slidedeck .slide-type-video.sd2-image-scaling-cover .video-wrapper .cover { background-size: cover; }
+.lens-half-moon dl.slidedeck .slide-type-video.sd2-image-scaling-contain .video-wrapper .cover { background-size: contain; }
+/* Necessary because IE ignores click events on children of elements that have filter: CSS proprties. #hate_ie */
+.lens-half-moon dl.slidedeck .slide-type-video .video-wrapper .cover .ie-background-image {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.lens-half-moon dl.slidedeck .slide-type-video .video-wrapper .play,
+.lens-half-moon dl.slidedeck .slide-type-video .play {
+    display: block;
+}
+.lens-half-moon.sd2-small dl.slidedeck .slide-type-video .play {
+    width: 52px;
+    height: 0;
+    padding-top: 52px;
+    z-index: 101;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -26px;
+    margin-left: -26px;
+    background: url('../../images/play-button-small.png') no-repeat 0 0;
+}
+.lens-half-moon.sd2-small dl.slidedeck .slide-type-video .play:hover,
+.lens-half-moon.sd2-small dl.slidedeck .slide-type-video .play:active { background-position: 0 -52px; }
+
+.lens-half-moon dl.slidedeck .slide-type-video.slide-source-youtube .video-wrapper .play,
+.lens-half-moon dl.slidedeck .slide-type-video.slide-source-vimeo .video-wrapper .play,
+.lens-half-moon dl.slidedeck .slide-type-video.slide-source-dailymotion .video-wrapper .play {
+    left: 25%;
+}
+
+/* Hide the original button if the slide size is small */
+.lens-half-moon.sd2-small dl.slidedeck .slide-type-video .video-wrapper .play{
+    display: none;
+}
+/* End video stuff */
+
+.lens-half-moon.date-format-human-readable-abbreviated dd .slide-content,
+.lens-half-moon.sd2-show-author-avatar dd .slide-content,
+.lens-half-moon.sd2-show-author dd .slide-content,
+.lens-half-moon.sd2-show-title dd .slide-content,
+.lens-half-moon.sd2-show-excerpt dd .slide-content { display: block; }
+
+.lens-half-moon.sd2-large dd .slide-content,
+.lens-half-moon.sd2-large dd .sd2-node-caption {
+	padding-left: 45px;
+	padding-right: 45px;
+}
+
+
+.lens-half-moon.sd2-dark dd .slide-content,
+.lens-half-moon.sd2-dark dd .sd2-node-caption {
+	background: #000000;
+	background: rgba(0,0,0,.85);
+	color: #FFF;
+}
+
+.lens-half-moon dd.no-image .slide-content,
+.lens-half-moon dd.no-image .sd2-node-caption {
+	left: 0px;
+	right: 0px;
+}
+
+.lens-half-moon dd.no-image .date {
+	z-index: 10;
+}
+
+.lens-half-moon .top-fix {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 20px;
+	background: #FFF;
+}
+
+.lens-half-moon dd .slide-content p.slide-title,
+.lens-half-moon dd .sd2-node-caption p.slide-title {
+	display: none;
+}
+.lens-half-moon dd .slide-content .slide-excerpt,
+.lens-half-moon dd .sd2-node-caption .slide-excerpt {
+	display: none;
+	margin: 20px 0 0;
+}
+
+.lens-half-moon dd.no-image.no-excerpt .slide-content,
+.lens-half-moon dd.no-image.no-excerpt .sd2-node-caption {
+	right: 0px;
+	border-right: none;
+	border-bottom: 1px solid rgba(57,177,211,.50);
+	bottom: 10%;
+}
+
+.lens-half-moon dd.no-image.no-excerpt .date {
+	top: auto;
+	bottom: 10% !important;
+	margin-top: 0px;
+	margin-bottom: -26px;
+}
+
+.lens-half-moon dd.no-image.no-excerpt .slide-title {
+	font-size: 50px;
+	line-height: 55px;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+}
+.lens-half-moon.sd2-hyphenate dd.no-image.no-excerpt .slide-title {
+    word-break: break-all;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+}
+
+
+.lens-half-moon .bottom-fix {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	height: 20px;
+	background: #FFF;
+}
+
+.lens-half-moon .left-fix {
+	position: absolute;
+	bottom: 0px;
+	top: 0px;
+	left: 0px;
+	width: 40px;
+	background: #FFF;
+}
+
+.lens-half-moon .right-fix {
+	position: absolute;
+	bottom: 0px;
+	top: 0px;
+	right: 0px;
+	width: 40px;
+	background: #FFF;
+}
+
+.lens-half-moon dd .slide-content p,
+.lens-half-moon dd .sd2-node-caption p {
+	margin: 0px;
+	color: #494949;
+	width: auto;
+}
+
+.lens-half-moon.sd2-dark dd .slide-content p,
+.lens-half-moon.sd2-dark dd .sd2-node-caption p {
+	color: #ababab;
+}
+
+.date-line-fix {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background: #FFF;
+	margin-left: -28px;
+	margin-top: -28px;
+	height: 56px;
+	width: 56px;
+	z-index: 5;
+}
+
+.no-excerpt .date-line-fix {
+	bottom: 10%;
+	top: auto;
+	margin-bottom: -28px;
+	margin-top: 0px;
+}
+
+.lens-half-moon dd .slide-content p.slide-title,
+.lens-half-moon dd .sd2-node-caption p.slide-title {
+	font-size: 28px;
+	line-height: 35px;
+	padding-right: 30px;
+	margin: 0;
+	color: #333131;
+}
+.lens-half-moon dd .slide-content p.slide-title a,
+.lens-half-moon dd .sd2-node-caption p.slide-title a {
+	color: #333131;
+    text-decoration: none;
+}
+.lens-half-moon dd .slide-content p.slide-title a:hover,
+.lens-half-moon dd .sd2-node-caption p.slide-title a:hover { text-decoration: underline; }
+
+.lens-half-moon dd .slide-content .slide-meta,
+.lens-half-moon dd .sd2-node-caption .slide-meta {
+    display: none;
+    margin: 10px 0 0;
+}
+.lens-half-moon dd .slide-content .slide-meta img.slide-author-avatar,
+.lens-half-moon dd .sd2-node-caption .slide-meta img.slide-author-avatar {
+    position: relative;
+    display: none;
+    top: 5px;
+    width: 20px;
+    margin-right: 0.4em;
+    padding: 1px;
+    border: 1px solid #666666;
+}
+.lens-half-moon dd .slide-content .slide-meta .slide-author,
+.lens-half-moon dd .sd2-node-caption .slide-meta .slide-author {
+    display: none;
+    font-weight: bold;
+    font-size: 1em;
+    margin-right: 0.4em;
+}
+.lens-half-moon dd .slide-content .slide-meta .slide-author a,
+.lens-half-moon dd .sd2-node-caption .slide-meta .slide-author a {
+    color: #DDDDDD;
+    text-decoration: none;
+}
+.lens-half-moon dd .slide-content .slide-meta .slide-author a:hover,
+.lens-half-moon dd .slide-content .slide-meta .slide-author a:active,
+.lens-half-moon dd .sd2-node-caption .slide-meta .slide-author a:hover,
+.lens-half-moon dd .sd2-node-caption .slide-meta .slide-author a:active { color: #FFFFFF; }
+
+.lens-half-moon dd .slide-content .slide-meta .slide-date,
+.lens-half-moon dd .sd2-node-caption .slide-meta .slide-date {
+    display: none;
+    font-size: 1em;
+    font-style: italic;
+}
+
+
+.lens-half-moon dd.no-image .slide-content p.slide-title,
+.lens-half-moon dd.no-image .sd2-node-caption p.slide-title {
+	padding-right: 0px;
+}
+
+.lens-half-moon.sd2-dark dd .slide-content p.slide-title,
+.lens-half-moon.sd2-dark dd .slide-content p.slide-title a,
+.lens-half-moon.sd2-dark dd .sd2-node-caption p.slide-title,
+.lens-half-moon.sd2-dark dd .sd2-node-caption p.slide-title a {
+	color: #fff;
+}
+
+.lens-half-moon dd .slide-content .readmore,
+.lens-half-moon dd .sd2-node-caption .readmore {
+	display: none;
+	color: #39b1d3;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.lens-half-moon dd .slide-content .readmore:hover,
+.lens-half-moon dd .sd2-node-caption .readmore:hover {
+	text-decoration: underline;
+}
+
+.lens-half-moon .date {
+	width: 56px;
+	height: 56px;
+	background: #FFF;
+	position: absolute;
+	z-index: 6;
+	top: 50%;
+	left: 50%;
+	margin: -28px 0px 0px -28px;
+	text-align: center;
+	border-radius: 56px;
+}
+.lens-half-moon .date .month {
+	font: 13px 'Oswald', sans-serif;
+	padding-top: 6px;
+	text-transform: uppercase;
+}
+
+.lens-half-moon .date .day {
+	font: bold 30px/25px sans-serif;
+}
+
+.lens-half-moon.sd2-dark .date {
+	background: #000;
+}
+
+.lens-half-moon.sd2-dark .date .month,
+.lens-half-moon.sd2-dark .date .day {
+	color: #FFF;
+}
+
+/** LRAGE **/
+
+.lens-half-moon.sd2-large dd .slide-content p.slide-title,
+.lens-half-moon.sd2-large dd .sd2-node-caption .sd2-slide-title {
+	font-size: 50px;
+	line-height: 55px;
+	padding-right: 0px;
+}
+
+.lens-half-moon.sd2-large dd .slide-content p,
+.lens-half-moon.sd2-large dd .sd2-node-caption p {
+	font-size: 14px;
+	line-height: 22px;
+	margin-bottom: 10px;
+}
+
+.lens-half-moon.sd2-large dd .slide-content .readmore,
+.lens-half-moon.sd2-large dd .sd2-node-caption .readmore {
+	font-size: 14px;
+}
+
+.lens-half-moon.sd2-large .date {
+	width: 66px;
+	height: 66px;
+	margin-left: -33px;
+}
+
+.lens-half-moon.sd2-large .date .day { 
+	font-size: 40px;
+	position: relative;
+	top: 5px;
+}
+
+.lens-half-moon.sd2-large dd.no-image .slide-content,
+.lens-half-moon.sd2-medium dd.no-image .slide-content {
+	padding: 20px 70px;
+	text-align: center;
+}
+.lens-half-moon.sd2-large dd.no-image .sd2-node-caption,
+.lens-half-moon.sd2-medium dd.no-image .sd2-node-caption {
+    text-align: left;
+    padding: 20px 40px;
+}
+
+.lens-half-moon dd.no-image .date,
+.lens-half-moon.sd2-small dd .date {
+	top: 20%;
+}
+
+
+/** END LARGE **/
+
+/** MEDIUM **/
+.lens-half-moon.sd2-medium dd .slide-content .slide-meta,
+.lens-half-moon.sd2-medium dd .sd2-node-caption .sd2-slide-meta { margin-top: 5px; }
+
+.lens-half-moon.sd2-medium dd .slide-content .slide-meta .slide-author,
+.lens-half-moon.sd2-medium dd .slide-content .slide-meta .slide-date,
+.lens-half-moon.sd2-medium dd .sd2-node-caption .sd2-slide-meta .slide-author,
+.lens-half-moon.sd2-medium dd .sd2-node-caption .sd2-slide-meta .slide-date {
+    font-size: 0.85em;
+}
+.lens-half-moon.sd2-medium dd .slide-content .slide-excerpt,
+.lens-half-moon.sd2-medium dd .sd2-node-caption .slide-excerpt { margin-top: 10px; }
+/** END MEDIUM **/
+
+/** SMALL **/
+
+
+.lens-half-moon.sd2-small dd .slide-content,
+.lens-half-moon.sd2-small dd .sd2-node-caption {
+    display: none;
+	  left: 0;
+	  text-align: center;
+	  padding-bottom: 40px;
+}
+.lens-half-moon dd.no-excerpt.no-title .slide-content,
+.lens-half-moon dd.no-excerpt.no-title .sd2-node-caption { display: none; }
+
+.lens-half-moon.date-format-human-readable-abbreviated .slide-content,
+.lens-half-moon.date-format-human-readable-abbreviated dd.no-excerpt.no-title .slide-content,
+.lens-half-moon.sd2-small.sd2-show-title dd .slide-content,
+.lens-half-moon.sd2-small.date-format-human-readable-abbreviated dd .slide-content,
+.lens-half-moon.sd2-small.date-format-human-readable-abbreviated dd.no-excerpt.no-title .slide-content,
+.lens-half-moon.date-format-human-readable-abbreviated .sd2-node-caption,
+.lens-half-moon.date-format-human-readable-abbreviated dd.no-excerpt.no-title .sd2-node-caption,
+.lens-half-moon.sd2-small.sd2-show-title dd .sd2-node-caption,
+.lens-half-moon.sd2-small.date-format-human-readable-abbreviated dd .sd2-node-caption,
+.lens-half-moon.sd2-small.date-format-human-readable-abbreviated dd.no-excerpt.no-title .sd2-node-caption {
+    display: block;
+}
+.lens-half-moon.sd2-medium .bar-fix.left,
+.lens-half-moon.sd2-medium .bar-fix.right,
+.lens-half-moon.sd2-medium .bar-fix.bottom,
+.lens-half-moon.sd2-large .bar-fix.left,
+.lens-half-moon.sd2-large .bar-fix.right,
+.lens-half-moon.sd2-large .bar-fix.bottom,
+.lens-half-moon.sd2-small .bar-fix.left,
+.lens-half-moon.sd2-small .bar-fix.right,
+.lens-half-moon.sd2-small .bar-fix.bottom { display: none; }
+.lens-half-moon.sd2-small.sd2-show-title .bar-fix.left,
+.lens-half-moon.sd2-small.date-format-human-readable-abbreviated .bar-fix.left,
+.lens-half-moon.sd2-small.date-format-human-readable-abbreviated dd.no-excerpt.no-title .bar-fix.left,
+.lens-half-moon.sd2-small.sd2-show-title .bar-fix.right,
+.lens-half-moon.sd2-small.date-format-human-readable-abbreviated .bar-fix.right,
+.lens-half-moon.sd2-small.date-format-human-readable-abbreviated dd.no-excerpt.no-title .bar-fix.right,
+.lens-half-moon.sd2-small.sd2-show-title .bar-fix.bottom,
+.lens-half-moon.sd2-small.date-format-human-readable-abbreviated .bar-fix.bottom,
+.lens-half-moon.sd2-small.date-format-human-readable-abbreviated dd.no-excerpt.no-title .bar-fix.bottom { display: block; }
+.lens-half-moon.sd2-small dd.no-excerpt.no-title .bar-fix.left,
+.lens-half-moon.sd2-small dd.no-excerpt.no-title .bar-fix.right,
+.lens-half-moon.sd2-small dd.no-excerpt.no-title .bar-fix.bottom { display: none; }
+
+.lens-half-moon.sd2-small dd .slide-content p.slide-title,
+.lens-half-moon.sd2-small dd .sd2-node-caption .sd2-slide-title {
+	font-size: 18px;
+	line-height: 25px;
+	padding-right: 5px;
+}
+
+.lens-half-moon.sd2-small dd .slide-content .slide-meta,
+.lens-half-moon.sd2-small dd .sd2-node-caption .sd2-slide-meta { display: none !important; }
+
+.lens-half-moon.sd2-small dd .slide-content .slide-excerpt,
+.lens-half-moon.sd2-small dd .sd2-node-caption .slide-excerpt { margin-top: 0; }
+
+.lens-half-moon.sd2-small dd .slide-content p,
+.lens-half-moon.sd2-small dd .sd2-node-caption p {
+	font-size: 14px;
+	line-height: 15px;
+	margin-bottom: 4px;
+}
+
+.lens-half-moon.sd2-small dd .slide-content .readmore,
+.lens-half-moon.sd2-small dd .sd2-node-caption .readmore {
+	font-size: 14px;
+}
+
+.lens-half-moon.sd2-small .date {
+	height: 48px;
+	width: 48px;
+	margin-left: -24px;
+}
+
+.lens-half-moon.sd2-small .date .month {
+	font-size: 10px;
+	padding-top: 4px;
+}
+
+.lens-half-moon.sd2-small.sd2-nav-outside .deck-navigation.horizontal { margin-top: -30px; }
+.lens-half-moon.sd2-medium.sd2-nav-outside .deck-navigation.horizontal { margin-top: -27px; }
+.lens-half-moon.sd2-large.sd2-nav-outside .deck-navigation.horizontal { margin-top: -33px; }
+
+.lens-half-moon .bar-fix {
+	position: absolute;
+	border-bottom: 2px solid #FFF;
+	z-index: 3;
+	top: 20%;
+	height: 0;
+	overflow: hidden;
+	font-size: 1px;
+	line-height: 1px;
+	left: 80px;
+}
+
+.lens-half-moon .bar-fix.bottom {
+	left: 80px;            
+	right: 80px;
+	border-bottom: none;
+	border-top: 2px solid #fff;
+	bottom: 20%;
+	top: auto;
+}
+
+.lens-half-moon.sd2-medium .bar-fix {
+}
+
+.lens-half-moon.sd2-small .bar-fix {
+	left: 30px;
+}
+
+.lens-half-moon .bar-fix.left {
+    right: 50%;
+    margin-right: 38px;
+}
+.lens-half-moon .bar-fix.right {
+	right: 80px;
+	left: 50%;
+    margin-left: 38px;
+}
+
+.lens-half-moon.sd2-small .bar-fix.right { right: 16px; }
+
+.lens-half-moon.sd2-small .bar-fix.bottom { right: 16px; } 
+
+/** END SMALL **/
+
+/** ARROW STYLES **/
+.lens-half-moon .deck-navigation.horizontal {
+	position: absolute;
+	top: 50%;
+	margin-top: -10px;
+	height: 15px;
+	width: 15px;
+	background: #000;
+	left: 15px;
+	overflow: visible !important;
+}
+
+.lens-half-moon.sd2-large .deck-navigation.horizontal {
+	margin-top: -20px;
+	height: 31px;
+	width: 31px;
+	background: #000;
+}
+
+.lens-half-moon .deck-navigation.horizontal.next {
+	right: 15px;
+	left: auto;
+}
+
+.lens-half-moon .deck-navigation.horizontal span {
+	display: block;
+	width: 21px;
+	line-height: 100px;
+	overflow: hidden;
+	height: 21px;
+	background: url('icon_arrow-small.png');
+	border-radius: 5px;
+	top: -2px;
+	left: -2px;
+	position: relative;
+}
+
+.lens-half-moon.sd2-dark .deck-navigation.horizontal {
+	background: #FFF ;
+}
+
+.lens-half-moon.sd2-dark .deck-navigation.horizontal span {
+	background: url('icon_arrow-small-dark.png');
+}
+
+.lens-half-moon.sd2-large .deck-navigation.horizontal span {
+	height: 41px;
+	width: 41px;
+	background: url('icon_arrow-large.png');
+	border-radius: 3px;
+}
+
+.lens-half-moon.sd2-dark.sd2-large .deck-navigation.horizontal span {
+	background: url('icon_arrow-large-dark.png');
+}
+
+.lens-half-moon .deck-navigation.horizontal.next span {
+	background-position: -21px 0;
+}
+
+.lens-half-moon.sd2-large .deck-navigation.horizontal.next span {
+	background-position: -41px 0;
+}
+
+/** Adjustments **/
+
+.lens-half-moon .sd2-dot-nav {
+	position: absolute;
+	bottom: 15px;
+	left: 50%;
+	z-index: 100;
+	list-style: none;
+	padding: 0;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.lens-half-moon .sd2-dot-nav li {
+	float: left;
+	height: 8px;
+	width: 8px;
+	background-color: #FFF;
+	margin: 0;
+	padding: 0;
+	margin-left: 10px;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.lens-half-moon.sd2-dark .sd2-dot-nav li {
+	background-color: #333;
+}
+
+.lens-half-moon .sd2-dot-nav li:first-child {
+	margin-left: 0px;
+}
+
+.lens-half-moon.sd2-nav-top .sd2-dot-nav {
+	bottom: auto;
+	top: 15px;
+}
+
+.lens-half-moon.sd2-nav-top .slide-content,
+.lens-half-moon.sd2-nav-top .sd2-node-caption {
+	padding-top: 50px;
+}
+
+.lens-half-moon.sd2-nav-outside.sd2-nav-top .slidedeck {
+	bottom: 0px;
+	top: 35px;
+}
+
+.lens-half-moon.sd2-nav-outside.sd2-nav-top .slidedeck-overlays {
+	top: 50px;
+}
+
+.lens-half-moon.sd2-nav-top.sd2-nav-inside.sd2-small .slide-content,
+.lens-half-moon.sd2-nav-top.sd2-nav-inside.sd2-small .sd2-node-caption {
+	padding-top: 90px;
+}
+
+.lens-half-moon.sd2-nav-top.sd2-nav-inside.sd2-small .bar-fix {
+	height: 53px;
+}
+
+.lens-half-moon.sd2-nav-top.sd2-nav-inside.sd2-small .date {
+	top: 31px;
+}
+
+
+/* Boolean on/off */
+.lens-half-moon.sd2-show-author-avatar dd .slide-content .slide-meta img.slide-author-avatar,
+.lens-half-moon.sd2-show-author dd .slide-content .slide-meta .slide-author,
+.lens-half-moon.sd2-show-author-avatar dd .sd2-node-caption .slide-meta img.slide-author-avatar,
+.lens-half-moon.sd2-show-author dd .sd2-node-caption .slide-meta .slide-author { display: inline; }
+
+.lens-half-moon.sd2-show-title dd .slide-content p.slide-title,
+.lens-half-moon.sd2-show-excerpt dd .slide-content .slide-excerpt,
+.lens-half-moon.sd2-show-readmore dd .slide-content .readmore,
+.lens-half-moon.sd2-show-author dd .slide-content .slide-meta,
+.lens-half-moon.sd2-show-author-avatar dd .slide-content .slide-meta,
+.lens-half-moon.sd2-show-title dd .sd2-node-caption p.slide-title,
+.lens-half-moon.sd2-show-excerpt dd .sd2-node-caption .slide-excerpt,
+.lens-half-moon.sd2-show-readmore dd .sd2-node-caption .readmore,
+.lens-half-moon.sd2-show-author dd .sd2-node-caption .slide-meta,
+.lens-half-moon.sd2-show-author-avatar dd .sd2-node-caption .slide-meta {
+    display: block;
+}
+.lens-half-moon dd.slide-source-twitter .slide-content .slide-excerpt { display: none !important; }
+.lens-half-moon.date-format-none .date { display: none; }
+.lens-half-moon.date-format-none .bar-fix.left { margin-right: 0; }
+.lens-half-moon.date-format-none .bar-fix.right { margin-left: 0; }
+
+/* Bug Placement */
+.lens-half-moon.sd2-large.sd2-nav-outside.sd2-nav-bottom a.slidedeck-2-bug,
+.lens-half-moon.sd2-medium.sd2-nav-outside.sd2-nav-bottom a.slidedeck-2-bug { bottom: 50px; }
+.lens-half-moon.sd2-small.sd2-nav-outside.sd2-nav-bottom a.slidedeck-2-bug { bottom: 45px; }
+.lens-half-moon.sd2-small.sd2-nav-outside a.slidedeck-2-bug,
+.lens-half-moon.sd2-small.sd2-nav-inside a.slidedeck-2-bug {
+    top: auto;
+    bottom: 10px;
+}
+.lens-half-moon.sd2-small.sd2-nav-inside.sd2-nav-bottom a.slidedeck-2-bug {
+    top: 15px;
+    bottom: auto;
+}
+
+/* hide-slide-content override */
+.lens-half-moon dd.hide-slide-content .slide-content,
+.lens-half-moon dd.hide-slide-content .date,
+.lens-half-moon dd.hide-slide-content .bar-fix,
+.lens-half-moon dd.hide-slide-content .sd2-node-caption {
+    display: none !important;
+}
+
+/**
+ * Hide the nav if it's inside the slide area and a video is playing 
+ */
+.lens-half-moon.sd2-nav-default .sd2-dot-nav {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transition: visibility 0.25s linear, opacity 0.25s linear;
+    -moz-transition: visibility 0.25s linear, opacity 0.25s linear;
+    -o-transition: visibility 0.25s linear, opacity 0.25s linear;
+    transition: visibility 0.25s linear, opacity 0.25s linear;
+}
+.lens-half-moon.sd2-video-playing.sd2-nav-inside .sd2-dot-nav {
+    visibility: hidden;
+    opacity: 0; 
+}
+
+/* Overlays override */
+.lens-half-moon .slidedeck-overlays {
+    left: 20px;
+    right: auto;
+}
+.lens-half-moon.sd2-small .slidedeck-overlays {
+    left: auto;
+    right: 20px;
+}
+
+/* Custom SDs */
+.lens-half-moon dd.slide-source-custom.custom-layout-none .sd2-node-caption {
+    display: none;
+}
+.lens-half-moon .slide-source-custom.slide-type-image.custom-layout-caption.custom-caption-position-bottom .sd2-node-caption,
+.lens-half-moon .slide-source-custom.slide-type-image.custom-layout-caption.custom-caption-position-top .sd2-node-caption,
+.lens-half-moon .slide-source-custom.slide-type-video.custom-layout-caption.custom-caption-position-bottom .sd2-node-caption,
+.lens-half-moon .slide-source-custom.slide-type-video.custom-layout-caption.custom-caption-position-top .sd2-node-caption {
+    left: 0;
+}
+.lens-half-moon.sd2-small .slide-source-custom.slide-type-image.custom-layout-body-text.custom-caption-position-right .sd2-node-caption,
+.lens-half-moon.sd2-small .slide-source-custom.slide-type-video.custom-layout-body-text.custom-caption-position-right .sd2-node-caption {
+    left: 0;
+}
+.lens-half-moon.sd2-small .slide-source-custom.slide-type-image.custom-layout-body-text.custom-caption-position-left .sd2-node-caption,
+.lens-half-moon.sd2-small .slide-source-custom.slide-type-video.custom-layout-body-text.custom-caption-position-left .sd2-node-caption {
+    right: 0;
+}
+.lens-half-moon .slide-source-custom.slide-type-image.custom-layout-caption.custom-caption-position-bottom .sd2-node-caption,
+.lens-half-moon .slide-source-custom.slide-type-video.custom-layout-caption.custom-caption-position-bottom .sd2-node-caption {
+    top: auto;
+}
+.lens-half-moon .slide-source-custom.slide-type-image.custom-layout-caption.custom-caption-position-top .sd2-node-caption,
+.lens-half-moon .slide-source-custom.slide-type-video.custom-layout-caption.custom-caption-position-top .sd2-node-caption {
+    bottom: auto;
+}
+
+.lens-half-moon .slide-source-custom.custom-layout-caption.custom-caption-position-bottom .sd2-node-caption .bottom-caption-fix {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+}
+
+.lens-half-moon .slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-slide-text {
+    font-size: 1.1em;
+    line-height: 0.9em;
+}
+.lens-half-moon .slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-slide-text p {
+    margin-top: 0.4em;
+}
+
+.lens-half-moon.sd2-small .slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-slide-text {
+    font-size: 1.1em;
+    line-height: 0.9em;
+    margin-top: 0.4em;
+}
+
+.lens-half-moon.sd2-small .slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-slide-text {
+    margin: 0 30px;
+    font-size: 1.58em;
+}
+
+/* Standard Vertical Centering */
+/* This should probably be done globally, but it definitely definitely definitely affects all of the other custom textonly slides */
+.lens-half-moon .sd2-vertical-center-outer {
+    position: relative;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+}
+.lens-half-moon .sd2-vertical-center-outer {
+    display: table;
+    position: static;
+    overflow: visible;
+}
+.lens-half-moon .sd2-vertical-center-middle {
+    top: 50%;
+    overflow: visible;
+}
+.lens-half-moon .sd2-vertical-center-middle {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    overflow: visible;
+}
+.lens-half-moon .sd2-vertical-center-inner {
+    position: relative;
+    top: -50%;
+}
+.lens-half-moon .sd2-vertical-center-inner {
+    position: static;
+}
+
+.lens-half-moon.sd2-small dl.slidedeck .slide-source-custom.slide-type-video .play {
+    display: block;
+    left: 50%;
+}
+.lens-half-moon .slide-source-custom.slide-type-video.custom-caption-position-left .play { left: 75%; }
+.lens-half-moon dl.slidedeck .slide-type-video.custom-layout-none .video-wrapper .play,
+.lens-half-moon dl.slidedeck .slide-type-video.custom-layout-none .play {
+    left: 50%;
+}
+.lens-half-moon dl.slidedeck .slide-source-custom.custom-layout-caption.custom-caption-position-top .play,
+.lens-half-moon dl.slidedeck .slide-source-custom.custom-layout-caption.custom-caption-position-bottom .play {
+    left: -999em;
+}
+.lens-half-moon .slide-source-custom.slide-type-video .play-video-alternative {
+    display: none;
+    font-weight: bold;
+}
+.lens-half-moon .slide-source-custom.custom-layout-caption.custom-caption-position-top .play-video-alternative { display: inline-block; }
+
+.lens-half-moon.content-source-custom .slidedeck-overlays {
+    top: 15px;
+    right: 15px;
+    bottom: auto;
+    left: auto;
+}
+/*=====================================*/
+.lens-half-moon.sd2-large .slide-source-custom.slide-type-textonly .sd2-node-caption .sd2-slide-title {
+    font-size: 3.6em;
+    line-height: 1em;
+}
+.lens-half-moon.sd2-medium .slide-source-custom.slide-type-textonly .sd2-node-caption .sd2-slide-title {
+    font-size: 2.2em;
+    line-height: 1em;
+}
+.lens-half-moon.sd2-small .slide-source-custom.slide-type-textonly .sd2-node-caption .sd2-slide-title {
+    font-size: 1.2em;
+    line-height: 1.6em;
+}
+.lens-half-moon.sd2-large .slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-slide-text {
+    font-size: 1em;
+    line-height: 1em;
+}
+.lens-half-moon.sd2-medium .slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-slide-text {
+    font-size: 1.2em;
+    line-height: 1em;
+}
+.lens-half-moon.sd2-small .slide-source-custom.slide-type-textonly.custom-layout-block-quote .sd2-node-caption .sd2-slide-text {
+    font-size: 1.2em;
+    line-height: 1.6em;
+}
+.lens-half-moon.sd2-medium dl.slidedeck .slide-source-custom.slide-type-video.custom-caption-position-left .video-wrapper .play {
+    left: 75%;
+}
+.lens-half-moon.sd2-medium dl.slidedeck .slide-source-custom.slide-type-video.custom-caption-position-right .video-wrapper .play {
+    left: 25%;
+}

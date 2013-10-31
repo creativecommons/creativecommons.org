@@ -1,0 +1,40 @@
+{
+    "name": "O-Town",
+    "uri": "http://www.slidedeck.com/",
+    "sources": ["posts","gplus","rss","instagram","dribbble","gplusimages","flickr","twitter","youtube","dailymotion","vimeo","fivehundredpixels","pinterest","custom"],
+    "author": "dtelepathy",
+    "author_uri": "http://www.dtelepathy.com/",
+    "contributors": ["orville", "oriontimbers", "kynatro"],
+    "description": "O-Town Lens",
+    "version": "1.0",
+    "sizes": {
+        "small": {
+            "label": "Small",
+            "width": 300,
+            "height": 200
+        },
+        "medium": {
+            "label": "Medium",
+            "width": 500,
+            "height": 300
+        },
+        "large": {
+            "label": "Large",
+            "width": 850,
+            "height": 500
+        }
+    },
+    "variations": {
+        "dark": "Dark",
+        "light": "Light"
+    },
+    "fonts": {
+        "lato": {
+            "label": "Lato",
+            "stack": "Lato, sans-serif",
+            "import": "//fonts.googleapis.com/css?family=Lato:400",
+            "weight": "400"
+        }
+    },
+    "default_nav_styles": false
+}

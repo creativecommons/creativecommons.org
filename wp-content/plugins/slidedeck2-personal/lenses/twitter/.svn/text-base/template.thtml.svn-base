@@ -1,0 +1,17 @@
+<div class="sd-node-tweet">
+    <div class="slidedeck-vertical-center-outer">
+        <div class="slidedeck-vertical-center-middle">
+            <div class="slidedeck-vertical-center-inner">
+            	<div class="slide-title">
+            	    <?php echo $content; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="sd-node-tweet-deets">
+		<div class="data-tweetid"><?php echo $id; ?></div>
+		<div class="data-twitter-handle"><?php echo $author_username; ?></div>
+		<div class="data-twitter-name"><?php echo $author_name; ?></div>
+		<div class="data-twitter-description"><?php echo $description; ?></div>
+	</div>
+</div>
