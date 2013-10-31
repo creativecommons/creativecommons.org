@@ -1,0 +1,215 @@
+#container {
+	min-width: 850px;
+}
+#box {
+	margin-top: 25px;
+/*	 width: 850px;
+	float: right; */
+}
+
+#box-content {
+  width: 535px;
+/*  float: left;*/
+}
+
+#box-content.index {
+	width: 765px;
+}
+
+#box-side {
+  width: 220px;
+	margin-left: 50px;
+	margin-top: 240px;
+	padding-bottom: 300px;
+  float: left;
+}
+
+#box-side form {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px;
+	margin-bottom: 25px;
+}
+
+#box-side img.closeup {
+	padding: 2px;
+	border: 1px solid #ccc;
+	margin-left: 8px;
+}
+
+#support-title {
+	margin-top: 10px;
+	margin-left: 8px;
+  width: 532px;
+}
+
+#support-title span {
+  display: none;
+}
+
+#support-blurb {
+  padding: 0px 35px 0 25px;
+}
+
+#support-blurb.noborder {
+	border: none;
+	margin: 35px 0;
+}
+
+#support-blurb .supporters {
+	float: right;
+	width: 47%;
+	margin-right: 15px;
+}
+
+#support-menu {
+  width: 750px;
+  margin: 0;
+  margin-top: 25px;
+  margin-bottom: 100px;
+}
+
+div.support-menu-item {
+  width: 230px;
+  margin: 10px;
+  float: left;
+}
+
+#support-menu .supporters {
+  margin-top: 25px;
+  border: 1px solid #ddd;
+}
+
+#support-menu div.ex {
+  color: #6f6f6f;
+  margin-top: 30px;
+  width: 410px !important;
+}
+.hi {
+  color: #555;
+}
+
+#donate-classes {
+	width: 550px;
+	margin-bottom: 100px;
+}
+
+#donate-classes.index {
+	width: 100%;
+}
+
+#donate-classes ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 95%;
+}
+
+#donate-classes li {
+	padding: 10px 25px;
+	margin: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+#donate-classes ul.store li {
+	padding: 10px 0;
+}
+
+#donate-classes ul.donate li:hover {
+	background-color: #f3f2f2;
+}
+
+#donate-classes li img {
+	padding-right: 10px;
+}
+#donate-classes li strong {
+	/*padding-right: 30px;*/
+}
+
+#donate-classes .amount {
+	font-size: 125%;
+	font-weight: bold;
+	color: #c30;
+	width: 75px;
+	float: left;
+	padding-top: 10px;
+}
+
+#donate-classes .spread {
+	width: 100px;
+	height: 50px;
+	padding-top: 20px;
+}
+
+#donate-classes code {
+	display: block;
+	margin-top: 5px;
+}
+
+.fair {
+	font-size: 90%;
+	color: #666;
+	float: right;
+	padding-top: 10px;
+}
+
+.fair img {
+	padding: 0 !important;
+}
+
+.store-item {
+	text-align: left;
+	float: left;
+	margin: 0 10px 30px 20px;
+	width: 330px;
+	font-size: 100%;
+}
+.store-item img {
+	padding-bottom: 50px;
+	float: left;
+}
+
+.store-item-options {
+	margin-top: 5px;
+	float: right;
+	line-height: 150%;
+}
+
+h3 {
+	font-weight: bold !important;
+	font-size: 130% !important;
+}
+
+/* progress-bar stuff */
+#progress {
+  width: 460px;
+  text-align: center;
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+
+#progress-bar {
+  width: 455px;
+  height: 25px;
+  background: url('/images/support/2006/support-progress-bar.png') top left no-repeat;
+  margin-bottom: 10px;
+}
+  
+#progress-bar img {
+  float: right;
+  margin-right: 11px;
+}
+
+ul#blogs {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul#blogs li {
+	border-bottom: 1px solid #d0d0d0;
+	padding: 5px;
+}
+
+ol.letters ol {
+	margin-left: 15px;
+}

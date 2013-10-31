@@ -1,0 +1,128 @@
+	a:link {color:#a00;}
+
+	a:visited {color:#815151;}
+
+	a:active {color:red;}
+
+	a:hover, a.subfoot:hover, a.linknav:hover, a.sublinknav:hover {color:red;text-decoration:underline;}
+
+	body {
+		margin:0px;
+		padding:0px;
+		background:#eee;
+		margin-bottom:50px;
+		font-family: "Trebuchet MS",verdana,sans-serif; 
+		font-size: 14px;
+		color:#333;
+		}
+	
+	.container {
+		margin-right:50px;
+		margin-left:50px;
+		background:white;
+		border-left:1px solid #ccc; 
+		border-right:1px solid #ccc; 
+		border-bottom:1px solid #ccc; 		
+	}
+
+	#leftcontent {
+		float:left;
+		width:25%;
+		border-right:1px dotted #ccc;
+		position:relative;
+		margin-top:17px;
+		padding-right:10px;
+		}
+
+	#centercontent {
+		margin-left: 25%; 
+		margin-top:20px;
+		padding-left:10px;
+		padding-right:10px;				
+		}
+
+
+		 .home, h1, h2, h3 {
+		margin:0px 14px 14px 14px;
+		line-height:140%;
+		}
+
+	p {
+		margin:0px 14px 14px 14px;
+		line-height:140%;
+		}
+
+		
+	h1 {
+		font-size:18px;
+		}
+		
+	h2 {
+		font-size:16px;
+		}
+
+	h3 {
+		font-size:14px;
+		}
+		
+		
+	h1 a {
+		font-weight:normal;
+		text-decoration:none;
+	}
+		
+	.header {
+		background-color: #5e715e;
+		border-bottom:1px solid white;
+		padding-top:40px;
+	}
+	
+	.nav	{
+		background-color:#8EA48E;
+	}
+	
+	a.subfoot, a.subfoot:link, a.subfoot:visited {
+		font-size:11px;
+		color:#666;
+	}
+
+	a.subfoot:hover {
+		color:red;text-decoration:underline;
+	}
+
+	.subfooter {
+		font-size:11px;
+		margin-top:10px;
+		margin-bottom:2px;
+	}
+	
+
+	a.tinylink, a.tinylink:link, a.tinylink:visited {
+		font-size:11px;
+		color:#8EA48E;
+	}
+
+	a.tinylink:hover {
+		color:red;text-decoration:underline;
+	}
+
+	a.jargon, a.jargon:link, a.jargon:visited, a.jargon:hover {
+		color: #cc0000;
+		text-decoration: none;
+		border-bottom: #C99;
+		border-width: 0px 0px 1px 0px;
+		border-style: none none dotted none;
+	}
+	
+	
+	.navbar { border: 1px solid gray; text-align: center;}
+
+
+
+		.textbox { background-color:#F1F1DE; border: 1px solid #CCCC99; padding: .5em; }
+		
+	.feature {
+		border:1px solid #ccc;
+	}
+	
+

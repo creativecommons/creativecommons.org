@@ -1,0 +1,43 @@
+@import url(site.css);
+@import url(page.css);
+
+#globalWrapper {
+	background: #fff url('images/header-bar-thin.png') repeat-x top left;
+}
+
+#headerNav {
+	top: 13px;
+}
+
+#headerWrapper {
+	height: 63px;
+}
+#headerLogo { 
+	height: 63px;
+	width: 251px;
+}
+
+#headerLogo {
+	height: 25px;
+	width: 142px;
+}
+
+#headerLogo h1 {
+	position: absolute;
+	height: 35px;
+	width: 142px;
+	background-image: url(images/cc-logo-small.png);
+	margin-top: 0;
+	top: 10px;
+}
+
+#mainContent {
+	margin-top: 45px;
+}
+
+#headerNav ul {
+	padding-top: 17px;
+}
+
+
+

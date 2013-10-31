@@ -1,0 +1,249 @@
+/* For hiding the regular Donate option and replacing with Superhero */
+#network { visibility: hidden; }
+#superhero {
+  position: absolute;
+	z-index: 1000;
+	left: 315px;
+	top: 229px;
+	width: 327px;
+	height: 122px;
+/*	background:url(/images/support/2010/speech-bubble-home.png) no-repeat transparent;
+*/}
+
+#superheroCard {
+  width: 327px;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Catalyst Grants Landing page */
+#catalyst-options { width: 550px; margin: 25px auto; overflow-y: auto;} 
+#catalyst-options h3 { margin-top: 0; margin-bottom: 1em; } 
+#catalyst-options div { border: 1px solid #d3d3d3; padding: 5px 10px; background-color: #e1e1e1; text-shadow: 0 1px 0 #fff; color: #666; -webkit-border-radius: 5px; -moz-border-radius:5px; width: 230px; } 
+.catalyst-donate{ float:left; } 
+.catalyst-learn-more { float:right; } 
+#catalyst-options p { color: #777; text-align: center; margin-bottom:0; } 
+
+#testimonial {
+	height: 209px;
+	width: 292px;
+	position: relative;
+	padding: 5px 5px 5px 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background: #f0f0f0; /*#18366d url(images/testimonial-bg.jpg) no-repeat 50% 50%; /*#28245d;*/
+	color: #333;
+}
+
+#testimonial h5 {
+	margin-bottom: 0;
+	color: #77764f;
+}
+
+#testimonial .photo {
+	width: 75px;
+	height: 75px;
+	background-color: #fff;
+	float: left;
+	margin: 5px 10px 10px 0;
+}
+
+#testimonial blockquote {
+	font-size: 110%;
+	border: none;
+	padding-left: 85px;
+	margin: 0;
+}
+
+#testimonial div.sig {
+	padding-left: 85px;
+	line-height: 1.1em;
+}
+
+#testimonial div.sig a {
+	color: #280048;
+	font-weight: bold;
+	font-style: normal;
+}
+
+#testimonial div.sig span {
+	font-size: 90%;
+}
+
+#testimonial p {
+	position: absolute;
+	bottom:0; 
+	left: 0;
+	font-size: 110%;
+	margin-bottom: 0px;
+	padding-left: 10px;
+	width: 287px;
+	-moz-border-radius-bottomleft: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	background: #dcd6e0;
+	color: #4e2964;
+}
+#testimonial p a {
+	color: #4e2964;
+}
+
+#topContent {
+	padding-bottom: 24px;
+}
+#splash {
+	height: 219px;
+	background-color: transparent;
+}
+#campaign-hint, #campaign-matching {
+		text-align: center;
+		margin: 5px auto;
+		background-color: #103859;
+		color: #fff;
+		padding: 3px 0 5px 0;
+		font-size: 90%;
+}
+
+#campaign-matching {
+		background-color: #104364;
+}
+
+#campaign-matching a, #campaign-hint a {
+		color: #fff;
+		text-decoration: underline;
+}
+#campaign-matching a:hover, #campaign-hint a:hover {
+		text-decoration: none;
+}
+
+/* PROGRESS METER */
+    #campaign {
+background-color: #ccc; 
+height: 46px;
+padding-top: 3px;
+margin: 0px auto;
+margin-bottom: 10px;
+text-align: center;
+-moz-border-radius-bottomleft: 10px;
+-moz-border-radius-bottomright: 10px;
+-webkit-border-bottom-left-radius: 10px;
+-webkit-border-bottom-right-radius: 10px;
+font-size: 80%;
+}
+
+#campaign.wide { margin: 0; padding: 5px 35%; height: 25px; position: relative; }
+
+#campaign title {
+
+margin-top: 2px;
+}
+
+#campaign .title a {
+color: #280048;
+}
+
+#campaign .progress {
+position: relative;
+cursor:pointer; 
+margin: 2px auto 3px auto;
+width: 463px; 
+height: 20px;
+padding: 0; 
+background: #fff;
+border:1px solid #929292;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+#campaign .progress .inner {
+	height: 18px;
+	margin: 1px;
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#cdcdcd), to(#fdfdfd));
+	background: -moz-linear-background(top, #cdcdcd, #fdfdfd);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+
+#campaign .home {
+	display: inline-block !important;
+	margin-left: 10%;
+}
+#campaign .homeGoal {
+	display: inline-block;
+	position: relative;
+	top: -8px;
+	font-weight: bold;
+	padding-left: 8px;
+}
+
+#campaign .progress span {
+display: block;
+position: absolute;
+top: 1px;
+left: 1px;
+height: 18px;
+margin: 0; 
+background: #ed1c24;
+background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#b2151b));
+background: -moz-linear-gradient(center top, #ed1c24, #b2151b);
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+-moz-box-shadow: 1px 0 3px rgba(64, 64, 64, 0.45);
+-webkit-box-shadow: 1px 0 3px rgba(64, 64, 64, 0.45);
+}
+
+#campaign .resultsHome {
+	position: relative;
+	top: -6px;
+}
+#campaign .results, #campaign .resultsHome {
+	margin: 0 auto;
+/*
+float: left; 
+margin-top: 2px; 
+margin-left: 7px;
+*/
+}
+
+#campaign .resultsHome a, #campaign .homeGoal a {
+	/*color: #13131:w
+	 * 3;*/
+	color: #102e37;
+}
+
+#sidebar #campaign {
+ /* background-color: transparent !important;
+ */ padding: 5px;
+  text-align: left;
+  height: auto;
+  position: relative;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  background-color: #280048;
+}
+
+#sidebar #campaign .progress {
+  margin-left: 0;
+  margin-top: 0;
+  width: 98%;
+  -moz-border-radius: 2px;
+}
+
+#sidebar #campaign .results {
+  /*position: absolute;
+  font-size: 1em;
+  top: 3px;
+  left: 8%;
+*/
+	text-align: center;
+}
+
+#sidebar #campaign .results a {
+  color: #fff;
+}
+
+#campaign.wide .results { position: absolute; top: 7px; left: 38%; }
+#campaign.wide .results a { color: #131313; }

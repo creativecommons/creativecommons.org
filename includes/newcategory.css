@@ -1,0 +1,232 @@
+/* thanks CSS-o-matic for the CSS generator at http://www.inknoise.com/experimental/layoutomatic.php */
+
+	#content {
+			float:right;
+			width:64%;
+		}
+		
+		#find {
+			float: left;
+			width: 35%;
+		}
+
+		#publish {
+			padding:0px 10% 10% 10%;
+		}
+		
+	#sidepadding {
+		padding:0px 15px 15px 15px;
+	}
+	
+		#find h2, #content h2, #publish h2 {
+			font-size:28px;
+			margin-bottom:0px;
+			padding-bottom:0px;
+			color:#414141;
+			margin-top:20px;
+		}
+		
+#find h3, #content h3, #publish h3 {
+	font-size:18px;
+	font-weight:normal;
+	margin-bottom:0px;
+	margin-top:4px;
+}
+
+#find h4, #content h4 {
+	font-size:14px;
+	font-weight:normal;
+	margin-bottom:4px;
+	margin-top:4px;
+}
+
+.orange {
+	color:#D9531E;
+}
+
+#find h3 a, #content h3 a {
+	text-decoration:none;
+}
+
+#find h3 a:hover, #content h3 a:hover {
+	text-decoration:underline;
+}
+
+#find p, #content p {
+	font-size:12px;
+	line-height:160%;
+}
+
+#content .index-blurbs {
+	margin-top:0px;
+	margin-bottom:30px;
+	line-height:140%;
+	font-size:12px;
+	font-family: "Trebuchet MS", verdana, sans-serif;
+}	
+
+
+.searchbox {
+	margin-top:10px;
+	margin-bottom:20px;
+/*	background:#eee;*/
+	border:1px solid #ddd;
+	padding:8px;
+
+}
+
+.feature-pics {
+	float:left;
+	margin:6px 10px 0px 0px;
+	display:block;
+	height:160px;
+}
+
+.publish-pics {
+	float:left;
+	margin:6px 10px 0px 0px;
+	display:block;
+	height:230px;
+}
+
+.feature-inside {
+	float:right;
+	margin:10px;
+	display:block;
+	height:160px;
+}
+
+.imgborder {
+	border:2px solid #ccc;
+}
+
+.licensearea {
+/*	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	padding-top:8px;
+	padding-bottom:8px;*/
+	background:#eee;
+	padding:8px;
+	margin-bottom:20px;
+}
+
+.breadcrumb {
+	color:white;
+	font-size:11px;
+	padding-top:8px;
+	margin-top:0px;
+	padding-bottom:0px;
+}
+
+.breadcrumb a:link {
+	color:white;
+	text-decoration:none;
+}
+
+.breadcrumb a:visited {
+	color:white;
+	text-decoration:none;
+}
+
+.breadcrumb a:active {
+	color:silver;
+	text-decoration:none;
+}
+
+.breadcrumb a:hover {
+	color:white;
+	text-decoration:underline;
+}
+
+
+.crumbdown {
+	text-decoration:none;
+	color:white;
+	background:#56859F;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+a.crumbdown {
+	color:white;
+	text-decoration:none;
+}
+
+a.publish-links {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size:12px;
+}
+
+.licensep {
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+#content h3.licensetitle {
+	margin-bottom:10px;
+}
+
+.licensebox	{
+	background:#eee;
+	padding:8px;
+}
+
+div.ifloat {
+
+   text-align: center;
+
+  float: left;
+
+  width: 74px;
+
+  height:80px;
+
+  padding: 10px;
+
+  }
+
+
+
+div.ifloat p {
+
+   text-align: center;
+
+   }
+
+
+
+ div.icontainer {
+
+	margin:14px;
+
+   text-align: center;
+
+  }
+
+
+
+  div.ispacer {
+
+  clear: both;
+
+  }
+
+div.button_float {
+
+   text-align: center;
+
+  float: left;
+
+  width: 250px;
+
+  height:200px;
+
+  padding: 10px;
+
+  }
+div.button_float textarea {
+   width: 100%;
+   height: 150px;
+   border: 1px #000 solid;
+}

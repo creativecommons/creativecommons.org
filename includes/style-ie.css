@@ -1,0 +1,73 @@
+/*
+ * Creative Commons 
+ * 3.0 - 2006-09
+ * 
+ * IE related fixes/hacks
+ *
+ */
+
+
+/* Transparent png's */
+/* Apply to all images, who knows if they'll be PNGs. */
+/* Because of WP routing issues, this has to be in the  */ 
+img {
+	behavior: url("pngie.htc");
+}
+
+#wrapper {
+
+	/* min-width */
+	width: expression( 
+	    document.body.clientWidth < 850 ? "850px" : "94%"
+	);
+
+	
+}
+
+#wrapper-ie {
+	
+	/* max-width */
+/*	width: expression( 
+	    document.body.clientWidth > 1000 ? "1000px" : "auto"
+	);
+*/	
+}
+
+#header-wrapper {
+margin-top: 0;
+	background-color: #426000;
+	height: 94px;
+}
+
+#header-main {
+	margin-top: 0;
+	
+	/* min-width */
+/*	width: expression( 
+	    document.body.clientWidth < 850 ? "850px" : "90%"
+	);
+*/}
+
+#splash {
+	font-weight: bold;
+
+}
+
+#main-content {
+/*	width: 83%;
+*/}
+
+#features {
+	width: 26.5%;
+	overflow: hidden;
+	padding-left: 10px;
+}
+
+
+#page {
+/*	width: 92%;
+*/}
+
+.cc-actions {
+	margin-top: 5px !important;
+}

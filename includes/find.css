@@ -1,0 +1,115 @@
+
+
+#browse {
+	margin-left:20px;
+	margin-right:20px;
+}
+
+#browse-left {
+	width:50%;
+	float:left;
+}
+
+#browse-right {
+	width:50%;
+	float:left;
+}
+
+#browse h2 {
+	font-size:18px;
+	color:#5e715e;
+}
+
+#browse p {
+	font-size:12px;
+}
+
+
+		.breadcrumb {
+	color:white;
+	font-size:11px;
+	padding-top:8px;
+	margin-top:0px;
+	padding-bottom:0px;
+}
+
+.breadcrumb a:link {
+	color:white;
+	text-decoration:none;
+}
+
+.breadcrumb a:visited {
+	color:white;
+	text-decoration:none;
+}
+
+.breadcrumb a:active {
+	color:silver;
+	text-decoration:none;
+}
+
+.breadcrumb a:hover {
+	color:white;
+	text-decoration:underline;
+}
+
+
+.crumbdown {
+	text-decoration:none;
+	color:white;
+	background:#56859F;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+a.crumbdown {
+	color:white;
+	text-decoration:none;
+}
+
+	#frame {
+		width:634px;
+		margin-right:auto;
+		margin-left:auto;
+		padding:0px;
+		text-align:left;
+		}
+		
+	#searcharea {
+		width:400px;
+		padding:0px;
+		float:left;
+		background:#fff;
+		margin-right:20px;
+		background:#eee;
+		border:1px solid #ccc;
+		height:190px;
+		}
+	
+	#helparea {
+		width:210px;
+		padding:0px;
+		float:left;
+		background:#eee;
+		border:1px solid #ccc;
+		height:190px;		
+		}
+	
+	#options {
+		position:relative; 
+		color:#414141; 
+		padding:10px 5px 5px 5px; 
+		margin-top:14px; 
+		border:1px solid #eee;
+		width:340px;
+	}
+
+	#format {
+		display:none;
+	}
+
+	
+	.searchbox {
+		text-align:left;
+		width:420px;
+	}

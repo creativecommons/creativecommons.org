@@ -1,0 +1,23 @@
+	body {
+		background:#ddd;
+		margin:10px;
+		}
+	
+	.bodybox {
+		background-color:white;
+		border:1px solid black;
+		text-align:left;
+	}
+	
+	.bodyfloat	{
+		padding:10px;
+        font-family:"Trebuchet MS", Verdana, Geneva, Arial, sans-serif;
+        color:#333;
+		text-align:left;
+}
+
+
+a 	{
+	color:#516650;
+	font-weight:bold;
+}

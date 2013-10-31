@@ -1,0 +1,18 @@
+/* CC RTL CSS overrides */
+
+#wrapper {
+	text-align: right;
+}
+
+#blog,
+#main-content,
+#leftcontent,
+#features {
+	float: right;
+}
+
+#page {
+	float: right;
+}
+
+

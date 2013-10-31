@@ -1,0 +1,96 @@
+div#developer
+{
+	display: none;
+}
+
+div#innovator
+{
+	display: none;
+}
+
+div#creator
+{
+	display: none;
+}
+
+div#student
+{
+	display: none;
+}
+
+.smalltext {
+	color:#666;
+	font-size:11px;
+	font-weight:normal;
+	}
+
+label
+{
+font-family: Arial, Helvetica, sans-serif;
+font-size:18px;
+padding-bottom:8px;
+display:block;
+}
+
+#shirts {
+	width: 575px;
+	margin-bottom: 50px;
+	margin-top: 25px;
+}
+
+span.options {
+	float: right;
+}
+span.shirt {
+	font-weight: bold;
+	font-family: Arial, sans;
+	font-size: 18px;
+}
+
+
+#last-call {
+	margin-bottom: 55px;
+}
+
+#last-call .header {
+	padding: 0; 
+	margin: 0; 
+	width: 100%; 
+	height: 257px; 
+	overflow: hidden; 
+	text-align: center; 
+	background-image: url(/images/support/support-header.jpg); 
+	background-repeat: no-repeat; 
+	background-position: 50%;
+}
+
+#last-call .header span {
+	visibility: hidden;
+}
+
+#last-call .message {
+	margin: 15px 15% 75px 15%; 
+	font-size: 1.15em; 
+	line-height: 1.4em;
+}
+
+#letters {
+        list-style-type: upper-roman;
+        width: 325px;
+}
+
+#letters ol, #letters ol li {
+	margin-bottom: 10px;
+}
+
+#letters .trans-box {
+	border: 1px solid #fff;
+	width: 175px;
+	float: right;
+	margin-right: -75px;
+}              
+#letters .trans {
+	float: right; 
+	margin-right: 25px;
+}
+

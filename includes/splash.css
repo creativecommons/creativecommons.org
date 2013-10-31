@@ -1,0 +1,66 @@
+
+#splash {
+	position: relative;
+	text-align: center;
+	margin-bottom: 30px;
+	margin-right: 1.5em;
+	overflow: hidden;
+}
+
+#splash .splash-box {
+	position: relative;
+	width: 640px;
+	height: 18em;
+	margin: 0 auto;
+}
+
+#splash .splash-box h2 {
+	text-align: left;
+	font-size: 2.75em;
+	color: #333;
+}
+
+#splash img {
+	border: none;
+	width: 320px; height: 170px;
+}
+
+
+/* CC+/CC0 */
+#splash .splash-box-left {
+	position: absolute;
+	top: 4em; 
+	left: 0;
+	width: 320px;
+}
+#splash .splash-box-left p.info {
+	color: #293a52;
+}
+
+#splash p.info {
+	color: #293a52;
+	position: absolute;
+	z-index: 100;
+	/*top: 100px;
+	left: 15px;
+	width: 295px;
+	font-size: 0.75em;*/
+	top: 30px;
+	left: 160px;
+	width: 130px;
+	font-size: 0.96em;
+	text-align: left;
+}
+
+#splash .splash-box-right {
+	position: absolute;
+	top: 4em;
+	left: 321px;
+	width: 320px;
+}
+
+#splash .splash-box-right p.info {
+	top: 80px;
+	left: 75px;
+	width: 200px;
+}

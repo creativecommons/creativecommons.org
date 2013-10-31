@@ -1,0 +1,32 @@
+div.ifloat {
+   text-align: center;
+  float: left;
+  width: 74px;
+  height:80px;
+  padding: 10px;
+  }
+
+div.ifloat p {
+   text-align: center;
+   }
+
+ div.icontainer {
+	margin:14px;
+   text-align: center;
+  }
+
+  div.ispacer {
+  clear: both;
+  }
+
+  .licensebox {
+  	background:#eee;
+	border:1px solid #ccc;
+	padding:6px;
+  }
+
+#splash img {
+	border: 1px solid #666;
+	padding: 0 !important;
+	margin-right: 15px;
+}

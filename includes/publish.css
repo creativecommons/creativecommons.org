@@ -1,0 +1,90 @@
+#browse {
+	margin-left:20px;
+	margin-right:20px;
+}
+
+#browse-left {
+	width:30%;
+	float:left;
+}
+
+#browse-right {
+	width:67%;
+	float:left;
+}
+
+#license-left {
+	width:49%;
+	float:left;
+}
+
+#license-right {
+	width:49%;
+	float:left;
+}
+
+#browse h2 {
+	font-size:18px;
+	color:#5e715e;
+}
+
+#browse p {
+}
+
+.licensebox	{
+	background:#eee;
+	padding:8px;
+}
+
+		#browse h2 {
+			font-size:20px;
+			margin-bottom:0px;
+			padding-bottom:0px;
+			color:#414141;
+			margin-top:20px;
+		}
+		
+		
+		.breadcrumb {
+	color:white;
+	font-size:11px;
+	padding-top:8px;
+	margin-top:0px;
+	padding-bottom:0px;
+}
+
+.breadcrumb a:link {
+	color:white;
+	text-decoration:none;
+}
+
+.breadcrumb a:visited {
+	color:white;
+	text-decoration:none;
+}
+
+.breadcrumb a:active {
+	color:silver;
+	text-decoration:none;
+}
+
+.breadcrumb a:hover {
+	color:white;
+	text-decoration:underline;
+}
+
+
+.crumbdown {
+	text-decoration:none;
+	color:white;
+	background:#56859F;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+a.crumbdown {
+	color:white;
+	text-decoration:none;
+}
+
+

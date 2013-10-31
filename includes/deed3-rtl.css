@@ -1,0 +1,36 @@
+/* CC Deed CSS for RTL languages */
+
+	#deed-main {
+		text-align: right;
+	}
+
+	#deed-main img {
+		float: left;
+	}
+
+	li.license {
+		padding-right: 70px;
+		padding-left: 0px;
+		background-position: top right;
+	}
+
+	#disclaimer {
+		float: left;
+	}
+
+	#deed-rights {
+		background-position: top right;
+	}
+
+	#deed-rights ul {
+		width: 80%;
+	}
+
+	#deed-conditions {
+		background-position: top right;
+	}
+
+	#libre {
+		left: 68px;
+		right: auto;
+	}

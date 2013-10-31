@@ -1,0 +1,80 @@
+
+/* thanks CSS-o-matic for the CSS generator at http://www.inknoise.com/experimental/layoutomatic.php */
+
+	#content {
+			float:right;
+			width:74%;
+		}
+		
+	#sidepadding {
+		padding:0px 15px 15px 15px;
+	}
+		
+		#find {
+			float: left;
+			width: 25%;
+		}
+
+		#share {
+			float: right;
+			width:35%;
+		}
+
+		#create {
+			float:left;
+			width:64%;
+		}
+		
+		#find h2, #create h2, #share h2 {
+			font-size:18px;
+			margin-bottom:0px;
+			padding-bottom:0px;
+			color:#414141;
+		}
+		
+		#find p, #create p, #share p {
+			font-size:11px;
+		}
+		
+		
+#create ul li {
+		margin:0;
+		margin-left:-20px;
+		padding:0 0 .5em 0;
+		line-height:1.3em;
+		list-style-image:url("/images/greendot.gif");
+		font-size:11px;
+	}		
+	
+#create h3 {
+	font-size:18px;
+	font-weight:normal;
+	margin-bottom:4px;
+	margin-top:4px;
+}
+
+#create h3 a {
+	text-decoration:none;
+}
+
+#create p {
+	font-size:12px;
+	line-height:160%;
+	font-family: verdana, sans-serif;
+}
+
+#create .index-blurbs {
+	margin-top:0px;
+	margin-bottom:30px;
+	line-height:140%;
+	font-size:12px;
+	font-family: "Trebuchet MS", verdana, sans-serif;
+}	
+
+
+.licensebox	{
+	font-size:12px;
+	background:#eee;
+	border:1px solid #ddd;
+	padding:6px;
+}

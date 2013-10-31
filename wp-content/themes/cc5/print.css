@@ -1,0 +1,32 @@
+#headerLogo, #headerLogo h1 {
+	width: 4in !important;
+}
+#headerLogo h1 {
+	background: none;
+}
+#headerLogo h1 span {
+	display: inline;
+	font-size: 24pt !important;
+	color: #000 !important;
+}
+
+#sidebar {
+	display: none;
+}
+
+#contentPrimary {
+	width: 100%;
+}
+
+#blocks {
+	width: 80%;
+}
+
+#footer {
+	clear: both;
+}
+
+body, #blocks, #mainContent, #contentPrimary, .icontainer, .sideContentSpace {
+	clear: both;
+	overflow: visible !important;
+}

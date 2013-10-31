@@ -1,0 +1,46 @@
+#mainContent {
+	position: relative;
+	height: 220px;
+}
+#ccBlurb {
+	position: relative;
+	left: -350px;
+	top: -175px;
+}
+#campaign { position: relative !important; }
+.homeGoal {
+	display: block !important; 
+	position: absolute !important;
+	top: 5px !important;
+	right: 95px;
+}
+#campaign .progress {
+	margin-left: auto;
+}
+/*
+#ccBlurb {
+	
+	position: absolute !important;
+	top: 0 !important;
+	left: 0 !important;
+	background-color: #f00;
+}
+
+#triple {
+	width: 1000px;
+	position: relative;
+	top: 230px;
+}
+
+#ccFeatures {
+	position:absolute;
+	top: 300px;
+}
+*/
+.stdColumn {
+	width: 31%;
+}
+
+.box {
+	width: 1000px;
+}
