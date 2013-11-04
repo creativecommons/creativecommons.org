@@ -2,17 +2,17 @@
 	path = WordPress
 	url = https://github.com/WordPress/WordPress.git
 [submodule "wordpress"]
-	path = wordpress
+	path = docroot/wordpress
 	url = https://github.com/WordPress/WordPress.git
 [submodule "legalcode"]
-	path = legalcode
+	path = docroot/legalcode
 	url = https://github.com/creativecommons/legalcode.git
 [submodule "license.rdf"]
-	path = license.rdf
+	path = docroot/license.rdf
 	url = https://github.com/creativecommons/license.rdf.git
 [submodule "includes/i18n"]
-	path = includes/i18n
+	path = docroot/includes/i18n
 	url = https://github.com/creativecommons/svn-i18n
 [submodule "wp-content/themes/creativecommons.org"]
-	path = wp-content/themes/creativecommons.org
+	path = docroot/wp-content/themes/creativecommons.org
 	url = https://github.com/creativecommons/theme-creativecommons.org.git
