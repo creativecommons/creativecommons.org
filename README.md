@@ -27,4 +27,9 @@ checkout, it primarily sets up the python environment. It should "just
 work", but if it doesn't then give it a read. It requires some basic
 Python utilities like <code>virtualenv</code> and <code>pip</code>.
 
+To configure WordPress, there is a sample config file at
+<code>docroot/wp-config-local.php.sample</code>, copy it to
+<code>docroot/wp-config-local.php</code> and fill in the information
+as needed by the WP install.
+
 Happy hacking!

@@ -1,0 +1,30 @@
+<?php
+/**
+ * DB config & secrets. DO NOT place under version control!
+ */
+
+define('DB_NAME', 'database');
+define('DB_USER', 'database');
+define('DB_PASSWORD', 'password');
+define('DB_HOST', 'localhost');
+define('DB_CHARSET', 'utf8');
+define('DB_COLLATE', '');
+
+define('AUTH_KEY',         'replace with random, secret phrases / strings');
+define('SECURE_AUTH_KEY',  'replace with random, secret phrases / strings');
+define('LOGGED_IN_KEY',    'replace with random, secret phrases / strings');
+define('NONCE_KEY',        'replace with random, secret phrases / strings');
+define('AUTH_SALT',        'replace with random, secret phrases / strings');
+define('SECURE_AUTH_SALT', 'replace with random, secret phrases / strings');
+define('LOGGED_IN_SALT',   'replace with random, secret phrases / strings');
+define('NONCE_SALT',       'replace with random, secret phrases / strings');
+
+define('WP_DEBUG', true);
+if (WP_DEBUG) {
+    @ini_set('display_errors', true);
+    @ini_set('error_reporting', E_ALL | E_STRICT);
+    @ini_set('error_log', $_SERVER['DOCUMENT_ROOT'] . '/php_error.log');
+    define('WP_DEBUG_LOG', true);
+    define('WP_DEBUG_DISPLAY', false);
+    define('SCRIPT_DEBUG', true);
+}
