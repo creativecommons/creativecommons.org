@@ -1,6 +1,6 @@
 #!/bin/sh
 
-function usage() {
+function usage {
     echo "Usage: $0 <new-database> <new-user>"
     exit 1
 }

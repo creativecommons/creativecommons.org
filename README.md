@@ -7,12 +7,16 @@ directory. On a fresh Ubuntu 12 server, you should only need to run
 <code>scripts/bootstrap.sh</code>, which calls other scripts to set
 most things up. See below for some details on the other scripts.
 
-You'll still need to manually configure a few things:
+Note that one of the scripts is run with sudo. If you don't have sudo
+enabled for this user, then you'll need to run the scripts manually.
+
+Regardless of how you run the setup scripts, you'll still need to
+manually configure a few things:
 
 1. Edit <code>docroot/wp-config-local.php</code> and fill in values as
    needed by WordPress.
 2. Set up SSL keys in /etc/ssl/*
-3. Edit /etc/apache2/sites-available/<hostname> if needed (e.g. to
+3. Edit /etc/apache2/sites-available/(hostname) if needed (e.g. to
    change SSL key locations)
 4. Load DB data from another WordPress install (see below)
 
