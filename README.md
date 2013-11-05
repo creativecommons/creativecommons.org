@@ -15,10 +15,22 @@ manually configure a few things:
 
 1. Edit <code>docroot/wp-config-local.php</code> and fill in values as
    needed by WordPress.
-2. Set up SSL keys in /etc/ssl/*
-3. Edit /etc/apache2/sites-available/(hostname) if needed (e.g. to
-   change SSL key locations)
-4. Load DB data from another WordPress install (see below)
+2. Set up SSL keys in /etc/ssl/private. If there isn't a key for the
+   hostname being set-up, then the Apache config will not include an
+   SSL virtual host. Simply re-run the setup script if you add a key.
+3. If desired, load DB data from another WordPress install (see below)
+
+### Editing the Apache config
+
+If you need to edit the Apache config, the files are:
+
+* <code>apache.conf</code>: CC Apache config in macro form.
+* <code>/etc/apache2/httpd.conf</code>: Includes the
+  <code>apache.conf</code> file in this checkout.
+* <code>/etc/apache2/sites-available/<hostname></code>: Virtual host
+  definition which uses a macro defined in <code>apache.conf</code> to
+  pull in a lot of rules and settings. This file gets overwritten by
+  the setup script, so if you edit it, do not run it again.
 
 ### Loading DB data
 
