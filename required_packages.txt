@@ -1,0 +1,16 @@
+apache2
+python-virtualenv
+python-pip
+gcc
+python-dev
+libxml2
+libxml2-dev
+libxslt1.1
+libxslt-dev
+php5
+php5-mysql
+python-librdf
+libapache2-mod-fcgid
+libapache2-mod-macro
+mysql-server
+mysql-client

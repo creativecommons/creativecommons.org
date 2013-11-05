@@ -1,18 +1,12 @@
-#!/bin/sh
+#!/bin/bash
+
+TOPDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
 function usage {
-    echo "Usage: $0 <hostname> <db> <dbuser>"
+    echo "Usage: $0 <hostname>
     exit 1
 }
+[ -z "$1" ] && usage;
 
-[ -z "$3" ] && usage;
-
-HOSTNAME=${1}
-DB=${2}
-DBUSER=${3}
-
-TOPDIR="$( cd "$( dirname "${BASH_SOURCE[0]}/.." )" && pwd )"
-
-sudo ${TOPDIR}/scripts/bootstrap_server_ubuntu.sh
-${TOPDIR}/scripts/bootstrap_mysql.sh "${DB}" "${DBUSER}"
+sudo ${TOPDIR}/scripts/bootstrap_server_ubuntu.sh ${1}
 ${TOPDIR}/scripts/bootstrap_checkout.sh

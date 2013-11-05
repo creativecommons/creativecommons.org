@@ -1,14 +1,30 @@
-#!/bin/sh
+#!/bin/bash
+
+TOPDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
 HOSTNAME=${1:-creativecommons.org}
-TOPDIR="$( cd "$( dirname "${BASH_SOURCE[0]}/.." )" && pwd )"
+DBNAME=${2:-wordpress}
+DBUSER=${3:-dbuser}
+DBPASS=${4:-}
 
-apt-get -y install apache2 python-virtualenv python-pip gcc python-dev libxml2 libxml2-dev libxslt1.1 libxslt-dev php5 php5-mysql python-librdf libapache2-mod-fcgid libapache-mod-macro mysql-server mysql-client
+#
+# Install base system dependencies
+#
 
-for i in macro php5 rewrite ssl fcgid
-do
-    a2enmod $i
-done
+apt-get update
+if apt-get -y install `cat ${TOPDIR}/required_packages.txt`
+then
+    echo "Required packages installed, proceeding with setup."
+else
+    echo "Could not install required packages, aborting setup."
+    exit 1
+fi
+
+#
+# Configure Apache:
+#
+
+# 1. Copy config files into place
 
 if grep -q "apache.conf" /etc/apache2/httpd.conf
 then
@@ -33,10 +49,32 @@ cat <<EOF > /etc/apache2/sites-available/${HOSTNAME}
 </VirtualHost>
 EOF
 
+# 2. Create logging directory
+
 mkdir /var/log/apache2/${HOSTNAME}
 chown root.adm /var/log/apache2/${HOSTNAME}
 chmod 750 /var/log/apache2/${HOSTNAME}
 
+# 3. Enable mods and site
+
+for i in macro php5 rewrite ssl fcgid
+do
+    a2enmod $i
+done
+
 a2ensite ${HOSTNAME}
 
+# 4. Restart Apache
+
 service apache2 restart
+
+#
+# Create a MySQL DB for WordPress
+#
+
+echo "Enter the MySQL root password:"
+mysql -u root -p mysql <<EOF
+CREATE DATABASE ${DBNAME};
+CREATE USER '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
+GRANT ALL PRIVILEGES ON *.* TO '${DBUSER}'@'localhost' WITH GRANT OPTION;
+EOF
