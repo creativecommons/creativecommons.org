@@ -12,7 +12,7 @@ DBPASS=${4:-}
 #
 
 apt-get update
-if apt-get -y install `cat ${TOPDIR}/required_packages.txt`
+if apt-get -y install `cat ${TOPDIR}/config/required_packages.txt`
 then
     echo "Required packages installed, proceeding with setup."
 else
@@ -32,7 +32,7 @@ then
     echo "leaving it alone. If that's not the CC apache.conf file, then you'll"
     echo "need to add the Include line manually."
 else
-    echo "Include ${TOPDIR}/apache.conf" >> /etc/apache2/httpd.conf
+    echo "Include ${TOPDIR}/config/apache.conf" >> /etc/apache2/httpd.conf
 fi
 
 cat <<EOF > /etc/apache2/sites-available/${HOSTNAME}
