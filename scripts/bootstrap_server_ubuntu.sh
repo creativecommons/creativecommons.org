@@ -36,7 +36,7 @@ else
 fi
 
 cat <<EOF > /etc/apache2/sites-available/${HOSTNAME}
-<VirtualHost ${HOSTNAME}:8080>
+<VirtualHost ${HOSTNAME}:80>
     Use CCVHost ${HOSTNAME} http ${TOPDIR} /var/log/apache2/${HOSTNAME}
 </VirtualHost>
 EOF
