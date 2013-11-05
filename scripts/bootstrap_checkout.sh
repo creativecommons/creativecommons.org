@@ -26,7 +26,7 @@ cd python_env
 virtualenv .
 source bin/activate
 
-for i in 'setuptools>=0.7' 'zope.interface>=3.8.0' Paste PasteDeploy PasteScript RDF
+for i in 'setuptools>=0.7' 'zope.interface>=3.8.0' Paste PasteDeploy PasteScript RDF cssselect
 do
     pip install $i
 done
