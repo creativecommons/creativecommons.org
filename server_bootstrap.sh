@@ -16,7 +16,7 @@ chmod 755 bin/ccengine.fcgi
 virtualenv .
 source bin/activate
 
-for i in 'setuptools>=0.7' 'zope.interface>=3.8.0' Paste PasteDeploy PasteScript
+for i in 'setuptools>=0.7' 'zope.interface>=3.8.0' Paste PasteDeploy PasteScript RDF
 do
     pip install $i
 done
@@ -32,9 +32,9 @@ do
     cd ..
 done
 
-cd i18n
-    bin/compile_mo
-    bin/transstats
-cd ../.. # python_env
+cd .. # python_env
+
+bin/compile_mo
+bin/transstats
 
 cd ${CUR}
