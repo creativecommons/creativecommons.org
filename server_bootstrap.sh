@@ -21,6 +21,11 @@ do
     pip install $i
 done
 
+# On Ubuntu, virtualenv setups don't "see" dist-packages, which is
+# where Ubuntu-packaged modules go. This works around that problem:
+
+echo "/usr/lib/python2.7/dist-packages/" > lib/python2.7/site-packages/dist-packages.pth
+
 cd src
 
 for i in i18n license.rdf cc.license cc.engine
