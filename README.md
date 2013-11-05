@@ -40,14 +40,11 @@ Note that the <code>scripts/bootstrap.sh</code> script calls these for
 you. But if something goes wrong / you want to know more:
 
 * <code>scripts/bootstrap_server_ubuntu.sh</code>: Will configure an
-  Ubuntu 12 server (install packages and enable apache modules, etc).
-
-* <code>scripts/bootstrap_mysql.sh</code>: Creates a database and user
-  with specified password. Use these values in your
-  <code>wp-config-local.php</code> file (see below).
+  Ubuntu 12 server (install packages, set up apache, set up
+  mysql). Should be run as root.
 
 * <code>scripts/bootstrap_checkout.sh</code>: Sets up this checkout by
   downloading git submodules, creating a virtual Python environment,
-  etc.
+  etc. Should be run as this user (does not touch system files).
 
 Happy hacking!
