@@ -1,16 +1,16 @@
 #!/bin/bash
 
 CUR=`pwd`
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+TOPDIR="$( cd "$( dirname "${BASH_SOURCE[0]}/.." )" && pwd )"
 
-cd ${DIR}
+cd ${TOPDIR}
 
 git submodule init
 git submodule update
 
 cd python_env
 
-sed -e "s|@env_dir@|${DIR}/python_env|" < bin/ccengine.fcgi.in > bin/ccengine.fcgi
+sed -e "s|@env_dir@|${TOPDIR}/python_env|" < bin/ccengine.fcgi.in > bin/ccengine.fcgi
 chmod 755 bin/ccengine.fcgi
 
 virtualenv .
