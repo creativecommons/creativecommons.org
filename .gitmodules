@@ -1,19 +1,16 @@
-[submodule "WordPress"]
-	path = WordPress
-	url = https://github.com/WordPress/WordPress.git
-[submodule "wordpress"]
+[submodule "docroot/wordpress"]
 	path = docroot/wordpress
 	url = https://github.com/WordPress/WordPress.git
-[submodule "legalcode"]
+[submodule "docroot/legalcode"]
 	path = docroot/legalcode
 	url = https://github.com/creativecommons/legalcode.git
-[submodule "license.rdf"]
+[submodule "docroot/license.rdf"]
 	path = docroot/license.rdf
 	url = https://github.com/creativecommons/license.rdf.git
-[submodule "includes/i18n"]
+[submodule "docroot/includes/i18n"]
 	path = docroot/includes/i18n
 	url = https://github.com/creativecommons/svn-i18n
-[submodule "wp-content/themes/creativecommons.org"]
+[submodule "docroot/wp-content/themes/creativecommons.org"]
 	path = docroot/wp-content/themes/creativecommons.org
 	url = https://github.com/creativecommons/theme-creativecommons.org.git
 [submodule "python_env/src/i18n"]
