@@ -1,11 +1,11 @@
 <?php
 /**
- * DB config & secrets. DO NOT place under version control!
+ * DB config & secrets. DO NOT place configured file under version control!
  */
 
-define('DB_NAME', 'database');
-define('DB_USER', 'database');
-define('DB_PASSWORD', 'password');
+define('DB_NAME', '@dbname@');
+define('DB_USER', '@dbuser@');
+define('DB_PASSWORD', '@dbpass@');
 define('DB_HOST', 'localhost');
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
