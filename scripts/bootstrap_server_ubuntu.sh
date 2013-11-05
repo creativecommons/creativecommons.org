@@ -77,8 +77,17 @@ service apache2 restart
 # Create a MySQL DB for WordPress
 #
 
-echo "Enter the MySQL root password:"
-mysql -u root -p mysql <<EOF
+# run mysql to see if the root user has a password set
+if mysql -u root -e ""
+then
+    mysql -u root mysql <<EOF
 CREATE DATABASE IF NOT EXISTS ${DBNAME};
 GRANT ALL ON ${DBNAME} TO '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
 EOF
+else
+    echo "Enter the MySQL root password:"
+    mysql -u root -p mysql <<EOF
+CREATE DATABASE IF NOT EXISTS ${DBNAME};
+GRANT ALL ON ${DBNAME} TO '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
+EOF
+fi
