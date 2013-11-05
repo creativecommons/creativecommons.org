@@ -36,11 +36,15 @@ else
 fi
 
 cat <<EOF > /etc/apache2/sites-available/${HOSTNAME}
-<VirtualHost *:8080>
+<VirtualHost ${HOSTNAME}:8080>
     Use CCVHost ${HOSTNAME} http ${TOPDIR} /var/log/apache2/${HOSTNAME}
 </VirtualHost>
+EOF
 
-<VirtualHost *:443>
+if [ -f /etc/ssl/private/${HOSTNAME}.key ]
+then
+    cat <<EOF >> /etc/apache2/sites-available/${HOSTNAME}
+<VirtualHost ${HOSTNAME}:443>
     Use CCVHost ${HOSTNAME} https ${TOPDIR} /var/log/apache2/${HOSTNAME}
     SSLEngine on
     SSLCertificateFile /etc/ssl/private/${HOSTNAME}.crt
@@ -48,10 +52,11 @@ cat <<EOF > /etc/apache2/sites-available/${HOSTNAME}
     SSLCACertificateFile /etc/ssl/certs/RapidSSL_CA_bundle.pem
 </VirtualHost>
 EOF
+fi
 
 # 2. Create logging directory
 
-mkdir /var/log/apache2/${HOSTNAME}
+mkdir -p /var/log/apache2/${HOSTNAME}
 chown root.adm /var/log/apache2/${HOSTNAME}
 chmod 750 /var/log/apache2/${HOSTNAME}
 
@@ -74,7 +79,6 @@ service apache2 restart
 
 echo "Enter the MySQL root password:"
 mysql -u root -p mysql <<EOF
-CREATE DATABASE ${DBNAME};
-CREATE USER '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
-GRANT ALL PRIVILEGES ON *.* TO '${DBUSER}'@'localhost' WITH GRANT OPTION;
+CREATE DATABASE IF NOT EXISTS ${DBNAME};
+GRANT ALL ON ${DBNAME} TO '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
 EOF
