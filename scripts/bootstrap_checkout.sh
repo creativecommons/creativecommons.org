@@ -3,9 +3,6 @@
 CUR=`pwd`
 TOPDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
-echo ${TOPDIR}
-exit
-
 cd ${TOPDIR}
 
 git submodule init
