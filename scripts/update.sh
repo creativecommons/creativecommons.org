@@ -16,7 +16,7 @@ then
     cd python_env/src/i18n/
 
     git checkout master # make sure we're on a branch, git submodules
-                        # have a bad habit of having a detached HEAD
+    git pull            # have a bad habit of having a detached HEAD
 
     scripts/runcheckouts.sh
     scripts/extract.sh
