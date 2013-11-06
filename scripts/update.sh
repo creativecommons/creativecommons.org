@@ -32,6 +32,7 @@ then
     # Update toplevel repository to point to latest i18n rev
     cd "${TOPDIR}"
     git commit -m "Update i18n submodule with latest strings/translations" python_env/src/i18n
+    git push
 fi
 
 # In case translation files changed:
