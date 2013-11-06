@@ -12,6 +12,7 @@ git submodule update
 if [[ $1 == "update-l10n" ]]
 then
     # Update l10n strings in i18n submodule and sync with Transifex/GitHub
+    source python_env/bin/activate
     cd python_env/src/i18n/
 
     git checkout master # make sure we're on a branch, git submodules
