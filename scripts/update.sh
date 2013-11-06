@@ -9,10 +9,11 @@ cd "${TOPDIR}"
 git pull
 git submodule update
 
+source python_env/bin/activate
+
 if [[ $1 == "update-l10n" ]]
 then
     # Update l10n strings in i18n submodule and sync with Transifex/GitHub
-    source python_env/bin/activate
     cd python_env/src/i18n/
 
     git checkout master # make sure we're on a branch, git submodules
@@ -32,5 +33,9 @@ then
     cd "${TOPDIR}"
     git commit -m "Update i18n submodule with latest strings/translations" python_env/src/i18n
 fi
+
+# In case translation files changed:
+python_env/bin/compile_mo
+python_env/bin/transstats
 
 cd "${CWD}"
