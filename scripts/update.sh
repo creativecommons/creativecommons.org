@@ -23,7 +23,7 @@ then
     scripts/extract.sh
 
     tx push -s
-    tx pull -a --mode=reviewed
+    tx pull -a --mode reviewed
 
     git commit -m "New strings extracted from sources" cc/i18n/po/en/cc_org.po
     git commit -a -m "Latest i18n updates from Transifex"

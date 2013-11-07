@@ -36,7 +36,7 @@ else
 fi
 
 cat <<EOF > /etc/apache2/sites-available/${HOSTNAME}
-<VirtualHost ${HOSTNAME}:80>
+<VirtualHost *:80>
     Use CCVHost ${HOSTNAME} http ${TOPDIR} /var/log/apache2/${HOSTNAME}
 </VirtualHost>
 EOF
@@ -44,7 +44,7 @@ EOF
 if [ -f /etc/ssl/private/${HOSTNAME}.key ]
 then
     cat <<EOF >> /etc/apache2/sites-available/${HOSTNAME}
-<VirtualHost ${HOSTNAME}:443>
+<VirtualHost *:443>
     Use CCVHost ${HOSTNAME} https ${TOPDIR} /var/log/apache2/${HOSTNAME}
     SSLEngine on
     SSLCertificateFile /etc/ssl/private/${HOSTNAME}.crt
