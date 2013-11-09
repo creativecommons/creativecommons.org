@@ -22,11 +22,18 @@ then
     scripts/runcheckouts.sh
     scripts/extract.sh
 
-    tx push -s
-    tx pull -a --mode reviewed
+    # Only commit if something substantial changed (not just the creation timestamp)
+    if [[ `git diff cc/i18n/po/en/cc_org.po|grep '^\+'|wc -l` == '2' ]]
+    then
+        git checkout cc/i18n/po/en/cc_org.po
+    else
+        git commit -m "New strings extracted from sources" cc/i18n/po/en/cc_org.po
+        tx push -s
+    fi
 
-    git commit -m "New strings extracted from sources" cc/i18n/po/en/cc_org.po
+    tx pull -a --mode reviewed
     git commit -a -m "Latest i18n updates from Transifex"
+
     git push
 
     # Update toplevel repository to point to latest i18n rev
