@@ -46,4 +46,7 @@ fi
 python_env/bin/compile_mo
 python_env/bin/transstats
 
+# Eek - how do we figure out if a restart is needed?
+sudo /etc/init.d/apache2 restart
+
 cd "${CWD}"
