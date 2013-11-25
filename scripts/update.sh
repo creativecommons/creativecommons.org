@@ -31,7 +31,7 @@ then
         tx push -s
     fi
 
-    tx pull -a --mode reviewed
+    tx pull -a --mode developer
     git commit -a -m "Latest i18n updates from Transifex"
 
     git push
