@@ -82,12 +82,12 @@ if mysql -u root -e ""
 then
     mysql -u root mysql <<EOF
 CREATE DATABASE IF NOT EXISTS ${DBNAME};
-GRANT ALL ON ${DBNAME} TO '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
+GRANT ALL ON ${DBNAME}.* TO '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
 EOF
 else
     echo "Enter the MySQL root password:"
     mysql -u root -p mysql <<EOF
 CREATE DATABASE IF NOT EXISTS ${DBNAME};
-GRANT ALL ON ${DBNAME} TO '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
+GRANT ALL ON ${DBNAME}.* TO '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
 EOF
 fi
