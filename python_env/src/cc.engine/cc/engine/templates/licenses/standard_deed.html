@@ -90,7 +90,7 @@
           rel="cc:requires"
           resource="http://creativecommons.org/ns#Attribution">
           <p>
-            <strong>Attribution</strong> &mdash; {% trans %}You must give <a href="#" id="appropriate_credit_popup" class="helpLink">appropriate credit</a>, provide a link to the license, and <a href="#" id="indicate_changes_popup" class="helpLink">indicate if changes were made</a>.  You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.{% endtrans %}
+            <strong>{% trans %}Attribution{% endtrans %}</strong> &mdash; {% trans %}You must give <a href="#" id="appropriate_credit_popup" class="helpLink">appropriate credit</a>, provide a link to the license, and <a href="#" id="indicate_changes_popup" class="helpLink">indicate if changes were made</a>.  You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.{% endtrans %}
             <span id="by-more-container"></span>
           </p>
 
@@ -127,7 +127,7 @@
           rel="cc:prohibits"
           resource="http://creativecommons.org/ns#CommercialUse">
           <p>
-            <strong>NonCommercial</strong> &mdash; {% trans %}You may not use the material for <a href="#" id="commercial_purposes_popup" class="helpLink">commercial purposes</a>.{% endtrans %}
+            <strong>{% trans %}NonCommercial{% endtrans %}</strong> &mdash; {% trans %}You may not use the material for <a href="#" id="commercial_purposes_popup" class="helpLink">commercial purposes</a>.{% endtrans %}
             <span id="nc-more-container"></span>
           </p>
       </li>
@@ -135,7 +135,7 @@
       {% if conditions['nd'] %}
       <li class="license nd">
           <p>
-            <strong>NoDerivatives</strong> &mdash; {% trans %}If you <a href="#" id="some_kinds_of_mods_popup" class="helpLink">remix, transform, or build upon</a> the material, you may not distribute the modified material.{% endtrans %}
+            <strong>{% trans %}NoDerivatives{% endtrans %}</strong> &mdash; {% trans %}If you <a href="#" id="some_kinds_of_mods_popup" class="helpLink">remix, transform, or build upon</a> the material, you may not distribute the modified material.{% endtrans %}
             <span id="nd-more-container"></span>
           </p>
       </li>
@@ -145,7 +145,7 @@
           rel="cc:requires"
           resource="http://creativecommons.org/ns#ShareAlike">
           <p>
-            <strong>ShareAlike</strong> &mdash; {% trans %}If you remix, transform, or build upon the material, you must distribute your contributions under the <a href="#" id="same_license_popup" class="helpLink">same license</a> as the original.{% endtrans %}
+            <strong>{% trans %}ShareAlike{% endtrans %}</strong> &mdash; {% trans %}If you remix, transform, or build upon the material, you must distribute your contributions under the <a href="#" id="same_license_popup" class="helpLink">same license</a> as the original.{% endtrans %}
             <span id="sa-more-container"></span>
           </p>
       </li>
@@ -199,7 +199,7 @@
     <div id="help_appropriate_credit_popup" class="help_panel">
       <div class="hd">&nbsp;</div>
       <div class="bd">
-        <p>{% trans %}If supplied, you must provide the name of the creator and attribution parties, a copyright notice, a license notice, a disclaimer notice, and a link to the material.{% endtrans %}</p>
+        <p>{% trans %}If supplied, you must provide the name of the creator and attribution parties, a copyright notice, a license notice, a disclaimer notice, and a link to the material. Prior versions of CC licenses have slightly different attribution requirements.{% endtrans %}</p>
         <p><a href="http://wiki.creativecommons.org/License_Versions#Detailed_attribution_comparison_chart">
           {%- trans %}More info{% endtrans %}</a>.</p>
       </div>
