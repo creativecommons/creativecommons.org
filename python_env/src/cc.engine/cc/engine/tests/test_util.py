@@ -100,25 +100,6 @@ def test_get_locale_text_orientation():
     assert util.get_locale_text_orientation('foo-bar') == u'ltr'
 
 
-def test_get_license_conditions():
-    # TODO: we should test for all license possibilities here in
-    #   several languages..
-
-    expected = [
-        {'char_title': 'Attribution',
-         'char_brief': (
-                "You must attribute the work in the manner specified "
-                "by the author or licensor (but not in any way that suggests "
-                "that they endorse you or your use of the work)."),
-         'icon_name': 'by',
-         'char_code': 'by',
-         'predicate': 'cc:requires',
-         'object': 'http://creativecommons.org/ns#Attribution'}]
-    result = util.get_license_conditions(
-        cc.license.by_code('by'))
-    assert result == expected
-
-
 def test_active_languages():
     {'code': 'en', 'name': u'English'} in util.active_languages()
 
@@ -267,7 +248,8 @@ def test_catch_license_versions_from_request():
         ['http://creativecommons.org/licenses/by/1.0/',
          'http://creativecommons.org/licenses/by/2.0/',
          'http://creativecommons.org/licenses/by/2.5/',
-         'http://creativecommons.org/licenses/by/3.0/'])
+         'http://creativecommons.org/licenses/by/3.0/',
+         'http://creativecommons.org/licenses/by/4.0/'])
 
     # Request with a code and valid jurisdiction
     request = Request.blank('/')
@@ -297,7 +279,8 @@ def test_catch_license_versions_from_request():
         ['http://creativecommons.org/licenses/by/1.0/',
          'http://creativecommons.org/licenses/by/2.0/',
          'http://creativecommons.org/licenses/by/2.5/',
-         'http://creativecommons.org/licenses/by/3.0/'])
+         'http://creativecommons.org/licenses/by/3.0/',
+         'http://creativecommons.org/licenses/by/4.0/'])
 
     # Request with a bogus code
     request = Request.blank('/')

@@ -103,13 +103,9 @@ The Product licensed under Creative Commons License is provided by the person wh
                 </div>
               {% else %}
                 <div class="bd">
-                  {% trans %}<p>
-The Commons Deed is not a license. It is simply a handy reference for understanding the Legal Code (the full license) &mdash; it is a human-readable expression of some of its key terms. Think of it as the user-friendly interface to the Legal Code beneath. This Deed itself has no legal value, and its contents do not appear in the actual license.
-</p>
+                  <p>{% trans %}This deed highlights only some of the key features and terms of the actual license. It is not a license and has no legal value. You should carefully review all of the terms and conditions of the actual license before using the licensed material.{% endtrans %}</p>
 
-<p>
-Creative Commons is not a law firm and does not provide legal services. Distributing of, displaying of, or linking to this Commons Deed does not create an attorney-client relationship.
-</p>{% endtrans %}
+                  <p>{% trans %}Creative Commons is not a law firm and does not provide legal services. Distributing, displaying, or linking to this deed or the license that it summarizes does not create a lawyer-client or any other relationship.{% endtrans %}</p>
                 </div>
               {% endif %}
             </div>
@@ -117,14 +113,14 @@ Creative Commons is not a law firm and does not provide legal services. Distribu
             <div id="deed-disclaimer">
               {% if multi_language %}
                 <div class="summary">
-                  {% trans %}This is a human-readable summary of the Legal Code (the full license) available in the following languages:{% endtrans %}
+                  {% trans %}This is a human-readable summary of (and not a substitute for) the license, which is available in the following languages:{% endtrans %}
                   {% for legalcode_link, legalcode, legalcode_name in legalcodes %}
                     <a href="{{ legalcode_link }}">{{ legalcode_name }}</a>
                   {% endfor %}
                 </div>
               {% else %}
                 <div class="summary">
-                  {% trans %}This is a human-readable summary of the <a href="legalcode" class="fulltext">Legal Code (the full license)</a>.{% endtrans %}
+                  {% trans %}This is a human-readable summary of (and not a substitute for) the <a href="legalcode" class="fulltext">license</a>.{% endtrans %}
                 </div>
               {% endif %}
   
@@ -147,8 +143,9 @@ Creative Commons is not a law firm and does not provide legal services. Distribu
       <p>
         {% if not license.deprecated %}
           {% block use_this_license %}
-            <a id="get_this" href="/choose/results-one?license_code={{ license_code_quoted }}&amp;jurisdiction={{ license.jurisdiction.code }}&amp;version={{ license.version }}&amp;lang={{ target_lang }}"
-               >{% trans %}Use this license for your own work.{% endtrans %}</a>
+            {% trans %}
+        <a href="http://wiki.creativecommons.org/FAQ">Learn more</a> about CC licensing, or <a id="get_this" href="{{ get_this }}">use the license</a> for your own material.
+            {% endtrans %}
           {% endblock %}
         {% endif %}
       </p>

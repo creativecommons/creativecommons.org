@@ -90,7 +90,7 @@ def test_standard_deeds_licenses():
     _deed_tester(
         '/licenses/by-sa/3.0/', 'licenses/standard_deed.html',
         'by-sa', '3.0', None,
-        cc.license.by_code('by-sa'))
+        cc.license.by_code('by-sa', version='3.0'))
 
 
 def test_deed_legalcodes():
@@ -112,7 +112,7 @@ def test_deed_legalcodes():
     # Maybe test for absolute urls later :\
     assert_equal(
         get_legalcode_links('/licenses/by/3.0/'),
-        [('legalcode', 'Legal Code (the full license)')])
+        [('legalcode', 'license')])
 
     # Multilegal, english
     assert_equal(
@@ -169,28 +169,6 @@ def test_rdf_views():
 VIEWS_TEST_DATA = json.load(
     file(pkg_resources.resource_filename(
             'cc.engine.tests', 'view_tests.json')))
-
-
-def test_all_views_simple():
-    """
-    Test all views by checking with the JSON data.
-
-    Possible parameters for view data in the JSON file and what will
-    be tested if present:
-     - path: *required*.  Simple test that the page loads (or
-       redirects) will be done.
-     - string_tests: an array of strings that will be checked for
-       presence in the body of the response.
-    """
-    for view in VIEWS_TEST_DATA:
-        view_result = TESTAPP.get(view['path'])
-
-        if view.has_key('string_tests'):
-            for string_test in view['string_tests']:
-                if not string_test in view_result.unicode_body:
-                    raise StringTestFailed(
-                        'On path "%s" string test failed for: "%s"' % (
-                            view['path'], string_test))
 
 
 def test_license_to_choose_redirect():
@@ -571,7 +549,7 @@ def test_deed_fallbacks():
     assert_equal(TESTAPP.get('/licenses/by/3.0/').location, None)
 
 
-USE_LICENSE_TEXT = 'Use this license for your own work.'
+USE_LICENSE_TEXT = 'use the license'
 
 def test_retired_deeds():
     """
@@ -637,7 +615,7 @@ def test_results_one_gives_correct_licenses():
 
     # default is CC BY 3.0.  Make sure it is!
     _check_license_url_against_parameters(
-        {}, 'http://creativecommons.org/licenses/by/3.0/')
+        {}, 'http://creativecommons.org/licenses/by/4.0/')
 
     ###################
     ### By license code
@@ -645,10 +623,10 @@ def test_results_one_gives_correct_licenses():
 
     _check_license_url_against_parameters(
         {'license_code': 'by'},
-        'http://creativecommons.org/licenses/by/3.0/')
+        'http://creativecommons.org/licenses/by/4.0/')
     _check_license_url_against_parameters(
         {'license_code': 'by-sa'},
-        'http://creativecommons.org/licenses/by-sa/3.0/')
+        'http://creativecommons.org/licenses/by-sa/4.0/')
     _check_license_url_against_parameters(
         {'license_code': 'by-sa',
          'version': '2.0'},
@@ -698,27 +676,27 @@ def test_results_one_gives_correct_licenses():
     _check_license_url_against_parameters(
         {'field_commercial': 'y',
          'field_derivatives': 'y'},
-        'http://creativecommons.org/licenses/by/3.0/')
+        'http://creativecommons.org/licenses/by/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'n',
          'field_derivatives': 'y'},
-        'http://creativecommons.org/licenses/by-nc/3.0/')
+        'http://creativecommons.org/licenses/by-nc/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'y',
          'field_derivatives': 'n'},
-        'http://creativecommons.org/licenses/by-nd/3.0/')
+        'http://creativecommons.org/licenses/by-nd/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'y',
          'field_derivatives': 'sa'},
-        'http://creativecommons.org/licenses/by-sa/3.0/')
+        'http://creativecommons.org/licenses/by-sa/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'n',
          'field_derivatives': 'n'},
-        'http://creativecommons.org/licenses/by-nc-nd/3.0/')
+        'http://creativecommons.org/licenses/by-nc-nd/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'n',
          'field_derivatives': 'sa'},
-        'http://creativecommons.org/licenses/by-nc-sa/3.0/')
+        'http://creativecommons.org/licenses/by-nc-sa/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'n',
          'field_derivatives': 'sa',
@@ -735,15 +713,15 @@ def test_results_one_gives_correct_licenses():
     _check_license_url_against_parameters(
         {'field_commercial': 'yes',
          'field_derivatives': 'yes'},
-        'http://creativecommons.org/licenses/by/3.0/')
+        'http://creativecommons.org/licenses/by/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'n',
          'field_derivatives': 'yes'},
-        'http://creativecommons.org/licenses/by-nc/3.0/')
+        'http://creativecommons.org/licenses/by-nc/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'yes',
          'field_derivatives': 'n'},
-        'http://creativecommons.org/licenses/by-nd/3.0/')
+        'http://creativecommons.org/licenses/by-nd/4.0/')
 
 
 def test_interactive_chooser_gives_correct_licenses():
@@ -770,9 +748,9 @@ def test_interactive_chooser_gives_correct_licenses():
     ### Boring default!
     ###################
 
-    # default is CC BY 3.0.  Make sure it is!
+    # default is CC BY 4.0.  Make sure it is!
     _check_license_url_against_parameters(
-        {}, 'http://creativecommons.org/licenses/by/3.0/')
+        {}, 'http://creativecommons.org/licenses/by/4.0/')
 
     ###################
     ### By license code
@@ -780,10 +758,10 @@ def test_interactive_chooser_gives_correct_licenses():
 
     _check_license_url_against_parameters(
         {'license_code': 'by'},
-        'http://creativecommons.org/licenses/by/3.0/')
+        'http://creativecommons.org/licenses/by/4.0/')
     _check_license_url_against_parameters(
         {'license_code': 'by-sa'},
-        'http://creativecommons.org/licenses/by-sa/3.0/')
+        'http://creativecommons.org/licenses/by-sa/4.0/')
     _check_license_url_against_parameters(
         {'license_code': 'by-sa',
          'version': '2.0'},
@@ -833,27 +811,27 @@ def test_interactive_chooser_gives_correct_licenses():
     _check_license_url_against_parameters(
         {'field_commercial': 'y',
          'field_derivatives': 'y'},
-        'http://creativecommons.org/licenses/by/3.0/')
+        'http://creativecommons.org/licenses/by/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'n',
          'field_derivatives': 'y'},
-        'http://creativecommons.org/licenses/by-nc/3.0/')
+        'http://creativecommons.org/licenses/by-nc/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'y',
          'field_derivatives': 'n'},
-        'http://creativecommons.org/licenses/by-nd/3.0/')
+        'http://creativecommons.org/licenses/by-nd/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'y',
          'field_derivatives': 'sa'},
-        'http://creativecommons.org/licenses/by-sa/3.0/')
+        'http://creativecommons.org/licenses/by-sa/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'n',
          'field_derivatives': 'n'},
-        'http://creativecommons.org/licenses/by-nc-nd/3.0/')
+        'http://creativecommons.org/licenses/by-nc-nd/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'n',
          'field_derivatives': 'sa'},
-        'http://creativecommons.org/licenses/by-nc-sa/3.0/')
+        'http://creativecommons.org/licenses/by-nc-sa/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'n',
          'field_derivatives': 'sa',
@@ -870,15 +848,15 @@ def test_interactive_chooser_gives_correct_licenses():
     _check_license_url_against_parameters(
         {'field_commercial': 'yes',
          'field_derivatives': 'yes'},
-        'http://creativecommons.org/licenses/by/3.0/')
+        'http://creativecommons.org/licenses/by/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'n',
          'field_derivatives': 'yes'},
-        'http://creativecommons.org/licenses/by-nc/3.0/')
+        'http://creativecommons.org/licenses/by-nc/4.0/')
     _check_license_url_against_parameters(
         {'field_commercial': 'yes',
          'field_derivatives': 'n'},
-        'http://creativecommons.org/licenses/by-nd/3.0/')
+        'http://creativecommons.org/licenses/by-nd/4.0/')
 
 
 def test_license_catcher():
@@ -894,14 +872,16 @@ def test_license_catcher():
 
     assert_equal(
         get_license_links(TESTAPP.get('/licenses/by/', status=404)),
-        ['http://creativecommons.org/licenses/by/3.0/',
+        ['http://creativecommons.org/licenses/by/4.0/',
+         'http://creativecommons.org/licenses/by/3.0/',
          'http://creativecommons.org/licenses/by/2.5/',
          'http://creativecommons.org/licenses/by/2.0/',
          'http://creativecommons.org/licenses/by/1.0/'])
 
     assert_equal(
         get_license_links(TESTAPP.get('/licenses/by-sa/', status=404)),
-        ['http://creativecommons.org/licenses/by-sa/3.0/',
+        ['http://creativecommons.org/licenses/by-sa/4.0/',
+         'http://creativecommons.org/licenses/by-sa/3.0/',
          'http://creativecommons.org/licenses/by-sa/2.5/',
          'http://creativecommons.org/licenses/by-sa/2.0/',
          'http://creativecommons.org/licenses/by-sa/1.0/'])
@@ -973,7 +953,7 @@ def test_deed_w3_validation():
                     info = "".join(info).split(",")
                     info.append("".join(text).strip())
                     print " {0} {1}\n   {2}\n".format(*info)
-                import pdb; pdb.set_trace()
+                #import pdb; pdb.set_trace()
     except:
         # clean up tempfiles before raising an error
         shutil.rmtree(temp_dir)

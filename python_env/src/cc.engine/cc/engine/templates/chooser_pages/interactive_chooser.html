@@ -413,6 +413,26 @@ CHOOSER.CALL.refresh_state = function () {
     return state_changed;
 }
 
+function show_jurisdiction_section() {
+    $('#field_jurisdiction').val('ar');
+    $("#field_jurisdiction :first-child").remove();
+    CHOOSER.CALL.ping();
+    $('#show_jurisdictions_section').hide();
+    $('#hide_jurisdictions_section').show();
+    $('.ui_box').animate({'min-height': '28em'}, 500, function() {
+      $('#jurisdiction_section').show();
+    });
+}
+function hide_jurisdiction_section() {
+    $("#field_jurisdiction")
+      .prepend('<option value="">{% trans %}International{% endtrans %}</option>')
+      .val('');
+    CHOOSER.CALL.ping();
+    $('#show_jurisdictions_section').show();
+    $('#hide_jurisdictions_section').hide();
+    $('#jurisdiction_section').hide();
+    $('.ui_box').animate({'min-height': '22em'}, 500);
+}
 
 ////
 </script>
@@ -612,7 +632,6 @@ input[type=radio] {
 }
 
 #popup_body {
-    background-color: white;
     background-color: rgba(255, 255, 255, .8);
     border: 1px solid black;
     border-radius: 8px;
@@ -641,15 +660,14 @@ input[type=radio] {
     text-align: center;
 }
 #popup_close a {
-    color: white;
-    display: inline-block;
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 8px;
+    margin-right: 1em;
+    padding: .5em;
 }
 
-#popup_close a:hover {
-    cursor: pointer;
-}
-
-#instructional_fluff, #copyright_fluff, #publishing_fluff {
+#instructional_fluff, #copyright_fluff, #publishing_fluff,
+#show_jurisdictions_section, #hide_jurisdictions_section {
     text-align: center;
     font-size: 16px;
     max-width: 800px;
@@ -657,18 +675,21 @@ input[type=radio] {
     word-spacing: 1px;
 }
 
-#instructional_fluff {
-    letter-spacing: 0px;
-    margin-bottom: .2em;
-}
-
+#instructional_fluff,
 #copyright_fluff {
-    letter-spacing: 1px;
-    margin-bottom: 1.5em;
+    margin-bottom: .2em;
 }
 
 #copyright_fluff span:first-of-type {
     padding-right: 1.6em;
+}
+
+#show_jurisdictions_section,
+#hide_jurisdictions_section {
+    margin-bottom: .5em;
+}
+#hide_jurisdictions_section {
+    display: none;
 }
 
 #other_stuff {
@@ -713,6 +734,10 @@ input[type=radio] {
 
 #freedoms label {
     float: none;
+}
+
+#jurisdiction_section {
+    display: none;
 }
 
 #field_jurisdiction {
@@ -884,7 +909,7 @@ input[type=radio] {
     display: inline-block;
     background-color: #f5f5f5;
     width: 334px;
-    min-height: 361px;
+    min-height: 22em;
     padding: 32px;
     padding-bottom: 1px;
     margin: 10px 7px;
@@ -1254,6 +1279,14 @@ input[type=radio] {
     {%- trans %}Want public domain instead?{% endtrans -%}
   </a> ]</span>
 </div>
+<div id="show_jurisdictions_section">
+[ <a href="#" onclick="CHOOSER.CALL.popup('change_jurisdictions');">
+{%- trans %}Looking for jurisdiction ports of earlier versions?{% endtrans %}</a> ]
+</div>
+<div id="hide_jurisdictions_section">
+[ <a href="#" onclick="hide_jurisdiction_section();">
+{%- trans %}Use latest license version{% endtrans %}</a> ]
+</div>
 
 <form action="." method="get" id="chooser_form">
 <noscript>
@@ -1273,7 +1306,7 @@ input[type=radio] {
 
     <div class="help_highlight">
       <div class="help_button" onclick="CHOOSER.CALL.popup('modifications');"></div>
-      <h4>{% trans %}Allow modifications of your work?{% endtrans %}</h4>
+      <h4>{% trans %}Allow adaptations of your work to be shared?{% endtrans %}</h4>
       <ul>
         <li>
           <input type="radio"
@@ -1322,7 +1355,7 @@ input[type=radio] {
       </ul>
     </div>
 
-    <div class="help_highlight">
+    <div id="jurisdiction_section" class="help_highlight">
       <div class="help_button" onclick="CHOOSER.CALL.popup('jurisdiction');"></div>
       <h4>{% trans %}License Jurisdiction{% endtrans %}:</h4>
       <select id="field_jurisdiction" name="field_jurisdiction">
@@ -1345,6 +1378,11 @@ input[type=radio] {
       </select>
     </div>
   </div>
+  <script>
+// Select International on load (in case user selects a port and reloads)
+$("#field_jurisdiction").val('');
+CHOOSER.CALL.ping();
+  </script>
 
 
 
@@ -1563,7 +1601,7 @@ input[type=radio] {
 
       <div class="results-preview"><div>
           <p>
-            {% trans %}CC metadata can be embedded into images and other many other file formats!  <a target="_blank" href="http://wiki.creativecommons.org/XMP">See the wiki for more info</a>.
+            {% trans %}CC metadata can be embedded into images and many other file formats!  <a target="_blank" href="http://wiki.creativecommons.org/XMP">See the wiki for more info</a>.
             {% endtrans %}
           </p>
       </div></div>
@@ -1648,17 +1686,48 @@ input[type=radio] {
 <div id="help_lookup" style="display:none">
 
 
+  <div id="help_jurisdiction">
+    <div class="title">{% trans %}About earlier versions{% endtrans %}</div>
+    <div class="msg">
+      <p>{% trans %}The most recent license version is 4.0, which can be used internationally. If you are searching for a port of the license for a particular jurisdiction, however, you may still use them.{% endtrans %}</p>
+      <p>{% trans %}If your jurisdiction is not on this list, or if you want to use the latest version of the licenses instead of a ported license, you can return to the 4.0 license chooser.{% endtrans %}</p>
+    </div>
+    <div class="close_buttons">
+      <a onclick="hide_jurisdiction_section();">
+        {% trans %}use latest{% endtrans %}
+      </a>
+      <a onclick="$('#popup_screen').hide();">
+        {% trans %}use earlier license ports{% endtrans %}
+      </a>
+    </div>
+  </div>
+
+  <div id="help_change_jurisdictions">
+    <div class="title">{% trans %}About earlier versions{% endtrans %}</div>
+    <div class="msg">
+      <p>{% trans %}The most recent license version is 4.0, which can be used internationally. If you are searching for a port of the license for a particular jurisdiction, however, you may still use them.{% endtrans %}</p>
+    </div>
+    <div class="close_buttons">
+      <a onclick="$('#popup_screen').hide();">
+        {% trans %}use latest{% endtrans %}
+      </a>
+      <a onclick="show_jurisdiction_section();">
+        {% trans %}show earlier license ports{% endtrans %}
+      </a>
+    </div>
+  </div>
+
   <!-- license panel help text -->
 
   <div id="help_modifications">
-    <div class="title">{% trans %}Allow modifications of your work?{% endtrans %}</div>
+    <div class="title">{% trans %}Allow adaptations of your work to be shared?{% endtrans %}</div>
     <div class="msg">
       <h4>{% trans %}Yes{% endtrans %}</h4>
-      <p>{% trans %}The licensor permits others to copy, distribute, display and perform the work, as well as make derivative works based on it.{% endtrans %}</p>
+      <p>{% trans %}The licensor permits others to copy, distribute, display, and perform the work, as well as make and distribute derivative works based on it.{% endtrans %}</p>
       <h4>{% trans %}Yes, as long as others share alike{% endtrans %}</h4>
-      <p>{% trans %}The licensor permits others to create and distribute derivative works but only under the same or a <a target="_blank" href="http://creativecommons.org/compatiblelicenses">compatible</a> license.{% endtrans %}</p>
+      <p>{% trans %}The licensor permits others to create and distribute derivative works, but only under the same or a <a target="_blank" href="http://creativecommons.org/compatiblelicenses">compatible</a> license.{% endtrans %}</p>
       <h4>{% trans %}No{% endtrans %}</h4>
-      <p>{% trans %}The licensor permits others to copy, distribute, display and perform only unaltered copies of the work, but not create and distribute derivative works based on it.{% endtrans %}</p>
+      <p>{% trans %}The licensor permits others to copy, distribute, display, and perform the work, but not distribute derivative works based on it.{% endtrans %}</p>
     </div>
   </div>
   <div id="help_commercial">
@@ -1670,13 +1739,6 @@ input[type=radio] {
       <p>{% trans %}The licensor permits others to copy, distribute, display, and perform the work for non-commercial purposes only.{% endtrans %}</p>
     </div>
   </div>
-  <div id="help_jurisdiction">
-    <div class="title">{% trans %}License Jurisdiction:{% endtrans %}</div>
-    <div class="msg">
-      {% trans %}Use the option "International" for the most recent license that is also jurisdiction-neutral and effective globally. If the licenses have been ported to your jurisdiction, you may wish to chose your jurisdiction's ported licenses if they account for some aspect of local law that the international licenses do not address specifically. Note, however, that some of the ported licenses are not of the latest, most up-to-date license version of the CC licenses (currently 3.0). You should consider <a target="_blank" href="http://wiki.creativecommons.org/FAQ#Should_I_choose_an_international_license_or_a_ported_license.3F">which license is better suited to your needs</a>.{% endtrans %}
-    </div>
-  </div>
-
 
   <!-- selected license panel help text -->
   
@@ -1829,6 +1891,5 @@ work in the manner specified by the author or licensor.{% endtrans %}</div>
   <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_jp_hover.png" />
   <img src="/wp-content/themes/creativecommons.org/images/hint_button_hover.png" />
 </div>
-
 
 {% endblock %}
