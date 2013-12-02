@@ -180,8 +180,13 @@ CHOOSER.CALLBACK.main = function () {
 // Shows a nice inline popup
 CHOOSER.CALL.popup = function (help_key) {
     var prefix = "#help_lookup #help_" + help_key + " div.";
+
     $("#popup_title")[0].innerHTML = $(prefix+"title")[0].innerHTML;
     $("#popup_message")[0].innerHTML = $(prefix+"msg")[0].innerHTML;
+    $("#popup_close")[0].innerHTML = $(prefix+"close_buttons").length?
+      $(prefix+"close_buttons")[0].innerHTML :
+      $("#popup_close_default")[0].innerHTML;
+
     $("#popup_screen")[0].style.display="table";
 };
 
@@ -1667,16 +1672,18 @@ CHOOSER.CALL.ping();
 
 
 <div id="popup_screen" onclick="$('#popup_screen').hide();"><div id="popup_alignment">
-    <div id="popup_body">
-      <h2 id="popup_title">popup title</h2>
-      <div id="popup_message">Lorem ipsum dolor sit amet...</div>
-    </div>
-    <div id="popup_close">
-    <a id="popup_close" onclick="$('#popup_screen').hide();">
+  <div id="popup_body">
+    <h2 id="popup_title">popup title</h2>
+    <div id="popup_message">Lorem ipsum dolor sit amet...</div>
+  </div>
+  <div id="popup_close_default" style="display:none">
+    <a onclick="$('#popup_screen').hide();">
       {% trans %}close popup{% endtrans %}
     </a>
-    </div>
-</div></div>
+  </div>
+  <div id="popup_close">
+  </div>
+</div>
 
 
 
