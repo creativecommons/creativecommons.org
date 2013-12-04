@@ -16,10 +16,10 @@
 						<div class="four offset-by-six columns">
 						  <div class="bucket">
 						    <p>
-						      <a rel = "license"
-							 href="http://creativecommons.org/licenses/by/3.0/"
-							 title="Creative Commons Attribution 3.0 License"
-							 ><img src="//i.creativecommons.org/l/by/3.0/88x31.png"
+						      <a rel="license"
+							     href="//creativecommons.org/licenses/by/4.0/"
+							     title="Creative Commons Attribution 4.0 International license"
+							 ><img src="//i.creativecommons.org/l/by/4.0/88x31.png"
 							       alt="License"/></a>
 						    </p>
 						    <div style="display: inline;" xmlns:cc="http://creativecommons.org/ns#"
@@ -27,7 +27,7 @@
 						      <p>
 							<small>
 							  Except where otherwise
-							  <a class="subfoot" href="http://creativecommons.org/policies#license">noted</a>,
+							  <a class="subfoot" href="//creativecommons.org/policies#license">noted</a>,
 							  content on
 							  <span 
 							     href="http://creativecommons.org" 
@@ -35,9 +35,9 @@
 							     rel="cc:attributionURL">this site</span> 
 							  is licensed under a 
 							  <a rel="license" 
-							     href="http://creativecommons.org/licenses/by/3.0/"
+							     href="//creativecommons.org/licenses/by/4.0/"
 							     class="subfoot">
-							    Creative Commons Attribution 3.0 License</a>.
+							    Creative Commons Attribution 4.0 International license</a>.
 							</small>
 						      </p>
 						    </div>
