@@ -64,11 +64,11 @@
 					</p>
 
 					<p class="grid_16">
-						<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
-							<img src="http://i.creativecommons.org/l/by/3.0/80x15.png" alt="Creative Commons License" style="border:none;" height="15" width="80" />
+						<a rel="license" href="//creativecommons.org/licenses/by/4.0/">
+							<img src="//i.creativecommons.org/l/by/4.0/80x15.png" alt="Creative Commons License" style="border:none;" height="15" width="80" />
 						</a>
 						<div style="display: inline" xmlns:cc="http://creativecommons.org/ns#" about="http://creativecommons.org">
-						Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on <span property="cc:attributionName" content="Creative Commons"></span><span property="cc:attributionURL" content="http://creativecommons.org">this site</span> is licensed under a <a rel="license" href="/licenses/by/3.0/" class="subfoot">Creative Commons Attribution 3.0 License</a>
+						Except where otherwise <a class="subfoot" href="/policies#license">noted</a>, content on <span property="cc:attributionName" content="Creative Commons"></span><span property="cc:attributionURL" content="http://creativecommons.org">this site</span> is licensed under a <a rel="license" href="/licenses/by/4.0/" class="subfoot">Creative Commons Attribution 4.0 International license</a>
 						</div>
 					</p>					
 				</div>
