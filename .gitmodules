@@ -10,9 +10,6 @@
 [submodule "docroot/includes/i18n"]
 	path = docroot/includes/i18n
 	url = https://github.com/creativecommons/svn-i18n
-[submodule "docroot/wp-content/themes/creativecommons.org"]
-	path = docroot/wp-content/themes/creativecommons.org
-	url = https://github.com/creativecommons/theme-creativecommons.org.git
 [submodule "python_env/src/i18n"]
 	path = python_env/src/i18n
 	url = https://github.com/creativecommons/i18n
