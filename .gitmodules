@@ -25,7 +25,3 @@
 	path = python_env/src/cc.license
 	url = https://github.com/creativecommons/cc.license
 	branch = master
-[submodule "python_env/src/cc.engine"]
-	path = python_env/src/cc.engine
-	url = https://github.com/creativecommons/cc.engine
-	branch = master
