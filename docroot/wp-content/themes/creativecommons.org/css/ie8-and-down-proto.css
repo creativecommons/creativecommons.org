@@ -1,0 +1,124 @@
+/* Input of custom IE rules for less than IE9 */
+
+header {
+        width: 100%;
+}
+
+#fixfooter,
+footer {
+    /* REMOVED from ie8
+     * 	position: absolute;
+	bottom: 0;
+	*/
+
+    width: 100%;
+	height: 260px;
+	padding-top: 0px;
+	margin-top: 0px;
+	background-color: #98C807;
+	border-top: none;
+	-webkit-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+#fixfooter .container {
+}
+
+#fixfooter {
+    z-index: -1;
+}
+
+#fixfooter .row {
+}
+
+#fixfooter .row a,
+#fixfooter a {
+    color: white;
+}
+
+.topbar {
+    width: 100%;
+}
+
+/* maybe can go into the primary styles, needs testing */
+.topbar #home-link {
+    visibility: hidden;
+}
+
+
+.topbar #home-button:hover {
+    background: url("../img/cc.logo-126x30.png") 10px 4px no-repeat;
+}
+
+/* removed in the ie8 version basically with the above 
+
+.topbar #home-button:hover {
+	background-color: #393839;
+	background-color: rgba(255, 255, 255, 0.05);
+} */
+
+
+.topbar form #glass {
+	cursor: pointer;
+	position: absolute;
+	outline: none;
+	right: 14px;
+	top: 6px;
+	width: 16px;
+	height: 16px;
+	font-size: 0px;
+	margin: 0;
+	border: 0 none;
+	background: url("../img/search-glass.png") no-repeat 0 0; /* Icon by Tiheum, GNU/GPL*/
+	overflow:hidden;
+}
+
+#top-banner {
+    padding: 7px 0;
+}
+
+footer, footer p, footer p small,
+#fixfooter, #fixfooter p, #fixfooter p small {
+	color: #ffffff;
+}
+
+footer a, footer a:hover, footer a:visited, 
+#fixfooter a, #fixfooter a:hover, #fixfooter a:visited {
+	color: #ffffff;
+}
+
+footer a,
+#fixfooter a {
+	font-weight: bold;
+}
+
+footer #colophon,
+#fixfooter #colophon {
+	position: relative;
+	z-index: 500;
+}
+
+#globe {
+    /*
+	position: absolute;
+	overflow: visible;
+	top: 10px;
+	left: 0px;
+	height: 250px;
+	background: url("../img/Peters_projection_blank.png") no-repeat 0 0; 
+	background-color: #98C807;
+    */
+    z-index: -1;
+}
+
+
+#case .studies .slide {
+    display: none;
+}
+
+#case .studies .slide:first-child {
+	height: 380px;
+    display: block;
+}
+

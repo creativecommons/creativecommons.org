@@ -1,0 +1,28 @@
+.container_16 {
+  overflow: hidden;
+}
+
+.search_text {
+  width: 200px !important;
+}
+
+.search_submit {
+  padding: 0;
+}
+
+#footer ul, #footer li {
+  margin: 0 !important;
+  padding: 0 !important;
+  zoom: 1;
+  position: relative;
+}
+
+.carousel-next{
+  position: absolute;
+  right: 0;
+}
+
+/* Other styles */
+.feature_text {
+  background-color: #222;
+}
