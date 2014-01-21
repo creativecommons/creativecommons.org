@@ -4,9 +4,6 @@
 [submodule "docroot/legalcode"]
 	path = docroot/legalcode
 	url = https://github.com/creativecommons/legalcode.git
-[submodule "docroot/license.rdf"]
-	path = docroot/license.rdf
-	url = https://github.com/creativecommons/license.rdf.git
 [submodule "docroot/includes/i18n"]
 	path = docroot/includes/i18n
 	url = https://github.com/creativecommons/svn-i18n
