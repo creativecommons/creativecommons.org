@@ -1,0 +1,73 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}
+  {% trans %}Public Domain Certification{% endtrans %}
+{% endblock title %}
+
+{% block page_header_title %}
+  {% trans %}Identify a Public Domain Work{% endtrans %}
+{% endblock page_header_title %}
+
+{% block body %}
+  <p>
+    <i>
+      {% trans %}Creative Commons has <a href="http://creativecommons.org/retiredlicenses">retired this legal tool</a>. CC recommends using a <a href="http://creativecommons.org/publicdomain">current tool</a> for waiving rights or identifying public domain works.{% endtrans %}
+    </i>
+  </p>
+
+  <p>
+    {% trans %}You have selected the Public Domain Certification.  The Public
+    Domain Certification should only be used to certify a work that is
+    already in the public domain.  Creative Commons does not recommend
+    you use the Public Domain Certification for dedicating a work
+    still protected by copyright to the public domain.  To dedicate a
+    work to the public domain, consider
+    using <a href="/license/zero/">CC0</a>.  Please note that if you
+    use the Public Domain Certification to dedicate a work to the
+    public domain, it may not be valid outside of the United States.{% endtrans %}
+  </p>
+
+  <p>
+    {% trans %}Once you're done filling this out, you will still have the
+    opportunity to confirm your choice before the certification
+    happens.{% endtrans %}
+  </p>
+
+  <h3>
+    {% trans %}About the work you are certifying{% endtrans %}
+  </h3>
+
+  <form id="publicdomain"
+        action="./publicdomain-3">
+    {% if request.GET.get('lang', False) %}
+      <input type="hidden" name="lang"
+             value="{{ request.GET.get('lang','') }}" />
+    {% endif %}
+    <table border="0" cellspacing="3" cellpadding="3">
+      <tbody>
+        <tr>
+          <td align="right">
+            {% trans %}Title of work{% endtrans %}
+          </td>
+          <td><input type="text" name="title" value="" />
+          </td>
+        </tr>
+        <tr>
+          <td align="right">
+            {% trans %}Author{% endtrans %}
+          </td>
+          <td><input type="text" name="copyright_holder" value="" />
+          </td>
+        </tr>
+        <tr>
+          <td align="right">&nbsp;</td>
+          <td>
+            <input type="submit" class="btn"
+                   value="{% trans %}proceed{% endtrans %}" /></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+
+  {% include "includes/engine_languages.html" %}
+{% endblock body %}

@@ -1,0 +1,42 @@
+TODO
+====
+
+* publicdomain RDF
+* CC0 RDF
+
+* cc.license integration
+** add configure.zcml to give zope.View access to classes
+** make list of selectors explicit
+** add ZCML to register selectors as names Utilities
+** add bootstrap entry point to cc.engine (i think)
+*** look up selectors, iterate over licenses, create objects
+** test
+** i18n
+** "static license" class (no RDF lookups)
+
+* i18nextract support (./src)
+* zope.i18n
+* XXX cleanup
+
+* UTF-8 in title (deed.he)
+* @@*-checksum
+
+* hostip.info based default jurisdiction
+* locale-specific sorting of jurisdiction list
+- performance
+
+* complete test coverage
+* i18n deed title, license name
+
+* RDFa in PD dedication
+* use full RDFa in the PD metadata
+* Sampling cleanup
+* Index cleanup
+* down with mixins
+
+* grok v. z3
+
+* duplicate lang=xx parameters cause barfing.
+
+* sampling deeds... attribution?
+* /licenses/by/ shouldn't work

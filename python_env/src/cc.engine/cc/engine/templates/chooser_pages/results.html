@@ -1,0 +1,134 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}Choose a License{% endblock title %}
+
+{% block headers %}
+  <style>
+    #beta h4 {
+      margin-bottom: 0.25em;
+      margin-top: 0.5em;
+      padding-left: 0;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css"
+        href="{{ request.staticdirect('includes/zero.css') }}" />
+{% endblock headers %}
+
+{% block body %}
+  <p>
+    {% trans %}Choose which style of button you'd like on your webpage:{% endtrans %}
+  </p>
+  
+  <div class="licensebox">
+    <div style="margin-top:10px;" align="center">
+      <table dir="{{ get_ltr_rtl }}">
+        <tr>
+          <td style="text-align:center">
+            <a href="{{ license.uri }}">
+              <img id="licensebutton"
+                   alt="Creative Commons License"
+                   src="{{ license.logo }}"
+                   style="margin-right:10px;margin-bottom:4px; border: 0;" />
+            </a>
+            <br/>
+            <input type="radio" name="button"
+                   checked="checked" onclick="swapbutton('{{ license.logo }}')" />
+          </td>
+          {% if not request.wiki %}
+            <td style="text-align:center" valign="bottom">
+              <a href="{{ license.uri }}">
+                <img id="licensebutton_slim"
+                     alt="Creative Commons License"
+                     src="{{ license_slim_logo }}"
+                     style="margin-right:10px;margin-bottom:4px; border: 0;" /></a>
+              <br/>
+              <input type="radio" name="button"
+                     onclick="swapbutton('{{ license_slim_logo }}')"/>
+            </td>
+          {% endif %}
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div>
+    {% trans %}Here's a preview of how your license will appear on your site:{% endtrans %}
+  </div>
+  
+  <div class="preview" id="results-preview">
+    {%- autoescape False -%}
+      {{- license_html -}}
+    {%- endautoescape -%}
+  </div>
+  
+  <div style="margin-top:20px;margin-bottom:30px;">
+    <h4>{% trans %}Have your own website?{% endtrans %}</h4>
+
+    <p>
+      {% trans %}Copy the text below to your Web site to let your visitors know what license applies to your works.{% endtrans %}
+    </p>
+
+    <form action="">
+      <div>
+        <textarea id="codetocopy" name="html" onclick="this.select()" readonly="true" 
+                  style="width:99%;height:150px;resize:vertical" rows="8" cols="20">
+          {{- license_html -}}
+        </textarea>
+      </div>
+    </form>
+
+    <p>
+      <span>
+        {% trans url_vars=request.query_string %}Select the contents of the box above and copy it. Or, have it <a href="/license/work-html-popup?{{ url_vars }}" onclick="window.open('work-html-popup?{{ url_vars }}', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">emailed to yourself.</a>{% endtrans %}
+      </span>
+      <strong>
+        {% trans %}Need more help? <a href="http://wiki.creativecommons.org/Website/Publish">Read our tutorial</a>.{% endtrans %}
+      </strong>
+    </p>
+
+    <div id="chooserDonate">
+      <div>
+        <a href="https://creativecommons.net/donate/"><img src="/images/support/2010/cc-support.png" alt="Donate" title="Donate" border="0"/></a></div>
+        <p>
+          {% trans %}Creative Commons is a non-profit organization.<br /> We need your support to continue providing these tools.<br /> <a href="https://creativecommons.net/donate/">Donate today!</a>{% endtrans %}
+       </p>
+    </div>
+  </div>
+  <!-- <div metal:use-macro="here/license_macros/macros/languages">
+       language box
+       </div>
+  -->
+{% endblock %}
+
+{% block sidebar %}
+  <p>
+    {% trans %}Share your work with an existing community that has enabled Creative Commons licensing.{% endtrans %}
+  </p>
+  
+  <p>
+    {% trans %}Learn where to <a href="http://wiki.creativecommons.org/Publish">publish</a> your <a href="http://wiki.creativecommons.org/Publish/Images">images</a>, <a href="http://wiki.creativecommons.org/Publish/Audio">audio</a>, <a href="http://wiki.creativecommons.org/Publish/Video">video</a>, and <a href="http://wiki.creativecommons.org/Publish/Text">text</a>, including <a href="http://wiki.creativecommons.org/Publish/Text#Blog">blogs</a>.{% endtrans %}
+  </p>
+
+  <h4>{% trans %}Offline Work?{% endtrans %}</h4>
+
+  <ul class="unstyled">
+    <li>
+      <span>
+        {% trans url_vars=request.query_string %}To mark a document not on the web, <a href="non-web-popup?{{ url_vars }}" onclick="window.open('non-web-popup?{{ url_vars }}', 'html_help', 'width=400,height=350,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">add this text</a> to your work.{% endtrans %}
+      </span>
+    </li>
+    <li>
+      {% trans url_vars=request.query_string %}Get <a href="/choose/metadata.xmp?{{ url_vars }}">metadata</a> for documents that <a href="http://wiki.creativecommons.org/XMP">support XMP</a>.{% endtrans %}
+    </li>
+    <li>
+      <a href="http://creativecommons.org/about/downloads/">
+        {% trans %}Get high resolution and vector versions of the license graphics.{% endtrans %}
+      </a>
+    </li>
+    <li>
+      <a href="http://wiki.creativecommons.org/Marking/Creators#Marking_Specific_Media">
+        {% trans %}Learn how to mark video and other formats.{% endtrans %}
+      </a>
+    </li>
+  </ul>
+{% endblock %}

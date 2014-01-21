@@ -1,0 +1,22 @@
+{% extends "macros_templates/popup.html" %}
+
+{% block title %}{% trans %}Attribution{% endtrans %}{% endblock %}
+
+{% block body %}
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}" >
+    <img src="/icon/by/standard.gif" alt="by" hspace="4"
+         align="{{ is_rtl_align }}" />
+  </p>
+
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
+    <strong>{% trans %}Attribution{% endtrans %}</strong></p>
+
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
+    {% trans %}You must attribute the
+work in the manner specified by the author or licensor.{% endtrans %}
+  </p>
+
+  <div style="text-align:center">
+    <a href="javascript:window.close();">{% trans %}Close window{% endtrans %}</a>
+  </div>
+{% endblock %}

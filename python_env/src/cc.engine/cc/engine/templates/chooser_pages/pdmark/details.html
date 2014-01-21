@@ -1,0 +1,133 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}Public Domain Mark{% endblock title %}
+
+{% block headers %}
+  <link rel="stylesheet" type="text/css"
+        href="{{ request.staticdirect('includes/zero.css') }}" />
+{% endblock %}
+
+{% block sidebar %}{% endblock %}
+
+{% block page_header_title %}Public Domain Mark{% endblock %}
+
+{% block body %}
+    <div id="waiver_ui" class="yui-module">
+      <div class="bd">
+        <p><div>
+          {% trans %}These fields are optional, but will be embedded in the HTML generated for the work you are marking. This allows users of the work to locate the work online and find out where to go for more information.{% endtrans %}
+          <a href="" id="embedded_metadata" class="helpLink">
+            <img src="{{ request.staticdirect('/images/information.png') }}"
+                 alt="{% trans %}Information{% endtrans %}"/></a>
+          <div class="help-popover">
+            <div class="popover below">
+              <div class="arrow"></div>
+              <div class="inner">
+                <h3 class="title">Embedded Metadata</h3>
+                <a href="#" class="close">&times;</a>
+                <div class="content">
+                  <p>The information is embedded in a software readable format. This allows search engines to index additional information about the marked work.</p>
+                  <p><a href="http://wiki.creativecommons.org/Metadata">More information</a> on Creative Commons metadata is available if you want to find out more.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </p>
+
+        <div id="help_embedded_metadata" class="help_panel">
+          <div class="hd">{% trans %}Embedded Metadata{% endtrans %}</div>
+          <div class="bd">
+            {% trans %}<p> The information is embedded in a software readable format. This allows search engines to index additional information about the marked work. </p> <p> <a href="http://wiki.creativecommons.org/Metadata">More information</a> on Creative Commons metadata is available if you want to find out more. </p>{% endtrans %}
+          </div>
+        </div>
+
+        <form id="form-details" action="./results">
+          <div class="form-section">
+            <h3>{% trans %}Work Information{% endtrans %}</h3>
+
+            <div class="form-row">
+              <div class="form-question">{% trans %}Work name{% endtrans %}</div>
+              <div class="form-answer">
+                <input name="work_title" class="form-field"/>
+                <br />
+                <div class="form-field-description">
+                  {% trans %}This is usually the title of the work given by the author, or if none the name associated with the work by the person identifying the work.{% endtrans %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="clear:both;"></div>
+
+          <div class="form-section">
+            <h3>{% trans %}Author{% endtrans %}</h3>
+
+            <div class="form-row">
+              <div class="form-question">{% trans %}Author name{% endtrans %}</div>
+              <div class="form-answer">
+                <input name="author_title" class="form-field"/>
+                <br />
+                <div class="form-field-description">
+                  {% trans %}You may list multiple authors. If unknown, you may wish to state 'unknown'.{% endtrans %}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-question">{% trans %}Author URL{% endtrans %}</div>
+              <div class="form-answer">
+                <input name="author_href" class="form-field"/>
+                <br />
+                <div class="form-field-description">
+                  {% trans %}This may be the URL where the author published the work online, or the URL where the work is published by the person identifying the work.{% endtrans %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="clear:both;"></div>
+
+          <div class="form-section">
+            <h3>{% trans %}Identifying Individual or Organization{% endtrans %}</h3>
+
+            <div class="form-row">
+              <div class="form-question">{% trans %}Name{% endtrans %}</div>
+              <div class="form-answer">
+                <input name="curator_title" class="form-field"/>
+                <br />
+                <div class="form-field-description">
+                  {% trans %}Identify yourself here.{% endtrans %}
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-question">{% trans %}URL{% endtrans %}</div>
+              <div class="form-answer">
+                <input name="curator_href" class="form-field"/>
+                <div class="form-field-description">
+                  {% trans %}This may be your main website or the information page about you on a hosting website, such as Flickr Commons.{% endtrans %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="clear:both;"></div>
+
+          <div>
+            <input type="hidden" name="lang" value="{{ target_lang }}" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-question">&nbsp;</div>
+            <div class="form-answer">
+              <input type="submit" id="submit" class="btn"
+                     name="field1" value="{% trans %}continue{% endtrans %}" />
+            </div>
+          </div>
+
+        </form>
+
+        <br clear="both"/>&nbsp;
+      </div>
+    </div>
+
+{% endblock %}

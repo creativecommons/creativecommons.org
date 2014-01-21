@@ -1,0 +1,105 @@
+{% extends "macros_templates/partner.html" %}
+
+{% block title %}Choose a License{% endblock title %}
+
+{% block body %}
+  <p>
+    {% trans %}Creative Commons licenses help you share your work while keeping
+your copyright.  Other people can copy and distribute your work provided they
+<a href="http://creativecommons.org/characteristic/by?lang=en" onclick="window.open('http://creativecommons.org/characteristic/by?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">give
+you credit</a> -- and only on the conditions you specify here.
+This page helps you choose those conditions.
+{% endtrans %}
+  </p>
+
+  <p>
+    {% trans cc0_url="/choose/zero/partner?%s" % pd_get_params,
+             pd_url="/choose/mark/partner?%s" % pd_get_params %}If you want to share a work you created with no conditions, choose <a href="{{ cc0_url }}">CC0</a>. If you're sharing a work that isn't covered by copyright or on which the copyright has expired, choose the <a href="{{ pd_url }}">Public Domain Mark</a>.{% endtrans %}
+  </p>
+
+  <form method="get" action="results-one">
+    <input type="hidden" name="lang" value="{{ target_lang }}" />
+    <input type="hidden" name="referrer" value="{{ referrer }}" />
+    <input type="hidden" name="partner" value="{{ request.GET['partner'] }}" />
+    <input type="hidden" name="exit_url" value="{{ request.GET['exit_url'] }}" />
+    <input type="hidden" name="stylesheet"
+           value="{{ request.GET['stylesheet'] }}"  />
+    <input type="hidden" name="partner_icon_url" value="{{ request.GET['partner_icon_url'] }}" />
+
+    <p>
+      <b>
+        {% trans lang=target_lang %}<strong>Allow commercial uses of your work?</strong> (<a href="/characteristic/nc?lang={{ lang }}" onclick="window.open('/characteristic/nc?lang={{ lang }}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">more info</a> <a href="/characteristic/nc?lang={{ lang }}" onclick="window.open('/characteristic/nc?lang={{ lang }}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="/images/popup.gif" width="15" height="13" alt="more information" border="0" /></a>){% endtrans %}
+      </b>
+      <br />
+
+      <input type="radio" checked name="field_commercial"
+             value="y" /> {% trans %}Yes{% endtrans %} <br />
+      <input type="radio" name="field_commercial"
+             value="n" /> {% trans %}No{% endtrans %} <br />
+    </p>
+
+    <p>
+      <b>
+        {% trans lang=target_lang %}<strong>Allow modifications of your work?</strong> (<a href="/characteristic/nd?lang={{ lang }}" onclick="window.open('/characteristic/nd?lang={{ lang }}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">more info</a> <a href="/characteristic/nd?lang={{ lang }}" onclick="window.open('/characteristic/nd?lang={{ lang }}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="/images/popup.gif" width="15" height="13" alt="more information" border="0" /></a>){% endtrans %}
+      </b>
+      <br />
+
+      <input type="radio" checked name="field_derivatives" value="y" />
+      {% trans %}Yes{% endtrans %}
+      <br />
+        
+      <input type="radio" name="field_derivatives" value="sa" /> 
+      {% trans lang=target_lang %}Yes, as long as others share alike (<a href="/characteristic/sa?lang={{ lang }}" onclick="window.open('/characteristic/sa?lang={{ lang }}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">more info</a> <a href="/characteristic/sa?lang={{ lang }}" onclick="window.open('/characteristic/sa?lang={{ lang }}', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"><img src="/images/popup.gif" width="15" height="13" alt="more information" border="0" /></a>){% endtrans %}
+      <br />
+
+      <input type="radio" name="field_derivatives" value="n" />
+      {% trans %}No{% endtrans %}
+      <br />
+
+      {% if not show_jurisdiction and requested_jurisdiction %}
+        {# Is this span needed? #}
+        <span>
+          <input type="hidden" name="field_jurisdiction"
+                 value="{{ requested_jurisdiction }}" />
+        </span>
+      {% endif %}
+    </p>
+
+    {% if show_jurisdiction %}
+      <p>
+        {% trans %}Jurisdiction of your license{% endtrans %}
+        (<a href="http://creativecommons.org/choose/jurisdiction-popup?lang=en"
+            onclick="window.open('http://creativecommons.org/choose/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;"
+            >more info</a>
+        <a href="http://creativecommons.org/choose/jurisdiction-popup?lang=en"
+           onclick="window.open('http://creativecommons.org/choose/jurisdiction-popup?lang=en', 'characteristic_help', 'width=375,height=300,scrollbars=yes,resizable=yes,toolbar=no,directories=no,location=yes,menubar=no,status=yes');return false;">
+          <img src="http://creativecommons.org/images/popup.gif"
+               width="15" height="13" alt="more info" border="0" />
+        </a>)
+        <br />
+  
+        <select name="field_jurisdiction">
+          <option value="" selected="selected">{% trans %}International{% endtrans %}</option>
+  
+          {% for juris_code, juris_name in jurisdictions_names %}
+            <option value="{{ juris_code }}">
+              {{ juris_name }}
+            </option>
+          {% endfor %}
+        </select>
+     </p>
+    {% endif %}
+
+    <p>
+      <input type="submit"
+             value="{% trans %}Select a License{% endtrans %}" />
+    </p>
+  </form>
+
+  {% trans %}<p>
+<em>Note:</em> To license a work, you must be its copyright holder or have express authorization from its copyright holder to do so.</p>
+
+<p>
+Creative Commons does not provide legal advice or services. We provide form legal documents; the rest is up to you.
+</p>{% endtrans %}
+{% endblock %}
