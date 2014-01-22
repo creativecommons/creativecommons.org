@@ -21,8 +21,8 @@
 
 ?>
 
-<div id="top-banner">
-	<a style="display: block; height: 100%; width: 100%;" href="https://creativecommons.net/donate?utm_campaign=2012fund&amp;utm_source=<?php echo $analytics_source; ?>&utm_medium=site_header">
-	<img src="https://staging.creativecommons.net/sites/default/themes/cc/images/donate_page/banner.png" alt="Donate banner" />
+<div id="top-banner" style="background-color: transparent; ">
+	<a style="display: block; height: 100%; width: 100%;" href="https://donate.creativecommons.org/?utm_campaign=2013fund&amp;utm_source=<?php echo $analytics_source; ?>&utm_medium=site_header">
+	<img src="/wp-content/uploads/2014/01/banner-matchinggifts.png" alt="Donate banner" />
 	</a>
 </div>
