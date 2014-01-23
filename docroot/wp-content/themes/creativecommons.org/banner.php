@@ -22,7 +22,7 @@
 ?>
 
 <div id="top-banner" style="background-color: transparent; ">
-	<a style="display: block; height: 100%; width: 100%;" href="https://donate.creativecommons.org/?utm_campaign=2013fund&amp;utm_source=<?php echo $analytics_source; ?>&utm_medium=site_header">
-	<img src="/wp-content/uploads/2014/01/banner-matchinggifts.png" alt="Donate banner" />
+	<a style="display: block; " href="https://donate.creativecommons.org/?utm_campaign=2013fund&amp;utm_source=<?php echo $analytics_source; ?>&utm_medium=site_header">
+	<img src="/wp-content/uploads/2014/01/banner-matchinggifts.png" style="max-height: 100%; max-width: 100%; " alt="Donate banner" />
 	</a>
 </div>
