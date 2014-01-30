@@ -27,7 +27,8 @@ var CHOOSER = {
             ],
             'text' : [
                 'field_worktitle',
-                'field_attribute_to_name'
+                'field_attribute_to_name',
+                'version'
             ],
             'url' : [
                 'field_attribute_to_url',
@@ -327,6 +328,8 @@ CHOOSER.CALL.delayed_ping = function () {
 CHOOSER.CALL.refresh_state = function () {
     "use strict";
 
+    refresh_version_field();
+
     var attrib = function (attr, value) { return "["+attr+"="+value+"]"; };
     var state = {}, query, node, name, type, i, k, key, found, fail, query_string, query_part;
     var field_by_type = [];
@@ -418,25 +421,41 @@ CHOOSER.CALL.refresh_state = function () {
     return state_changed;
 }
 
+var showing_jurisdictions = false;
+
+function refresh_version_field() {
+    // Set version to 3.0 only when the jurisdiction selector is visible
+    // and is set to 'Unported'
+    if (showing_jurisdictions && "" == $("#field_jurisdiction").val())
+        $("#version").val("3.0");
+    else
+        $("#version").val("");
+}
+
+// can't get chooser state machine to play nice, so here's a horrible
+// hack to keep the version updated
+//setInterval(refresh_version_field, 200);
+
 function show_jurisdiction_section() {
-    $('#field_jurisdiction').val('ar');
-    $("#field_jurisdiction :first-child").remove();
-    CHOOSER.CALL.ping();
-    $('#show_jurisdictions_section').hide();
-    $('#hide_jurisdictions_section').show();
-    $('.ui_box').animate({'min-height': '28em'}, 500, function() {
-      $('#jurisdiction_section').show();
+    showing_jurisdictions = true;
+    $("#field_jurisdiction").val("");
+    $("#show_jurisdictions_section").hide();
+    $("#hide_jurisdictions_section").show();
+    $(".ui_box").animate({"min-height": "28em"}, 500, function() {
+      $("#jurisdiction_section").show();
     });
+    refresh_version_field();
+    CHOOSER.CALL.ping();
 }
 function hide_jurisdiction_section() {
-    $("#field_jurisdiction")
-      .prepend('<option value="">{% trans %}International{% endtrans %}</option>')
-      .val('');
+    showing_jurisdictions = false;
+    $("#field_jurisdiction").val("");
+    $("#show_jurisdictions_section").show();
+    $("#hide_jurisdictions_section").hide();
+    $("#jurisdiction_section").hide();
+    $(".ui_box").animate({"min-height": "22em"}, 500);
+    refresh_version_field();
     CHOOSER.CALL.ping();
-    $('#show_jurisdictions_section').show();
-    $('#hide_jurisdictions_section').hide();
-    $('#jurisdiction_section').hide();
-    $('.ui_box').animate({'min-height': '22em'}, 500);
 }
 
 ////
@@ -1286,7 +1305,7 @@ input[type=radio] {
 </div>
 <div id="show_jurisdictions_section">
 [ <a href="#" onclick="CHOOSER.CALL.popup('change_jurisdictions');">
-{%- trans %}Looking for ports of earlier versions?{% endtrans %}</a> ]
+{%- trans %}Looking for earlier license versions, including ports?{% endtrans %}</a> ]
 </div>
 <div id="hide_jurisdictions_section">
 [ <a href="#" onclick="hide_jurisdiction_section();">
@@ -1294,6 +1313,9 @@ input[type=radio] {
 </div>
 
 <form action="." method="get" id="chooser_form">
+
+<input type="text" id="version" name="version" style="display:none" />
+
 <noscript>
   <div class="update_bar">
     {% trans %}Javascript is disabled.{% endtrans %}
@@ -1712,14 +1734,14 @@ CHOOSER.CALL.ping();
   <div id="help_change_jurisdictions">
     <div class="title">{% trans %}About earlier versions{% endtrans %}</div>
     <div class="msg">
-      <p>{% trans %}The most recent license version is 4.0, which can be used internationally. If you are searching for a port of the license for a particular jurisdiction, however, you may still use them.{% endtrans %}</p>
+      <p>{% trans %}The most recent license version is 4.0, which can be used internationally. Earlier versions of licenses, including 3.0 international and ports localized to particular jurisdictions, can be still be used by clicking the "show earlier licenses" link below.{% endtrans %}</p>
     </div>
     <div class="close_buttons">
       <a onclick="$('#popup_screen').hide();">
         {% trans %}use latest{% endtrans %}
       </a>
       <a onclick="show_jurisdiction_section();">
-        {% trans %}show earlier license ports{% endtrans %}
+        {% trans %}show earlier licenses{% endtrans %}
       </a>
     </div>
   </div>
@@ -1898,5 +1920,4 @@ work in the manner specified by the author or licensor.{% endtrans %}</div>
   <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_jp_hover.png" />
   <img src="/wp-content/themes/creativecommons.org/images/hint_button_hover.png" />
 </div>
-
 {% endblock %}

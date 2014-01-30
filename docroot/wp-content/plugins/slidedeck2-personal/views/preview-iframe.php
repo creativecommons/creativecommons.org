@@ -43,7 +43,10 @@ along with SlideDeck.  If not, see <http://www.gnu.org/licenses/>.
             var slideDeck2Distribution = '<?php echo strtolower( SLIDEDECK2_LICENSE ); ?>';
             var slideDeck2CurrentSlide = null;
         </script>
-        
+
+	<!-- XXX hardcode loading of jQuery, something broke in the WP  3.5.1 -> 3.8.1 upgrade -->
+        <script type="text/javascript" src="/wordpress/wp-includes/js/jquery/jquery.js"></script>
+
         <?php
             foreach( $scripts as $script ) {
                 $src = $wp_scripts->registered[$script]->src;
