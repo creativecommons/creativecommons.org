@@ -126,5 +126,4 @@
 				</div>
 			</div>
 		</div>
-		<?php include 'banner.php'; ?>
 		</header>
