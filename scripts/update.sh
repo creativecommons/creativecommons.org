@@ -1,8 +1,9 @@
 #!/bin/bash
 
 CWD=`pwd`
-NAME=$( dirname "${BASH_SOURCE[0]}")
-TOPDIR="$(cd "${NAME}/.." && pwd)"
+TOPDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+NAME=`basename "${TOPDIR}"`
+CONFIGFILE="${HOME}/server-config/${NAME}"
 cd "${TOPDIR}"
 
 # This pretty hacky - should have update script be part of
@@ -17,9 +18,11 @@ cd "${TOPDIR}"
 # branch (the default)
 
 BRANCH=master
-if [[ -d "~/server-config" && -f "~/server-config/${NAME}" ]]; then
-    BRANCH=`grep ^branch "~/server-config/${NAME}" | sed -e 's/^branch\s*=\s*//'`
+if [[ -f "${CONFIGFILE}" ]]; then
+    BRANCH=`grep ^branch "${CONFIGFILE}" | sed -e 's/^branch\s*=\s*//'`
 fi
+
+echo "Selected branch: ${BRANCH}"
 
 # Get requested branch from origin if this is the first time
 
