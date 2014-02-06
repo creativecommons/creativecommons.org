@@ -36,6 +36,17 @@ git checkout ${BRANCH}
 git pull
 git submodule update
 
+# Another ugly hack - some WP plugins can't handle how we have it
+# set-up (with wp-content outside of wordpress folder), so make sure
+# those are symlinked in there
+
+cd docroot/wordpress/wp-content/plugins
+[[ -L collapsing-archives ]] || ln -s ../../../wp-content/plugins/collapsing-archives .
+[[ -L wp-recaptcha ]] || ln -s ../../../wp-content/plugins/wp-recaptcha .
+cd -
+
+# Ugly hacks over - activate python env and carry on...
+
 source python_env/bin/activate
 
 if [[ $1 == "update-l10n" ]]
