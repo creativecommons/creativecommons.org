@@ -39,6 +39,25 @@ git checkout ${BRANCH}
 git pull
 git submodule update
 
+# legalcode repo is special, always keep it at the latest rev so that
+# legal team doesn't need to manually update the toplevel repo (since
+# that requires command-line use)
+#
+# Note that we use the same branch as the toplevel if available
+
+cd docroot/legalcode
+if [[ ! -z `git branch -r | grep ${BRANCH}` ]]; then
+    if [[ -z `git branch | grep ${BRANCH}` ]]; then
+	git checkout -b ${BRANCH} origin/${BRANCH}
+    fi
+    git checkout ${BRANCH}
+fi
+git pull
+cd ../..
+
+# Commit any update (if there was one)
+git commit -m "Update legalcode submodule to latest version" docroot/legalcode
+
 # Another ugly hack - some WP plugins can't handle how we have it
 # set-up (with wp-content outside of wordpress folder), so make sure
 # those are symlinked in there
