@@ -51,10 +51,10 @@ if [[ ! -z `git branch -r | grep ${BRANCH}` ]]; then
 	echo "Checking out legalcode branch ${BRANCH} from remote"
 	git checkout -b ${BRANCH} origin/${BRANCH}
     fi
-else
-    echo "Making sure legalcode is set to branch ${BRANCH}"
-    git checkout ${BRANCH}
 fi
+
+echo "Making sure legalcode is set to branch ${BRANCH}"
+git checkout ${BRANCH}
 
 echo "Updating legalcode"
 git pull
