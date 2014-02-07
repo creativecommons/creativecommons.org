@@ -48,14 +48,20 @@ git submodule update
 cd docroot/legalcode
 if [[ ! -z `git branch -r | grep ${BRANCH}` ]]; then
     if [[ -z `git branch | grep ${BRANCH}` ]]; then
+	echo "Checking out legalcode branch ${BRANCH} from remote"
 	git checkout -b ${BRANCH} origin/${BRANCH}
     fi
+else
+    echo "Making sure legalcode is set to branch ${BRANCH}"
     git checkout ${BRANCH}
 fi
+
+echo "Updating legalcode"
 git pull
+
 cd ../..
 
-# Commit any update (if there was one)
+# Commit any update to legalcode submodule rev
 git commit -m "Update legalcode submodule to latest version" docroot/legalcode
 
 # Another ugly hack - some WP plugins can't handle how we have it
