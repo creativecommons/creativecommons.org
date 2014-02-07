@@ -50,9 +50,14 @@ cd -
 
 # Ugly hacks over - activate python env and carry on...
 
+# if quick arg was suplied, exit now
+if [[ $1 == "quick" || $2 == "quick" ]]; then
+    exit
+fi
+
 source python_env/bin/activate
 
-if [[ $1 == "update-l10n" ]]
+if [[ $1 == "update-l10n" || $2 == "update-l10n" ]]
 then
     # Update l10n strings in i18n submodule and sync with Transifex/GitHub
     cd python_env/src/i18n/
