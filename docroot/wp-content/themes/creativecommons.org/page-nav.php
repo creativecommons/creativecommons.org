@@ -48,15 +48,14 @@
 		    <li><a href="http://search.creativecommons.org">Find licensed content</a></li>
 						    <li class="divider"></li>
 		    <li><span>Licensors</span></li>
-		    <li><a href="http://wiki.creativecommons.org/Before_Licensing">Things to know before licensing</a></li>
+		    <li><a href="http://wiki.creativecommons.org/Considerations_for_licensors_and_licensees#Considerations_for_licensors">Things to know before licensing</a></li>
 		    <li><a href="http://wiki.creativecommons.org/FAQ#Do_I_need_to_sign_something_or_register_to_obtain_a_Creative_Commons_license.3F">Do I need to register my work?</a></li>
-		    <li><a href="http://wiki.creativecommons.org/Marking">Marking my work</a></li>
+		    <li><a href="http://wiki.creativecommons.org/Marking_your_work_with_a_CC_license">Marking my work</a></li>
 		    <li><a href="/examples">License examples</a></li>
 						    <li class="divider"></li>
 		    <li><span>Licensees</span></li>
-			<li><a href="http://wiki.creativecommons.org/FAQ#How_do_I_properly_attribute_a_Creative_Commons_licensed_work.3F">Attributing a work properly</a></li>
-		    <li><a href="http://wiki.creativecommons.org/Marking/Users">Marking a CC-licensed work</a></li>
-			<li><a href="http://wiki.creativecommons.org/FAQ#Will_Creative_Commons_give_me_permission_to_use_a_work.3F">Getting permission</a></li>
+		    <li><a href="http://wiki.creativecommons.org/Best_practices_for_attribution">Best practices for attribution</a></li>
+			<li><a href="http://wiki.creativecommons.org/FAQ#Who_gives_permission_to_use_material_offered_under_Creative_Commons_licenses.3F">Getting permission</a></li>
 						    <li class="divider"></li>
 						    <li><span>Developers</span></li>
 						    <li><a href="http://wiki.creativecommons.org/Integrate">App Integration</a></li>
