@@ -166,7 +166,7 @@ def _issue_license(request_form):
         jurisdiction = None
 
     version = request_form.get('version', None)
-    if version:
+    if version == 'version':
         version = '3.0' # hack: comes through as 'version' so hardcode
                         # to 3.0 which is all we need it for at the
                         # moment
