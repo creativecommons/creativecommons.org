@@ -3,9 +3,9 @@
 ## Set-up
 
 There are some handy setup scripts in the <code>scripts</code>
-directory. On a fresh Ubuntu 12 server, you should only need to run
-<code>scripts/bootstrap.sh</code>, which calls other scripts to set
-most things up. See below for some details on the other scripts.
+directory. On a fresh Ubuntu 12.04 LTS server, you should only need to
+run <code>scripts/bootstrap.sh</code>, which calls other scripts to
+set most things up. See below for some details on the other scripts.
 
 Note that one of the scripts is run with sudo. If you don't have sudo
 enabled for this user, then you'll need to run the scripts manually.
@@ -60,3 +60,9 @@ you. But if something goes wrong / you want to know more:
   etc. Should be run as this user (does not touch system files).
 
 Happy hacking!
+
+## Support
+
+Problems? Write to us at hackers@creativecommons.org or send us a pull request...
+
+Updated: April 2014.
