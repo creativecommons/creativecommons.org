@@ -10,5 +10,5 @@ docroot/wp-content/backup/*
 docroot/wp-content/cache/*
 docroot/wp-content/upgrade/*
 docroot/wp-content/uploads/*
-docroot/sitemap.*
+#docroot/sitemap.*
 docroot/wp-config-local.php
