@@ -11,7 +11,7 @@
 
 		<div>
 					<div id="cse" style="padding-bottom: 25px; width: 100%;"><h3><img src="/wp-content/themes/cc5/images/loading.gif" alt="Loading" style="margin-bottom:-6px;" /> Loading search...</h3></div>
-					<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+					<script src="https://www.google.com/jsapi" type="text/javascript"></script>
 					<script type="text/javascript">
 						google.load('search', '1', {language : 'en'});
 						google.setOnLoadCallback(function() {
