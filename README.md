@@ -1,4 +1,11 @@
-# CC WordPress 2013
+# CC WordPress 2014
+
+## Changes
+
+* WordPress is now handled by composer. composer.json contains the
+  exact version of WP we're using.
+
+See http://getcomposer.org/ for installation details. 
 
 ## Set-up
 
