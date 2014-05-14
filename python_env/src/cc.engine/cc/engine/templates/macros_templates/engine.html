@@ -20,6 +20,25 @@
   <script type="text/javascript"
           src="{{ request.staticdirect('includes/license-results.js') }}" >
   </script>
+
+
+<style>
+ @media screen and (max-width: 770px) {
+   #email-signup-2014 form * { text-align: center;}
+   #email-signup-2014 label { font-size: 14px !important; width: auto; height: auto !important;}
+   #email-signup-2014 input { width: 100%; padding-top: 5px;}
+ }
+
+ @media screen and (min-width: 771px) {
+   #email-signup-2014 {height: 58px;}
+   #email-signup-2014 label { font-size: 18px; margin: 0px 0px 0.75em; color: #000; width: auto; padding-right: 20px; text-align: left; font-weight: normal !important;}
+ }
+
+ @media screen and (min-width: 940px) {
+   #email-signup-2014 label { font-size: 28px; margin: 0px 0px 0.75em; color: #000; width: 540px; text-align: left; font-weight: normal !important;}
+ }
+</style>
+
   {% block headers %}{% endblock %}
 </head>
 
@@ -162,6 +181,15 @@
         </div>
       </div>
     </header>
+    <div class="container">
+<div id="email-signup-2014" class="sixteen columns" style="background: #fefefe; -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1); padding: 14px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box">
+<form style="margin: 0; padding: 0;" id="Edit" action="https://donate.creativecommons.org/civicrm/profile/create?gid=29&amp;reset=1" method="post" name="Edit">
+<div><label for="email-Primary">Get Creative Commons updates</label> <input id="email-Primary" class="form-control input-lg" maxlength="64" name="email-Primary" size="30" placeholder="mattl@example.com" type="email"> &nbsp; <input class="btn btn-success" id="_qf_Edit_next" accesskey="S" name="_qf_Edit_next" type="submit" value="Subscribe"><input name="postURL" type="hidden" value="https://creativecommons.org/thank-you"><input name="cancelURL" type="hidden" value="https://creativecommons.org/newsletter"><input name="group[121]" type="hidden" value="1"><input name="_qf_default" type="hidden" value="Edit:cancel"></div>
+</form>
+</div>
+</div>
 
     <div dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}" 
          id="main" role="main">

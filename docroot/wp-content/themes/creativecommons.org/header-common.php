@@ -23,5 +23,23 @@
     <![endif]-->
     <script src="<?php bloginfo('stylesheet_directory'); ?>/js/libs/modernizr-2.0.6.min.js"></script>
 
+
+<style>
+ @media screen and (max-width: 770px) {
+   #email-signup-2014 form * { text-align: center;}
+   #email-signup-2014 label { font-size: 14px !important; width: auto; height: auto !important;}
+   #email-signup-2014 input { width: 100%; padding-top: 5px;}
+ }
+
+ @media screen and (min-width: 771px) {
+   #email-signup-2014 {height: 58px;}
+   #email-signup-2014 label { font-size: 18px; margin: 0px 0px 0.75em; color: #000; width: auto; padding-right: 20px; text-align: left; font-weight: normal !important;}
+ }
+
+ @media screen and (min-width: 940px) {
+   #email-signup-2014 label { font-size: 28px; margin: 0px 0px 0.75em; color: #000; width: 540px; text-align: left; font-weight: normal !important;}
+ }
+</style>
+
     <meta name="keywords" content="creative commons, commons, free culture, free software, open source, attribution, non-commercial, share-alike, no derivatives, ryan merkley, copyleft, lessig, sharing" />
     <meta name="description" content="Creative Commons licenses provide a flexible range of protections and freedoms for authors, artists, and educators. <?php if ( function_exists(is_single) && function_exists(cc_post_excerpt) && is_single()) echo cc_post_excerpt() ?>" />
