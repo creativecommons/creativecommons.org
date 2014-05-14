@@ -19,9 +19,9 @@
 
     <!--[if lt IE 9]>
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/ie8-and-down.css">
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <script src="<?php bloginfo('stylesheet_directory'); ?>/js/libs/modernizr-2.0.6.min.js"></script>
 
-    <meta name="keywords" content="creative commons, commons, free culture, open source, attribution, non-commercial, share-alike, no derivatives, lessig, sharing" />
+    <meta name="keywords" content="creative commons, commons, free culture, free software, open source, attribution, non-commercial, share-alike, no derivatives, ryan merkley, copyleft, lessig, sharing" />
     <meta name="description" content="Creative Commons licenses provide a flexible range of protections and freedoms for authors, artists, and educators. <?php if ( function_exists(is_single) && function_exists(cc_post_excerpt) && is_single()) echo cc_post_excerpt() ?>" />
