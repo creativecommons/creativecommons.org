@@ -1,0 +1,23 @@
+{
+    "name": "fancyguy/webroot-installer",
+    "type": "composer-installer",
+    "license": "BSD-3-Clause",
+    "description": "A composer installer for libraries that live in an application webroot.",
+    "authors": [
+        {
+            "name": "Steve Buzonas",
+            "email": "steve@fancyguy.com"
+        }
+    ],
+    "homepage": "http://fancyguy.github.com/webroot-installer/",
+    "autoload": {
+        "psr-0": { "FancyGuy\\Composer\\": "src/" }
+    },
+    "extra": {
+        "class": "FancyGuy\\Composer\\WebrootInstaller"
+    },
+    "require-dev": {
+        "composer/composer": "1.0.*@dev",
+        "phpunit/phpunit": "3.7.*"
+    }
+}
