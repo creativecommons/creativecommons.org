@@ -1,0 +1,62 @@
+[
+    {
+        "name": "fancyguy/webroot-installer",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fancyguy/webroot-installer.git",
+            "reference": "4888a3dad9ab3b3da505a149230be0ec2ab837f4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fancyguy/webroot-installer/zipball/4888a3dad9ab3b3da505a149230be0ec2ab837f4",
+            "reference": "4888a3dad9ab3b3da505a149230be0ec2ab837f4",
+            "shasum": ""
+        },
+        "require-dev": {
+            "composer/composer": "1.0.*@dev",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2013-01-29 22:51:45",
+        "type": "composer-installer",
+        "extra": {
+            "class": "FancyGuy\\Composer\\WebrootInstaller"
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "FancyGuy\\Composer\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Steve Buzonas",
+                "email": "steve@fancyguy.com",
+                "homepage": "http://www.stevebuzonas.com"
+            }
+        ],
+        "description": "A composer installer for libraries that live in an application webroot.",
+        "homepage": "http://fancyguy.github.com/webroot-installer/"
+    },
+    {
+        "name": "wordpress",
+        "version": "3.9.1",
+        "version_normalized": "3.9.1.0",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/WordPress/WordPress/archive/3.9.1.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "fancyguy/webroot-installer": "1.0.0"
+        },
+        "type": "webroot",
+        "installation-source": "dist"
+    }
+]

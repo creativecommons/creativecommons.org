@@ -1,6 +1,3 @@
-[submodule "docroot/wordpress"]
-	path = docroot/wordpress
-	url = https://github.com/WordPress/WordPress.git
 [submodule "docroot/legalcode"]
 	path = docroot/legalcode
 	url = https://github.com/creativecommons/legalcode.git

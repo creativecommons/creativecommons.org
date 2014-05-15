@@ -86,11 +86,10 @@
     <ul dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
         class="license-properties">
       {% if conditions['by'] %}
-      <li class="license by"
-          rel="cc:requires"
-          resource="http://creativecommons.org/ns#Attribution">
+      <li class="license by">
           <p>
-            <strong>{% trans %}Attribution{% endtrans %}</strong> &mdash; {% trans %}You must give <a href="#" id="appropriate_credit_popup" class="helpLink">appropriate credit</a>, provide a link to the license, and <a href="#" id="indicate_changes_popup" class="helpLink">indicate if changes were made</a>.  You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.{% endtrans %}
+            <strong>{% trans %}Attribution{% endtrans %}</strong> &mdash; <span rel="cc:requires"
+          resource="http://creativecommons.org/ns#Attribution">{% trans %}You must give <a href="#" id="appropriate_credit_popup" class="helpLink">appropriate credit</a></span>, provide a link to the license, and <span rel="cc:requires" resource="http://creativecommons.org/ns#Notice"><a href="#" id="indicate_changes_popup" class="helpLink">indicate if changes were made</a></span>.  You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.{% endtrans %}
             <span id="by-more-container"></span>
           </p>
 
