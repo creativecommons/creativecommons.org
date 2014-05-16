@@ -91,13 +91,13 @@
 				    	<ul class="menu-dropdown">
 						    <li><a href="/culture">Culture</a></li>
 						    <li><a href="/education">Education</a></li>
+						    <li><a href="/publicpolicy">Public Policy</a></li>
 						    <li><a href="/science">Science</a></li>
-						    <li><a href="/government">Government</a></li>
 						    <li class="divider"></li>
 						    <li><a href="/taa-grant-program">Gates OPEN</a></li>
 						    <li><a href="http://wiki.creativecommons.org/LRMI">Learning Resource Metadata Initiative (LRMI) </a></li>
 						    <li><a href="/music-communities">Music Communities</a></li>
-						    <li><a href="http://wiki.creativecommons.org/Open_Policy_Network">Open Policy Network</a></li>
+						    <li><a href="http://openpolicynetwork.org/">Open Policy Network</a></li>
                             <li><a href="/record-labels">Record Labels</a></li>
                             <li><a href="http://schoolofopen.org/">School of Open</a></li>
                             <li><a href="http://wiki.creativecommons.org/4.0">Versioning the license suite</a></li>
