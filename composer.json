@@ -5,10 +5,10 @@
       "package": {
         "name": "wordpress",
         "type": "webroot",
-        "version": "3.9.1",
+        "version": "3.9.2",
         "dist": {
           "type": "zip",
-          "url": "https://github.com/WordPress/WordPress/archive/3.9.1.zip"
+          "url": "https://github.com/WordPress/WordPress/archive/3.9.2.zip"
         },
         "require" : {
           "fancyguy/webroot-installer": "1.0.0"
@@ -18,7 +18,7 @@
   ],
   "require": {
     "php": ">=5.3.0",
-    "wordpress": "3.9.1",
+    "wordpress": "3.9.2",
     "fancyguy/webroot-installer": "1.0.0"
   },
   "extra": {
