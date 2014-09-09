@@ -6,6 +6,8 @@ $func_custom = TEMPLATEPATH . '/functions-custom.php';
 if ( is_readable( $func_custom ) )
     include_once( $func_custom );
 
+add_theme_support( 'post-thumbnails' ); 
+
 // Remove link rel="start" from blog pages
 remove_action('wp_head', 'start_post_rel_link'); // Removes the start link
 remove_action('wp_head', 'parent_post_rel_link', 10, 0); // Removes rel="parent"
