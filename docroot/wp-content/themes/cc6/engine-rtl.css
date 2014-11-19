@@ -92,7 +92,7 @@ footer div.more-metadata div, .column, .columns {
     left: 6px;
     right: auto;
 }
-@import url(http://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
 
 div.more-metadata div, .column, .columns {
     float: right;
