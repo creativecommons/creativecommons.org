@@ -27,7 +27,7 @@ run ./bin/buildout as root, because the script needs to create directories in
 cc.engine uses `zc.buildout <http://python.org/pypi/zc.buildout>`_ to 
 assemble the software and its dependencies.  For example ::
 
-  $ python bootstrap/bootstrap.py
+  $ python bootstrap.py
   $ ./bin/buildout
 
 After the buildout process completes the application may be started using
@@ -63,7 +63,7 @@ ways:
 You can build cc.engine for development by specifying the buildout configuration
 on the command line ::
 
-  $ ./bin/buildout -c dev.buildout.cfg
+  $ ./bin/buildout -c buildout.devel.cfg
 
 
 Building lxml + Dependencies
