@@ -1,7 +1,13 @@
 /* CC Deed CSS for RTL languages */
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+
+#deed {
+	font-family: 'Droid Arabic Naskh', sans-serif;
+}
 
 	#deed-main {
 		text-align: right;
+		
 	}
 
 	#deed-main img {
@@ -10,6 +16,7 @@
 	
 	#deed-main h3 {
 	padding-right:10px;
+		
 	}
 
 	li.license {
@@ -46,3 +53,7 @@
 	#footer p {
     		direction:rtl;
 	}
+
+ul p {
+	line-height: 20px;
+}

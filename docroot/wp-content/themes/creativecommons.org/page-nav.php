@@ -125,6 +125,7 @@
 				</div>
 			</div>
 		</div>
+<?php include 'banner.php'; ?>
 		</header>
                 <div class="container">
                 <div id="email-signup-2014" class="sixteen columns" style="background: #fefefe; -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
