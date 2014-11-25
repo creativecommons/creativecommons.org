@@ -22,7 +22,32 @@
 ?>
 
 <div id="top-banner" style="background-color: transparent; ">
-	<a style="display: block; " href="https://donate.creativecommons.org/?utm_campaign=2014fund&amp;utm_source=<?php echo $analytics_source; ?>&utm_medium=site_header">
+
+        
+            <?php
+
+            $i = rand(1,2);
+
+if ($i == 1) {
+?>
+
+	<a style="display: block; " href="https://donate.creativecommons.org/?utm_campaign=2014fund&utm_source=ccorg1&utm_medium=site_header&utm_medium=site_header">
 	<img src="/wp-content/uploads/2014/11/websitebanner2014_teal.png" style="max-height: 100%; max-width: 100%; " alt="Donate banner" />
+<?php
+}
+
+else {
+
+?
+	<a style="display: block; " href="https://donate.creativecommons.org/?utm_campaign=2014fund&utm_source=ccorg2&utm_medium=site_header&utm_medium=site_header">
+	<img src="/wp-content/uploads/2014/11/websitebanner2014_veal.png" style="max-height: 100%; max-width: 100%; " alt="Donate banner" />
+
+<?php 
+
+}
+
+?>
+
+
 	</a>
 </div>
