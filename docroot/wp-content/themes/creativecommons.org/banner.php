@@ -38,7 +38,7 @@ if ($i == 1) {
 
 else {
 
-?
+?>
 	<a style="display: block; " href="https://donate.creativecommons.org/?utm_campaign=2014fund&utm_source=ccorg2&utm_medium=site_header&utm_medium=site_header">
 	<img src="/wp-content/uploads/2014/11/websitebanner2014_veal.png" style="max-height: 100%; max-width: 100%; " alt="Donate banner" />
 
