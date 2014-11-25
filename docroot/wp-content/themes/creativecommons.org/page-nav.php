@@ -94,7 +94,7 @@
 						    <li><a href="/publicpolicy">Public Policy</a></li>
 						    <li><a href="/science">Science</a></li>
 						    <li class="divider"></li>
-						    <li><a href="http://open4us.org/>OPEN</a></li>
+						    <li><a href="http://open4us.org/">OPEN</a></li>
 						    <li><a href="/music-communities">Music Communities</a></li>
 						    <li><a href="http://openpolicynetwork.org/">Open Policy Network</a></li>
                             <li><a href="/record-labels">Record Labels</a></li>
