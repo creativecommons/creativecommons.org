@@ -751,7 +751,15 @@ ol.arabic-markers {
     list-style-type: none;
 }
 
+#thank-you-footer {
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 1em;
+}
 
+#thank-you-footer p {
+    text-align: left;
+}
 
 @media screen and (max-width: 600px) {
  html {
@@ -814,4 +822,9 @@ ol.arabic-markers {
  #deed-understanding {
  margin-bottom: 0;
  }
+
+ #thank-you-footer {
+     max-width: 90%;
+ }
+
 }
