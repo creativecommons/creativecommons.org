@@ -534,7 +534,6 @@
 
 div.bd p {
        color: #111;
-       font-size: 
        line-height:140%;
        padding-bottom:10px !important;
        font-size: 0.92em;
@@ -752,5 +751,80 @@ ol.arabic-markers {
     list-style-type: none;
 }
 
+#thank-you-footer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1em;
+}
 
+#thank-you-footer p {
+    text-align: left;
+}
 
+@media screen and (max-width: 600px) {
+ html {
+ -ms-text-size-adjust: 100%;
+ -moz-text-size-adjust: 100%;
+ -webkit-text-size-adjust: 100%;
+ }
+
+ #deed {
+ margin: 0;
+ padding: 0;
+ }
+
+ #deed,
+ #deed-head,
+ #cc-link a,
+ #deed-disclaimer,
+ ul.license-properties {
+ width: auto;
+ }
+
+ #deed-main,
+ .green #deed-rights ul.license-properties {
+ /* need style trumps */
+ width: auto !important;
+ }
+
+ #deed-head,
+ #deed-rights,
+ #deed-conditions,
+ #deed-understanding {
+ /* trump rtl positioning */
+ background-position: center top !important;
+ }
+
+ #deed-main-content {
+ margin: 0;
+ }
+
+ #deed-disclaimer {
+ margin: 0 10px;
+ }
+
+ .green #deed-disclaimer {
+ margin-right: 100px;
+ }
+
+ #libre {
+ right: 10px;
+ }
+
+ ul {
+ padding: 0 10px;
+ }
+
+ li.license {
+ padding-bottom: 0;
+ }
+
+ #deed-understanding {
+ margin-bottom: 0;
+ }
+
+ #thank-you-footer {
+     max-width: 90%;
+ }
+
+}

@@ -9,10 +9,10 @@
     <textarea cols="30" rows="8"
               name="html" style="width:90%;height:150px;">
       {%- if is_publicdomain -%}
-        {% trans %}This work is in the Public Domain. To view a copy of the public domain certification, visit http://creativecommons.org/licenses/publicdomain/ or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.{% endtrans %}
+        {% trans %}This work is in the Public Domain. To view a copy of the public domain certification, visit http://creativecommons.org/licenses/publicdomain/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.{% endtrans %}
       {%- else -%}
         {% trans license_name=license.title(target_lang),
-                 license_url=license.uri %}This work is licensed under the Creative Commons {{ license_name }} License. To view a copy of this license, visit {{ license_url }} or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.{% endtrans %}
+                 license_url=license.uri %}This work is licensed under the Creative Commons {{ license_name }} License. To view a copy of this license, visit {{ license_url }} or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.{% endtrans %}
       {%- endif -%}
     </textarea>
 

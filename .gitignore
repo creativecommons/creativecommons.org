@@ -6,10 +6,8 @@ python_env/lib
 python_env/local
 python_env/paste_errors.log
 python_env/.Python
-docroot/wp-content/backup/*
-docroot/wp-content/cache/*
-docroot/wp-content/upgrade/*
-docroot/wp-content/uploads/*
+docroot/wp-content/
+docroot/wordpress/
 #docroot/sitemap.*
 docroot/wp-config-local.php
 vendor/*

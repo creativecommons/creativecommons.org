@@ -45,24 +45,24 @@ git submodule update
 #
 # Note that we use the same branch as the toplevel if available
 
-cd docroot/legalcode
-if [[ ! -z `git branch -r | grep ${BRANCH}` ]]; then
-    if [[ -z `git branch | grep ${BRANCH}` ]]; then
-	echo "Checking out legalcode branch ${BRANCH} from remote"
-	git checkout -b ${BRANCH} origin/${BRANCH}
-    fi
-fi
+# cd docroot/legalcode
+# if [[ ! -z `git branch -r | grep ${BRANCH}` ]]; then
+#     if [[ -z `git branch | grep ${BRANCH}` ]]; then
+# 	echo "Checking out legalcode branch ${BRANCH} from remote"
+# 	git checkout -b ${BRANCH} origin/${BRANCH}
+#     fi
+# fi
 
-echo "Making sure legalcode is set to branch ${BRANCH}"
-git checkout ${BRANCH}
+# echo "Making sure legalcode is set to branch ${BRANCH}"
+# git checkout ${BRANCH}
 
-echo "Updating legalcode"
-git pull
+# echo "Updating legalcode"
+# git pull
 
-cd ../..
+# cd ../..
 
-# Commit any update to legalcode submodule rev
-git commit -m "Update legalcode submodule to latest version" docroot/legalcode
+# # Commit any update to legalcode submodule rev
+# git commit -m "Update legalcode submodule to latest version" docroot/legalcode
 
 # Another ugly hack - some WP plugins can't handle how we have it
 # set-up (with wp-content outside of wordpress folder), so make sure
