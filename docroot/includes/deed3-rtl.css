@@ -1,7 +1,13 @@
 /* CC Deed CSS for RTL languages */
+@import url(https://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+
+#deed {
+	font-family: 'Droid Arabic Naskh', sans-serif;
+}
 
 	#deed-main {
 		text-align: right;
+		
 	}
 
 	#deed-main img {
@@ -10,12 +16,13 @@
 	
 	#deed-main h3 {
 	padding-right:10px;
+		
 	}
 
 	li.license {
 		padding-right: 70px;
 		padding-left: 0px;
-		background-position: top right;
+		background-position: right top;
 	}
 	
 	#deed-main li.share, li.remix, li.commercial, UL#license-freedoms-no-icons li, UL#deed-conditions-no-icons li, UL.understanding.license-properties li {
@@ -27,7 +34,7 @@
 	}
 
 	#deed-rights {
-		background-position: top right;
+		background-position: right top;
 	}
 
 	#deed-rights ul {
@@ -35,7 +42,7 @@
 	}
 
 	#deed-conditions {
-		background-position: top right;
+		background-position: right top;
 	}
 
 	#libre {
@@ -46,3 +53,18 @@
 	#footer p {
     		direction:rtl;
 	}
+
+@media screen and (max-width: 600px) {
+  .green #deed-disclaimer {
+    margin-left: 100px;
+    margin-right: 10px;
+  }
+  
+  #libre {
+    left: 10px;
+  }
+}
+
+ul p {
+	line-height: 20px;
+}

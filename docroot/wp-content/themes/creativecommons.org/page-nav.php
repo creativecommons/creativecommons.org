@@ -94,8 +94,7 @@
 						    <li><a href="/publicpolicy">Public Policy</a></li>
 						    <li><a href="/science">Science</a></li>
 						    <li class="divider"></li>
-						    <li><a href="/taa-grant-program">Gates OPEN</a></li>
-						    <li><a href="http://wiki.creativecommons.org/LRMI">Learning Resource Metadata Initiative (LRMI) </a></li>
+						    <li><a href="http://open4us.org/">OPEN</a></li>
 						    <li><a href="/music-communities">Music Communities</a></li>
 						    <li><a href="http://openpolicynetwork.org/">Open Policy Network</a></li>
                             <li><a href="/record-labels">Record Labels</a></li>
@@ -125,6 +124,7 @@
 				</div>
 			</div>
 		</div>
+<?php include 'banner.php'; ?>
 		</header>
                 <div class="container">
                 <div id="email-signup-2014" class="sixteen columns" style="background: #fefefe; -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
