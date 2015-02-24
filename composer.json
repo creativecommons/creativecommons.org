@@ -18,7 +18,7 @@
   ],
   "require": {
     "php": ">=5.3.0",
-    "wordpress": "4.1",
+    "wordpress": "4.1.1",
     "fancyguy/webroot-installer": "1.0.0"
   },
   "extra": {
