@@ -102,10 +102,10 @@
                             <li><a href="http://wiki.creativecommons.org/4.0">Versioning the license suite</a></li>
 				      </ul>
 				    </li>
+				    <li><a href="/weblog">Blog</a></li>
 				    <li class="dropdown">
 				    <a href="/weblog" class="dropdown-toggle">News</a>
 				    	<ul class="menu-dropdown">
-						    <li><a href="/weblog">Blog</a></li>
 						    <li><a href="http://planet.creativecommons.org/">Affiliate News</a></li>
 						    <li class="divider"></li>
 						    <li><a href="/interviews">Interviews</a></li>
