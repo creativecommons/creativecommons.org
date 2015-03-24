@@ -308,7 +308,7 @@ function output_store ()
 										</div>
 										<h5><?php echo $si->link_description; ?></h5>
 										<?php echo nl2br($si->link_notes); ?>
-										<div class="bucket-follow"><a href="https://creativecommons.net/">Ways to support CC...</a></div>
+										<div class="bucket-follow"><a href="https://donate.creativecommons.org/">Ways to support CC...</a></div>
 
 									</div> <!--! end of "content" -->
 								</div> <!--! end of "inner" -->
