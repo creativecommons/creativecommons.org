@@ -90,22 +90,24 @@ function get_button ($bucket, $link, $class = 'btn')
  */
 function output_carousel () 
 {
+    $carousel_count = 0;
     $carousels = get_buckets('Carousel');
 
     if ( empty($carousels) || count($carousels) == 0 )
     {
-        $static_bucket = 'home-carousel.php';
+        $static_bucket = 'home-carousel2.php';
         include $static_bucket;
         return;
     }
 ?>
 					<div class="first row">
 						<div class="carousel bucket">
-							<div id="slides" class="inner">
+							<div id="slides-new" class="inner">
 								<div class="slides_container row">
 
 <?php
     foreach ($carousels as $carousel) 
+    if ($carousel_count <1) {
     {
 ?>
 									<div class="slide">
@@ -127,6 +129,8 @@ function output_carousel ()
 										</div> <!--! end of "eleven columns omega" -->
 									</div> <!--! end of "slide" -->
 <?php
+    $carousel_count++;
+    }
     }
 ?>
 
@@ -134,6 +138,8 @@ function output_carousel ()
 							</div> <!--! end of #slides -->
 						</div> <!--! end of "carousel bucket" -->
 					</div> <!--! end of "first row" -->
+
+
 
 <?php
 
@@ -231,6 +237,9 @@ function output_buckets ()
  */
 function output_case_studies ()
 {
+
+    $case_studies_count = 0;
+
     $case_studies = get_buckets('Case Studies', '');
     if ( count($case_studies) > 0 )
     {
@@ -240,10 +249,11 @@ function output_case_studies ()
 								<div class="inner">
 									<h3 class="title">Case Studies</h3>
 									<div class="content">
-										<div id="case">
+										<div id="case-new">
 										<div class="studies">
 <?php
     foreach ($case_studies as $cs)
+    if ($case_studies_count <1) {
     {
 ?>
 									    <div class="slide">
@@ -259,6 +269,8 @@ function output_case_studies ()
 										</div>
 
 <?php
+    $case_studies_count++;
+    }
     }
 ?>
 										</div> <!--! end of "studies -->
@@ -308,7 +320,7 @@ function output_store ()
 										</div>
 										<h5><?php echo $si->link_description; ?></h5>
 										<?php echo nl2br($si->link_notes); ?>
-										<div class="bucket-follow"><a href="https://donate.creativecommons.org/">Ways to support CC...</a></div>
+										<div class="bucket-follow"><a href="https://creativecommons.net/">Ways to support CC...</a></div>
 
 									</div> <!--! end of "content" -->
 								</div> <!--! end of "inner" -->
