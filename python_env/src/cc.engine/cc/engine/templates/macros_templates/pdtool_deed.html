@@ -16,7 +16,7 @@
 
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
-    <link rel="stylesheet" type="text/css" href="https://yui.yahooapis.com/2.6.0/build/container/assets/skins/sam/container.css" />
+    <link rel="stylesheet" type="text/css" href="{{ request.staticdirect('includes/yahooapis/2.6.0/container.css') }}" />
 
     <link rel="stylesheet"
           href="{{ request.staticdirect('includes/deed3.css') }}" />
@@ -41,13 +41,13 @@
     {% include "includes/language_javascript.html" %}
 
     <script type="text/javascript"
-            src="https://yui.yahooapis.com/2.6.0/build/yahoo-dom-event/yahoo-dom-event.js">
+            src="{{ request.staticdirect('includes/yahooapis/2.6.0/yahoo-dom-event.js') }}">
     </script>
     <script type="text/javascript"
-            src="https://yui.yahooapis.com/2.6.0/build/connection/connection-min.js">
+            src="{{ request.staticdirect('includes/yahooapis/2.6.0/connection-min.js') }}">
     </script>
     <script type="text/javascript"
-            src="https://yui.yahooapis.com/2.6.0/build/json/json-min.js">
+            src="{{ request.staticdirect('includes/yahooapis/2.6.0/json-min.js') }}">
     </script>
 
     <script type="text/javascript"
@@ -59,7 +59,7 @@
     </script>
 
     <script type="text/javascript"
-            src="https://yui.yahooapis.com/2.6.0/build/container/container-min.js">
+            src="{{ request.staticdirect('includes/yahooapis/2.6.0/container-min.js') }}">
     </script>
 
     {% block headers %}{% endblock %}
