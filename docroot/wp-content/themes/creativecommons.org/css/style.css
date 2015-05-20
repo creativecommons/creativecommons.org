@@ -2757,7 +2757,7 @@ a.menu:after, .dropdown-toggle:after {
 #top-banner {
   position: relative;
   margin: 0 0 0;
-  padding: 7px 14px;
+  padding: 0;
   background-color: #f5ff8f;
   text-align: center;
 }
