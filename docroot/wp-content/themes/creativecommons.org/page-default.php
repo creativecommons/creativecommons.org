@@ -25,8 +25,10 @@ if (have_posts()) {
                         </div>
                     </div>
 <?php } ?>
+                    <div class="four columns">
+                    <?php get_sidebar(); ?>
+                   </div>
                 </div>
             </div><!--! end of .container -->
 		</div><!--! end of #main -->
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
