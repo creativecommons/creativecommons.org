@@ -24,7 +24,7 @@ if (have_posts()) {
 			            <?php edit_post_link("Edit This Page", '<p>', '</p>'); ?>
                 </div>
 
-                <div class="four columns">
+                <div class="three columns alpha well">
                    <?php get_sidebar(); ?>
                 </div>
 
