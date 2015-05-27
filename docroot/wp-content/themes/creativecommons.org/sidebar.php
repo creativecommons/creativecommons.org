@@ -9,7 +9,6 @@
  */
 
 ?>
-</div><!-- end content -->
 
 <div id="sidebars" class="grid_6 right-sidebar">
 	<div id="r-sidebar">
