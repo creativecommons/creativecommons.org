@@ -22,12 +22,15 @@ if (have_posts()) {
                         <div class="twelve columns alpha"><!-- for about page -->
 			            <?php the_content(); ?>
 			            <?php edit_post_link("Edit This Page", '<p>', '</p>'); ?>
-                        </div>
+                </div>
+
+                <div class="four columns">
+                   <?php get_sidebar(); ?>
+                </div>
+
+                
                     </div>
 <?php } ?>
-                    <div class="four columns">
-                    <?php get_sidebar(); ?>
-                   </div>
                 </div>
             </div><!--! end of .container -->
 		</div><!--! end of #main -->
