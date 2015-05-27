@@ -28,4 +28,5 @@ if (have_posts()) {
                 </div>
             </div><!--! end of .container -->
 		</div><!--! end of #main -->
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>
