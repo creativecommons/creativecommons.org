@@ -19,12 +19,12 @@ if (have_posts()) {
                         <h1><?php the_title(); ?></h1>
                     </div><!--! end of "first row" -->
                     <div class="row"><!-- for about page -->
-                        <div class="twelve columns alpha"><!-- for about page -->
+                        <div class="eleven columns alpha"><!-- for about page -->
 			            <?php the_content(); ?>
 			            <?php edit_post_link("Edit This Page", '<p>', '</p>'); ?>
                 </div>
 
-                <div class="three columns alpha well">
+                <div class="four columns alpha well">
                    <?php get_sidebar(); ?>
                 </div>
 
