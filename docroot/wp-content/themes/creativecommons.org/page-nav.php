@@ -116,11 +116,6 @@
 						 </ul>
 					</li>
 				</ul>
-				<form action="https://creativecommons.org" id="search_form">
-					<input type="hidden" name="stype" value="site" id="find_site" />
-					<input type="text" name="q" placeholder="Site Search" />
-					<input type="submit" id="glass" title="Search" value="Submit">
-				</form>
 				</div>
 			</div>
 		</div>
