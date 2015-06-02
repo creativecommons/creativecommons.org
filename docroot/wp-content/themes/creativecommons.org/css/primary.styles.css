@@ -379,30 +379,88 @@ a.menu:after, .dropdown-toggle:after {
 #top-banner {
   position: relative;
   margin: 0 0 0;
-  padding: 7px 14px;
-  background-color: #f5ff8f;
+  padding: 0;
+  background-color: #dc642f;
   text-align: center;
 }
-
-#top-banner:hover {
-  background-position: 0 -1000px;
+#top-banner a {
+  position: relative;
+  height: 100px;
+  width: 940px;
+  margin: 0 auto;
+  text-align: left;
+  text-decoration: none;
 }
-
-#top-banner h4 {
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
+#top-banner h1 {
+  float: left;
+  margin: 0;
+  padding: 32px 0;
+  color: #FFFFFF;
+  font-size: 28px;
+  font-weight: normal;
 }
-
-#top-banner .omega {
-	text-align: right;
+#top-banner button {
+  float: right;
+  background: rgba(70,34,18,.8);
+  display: inline-block;
+  height: 50px;
+  padding: .5em 1em;
+  border: 0;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-box-shadow:inset 2px 2px 6px 0 rgba(0,0,0,.2);
+  box-shadow:inset 2px 2px 6px 0 rgba(0,0,0,.2);
+  color: #fff;
+  font-size: 23px;
+  /*font-weight: bold;*/
+  margin: 25px 0;
+  text-decoration: none;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
-
-#top-banner #donate-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
+#top-banner button:hover {
+  background: rgba(70,34,18,1);
+}
+@media only screen and (max-width: 959px) and (min-width: 768px) {
+  #top-banner a {
+    width: 748px;
+  }
+  #top-banner h1 {
+    font-size: 23px;
+  }
+  #top-banner button {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  #top-banner a {
+    display: block;
+    width: 80%;
+    height: 100%;
+    text-align: center;
+  }
+  #top-banner h1, #top-banner button { float: none; }
+  #top-banner h1 {
+    padding: 15px 0;
+    font-size: 22px;
+    line-height: 26px;
+  }
+  #top-banner button {
+    margin: 0 auto 15px;
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 360px) {
+  #top-banner h1 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  #top-banner button {
+    font-size: 16px;
+  }
 }
 
 .help-popover {
