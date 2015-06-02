@@ -376,6 +376,10 @@ a.menu:after, .dropdown-toggle:after {
   border-top: none;
 }
 
+.topbar div > ul#short-menu {
+  float: right;
+}
+
 #top-banner {
   position: relative;
   margin: 0 0 0;
