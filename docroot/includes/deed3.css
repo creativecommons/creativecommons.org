@@ -761,7 +761,7 @@ ol.arabic-markers {
     text-align: left;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 788px) {
  html {
  -ms-text-size-adjust: 100%;
  -moz-text-size-adjust: 100%;
