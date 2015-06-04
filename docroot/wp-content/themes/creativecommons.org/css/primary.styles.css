@@ -400,7 +400,7 @@ a.menu:after, .dropdown-toggle:after {
   margin: 0;
   padding: 32px 0;
   color: #FFFFFF;
-  font-size: 28px;
+  font-size: 28px !important;
   font-weight: normal;
 }
 #top-banner button {
@@ -449,7 +449,7 @@ a.menu:after, .dropdown-toggle:after {
   #top-banner h1, #top-banner button { float: none; }
   #top-banner h1 {
     padding: 15px 0;
-    font-size: 22px;
+    font-size: 22px !important;
     line-height: 26px;
   }
   #top-banner button {
@@ -459,7 +459,7 @@ a.menu:after, .dropdown-toggle:after {
 }
 @media only screen and (max-width: 360px) {
   #top-banner h1 {
-    font-size: 20px;
+    font-size: 20px !important;
     line-height: 24px;
   }
   #top-banner button {
