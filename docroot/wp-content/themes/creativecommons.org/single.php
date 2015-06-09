@@ -47,7 +47,6 @@ if ( have_posts() )  {
                                 </div><!-- end of twelve columns omega -->
 			</div><!-- end of .container -->
 		</div><!--! end of #main -->
-			</div><!--! end of #main -->
 	</div><!--! end of #container -->
 
 	<?php get_footer(); ?>
