@@ -115,6 +115,8 @@
 						    <li><a href="/about/press">Press Room</a></li>
 						 </ul>
 					</li>
+					<li><a href="https://summit.creativecommons.org/">Global Summit 2015</a></li>
+
 				</ul>
 				</div>
 			</div>
