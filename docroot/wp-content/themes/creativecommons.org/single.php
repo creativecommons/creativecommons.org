@@ -32,14 +32,15 @@ if ( have_posts() )  {
 						<a href="http://twitter.com/home?status=<?php the_title() ?> - <?php the_permalink() ?> via @creativecommons">Share on Twitter</a>
 						<a href="http://identi.ca/?action=newnotice&amp;status_textarea=<?php the_title() ?>%20-%20<?php the_permalink() ?>%20via%20@creativecommons">Share on Identi.ca</a>
 					
+					        </div>
 					
 					<?php if ( get_the_tags() ) { ?>
 					<div class="postTags"><?php the_tags(); ?></div>
 					<?php } ?>
 					<div class="comments"><?php comments_template(); ?></div>
+				
 				</div>
-				</div>
-				            <div class="four columns omega well">
+				            <div class="four columns alpha well">
 			    <p><strong><a href="<?php echo get_settings('home') . '/' . $category->slug; ?>/feed/rss">Subscribe to RSS</a></strong></p>
 			    <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar()) ?>
                                 </div><!-- end of twelve columns omega -->
