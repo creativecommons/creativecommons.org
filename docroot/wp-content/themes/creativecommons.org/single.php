@@ -18,7 +18,7 @@ if ( have_posts() )  {
 		<?php include 'page-nav.php'; ?>
 		<div id="main" role="main">
 			<div class="container">
-                <div class="twelve columns">
+                <div class="eleven columns alpha">
 				<div style="margin-top: 1em;"><h3><a href="/weblog">News</a></h3></div>
 					<div class="first row">
 						<?php edit_post_link("Edit This Post", '<p class="alignright edit">', '</p>'); ?>
@@ -38,6 +38,10 @@ if ( have_posts() )  {
 					<?php } ?>
 					<div class="comments"><?php comments_template(); ?></div>
 				</div>
+				            <div class="four columns omega well">
+			    <p><strong><a href="<?php echo get_settings('home') . '/' . $category->slug; ?>/feed/rss">Subscribe to RSS</a></strong></p>
+			    <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar()) ?>
+            </div><!-- end of twelve columns omega -->
 			</div><!-- end of .container -->
 		</div><!--! end of #main -->
 	</div><!--! end of #container -->
