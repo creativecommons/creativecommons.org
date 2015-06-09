@@ -38,6 +38,7 @@ if ( have_posts() )  {
 					<?php } ?>
 					<div class="comments"><?php comments_template(); ?></div>
 				</div>
+				</div>
 				            <div class="four columns omega well">
 			    <p><strong><a href="<?php echo get_settings('home') . '/' . $category->slug; ?>/feed/rss">Subscribe to RSS</a></strong></p>
 			    <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar()) ?>
