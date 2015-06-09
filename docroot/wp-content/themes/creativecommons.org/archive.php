@@ -36,7 +36,7 @@ get_header();
 </div>
 </div><!-- end of first row -->
                     <div class="row"><!-- for about page -->
-                        <div class="twelve columns alpha">
+                        <div class="eleven columns alpha">
 
 			<?php if (have_posts()) { 
 				while (have_posts()) {
@@ -74,11 +74,9 @@ get_header();
 
             </div><!-- end of twelve columns alpha -->
 
-            <div class="four columns omega">
-		    <div id="archives" class="well">
+            <div class="four columns omega well">
 			    <p><strong><a href="<?php echo get_settings('home') . '/' . $category->slug; ?>/feed/rss">Subscribe to RSS</a></strong></p>
 			    <?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar()) ?>
-		    </div>
             </div><!-- end of twelve columns omega -->
             </div><!-- end of row -->
 
