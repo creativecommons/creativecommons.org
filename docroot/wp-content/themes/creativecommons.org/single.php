@@ -18,6 +18,7 @@ if ( have_posts() )  {
 		<?php include 'page-nav.php'; ?>
 		<div id="main" role="main">
 			<div class="container">
+				 <div class="sixteen columns">
                 <div class="eleven columns alpha" id="post-<?php the_ID(); ?>">
 				<div style="margin-top: 1em;"><h3><a href="/weblog">News</a></h3></div>
 					<div class="first row">
@@ -46,6 +47,7 @@ if ( have_posts() )  {
                                 </div><!-- end of twelve columns omega -->
 			</div><!-- end of .container -->
 		</div><!--! end of #main -->
+			</div><!--! end of #main -->
 	</div><!--! end of #container -->
 
 	<?php get_footer(); ?>
