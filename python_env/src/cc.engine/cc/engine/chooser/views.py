@@ -27,7 +27,7 @@ CC0_HTML_FORMATTER = CC0HTMLFormatter()
 PUBLICDOMAIN_HTML_FORMATTER = PublicDomainHTMLFormatter()
 PDMARK_HTML_FORMATTER = PDMarkHTMLFormatter()
 STANDARD_SELECTOR = cc.license.LicenseSelector(
-    "https://creativecommons.org/license/")
+    "http://creativecommons.org/license/")
 
 
 def _base_context(request, target_lang=None):
@@ -224,7 +224,7 @@ def _generate_exit_url(url, referrer, license):
     return url
 
 
-NS_CC = 'https://creativeommons.org/ns#'
+NS_CC = 'http://creativeommons.org/ns#'
 NS_DC = 'http://purl.org/dc/elements/1.1/'
 NS_DCQ = 'http://purl.org/dc/terms/'
 NS_RDF = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
