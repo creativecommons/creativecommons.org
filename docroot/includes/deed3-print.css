@@ -1,6 +1,8 @@
 /* CC Deed CSS */
 /* Print */
 
+@media print {
+    
 body {
 	text-align: center;
 	font: 10pt/12pt Arial, "Trebuchet MS", Verdana, sans-serif;
@@ -193,3 +195,5 @@ blockquote {
 }
 
 .help_panel {display: none !important;}
+
+}
