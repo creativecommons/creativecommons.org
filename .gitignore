@@ -10,4 +10,41 @@ docroot/wp-content/
 docroot/wordpress/
 #docroot/sitemap.*
 docroot/wp-config-local.php
-vendor/*
+vendor/*# -*- mode: gitignore; -*-
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+#*.apk
+*.exe
+*.dmg
+auto-save-list
+tramp
+.\#*
+*.swp
+
+# Org-mode
+.org-id-locations
+*_archive
+
+# flymake-mode
+*_flymake.*
+
+# eshell files
+/eshell/history
+/eshell/lastdir
+
+# elpa packages
+/elpa/
+
+# reftex files
+*.rel
+
+# AUCTeX auto folder
+/auto/
+
+# apitest
+/apitest/node_modules
+
+.DS_Store
