@@ -120,9 +120,15 @@ The Product licensed under Creative Commons License is provided by the person wh
                   {% endfor %}
                 </div>
               {% else %}
+              {% if license.version => 4 %}
+                <div class="summary">
+                  {% trans %}This is a human-readable summary of the <a href="./legalcode" title="Read the full legal code">Legal Code (read the full text)</a>.{% endtrans %}
+                </div>
+                {% else %}
                 <div class="summary">
                   {% trans %}This is a human-readable summary of (and not a substitute for) the <a href="legalcode" class="fulltext">license</a>.{% endtrans %}
                 </div>
+                {% endif %}
               {% endif %}
   
               <div class="disclaimer">
