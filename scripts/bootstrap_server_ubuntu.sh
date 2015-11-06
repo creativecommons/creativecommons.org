@@ -35,7 +35,7 @@ else
     echo "Include ${TOPDIR}/config/apache.conf" >> /etc/apache2/httpd.conf
 fi
 
-cat <<EOF > /etc/apache2/sites-available/${HOSTNAME}
+cat <<EOF > /etc/apache2/sites-available/${HOSTNAME}.conf
 <VirtualHost *:80>
     Use CCVHost ${HOSTNAME} http ${TOPDIR} /var/log/apache2/${HOSTNAME}
 </VirtualHost>
@@ -43,7 +43,7 @@ EOF
 
 if [ -f /etc/ssl/private/${HOSTNAME}.key ]
 then
-    cat <<EOF >> /etc/apache2/sites-available/${HOSTNAME}
+    cat <<EOF >> /etc/apache2/sites-available/${HOSTNAME}.conf
 <VirtualHost *:443>
     Use CCVHost ${HOSTNAME} https ${TOPDIR} /var/log/apache2/${HOSTNAME}
     SSLEngine on

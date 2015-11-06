@@ -11,11 +11,19 @@ DBPASS=${4:-}
 cd ${TOPDIR}
 
 #
-# Git submodules
+# Theme
 #
 
-git submodule init
-git submodule update
+if [ -d "docroot/wp-content/themes/creativecommons.org" ]
+then
+    pushd "docroot/wp-content/themes/creativecommons.org"
+    git pull
+    popd
+else
+    git clone https://github.com/creativecommons/cc-wp-theme.git
+    ln -s "${TOPDIR}/creativecommons.org" \
+       "docroot/wp-content/themes/creativecommons.org"
+fi
 
 cd python_env
 
@@ -26,7 +34,10 @@ cd python_env
 virtualenv .
 source bin/activate
 
-for i in 'setuptools>=0.7' 'zope.interface>=3.8.0' Paste PasteDeploy PasteScript RDF cssselect transifex-client
+# No RDF in pip (it's rdfutils)
+
+for i in 'setuptools>=0.7' 'zope.interface>=3.8.0' Paste PasteDeploy \
+                           PasteScript rdfutils  cssselect transifex-client
 do
     pip install $i
 done
@@ -36,23 +47,35 @@ done
 
 echo "/usr/lib/python2.7/dist-packages/" > lib/python2.7/site-packages/dist-packages.pth
 
-
 #
-# Set up each Python module
+# Check out and set up each Python module
 #
 
-cd src
+pushd src
 
-for i in i18n license.rdf cc.license cc.engine
+REPOS=(i18n license.rdf cc.license cc.engine)
+for i in "${REPOS[@]}"
 do
-    cd $i
+    if [ -d "${i}" ]
+    then
+        pushd "${i}"
+        git pull
+        popd
+    else
+        git clone "https://github.com/creativecommons/${i}.git"
+    fi
+      done
+
+for i in "${REPOS[@]}"
+do
+    pushd "${i}"
     python bootstrap.py -v 2.1.1
     bin/buildout
     python setup.py develop
-    cd ..
+    popd
 done
 
-cd .. # python_env
+popd # python_env
 
 #
 # compile_mo & transstats are needed by cc.engine at runtime, run them now
