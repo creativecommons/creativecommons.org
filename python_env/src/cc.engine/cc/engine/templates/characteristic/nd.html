@@ -1,0 +1,21 @@
+{% extends "macros_templates/popup.html" %}
+
+{% block title %}{% trans %}No Derivative Works{% endtrans %}{% endblock %}
+
+{% block body %}
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}" >
+    <img src="/icon/nd/standard.gif" alt="nd" hspace="4"
+         align="{{ is_rtl_align }}" />
+  </p>
+
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
+    <strong>{% trans %}No Derivative Works{% endtrans %}</strong></p>
+
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
+    {% trans %}The licensor permits others to copy, distribute and transmit only unaltered copies of the work — not derivative works based on it.{% endtrans %}
+  </p>
+
+  <div style="text-align:center">
+    <a href="javascript:window.close();">{% trans %}Close window{% endtrans %}</a>
+  </div>
+{% endblock %}

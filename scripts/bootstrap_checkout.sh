@@ -53,7 +53,7 @@ echo "/usr/lib/python2.7/dist-packages/" > lib/python2.7/site-packages/dist-pack
 
 pushd src
 
-REPOS=(i18n license.rdf cc.license cc.engine)
+REPOS=(i18n license.rdf cc.license)
 for i in "${REPOS[@]}"
 do
     if [ -d "${i}" ]
@@ -64,7 +64,7 @@ do
     else
         git clone "https://github.com/creativecommons/${i}.git"
     fi
-      done
+done
 
 for i in "${REPOS[@]}"
 do

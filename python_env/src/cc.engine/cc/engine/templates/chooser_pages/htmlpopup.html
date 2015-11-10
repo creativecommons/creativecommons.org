@@ -1,0 +1,49 @@
+{% extends "macros_templates/popup.html" %}
+
+{% block title %}Creative Commons{% endblock %}
+
+{% block body %}
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
+    {% trans %}The HTML to display your button is as follows:{% endtrans %}
+  </p>
+  <form action="">
+    <textarea cols="30" rows="8" name="html" 
+              style="width:90%;height:150px;">{{ license_html }}</textarea>
+    <p>
+      <input type="button" onclick="form.html.focus();form.html.select()"
+             name="grab" value="{% trans %}Highlight Text to Copy{% endtrans %}"/>
+    </p>
+  </form>
+
+  <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
+    {% trans %}Simply copy the text, then paste it into your web documents containing information about your works. <a href="/learn/technology/usingmarkup" target="_blank">More information about adding HTML to your documents here</a>.{% endtrans %}
+  </p>
+
+  <form action="./work-email" method="post">
+    <p dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
+      {% trans %}Enter your email address to get the HTML by email:{% endtrans %}
+      <input type="text" name="to_email" value="" /> 
+      <input type="hidden" name="lang"
+             value="{{ request.GET.get('lang', '') }}" />
+
+      <input type="hidden" name="license_html"
+             value="{{ license_html }}" />
+
+      <input type="hidden" name="work_title"
+             value="{{ request.GET.get('field_worktitle') }}" />
+
+      <input type="hidden" name="license_name"
+             value="{{ license.title(target_lang) }}" />
+
+      <input type="submit"
+             value="{% trans %}Send{% endtrans %}" />
+    </p>
+  </form>
+
+  <div align="center"
+       dir="{{ get_ltr_rtl }}" align="{{ is_rtl_align }}">
+    <a href="javascript:window.close();">
+      {% trans %}Close window{% endtrans %}
+    </a>
+  </div>
+{% endblock %}

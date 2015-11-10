@@ -1,0 +1,36 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           i18n_domain="cc.engine">
+
+  <include package="cc.engine" />
+
+  <include package="zope.securitypolicy" file="meta.zcml" />
+  <include package="zope.app.securitypolicy" />
+  <securityPolicy 
+      component="zope.securitypolicy.zopepolicy.ZopeSecurityPolicy" />
+
+  <unauthenticatedPrincipal id="zope.anybody"
+                            title="Unauthenticated User" />
+  <unauthenticatedGroup id="zope.Anybody"
+                        title="Unauthenticated Users" />
+  <authenticatedGroup id="zope.Authenticated"
+                      title="Authenticated Users" />
+  <everybodyGroup id="zope.Everybody"
+                  title="All Users" />
+
+  <!-- With the default zope securitypolicy, this is a
+       special role that every user has -->
+  <role id="zope.Anonymous"
+        title="Everybody"
+        description="All users have this role implicitly" />
+
+  <!-- Replace the following directives if you don't want public access -->
+  <grant permission="zope.View"
+         role="zope.Anonymous" />
+  <grant permission="zope.app.dublincore.view"
+         role="zope.Anonymous" />
+    
+  <role id="zope.Manager" title="Site Manager" />
+  <role id="zope.Member" title="Site Member" />
+  <grantAll role="zope.Manager" />
+
+</configure>

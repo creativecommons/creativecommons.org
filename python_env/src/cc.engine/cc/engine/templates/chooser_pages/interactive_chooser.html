@@ -1,0 +1,1927 @@
+{% extends "macros_templates/engine.html" %}
+{% block title %}Choose a License{% endblock title %}
+{% block headers %}
+  <link rel="stylesheet" type="text/css"
+        href="{{ request.staticdirect('includes/zero.css') }}" />
+  <link rel="stylesheet" type="text/css"
+        href="/wp-content/themes/creativecommons.org/engine.css" />
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  <script type="text/javascript">
+
+// Symbol table for the interactive license chooser.
+var CHOOSER = {
+    "LIVE" : false,
+
+    "WIRING" : {
+        // This is used to bind functions to input elements.
+        "watching" : {
+            'radio' : [
+                'field_commercial',
+                'field_derivatives'
+            ],
+            'select' : [
+                'field_jurisdiction',
+                'field_format'
+            ],
+            'text' : [
+                'field_worktitle',
+                'field_attribute_to_name',
+                'version'
+            ],
+            'url' : [
+                'field_attribute_to_url',
+                'field_sourceurl',
+                'field_morepermissionsurl'
+            ]
+        },
+        // This is used to set up multiple views for the bottom right panel.
+        // hint -> {"input name" : [default visibility, corresponding #id],}
+        "metadata" : {
+            "html+rdfa" : [true, "#for_htmlrdfa"],
+            "xmp" : [false, "#for_xmp"],
+            "offline" : [false, "#for_offline"]
+        }
+    },
+
+    // Timers
+    "TIMER" : {
+        "ping" : -1
+    },
+
+    // These are values used for generating output
+    "STATE" : {
+        "current" : {},   // current state of input elements
+        "metadata" : {},  // values entered for metadata fields
+        "htmlrdfa_template" : "",
+        "large_icon" : "",
+        "small_icon" : "",
+        "icon_is_small" : false,
+        "query_string" : ""
+    },
+
+    // Constants
+    "CONST" : {
+        "img_path" : "/wp-content/themes/creativecommons.org/images/",
+        "fc_approved" : "/wp-content/themes/creativecommons.org/images/fc_approved_tiny.png",
+        "links" : {
+            "fc_by_sa" : "/freeworks",
+            "fc_by" : "/freeworks"
+        }
+    },
+
+    // Templates (may or may not be constants)
+    "TEMPLATE" : {
+        "htmlrdfa" : "",
+        "nondigital" : ""
+    },
+
+    // Functions
+    "CALL" : {
+        "ping" : false,
+        "delayed_ping" : false,
+        "refresh_ui" : false,
+        "refresh_state" : false,
+        "popup" : false
+    },
+
+    // Callbacks
+    "CALLBACK" : {
+        "main" : false,
+        "ping" : false
+    }
+};
+
+
+
+
+// CSS adjustments and ui event wiring.
+$(document).ready(
+CHOOSER.CALLBACK.main = function () {
+    "use strict";
+
+    CHOOSER.TEMPLATE.htmlrdfa = $("#template_htmlrdfa").html();
+    CHOOSER.TEMPLATE.nondigital = $("#template_nondigital").html();
+
+    // height correction on overflowing boxes
+    var max_height = function (lhs, rhs) {
+        var a = lhs.height();
+        var b = rhs.height();
+        if (a > b) { return a; }
+        else { return b; }
+    };
+    var query = function (row, col) {
+        try {
+            var q = ".ui_row:nth-of-type(" + row + ")";
+            q += " .ui_box:nth-of-type(" + col + ")";
+            return $(q);
+        }
+        catch (err) {
+            // IE8 hack // 8^y
+            try {console.warn(err);} catch (err) {}
+            return $("#"+$(".ui_row .ui_box")[col-1 + (row-1)*2].id);
+        }
+    };
+    for (var i=1; i<=2; i+=1) {
+        var height = max_height(query(i, 1), query(i, 2));
+        query(i, 1).height(height);
+        query(i, 2).height(height);
+    }
+
+    // Dummy out href links for license characteristic icons
+    var icons = ["by", "sa", "nc", "nd"];
+    for (var i=0; i<icons.length; i+=1) {
+        var found = $("#"+icons[i]+"_icon")[0];
+        found.href = "javascript:void(0)";
+        found.target = "_self";
+    }
+
+    // set initial cgi state
+    CHOOSER.CALL.refresh_state();
+
+    // setup events
+    var key, i, k, watched, selected, found, etc;
+    for (key in CHOOSER.WIRING.watching) {
+        if (!CHOOSER.WIRING.watching.hasOwnProperty(key)) { continue; }
+        watched = CHOOSER.WIRING.watching[key];
+        for (i=0; i<watched.length; i+=1) {
+            selected = $("[name="+watched[i]+"]");
+            if (key ==="select" && $("html.ie8").length > 0) {
+                selected.click(CHOOSER.CALL.ping);
+            }
+            else {
+                selected.change(CHOOSER.CALL.ping);
+            }
+            if (key === "text" || key === "url") {
+                selected.keyup(CHOOSER.CALL.delayed_ping);
+            }
+        }
+    }
+    etc = ["field_metadata_standard", "field_iconsize"];
+    for (i=0; i<etc.length; i+=1) {
+        selected = $("[name="+etc[i]+"]");
+        selected.change(CHOOSER.CALL.refresh_ui);
+    }
+
+    // activate css stuff that is irrelivant without javascript
+    $("body").addClass("require_js");
+
+    // Ping the server for updates.  This populates some of the CHOOSER.STATE vars, too.
+    CHOOSER.CALL.ping(true);
+    CHOOSER.LIVE = true;
+
+    // Set up text-on-click for textarea elements
+    $("textarea").each(function(i,el) { el.onclick=function () { this.select(); }; })
+});
+
+
+
+
+// Shows a nice inline popup
+CHOOSER.CALL.popup = function (help_key) {
+    var prefix = "#help_lookup #help_" + help_key + " div.";
+
+    $("#popup_title")[0].innerHTML = $(prefix+"title")[0].innerHTML;
+    $("#popup_message")[0].innerHTML = $(prefix+"msg")[0].innerHTML;
+    $("#popup_close")[0].innerHTML = $(prefix+"close_buttons").length?
+      $(prefix+"close_buttons")[0].innerHTML :
+      $("#popup_close_default")[0].innerHTML;
+
+    $("#popup_screen")[0].style.display="table";
+};
+
+
+
+
+// Calls to the server are minimized by having the server generate templates,
+// and filling them in here each time the text in a field changes.
+CHOOSER.CALL.refresh_ui = function (event_ctx, data) {
+    "use strict";
+    var name, value, buffer, format, metakind;
+
+    // Change the bottom right panel for the correct metadata format
+    metakind = $("#metadata_format")[0].value;
+    if (!CHOOSER.WIRING.metadata[metakind][0]) {
+        for (format in CHOOSER.WIRING.metadata) {
+            if (CHOOSER.WIRING.metadata.hasOwnProperty(format)) {
+                CHOOSER.WIRING.metadata[format][0] = format == metakind;
+                $(CHOOSER.WIRING.metadata[format][1])[0].style.display = format == metakind ? "block" : "none";
+            }
+        }
+    }
+
+    // Update xmp download link
+    $("#xmp_download_link")[0].href = "/choose/metadata.xmp?" + CHOOSER.STATE.query_string;
+
+    // Update generated html for html+rdfa
+    buffer = CHOOSER.TEMPLATE.htmlrdfa;
+    for (name in CHOOSER.STATE.metadata) {
+        if (!CHOOSER.STATE.metadata.hasOwnProperty(name)) { continue; }
+        value = CHOOSER.STATE.metadata[name];
+        while (buffer.indexOf(name) !== -1) {
+            buffer = buffer.replace(name, value);
+        }
+    }
+
+    // Update html badge icon size
+    CHOOSER.STATE.icon_is_small = $("[name=field_iconsize]")[1].checked;
+    if (CHOOSER.STATE.icon_is_small) {
+        buffer = buffer.replace("88x31.png", "80x15.png");
+    }
+    $("#codetocopy")[0].value = buffer;
+    $("#for_htmlrdfa .results-preview")[0].innerHTML = "<div>" + buffer + "</div>";
+
+    // If additional callback data is available, update related fields as well:
+    if (data != undefined) {
+        $("#nc_slot")[0].style.display = data.license_code.nc ? "table-cell" : "none";
+        $("#nd_slot")[0].style.display = data.license_code.nd ? "table-cell" : "none";
+        $("#sa_slot")[0].style.display = data.license_code.sa ? "table-cell" : "none";
+        if (data.currency !== "") {
+            if (data.currency == "eu") {
+                $("#nc_slot").removeClass("yen");
+                $("#nc_slot").addClass("euro");
+            }
+            if (data.currency == "jp") {
+                $("#nc_slot").removeClass("euro");
+                $("#nc_slot").addClass("yen");
+            }
+        }
+        else {
+            $("#nc_slot").removeClass("yen");
+            $("#nc_slot").removeClass("euro");
+        }
+        $("#license_title_link")[0].innerHTML = data.license_title;
+        $("#license_title_link")[0].href = data.uri;
+        $("#xmp_license_name")[0].innerHTML = data.license_title;
+        $("#fc_approved_box")[0].style.display = data.libre ? "table" : "none";
+        $("#fc_dubious_box")[0].style.display = !data.libre ? "table" : "none";
+        buffer = CHOOSER.TEMPLATE.nondigital;
+        buffer = buffer.replace("LICENSE_NAME", data.license_title);
+        buffer = buffer.replace("LICENSE_URL", data.uri);
+        $("#infotocopy")[0].value = buffer;
+
+        if (data.libre) {
+            var update_link = function (query) { 
+                $(query)[0].href = CHOOSER.CONST.links[!!data.license_code.sa ? "fc_by_sa" : "fc_by"];
+            }
+            update_link("#fc_approved_box .whatis a");
+            update_link("#fc_approved_box a.fc_logo_link");
+        }
+    }
+
+    // weird bugfix for lackluster css support in IE8 and IE9
+    var panel = $("#license")[0];
+    panel.innerHTML += "";
+};
+
+
+
+
+// Callback to update the UI & state based on the response from the server.
+CHOOSER.CALLBACK.ping = function (data) {
+    "use strict";
+
+    // update state
+    CHOOSER.TEMPLATE.htmlrdfa = data.license_html;
+    CHOOSER.STATE.large_icon = data.license_logo;
+    CHOOSER.STATE.small_icon = data.license_slim_logo;
+    
+    // refresh ui
+    CHOOSER.CALL.refresh_ui(undefined, data);
+};
+
+
+
+
+// Poll the server for license and metadata info.  Checks for relevance, first.
+CHOOSER.CALL.ping = function (force) {
+    "use strict";
+
+    var state_changed= CHOOSER.CALL.refresh_state();
+    CHOOSER.CALL.refresh_ui();
+    if (state_changed || force === true) { 
+        $.getJSON('./xhr_api', CHOOSER.STATE.current, CHOOSER.CALLBACK.ping);
+    }
+};
+
+
+
+
+// Calls a ping in 100ms, but do not schedule more than one at a time.
+CHOOSER.CALL.delayed_ping = function () {
+    "use strict";
+
+    if (CHOOSER.TIMER.ping === -1) {
+        CHOOSER.TIMER.ping = setTimeout(function () {
+            CHOOSER.TIMER.ping = -1;
+            CHOOSER.CALL.ping();
+        }, 100);
+    }
+};
+
+
+
+
+// This function updates the values of CHOOSER.state vars current, query_string, and metadata.
+// Returns True if CHOOSER.state has changed, otherwise returns false.
+CHOOSER.CALL.refresh_state = function () {
+    "use strict";
+
+    refresh_version_field();
+
+    var attrib = function (attr, value) { return "["+attr+"="+value+"]"; };
+    var state = {}, query, node, name, type, i, k, key, found, fail, query_string, query_part;
+    var field_by_type = [];
+    query_string = "";
+
+    // for each type of form field we are watching...
+    for (key in CHOOSER.WIRING.watching) {
+        if (!CHOOSER.WIRING.watching.hasOwnProperty(key)) { continue; }
+        field_by_type = CHOOSER.WIRING.watching[key];
+        query_part = "";
+
+        // some vars used to generate a jquery query...
+        if (key === "select") {
+            node = key;
+            type = false;
+        }
+        else {
+            node = "input";
+            type = key;
+        }
+
+        // for each form field in the given type...
+        for (i=0; i<field_by_type.length; i+=1) {
+
+            // Build and query the jquery query...
+            name = field_by_type[i];
+            query = node + attrib("name", name);
+            if (!!type) { query += attrib("type", type); }
+            if (type === "select") {
+                query += ">option[selected=selected]";
+            }
+            found = $(query);
+            if (found.length === 0) {
+                throw ("$( "+query+" ) returned no results!");
+            }
+
+            // Then, Extract a useful value from "found"...
+            if (type === "radio") {
+                // If the field type is 'radio', then found is a list.
+                fail=true;
+                // iterate on 'found' list to find the value we care about...
+                for (k=0; k<found.length; k+=1) {
+                    if (found[k].checked) {
+                        found = found[k].value;
+                        fail = false;
+                        break;
+                    }
+                }
+                if (fail) {
+                    throw ("$( "+query+" ) returned no checked radio buttons!");
+                }
+            }
+            else {
+                // The fiel type was not 'radio', so just grab the value directly
+                found = found[0].value;
+            }
+
+            // Ignore empty text fields when generating the query_string...
+            if (found !== "") {
+                query_part = name + "=" + found;
+                if (query_string !== "") {
+                    query_part = "&"+query_part;
+                }
+                query_string += query_part;
+            }
+            
+            // Store the actual value of the metadata field so we can use it with a template...
+            if (type === "text" || type === "url") {
+                CHOOSER.STATE.metadata[name] = found;
+                found = found === "" ? "" : name;
+            }
+            state[name] = found;
+        }
+    }
+
+    // Finish up, set remaining CHOOSER.STATE vars and return if state has changed
+    state.lang = "{{ form.misc.lang }}";
+    CHOOSER.STATE.query_string = query_string;
+    var state_changed = false;
+
+    for (var param in state) {
+        if (state.hasOwnProperty(param) && state[param] !== CHOOSER.STATE.current[param]) {
+            CHOOSER.STATE.current = state;
+            state_changed = true;
+            break;
+        }
+    }
+
+    return state_changed;
+}
+
+var showing_jurisdictions = false;
+
+function refresh_version_field() {
+    // Set version to 3.0 only when the jurisdiction selector is visible
+    // and is set to 'Unported'
+    if (showing_jurisdictions && "" == $("#field_jurisdiction").val())
+        $("#version").val("3.0");
+    else
+        $("#version").val("");
+}
+
+// can't get chooser state machine to play nice, so here's a horrible
+// hack to keep the version updated
+//setInterval(refresh_version_field, 200);
+
+function show_jurisdiction_section() {
+    showing_jurisdictions = true;
+    $("#field_jurisdiction").val("");
+    $("#show_jurisdictions_section").hide();
+    $("#hide_jurisdictions_section").show();
+    $(".ui_box").animate({"min-height": "28em"}, 500, function() {
+      $("#jurisdiction_section").show();
+    });
+    refresh_version_field();
+    CHOOSER.CALL.ping();
+}
+function hide_jurisdiction_section() {
+    showing_jurisdictions = false;
+    $("#field_jurisdiction").val("");
+    $("#show_jurisdictions_section").show();
+    $("#hide_jurisdictions_section").hide();
+    $("#jurisdiction_section").hide();
+    $(".ui_box").animate({"min-height": "22em"}, 500);
+    refresh_version_field();
+    CHOOSER.CALL.ping();
+}
+
+////
+</script>
+
+
+<style type="text/css">
+
+/* z-order stuff for IE8... */
+#freedoms {
+    z-index: 4;
+}
+#license {
+    z-index: 3;
+}
+#metadata {
+    z-index: 2;
+}
+#internets {
+    z-index: 1;
+}
+
+
+/* everything else: */
+
+select, input, textarea {
+    background-color: white;
+    color: #222;
+    padding: 1px;
+}
+
+input[type=radio] {
+    /* fix for webkit browsers on osx */
+    width: 20px;
+    height: 15px;
+
+    /* because ie8 defaults to white for some reason */
+    background-color: transparent;
+}
+
+#metadata .help_button {
+    margin-top: 5px!important;
+}
+
+.help_button {
+    //position: absolute; /* prevents help button from influence box packing */
+    display: none;
+    margin-top: 5px;
+
+    background-image: url("/wp-content/themes/creativecommons.org/images/hint_button.png");
+    width: 25px;
+    height: 25px;
+}
+
+.help_button:hover {
+    background-image: url("/wp-content/themes/creativecommons.org/images/hint_button_hover.png");
+    cursor: pointer;
+}
+
+.require_js #content[dir="ltr"] .ui_box>.help_button, .require_js #content[dir="ltr"]  #internets .help_button {
+    display: inline-block;
+    left: 20px;
+}
+
+.require_js #content[dir="rtl"] .ui_box>.help_button, .require_js #content[dir="rtl"]  #internets .help_button {
+    display: inline-block;
+    right: 20px;
+}
+
+.require_js #content[dir="ltr"] .help_highlight:hover>.help_button {
+    display: inline-block;
+    margin-top: 10px;
+    left: 20px;
+}
+
+.require_js #content[dir="rtl"] .help_highlight:hover>.help_button {
+    display: inline-block;
+    margin-top: 10px;
+    right: 20px;
+}
+
+#metadata .help_highlight {
+    position: relative;
+
+    margin-left: -25px;
+    margin-right: -25px;
+    margin-top: -4px;
+    margin-bottom: 8px;
+
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+    border-radius: 8px;
+}
+
+.require_js #metadata .help_highlight:hover {
+    margin-left: -26px;
+    margin-right: -26px;
+    margin-top: -5px;
+    margin-bottom: 7px;
+
+}
+
+.require_js #metadata .help_highlight:hover .help_button {
+    position: absolute;
+    display: inline-block;
+    top: 0px;
+    left: 13px;
+}
+
+#metadata .metatable {
+    display: table;
+    border-collapse: collapse;
+    width: 383px;
+}
+#metadata .metatable input {
+    display: inline-block;
+    width: 170px;
+    height: 17px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 16px;
+    margin-left: 0px;
+}
+#metadata .metatable select {
+    display: inline-block;
+    width: 174px;
+    height: 21px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 16px;
+    margin-left: 0px;
+}
+#metadata .metatable>span:first-of-type {
+    display: table-cell !important;
+    text-align: right;
+    width: 143px;
+    padding: 0px;
+    padding-left: 37px;
+    vertical-align: middle;
+    min-height: 27px;
+}
+#metadata .metatable>span:last-of-type {
+    display: table-cell !important;
+    text-align: left;
+    width: 203px;
+    padding: 0px;
+    vertical-align: middle;
+}
+#metadata .metatable>span>label {
+    width: 143px;
+    padding: 0px;
+    color: black;
+}
+
+.help_highlight {
+    border-radius: 8px;
+    margin-left: -24px;
+    padding-left: 24px;
+    margin-right: -24px;
+    padding-right: 24px;
+}
+
+.require_js .help_highlight:hover {
+    border: 1px solid #aaa;
+    margin-left: -25px;
+    margin-right: -25px;
+    margin-top: -1px;
+    margin-bottom: -1px;
+}
+
+#popup_screen {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 10000;
+    background-color: #4c6404;
+    background-color: rgba(22, 34, 15, .9);
+
+    display: none; /* set to 'table' instead of block to show */
+    margin: auto;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    width: 100%;
+    height: 100%;
+
+    cursor: pointer;
+}
+
+#popup_alignment {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#popup_body {
+    background-color: rgba(255, 255, 255, .8);
+    border: 1px solid black;
+    border-radius: 8px;
+    max-width: 500px;
+    padding: 2em;
+    margin: auto;
+    text-align: center;
+
+    cursor: default;
+}
+
+#popup_title {
+    margin-bottom: 1em;
+}
+
+#popup_message {
+    text-align: justify;
+}
+
+#popup_close {
+    position: screen;
+    bottom: 0px;
+    font-size: 20px;
+    display: block;
+    margin-top: 2em;
+    text-align: center;
+}
+#popup_close a {
+    background-color: rgba(255, 255, 255, .8);
+    border-radius: 8px;
+    margin-right: 1em;
+    padding: .5em;
+}
+
+#instructional_fluff, #copyright_fluff, #publishing_fluff,
+#show_jurisdictions_section, #hide_jurisdictions_section {
+    text-align: center;
+    font-size: 16px;
+    max-width: 800px;
+    margin: auto;
+    word-spacing: 1px;
+}
+
+#instructional_fluff,
+#copyright_fluff {
+    margin-bottom: .2em;
+}
+
+#copyright_fluff span:first-of-type {
+    padding-right: 1.6em;
+}
+
+#show_jurisdictions_section,
+#hide_jurisdictions_section {
+    margin-bottom: .5em;
+}
+#hide_jurisdictions_section {
+    display: none;
+}
+
+#other_stuff {
+    width: 800px;
+    margin: auto;
+    margin-top: 2em;
+}
+
+.ui_row {
+    display: block;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    min-width: 840px;
+}
+
+h4 {
+    line-height: 1.6em;
+}
+
+#freedoms .subtitle {
+    margin-bottom: 1em;
+}
+
+#freedoms h4 {
+    margin-left: 2em;
+}
+#freedoms select {
+    margin-top: 6px;
+    margin-left: 5em;
+    margin-bottom: 20px;
+}
+
+#freedoms ul, #internets ul {
+    margin-left: 5em;
+    list-style: none;
+    display: table;
+}
+#freedoms li, #internets li {
+    display: table-cell;
+    width: 128px;
+}
+#freedoms li:only-of-type {
+    width: 256px!important;
+}
+
+#freedoms label {
+    float: none;
+}
+
+#jurisdiction_section {
+    display: none;
+}
+
+#field_jurisdiction {
+    margin-left: 2em;
+    margin-bottom: 2em;
+}
+
+#license {
+    position: relative;
+    text-align: center;
+}
+
+#license #badge {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+.fc_info_box {
+    position: absolute;
+    display: table;
+    width: 345px;
+    bottom: 30px;
+}
+
+#content[dir="ltr"] .fc_info_box {
+    right: 30px;
+}
+#content[dir="rtl"] .fc_info_box {
+    left: 30px;
+}
+
+.fc_info_box>div {
+    display: table-cell;
+    text-align: center;
+}
+
+.fc_logo_link {
+    display: inline-block;
+    margin-top: -15px;
+    margin-bottom: -15px;
+    outline: none!important;
+}
+
+#content[dir="ltr"] .fc_logo_link {
+    margin-left: 10px;
+    margin-right: -18px;
+}
+
+#content[dir="rtl"] .fc_logo_link {
+    margin-right: 10px;
+    margin-left: -18px;
+}
+
+#fc_dubious_box .fc_logo_link {
+    display: block;
+    width: 76px;
+    height: 76px;
+    cursor: pointer;
+    background-image: url('/wp-content/themes/creativecommons.org/images/fc_dubious.png');
+}
+
+.require_js #fc_dubious_box .fc_logo_link:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/fc_dubious_hover.png');
+}
+
+#fc_approved_box .fc_logo_link {
+    display: block;
+    width: 76px;
+    height: 76px;
+    cursor: pointer;
+    background-image: url('/wp-content/themes/creativecommons.org/images/fc_approved_tiny.png');
+}
+
+.whatis {
+    font-size: 16px;
+    font-weight: bold;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    vertical-align: middle;
+    width: 100%;
+}
+
+#license_title {
+    //position: absolute;
+    display: block;
+    top: 68px;
+    left: 30px;
+    right: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    word-spacing: 2px;
+    z-index: 50;
+}
+
+.license_icons {
+    display: table;
+    width: 100%;
+    max-width: 334px;
+    margin: auto;
+    margin-top: 88px;
+    margin-bottom: 93px;
+}
+
+.license_icons>div {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+.license_icons>div>a {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    outline: none;
+}
+
+#cc_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_cc.png');
+}
+#by_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_by.png');
+}
+#sa_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_sa.png');
+}
+#nd_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nd.png');
+}
+#nc_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc.png');
+}
+.euro #nc_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_eu.png')!important;
+}
+.yen #nc_icon {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_jp.png')!important;
+}
+
+#cc_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_cc_hover.png');
+}
+#by_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_by_hover.png');
+}
+#sa_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_sa_hover.png');
+}
+#nd_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nd_hover.png');
+}
+#nc_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_hover.png');
+}
+.euro #nc_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_eu_hover.png')!important;
+}
+.yen #nc_icon:hover {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_jp_hover.png')!important;
+}
+
+
+.license_icons>img {
+    display: inline-block;
+}
+
+.ui_box {
+    display: inline-block;
+    background-color: #f5f5f5;
+    //width: 334px;
+    min-height: 348px;
+    padding: 32px;
+    padding-bottom: 1px;
+    margin: 10px 7px;
+    border: 1px solid #393839;
+    border-radius: 4px;
+    vertical-align: text-top;
+    text-align: left;
+    position: relative; /* required for the arrows to work right */
+}
+
+.ui_box h2 {
+    text-align: center;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+#metadataentry {
+    margin-top: 1em;
+}
+
+#metadata input,
+#format_selection,
+#metadata_format {
+    display: block;
+    width: 170px;
+    float: right;
+    margin-left: 1em;
+}
+
+#internets {
+    text-align: center;
+    position: relative;
+}
+.results-preview {
+    display: table;
+    width: 334px;
+    height: 150px;
+    vertical-align: middle;
+}
+.results-preview div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#copy_caption {
+    //position: absolute;
+    bottom: 13em;
+    left: 0px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+#xmp_download_box,
+#infotocopy,
+#codetocopy {
+    display: block;
+    //position: absolute;
+    bottom: 2em;
+    left: 20px;
+    width: 350px;
+    height: 9em;
+    resize: none;
+}
+
+#codetocopy {
+    bottom: 3em!important;
+}
+
+#iconsize_box {
+    display: block;
+    //position: absolute;
+    bottom: -.75em;
+    left: 16px;
+    width: 350px;
+    text-align: center;
+}
+#iconsize_box label {
+    float: none;
+}
+
+#xmp_download_box {
+    display: table!important;
+    vertical-align: middle;
+    border : 1px solid #444;
+    border-radius: 8px;
+}
+#xmp_download_box div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+/* all arrows */
+#freedoms:before,
+#license:before,
+#metadata:before {
+    display: block;
+    content: "";
+    border: 0px;
+    position: absolute;
+    z-index: 10;
+}
+
+/* left arrows */
+#content[dir="ltr"] #freedoms:before,
+#content[dir="ltr"] #metadata:before {
+    background-image: url("/wp-content/themes/creativecommons.org/images/left_arrow.png");
+    width: 53px;
+    height: 98px;
+    top: 50%;
+    right: 0px;
+    margin-right: -53px;
+    margin-top: -49px;
+}
+
+/* right arrows */
+#content[dir="rtl"] #freedoms:before,
+#content[dir="rtl"] #metadata:before {
+    background-image: url("/wp-content/themes/creativecommons.org/images/right_arrow.png");
+    width: 53px;
+    height: 98px;
+    top: 50%;
+    left: 0px;
+    margin-left: -53px;
+    margin-top: -49px;
+}
+
+/* down arrow */
+#license:before {
+    background-image: url("/wp-content/themes/creativecommons.org/images/down_arrow.png");
+    width: 98px;
+    height: 53px;
+    bottom: 0px;
+    left: 50%;
+    margin-bottom: -53px;
+    margin-left: -49px;
+}
+
+@media only screen and (max-width: 399px) {
+    /* Draw .ui_boxes in single column mode, remove margins and box sides */
+
+    /* down arrow */
+    #freedoms:before, 
+    #license:before,
+    #metadata:before {
+        background-image: url("/wp-content/themes/creativecommons.org/images/down_arrow.png")!important;
+        width: 98px!important;
+        height: 53px!important;
+        top: inherit!important;
+        bottom: 0px!important;
+        left: 50%!important;
+        margin-bottom: -53px!important;
+        margin-left: -49px!important;
+    }
+    .container,
+    .sixteen.columns,
+    .ui_row,
+    #other_stuff,
+    #chooser_form {
+        min-width: 100%!important;
+        width: 100%!important;
+        margin: 0px!important;
+    }
+    .ui_row {;
+        text-align: center;
+    }
+    .ui_box {
+        width: 100%!important;
+        height: inherit!important;
+        border-radius: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        display: block;
+        margin: 0px;;
+        margin-bottom: 2em;
+    }
+    #license {
+        padding-bottom: 3em;
+    }
+    #metadata {
+        padding-bottom: 1em;
+    }
+    #metadata input,
+    #format_selection,
+    #metadata_format {
+        width: 100%;
+        margin: auto;
+        float: none!important;
+    }
+    #field_jurisdiction {
+        margin: auto!important;
+        width: 100%!important;
+    }
+    .results-preview {
+        width: 100%;
+    }
+    #xmp_download_box,
+    #infotocopy,
+    #codetocopy {
+        left: 0px;
+        margin: auto;
+        width: 95%;
+    }
+    #copyright_fluff,
+    #instructional_fluff {
+        width: inherit!important;
+    }
+    #copyright_fluff span,
+    #instructional_fluff span {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 817px) and (min-width: 400px) {
+    /* Draw .ui_boxes in single column mode, and adjust margins */
+
+    /* down arrow */
+    #freedoms:before, 
+    #license:before,
+    #metadata:before {
+        background-image: url("/wp-content/themes/creativecommons.org/images/down_arrow.png")!important;
+        width: 98px!important;
+        height: 53px!important;
+        top: inherit!important;
+        bottom: 0px!important;
+        left: 50%!important;
+        margin-bottom: -53px!important;
+        margin-left: -49px!important;
+    }
+    .container,
+    .sixteen.columns,
+    .ui_row,
+    #other_stuff,
+    #chooser_form {
+        min-width: 400px!important;
+        width: inherit!important;
+        margin: auto;
+    }
+    .ui_row {;
+        text-align: center;
+    }
+    .ui_box {
+        display: block;
+        margin: auto;
+        margin-bottom: 2em;
+    }
+    #copyright_fluff,
+    #instructional_fluff {
+        width: inherit!important;
+    }
+    #copyright_fluff span,
+    #instructional_fluff span {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 839px) and (min-width: 818px) {
+    /* Ensure entire quad is visible, minus outter margins. */
+    .container,
+    .sixteen.columns,
+    #chooser_form {
+        width: 818px!important;
+        margin: auto!important;
+    }
+    .ui_row {
+        min-width: 818px!important;
+    }
+    #freedoms, #metadata {
+        margin-left: 0px;
+    }
+    #license, #internets {
+        margin-right: 0px;
+    }
+}
+
+@media only screen and (max-width: 960px) and (min-width: 840px) {
+    /* Override page margins, so that the entire quad is visible correctly.*/
+    .container,
+    .sixteen.columns,
+    #chooser_form {
+        width: 840px!important;
+        margin: auto!important;
+    }
+}
+
+{# dummied out for potential future use...?  *sigh* Who am I kidding...
+
+@media only screen and (min-width: 880px) {
+    /* wide enough for help tabs */
+    .help_button, .mirror {
+        position: absolute;
+        width: 29px;
+        height: 25px;
+        cursor: pointer!important;
+    }
+    #content[dir="ltr"] .help_button:not(.mirror), #content[dir="rtl"] .help_button.mirror {
+        background-image: url("/wp-content/themes/creativecommons.org/images/help_ltr.png");
+        left: -30px;
+    }
+    #content[dir="rtl"] .help_button:not(.mirror), #content[dir="ltr"] .help_button.mirror {
+        background-image: url("/wp-content/themes/creativecommons.org/images/help_rtl.png");
+        right: -30px;
+    }
+    #content[dir="ltr"] .help_button:not(.mirror):hover, #content[dir="rtl"] .help_button.mirror:hover {
+        background-image: url("/wp-content/themes/creativecommons.org/images/help_ltr_hover.png");
+    }
+    #content[dir="rtl"] .help_button:not(.mirror):hover, #content[dir="ltr"] .help_button.mirror:hover {
+        background-image: url("/wp-content/themes/creativecommons.org/images/help_rtl_hover.png");
+    }
+}
+
+@media only screen and (max-width: 880px) {
+    /* not wide enough for help tabs */
+    .help_button {
+        left: 20px;
+    }
+}
+#}
+
+
+
+</style>
+  
+<noscript><style type="text/css">
+.update_bar {
+    background-color: black;
+    color: white;
+    max-width: 800px;
+    margin: auto;
+    padding: 5px;
+    text-align: center;
+    border-radius: 1em;
+}
+#content[dir="ltr"] .update_bar input {
+    margin-left: 14em;
+    background-color: white;
+    color: black;
+}
+#content[dir="rtl"] .update_bar input {
+    margin-right: 14em;
+    background-color: white;
+    color: black;
+}
+</style></noscript>
+
+
+{% endblock headers %}
+{% block body %}
+
+<span id="template_htmlrdfa" style="display:none;"></span>
+<span id="template_nondigital" style="display:none;">{%- trans license_name="LICENSE_NAME", license_url="LICENSE_URL" %}This work is licensed under the Creative Commons {{ license_name }} License. To view a copy of this license, visit {{ license_url }}.{% endtrans -%}</span>
+
+<div id="instructional_fluff">
+  <span>{% trans %}New to Creative Commons?{% endtrans %}</span>
+  <span>[ <a target="_blank" href="http://wiki.creativecommons.org/Before_Licensing">
+    {%- trans %}Considerations before licensing{% endtrans -%}
+  </a> ]</span>
+  <span>[ <a target="_blank" href="/licenses">
+    {%- trans %} How the licenses work {% endtrans -%}
+  </a> ]</span>
+</div>
+<div id="copyright_fluff">
+  <span><strong>
+    {%- trans %}Explore the Creative Commons licenses.{% endtrans -%}
+  </strong></span>
+  <span>[ <a href="http://creativecommons.org/publicdomain/">
+    {%- trans %}Want public domain instead?{% endtrans -%}
+  </a> ]</span>
+</div>
+<div id="show_jurisdictions_section">
+[ <a href="#" onclick="CHOOSER.CALL.popup('change_jurisdictions');">
+{%- trans %}Looking for earlier license versions, including ports?{% endtrans %}</a> ]
+</div>
+<div id="hide_jurisdictions_section">
+[ <a href="#" onclick="hide_jurisdiction_section();">
+{%- trans %}Use latest license version{% endtrans %}</a> ]
+</div>
+
+<form action="." method="get" id="chooser_form">
+
+<input type="text" id="version" name="version" style="display:none" />
+
+<noscript>
+  <div class="update_bar">
+    {% trans %}Javascript is disabled.{% endtrans %}
+    <input type="submit" 
+           value="{% trans %}Update Selected License{% endtrans %}"/>
+  </div>
+  <input type="hidden" name="lang" value="{{ form.misc.lang }}" />
+</noscript>
+
+<div class="row" oluirow>
+  <div id="freedoms" class="col-md-5 ui_box">
+    <h2>{% trans %}License Features{% endtrans %}</h2>
+    <div class="subtitle">
+{%- trans %}Your choices on this panel will update the other panels on this page.{% endtrans %}</div>
+
+    <div class="help_highlight">
+      <div class="help_button" onclick="CHOOSER.CALL.popup('modifications');"></div>
+      <h4>{% trans %}Allow adaptations of your work to be shared?{% endtrans %}</h4>
+      <ul>
+        <li>
+          <input type="radio"
+                 {% if not form.license.nd and not form.license.sa -%}
+                 checked="checked"{% endif %}
+                 name="field_derivatives" value="y"
+                 id="question_3-5" />
+          <label for="question_3-5">{% trans %}Yes{% endtrans %}</label>
+        </li>
+        <li>
+          <input type="radio"  name="field_derivatives" value="n"
+                 {% if form.license.nd %}checked="checked"{% endif %}
+                 id="question_3-7" />
+          <label for="question_3-7">{% trans %}No{% endtrans %}</label>
+        </li>
+      </ul>
+      <ul class="no_columns">
+        <li>
+          <input type="radio" name="field_derivatives" value="sa"
+                 {% if form.license.sa %}checked="checked"{% endif %}
+                 id="question_3-6" />
+          <label for="question_3-6">
+            {% trans %}Yes, as long as others share alike{% endtrans %}
+          </label>
+        </li>
+      </ul>
+    </div>
+      
+    
+    <div class="help_highlight">
+      <div class="help_button" onclick="CHOOSER.CALL.popup('commercial');"></div>
+      <h4>{% trans %}Allow commercial uses of your work?{% endtrans %}</h4>
+      <ul>
+        <li>
+          <input type="radio"
+                 {%- if not form.license.nc %} checked="checked" {% endif %}
+                 name="field_commercial" value="y" id="question_2-3"/>
+          <label for="question_2-3">{% trans %}Yes{% endtrans %}</label>
+        </li>
+        <li>
+          <input type="radio"
+                 {%- if form.license.nc %} checked="checked" {% endif %}
+                 name="field_commercial" value="n" id="question_2-4"/>
+          <label for="question_2-4">{% trans %}No{% endtrans %}</label>
+        </li>
+      </ul>
+    </div>
+
+    <div id="jurisdiction_section" class="help_highlight">
+      <div class="help_button" onclick="CHOOSER.CALL.popup('jurisdiction');"></div>
+      <h4>{% trans %}License Jurisdiction{% endtrans %}:</h4>
+      <select id="field_jurisdiction" name="field_jurisdiction">
+        {# If a specific jurisdiction is requested, we'll mark that
+        # as selected.  Otherwise util.International should be selected. #}
+        <option value=""
+                {% if form.license.jurisdiction == "" -%}
+                selected="selected"
+                {%- endif %}>
+          {% trans %}International{% endtrans %}
+        </option>
+        {% for juris_code, juris_name in jurisdictions_names %}
+        <option value="{{ juris_code }}"
+                {% if requested_jurisdiction == juris_code -%}
+                selected="selected"
+                {%- endif %}>
+          {{- juris_name -}}
+        </option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+  <script>
+// Select International on load (in case user selects a port and reloads)
+$("#field_jurisdiction").val('');
+CHOOSER.CALL.ping();
+  </script>
+
+
+
+
+  <div id="license" class="col-md-5 ui_box">
+    <div class="help_button mirror" onclick="CHOOSER.CALL.popup('selected_license');"></div>
+    <h2>{% trans %}Selected License{% endtrans %}</h2>
+
+    <div id="license_title">
+      <a target="_blank" id="license_title_link" href="{{ license.uri }}">{{ license_title }}</a>
+    </div>
+    
+    <div class="license_icons">
+      <div id="cc_slot"><a target="_blank" id="cc_icon" href="/licenses/"></a></div>
+      <div id="by_slot"><a target="_blank" id="by_icon" href="/characteristic/by"
+                           onclick="CHOOSER.CALL.popup('by_aspect');"></a></div>
+      <div id="nc_slot"
+           style={% if license_code.nc %}"display:table-cell" {% else %}"display:none" {% endif -%}
+           {% if currency == "eu" %}class="euro" {% elif currency == "jp" %}class="yen" {% endif -%}
+           ><a target="_blank" id="nc_icon" href="/characteristic/nc"
+               onclick="CHOOSER.CALL.popup('nc_aspect');"></a></div>
+      <div id="sa_slot"
+           style={%- if license_code.sa %}"display:table-cell" {% else %}"display:none" {% endif -%}
+           ><a target="_blank" id="sa_icon" href="/characteristic/sa"
+               onclick="CHOOSER.CALL.popup('sa_aspect');"></a></div>
+      <div id="nd_slot"
+           style={%- if license_code.nd %}"display:table-cell" {% else %}"display:none" {% endif -%}
+           ><a target="_blank" id="nd_icon" href="/characteristic/nd"
+               onclick="CHOOSER.CALL.popup('nd_aspect');"></a></div>
+    </div>
+    
+    <div id="fc_approved_box" class="fc_info_box" {% if not license.libre %}style="display: none;"{% endif %}>
+      <div class="whatis">
+        <a target="_blank" href="/freeworks">
+          {%- trans %}This is a Free Culture License!{% endtrans -%}
+        </a>
+      </div>
+      <div>
+        <a target="_blank" class="fc_logo_link" href="/freeworks"></a>
+      </div>
+    </div>
+
+    <div id="fc_dubious_box" class="fc_info_box" {% if license.libre %}style="display: none;"{% endif %}>
+      <div class="whatis">
+        <a target="_blank" href="/freeworks">
+          {%- trans %}This is not a Free Culture License.{% endtrans -%}
+          <!--<h2>ಠ_ಠ</h2>-->
+        </a>
+      </div>
+      <div>
+        <a target="_blank" class="fc_logo_link" href="/freeworks"></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<div class="row" oluirow>
+  <div id="metadata" class="col-md-5 ui_box">
+    <div class="help_button" onclick="CHOOSER.CALL.popup('metadata');"></div>
+
+    <h2>{% trans %}Help others attribute you!{% endtrans %}</h2>
+    {% trans %}This part is optional, but filling it out will add machine-readable metadata to the suggested HTML!{% endtrans %}
+
+    <div id="metadataentry">
+      <div class="help_highlight">
+        <div class="metatable">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('work_title');"></div>
+          <span><label for="field_worktitle">
+            {%- trans %}Title of work{% endtrans -%}
+          </label></span>
+          <span><input type="text" name="field_worktitle" id="field_worktitle"
+                 value="{{ form.meta.title }}" /></span>
+        </div>
+      </div>
+
+      <div class="help_highlight">
+        <div class="metatable">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_name');"></div>
+          <span><label for="field_attribute_to_name">
+            {%- trans %}Attribute work to name{% endtrans -%}
+          </label></span>
+          <span><input type="text" name="field_attribute_to_name" id="field_attribute_to_name" 
+                 value="{{ form.meta.attrib_name }}"/></span>
+        </div>
+      </div>
+
+      <div class="help_highlight">
+        <div class="metatable">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_url');"></div>
+          <span><label for="field_attribute_to_url">
+            {%- trans %}Attribute work to URL{% endtrans -%}
+          </label></span>
+          <span><input type="url" name="field_attribute_to_url" id="field_attribute_to_url" 
+                 value="{{ form.meta.attrib_url }}" /></span>
+        </div>
+      </div>
+
+      <div class="help_highlight">
+        <div class="metatable">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('src_url');"></div>
+          <span><label for="field_sourceurl">
+            {%- trans %}Source work URL{% endtrans -%}
+          </label></span>
+          <span><input type="url" name="field_sourceurl" id="field_sourceurl"
+                 value="{{ form.meta.src_url }}"/></span>
+        </div>
+      </div>
+
+      <div class="help_highlight">
+        <div class="metatable">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('permissions_url');"></div>
+          <span><label for="field_morepermissionsurl">
+            {%- trans %}More permissions URL{% endtrans -%}
+          </label></span>
+          <span><input type="url" name="field_morepermissionsurl" id="field_morepermissionsurl"
+                 value="{{ form.meta.permissions }}"/></span>
+        </div>
+      </div>
+
+      <div class="help_highlight">
+        <div class="metatable">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('work_format');"></div>
+          <span><label for="format_selection">
+            {% trans %}Format of work{% endtrans %}
+          </label></span>
+          <span><select id="format_selection" name="field_format">
+            <option value="" 
+                    {%- if form.meta.format == "" %} selected="selected"
+                    {%- endif %}>
+              {% trans %}Other / Multiple formats{% endtrans %}</option>
+            <option value="Sound"
+                    {%- if form.meta.format == "Sound" %} selected="selected"
+                    {%- endif %}>
+              {% trans %}Audio{% endtrans %}</option>
+            <option value="MovingImage"
+                    {%- if form.meta.format == "MovingImage" %} selected="selected"
+                    {%- endif %}>
+              {% trans %}Video{% endtrans %}</option>
+            <option value="StillImage"
+                    {%- if form.meta.format == "StillImage" %} selected="selected"
+                    {%- endif %}>
+              {% trans %}Image{% endtrans %}</option>
+            <option value="Text"
+                    {%- if form.meta.format == "Text" %} selected="selected"
+                    {%- endif %}>
+              {% trans %}Text{% endtrans %}</option>
+            <option value="Dataset"
+                    {%- if form.meta.format == "Dataset" %} selected="selected"
+                    {%- endif %}>
+              {% trans %}Dataset{% endtrans %}</option>
+            <option value="InteractiveResource"
+                    {%- if form.meta.format == "InteractiveResource" %} selected="selected"{% endif %}>
+              {% trans %}Interactive{% endtrans %}</option>
+          </select></span>
+        </div>
+      </div>
+
+      <div class="help_highlight">
+        <div class="metatable">
+          <div class="help_button" onclick="CHOOSER.CALL.popup('license_mark');"></div>
+          <span><label for="metadata_format">
+            {% trans %}License mark{% endtrans %}
+          </label></span>
+          <span><select id="metadata_format" name="field_metadata_standard">
+            <option value="html+rdfa" 
+                    {%- if form.meta.standard == "html+rdfa" %} selected="selected"
+                    {%- endif %}>HTML+RDFa</option>
+            <option value="xmp"
+                    {%- if form.meta.standard == "xmp" %} selected="selected"
+                    {%- endif %}>XMP</option>
+            <option value="offline"
+                    {%- if form.meta.standard == "offline" %} selected="selected"
+                    {%- endif %}>{% trans %}Offline{% endtrans %}</option>
+          </select></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+
+  <div id="internets" class="col-md-5 ui_box">
+    <div id="for_htmlrdfa" {% if form.meta.standard != "html+rdfa" %}style="display:none"{% endif %}>
+      <div class="help_button mirror" onclick="CHOOSER.CALL.popup('license_mark_html');"></div>
+      <h2>{% trans %}Have a web page?{% endtrans %}</h2>
+      <div class="results-preview"><div>{{ license_html|safe }}</div></div>
+      <div id="copy_caption">
+        {%- trans %}Copy this code to let your visitors know!{% endtrans -%}
+      </div>
+      <textarea id="codetocopy" readonly="readonly">{{ license_html }}</textarea>
+      <div id="iconsize_box">
+        <ul>
+          <li>
+            <input type="radio" {% if form.out.badge == "normal" -%}
+                   checked="checked" {% endif -%}
+                   name="field_iconsize" value="normal" id="extracredit_1-1"/>
+            <label for="extracredit_1-1">{% trans %}Normal Icon{% endtrans %}</label>
+          </li>
+          <li>
+            <input type="radio" {% if form.out.badge == "small" -%}
+                   checked="checked" {% endif -%}
+                   name="field_iconsize" value="small" id="extracredit_1-2"/>
+            <label for="extracredit_1-2">{% trans %}Compact Icon{% endtrans %}</label>
+            </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div id="for_xmp" {% if form.meta.standard != "xmp" %}style="display:none"{% endif %}>
+      <h2>{% trans %}XMP Embeded Metadata{% endtrans %}</h2>
+
+      <div class="results-preview"><div>
+          <p>
+            {% trans %}CC metadata can be embedded into images and many other file formats!  <a target="_blank" href="http://wiki.creativecommons.org/XMP">See the wiki for more info</a>.
+            {% endtrans %}
+          </p>
+      </div></div>
+      <div id="xmp_download_box"><div>
+        {% trans license_name=license.title(target_lang) -%}
+        <a id="xmp_download_link" href="/choose/metadata.xmp?{{ last_query }}">Download metadata.xmp</a> for <br/> <span id="xmp_license_name">{{ license_name }}</span>{% endtrans %}
+      </div></div>
+    </div>
+    
+
+    <div id="for_offline" {% if form.meta.standard != "offline" %}style="display:none"{% endif %}>
+      <h2>{% trans %}Non-digital works?{% endtrans %}</h2>
+      
+      <div class="results-preview"><div>
+          <p><a target="_blank" href="http://creativecommons.org/about/downloads/">
+              {%- trans %}Downloadable license graphics.{% endtrans -%}
+          </a></p>
+          <p><a target="_blank" href="http://wiki.creativecommons.org/Marking/Creators#Marking_Specific_Media">
+              {%- trans %}How to mark video and other media formats.{% endtrans -%}
+          </a></p>
+          <p>{% trans %}To mark a document not on the web, add the following text to your work:{% endtrans %}</p>
+      </div></div>
+          
+      <textarea id="infotocopy" readonly="readonly">
+        {%- trans license_name=license.title(target_lang), license_url=license.uri -%}
+          This work is licensed under the Creative Commons {{ license_name }} License. To view a copy of this license, visit {{ license_url }}.
+        {%- endtrans -%}
+      </textarea>
+    </div>
+  </div>
+
+
+</div>
+
+
+<noscript>
+  <div class="update_bar">
+    {% trans %}Javascript is disabled.{% endtrans %}
+    <input type="submit"
+           value="{% trans %}Update Selected License{% endtrans %}"/>
+  </div>
+</noscript>
+</form>
+
+
+<div id="publishing_fluff">
+  {% trans -%}
+  Learn <a href="http://wiki.creativecommons.org/Publish">how to share your work with existing communities</a> that have enabled Creative Commons licensing.
+  {%- endtrans %}
+</div>
+
+
+<div id="other_stuff">
+  <div id="chooserDonate">
+    <div>
+      <a href="https://donate.creativecommons.org/"><img src="/images/support/2010/cc-support.png" alt="Donate" title="Donate" border="0"/></a></div>
+    <p>
+      {% trans %}Creative Commons is a non-profit organization.<br /> We need your support to continue providing these tools.<br /> <a href="https://donate.creativecommons.org/">Donate today!</a>{% endtrans %}
+    </p>
+  </div>
+  {% include "includes/engine_languages.html" %}
+</div>
+
+
+<div id="popup_screen" onclick="$('#popup_screen').hide();"><div id="popup_alignment">
+  <div id="popup_body">
+    <h2 id="popup_title">popup title</h2>
+    <div id="popup_message">Lorem ipsum dolor sit amet...</div>
+  </div>
+  <div id="popup_close_default" style="display:none">
+    <a onclick="$('#popup_screen').hide();">
+      {% trans %}close popup{% endtrans %}
+    </a>
+  </div>
+  <div id="popup_close">
+  </div>
+</div>
+
+
+
+
+
+<!-- This node is used to allow for translation of help popup text. -->
+<div id="help_lookup" style="display:none">
+
+
+  <div id="help_jurisdiction">
+    <div class="title">{% trans %}About earlier versions{% endtrans %}</div>
+    <div class="msg">
+      <p>{% trans %}The most recent license version is 4.0, which can be used internationally. If you are searching for a port of the license for a particular jurisdiction, however, you may still use them.{% endtrans %}</p>
+      <p>{% trans %}If your jurisdiction is not on this list, or if you want to use the latest version of the licenses instead of a ported license, you can return to the 4.0 license chooser.{% endtrans %}</p>
+    </div>
+    <div class="close_buttons">
+      <a onclick="hide_jurisdiction_section();">
+        {% trans %}use latest{% endtrans %}
+      </a>
+      <a onclick="$('#popup_screen').hide();">
+        {% trans %}use earlier license ports{% endtrans %}
+      </a>
+    </div>
+  </div>
+
+  <div id="help_change_jurisdictions">
+    <div class="title">{% trans %}About earlier versions{% endtrans %}</div>
+    <div class="msg">
+      <p>{% trans %}The most recent license version is 4.0, which can be used internationally. Earlier versions of licenses, including 3.0 international and ports localized to particular jurisdictions, can be still be used by clicking the "show earlier licenses" link below.{% endtrans %}</p>
+    </div>
+    <div class="close_buttons">
+      <a onclick="$('#popup_screen').hide();">
+        {% trans %}use latest{% endtrans %}
+      </a>
+      <a onclick="show_jurisdiction_section();">
+        {% trans %}show earlier licenses{% endtrans %}
+      </a>
+    </div>
+  </div>
+
+  <!-- license panel help text -->
+
+  <div id="help_modifications">
+    <div class="title">{% trans %}Allow adaptations of your work to be shared?{% endtrans %}</div>
+    <div class="msg">
+      <h4>{% trans %}Yes{% endtrans %}</h4>
+      <p>{% trans %}The licensor permits others to copy, distribute, display, and perform the work, as well as make and distribute derivative works based on it.{% endtrans %}</p>
+      <h4>{% trans %}Yes, as long as others share alike{% endtrans %}</h4>
+      <p>{% trans %}The licensor permits others to create and distribute derivative works, but only under the same or a <a target="_blank" href="http://creativecommons.org/compatiblelicenses">compatible</a> license.{% endtrans %}</p>
+      <h4>{% trans %}No{% endtrans %}</h4>
+      <p>{% trans %}The licensor permits others to copy, distribute, display, and perform the work, but not distribute derivative works based on it.{% endtrans %}</p>
+    </div>
+  </div>
+  <div id="help_commercial">
+    <div class="title">{% trans %}Allow commercial uses of your work?{% endtrans %}</div>
+    <div class="msg">
+      <h4>{% trans %}Yes{% endtrans %}</h4>
+      <p>{% trans %}The licensor permits others to copy, distribute, display, and perform the work, including for commercial purposes.{% endtrans %}</p>
+      <h4>{% trans %}No{% endtrans %}</h4>
+      <p>{% trans %}The licensor permits others to copy, distribute, display, and perform the work for non-commercial purposes only.{% endtrans %}</p>
+    </div>
+  </div>
+
+  <!-- selected license panel help text -->
+  
+  <div id="help_selected_license">
+    <div class="title">{% trans %}Selected License{% endtrans %}</div>
+    <div class="msg">
+      <p>
+        {%- trans %}The "Selected License" panel displays information about the license
+        that was described in the "License Features" panel.  Changing the values in the
+        "License Features" panel will update the information displayed here.{% endtrans -%}
+      </p>
+      <h4>{% trans %}Approved for Free Cultural Works{% endtrans %}</h4>
+      {% trans -%}
+      <p>
+        If the selected license provides the freedoms required of a free culture license, 
+        then the "Approved for Free Cultural Works" icon appears on this panel.  This 
+        feature is intended to assist you in making a more informed decision.
+        NonCommercial and NoDerivatives licenses include additional restrictions
+        which, by definition, prevent them from being considered free culture licenses.
+      </p>
+      <p>
+        While our non-free culture licenses are useful in particular circumstances, unintended
+        consequences may result from their use (such as license incompatibility).  
+        For example, a work that is under the license "Attribution-NonCommercial-ShareAlike" 
+        may not be combined with a work licensed "Attribution-ShareAlike" because putting
+        the resulting work under either license violates the other by either
+        adding or removing the NonCommercial restriction.
+      </p>
+      <p>
+        A real world example of license incompatibility:  Works with the NonCommercial
+        or the NoDerivatives restriction may not be posted to Wikipedia.
+      </p>
+      {%- endtrans %}
+      <p>{% trans -%}
+        Freedomdefined.org is a great source of information about free culture.
+        The <a href="http://freedomdefined.org/Definition">free culture definition</a> 
+        and <a href="http://freedomdefined.org/Permissible_restrictions">permissible restrictions</a>
+        pages are wonderful starting points for further learning.
+      {%- endtrans %}</p>
+    </div>
+  </div>
+
+
+  <!-- metadata panel help text -->
+
+  <div id="help_metadata">
+    <div class="title">{% trans %}Help others attribute you!{% endtrans %}</div>
+    <div class="msg">
+      <p>
+        {% trans %}This information is embedded in a machine-readable format.  This allows search engines to index additional information about your work and allows people coming to the license deed from your page to see information about how to attribute your work.{% endtrans %}
+      </p>
+      <p>
+        {% trans %}<a target="_blank" href="http://wiki.creativecommons.org/Metadata">More information</a> on Creative Commons metadata is available.{% endtrans %}
+      </p></div>
+  </div>
+
+  <div id="help_work_title">
+    <div class="title">{% trans %}Title of work{% endtrans %}</div>
+    <div class="msg">{% trans %}The title of the work you are licensing.{% endtrans %}</div>
+  </div>
+  <div id="help_attrib_name">
+    <div class="title">{% trans %}Attribute work to name{% endtrans %}</div>
+    <div class="msg">{% trans %}The name of the person who should receive attribution for the work. Most often, this is the author.
+{% endtrans %}</div>
+  </div>
+  <div id="help_attrib_url">
+    <div class="title">{% trans %}Attribute work to URL{% endtrans %}</div>
+    <div class="msg">{% trans %}The URL to which the work should be attributed. For example, the work's page on the author's site.{% endtrans %}</div>
+  </div>
+  <div id="help_src_url">
+    <div class="title">{% trans %}Source work URL{% endtrans %}</div>
+    <div class="msg">{% trans %}The URL of the work upon which this work is based or derived.{% endtrans %}</div>
+  </div>
+  <div id="help_permissions_url">
+    <div class="title">{% trans %}More permissions URL{% endtrans %}</div>
+    <div class="msg">{% trans %}A URL where a user can find information about obtaining rights that are not already permitted by the CC license.{% endtrans %}</div>
+  </div>
+
+  <div id="help_work_format">
+    <div class="title">{% trans %}Format of work{% endtrans %}</div>
+    <div class="msg">{% trans %}This describes what kind of work is being licensed.  For example, a photograph would have the "Image" format.  If unsure, choose "Other / Multiple formats".{% endtrans %}</div>
+  </div>
+  <div id="help_license_mark">
+    <div class="title">{% trans %}License mark{% endtrans %}</div>
+    <div class="msg">
+      <p>{% trans %}The "License Mark" select box determines the content of the bottom right panel.  That panel provides a means of marking your work in a consistent and standardized way.{% endtrans %}</p>
+      <h4>HTML + RDFa</h4>
+      <p>{% trans %}HTML is provided that you can copy into your webpage.  The HTML is annotated with machine-readable <a target="_blank" href="http://wiki.creativecommons.org/Metadata">metadata</a>.  This allows search engines to find similarly licensed works, and for tools to automatically recognize information about the work (such as who authored it).{% endtrans %}</p>
+      <h4>XMP</h4>
+      <p>{% trans %}An <a target="_blank" href="http://wiki.creativecommons.org/XMP">XMP</a> file can be embedded in a variety of file formats, such as PDFs.{% endtrans %}</p>
+      <h4>{% trans %}Offline{% endtrans %}</h4>
+      <p>{% trans%}Provides a simple plain text notice that can be used to mark offline works{% endtrans %}</p>
+    </div>
+  </div>
+
+
+  <!-- selected license panel help text -->
+  
+  <div id="help_license_mark_html">
+    <div class="title">{% trans %}Have a web page?{% endtrans %}</div>
+    <div class="msg">
+      <p>
+        {% trans %}The HTML provided in this panel may be pasted into your website to display which license applies to your work, as well as attribution information.  The HTML combines information provided in the "License Features" panel and the "Help others attribute you!" panel.  The HTML also contains <a target="_blank" href="http://wiki.creativecommons.org/RDFa">RDFa</a> metadata, which allows search engines to accurately determine which license your work is under, and how you want to be attributed.{% endtrans %}
+      </p>
+      <p>
+        {% trans %}This panel also contains a preview of what the HTML will look like when included in your website.  The radio buttons at the bottom of the panel may be used to change the size and appearance of the license icon in the HTML.{% endtrans %}
+      </p>
+    </div>
+  </div>
+
+  <div id="help_by_aspect">
+    <div class="title">{% trans %}Attribution{% endtrans %}</div>
+    <div class="msg">{% trans %}You must attribute the
+work in the manner specified by the author or licensor.{% endtrans %}</div>
+  </div>
+
+  <div id="help_sa_aspect">
+    <div class="title">{% trans %}Share Alike{% endtrans %}</div>
+    <div class="msg">{% trans %}The licensor permits others to distribute derivative works only under the same license or one compatible with the one that governs the licensor's work.{% endtrans %}</div>
+  </div>
+
+  <div id="help_nd_aspect">
+    <div class="title">{% trans %}No Derivative Works{% endtrans %}</div>
+    <div class="msg">{% trans %}The licensor permits others to copy, distribute and transmit only unaltered copies of the work — not derivative works based on it.{% endtrans %}</div>
+  </div>
+
+  <div id="help_nc_aspect">
+    <div class="title">{% trans %}Noncommercial{% endtrans %}</div>
+    <div class="msg">{% trans %}The licensor permits others to copy, distribute and transmit the work. In return, licensees may not use the work for commercial purposes — unless they get the licensor's permission.{% endtrans %}</div>
+  </div>
+
+
+</div>
+
+<!-- this group of images shouldn't be visible, but exists to cause the browser to cache them -->
+<div style="display: none">
+  <img src="/wp-content/themes/creativecommons.org/images/fc_dubious.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/fc_dubious_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_cc.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_by.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nd.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_eu.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_jp.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_cc_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_by_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nd_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_eu_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_jp_hover.png" />
+  <img src="/wp-content/themes/creativecommons.org/images/hint_button_hover.png" />
+</div>
+{% endblock %}

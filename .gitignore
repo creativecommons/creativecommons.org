@@ -7,7 +7,9 @@ python_env/lib
 python_env/local
 python_env/paste_errors.log
 python_env/.Python
-python_env/src/*
+python_env/src/i18n
+python_env/src/license.rdf
+python_env/src/cc.license
 docroot/wp-content/
 docroot/wordpress/
 #docroot/sitemap.*

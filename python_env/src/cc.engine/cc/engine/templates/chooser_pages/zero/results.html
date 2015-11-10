@@ -1,0 +1,130 @@
+{% extends "macros_templates/engine.html" %}
+
+{% block title %}CC0: Results{% endblock title %}
+
+{% block headers %}
+  <link rel="stylesheet" type="text/css"
+        href="{{ request.staticdirect('/includes/zero.css') }}" />
+
+  <script type="text/javascript">
+    YAHOO.util.Event.onDOMReady(function() {
+      // init the buttons
+      (new YAHOO.widget.Button("do-send-email")).render();
+    });
+  </script>
+{% endblock headers %}
+
+<body>
+
+{% block sidebar %}{% endblock %}
+
+{% block page_header_title %}CC0{% endblock %}
+
+{% block body %}
+  <div>
+
+    {% if not can_issue %}
+      <div id="error">
+        <div class="bd">
+          <p>
+            {% trans %}You did not affirm your decision to waive the rights associated with your work. If you'd like to continue you can click the Back button to review your choice.{% endtrans %}
+          </p>
+          <ul>
+            <li>
+              <a href="/about/cc0">{% trans %}About CC0{% endtrans %}</a>
+            </li>
+            <li>
+              <a href="http://wiki.creativecommons.org/CC0_FAQ"
+                 >{% trans %}Frequently Asked Questions{% endtrans %}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    {% else %}
+      <div id="results">
+        <div class="bd" id="waiver-results">
+          <p>
+            {% trans %}Choose which style of button you'd like on your webpage:{% endtrans %}
+          </p>
+  
+          <div class="licensebox" align="center">
+            <table>
+              <tr>
+                <td valign="bottom" align="center">
+                  <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png"
+                       style="border:0px;" /><br/>
+                  <input type="radio" name="button" checked
+                         onclick="swapbutton('http://i.creativecommons.org/p/zero/1.0/88x31.png')" />
+                </td>
+                <td valign="bottom" align="center">
+                  <img src="http://i.creativecommons.org/p/zero/1.0/80x15.png"
+                       style="border:0px;" /><br/>
+                  <input type="radio" name="button"
+                         onclick="swapbutton('http://i.creativecommons.org/p/zero/1.0/80x15.png')"/>
+                </td>
+  
+              </tr>
+            </table>
+          </div>
+  
+          <span id="waiver-results-leadin">
+            {% trans %}Here's a preview of how your waiver will appear on your site:{% endtrans %}
+          </span>
+  
+          <div class="preview" id="results-preview">{{ rdfa|safe }}</div>
+  
+          <h3>{% trans %}Have your own website?{% endtrans %}</h3>
+          <p>
+            {% trans %}Copy the text below to your Web site to let your visitors know that you've waived the rights to your work.  Creative Commons does not retain a record of your selection; as the publisher it's up to you to let people know how they may use your work.{% endtrans %}
+          </p>
+  
+          <textarea id="codetocopy" cols="70" rows="6" style="width: 100%"
+                    onfocus="select()">{{ rdfa }}</textarea>
+  
+          <div class="more-metadata-container">
+            <h3 style="margin-top:0;">{% trans %}Send Email{% endtrans %}</h3>
+  
+            {% if email_requested %}
+              {# email container #}
+              {% if not succesful_send %}
+                <div class="more-metadata-container error">
+                  {% trans email_addr=email_addr %}An error occurred when we tried to send the email message; you can try clicking the Back button and double checking your email address.  If the address you used ({{ email_addr }}) was correct you can <a href="/contact">contact us</a>.{% endtrans %}
+                </div>
+              {% else %}
+                <div>
+                  <p>
+                    {% trans email_addr=email_addr %}The suggested HTML has been sent to {{ email_addr }}.{% endtrans %}
+                  </p>
+  
+                  {% if requested_send_updates %}
+                    {% trans %}You have asked to be notified of updates to CC0.  A subscription request has been sent on your behalf; you must click the link in the confirmation email to complete the sign-up process.{% endtrans %}
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% else %}
+              <p>
+                {% trans %}If you'd like to get the HTML with embedded metadata via email and optionally receive updates about CC0, fill in your email address below.{% endtrans %}
+              </p>
+  
+              <form action="{{ request.path_info }}" method="post">
+                {% for key, value in request_form.iteritems() %}
+                  <input type="hidden" name="{{ key }}" value="{{ value }}" />
+                {% endfor %}
+
+                <div class="more-metadata">
+                  <div>{% trans %}your email{% endtrans %}</div>
+                  <input type="textbox" name="email" />
+                </div>
+  
+                <input id="do-send-email" type="submit" class="btn"
+                       value="{% trans %}Send{% endtrans %}" />
+              </form>
+            {% endif %}
+  
+          </div>
+        </div>
+        <div class="ft"></div>
+      </div>
+    {% endif %}
+  </div>
+{% endblock body %}

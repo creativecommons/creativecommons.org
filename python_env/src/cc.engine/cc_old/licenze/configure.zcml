@@ -1,0 +1,31 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:i18n="http://namespaces.zope.org/i18n"
+
+           >
+
+    <!-- One Utility per License Class -->
+
+<!--
+    <utility 
+        name="standard"
+        factory=".standard.LicenseSelector"
+        provides=".interfaces.ILicenseSelector"
+	/>
+-->
+
+    <utility 
+        name="zero"
+        factory=".zero.selector.ZeroSelector"
+        provides=".interfaces.ILicenseSelector"
+	/>
+
+    <utility 
+        name="publicdomain"
+        factory=".publicdomain.Selector"
+        provides=".interfaces.ILicenseSelector"
+	/>
+
+    <include package=".publicdomain" />
+    <include package=".zero" />
+
+</configure>
