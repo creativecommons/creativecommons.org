@@ -21,38 +21,24 @@ else
 fi
 
 #
-# Configure Apache:
+# Configure Apache
 #
 
-# 1. Copy config files into place
+function config_conf {
+    FILE="${1}"
+    PROTO="${2}"
+    PORT="${3}"
+    perl -p -i -e "s/\\$\{port\}/${PORT}/g" "${FILE}"
+    perl -p -i -e "s/\\$\{host\}/${HOSTNAME}/g" "${FILE}"
+    perl -p -i -e "s/\\$\{proto\}/${PROTO}/g" "${FILE}"
+    perl -p -i -e "s|\\$\{dir\}|${TOPDIR}|g" "${FILE}"
+    perl -p -i -e "s|\\$\{logdir\}|/var/log/apache2/${HOSTNAME}|g" "${FILE}"
+}
 
-if grep -q "apache.conf" /etc/apache2/httpd.conf
-then
-    echo "Note: /etc/apache2/httpd.conf seems to be loading an apache.conf file,"
-    echo "leaving it alone. If that's not the CC apache.conf file, then you'll"
-    echo "need to add the Include line manually."
-else
-    echo "Include ${TOPDIR}/config/apache.conf" >> /etc/apache2/httpd.conf
-fi
-
-cat <<EOF > /etc/apache2/sites-available/${HOSTNAME}.conf
-<VirtualHost *:80>
-    Use CCVHost ${HOSTNAME} http ${TOPDIR} /var/log/apache2/${HOSTNAME}
-</VirtualHost>
-EOF
-
-if [ -f /etc/ssl/private/${HOSTNAME}.key ]
-then
-    cat <<EOF >> /etc/apache2/sites-available/${HOSTNAME}.conf
-<VirtualHost *:443>
-    Use CCVHost ${HOSTNAME} https ${TOPDIR} /var/log/apache2/${HOSTNAME}
-    SSLEngine on
-    SSLCertificateFile /etc/ssl/private/${HOSTNAME}.crt
-    SSLCertificateKeyFile /etc/ssl/private/${HOSTNAME}.key
-    SSLCACertificateFile /etc/ssl/certs/RapidSSL_CA_bundle.pem
-</VirtualHost>
-EOF
-fi
+HTTPSCONF="/etc/apache2/sites-available/${HOSTNAME}.conf"
+echo ${TOPDIR}/config/apache.conf "${HTTPSCONF}"
+cp ${TOPDIR}/config/apache.conf "${HTTPSCONF}"
+config_conf "${HTTPSCONF}" https 443
 
 # 2. Create logging directory
 
