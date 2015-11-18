@@ -66,6 +66,7 @@ do
     fi
 done
 
+REPOS+=(cc.engine)
 for i in "${REPOS[@]}"
 do
     pushd "${i}"
