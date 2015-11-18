@@ -6,6 +6,7 @@ HOSTNAME=${1:-creativecommons.org}
 DBNAME=${2:-wordpress}
 DBUSER=${3:-dbuser}
 DBPASS=${4:-}
+DBHOST=${5:-127.0.0.1}
 
 #
 # Install base system dependencies
@@ -36,7 +37,6 @@ function config_conf {
 }
 
 HTTPSCONF="/etc/apache2/sites-available/${HOSTNAME}.conf"
-echo ${TOPDIR}/config/apache.conf "${HTTPSCONF}"
 cp ${TOPDIR}/config/apache.conf "${HTTPSCONF}"
 config_conf "${HTTPSCONF}" https 443
 
@@ -64,15 +64,15 @@ service apache2 restart
 #
 
 # run mysql to see if the root user has a password set
-if mysql -u root -e ""
+if mysql -h ${DBHOST} -u root -e ""
 then
-    mysql -u root mysql <<EOF
+    mysql -h ${DBHOST} -u root mysql <<EOF
 CREATE DATABASE IF NOT EXISTS ${DBNAME};
 GRANT ALL ON ${DBNAME}.* TO '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
 EOF
 else
     echo "Enter the MySQL root password:"
-    mysql -u root -p mysql <<EOF
+    mysql -h ${DBHOST} -u root -p mysql <<EOF
 CREATE DATABASE IF NOT EXISTS ${DBNAME};
 GRANT ALL ON ${DBNAME}.* TO '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
 EOF
