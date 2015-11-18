@@ -22,6 +22,13 @@ else
 fi
 
 #
+# Make uploads dir writeable
+#
+
+mkdir -p ${TOPDIR}/docroot/wp-content/uploads
+chgrp -R www-data ${TOPDIR}/docroot/wp-content/uploads
+
+#
 # Configure Apache
 #
 
