@@ -76,7 +76,7 @@ popd # to topdir
 # composer
 #
 
-curl -sS https://getcomposer.org/installer | php
+wget -O - https://getcomposer.org/installer | php
 
 #
 # WordPress
