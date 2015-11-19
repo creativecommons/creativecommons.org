@@ -23,6 +23,8 @@ else
     git clone https://github.com/creativecommons/cc-wp-theme.git
     ln -s "${TOPDIR}/cc-wp-theme/creativecommons.org" \
        "docroot/wp-content/themes/creativecommons.org"
+    ln -s "${TOPDIR}/cc-wp-theme/creativecommons.org" \ 
+       "docroot/wp-content/themes/twentyfourteen"
 fi
 
 cd python_env
