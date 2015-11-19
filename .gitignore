@@ -1,4 +1,7 @@
 cc-wp-theme
+docroot
+vendor
+composer.phar
 python_env/bin
 !python_env/bin/ccengine.fcgi.in
 python_env/build

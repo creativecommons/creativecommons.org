@@ -1,6 +1,5 @@
 #!/bin/bash
 
-CUR=`pwd`
 TOPDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
 HOSTNAME=${1:-creativecommons.org}
@@ -8,30 +7,13 @@ DBNAME=${2:-wordpress}
 DBUSER=${3:-dbuser}
 DBPASS=${4:-}
 
-cd ${TOPDIR}
-
-#
-# Theme
-#
-
-if [ -d "docroot/wp-content/themes/creativecommons.org" ]
-then
-    pushd "docroot/wp-content/themes/creativecommons.org"
-    git pull
-    popd
-else
-    git clone https://github.com/creativecommons/cc-wp-theme.git
-    ln -s "${TOPDIR}/cc-wp-theme/creativecommons.org" \
-       "docroot/wp-content/themes/creativecommons.org"
-    ln -s "${TOPDIR}/cc-wp-theme/creativecommons.org" \ 
-       "docroot/wp-content/themes/twentyfourteen"
-fi
-
-cd python_env
+pushd ${TOPDIR}
 
 #
 # Set up Python env
 #
+
+pushd python_env
 
 virtualenv .
 source bin/activate
@@ -47,7 +29,8 @@ done
 # On Ubuntu, virtualenv setups don't "see" dist-packages, which is
 # where Ubuntu-packaged modules go. This works around that problem:
 
-echo "/usr/lib/python2.7/dist-packages/" > lib/python2.7/site-packages/dist-packages.pth
+echo "/usr/lib/python2.7/dist-packages/" \
+     > lib/python2.7/site-packages/dist-packages.pth
 
 #
 # Check out and set up each Python module
@@ -78,7 +61,7 @@ do
     popd
 done
 
-popd # python_env
+popd # to python_env
 
 #
 # compile_mo & transstats are needed by cc.engine at runtime, run them now
@@ -87,7 +70,60 @@ popd # python_env
 bin/compile_mo
 bin/transstats
 
-cd .. # topdir
+popd # to topdir
+
+#
+# composer
+#
+
+curl -sS https://getcomposer.org/installer | php
+
+#
+# WordPress
+#
+
+php ${TOPDIR}/composer.phar install
+
+# Copy in support for themes and configuration
+
+cp -r ${TOPDIR}/config/wordpress/* ${TOPDIR}/docroot/
+
+# Make sure wp-content hierarchy is correct
+
+mkdir -p ${TOPDIR}/docroot/wp-content/themes
+mkdir -p ${TOPDIR}/docroot/wp-content/uploads
+chgrp -R www-data ${TOPDIR}/docroot/wp-content/uploads
+
+# Link in the rdf
+
+ln -s ${TOPDIR}/python_env/src/license.rdf \
+   ${TOPDIR}/docroot/license.rdf
+ln -s ${TOPDIR}/docroot/license.rdf/cc/licenserdf/rdf \
+   ${TOPDIR}/docroot/rdf
+ln -s ${TOPDIR}/docroot/license.rdf/cc/licenserdf/licenses \
+   ${TOPDIR}/docroot/license_rdf
+
+#
+# Theme
+#
+
+if [ ! -d "${TOPDIR}/cc-wp-theme" ]
+then
+    git clone https://github.com/creativecommons/cc-wp-theme.git \
+        "${TOPDIR}/cc-wp-theme"
+else
+    pushd "${TOPDIR}/docroot/wp-content/themes/creativecommons.org"
+    git pull
+    popd
+fi
+
+if [ ! -d "${TOPDIR}/docroot/wp-content/themes/creativecommons.org" ]
+then
+    ln -s "${TOPDIR}/cc-wp-theme/creativecommons.org" \
+       "docroot/wp-content/themes/creativecommons.org"
+    ln -s "${TOPDIR}/cc-wp-theme/creativecommons.org" \
+       "docroot/wp-content/themes/twentyfourteen"
+fi
 
 #
 # Generate ccengine.fcgi & wp-config-local.php
@@ -103,4 +139,4 @@ done
 
 chmod 755 python_env/bin/ccengine.fcgi
 
-cd ${CUR}
+popd # to original
