@@ -84,10 +84,6 @@ wget -O - https://getcomposer.org/installer | php
 
 php ${TOPDIR}/composer.phar install
 
-# Copy in support for themes and configuration
-
-cp -r ${TOPDIR}/config/wordpress/* ${TOPDIR}/docroot/
-
 # Make sure wp-content hierarchy is correct
 
 mkdir -p ${TOPDIR}/docroot/wp-content/themes
@@ -112,7 +108,7 @@ then
     git clone https://github.com/creativecommons/cc-wp-theme.git \
         "${TOPDIR}/cc-wp-theme"
 else
-    pushd "${TOPDIR}/docroot/wp-content/themes/creativecommons.org"
+    pushd "${TOPDIR}/cc-wp-theme"
     git pull
     popd
 fi

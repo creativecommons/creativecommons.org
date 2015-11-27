@@ -1,5 +1,4 @@
 cc-wp-theme
-docroot
 vendor
 composer.phar
 python_env/bin
