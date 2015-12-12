@@ -227,5 +227,20 @@ The Product licensed under Creative Commons License is provided by the person wh
       document.write("<" + "script type='text/javascript' src='//scraper.creativecommons.org/apps/deed?url=" + encodeURIComponent(document.referrer) + "&amp;license_uri=" + encodeURIComponent(document.URL) + "&amp;callback=YAHOO.cc.success'" + "><" + "/script>");
 //]]>
     </script>
+    <!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//stats.creativecommons.org/piwik/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 2]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//stats.creativecommons.org/piwik/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
   </body>
 </html>
