@@ -19,7 +19,9 @@
 define('WP_SITEURL', 'https://' . $_SERVER['SERVER_NAME'] . '/wordpress');
 define('WP_HOME',    'https://' . $_SERVER['SERVER_NAME']);
 define('WP_CONTENT_DIR', dirname(__FILE__) . '/wp-content');
-define('WP_CONTENT_URL', 'http://' . $_SERVER['SERVER_NAME'] . '/wp-content');
+define('WP_CONTENT_URL', 'https://' . $_SERVER['SERVER_NAME'] . '/wp-content');
+
+$_SERVER['HTTPS'] = 'on';
 
 // Load DB config / secrets
 if ( file_exists( dirname(__FILE__) . '/wp-config-local.php' ) )
