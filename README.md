@@ -7,7 +7,7 @@
 
 See http://getcomposer.org/ for installation details.
 
-* Some times `composer update` will not give any results, in which case `computer remove wordpress && composer require wordpress` will fix the problem.
+* Some times `composer update` will not give any results, in which case `composer remove wordpress && composer require wordpress` will fix the problem.
 
 ## Set-up
 
