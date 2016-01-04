@@ -90,15 +90,6 @@ mkdir -p ${TOPDIR}/docroot/wp-content/themes
 mkdir -p ${TOPDIR}/docroot/wp-content/uploads
 chgrp -R www-data ${TOPDIR}/docroot/wp-content/uploads
 
-# Link in the rdf
-
-ln -s ${TOPDIR}/python_env/src/license.rdf \
-   ${TOPDIR}/docroot/license.rdf
-ln -s ${TOPDIR}/docroot/license.rdf/cc/licenserdf/rdf \
-   ${TOPDIR}/docroot/rdf
-ln -s ${TOPDIR}/docroot/license.rdf/cc/licenserdf/licenses \
-   ${TOPDIR}/docroot/license_rdf
-
 #
 # Theme
 #
@@ -134,5 +125,16 @@ do
 done
 
 chmod 755 python_env/bin/ccengine.fcgi
+
+#
+# Support the semantic web
+#
+
+ln -s ${TOPDIR}/python_env/src/license.rdf \
+   ${TOPDIR}/docroot/license.rdf
+ln -s ${TOPDIR}/docroot/license.rdf/cc/licenserdf/rdf \
+   ${TOPDIR}/docroot/rdf
+ln -s ${TOPDIR}/docroot/license.rdf/cc/licenserdf/licenses \
+   ${TOPDIR}/docroot/license_rdf
 
 popd # to original
