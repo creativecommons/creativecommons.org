@@ -3,7 +3,7 @@
 TOPDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
 function usage {
-    echo "Usage: $0 <hostname> [db] [db user] [db user password]"
+    echo "Usage: $0 <hostname> [db] [db user] [db user password] [db host]"
     exit 1
 }
 [ -z "$1" ] && usage;

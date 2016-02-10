@@ -1,3 +1,6 @@
+cc-wp-theme
+vendor
+composer.phar
 python_env/bin
 !python_env/bin/ccengine.fcgi.in
 python_env/build
@@ -6,8 +9,48 @@ python_env/lib
 python_env/local
 python_env/paste_errors.log
 python_env/.Python
+python_env/src/i18n
+python_env/src/license.rdf
+python_env/src/cc.license
 docroot/wp-content/
 docroot/wordpress/
 #docroot/sitemap.*
 docroot/wp-config-local.php
-vendor/*
+vendor/*# -*- mode: gitignore; -*-
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+#*.apk
+*.exe
+*.dmg
+auto-save-list
+tramp
+.\#*
+*.swp
+
+# Org-mode
+.org-id-locations
+*_archive
+
+# flymake-mode
+*_flymake.*
+
+# eshell files
+/eshell/history
+/eshell/lastdir
+
+# elpa packages
+/elpa/
+
+# reftex files
+*.rel
+
+# AUCTeX auto folder
+/auto/
+
+# apitest
+/apitest/node_modules
+
+.DS_Store
