@@ -1,4 +1,4 @@
-# CC WordPress 2014
+# CC WordPress 2016
 
 ## Changes
 
@@ -70,8 +70,12 @@ you. But if something goes wrong / you want to know more:
 
 Happy hacking!
 
+## Thanks
+
+* Our thanks to [BigV](http://bigv.io) and [BrowserStack](http://www.browserstack.com) for their donation of tools and services.
+
 ## Support
 
-Problems? Write to us at hackers@creativecommons.org or send us a pull request...
+Problems? Write to us at info@creativecommons.org or send us a pull request...
 
-Updated: April 2014.
+Updated: April 2016.
