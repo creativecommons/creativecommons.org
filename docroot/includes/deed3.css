@@ -986,11 +986,13 @@ ol.arabic-markers {
 }
 
 /* --- form styles --- */
-#deed-donate-slide.signup .slide-trigger { padding: 10px; }
+#signup.slide-trigger { padding: 10px; }
 
-#deed-donate-slide.signup form { padding-top: 10px; }
+#signup.slide-trigger p { cursor: initial; }
 
-#deed-donate-slide.signup input {
+#signup form { padding-top: 10px; }
+
+#signup input {
 	display: block;
 	box-sizing: border-box;
 	width: 100%;
@@ -1008,6 +1010,21 @@ ol.arabic-markers {
 	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
 	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+label.error {
+	background: #ffffff;
+	padding: 5px;
+	margin: 5px;
+	display: block;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	font-size: 10px;
+	line-height: 10px;
+	font-weight: 400;
+	color: #ce5606;
+	text-transform: uppercase;
 }
 
 /* --- narrow screens --- */
