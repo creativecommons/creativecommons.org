@@ -5,7 +5,7 @@
       "package": {
         "name": "wordpress",
         "type": "webroot",
-        "version": "4.5",
+        "version": "4.5.1",
         "dist": {
           "type": "zip",
           "url": "https://wordpress.org/wordpress-4.5.1.zip"
@@ -17,7 +17,7 @@
     }
   ],
   "require": {
-    "php": ">=5.6.0",
+    "php": ">=5.5.9",
     "wordpress": "4.5.1",
     "fancyguy/webroot-installer": "1.0.0"
   },
