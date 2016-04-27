@@ -8,7 +8,7 @@
         "version": "4.5",
         "dist": {
           "type": "zip",
-          "url": "https://wordpress.org/wordpress-4.5.zip"
+          "url": "https://wordpress.org/wordpress-4.5.1.zip"
         },
         "require" : {
           "fancyguy/webroot-installer": "1.0.0"
@@ -18,7 +18,7 @@
   ],
   "require": {
     "php": ">=5.6.0",
-    "wordpress": "4.5",
+    "wordpress": "4.5.1",
     "fancyguy/webroot-installer": "1.0.0"
   },
   "extra": {
