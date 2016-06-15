@@ -55,7 +55,7 @@ chmod 750 /var/log/apache2/${HOSTNAME}
 
 # 3. Enable mods and site
 
-for i in macro php5 rewrite ssl fcgid
+for i in macro php5 rewrite ssl fcgid header
 do
     a2enmod $i
 done

@@ -3,6 +3,7 @@ python-virtualenv
 python-pip
 gcc
 python-dev
+libz-dev
 libxml2
 libxml2-dev
 libxslt1.1
