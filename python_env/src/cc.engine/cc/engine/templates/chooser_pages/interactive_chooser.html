@@ -173,7 +173,10 @@ CHOOSER.CALLBACK.main = function () {
 
     // Set up text-on-click for textarea elements
     $("textarea").each(function(i,el) { el.onclick=function () { this.select(); }; })
-});
+
+    $("#show-metadata").click(function(){$('#collapse-metadata').slideToggle('fast')});
+			    
+			 });
 
 
 
@@ -480,6 +483,8 @@ function hide_jurisdiction_section() {
 
 
 /* everything else: */
+
+#collapse-metadata {display: none;}
 
 select, input, textarea {
     background-color: white;
@@ -1445,8 +1450,12 @@ CHOOSER.CALL.ping();
     
     <h2>{% trans %}Help others attribute you!{% endtrans %}</h2>
         <div class="subtitle">
-	  {% trans %}This part is optional, but filling it out will add machine-readable metadata to the suggested HTML!{% endtrans %}
-	  </div>
+	  <a id="show-metadata" href="#">{% trans %}This part is optional, but filling it out will add machine-readable metadata to the suggested HTML!{% endtrans %}</a>
+	</div>
+
+    
+	
+    <div id="collapse-metadata">	
     
     <div id="metadataentry">
       <div class="help_highlight">
@@ -1565,6 +1574,8 @@ CHOOSER.CALL.ping();
           </select></span>
           <div class="help_button help_button_inline" onclick="CHOOSER.CALL.popup('license_mark');"></div>
         </div>
+      </div>
+
       </div>
 
     </div>
