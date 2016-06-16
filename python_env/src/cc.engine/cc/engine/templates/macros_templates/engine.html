@@ -30,7 +30,7 @@
  
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="$pagetitle$ - Creative Commons">
+<meta property="og:title" content="{% block title %}Page Title{% endblock %} - Creative Commons">
 <meta property="og:description" content="Use Creative Commons tools to help share your work. Our free, easy-to-use copyright licenses provide a simple, standardized way to give you permission to share and use your creative work— on conditions of your choice. You can adopt one of our licenses by sharing on a partner platform, or choosing a license below. &nbsp; &nbsp;">
 <meta property="og:site_name" content="Creative Commons">
 <meta property="og:image" content="https://staging.creativecommons.org/wp-content/uploads/2016/05/flickr.jpg">
@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://staging.creativecommons.org/wp-content/uploads/2016/05/PLOS.jpg">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:description" content="Use Creative Commons tools to help share your work. Our free, easy-to-use copyright licenses provide a simple, standardized way to give you permission to share and use your creative work— on conditions of your choice. You can adopt one of our licenses by sharing on a partner platform, or choosing a license below. &nbsp; &nbsp;">
-<meta name="twitter:title" content="$pagetitle$ - Creative Commons">
+<meta name="twitter:title" content="{% block title %}Page Title{% endblock %} - Creative Commons">
 <meta name="twitter:image" content="/wp-content/uploads/2016/05/flickr.jpg">
  
 <link rel="alternate" type="application/rss+xml" title="Creative Commons » Feed" href="https://staging.creativecommons.org/feed/">
@@ -177,7 +177,7 @@
 <div id="wrapper-main" class="wrapper-main">
 <div class="breadcrumbs" typeof="BreadcrumbList" vocab="http://schema.org/">
  
-<span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Creative Commons." href="https://staging.creativecommons.org" class="home"><span property="name">Creative Commons</span></a><meta property="position" content="1"></span> &gt; <span property="itemListElement" typeof="ListItem"><span property="name">$pagetitle$</span><meta property="position" content="2"></span>
+<span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Creative Commons." href="https://staging.creativecommons.org" class="home"><span property="name">Creative Commons</span></a><meta property="position" content="1"></span> &gt; <span property="itemListElement" typeof="ListItem"><span property="name">{% block title %}Page Title{% endblock %}</span><meta property="position" content="2"></span>
 </div>
 <main id="main" class="site-main" role="main">
 <article>
