@@ -1417,60 +1417,6 @@ CHOOSER.CALL.ping();
 
 
 
-  <div id="license" class="col-md-5 ui_box">
-    <div class="help_button mirror" onclick="CHOOSER.CALL.popup('selected_license');"></div>
-    <h2>{% trans %}Selected License{% endtrans %}</h2>
-
-    <div id="license_title">
-      <a target="_blank" id="license_title_link" href="{{ license.uri }}">{{ license_title }}</a>
-    </div>
-    
-    <div class="license_icons">
-      <div id="cc_slot"><a target="_blank" id="cc_icon" href="/licenses/"></a></div>
-      <div id="by_slot"><a target="_blank" id="by_icon" href="/characteristic/by"
-                           onclick="CHOOSER.CALL.popup('by_aspect');"></a></div>
-      <div id="nc_slot"
-           style={% if license_code.nc %}"display:table-cell" {% else %}"display:none" {% endif -%}
-           {% if currency == "eu" %}class="euro" {% elif currency == "jp" %}class="yen" {% endif -%}
-           ><a target="_blank" id="nc_icon" href="/characteristic/nc"
-               onclick="CHOOSER.CALL.popup('nc_aspect');"></a></div>
-      <div id="sa_slot"
-           style={%- if license_code.sa %}"display:table-cell" {% else %}"display:none" {% endif -%}
-           ><a target="_blank" id="sa_icon" href="/characteristic/sa"
-               onclick="CHOOSER.CALL.popup('sa_aspect');"></a></div>
-      <div id="nd_slot"
-           style={%- if license_code.nd %}"display:table-cell" {% else %}"display:none" {% endif -%}
-           ><a target="_blank" id="nd_icon" href="/characteristic/nd"
-               onclick="CHOOSER.CALL.popup('nd_aspect');"></a></div>
-    </div>
-    
-    <div id="fc_approved_box" class="fc_info_box" {% if not license.libre %}style="display: none;"{% endif %}>
-      <div class="whatis">
-        <a target="_blank" href="/freeworks">
-          {%- trans %}This is a Free Culture License!{% endtrans -%}
-        </a>
-      </div>
-      <div>
-        <a target="_blank" class="fc_logo_link" href="/freeworks"></a>
-      </div>
-    </div>
-
-    <div id="fc_dubious_box" class="fc_info_box" {% if license.libre %}style="display: none;"{% endif %}>
-      <div class="whatis">
-        <a target="_blank" href="/freeworks">
-          {%- trans %}This is not a Free Culture License.{% endtrans -%}
-          <!--<h2>ಠ_ಠ</h2>-->
-        </a>
-      </div>
-      <div>
-        <a target="_blank" class="fc_logo_link" href="/freeworks"></a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
 
 
 <div class="row" oluirow>
@@ -1598,6 +1544,62 @@ CHOOSER.CALL.ping();
   </div>
   
 
+  <div id="license" class="col-md-5 ui_box">
+    <div class="help_button mirror" onclick="CHOOSER.CALL.popup('selected_license');"></div>
+    <h2>{% trans %}Selected License{% endtrans %}</h2>
+
+    <div id="license_title">
+      <a target="_blank" id="license_title_link" href="{{ license.uri }}">{{ license_title }}</a>
+    </div>
+    
+    <div class="license_icons">
+      <div id="cc_slot"><a target="_blank" id="cc_icon" href="/licenses/"></a></div>
+      <div id="by_slot"><a target="_blank" id="by_icon" href="/characteristic/by"
+                           onclick="CHOOSER.CALL.popup('by_aspect');"></a></div>
+      <div id="nc_slot"
+           style={% if license_code.nc %}"display:table-cell" {% else %}"display:none" {% endif -%}
+           {% if currency == "eu" %}class="euro" {% elif currency == "jp" %}class="yen" {% endif -%}
+           ><a target="_blank" id="nc_icon" href="/characteristic/nc"
+               onclick="CHOOSER.CALL.popup('nc_aspect');"></a></div>
+      <div id="sa_slot"
+           style={%- if license_code.sa %}"display:table-cell" {% else %}"display:none" {% endif -%}
+           ><a target="_blank" id="sa_icon" href="/characteristic/sa"
+               onclick="CHOOSER.CALL.popup('sa_aspect');"></a></div>
+      <div id="nd_slot"
+           style={%- if license_code.nd %}"display:table-cell" {% else %}"display:none" {% endif -%}
+           ><a target="_blank" id="nd_icon" href="/characteristic/nd"
+               onclick="CHOOSER.CALL.popup('nd_aspect');"></a></div>
+    </div>
+    
+    <div id="fc_approved_box" class="fc_info_box" {% if not license.libre %}style="display: none;"{% endif %}>
+      <div class="whatis">
+        <a target="_blank" href="/freeworks">
+          {%- trans %}This is a Free Culture License!{% endtrans -%}
+        </a>
+      </div>
+      <div>
+        <a target="_blank" class="fc_logo_link" href="/freeworks"></a>
+      </div>
+    </div>
+
+    <div id="fc_dubious_box" class="fc_info_box" {% if license.libre %}style="display: none;"{% endif %}>
+      <div class="whatis">
+        <a target="_blank" href="/freeworks">
+          {%- trans %}This is not a Free Culture License.{% endtrans -%}
+          <!--<h2>ಠ_ಠ</h2>-->
+        </a>
+      </div>
+      <div>
+        <a target="_blank" class="fc_logo_link" href="/freeworks"></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+  
   <div id="internets" class="col-md-5 ui_box">
     <div id="for_htmlrdfa" {% if form.meta.standard != "html+rdfa" %}style="display:none"{% endif %}>
       <div class="help_button mirror" onclick="CHOOSER.CALL.popup('license_mark_html');"></div>
