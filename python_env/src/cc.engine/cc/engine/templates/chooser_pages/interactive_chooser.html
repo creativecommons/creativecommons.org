@@ -537,21 +537,21 @@ input[type=radio] {
     right: 20px;
 }
 
-#metadata .help_highlight {
-    position: relative;
+<!-- #metadata .help_highlight { -->
+<!--     position: relative; -->
 
-    margin-left: -25px;
-    margin-right: -25px;
-    margin-top: -4px;
-    margin-bottom: 8px;
+<!--     margin-left: -25px; -->
+<!--     margin-right: -25px; -->
+<!--     margin-top: -4px; -->
+<!--     margin-bottom: 8px; -->
 
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+<!--     padding-left: 3px; -->
+<!--     padding-right: 3px; -->
+<!--     padding-top: 4px; -->
+<!--     padding-bottom: 4px; -->
 
-    border-radius: 8px;
-}
+<!--     border-radius: 8px; -->
+<!-- } -->
 
 .require_js #metadata .help_highlight_remove:ho2ver {
     margin-left: -26px;
@@ -571,25 +571,25 @@ input[type=radio] {
 #metadata .metatable {
     display: table;
     border-collapse: collapse;
-    width: 383px;
+    // width: 383px;
 }
 #metadata .metatable input {
     display: inline-block;
-    width: 170px;
+    width: 100%;
     // height: 17px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-right: 16px;
-    margin-left: 0px;
+    //margin-top: 3px;
+    //margin-bottom: 3px;
+    //margin-right: 16px;
+    //margin-left: 0px;
 }
 #metadata .metatable select {
     display: inline-block;
-    width: 174px;
-    height: 21px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-right: 16px;
-    margin-left: 0px;
+    width: 100%;
+    //height: 21px;
+    //margin-top: 3px;
+    //margin-bottom: 3px;
+    //margin-right: 16px;
+    //margin-left: 0px;
 }
 #metadata .metatable>span:first-of-type {
     display: table-cell !important;
@@ -613,13 +613,13 @@ input[type=radio] {
     color: black;
 }
 
-.help_highlight {
-    border-radius: 8px;
-    margin-left: -24px;
-    padding-left: 24px;
-    margin-right: -24px;
-    padding-right: 24px;
-}
+<!-- .help_highlight { -->
+<!--     border-radius: 8px; -->
+<!--     margin-left: -24px; -->
+<!--     padding-left: 24px; -->
+<!--     margin-right: -24px; -->
+<!--     padding-right: 24px; -->
+<!-- } -->
 
 .require_js .help_highlight:ho2ver {
     border: 1px solid #aaa;
@@ -734,7 +734,7 @@ h4 {
     line-height: 1.6em;
 }
 
-#freedoms .subtitle {
+.subtitle {
       margin-bottom: 1em;
       text-align: center;
 }
@@ -1430,11 +1430,14 @@ CHOOSER.CALL.ping();
 
 <div class="row" oluirow>
   <div id="metadata" class="col-md-5 ui_box">
-    <div class="help_button" onclick="CHOOSER.CALL.popup('metadata');"></div>
 
     <h2>{% trans %}Help others attribute you!{% endtrans %}</h2>
-    {% trans %}This part is optional, but filling it out will add machine-readable metadata to the suggested HTML!{% endtrans %}
+        <div class="subtitle">
+	  {% trans %}This part is optional, but filling it out will add machine-readable metadata to the suggested HTML!{% endtrans %}
+	  </div>
 
+    <div class="help_button" onclick="CHOOSER.CALL.popup('metadata');"></div>
+    
     <div id="metadataentry">
       <div class="help_highlight">
         <div class="metatable">
