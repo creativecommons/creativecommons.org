@@ -1445,62 +1445,65 @@ CHOOSER.CALL.ping();
     <div id="metadataentry">
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('work_title');"></div>
           <span><label for="field_worktitle">
             {%- trans %}Title of work{% endtrans -%}
           </label></span>
           <span><input type="text" name="field_worktitle" id="field_worktitle"
                  value="{{ form.meta.title }}" /></span>
+          <div class="help_button" onclick="CHOOSER.CALL.popup('work_title');"></div>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_name');"></div>
+
           <span><label for="field_attribute_to_name">
             {%- trans %}Attribute work to name{% endtrans -%}
           </label></span>
           <span><input type="text" name="field_attribute_to_name" id="field_attribute_to_name" 
                  value="{{ form.meta.attrib_name }}"/></span>
+          <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_name');"></div>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_url');"></div>
+
           <span><label for="field_attribute_to_url">
             {%- trans %}Attribute work to URL{% endtrans -%}
           </label></span>
           <span><input type="url" name="field_attribute_to_url" id="field_attribute_to_url" 
                  value="{{ form.meta.attrib_url }}" /></span>
+          <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_url');"></div>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('src_url');"></div>
+
           <span><label for="field_sourceurl">
             {%- trans %}Source work URL{% endtrans -%}
           </label></span>
           <span><input type="url" name="field_sourceurl" id="field_sourceurl"
                  value="{{ form.meta.src_url }}"/></span>
+          <div class="help_button" onclick="CHOOSER.CALL.popup('src_url');"></div>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('permissions_url');"></div>
           <span><label for="field_morepermissionsurl">
             {%- trans %}More permissions URL{% endtrans -%}
           </label></span>
           <span><input type="url" name="field_morepermissionsurl" id="field_morepermissionsurl"
                  value="{{ form.meta.permissions }}"/></span>
-        </div>
+          <div class="help_button" onclick="CHOOSER.CALL.popup('permissions_url');"></div>
+	</div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('work_format');"></div>
+
           <span><label for="format_selection">
             {% trans %}Format of work{% endtrans %}
           </label></span>
@@ -1533,12 +1536,13 @@ CHOOSER.CALL.ping();
                     {%- if form.meta.format == "InteractiveResource" %} selected="selected"{% endif %}>
               {% trans %}Interactive{% endtrans %}</option>
           </select></span>
+          <div class="help_button" onclick="CHOOSER.CALL.popup('work_format');"></div>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('license_mark');"></div>
+
           <span><label for="metadata_format">
             {% trans %}License mark{% endtrans %}
           </label></span>
@@ -1553,6 +1557,7 @@ CHOOSER.CALL.ping();
                     {%- if form.meta.standard == "offline" %} selected="selected"
                     {%- endif %}>{% trans %}Offline{% endtrans %}</option>
           </select></span>
+          <div class="help_button" onclick="CHOOSER.CALL.popup('license_mark');"></div>
         </div>
       </div>
 
