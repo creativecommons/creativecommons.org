@@ -496,9 +496,9 @@ input[type=radio] {
     background-color: transparent;
 }
 
-#metadata .help_button {
-    margin-top: 5px!important;
-}
+<!-- #metadata .help_button { -->
+<!--     margin-top: 5px!important; -->
+<!-- } -->
 
 .help_button {
     //position: absolute; /* prevents help button from influence box packing */
@@ -526,13 +526,13 @@ margin 0 auto;
     right: 20px;
 }
 
-.require_js #content[dir="ltr"] .help_highlight:ho2ver>.help_button {
+.require_js #content[dir="ltr"] .help_highlight:hover>.help_button {
     display: inline-block;
     margin-top: 10px;
     left: 20px;
 }
 
-.require_js #content[dir="rtl"] .help_highlight:ho2ver>.help_button {
+.require_js #content[dir="rtl"] .help_highlight:hover>.help_button {
     display: inline-block;
     margin-top: 10px;
     right: 20px;
@@ -1441,8 +1441,6 @@ CHOOSER.CALL.ping();
         <div class="subtitle">
 	  {% trans %}This part is optional, but filling it out will add machine-readable metadata to the suggested HTML!{% endtrans %}
 	  </div>
-
-    <div class="help_button" onclick="CHOOSER.CALL.popup('metadata');"></div>
     
     <div id="metadataentry">
       <div class="help_highlight">
