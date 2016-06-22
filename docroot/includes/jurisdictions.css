@@ -1,0 +1,48 @@
+/**
+ * This file contains any jurisdiction-specific CSS or overrides.
+ */
+
+/* Belgium */
+.be .nc {
+	background: url("/images/deed/nc-eu.png") 0 0 no-repeat;
+}
+
+/* Finland */
+.fi .nc {
+	background: url("/images/deed/nc-eu.png") 0 0 no-repeat;
+}
+
+/* France */
+.fr .nc {
+	background: url("/images/deed/nc-eu.png") 0 0 no-repeat;
+}
+
+/* Guatemala */
+.gt .nc {
+	background: url("/images/deed/nc-gt.png") 0 0 no-repeat;
+}
+
+/* Italy */
+.it .nc {
+	background: url("/images/deed/nc-eu.png") 0 0 no-repeat;
+}
+
+/* Japan */
+.jp .nc {
+	background: url("/images/deed/nc-jp.png") 0 0 no-repeat;
+}
+
+/* Luxembourg */
+.lu .nc {
+	background: url("/images/deed/nc-eu.png") 0 0 no-repeat;
+}
+
+/* Netherlands */
+.nl .nc {
+	background: url("/images/deed/nc-eu.png") 0 0 no-repeat;
+}
+
+/* Spain */
+.es .nc {
+	background: url("/images/deed/nc-eu.png") 0 0 no-repeat;
+}

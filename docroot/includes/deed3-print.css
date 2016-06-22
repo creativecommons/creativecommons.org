@@ -1,0 +1,199 @@
+/* CC Deed CSS */
+/* Print */
+
+@media print {
+    
+body {
+	text-align: center;
+	font: 10pt/12pt Arial, "Trebuchet MS", Verdana, sans-serif;
+	background-color: #fff;
+	color: #000;
+	margin-top: 0.35in;
+	}
+
+h3 {
+  padding: 0;
+  margin: 0 !important;
+}
+
+#header, #footer, #campaignBanner {
+	display: none;
+}
+
+#cc-logo {
+	float: left;
+}
+
+#cc-logo img {
+	width: 0.8in;
+	height: 0.8in;
+	padding-top: 0.01in;
+	margin-right: 0.1in;
+}
+
+#deed {
+	width: 6.5in;
+	margin: 0 auto;
+	text-align: left;
+}
+
+#deed-head h1 {
+	margin-left: 0.9in;
+	font-size: 15pt;
+	padding-top: 0.02in;
+	padding-bottom: 0.06in;
+	border-bottom: 0.05in solid #000;
+}
+
+#deed-main, #deed-rights, #deed-conditions, #deed-foot {
+	margin:0.5in 0 0 0;
+}
+
+#deed-main img {
+	float: right;
+	border: 0.01in solid #888;
+	margin-bottom:  0.2in;
+}
+
+#deed-license {
+	margin: 0;
+}
+
+#deed-license h2 {
+	font-size: 13px;
+	display: inline;
+	padding-bottom: 0.024in;
+	border-bottom: 0.02in solid #000;
+}
+
+#deed-foot {
+	font-size: 8pt;
+	/*border-top: 0.02in solid #888;*/
+	padding-top: 0.06in;
+	color: #888;
+}
+
+#disclaimer {
+	display: none;
+}
+
+#deed-foot p {
+	margin-top: 0;
+	margin-bottom: 0.01in;
+}
+
+#deed-foot a {
+	text-decoration: none;
+}
+
+#deed-conditions ul {
+	margin-top: 0.66in;
+}
+
+ul.license-properties  {
+  margin-top: 0.125in !important;
+  margin-bottom: 0.25in;
+}
+
+li.license {
+	list-style: none;
+	width: 4.5in;
+  min-height: 0.3in;
+
+  padding: 0;
+  margin: 0;
+    
+	margin-left: 0.33in;
+  margin-bottom: 0.125in; 
+
+  position: relative;
+}
+
+li.license p {
+	margin: 0;
+	padding: 0;
+  position: absolute;
+  top: -0;
+}
+
+li.share {
+	list-style-image: url("/images/deed/share.png");
+	list-style-position: outside;
+}
+
+li.remix {
+	list-style-image: url("/images/deed/remix.png");
+	list-style-position: outside;
+}
+li.devnations {
+	list-style-image: url("/images/deed/devnations.png");
+	list-style-position: outside;
+}
+li.by {
+	list-style-image: url("/images/deed/by.png");
+	list-style-position: outside;  
+}
+li.nc {
+	list-style-image: url("/images/deed/nc.png");
+	list-style-position: outside;  
+}
+li.sa {
+	list-style-image: url("/images/deed/sa.png");
+	list-style-position: outside;  
+}
+li.nd {
+	list-style-image: url("/images/deed/nd.png");
+	list-style-position: outside;  
+}
+
+blockquote {
+	padding: 0;
+	margin: 0.25in 0.1in;
+	font-style: oblique;
+	clear: both;
+}
+
+#libre {
+	position: absolute;
+	top: 2in;
+	right: 0in;
+	padding-left: 0.25in;
+	/*
+	padding-top: 0.12in;
+	width: 150px;
+	height: 250px;
+	*/
+}
+#libre img, #libre a, #librepd img, #librepd a {
+	border: none !important;
+}
+
+#more-container {
+	list-style: none;
+}
+
+/* ========== for RLT Printing ========== */
+
+.rtl {
+	direction:rtl;
+}
+
+.rtl #deed {
+	text-align:right;
+}
+
+.rtl blockquote {
+	font-family:Tahoma, Geneva, sans-serif;
+}
+
+.rtl ol.arabic-markers, .rtl li.arabic-markers, .rtl p{
+	list-style-type:none;
+}
+
+.rtl li, .rtl ol li, .rtl ol ol li{
+	margin: 10px 0px;
+}
+
+.help_panel {display: none !important;}
+
+}

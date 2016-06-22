@@ -1,0 +1,25 @@
+/* ie tweaks */
+
+
+#deed {
+	width: 765px; 
+}
+
+#deed-head {
+	margin: 9px;
+	margin-bottom: 0;
+}
+
+#deed-main {
+	width: 708px;
+/*	margin:  -32px 9px 0 10px;*/
+	margin: -32px 9px -32px 10px;
+}
+#deed-foot {
+	margin: 0 9px;
+}
+
+li.license {
+  height: 4em;
+}
+

@@ -1,0 +1,129 @@
+//==========================================
+// Ext JS Release Notes
+//==========================================
+// Release Date: December 3, 2007
+// Current Version: 2.0 (rev 1450)
+// Previous Version: 2.0 RC-1 (rev 1372)
+//==========================================
+
+===== Added =====
+none
+
+===== Removed =====
+none
+
+===== Modified =====
+src/core/
+    Element 
+        - Added null check in getAlignToXY
+        - Fixed bug parsing certain color codes in getColor
+        - Doc updates
+    EventManager
+        - Fixed getTarget to honor the returnEl argument when a selector is not passed in
+        
+src/dd/
+    DDCore
+        - Fix  in constrainTo to include tickSize in constraint calcs
+
+src/util/
+    Date - Fix in formatCodeToRegex to use Ext.escapeRe in the default case
+    
+src/widgets/
+    Button
+        - Fixed DOM clean up issue on destroy
+        - Doc updates
+    Component
+        - Moved state init logic after plugins are loaded in the constructor
+        - Doc updates
+    DataView 
+        - Internal fix to updateIndexes
+    Panel
+        - Fixed missing semi-colon in button tool spacer text (&#160;)
+        - Added logic in onDestroy to clean up any buttons
+        - Doc updates
+    TabPanel
+        - Internal fixes for activating only on tab change
+        - Doc updates
+    Window 
+        - Fixed DOM clean up issue on destroy
+        - Doc updates
+    
+src/widgets/form/
+    BasicForm 
+        - Fixed DOM clean up issue on destroy
+        - Doc updates
+    Checkbox 
+        - Added onDestroy to clean up wrap element
+        - Doc updates
+    CycleButton
+        - Fix to skip disabled options on cycle click
+    FieldSet 
+        - Fix to apply an id to the fieldset if specified
+        - Fix to apply this.id to the fieldset element on render
+        - Doc updates
+    FormPanel
+        - Added beforeDestroy to clean up inner BasicForm
+        - Doc updates
+
+src/widgets/layout/
+    AnchorLayout - Fixed width/height typo
+    ContainerLayout 
+        - Fixed issue when passing null into setContainer
+        - Fixed null error in isValidParent from not checking for positionEl
+    TableLayout - Fixed issues with complex spanning
+
+src/widgets/tips/
+    QuickTip - Fixed bug with error tip style overriding normal style
+
+src/widgets/tree/
+    TreePanel 
+        - Renamed events nodemove and beforemove to movenode and beforemovenode
+        - Doc updates
+    
+===== Doc updates only =====
+src/core/
+    Fx
+    Updater
+
+src/data/
+    ArrayReader
+    Connection
+    DataReader
+    HttpProxy
+    JsonReader
+    JsonStore
+    Record
+    ScriptTagProxy
+    Store
+    XmlReader
+
+src/util/
+    KeyMap
+    MixedCollection
+    Observable
+
+src/widgets/
+    ComponentMgr
+    Container
+    GridPanel
+    PanelDD (internal docs added)
+    Toolbar
+    Viewport
+    WindowManager
+
+src/widgets/form/
+    Action
+    TriggerField
+
+src/widgets/grid/
+    CellSelectionModel
+    ColumnModel
+    EditorGrid
+    GridPanel
+    GroupingView
+
+src/widgets/layout/
+    FormLayout
+    
+src/widgets/tips/
+    QuickTips

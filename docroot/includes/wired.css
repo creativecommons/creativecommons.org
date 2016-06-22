@@ -1,0 +1,42 @@
+h1 {
+	font: normal 32px Arial, Helvetica, sans-serif;
+	color: #9C7E0F;
+}
+
+h3 {	
+	font-size: 20px;
+	color: #D9531E;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	margin-bottom: 4px;}
+
+.tracks {
+	font-size:14px;
+	color: #D9531E;
+	font-family:arial, sans-serif;
+	line-height:100%;
+}		
+
+.tracks a {
+	color: #D9531E;
+}
+
+.noncom, a.noncom {
+	color:#9C7E0F;
+}
+
+.details {
+	font-size:11px;
+}
+
+.tracktitles {
+	font-size:18px;
+}
+
+.tracks li {
+	margin-bottom:10px;
+}
+
+#page-body {
+background:url(/wired/wiredback.gif) no-repeat 0px -24px;
+}
