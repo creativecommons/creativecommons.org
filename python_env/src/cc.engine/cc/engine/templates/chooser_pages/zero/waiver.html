@@ -10,8 +10,9 @@
 {% block scripts %}
   <script type="text/javascript">
     function continue_toggler() {
-        submit_button = $('#details-submit');
-        if ($('#confirm_details').is(':checked') && $('#confirm_understand').is(':checked')) {
+        submit_button = jQuery('#details-submit');
+        if (jQuery('#confirm_details').is(':checked')
+            && jQuery('#confirm_understand').is(':checked')) {
             submit_button.removeAttr('disabled');
             submit_button.removeClass('disabled');
         } else {
@@ -20,8 +21,8 @@
         }
     }
 
-    $('#confirm_details').click(continue_toggler);
-    $('#confirm_understand').click(continue_toggler);
+    jQuery('#confirm_details').click(continue_toggler);
+    jQuery('#confirm_understand').click(continue_toggler);
   </script>
 {% endblock %}
 

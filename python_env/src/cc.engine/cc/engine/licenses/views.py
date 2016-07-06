@@ -1,5 +1,6 @@
 import re
 import urllib
+from urllib2 import urlopen
 
 from lxml import etree
 from lxml.cssselect import CSSSelector
@@ -15,6 +16,9 @@ from cc.licenserdf.tools.license import license_rdf_filename
 
 from cc.i18n.util import locale_to_lower_upper
 
+def fetch_https(uri):
+    https_uri = re.sub(r'^http://', 'https://', uri)
+    return urlopen(https_uri)
 
 def licenses_view(request):
     target_lang = util.get_target_lang_from_request(request)
@@ -187,8 +191,7 @@ def license_legalcode_view(request, license):
 @get_license
 def license_legalcode_plain_view(request, license):
     parser = etree.HTMLParser()
-    legalcode = etree.parse(
-        license.uri + "legalcode", parser)
+    legalcode = etree.parse(fetch_https(license.uri + "legalcode"), parser)
 
     # remove the CSS <link> tags
     for tag in legalcode.iter('link'):
@@ -212,7 +215,7 @@ def license_legalcode_plain_view(request, license):
         legalcode.find("head"), "link",
         {"rel":"stylesheet",
          "type":"text/css",
-         "href":"http://yui.yahooapis.com/2.6.0/build/fonts/fonts-min.css"})
+         "href":"https://yui.yahooapis.com/2.6.0/build/fonts/fonts-min.css"})
 
     # return the serialized document
     return Response(etree.tostring(legalcode.getroot()))
