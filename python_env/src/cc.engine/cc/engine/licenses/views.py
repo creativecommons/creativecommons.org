@@ -1,6 +1,6 @@
 import re
 import urllib
-from urllib2 import urlopen
+import requests
 
 from lxml import etree
 from lxml.cssselect import CSSSelector
@@ -18,7 +18,7 @@ from cc.i18n.util import locale_to_lower_upper
 
 def fetch_https(uri):
     https_uri = re.sub(r'^http://', 'https://', uri)
-    return urlopen(https_uri)
+    return requests.get(https_uri).text
 
 def licenses_view(request):
     target_lang = util.get_target_lang_from_request(request)
@@ -191,7 +191,7 @@ def license_legalcode_view(request, license):
 @get_license
 def license_legalcode_plain_view(request, license):
     parser = etree.HTMLParser()
-    legalcode = etree.parse(fetch_https(license.uri + "legalcode"), parser)
+    legalcode = etree.fromstring(fetch_https(license.uri + "legalcode"), parser)
 
     # remove the CSS <link> tags
     for tag in legalcode.iter('link'):
@@ -207,7 +207,7 @@ def license_legalcode_plain_view(request, license):
 
     # remove //p[@id="header"]
     header_selector = CSSSelector('#header')
-    for p in header_selector(legalcode.getroot()):
+    for p in header_selector(legalcode):
         p.getparent().remove(p)
 
     # add our base CSS into the mix
@@ -218,7 +218,7 @@ def license_legalcode_plain_view(request, license):
          "href":"https://yui.yahooapis.com/2.6.0/build/fonts/fonts-min.css"})
 
     # return the serialized document
-    return Response(etree.tostring(legalcode.getroot()))
+    return Response(etree.tostring(legalcode))
 
 
 # This function could probably use a better name, but I can't think of
