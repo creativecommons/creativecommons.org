@@ -105,7 +105,6 @@
               <p>
                 {% trans %}If you'd like to get the HTML with embedded metadata via email and optionally receive updates about CC0, fill in your email address below.{% endtrans %}
               </p>
-  
               <form action="{{ request.path_info }}" method="post">
                 {% for key, value in request_form.iteritems() %}
                   <input type="hidden" name="{{ key }}" value="{{ value }}" />
@@ -113,10 +112,10 @@
 
                 <div class="more-metadata">
                   <div>{% trans %}your email{% endtrans %}</div>
-                  <input type="textbox" name="email" />
+                  <input type="email" class="form-control" name="email" />
                 </div>
   
-                <input id="do-send-email" type="submit" class="btn"
+                <input id="do-send-email" type="submit" class="button secondary"
                        value="{% trans %}Send{% endtrans %}" />
               </form>
             {% endif %}
