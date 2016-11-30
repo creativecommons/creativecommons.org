@@ -1,4 +1,0 @@
-[submodule "python_env/src/i18n"]
-	path = python_env/src/i18n
-	url = https://github.com/creativecommons/i18n
-	branch = master

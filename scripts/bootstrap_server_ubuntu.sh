@@ -6,6 +6,7 @@ HOSTNAME=${1:-creativecommons.org}
 DBNAME=${2:-wordpress}
 DBUSER=${3:-dbuser}
 DBPASS=${4:-}
+DBHOST=${5:-127.0.0.1}
 
 #
 # Install base system dependencies
@@ -21,38 +22,30 @@ else
 fi
 
 #
-# Configure Apache:
+# Make uploads dir writeable
 #
 
-# 1. Copy config files into place
+mkdir -p ${TOPDIR}/docroot/wp-content/uploads
+chgrp -R www-data ${TOPDIR}/docroot/wp-content/uploads
 
-if grep -q "apache.conf" /etc/apache2/httpd.conf
-then
-    echo "Note: /etc/apache2/httpd.conf seems to be loading an apache.conf file,"
-    echo "leaving it alone. If that's not the CC apache.conf file, then you'll"
-    echo "need to add the Include line manually."
-else
-    echo "Include ${TOPDIR}/config/apache.conf" >> /etc/apache2/httpd.conf
-fi
+#
+# Configure Apache
+#
 
-cat <<EOF > /etc/apache2/sites-available/${HOSTNAME}
-<VirtualHost *:80>
-    Use CCVHost ${HOSTNAME} http ${TOPDIR} /var/log/apache2/${HOSTNAME}
-</VirtualHost>
-EOF
+function config_conf {
+    FILE="${1}"
+    PROTO="${2}"
+    PORT="${3}"
+    perl -p -i -e "s/\\$\{port\}/${PORT}/g" "${FILE}"
+    perl -p -i -e "s/\\$\{host\}/${HOSTNAME}/g" "${FILE}"
+    perl -p -i -e "s/\\$\{proto\}/${PROTO}/g" "${FILE}"
+    perl -p -i -e "s|\\$\{dir\}|${TOPDIR}|g" "${FILE}"
+    perl -p -i -e "s|\\$\{logdir\}|/var/log/apache2/${HOSTNAME}|g" "${FILE}"
+}
 
-if [ -f /etc/ssl/private/${HOSTNAME}.key ]
-then
-    cat <<EOF >> /etc/apache2/sites-available/${HOSTNAME}
-<VirtualHost *:443>
-    Use CCVHost ${HOSTNAME} https ${TOPDIR} /var/log/apache2/${HOSTNAME}
-    SSLEngine on
-    SSLCertificateFile /etc/ssl/private/${HOSTNAME}.crt
-    SSLCertificateKeyFile /etc/ssl/private/${HOSTNAME}.key
-    SSLCACertificateFile /etc/ssl/certs/RapidSSL_CA_bundle.pem
-</VirtualHost>
-EOF
-fi
+HTTPSCONF="/etc/apache2/sites-available/${HOSTNAME}.conf"
+cp ${TOPDIR}/config/apache.conf "${HTTPSCONF}"
+config_conf "${HTTPSCONF}" https 443
 
 # 2. Create logging directory
 
@@ -62,7 +55,7 @@ chmod 750 /var/log/apache2/${HOSTNAME}
 
 # 3. Enable mods and site
 
-for i in macro php5 rewrite ssl fcgid
+for i in macro php5 rewrite ssl fcgid header
 do
     a2enmod $i
 done
@@ -78,15 +71,15 @@ service apache2 restart
 #
 
 # run mysql to see if the root user has a password set
-if mysql -u root -e ""
+if mysql -h ${DBHOST} -u root -e ""
 then
-    mysql -u root mysql <<EOF
+    mysql -h ${DBHOST} -u root mysql <<EOF
 CREATE DATABASE IF NOT EXISTS ${DBNAME};
 GRANT ALL ON ${DBNAME}.* TO '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
 EOF
 else
     echo "Enter the MySQL root password:"
-    mysql -u root -p mysql <<EOF
+    mysql -h ${DBHOST} -u root -p mysql <<EOF
 CREATE DATABASE IF NOT EXISTS ${DBNAME};
 GRANT ALL ON ${DBNAME}.* TO '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
 EOF

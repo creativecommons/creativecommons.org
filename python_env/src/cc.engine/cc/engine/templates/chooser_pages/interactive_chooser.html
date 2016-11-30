@@ -173,7 +173,12 @@ CHOOSER.CALLBACK.main = function () {
 
     // Set up text-on-click for textarea elements
     $("textarea").each(function(i,el) { el.onclick=function () { this.select(); }; })
-});
+
+    $("#collapse-metadata").slideToggle('fast');
+			    
+    $("#show-metadata").click(function(){$('#collapse-metadata').slideToggle('fast')});
+			    
+			 });
 
 
 
@@ -481,6 +486,8 @@ function hide_jurisdiction_section() {
 
 /* everything else: */
 
+
+
 select, input, textarea {
     background-color: white;
     color: #222;
@@ -496,22 +503,27 @@ input[type=radio] {
     background-color: transparent;
 }
 
-#metadata .help_button {
-    margin-top: 5px!important;
-}
+<!-- #metadata .help_button { -->
+<!--     margin-top: 5px!important; -->
+<!-- } -->
 
 .help_button {
     //position: absolute; /* prevents help button from influence box packing */
-    display: none;
-    margin-top: 5px;
-
-    background-image: url("/wp-content/themes/creativecommons.org/images/hint_button.png");
-    width: 25px;
-    height: 25px;
+    //display: none;
+    //margin-top: 5px;
+background-image: url("/wp-content/themes/creativecommons.org/images/hint_button.png");
+width: 25px;
+height: 25px;
+display: block;
+margin: 0 auto;
 }
 
-.help_button:hover {
-    background-image: url("/wp-content/themes/creativecommons.org/images/hint_button_hover.png");
+.help_button_inline {
+margin-left: 25px;
+}
+
+.help_button:ho2ver {
+    background-image: url("/wp-content/themes/creativecommons.org/images/hint_button_ho2ver.png");
     cursor: pointer;
 }
 
@@ -525,35 +537,35 @@ input[type=radio] {
     right: 20px;
 }
 
-.require_js #content[dir="ltr"] .help_highlight:hover>.help_button {
+.require_js #content[dir="ltr"] .help_highlight:ho2ver>.help_button {
     display: inline-block;
     margin-top: 10px;
     left: 20px;
 }
 
-.require_js #content[dir="rtl"] .help_highlight:hover>.help_button {
+.require_js #content[dir="rtl"] .help_highlight:ho2ver>.help_button {
     display: inline-block;
     margin-top: 10px;
     right: 20px;
 }
 
-#metadata .help_highlight {
-    position: relative;
+<!-- #metadata .help_highlight { -->
+<!--     position: relative; -->
 
-    margin-left: -25px;
-    margin-right: -25px;
-    margin-top: -4px;
-    margin-bottom: 8px;
+<!--     margin-left: -25px; -->
+<!--     margin-right: -25px; -->
+<!--     margin-top: -4px; -->
+<!--     margin-bottom: 8px; -->
 
-    padding-left: 3px;
-    padding-right: 3px;
-    padding-top: 4px;
-    padding-bottom: 4px;
+<!--     padding-left: 3px; -->
+<!--     padding-right: 3px; -->
+<!--     padding-top: 4px; -->
+<!--     padding-bottom: 4px; -->
 
-    border-radius: 8px;
-}
+<!--     border-radius: 8px; -->
+<!-- } -->
 
-.require_js #metadata .help_highlight:hover {
+.require_js #metadata .help_highlight_remove:ho2ver {
     margin-left: -26px;
     margin-right: -26px;
     margin-top: -5px;
@@ -561,8 +573,8 @@ input[type=radio] {
 
 }
 
-.require_js #metadata .help_highlight:hover .help_button {
-    position: absolute;
+.require_js #metadata .help_highlight:ho2ver .help_button {
+    position: relative;
     display: inline-block;
     top: 0px;
     left: 13px;
@@ -571,30 +583,31 @@ input[type=radio] {
 #metadata .metatable {
     display: table;
     border-collapse: collapse;
-    width: 383px;
+// width: 383px;
+margin-bottom: 1em;
 }
 #metadata .metatable input {
     display: inline-block;
-    width: 170px;
-    height: 17px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-right: 16px;
-    margin-left: 0px;
+    width: 270px;
+    // height: 17px;
+    //margin-top: 3px;
+    //margin-bottom: 3px;
+    //margin-right: 16px;
+    //margin-left: 0px;
 }
 #metadata .metatable select {
     display: inline-block;
-    width: 174px;
-    height: 21px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-right: 16px;
-    margin-left: 0px;
+    width: 100%;
+    //height: 21px;
+    //margin-top: 3px;
+    //margin-bottom: 3px;
+    //margin-right: 16px;
+    //margin-left: 0px;
 }
 #metadata .metatable>span:first-of-type {
     display: table-cell !important;
     text-align: right;
-    width: 143px;
+    width: 280px;
     padding: 0px;
     padding-left: 37px;
     vertical-align: middle;
@@ -613,15 +626,15 @@ input[type=radio] {
     color: black;
 }
 
-.help_highlight {
-    border-radius: 8px;
-    margin-left: -24px;
-    padding-left: 24px;
-    margin-right: -24px;
-    padding-right: 24px;
-}
+<!-- .help_highlight { -->
+<!--     border-radius: 8px; -->
+<!--     margin-left: -24px; -->
+<!--     padding-left: 24px; -->
+<!--     margin-right: -24px; -->
+<!--     padding-right: 24px; -->
+<!-- } -->
 
-.require_js .help_highlight:hover {
+.require_js .help_highlight:ho2ver {
     border: 1px solid #aaa;
     margin-left: -25px;
     margin-right: -25px;
@@ -734,12 +747,15 @@ h4 {
     line-height: 1.6em;
 }
 
-#freedoms .subtitle {
-    margin-bottom: 1em;
+.subtitle {
+      margin-bottom: 1em;
+      text-align: center;
 }
 
+      
 #freedoms h4 {
-    margin-left: 2em;
+      margin-left: 2em;
+      text-align: center;
 }
 #freedoms select {
     margin-top: 6px;
@@ -750,11 +766,14 @@ h4 {
 #freedoms ul, #internets ul {
     margin-left: 5em;
     list-style: none;
-    display: table;
+      display: table;
+      margin: 0em auto;
+      
 }
 #freedoms li, #internets li {
     display: table-cell;
-    width: 128px;
+      // width: 128px;
+     padding: 1em;
 }
 #freedoms li:only-of-type {
     width: 256px!important;
@@ -786,17 +805,18 @@ h4 {
 }
 
 .fc_info_box {
-    position: absolute;
+    //position: absolute;
     display: table;
-    width: 345px;
-    bottom: 30px;
+    //width: 345px;
+//bottom: 30px;
+margin-bottom: 1em;
 }
 
 #content[dir="ltr"] .fc_info_box {
-    right: 30px;
+    //right: 30px;
 }
 #content[dir="rtl"] .fc_info_box {
-    left: 30px;
+    //left: 30px;
 }
 
 .fc_info_box>div {
@@ -829,8 +849,8 @@ h4 {
     background-image: url('/wp-content/themes/creativecommons.org/images/fc_dubious.png');
 }
 
-.require_js #fc_dubious_box .fc_logo_link:hover {
-    background-image: url('/wp-content/themes/creativecommons.org/images/fc_dubious_hover.png');
+.require_js #fc_dubious_box .fc_logo_link:ho2ver {
+    background-image: url('/wp-content/themes/creativecommons.org/images/fc_dubious_ho2ver.png');
 }
 
 #fc_approved_box .fc_logo_link {
@@ -868,8 +888,8 @@ h4 {
     width: 100%;
     max-width: 334px;
     margin: auto;
-    margin-top: 88px;
-    margin-bottom: 93px;
+    margin-top: 38px;
+    margin-bottom: 43px;
 }
 
 .license_icons>div {
@@ -906,26 +926,26 @@ h4 {
     background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_jp.png')!important;
 }
 
-#cc_icon:hover {
-    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_cc_hover.png');
+#cc_icon:ho2ver {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_cc_ho2ver.png');
 }
-#by_icon:hover {
-    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_by_hover.png');
+#by_icon:ho2ver {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_by_ho2ver.png');
 }
-#sa_icon:hover {
-    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_sa_hover.png');
+#sa_icon:ho2ver {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_sa_ho2ver.png');
 }
-#nd_icon:hover {
-    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nd_hover.png');
+#nd_icon:ho2ver {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nd_ho2ver.png');
 }
-#nc_icon:hover {
-    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_hover.png');
+#nc_icon:ho2ver {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_ho2ver.png');
 }
-.euro #nc_icon:hover {
-    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_eu_hover.png')!important;
+.euro #nc_icon:ho2ver {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_eu_ho2ver.png')!important;
 }
-.yen #nc_icon:hover {
-    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_jp_hover.png')!important;
+.yen #nc_icon:ho2ver {
+    background-image: url('/wp-content/themes/creativecommons.org/images/chooser_nc_jp_ho2ver.png')!important;
 }
 
 
@@ -934,10 +954,10 @@ h4 {
 }
 
 .ui_box {
-    display: inline-block;
-    background-color: #f5f5f5;
+    //display: inline-block;
+    //background-color: #f5f5f5;
     //width: 334px;
-    min-height: 348px;
+    //min-height: 348px;
     padding: 32px;
     padding-bottom: 1px;
     margin: 10px 7px;
@@ -955,7 +975,9 @@ h4 {
 }
 
 #metadataentry {
-    margin-top: 1em;
+margin-top: 1em;
+width: 600px;
+margin: 0 auto;
 }
 
 #metadata input,
@@ -963,7 +985,7 @@ h4 {
 #metadata_format {
     display: block;
     width: 170px;
-    float: right;
+    //float: right;
     margin-left: 1em;
 }
 
@@ -975,7 +997,8 @@ h4 {
     display: table;
     width: 334px;
     height: 150px;
-    vertical-align: middle;
+vertical-align: middle;
+margin: 0 auto;
 }
 .results-preview div {
     display: table-cell;
@@ -999,11 +1022,13 @@ h4 {
     left: 20px;
     width: 350px;
     height: 9em;
-    resize: none;
+resize: none;
+margin: 1em auto;
+
 }
 
 #codetocopy {
-    bottom: 3em!important;
+bottom: 3em!important;
 }
 
 #iconsize_box {
@@ -1012,7 +1037,8 @@ h4 {
     bottom: -.75em;
     left: 16px;
     width: 350px;
-    text-align: center;
+text-align: center;
+margin: 0 auto;
 }
 #iconsize_box label {
     float: none;
@@ -1031,67 +1057,68 @@ h4 {
 
 
 /* all arrows */
-#freedoms:before,
-#license:before,
-#metadata:before {
-    display: block;
-    content: "";
-    border: 0px;
-    position: absolute;
-    z-index: 10;
-}
+<!-- #freedoms:before, -->
+<!-- #license:before, -->
+<!-- #metadata:before { -->
+<!--     display: block; -->
+<!--     content: ""; -->
+<!--     border: 0px; -->
+<!--     position: absolute; -->
+<!--     z-index: 10; -->
+<!-- } -->
 
-/* left arrows */
-#content[dir="ltr"] #freedoms:before,
-#content[dir="ltr"] #metadata:before {
-    background-image: url("/wp-content/themes/creativecommons.org/images/left_arrow.png");
-    width: 53px;
-    height: 98px;
-    top: 50%;
-    right: 0px;
-    margin-right: -53px;
-    margin-top: -49px;
-}
+<!-- /* left arrows */ -->
+<!-- #content[dir="ltr"] #freedoms:before, -->
+<!-- #content[dir="ltr"] #metadata:before { -->
+<!--     background-image: url("/wp-content/themes/creativecommons.org/images/left_arrow.png"); -->
+<!--     width: 53px; -->
+<!--     height: 98px; -->
+<!--     top: 50%; -->
+<!--     right: 0px; -->
+<!--     margin-right: -53px; -->
+<!--     margin-top: -49px; -->
+<!-- } -->
 
-/* right arrows */
-#content[dir="rtl"] #freedoms:before,
-#content[dir="rtl"] #metadata:before {
-    background-image: url("/wp-content/themes/creativecommons.org/images/right_arrow.png");
-    width: 53px;
-    height: 98px;
-    top: 50%;
-    left: 0px;
-    margin-left: -53px;
-    margin-top: -49px;
-}
+<!-- /* right arrows */ -->
+<!-- #content[dir="rtl"] #freedoms:before, -->
+<!-- #content[dir="rtl"] #metadata:before { -->
+<!--     background-image: url("/wp-content/themes/creativecommons.org/images/right_arrow.png"); -->
+<!--     width: 53px; -->
+<!--     height: 98px; -->
+<!--     top: 50%; -->
+<!--     left: 0px; -->
+<!--     margin-left: -53px; -->
+<!--     margin-top: -49px; -->
+<!-- } -->
 
-/* down arrow */
-#license:before {
-    background-image: url("/wp-content/themes/creativecommons.org/images/down_arrow.png");
-    width: 98px;
-    height: 53px;
-    bottom: 0px;
-    left: 50%;
-    margin-bottom: -53px;
-    margin-left: -49px;
-}
+<!-- /* down arrow */ -->
+<!-- #license:before { -->
+<!--     background-image: url("/wp-content/themes/creativecommons.org/images/down_arrow.png"); -->
+<!--     width: 98px; -->
+<!--     height: 53px; -->
+<!--     bottom: 0px; -->
+<!--     left: 50%; -->
+<!--     margin-bottom: -53px; -->
+<!--     margin-left: -49px; -->
+<!-- } -->
 
 @media only screen and (max-width: 399px) {
     /* Draw .ui_boxes in single column mode, remove margins and box sides */
 
-    /* down arrow */
-    #freedoms:before, 
-    #license:before,
-    #metadata:before {
-        background-image: url("/wp-content/themes/creativecommons.org/images/down_arrow.png")!important;
-        width: 98px!important;
-        height: 53px!important;
-        top: inherit!important;
-        bottom: 0px!important;
-        left: 50%!important;
-        margin-bottom: -53px!important;
-        margin-left: -49px!important;
-    }
+    <!-- /* down arrow */ -->
+    <!-- #freedoms:before,  -->
+    <!-- #license:before, -->
+    <!-- #metadata:before { -->
+    <!--     background-image: url("/wp-content/themes/creativecommons.org/images/down_arrow.png")!important; -->
+    <!--     width: 98px!important; -->
+    <!--     height: 53px!important; -->
+    <!--     top: inherit!important; -->
+    <!--     bottom: 0px!important; -->
+    <!--     left: 50%!important; -->
+    <!--     margin-bottom: -53px!important; -->
+    <!--     margin-left: -49px!important; -->
+    <!-- } -->
+
     .container,
     .sixteen.columns,
     .ui_row,
@@ -1241,11 +1268,11 @@ h4 {
         background-image: url("/wp-content/themes/creativecommons.org/images/help_rtl.png");
         right: -30px;
     }
-    #content[dir="ltr"] .help_button:not(.mirror):hover, #content[dir="rtl"] .help_button.mirror:hover {
-        background-image: url("/wp-content/themes/creativecommons.org/images/help_ltr_hover.png");
+    #content[dir="ltr"] .help_button:not(.mirror):ho2ver, #content[dir="rtl"] .help_button.mirror:ho2ver {
+        background-image: url("/wp-content/themes/creativecommons.org/images/help_ltr_ho2ver.png");
     }
-    #content[dir="rtl"] .help_button:not(.mirror):hover, #content[dir="ltr"] .help_button.mirror:hover {
-        background-image: url("/wp-content/themes/creativecommons.org/images/help_rtl_hover.png");
+    #content[dir="rtl"] .help_button:not(.mirror):ho2ver, #content[dir="ltr"] .help_button.mirror:ho2ver {
+        background-image: url("/wp-content/themes/creativecommons.org/images/help_rtl_ho2ver.png");
     }
 }
 
@@ -1336,8 +1363,8 @@ h4 {
 {%- trans %}Your choices on this panel will update the other panels on this page.{% endtrans %}</div>
 
     <div class="help_highlight">
-      <div class="help_button" onclick="CHOOSER.CALL.popup('modifications');"></div>
       <h4>{% trans %}Allow adaptations of your work to be shared?{% endtrans %}</h4>
+      <div class="help_button" onclick="CHOOSER.CALL.popup('modifications');"></div>
       <ul>
         <li>
           <input type="radio"
@@ -1353,8 +1380,6 @@ h4 {
                  id="question_3-7" />
           <label for="question_3-7">{% trans %}No{% endtrans %}</label>
         </li>
-      </ul>
-      <ul class="no_columns">
         <li>
           <input type="radio" name="field_derivatives" value="sa"
                  {% if form.license.sa %}checked="checked"{% endif %}
@@ -1368,8 +1393,8 @@ h4 {
       
     
     <div class="help_highlight">
-      <div class="help_button" onclick="CHOOSER.CALL.popup('commercial');"></div>
       <h4>{% trans %}Allow commercial uses of your work?{% endtrans %}</h4>
+      <div class="help_button" onclick="CHOOSER.CALL.popup('commercial');"></div>
       <ul>
         <li>
           <input type="radio"
@@ -1417,6 +1442,10 @@ CHOOSER.CALL.ping();
 
 
 
+
+
+
+  
 
   <div id="license" class="col-md-5 ui_box">
     <div class="help_button mirror" onclick="CHOOSER.CALL.popup('selected_license');"></div>
@@ -1471,75 +1500,82 @@ CHOOSER.CALL.ping();
   </div>
 </div>
 
-
-
-
 <div class="row" oluirow>
   <div id="metadata" class="col-md-5 ui_box">
-    <div class="help_button" onclick="CHOOSER.CALL.popup('metadata');"></div>
 
+    <!-- <p style="text-align: center"><div class="help_button mirror" onclick="CHOOSER.CALL.popup('metadata');"></div></p> -->
+    
     <h2>{% trans %}Help others attribute you!{% endtrans %}</h2>
-    {% trans %}This part is optional, but filling it out will add machine-readable metadata to the suggested HTML!{% endtrans %}
+        <div class="subtitle">
+	  <a id="show-metadata" href="#metadata">{% trans %}This part is optional, but filling it out will add machine-readable metadata to the suggested HTML!{% endtrans %}</a>
+	</div>
 
+    
+	
+    <div id="collapse-metadata">	
+    
     <div id="metadataentry">
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('work_title');"></div>
           <span><label for="field_worktitle">
             {%- trans %}Title of work{% endtrans -%}
           </label></span>
           <span><input type="text" name="field_worktitle" id="field_worktitle"
                  value="{{ form.meta.title }}" /></span>
+          <div class="help_button help_button_inline" onclick="CHOOSER.CALL.popup('work_title');"></div>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_name');"></div>
+
           <span><label for="field_attribute_to_name">
             {%- trans %}Attribute work to name{% endtrans -%}
           </label></span>
           <span><input type="text" name="field_attribute_to_name" id="field_attribute_to_name" 
                  value="{{ form.meta.attrib_name }}"/></span>
+          <div class="help_button help_button_inline" onclick="CHOOSER.CALL.popup('attrib_name');"></div>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('attrib_url');"></div>
+
           <span><label for="field_attribute_to_url">
             {%- trans %}Attribute work to URL{% endtrans -%}
           </label></span>
           <span><input type="url" name="field_attribute_to_url" id="field_attribute_to_url" 
                  value="{{ form.meta.attrib_url }}" /></span>
+          <div class="help_button help_button_inline" onclick="CHOOSER.CALL.popup('attrib_url');"></div>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('src_url');"></div>
+
           <span><label for="field_sourceurl">
             {%- trans %}Source work URL{% endtrans -%}
           </label></span>
           <span><input type="url" name="field_sourceurl" id="field_sourceurl"
                  value="{{ form.meta.src_url }}"/></span>
+          <div class="help_button help_button_inline" onclick="CHOOSER.CALL.popup('src_url');"></div>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('permissions_url');"></div>
           <span><label for="field_morepermissionsurl">
             {%- trans %}More permissions URL{% endtrans -%}
           </label></span>
           <span><input type="url" name="field_morepermissionsurl" id="field_morepermissionsurl"
                  value="{{ form.meta.permissions }}"/></span>
-        </div>
+          <div class="help_button help_button_inline" onclick="CHOOSER.CALL.popup('permissions_url');"></div>
+	</div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('work_format');"></div>
+
           <span><label for="format_selection">
             {% trans %}Format of work{% endtrans %}
           </label></span>
@@ -1572,12 +1608,13 @@ CHOOSER.CALL.ping();
                     {%- if form.meta.format == "InteractiveResource" %} selected="selected"{% endif %}>
               {% trans %}Interactive{% endtrans %}</option>
           </select></span>
+          <div class="help_button help_button_inline" onclick="CHOOSER.CALL.popup('work_format');"></div>
         </div>
       </div>
 
       <div class="help_highlight">
         <div class="metatable">
-          <div class="help_button" onclick="CHOOSER.CALL.popup('license_mark');"></div>
+
           <span><label for="metadata_format">
             {% trans %}License mark{% endtrans %}
           </label></span>
@@ -1592,13 +1629,17 @@ CHOOSER.CALL.ping();
                     {%- if form.meta.standard == "offline" %} selected="selected"
                     {%- endif %}>{% trans %}Offline{% endtrans %}</option>
           </select></span>
+          <div class="help_button help_button_inline" onclick="CHOOSER.CALL.popup('license_mark');"></div>
         </div>
+      </div>
+
       </div>
 
     </div>
   </div>
-  
 
+
+  
   <div id="internets" class="col-md-5 ui_box">
     <div id="for_htmlrdfa" {% if form.meta.standard != "html+rdfa" %}style="display:none"{% endif %}>
       <div class="help_button mirror" onclick="CHOOSER.CALL.popup('license_mark_html');"></div>
@@ -1907,21 +1948,21 @@ work in the manner specified by the author or licensor.{% endtrans %}</div>
 </div>
 
 <!-- this group of images shouldn't be visible, but exists to cause the browser to cache them -->
-<div style="display: none">
-  <img src="/wp-content/themes/creativecommons.org/images/fc_dubious.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/fc_dubious_hover.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/chooser_cc.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/chooser_by.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/chooser_nd.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_eu.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_jp.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/chooser_cc_hover.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/chooser_by_hover.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/chooser_nd_hover.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_hover.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_eu_hover.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_jp_hover.png" />
-  <img src="/wp-content/themes/creativecommons.org/images/hint_button_hover.png" />
-</div>
+<!-- <div style="display: none"> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/fc_dubious.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/fc_dubious_ho2ver.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/chooser_cc.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/chooser_by.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/chooser_nd.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/chooser_nc.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_eu.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_jp.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/chooser_cc_ho2ver.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/chooser_by_ho2ver.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/chooser_nd_ho2ver.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_ho2ver.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_eu_ho2ver.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/chooser_nc_jp_ho2ver.png" /> -->
+<!--   <img src="/wp-content/themes/creativecommons.org/images/hint_button_ho2ver.png" /> -->
+<!-- </div> -->
 {% endblock %}
