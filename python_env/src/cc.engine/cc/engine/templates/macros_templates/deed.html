@@ -19,10 +19,8 @@
 
     <link rel="stylesheet" type="text/css" href="/includes/yahooapis/2.6.0/container.css"/>
 
-    <link rel="stylesheet" id="cc-google-fonts-css" href="//fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700%7CRoboto+Condensed&amp;ver=4.6.1" type="text/css" media="all">
-
     <link rel="stylesheet" type="text/css"
-          href="{{ request.staticdirect('includes/deed3.css?v=20161123') }}"
+          href="{{ request.staticdirect('includes/deed3.css') }}"
           media="screen" />
     {% if is_rtl %}
       <link rel="stylesheet" type="text/css" media="screen"
@@ -167,54 +165,14 @@ The Product licensed under Creative Commons License is provided by the person wh
 
       {% include "includes/translations.html" %}
     </div>
-    
+
     <div id="deed-donate-slide" style="display: none;">
         <div class="slide-close"></div>
         <div class="slide-trigger">
-            <img class="cc-logo" src="/wp-content/themes/cc/images/yearend-takeover/cc_overlay_logo_confetti.png" alt="Creative Commons logo">
-            <!-- <img src="/images/deed/logo-cc-heart-white.png" class="slide-logo" alt="" width="100" height="88" /> -->
-            <div class="yellow-ribbon"><span><span class="no-wrap">{% trans %}Celebrate CC's 15th Anniversary!{% endtrans %}</span> <span class="no-wrap">{% trans %}Join by December 31st.{% endtrans %}</span></span></div>
-
-            <div class="donate-box">
-              <div class="widget-inner">
-                <div class="gf_browser_chrome gform_wrapper" id="gform_wrapper_10"><form method="get" id="gform_10" action="/donate">
-                  <div class="gform_body">
-                    <ul id="gform_fields_10" class="gform_fields top_label form_sublabel_below description_below">
-                      <li id="field_10_2" class="gfield gfield_html gfield_html_formatted gfield_no_follows_desc field_sublabel_below field_description_below">
-                        <h2><span class="share-wins"><span class="no-wrap">When you share,</span> <span class="no-wrap">everyone wins.</span></span> <span class="contribute-today"><span class="no-wrap">Contribute today to</span> <span class="no-wrap">Creative Commons</span></span></h2>
-                      </li>
-                      <li id="field_10_1" class="gfield field_sublabel_below field_description_below">
-                        <label class="gfield_label"></label>
-                        <div class="ginput_container ginput_container_radio">
-                          <ul class="gfield_radio" id="input_10_1">
-                            <li class="gchoice_10_1_0"><input name="amount" type="radio" value="$100" id="choice_10_1_0" tabindex="1"><label for="choice_10_1_0" id="label_10_1_0">$100</label></li>
-                            <li class="gchoice_10_1_1"><input name="amount" type="radio" value="$50" checked="checked" id="choice_10_1_1" tabindex="2"><label for="choice_10_1_1" id="label_10_1_1">$50</label></li>
-                            <li class="gchoice_10_1_2"><input name="amount" type="radio" value="$25" id="choice_10_1_2" tabindex="3"><label for="choice_10_1_2" id="label_10_1_2">$25</label></li>
-                            <li class="gchoice_10_1_3"><input name="amount" type="radio" value="$5" id="choice_10_1_3" tabindex="4"><label for="choice_10_1_3" id="label_10_1_3">$5</label></li>
-                            <li class="gchoice_10_1_4"><input name="amount" type="radio" value="gf_other_choice" id="choice_10_1_4" tabindex="5" onfocus="$(this).next('input').focus();"><input id="input_10_1_other" name="amount_other" type="text" value="Other" aria-label="Other" onfocus="$(this).prev(&quot;input&quot;)[0].click(); if($(this).val() == &quot;Other&quot;) { $(this).val(&quot;&quot;); }" onblur="if($(this).val().replace(&quot; &quot;, &quot;&quot;) == &quot;&quot;) { $(this).val(&quot;Other&quot;); }" tabindex="5"></li>
-                          </ul>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="gform_footer top_label">
-
-                    <input type="hidden" name="type" value="One Time">
-                    <input type="hidden" name="utm_content" value="eoy2016_deed">
-                    <input type="hidden" name="utm_source" value="web">
-                    <input type="hidden" name="utm_medium" value="ccwebsiteorblog">
-                    <input type="hidden" name="utm_campaign" value="2016EOY">
-
-                    <input type="submit" id="gform_submit_button_10" class="gform_button button" value="Donate Now" tabindex="6">
-                </div>
-              </form>
-            </div>
-          </div>
+            <img src="/images/deed/logo-cc-heart-white.png" class="slide-logo" alt="" width="100" height="88" />
+            <p>{% trans %}This content is freely available under simple legal terms because of Creative Commons, a non-profit that survives on donations. If you love this content, and love that it's free for everyone, please consider a donation to support our work.{% endtrans %}</p>
+            <button>{% trans %}Donate Now{% endtrans %}</button>
         </div>
-        <div class="footer-note">
-          <p>{% trans %}This content is freely available under simple legal terms because of Creative Commons, a non-profit that survives on donations. If you love this content, and love that it's free for everyone, please consider a donation to support our work.{% endtrans %}</p>
-        </div>
-      </div>
     </div>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript">
@@ -224,10 +182,11 @@ The Product licensed under Creative Commons License is provided by the person wh
             // Set banner to reveal after X seconds
             setTimeout(function(){
                 $('#deed-donate-slide').addClass('reveal');
-            }, 500);
+            }, 5000);
             $(window).scroll(function() {
                 if ($(window).scrollTop() <= 160) {
                     $('#deed-donate-slide').finish();
+                    //$('#deed-donate-slide').removeClass('reveal');
                 } else {
                     $('#deed-donate-slide').addClass('reveal');
                 }
@@ -245,13 +204,12 @@ The Product licensed under Creative Commons License is provided by the person wh
             });
 
             $(".slide-trigger p, .slide-trigger button").click(function(){
-                window.location.href = "https://creativecommons.org/donate/?utm_campaign=2016EOY&utm_source=web&utm_medium=ccwebsiteorblog&utm_content=eoy2016_deed";
+                window.location.href = "https://creativecommons.org/donate/?utm_campaign=2015fund&utm_source=license_slide2015";
+  
             });
         });
     </script>
-  
-
-   <script type="text/javascript">
+    <script type="text/javascript">
 //<![CDATA[
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-2010376-1']);
