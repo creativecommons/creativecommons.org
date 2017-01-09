@@ -65,7 +65,7 @@ class AddCC4Links(object):
 
     def get_files(self):
         """Get all the 4.0 files *except* those we are linking to"""
-        self.files = [f for f in self.path.glob('*_4.0_*.html')
+        self.files = [f for f in self.path.glob('*_4.0*.html')
                       if not f.match(self.exclude_pattern)]
 
     def process_files(self):
@@ -76,6 +76,9 @@ class AddCC4Links(object):
     def file_license_and_language(self, filepath):
         """Get the license number and language code from the file path"""
         elements = filepath.stem.split('_')
+        # Un-translated deeds don't have a language code, so set to English
+        if len(elements) != 3:
+            elements += ['en']
         return elements[0], elements[2]
 
     def links_in_page(self, content):
