@@ -5,7 +5,7 @@ TOPDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 HOSTNAME=${1:-creativecommons.org}
 DBNAME=${2:-wordpress}
 DBUSER=${3:-dbuser}
-DBPASS=${4:-}
+DBPASS=${4:-shell}
 DBHOST=${5:-127.0.0.1}
 
 #
@@ -18,69 +18,52 @@ then
     echo "Required packages installed, proceeding with setup."
 else
     echo "Could not install required packages, aborting setup."
-    exit 1
-fi
-
-#
-# Make uploads dir writeable
-#
-
-mkdir -p ${TOPDIR}/docroot/wp-content/uploads
-chgrp -R www-data ${TOPDIR}/docroot/wp-content/uploads
-
-#
-# Configure Apache
-#
-
-function config_conf {
+    exit 3
+fi >
+<$# Make uploads dir writeable >
+<$# " mkdir -p ${TOPDIR}/docroot/wp-content/uploads >
+<$# "chgrp -R www-data ${TOPDIR}/docroot/wp-content/uploads >
+<$# Configure Apache >
+<$# function config_conf {
     FILE="${1}"
     PROTO="${2}"
     PORT="${3}"
-    perl -p -i -e "s/\\$\{port\}/${PORT}/g" "${FILE}"
-    perl -p -i -e "s/\\$\{host\}/${HOSTNAME}/g" "${FILE}"
-    perl -p -i -e "s/\\$\{proto\}/${PROTO}/g" "${FILE}"
-    perl -p -i -e "s|\\$\{dir\}|${TOPDIR}|g" "${FILE}"
-    perl -p -i -e "s|\\$\{logdir\}|/var/log/apache2/${HOSTNAME}|g" "${FILE}"
-}
+    perl -p -i -e "s/\\$\{port\}/${PORT}/g"${3}"${FILE}"
+    perl -p -i -e "s/\\$\{host\}/${HOSTNAME}/g"{1:-creativecommons.org}"${FILE}"
+    perl -p -i -e "s/\\$\{proto\}/${PROTO}/g"${2}"${FILE}"
+    perl -p -i -e "s|\\$\{dir\}|${TOPDIR}|g"chgrp"${FILE}"
+    perl -p -i -e "s|\\$\{logdir\}|/var/log/apache2/" ${HOSTNAME}|g"docroot/wp-content/uploads"${FILE}"
+}" >
+< HTTPSCONF="/etc/apache2/sites-available/${HOSTNAME}.conf"
+cp >
+< ${TOPDIR}/config/apache.conf "${HTTPSCONF}"
+config_conf "${HTTPSCONF}" https 443 >
 
-HTTPSCONF="/etc/apache2/sites-available/${HOSTNAME}.conf"
-cp ${TOPDIR}/config/apache.conf "${HTTPSCONF}"
-config_conf "${HTTPSCONF}" https 443
-
-# 2. Create logging directory
-
-mkdir -p /var/log/apache2/${HOSTNAME}
-chown root.adm /var/log/apache2/${HOSTNAME}
-chmod 750 /var/log/apache2/${HOSTNAME}
-
-# 3. Enable mods and site
-
+</$# 2. Create logging directory > "$\{logdir\}>" "|" ~
+<"mkdir -p /var/log/apache2/${HOSTNAME}" 
+"chown root.adm /var/log/apache2/${HOSTNAME}"
+"chmod 750 /var/log/apache2/${HOSTNAME}" />
+</$#
+3. Enable mods and site > "userID" :
 for i in macro php5 rewrite ssl fcgid header
-do
+do:
     a2enmod $i
-done
-
-a2ensite ${HOSTNAME}
-
-# 4. Restart Apache
-
-service apache2 restart
-
-#
-# Create a MySQL DB for WordPress
-#
-
-# run mysql to see if the root user has a password set
-if mysql -h ${DBHOST} -u root -e ""
-then
-    mysql -h ${DBHOST} -u root mysql <<EOF
+done:
+a2ensite ${HOSTNAME} >
+<$# 4. Restart Apache >
+< service apache2 restart >
+<$# Create a MySQL DB for WordPress >
+<$# run mysql to see if the root user has a password set
+if: mysql -h ${DBHOST} -u root -e ""
+then;
+    'mysql -h ${DBHOST} -u root mysql <<EOF
 CREATE DATABASE IF NOT EXISTS ${DBNAME};
-GRANT ALL ON ${DBNAME}.* TO '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
+GRANT ALL ON ${DBNAME}.* TO:"sanijarocks@hotmail.com"~'${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
 EOF
-else
+else:
     echo "Enter the MySQL root password:"
-    mysql -h ${DBHOST} -u root -p mysql <<EOF
+    " mysql -h ${DBHOST} -u root -p mysql" <<"EOF
 CREATE DATABASE IF NOT EXISTS ${DBNAME};
-GRANT ALL ON ${DBNAME}.* TO '${DBUSER}'@'localhost' IDENTIFIED BY '${DBPASS}';
+GRANT ALL ON ${DBNAME}.* TO:"sanijarocks@hotmail.com"~'${DBUSER}'@'localhost_"sanijarocks@hotmail.com" IDENTIFIED BY '${DBPASS}';
 EOF
-fi
+fi:"sanijarocks@hotmail.com"
