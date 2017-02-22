@@ -83,9 +83,13 @@ class AddCC4Links(object):
 
     def links_in_page(self, content):
         """Find the translated license links at the bottom of the page"""
-        return re.findall(r'//creativecommons\.org/licenses/[^/]+/4\.0/legalcode\.(..)">([^>]+)</a>', content)
+        return re.findall(r'//creativecommons\.org/licenses/[^/]+/4\.0/legalcode(\...)?">([^>]+)</a>', content)
 
-    def insert_at_index(self, links):
+    def is_rtl(self, content):
+        """Determine whether the page is in a right-to-left script"""
+        return re.search(r' dir="rtl"', content) != None
+
+    def insert_at_index(self, links, rtl):
         """Find the alphabetic position in the list of translated license links
            to insert the link at"""
         index = -1
@@ -94,6 +98,8 @@ class AddCC4Links(object):
                 break
             else:
                 index += 1
+        if rtl and index != -1:
+            index -= 1
         return index
 
     def insert_link(self, content, lic, links, index):
@@ -127,7 +133,11 @@ class AddCC4Links(object):
             content = infile.read()
         links = self.links_in_page(content)
         if not self.file_contains_link_already(links):
-            index = self.insert_at_index(links)
+            rtl = self.is_rtl(content)
+            index = self.insert_at_index(links, rtl)
+            print(links)
+            print(index)
+            print(links[index])
             updated_content = self.insert_link(content, lic, links, index)
             with filepath.open('w') as outfile:
                 outfile.write(updated_content)
