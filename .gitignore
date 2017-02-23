@@ -12,6 +12,9 @@ python_env/.Python
 python_env/src/i18n
 python_env/src/license.rdf
 python_env/src/cc.license
+docroot/license.rdf
+docroot/license_rdf
+docroot/rdf
 docroot/wp-content/
 docroot/wordpress/
 #docroot/sitemap.*
