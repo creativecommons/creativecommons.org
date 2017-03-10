@@ -181,10 +181,12 @@
     </ul>
 
     {% if license.superseded %}
-      <div id="deed-newer" tal:condition="">
+      <div class="row">
+      <div id="deed-newer" class="col-md-offset-2 col-md-8 alert alert-warning" tal:condition="">
         <p>
           {% trans current_version_url=license.current_version.uri %}A <a href="{{ current_version_url }}">new version</a> of this license is available. You should use it for new works, and you may want to relicense existing works under it. No works are <em>automatically</em> put under the new license, however.{% endtrans %}
         </p>
+      </div>
       </div>
     {% endif %}
 
