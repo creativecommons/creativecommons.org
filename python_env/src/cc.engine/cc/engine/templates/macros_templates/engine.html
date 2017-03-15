@@ -76,58 +76,7 @@
         <div class="site-inner">
             <a class="skip-link screen-reader-text" href="#content">Skip to content</a>
 
-            <div class="site-header-wrapper">
-                <header id="masthead" class="site-header sticky-nav-main" role="banner">
-                    <div class="site-header-main">
-                        <div class="site-branding">
-                            <a class="cc-site-logo-link" href="https://creativecommons.org/" rel="home">
-                                <img class="cc-site-logo" width="303" height="72" src="https://creativecommons.org/wp-content/themes/cc/images/cc.logo.white.svg">
-                            </a>
-                        </div><!-- .site-branding -->
-
-                        <button id="menu-toggle" class="menu-toggle"><i class="cc-icon-menu"></i> <span>Menu</span></button>
-
-                        <div id="site-header-menu" class="site-header-menu">
-                            <nav id="mobile-navigation" class="mobile-navigation" role="navigation" aria-label="Mobile Menu">
-                                <div class="menu-mobile-menu-container"><ul id="menu-mobile-menu" class="mobile-menu">
-                                    <li id="menu-item-48798" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48798"><a href="https://creativecommons.org/share-your-work/">Share your work</a></li>
-                                    <li id="menu-item-48799" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48799"><a href="https://creativecommons.org/use-remix/">Use &#038; remix</a></li>
-                                    <li id="menu-item-48800" class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-7466 menu-item-48800"><a href="https://creativecommons.org/about/">What we do</a></li>
-                                    <li id="menu-item-48801" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48801"><a href="https://creativecommons.org/blog/">Blog</a></li>
-                                    <li id="menu-item-48802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48802"><a href="https://creativecommons.org/about/global-affiliate-network/">Global Affiliate Network</a></li>
-                                    <li id="menu-item-48803" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48803"><a href="https://creativecommons.org/use-remix/search-the-commons/">Search the Commons</a></li>
-                                </ul></div>
-                            </nav><!-- .main-navigation -->
-
-                            <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="Primary Menu">
-                                <div class="menu-primary-menu-container"><ul id="menu-primary-menu" class="primary-menu">
-                                    <li id="menu-item-48791" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48791"><a href="https://creativecommons.org/share-your-work/">Share your work</a></li>
-                                    <li id="menu-item-48792" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48792"><a href="https://creativecommons.org/use-remix/">Use &#038; remix</a></li>
-                                    <li id="menu-item-48570" class="menu-item menu-item-type-post_type menu-item-object-page page_item page-item-7466 menu-item-48570"><a href="https://creativecommons.org/about/">What we do</a></li>
-                                    <li id="menu-item-48793" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48793"><a href="https://creativecommons.org/blog/">Blog</a></li>
-                                </ul></div>
-                            </nav><!-- .main-navigation -->
-
-                            <nav id="secondary-navigation" class="secondary-navigation" role="navigation" aria-label="Secondary Menu">
-                                <div class="menu-secondary-menu-container"><ul id="menu-secondary-menu" class="secondary-menu"><li id="menu-item-48804" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48804"><a href="https://creativecommons.org/about/global-affiliate-network/">Global Affiliate Network</a></li>
-                                    <li id="menu-item-48805" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48805"><a href="https://creativecommons.org/use-remix/search-the-commons/">Search the Commons</a></li>
-                                    <li id="menu-item-48806" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48806"><a href="https://creativecommons.org/about/contact/">Contact</a></li>
-                                </ul></div>
-                            </nav><!-- .main-navigation -->
-
-                            <nav id="social-navigation" class="social-navigation" role="navigation" aria-label="Social Links Menu">
-                                <div class="menu-social-links-container"><ul id="menu-social-links" class="social-links-menu">
-                                    <li id="menu-item-48807" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48807"><a href="http://www.facebook.com/creativecommons"><span class="screen-reader-text">Facebook</span></a></li>
-                                    <li id="menu-item-48808" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48808"><a href="http://twitter.com/creativecommons"><span class="screen-reader-text">Twitter</span></a></li>
-                                    <li id="menu-item-48809" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48809"><a href="mailto:info@creativecommons.org"><span class="screen-reader-text">Mail</span></a></li>
-                                </ul></div>
-                            </nav><!-- .social-navigation -->
-
-                        </div><!-- .site-header-menu -->
-                    </div><!-- .site-header-main -->
-
-                </header><!-- .site-header -->
-            </div><!-- .site-header-wrapper -->
+            {% include "includes/cc_site_header.html" %}
 
             <div id="content" class="site-content">
 
@@ -189,64 +138,12 @@
                 </div><!-- .content-area -->
             </div><!-- .site-content -->
 
-            <div class="site-footer-wrapper">
-                <footer id="colophon" class="site-footer sticky-nav-main" role="contentinfo">
-                    <div class="cc-footer">
-                        <div class="column cc-footer-main">
-                            <div class="cc-footer-logo">
-                                <a href="https://creativecommons.org/" class="custom-logo-link" rel="home" itemprop="url"><img width="980" height="240" src="https://creativecommons.org/wp-content/uploads/2016/06/cc.logo_.white_.png" class="custom-logo" alt="cc.logo.white" itemprop="logo" srcset="https://creativecommons.org/wp-content/uploads/2016/06/cc.logo_.white_.png 980w, https://creativecommons.org/wp-content/uploads/2016/06/cc.logo_.white_-300x73.png 300w, https://creativecommons.org/wp-content/uploads/2016/06/cc.logo_.white_-768x188.png 768w, https://creativecommons.org/wp-content/uploads/2016/06/cc.logo_.white_-140x34.png 140w, https://creativecommons.org/wp-content/uploads/2016/06/cc.logo_.white_-50x12.png 50w, https://creativecommons.org/wp-content/uploads/2016/06/cc.logo_.white_-270x66.png 270w, https://creativecommons.org/wp-content/uploads/2016/06/cc.logo_.white_-245x60.png 245w" sizes="(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 62vw, 840px" /></a>
-                            </div>
-
-                            <div class="cc-footer-links">
-                                <div class="menu-footer-links-container">
-                                    <ul id="menu-footer-links" class="menu">
-                                        <li id="menu-item-48794" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48794"><a href="https://creativecommons.org/about/contact/">Contact</a></li>
-                                        <li id="menu-item-48795" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48795"><a href="https://creativecommons.org/privacy/">Privacy</a></li>
-                                        <li id="menu-item-48796" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48796"><a href="https://creativecommons.org/policies/">Policies</a></li>
-                                        <li id="menu-item-48797" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48797"><a href="https://creativecommons.org/terms/">Terms</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="column cc-footer-contact">
-                            <h6><a href="http://creativecommons.org/about/contact">We'd love to hear from you!</a></h6>
-
-                            <address>
-                              Creative Commons<br />
-                              PO Box 1866, Mountain View, CA 94042
-                            </address>
-
-                            <ul>
-                                <li><a href="mailto:info@creativecommons.org" class="mail">Info@creativecommons.org</a></li>
-                                <li><a href="http://creativecommons.org/faq">Frequently Asked Questions</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="column cc-footer-license">
-                            <div class="license-icons">
-                                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/" title="Creative Commons Attribution 4.0 International license">
-                                    <i class="cc-icon-cc"></i>
-                                    <i class="cc-icon-cc-by"></i>
-                                </a>
-                            </div>
-                            <aside>
-                                <div xmlns:cc="http://creativecommons.org/ns#" about="http://creativecommons.org">
-                                    <p>Except where otherwise <a class="subfoot" href="http://creativecommons.org/policies#license">noted</a>, content on this site is licensed under a <a class="subfoot" href="http://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International license</a>. <a class="subfoot" href="https://creativecommons.org/website-icons" target="blank">Icons</a> by The Noun Project.</p>
-                                </div>
-                            </aside>
-                        </div>
-
-                        <div class="column cc-footer-search">
-                        </div>
-                    </div>
-                </footer><!-- .site-footer -->
-            </div><!-- .site-footer-wrapper -->
+            {% include "includes/cc_site_footer.html" %}
         </div><!-- .site-inner -->
     </div><!-- .site -->
 
-  {% block scripts %}{% endblock %}
-	
+    {% block scripts %}{% endblock %}
+    
     <div style="display:none">
     </div>
     <script type='text/javascript' src='https://creativecommons.org/wp-content/themes/cc/js/cc.js?ver=20160608'></script>
