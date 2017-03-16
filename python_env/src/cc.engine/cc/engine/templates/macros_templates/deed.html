@@ -244,6 +244,29 @@ xmlns:frbr="http://purl.org/vocab/frbr/core#" xml:lang="{{ target_lang }}">
     //]]>
   </script>
 
+  <script type="text/javascript">
+    //<![CDATA[
+    $(document).ready(function() {
+      $('.helpLink').each(function(index, elem) {
+        var elemId = $(elem).attr('id');
+        var popupId = elemId ? 'help_' + elemId : undefined;
+        if (popupId) {
+          $(elem).popover({
+            placement: 'bottom',
+            trigger: 'focus',
+            content: $('#'+popupId).html(),
+            html: true
+          });
+        }
+      });
+
+      $('.helpLink').on('click', function(e) {
+        e.preventDefault();
+      });
+    });
+    //]]>
+  </script>
+
   <!-- Piwik -->
   <script type="text/javascript">
     //<![CDATA[
@@ -257,24 +280,6 @@ xmlns:frbr="http://purl.org/vocab/frbr/core#" xml:lang="{{ target_lang }}">
       var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
       g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
     })();
-    //]]>
-  </script>
-  <script type="text/javascript">
-    //<![CDATA[
-    $(document).ready(function() {
-      $('.helpLink').each(function(elem, index) {
-        var elemId = $(elem).attr('id');
-        var popupId = elemId ? 'help_' + elemId : undefined;
-        if (popupId) {
-          $(elem).popover({
-            placement: 'bottom',
-            trigger: 'focus',
-            content: $('#'+popupId).html(),
-            html: true
-          });
-        }
-      });
-    });
     //]]>
   </script>
   <noscript><p><img src="//stats.creativecommons.org/piwik/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
