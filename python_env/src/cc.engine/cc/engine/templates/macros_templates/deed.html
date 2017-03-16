@@ -247,14 +247,18 @@ xmlns:frbr="http://purl.org/vocab/frbr/core#" xml:lang="{{ target_lang }}">
   <script type="text/javascript">
     //<![CDATA[
     $(document).ready(function() {
-      $('.helpLink').each(function(index, elem) {
-        var elemId = $(elem).attr('id');
-        var popupId = elemId ? 'help_' + elemId : undefined;
+      $('.helpLink').each(function(index, helpLinkElem) {
+        var helpId = $(helpLinkElem).attr('id');
+        var popupId = helpId ? 'help_' + helpId : undefined;
         if (popupId) {
-          $(elem).popover({
+          var popupElem = $('#'+popupId);
+          var popupTitleElem = $('.hd', popupElem);
+          var popupBodyElem = $('.bd', popupElem);
+          $(helpLinkElem).popover({
             placement: 'bottom',
             trigger: 'focus',
-            content: $('#'+popupId).html(),
+            title: popupTitleElem.html(),
+            content: popupBodyElem.html(),
             html: true
           });
         }
