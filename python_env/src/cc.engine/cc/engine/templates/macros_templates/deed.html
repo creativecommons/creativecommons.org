@@ -252,13 +252,13 @@ xmlns:frbr="http://purl.org/vocab/frbr/core#" xml:lang="{{ target_lang }}">
         var popupId = helpId ? 'help_' + helpId : undefined;
         if (popupId) {
           var popupElem = $('#'+popupId);
-          var popupTitleElem = $('.hd', popupElem);
-          var popupBodyElem = $('.bd', popupElem);
+          var popupTitleHtml = $('.hd', popupElem).html();
+          var popupBodyHtml = $('.bd', popupElem).html();
           $(helpLinkElem).popover({
-            placement: 'bottom',
+            placement: 'auto bottom',
             trigger: 'focus',
-            title: popupTitleElem.html(),
-            content: popupBodyElem.html(),
+            title: popupTitleHtml ? popupTitleHtml : undefined,
+            content: popupBodyHtml ? popupBodyHtml : undefined,
             html: true
           });
         }
