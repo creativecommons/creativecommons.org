@@ -90,7 +90,7 @@
       <li class="license by">
           <p>
             <strong>{% trans %}Attribution{% endtrans %}</strong> &mdash; <span rel="cc:requires"
-          resource="http://creativecommons.org/ns#Attribution">{% trans %}You must give{% endtrans %} <a tabindex="0" data-html="true" title="{% trans %}Appropriate Credit{% endtrans %}" data-toggle="popover" data-placement="top" data-trigger="focus" role="button" data-content="{% trans %}If supplied, you must provide the name of the creator and attribution parties, a copyright notice, a license notice, a disclaimer notice, and a link to the material. CC licenses prior to Version 4.0 also require you to provide the title of the material if supplied, and may have other slight differences.{% endtrans %}<br /><br /><a href='https://wiki.creativecommons.org/License_Versions#Detailed_attribution_comparison_chart'>{% trans %}More info{% endtrans %}</a>.">{% trans %}appropriate credit{% endtrans %}</a></span>, {% trans %}provide a link to the license, and{% endtrans %} <span rel="cc:requires" resource="http://creativecommons.org/ns#Notice"><span rel="cc:requires" resource="http://creativecommons.org/ns#Notice"><a tabindex="0" data-html="true" title="{% trans %}Indicating Changes{% endtrans %}" data-trigger="focus" data-placement="top" data-toggle="popover" role="button" data-content="{% trans %}In 4.0, you must indicate if you modified the material and retain an indication of previous modifications. In 3.0 and earlier license versions, the indication of changes is only required if you create a derivative.{% endtrans %}<br /><br /><a href='https://wiki.creativecommons.org/Best_practices_for_attribution#This_is_a_good_attribution_for_material_you_modified_slightly'>{% trans %}Marking guide{% endtrans %}</a>.<br /><br /><a href='https://wiki.creativecommons.org/License_Versions#Modifications_and_adaptations_must_be_marked_as_such'>{% trans %}More info{% endtrans %}</a>.">{% trans %}indicate if changes were made{% endtrans %}</a></span>.  {% trans %}You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.{% endtrans %}
+          resource="http://creativecommons.org/ns#Attribution">{% trans %}You must give <a href="#" id="appropriate_credit_popup" class="helpLink">appropriate credit</a></span>, provide a link to the license, and <span rel="cc:requires" resource="http://creativecommons.org/ns#Notice"><a href="#" id="indicate_changes_popup" class="helpLink">indicate if changes were made</a></span>.  You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.{% endtrans %}
             <span id="by-more-container"></span>
           </p>
 
@@ -111,15 +111,6 @@
                    alt="{% trans %}Information{% endtrans %}" />
             </a>
           </p>
-
-          <div id="help_attribution_help" class="help_panel">
-            <div class="hd">
-              {% trans %}What does "Attribute this work" mean?{% endtrans %}
-            </div>
-            <div class="bd">
-              {% trans %}The page you came from contained embedded licensing metadata, including how the creator wishes to be attributed for re-use. You can use the HTML here to cite the work. Doing so will also include metadata on your page so that others can find the original work as well.{% endtrans %}
-            </div>
-          </div>
         </li>
       {% endif %}
       {% if conditions['nc'] %}
@@ -127,7 +118,7 @@
           rel="cc:prohibits"
           resource="http://creativecommons.org/ns#CommercialUse">
           <p>
-            <strong>{% trans %}NonCommercial{% endtrans %}</strong> &mdash; {% trans %}You may not use the material for{% endtrans %} <a tabindex="0" data-html="true" title="{% trans %}Commercial Use{% endtrans %}" data-trigger="focus" data-placement="top" data-toggle="popover" role="button" data-content="{% trans %}A commercial use is one primarily intended for commercial advantage or monetary compensation.{% endtrans %}<br /><br /><a href='http://wiki.creativecommons.org/Frequently_Asked_Questions#Does_my_use_violate_the_NonCommercial_clause_of_the_licenses.3F'>{% trans %}More info{% endtrans %}</a>.">{% trans %}commercial purposes{% endtrans %}</a>.
+            <strong>{% trans %}NonCommercial{% endtrans %}</strong> &mdash; {% trans %}You may not use the material for <a href="#" id="commercial_purposes_popup" class="helpLink">commercial purposes</a>.{% endtrans %}
             <span id="nc-more-container"></span>
           </p>
       </li>
@@ -135,7 +126,7 @@
       {% if conditions['nd'] %}
       <li class="license nd">
           <p>
-            <strong>{% trans %}NoDerivatives{% endtrans %}</strong> &mdash; {% trans %}If you{% endtrans %} <a tabindex="0" data-html="true" title="Remixing" data-trigger="focus" data-placement="top" data-toggle="popover" role="button" data-content="{% trans %}Merely changing the format never creates a derivative.{% endtrans %}<br /><br /><a href='http://wiki.creativecommons.org/Frequently_Asked_Questions#When_is_my_use_considered_an_adaptation.3F'>{% trans %}More info{% endtrans %}</a>.">{% trans %}remix, transform, or build upon</a> the material, you may not distribute the modified material.{% endtrans %}
+            <strong>{% trans %}NoDerivatives{% endtrans %}</strong> &mdash; {% trans %}If you <a href="#" id="some_kinds_of_mods_popup" class="helpLink">remix, transform, or build upon</a> the material, you may not distribute the modified material.{% endtrans %}
             <span id="nd-more-container"></span>
           </p>
       </li>
@@ -145,7 +136,7 @@
           rel="cc:requires"
           resource="http://creativecommons.org/ns#ShareAlike">
           <p>
-            <strong>{% trans %}ShareAlike{% endtrans %}</strong> &mdash; {% trans %}If you remix, transform, or build upon the material, you must distribute your contributions under the{% endtrans %} <a tabindex="0" data-html="true" title="{% trans %}Same License{% endtrans %}" data-trigger="focus" data-placement="top" data-toggle="popover" role="button" data-content="{% trans %}You may also use a license listed as compatible at{% endtrans %} <a href='https://creativecommons.org/compatiblelicenses'>https://creativecommons.org/compatiblelicenses</a>.<br /><br /><a href='http://wiki.creativecommons.org/FAQ#If_I_derive_or_adapt_material_offered_under_a_Creative_Commons_license.2C_which_CC_license.28s.29_can_I_use.3F'>{% trans %}More info{% endtrans %}</a>.">{% trans %}same license{% endtrans %}</a> {% trans %}as the original.{% endtrans %}
+            <strong>{% trans %}ShareAlike{% endtrans %}</strong> &mdash; {% trans %}If you remix, transform, or build upon the material, you must distribute your contributions under the <a href="#" id="same_license_popup" class="helpLink">same license</a> as the original.{% endtrans %}
             <span id="sa-more-container"></span>
           </p>
       </li>
@@ -156,7 +147,7 @@
   <div class="row">
     <ul id="deed-conditions-no-icons" class="col-md-offset-2 col-md-8">
       <li class="license">
-        <strong>{% trans %}No additional restrictions{% endtrans %}</strong> &mdash; {% trans %}You may not apply legal terms or{% endtrans %} <a tabindex="0" data-html="true" title="{% trans %}Technological Measures{% endtrans %}" data-trigger="focus" data-placement="top" data-toggle="popover" role="button" data-content={% trans %}"The license prohibits application of effective technological measures, defined with reference to Article 11 of the WIPO Copyright Treaty.{% endtrans %}<br /><br /><a href='https://wiki.creativecommons.org/License_Versions#Application_of_effective_technological_measures_by_users_of_CC-licensed_works_prohibited'>{% trans %}More info{% endtrans %}</a>.">{% trans %}technological measures{% endtrans %}</a> {% trans %}that legally restrict others from doing anything the license permits.{% endtrans %}
+        <strong>{% trans %}No additional restrictions{% endtrans %}</strong> &mdash; {% trans %}You may not apply legal terms or <a href="#" id="technological_measures_popup" class="helpLink">technological measures</a> that legally restrict others from doing anything the license permits.{% endtrans %}
       </li>
     </ul>
   </div>
@@ -168,15 +159,15 @@
     <ul class="understanding license-properties col-md-offset-2 col-md-8">
     {% if license.jurisdiction.code == 'igo' %}
       <li class="license">
-        {% trans %}When the Licensor is an intergovernmental organization, disputes will be resolved by{% endtrans %} <a tabindex="0" data-html="true" title="{% trans %}Mediation and Arbitration{% endtrans %}" data-trigger="focus" data-placement="top" data-toggle="popover" role="button" data-content="{% trans %}The applicable mediation rules will be designated in the copyright notice published with the work, or if none then in the request for mediation. Unless otherwise designated in a copyright notice attached to the work, the UNCITRAL Arbitration Rules apply to any arbitration.{% endtrans %}<br /><br /><a href='http://wiki.creativecommons.org/Intergovernmental_Organizations#What_should_I_know_before_I_use_a_work_licensed_under_the_IGO_3.0_ported_licenses.3F'>{% trans %}More info{% endtrans %}</a>.">{% trans %}mediation and arbitration</a> unless otherwise agreed.{% endtrans %}
+        {% trans %}When the Licensor is an intergovernmental organization, disputes will be resolved by <a href="#" id="mediation_and_arbitration_popup" class="helpLink">mediation and arbitration</a> unless otherwise agreed.{% endtrans %}
       </li>
     {% endif %}
 
       <li class="license">
-        {% trans %}You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable{% endtrans %} <a tabindex="0" data-html="true" title="{% trans %}Exceptions and Limitations{% endtrans %}" data-trigger="focus" data-placement="top" data-toggle="popover" role="button" data-content="{{ _('The rights of users under exceptions and limitations, such as fair use and fair dealing, are not affected by the CC licenses.')|escape }}<br /><br /><a href=;https://wiki.creativecommons.org/Frequently_Asked_Questions#Do_Creative_Commons_licenses_affect_exceptions_and_limitations_to_copyright.2C_such_as_fair_dealing_and_fair_use.3F'>{% trans %}More info{% endtrans %}</a>.">{% trans %}exception or limitation{% endtrans %}</a>.
+        {% trans %}You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable <a href="#" id="exception_or_limitation_popup" class="helpLink">exception or limitation</a>.{% endtrans %}
       </li>
       <li class="license">
-        {% trans %}No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as{% endtrans %} <a tabindex="0" data-html="true" title="{% trans %}Publicity{% endtrans %}" data-trigger="focus" data-placement="top" data-toggle="popover" role="button" data-content="You may need to get additional permissions before using the material as you intend.<br /><a href='https://wiki.creativecommons.org/Considerations_for_licensors_and_licensees'>{% trans %}More info{% endtrans %}</a>.">{% trans %}publicity, privacy, or moral rights{% endtrans %}</a> {% trans %}may limit how you use the material.{% endtrans %}
+        {% trans %}No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as <a href="#" id="publicity_privacy_or_moral_rights_popup" class="helpLink">publicity, privacy, or moral rights</a> may limit how you use the material.{% endtrans %}
       </li>
     </ul>
 
@@ -192,4 +183,100 @@
 
   </div>
   <span id="referrer-metadata-container" />
+{% endblock %}
+
+{% block help_panels %}
+  {{ block.super }}
+
+  <div id="help_attribution_help" class="help_panel">
+    <div class="hd">
+      {% trans %}What does "Attribute this work" mean?{% endtrans %}
+    </div>
+    <div class="bd">
+      <p>{% trans %}The page you came from contained embedded licensing metadata, including how the creator wishes to be attributed for re-use. You can use the HTML here to cite the work. Doing so will also include metadata on your page so that others can find the original work as well.{% endtrans %}</p>
+    </div>
+  </div>
+
+  <div id="help_mediation_and_arbitration_popup" class="help_panel">
+    <div class="hd">&nbsp;</div>
+    <div class="bd">
+      <p>{% trans %}The applicable mediation rules will be designated in the copyright notice published with the work, or if none then in the request for mediation.  Unless otherwise designated in a copyright notice attached to the work, the UNCITRAL Arbitration Rules apply to any arbitration.{% endtrans %}</p>
+      <p><a href="http://wiki.creativecommons.org/Intergovernmental_Organizations#What_should_I_know_before_I_use_a_work_licensed_under_the_IGO_3.0_ported_licenses.3F">
+        {%- trans %}More info{% endtrans %}</a>.</p>
+    </div>
+  </div>
+
+  <div id="help_appropriate_credit_popup" class="help_panel">
+    <div class="hd">&nbsp;</div>
+    <div class="bd">
+      <p>{% trans %}If supplied, you must provide the name of the creator and attribution parties, a copyright notice, a license notice, a disclaimer notice, and a link to the material. CC licenses prior to Version 4.0 also require you to provide the title of the material if supplied, and may have other slight differences.{% endtrans %}</p>
+      <p><a href="http://wiki.creativecommons.org/License_Versions#Detailed_attribution_comparison_chart">
+        {%- trans %}More info{% endtrans %}</a>.</p>
+    </div>
+  </div>
+
+  <div id="help_indicate_changes_popup" class="help_panel">
+    <div class="hd">&nbsp;</div>
+    <div class="bd">
+      <p>{% trans %}In 4.0, you must indicate if you modified the material and retain an indication of previous modifications. In 3.0 and earlier license versions, the indication of changes is only required if you create a derivative.{% endtrans %}</p>
+      <p><a href="http://wiki.creativecommons.org/Best_practices_for_attribution#This_is_a_good_attribution_for_material_you_modified_slightly">
+        {%- trans %}Marking guide{% endtrans %}</a>.</p>
+      <p><a href="http://wiki.creativecommons.org/License_Versions#Modifications_and_adaptations_must_be_marked_as_such ">
+        {%- trans %}More info{% endtrans %}</a>.</p>
+    </div>
+  </div>
+
+  <div id="help_same_license_popup" class="help_panel">
+    <div class="hd">&nbsp;</div>
+    <div class="bd">
+      <p>{% trans %}You may also use a license listed as compatible at <a href="https://creativecommons.org/compatiblelicenses">https://creativecommons.org/compatiblelicenses</a>{% endtrans %}</p>
+      <p><a href="http://wiki.creativecommons.org/FAQ#If_I_derive_or_adapt_material_offered_under_a_Creative_Commons_license.2C_which_CC_license.28s.29_can_I_use.3F">
+        {%- trans %}More info{% endtrans %}</a>.</p>
+    </div>
+  </div>
+
+  <div id="help_commercial_purposes_popup" class="help_panel">
+    <div class="hd">&nbsp;</div>
+    <div class="bd">
+      <p>{% trans %}A commercial use is one primarily intended for commercial advantage or monetary compensation.{% endtrans %}</p>
+      <p><a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Does_my_use_violate_the_NonCommercial_clause_of_the_licenses.3F">
+        {%- trans %}More info{% endtrans %}</a>.</p>
+    </div>
+  </div>
+
+  <div id="help_some_kinds_of_mods_popup" class="help_panel">
+    <div class="hd">&nbsp;</div>
+    <div class="bd">
+      <p>{% trans %}Merely changing the format never creates a derivative.{% endtrans %}</p>
+      <p><a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#When_is_my_use_considered_an_adaptation.3F">
+        {%- trans %}More info{% endtrans %}</a>.</p>
+    </div>
+  </div>
+
+  <div id="help_technological_measures_popup" class="help_panel">
+    <div class="hd">&nbsp;</div>
+    <div class="bd">
+      <p>{% trans %}The license prohibits application of effective technological measures, defined with reference to Article 11 of the WIPO Copyright Treaty.{% endtrans %}</p>
+      <p><a href="http://wiki.creativecommons.org/License_Versions#Application_of_effective_technological_measures_by_users_of_CC-licensed_works_prohibited">
+        {%- trans %}More info{% endtrans %}</a>.</p>
+    </div>
+  </div>
+
+  <div id="help_exception_or_limitation_popup" class="help_panel">
+    <div class="hd">&nbsp;</div>
+    <div class="bd">
+      <p>{% trans %}The rights of users under exceptions and limitations, such as fair use and fair dealing, are not affected by the CC licenses.{% endtrans %}</p>
+      <p><a href="http://wiki.creativecommons.org/Frequently_Asked_Questions#Do_Creative_Commons_licenses_affect_exceptions_and_limitations_to_copyright.2C_such_as_fair_dealing_and_fair_use.3F">
+        {%- trans %}More info{% endtrans %}</a>.</p>
+    </div>
+  </div>
+
+  <div id="help_publicity_privacy_or_moral_rights_popup" class="help_panel">
+    <div class="hd">&nbsp;</div>
+    <div class="bd">
+      <p>{% trans %}You may need to get additional permissions before using the material as you intend.{% endtrans %}</p>
+      <p><a href="http://wiki.creativecommons.org/Considerations_for_licensors_and_licensees">
+        {%- trans %}More info{% endtrans %}</a>.</p>
+    </div>
+  </div>
 {% endblock %}
