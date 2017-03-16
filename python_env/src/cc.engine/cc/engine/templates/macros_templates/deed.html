@@ -97,31 +97,6 @@ xmlns:frbr="http://purl.org/vocab/frbr/core#" xml:lang="{{ target_lang }}">
               
               <div id="deed-main" dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}" class="row">
                 <div id="legalcode-block">
-                  <div id="help_disclaimer_popup" class="help_panel">
-                    <div class="hd">{% trans %}Disclaimer{% endtrans %}</div>
-                    {% if license.jurisdiction.code == 'jp' %}
-                      <div class="bd">
-                        {% trans %}<p>
-                          The Commons Deed is not a license. It is simply a handy reference for understanding the Legal Code (the full License) — it is a human-readable expression of some of its key terms. This Deed itself has no legal value, and its contents do not appear in the actual License.  The actual terms of the license is set forth by the Legal Code.  <a href="legalcode" class="fulltext">Please click here to see the full License</a>.
-                          </p>
-
-                          <p>
-                          Creative Commons and Creative Commons Japan are not law firms, and distributing of or displaying of, or linking to the Commons Deed does not constitute an offer of legal advice or any other legal services. Creative Commons and Creative Commons Japan are not a party to the License underlying this Commons Deed, and disclaim liablity for damages resulting from any use of the Commons Deed and the underlying License.
-                          </p>
-
-                          <p>
-                          The Product licensed under Creative Commons License is provided by the person who applied the License.  Creative Commons and Creative Commons Japan make no warranties regarding the title of the licensor.  Please read <a href="http://creativecommons.jp/faq/">here</a> for information regarding the application of licenses and exploitation of the Product licensed under Creative Commons licenses.
-                          </p>{% endtrans %}
-                      </div>
-                    {% else %}
-                      <div class="bd">
-                        <p>{% trans %}This deed highlights only some of the key features and terms of the actual license. It is not a license and has no legal value. You should carefully review all of the terms and conditions of the actual license before using the licensed material.{% endtrans %}</p>
-
-                        <p>{% trans %}Creative Commons is not a law firm and does not provide legal services. Distributing, displaying, or linking to this deed or the license that it summarizes does not create a lawyer-client or any other relationship.{% endtrans %}</p>
-                      </div>
-                    {% endif %}
-                  </div>
-                  
                   <div id="deed-disclaimer">
                     {% if multi_language %}
                       <div class="summary">
@@ -133,9 +108,14 @@ xmlns:frbr="http://purl.org/vocab/frbr/core#" xml:lang="{{ target_lang }}">
                     {% else %}
                       <div class="summary">
                         {% trans %}This is a human-readable summary of (and not a substitute for) the <a href="legalcode" class="fulltext">license</a>.{% endtrans %}
-                        {% trans %}<a tabindex="0" data-html="true" title="Disclaimer" data-toggle="popover" data-placement="bottom" data-trigger="focus" role="button" data-content="This deed highlights only some of the key features and terms of the actual license. It is not a license and has no legal value. You should carefully review all of the terms and conditions of the actual license before using the licensed material.<br /><br />Creative Commons is not a law firm and does not provide legal services. Distributing, displaying, or linking to this deed or the license that it summarizes does not create a lawyer-client or any other relationship.">Disclaimer</a>{% endtrans %}.
                       </div>
                     {% endif %}
+
+                    <div class="disclaimer">
+                      <a href="#" id="disclaimer_popup" class="helpLink">
+                        {% trans %}Disclaimer{% endtrans %}
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -174,6 +154,35 @@ xmlns:frbr="http://purl.org/vocab/frbr/core#" xml:lang="{{ target_lang }}">
 
       {% include "includes/cc_site_footer.html" %}
     </div>
+  </div>
+
+  <div id="help-panels" style="display: none">
+    {% block help_panels %}
+      <div id="help_disclaimer_popup" class="help_panel">
+        <div class="hd">{% trans %}Disclaimer{% endtrans %}</div>
+        {% if license.jurisdiction.code == 'jp' %}
+          <div class="bd">
+            {% trans %}<p>
+              The Commons Deed is not a license. It is simply a handy reference for understanding the Legal Code (the full License) — it is a human-readable expression of some of its key terms. This Deed itself has no legal value, and its contents do not appear in the actual License.  The actual terms of the license is set forth by the Legal Code.  <a href="legalcode" class="fulltext">Please click here to see the full License</a>.
+              </p>
+
+              <p>
+              Creative Commons and Creative Commons Japan are not law firms, and distributing of or displaying of, or linking to the Commons Deed does not constitute an offer of legal advice or any other legal services. Creative Commons and Creative Commons Japan are not a party to the License underlying this Commons Deed, and disclaim liablity for damages resulting from any use of the Commons Deed and the underlying License.
+              </p>
+
+              <p>
+              The Product licensed under Creative Commons License is provided by the person who applied the License.  Creative Commons and Creative Commons Japan make no warranties regarding the title of the licensor.  Please read <a href="http://creativecommons.jp/faq/">here</a> for information regarding the application of licenses and exploitation of the Product licensed under Creative Commons licenses.
+              </p>{% endtrans %}
+          </div>
+        {% else %}
+          <div class="bd">
+            <p>{% trans %}This deed highlights only some of the key features and terms of the actual license. It is not a license and has no legal value. You should carefully review all of the terms and conditions of the actual license before using the licensed material.{% endtrans %}</p>
+
+            <p>{% trans %}Creative Commons is not a law firm and does not provide legal services. Distributing, displaying, or linking to this deed or the license that it summarizes does not create a lawyer-client or any other relationship.{% endtrans %}</p>
+          </div>
+        {% endif %}
+      </div>
+    {% endblock %}
   </div>
 
   <script type='text/javascript' src='https://creativecommons.org/wp-content/themes/twentysixteen/js/functions.js'></script>
@@ -252,9 +261,20 @@ xmlns:frbr="http://purl.org/vocab/frbr/core#" xml:lang="{{ target_lang }}">
   </script>
   <script type="text/javascript">
     //<![CDATA[
-    $(function () {
-      $('[data-toggle="popover"]').popover()
-    })
+    $(document).ready(function() {
+      $('.helpLink').each(function(elem, index) {
+        var elemId = $(elem).attr('id');
+        var popupId = elemId ? 'help_' + elemId : undefined;
+        if (popupId) {
+          $(elem).popover({
+            placement: 'bottom',
+            trigger: 'focus',
+            content: $('#'+popupId).html(),
+            html: true
+          });
+        }
+      });
+    });
     //]]>
   </script>
   <noscript><p><img src="//stats.creativecommons.org/piwik/piwik.php?idsite=2" style="border:0;" alt="" /></p></noscript>
