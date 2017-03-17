@@ -128,7 +128,9 @@ xmlns:frbr="http://purl.org/vocab/frbr/core#" xml:lang="{{ target_lang }}">
                 <p class="learn-more-cc">
                   {% if not license.deprecated %}
                     {% block use_this_license %}
-                      {% trans %}<a href="http://wiki.creativecommons.org/FAQ">Learn more</a> about CC licensing, or <a id="get_this" href="{{ get_this }}">use the license</a> for your own material.{% endtrans %}
+            {% trans %}
+        <a href="http://wiki.creativecommons.org/FAQ">Learn more</a> about CC licensing, or <a id="get_this" href="{{ get_this }}">use the license</a> for your own material.
+            {% endtrans %}
                     {% endblock %}
                   {% endif %}
                 </p>
