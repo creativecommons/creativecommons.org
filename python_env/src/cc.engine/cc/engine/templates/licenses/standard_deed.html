@@ -12,8 +12,10 @@
 {% endblock %}
 
 {% block license_name %}
-  <span id="cc-license-title" property="dc:title dct:title">{{ license_title }}</span>
-  <span property="dc:identifier dct:identifier" style="display: inline;">(CC {{ license.license_code.upper() }} {{ license.version }}{%- if jurisdiction %} {{ jurisdiction.upper() }}{% endif %})</span>
+  <span class="cc-license-title" property="dc:title dct:title">{{ license_title }}</span>
+  <span class="cc-license-identifier" property="dc:identifier dct:identifier">
+    (CC {{ license.license_code.upper() }} {{ license.version }}{%- if jurisdiction %} {{ jurisdiction.upper() }}{% endif %})
+  </span>
 {% endblock %}
 
 {% block body %}
