@@ -248,7 +248,7 @@ xmlns:frbr="http://purl.org/vocab/frbr/core#" xml:lang="{{ target_lang }}">
   <script type="text/javascript">
     //<![CDATA[
     $(document).ready(function() {
-      $('.helpLink').each(function(index, helpLinkElem) {
+      $('#deed .helpLink').each(function(index, helpLinkElem) {
         var helpId = $(helpLinkElem).attr('id');
         var popupId = helpId ? 'help_' + helpId : undefined;
         if (popupId) {
@@ -257,6 +257,7 @@ xmlns:frbr="http://purl.org/vocab/frbr/core#" xml:lang="{{ target_lang }}">
           var popupBodyHtml = $('.bd', popupElem).html();
           $(helpLinkElem).popover({
             placement: 'auto top',
+            viewport: '#deed',
             trigger: 'focus',
             title: popupTitleHtml ? popupTitleHtml : undefined,
             content: popupBodyHtml ? popupBodyHtml : undefined,
