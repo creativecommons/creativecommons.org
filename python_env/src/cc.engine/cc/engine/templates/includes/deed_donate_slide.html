@@ -1,9 +1,9 @@
-
 <div id="deed-donate-slide" style="display: none;">
   <div class="slide-close"></div>
   <div class="slide-trigger">
     <img src="/images/deed/logo-cc-heart-white.png" class="slide-logo" alt="" width="100" height="88" />
-    <p>{% trans %}This content is freely available under simple legal terms because of Creative Commons, a non-profit that survives on donations. If you love this content, and love that it's free for everyone, please consider a donation to support our work.{% endtrans %}</p>
+    <p class="desktop-only">{% trans %}This content is freely available under simple legal terms because of Creative Commons, a non-profit that survives on donations. If you love this content, and love that it's free for everyone, please consider a donation to support our work.{% endtrans %}</p>
+    <p class="mobile-only">{% trans %}When you share, everyone wins.{% endtrans %}</p>
     <div class="donate-box">
       <div class="widget-inner">
         <div class="gform_wrapper" id="gform_wrapper_10">
@@ -16,7 +16,7 @@
                   <li class="gchoice_10_1_1"><input name="amount" type="radio" value="$50" checked="checked" id="choice_10_1_1" tabindex="2"><label for="choice_10_1_1" id="label_10_1_1">$50</label></li>
                   <li class="gchoice_10_1_2"><input name="amount" type="radio" value="$25" id="choice_10_1_2" tabindex="3"><label for="choice_10_1_2" id="label_10_1_2">$25</label></li>
                   <li class="gchoice_10_1_3"><input name="amount" type="radio" value="$5" id="choice_10_1_3" tabindex="4"><label for="choice_10_1_3" id="label_10_1_3">$5</label></li>
-                  <li class="gchoice_10_1_4"><input name="amount" type="radio" value="gf_other_choice" id="choice_10_1_4" tabindex="5" onfocus="$(this).next('input').focus();"><input style="max-width: 80%" id="input_10_1_other" name="amount_other" type="text" value="Other" aria-label="Other" onfocus="$(this).prev(&quot;input&quot;)[0].click(); if($(this).val() == &quot;Other&quot;) { $(this).val(&quot;&quot;); }" onblur="if($(this).val().replace(&quot; &quot;, &quot;&quot;) == &quot;&quot;) { $(this).val(&quot;Other&quot;); }" tabindex="5"></li>
+                  <li class="gchoice_10_1_4"><input name="amount" type="radio" value="gf_other_choice" id="choice_10_1_4" tabindex="5" onfocus="$(this).next('input').focus();"><input style="max-width: 80%" id="input_10_1_other" name="amount_other" type="text" placeholder="{% trans %}Amount{% endtrans %}" aria-label="{% trans %}Amount{% endtrans %}" tabindex="5"></li>
                 </ul>
 
                 <input type="hidden" name="type" value="One Time">
