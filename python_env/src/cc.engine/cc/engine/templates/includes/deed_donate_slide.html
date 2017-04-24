@@ -7,16 +7,31 @@
     <div class="donate-box">
       <div class="widget-inner">
         <div class="gform_wrapper" id="gform_wrapper_10">
-          <form method="get" id="gform_10" action="/donate">
+          <form method="post" enctype="multipart/form-data" id="gform_10" action="/donate">
             <div id="field_10_1" class="gfield field_sublabel_below field_description_below">
               <label class="gfield_label">{% trans %}Contribute today to Creative Commons{% endtrans %}</label>
               <div class="ginput_container ginput_container_radio">
                 <ul class="gfield_radio" id="input_10_1">
-                  <li class="gchoice_10_1_0"><input name="amount" type="radio" value="$100" id="choice_10_1_0" tabindex="1"><label for="choice_10_1_0" id="label_10_1_0">$100</label></li>
-                  <li class="gchoice_10_1_1"><input name="amount" type="radio" value="$50" checked="checked" id="choice_10_1_1" tabindex="2"><label for="choice_10_1_1" id="label_10_1_1">$50</label></li>
-                  <li class="gchoice_10_1_2"><input name="amount" type="radio" value="$25" id="choice_10_1_2" tabindex="3"><label for="choice_10_1_2" id="label_10_1_2">$25</label></li>
-                  <li class="gchoice_10_1_3"><input name="amount" type="radio" value="$5" id="choice_10_1_3" tabindex="4"><label for="choice_10_1_3" id="label_10_1_3">$5</label></li>
-                  <li class="gchoice_10_1_4"><input name="amount" type="radio" value="gf_other_choice" id="choice_10_1_4" tabindex="5" onfocus="$(this).next('input').focus();"><input style="max-width: 80%" id="input_10_1_other" name="amount_other" type="text" placeholder="{% trans %}Amount{% endtrans %}" aria-label="{% trans %}Amount{% endtrans %}" tabindex="5"></li>
+                  <li class="gchoice_10_1_0">
+                    <input name="amount" type="radio" value="$100" id="choice_10_1_0" tabindex="1">
+                    <label for="choice_10_1_0" id="label_10_1_0">$100</label>
+                  </li>
+                  <li class="gchoice_10_1_1">
+                    <input name="amount" type="radio" value="$50" checked="checked" id="choice_10_1_1" tabindex="2">
+                    <label for="choice_10_1_1" id="label_10_1_1">$50</label>
+                  </li>
+                  <li class="gchoice_10_1_2">
+                    <input name="amount" type="radio" value="$25" id="choice_10_1_2" tabindex="3">
+                    <label for="choice_10_1_2" id="label_10_1_2">$25</label>
+                  </li>
+                  <li class="gchoice_10_1_3">
+                    <input name="amount" type="radio" value="$5" id="choice_10_1_3" tabindex="4">
+                    <label for="choice_10_1_3" id="label_10_1_3">$5</label>
+                  </li>
+                  <li class="gchoice_10_1_4">
+                    <input name="amount" type="radio" value="gf_other_choice" id="choice_10_1_4" tabindex="5" onfocus="$(this).next('input').focus();">
+                    <input name="amount_other" type="text" id="input_10_1_other" tabindex="5" style="max-width: 80%" placeholder="{% trans %}Amount{% endtrans %}" aria-label="{% trans %}Amount{% endtrans %}">
+                  </li>
                 </ul>
 
                 <input type="hidden" name="type" value="One Time">
