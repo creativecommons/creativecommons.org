@@ -199,6 +199,30 @@ xmlns:frbr="http://purl.org/vocab/frbr/core#" xml:lang="{{ target_lang }}">
   /* ]]> */
   </script>
   <script type='text/javascript' src='/wp-content/themes/twentysixteen/js/functions.js'></script>
+
+  <script type="text/javascript">
+    //<![CDATA[
+    var donateForms = $('.deed-donate-form');
+
+    $(donateForms).each(function() {
+      var otherFields = $('input[value="gf_other_choice"]');
+
+      $(this).on('submit', function() {
+        $(otherFields).each(function() {
+          var parent = $(this).closest('li');
+          var radioField = $(this);
+          var txtField = $(parent).children('input[type="text"]');
+          var txtValue = txtField.val();
+
+          if (txtValue || radioField.is(':checked')) {
+            radioField.val(txtValue);
+          }
+        });
+      });
+    });
+    //]]>
+  </script>
+
   <script type="text/javascript">
     //<![CDATA[
     $(document).ready(function() {
