@@ -67,9 +67,12 @@
 
     {% if license.license_code in ('by', 'by-sa') %}
       <div id="libre" class="col-sm-2">
-        <a href="http://freedomdefined.org/">
+        <a href="http://freedomdefined.org/" class="screen-only">
           <img src="/images/deed/FreeCulturalWorks_seal_x2.jpg" style="border: 0"
                alt="{% trans %}This license is acceptable for Free Cultural Works.{% endtrans %}" />
+        </a>
+        <a href="http://freedomdefined.org/" class="print-only">
+          <img src="/images/deed/seal.png" style="border: 0" alt="" />
         </a>
       </div>
     {% endif %}
