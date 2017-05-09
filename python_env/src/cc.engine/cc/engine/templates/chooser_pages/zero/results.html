@@ -86,7 +86,7 @@
   
             {% if email_requested %}
               {# email container #}
-              {% if not succesful_send %}
+              {% if not successful_send %}
                 <div class="more-metadata-container error">
                   {% trans email_addr=email_addr %}An error occurred when we tried to send the email message; you can try clicking the Back button and double checking your email address.  If the address you used ({{ email_addr }}) was correct you can <a href="/contact">contact us</a>.{% endtrans %}
                 </div>
