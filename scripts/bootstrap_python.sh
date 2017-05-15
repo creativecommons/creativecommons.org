@@ -20,7 +20,8 @@ source bin/activate
 # No RDF in pip (it's rdfutils)
 
 for i in 'setuptools>=0.7' 'zope.interface>=3.8.0' Paste PasteDeploy \
-                           PasteScript rdfutils  cssselect transifex-client
+                           PasteScript rdfutils cssselect transifex-client \
+			   pysocks
 do
     pip install $i
 done
