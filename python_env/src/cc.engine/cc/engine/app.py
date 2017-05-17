@@ -1,3 +1,4 @@
+import re
 import sys
 import urllib
 
@@ -27,10 +28,21 @@ class CCEngineApp(object):
         self.staticdirector = staticdirector
         self.config = config
 
+    def clean_lang(self, request):
+        """Avoid invalid lang specs not of the form aa aa-aa aa-AA aa_aa aa_AA.
+           If we encounter one, remove it."""
+        request_form = request.GET or request.POST
+        if request_form.has_key('lang') and request_form['lang'] != '':
+            if not re.match(r'^[a-z]{2}([-_][a-zA-Z]{2})?$',
+                            request_form['lang']):
+                del request_form['lang']
+
     def __call__(self, environ, start_response):
         request = Request(environ)
         path_info = request.path_info
         route_match = routing.mapping.match(path_info)
+
+        self.clean_lang(request)
 
         if route_match is None:
             # If there's an equivalent URL that ends with /, redirect
