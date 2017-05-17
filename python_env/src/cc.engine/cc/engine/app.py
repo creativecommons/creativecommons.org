@@ -39,9 +39,19 @@ class CCEngineApp(object):
 
     def __call__(self, environ, start_response):
         request = Request(environ)
-        path_info = request.path_info
+
+        # Get the path info, which will break if we've been fed an invalid
+        # utf-8 uri. So catch that eventuality and 404 on it.
+        try:
+            path_info = request.path_info
+        except UnicodeDecodeError, e:
+            response = util.generate_404_response(
+                request, routing, environ, self.staticdirector)
+            return response(environ, start_response)
+
         route_match = routing.mapping.match(path_info)
 
+        # TODO: remove and redirect on invalid lang spec
         self.clean_lang(request)
 
         if route_match is None:
