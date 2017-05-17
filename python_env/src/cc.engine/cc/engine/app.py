@@ -36,7 +36,7 @@ class CCEngineApp(object):
             if not re.match(r'^[a-z]{2}([-_][a-zA-Z]{2})?$',
                             request_form['lang']):
                 del request_form['lang']
-                
+
     def __call__(self, environ, start_response):
         request = Request(environ)
         path_info = request.path_info
@@ -54,19 +54,8 @@ class CCEngineApp(object):
                 if request.GET:
                     new_path_info = '%s?%s' % (
                         new_path_info, urllib.urlencode(request.GET))
-                # If the url contains higher-than-ASCII characters this fails.
-                # Since such urls are broken, don't redirect. Fall through to
-                # the 404.
-                # The reason for handing this is that we're seeing (2017) a lot
-                # of penetration testing requests of the form
-                # /licenses/by-nd/2.0/%EF%BB%BF%EF%BB%BFThe
-                try:
-                    redirect = exc.HTTPFound(location=new_path_info)
-                    return request.get_response(redirect)(environ,
-                                                          start_response)
-                except UnicodeEncodeError, e:
-                    # Don't send the Found, fall through to the 404
-                    pass
+                redirect = exc.HTTPFound(location=new_path_info)
+                return request.get_response(redirect)(environ, start_response)
             # Return a 404
             response = util.generate_404_response(
                 request, routing, environ, self.staticdirector)
