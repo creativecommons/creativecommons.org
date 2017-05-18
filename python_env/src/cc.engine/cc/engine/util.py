@@ -594,7 +594,12 @@ def get_target_lang_from_request(request, default_locale='en'):
         # screw it
         target_lang = default_locale
 
-    ACCEPT_LANG_CACHE[header_value] = target_lang
+    try:
+        ACCEPT_LANG_CACHE[header_value] = target_lang
+    except NameError, e:
+        # We didn't set the header_value, so don't try to use it as a key
+        pass
+
     return locale_to_lower_upper(target_lang)
 
 
