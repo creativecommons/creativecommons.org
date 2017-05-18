@@ -28,14 +28,25 @@ class CCEngineApp(object):
         self.staticdirector = staticdirector
         self.config = config
 
-    def clean_lang(self, request):
-        """Avoid invalid lang specs not of the form aa aa-aa aa-AA aa_aa aa_AA.
-           If we encounter one, remove it."""
-        request_form = request.GET or request.POST
-        if request_form.has_key('lang') and request_form['lang'] != '':
-            if not re.match(r'^[a-z]{2}([-_][a-zA-Z]{2})?$',
-                            request_form['lang']):
-                del request_form['lang']
+    def form_value_ok(self, form, key, regex):
+        """True if the value is absent, or is present and matches the regex"""
+        result = True
+        if form.has_key(key) and form[key] != '':
+            result = re.match(regex, form[key])
+        return result
+
+    # FIXME / TODO .
+    # This should be broken into several methods for different views.
+    # But is here at the moment to ensure this approach works before refactoring.
+    def is_form_ok(self, form):
+        """Check for e.g. SQL injection attempts in form values."""
+        result = self.form_value_ok(form, 'license_code',
+                                    r'[a-z-]+') and \
+                 self.form_value_ok(form, 'version',
+                                    r'([0-9.]+|version)') and \
+                 self.form_value_ok(form, 'jurisdiction',
+                                    r'([a-zA-Z_-]+)')
+        return result
 
     def __call__(self, environ, start_response):
         request = Request(environ)
@@ -45,14 +56,35 @@ class CCEngineApp(object):
         try:
             path_info = request.path_info
         except UnicodeDecodeError, e:
-            response = util.generate_404_response(
-                request, routing, environ, self.staticdirector)
+            response = util.generate_404_response(request, routing, environ,
+                                                  self.staticdirector)
+            return response(environ, start_response)
+
+        # If we can't get the form because of a Unicode error it contains badly
+        # encoded data that will blow things up later so bail now.
+        try:
+            form = request.GET or request.POST
+        except UnicodeDecodeError, e:
+            # Someone fed us some un-encoded or badly encoded values in the form
+            response = exc.HTTPBadRequest('Character encoding error in query.')
+            return response(environ, start_response)
+
+        # Avoid invalid lang specs not of the form aa aa-aa aa-AA aa_aa aa_AA .
+        # Redirect to untranslated version if user specified an invalid lang.
+        # This should be moved into views.
+        if not self.form_value_ok(form, 'lang', r'^[a-z]{2}([-_][a-zA-Z]{2})?$'):
+            del form['lang']
+            response = exc.HTTPFound(location=request.path_info)
+            return response(environ, start_response)
+
+        # Show error if any form arguments seem bad (e.g. they are attempts at
+        # SQL injection [which breaks SPARQL])
+        # This should be moved into views.
+        if not self.is_form_ok(form):
+            response = exc.HTTPBadRequest('One or more query values were bad.')
             return response(environ, start_response)
 
         route_match = routing.mapping.match(path_info)
-
-        # TODO: remove and redirect on invalid lang spec
-        self.clean_lang(request)
 
         if route_match is None:
             # If there's an equivalent URL that ends with /, redirect
