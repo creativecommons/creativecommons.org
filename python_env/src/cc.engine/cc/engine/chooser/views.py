@@ -343,6 +343,10 @@ def choose_results_view(request):
     # Select a license based on the request form
     license = _issue_license(request_form)
 
+    # If the request didn't have all the required information, we have no license
+    if not license:
+        return exc.HTTPBadRequest('Could not determine license from parameters.')
+
     # If the license is retired, redirect to info page
     if license.deprecated:
         # Special case: PDCC should redirect to /publicdomain/
