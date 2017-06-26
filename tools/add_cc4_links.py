@@ -87,21 +87,35 @@ class AddCC4Links(object):
 
     def is_rtl(self, content):
         """Determine whether the page is in a right-to-left script"""
-        return re.search(r' dir="rtl"', content) != None
+        return (re.search(r' dir="rtl"', content) != None) or \
+            (re.search(r'class="rtl"', content) != None)
 
-    def insert_at_index(self, links, rtl):
-        """Find the alphabetic position in the list of translated license links
-           to insert the link at"""
+    def insert_at_index_rtl(self, links):
+        index = -1
+        for i, match in reversed(list(enumerate(links))):
+            if self.language_name.casefold() < match[1].casefold():
+                index = i
+                break
+        return index
+
+    def insert_at_index_ltr(self, links):
         index = -1
         for match in links:
             if self.language_name.casefold() < match[1].casefold():
                 break
             else:
                 index += 1
-        if rtl and index != -1:
-            index -= 1
         return index
 
+    
+    def insert_at_index(self, links, rtl):
+        """Find the alphabetic position in the list of translated license links
+           to insert the link at"""
+        if rtl:
+            return self.insert_at_index_rtl(links)
+        else:
+            return self.insert_at_index_ltr(links)
+            
     def insert_link(self, content, lic, links, index):
         """Insert the link to the correct version of the license
            in the correct position in the list of links at the bottom of the
@@ -135,15 +149,18 @@ class AddCC4Links(object):
         if not self.file_contains_link_already(links):
             rtl = self.is_rtl(content)
             index = self.insert_at_index(links, rtl)
-            print(links)
-            print(index)
-            print(links[index])
+            #print(links)
+            #print(index)
+            #print(links[index])
             updated_content = self.insert_link(content, lic, links, index)
             with filepath.open('w') as outfile:
                 outfile.write(updated_content)
-            print('Added link to file: ' + filepath.name)
-        else:
-            print('File already contains link: ' + filepath.name)
+            direction = 'ltr'
+            if rtl:
+                direction = 'rtl'
+            print('Added link to ' + direction + ' file: ' + filepath.name)
+        #else:
+        #   print('File already contains link: ' + filepath.name)
         
     def main(self):
         """Get the command line arguments, find the files, and process them"""
