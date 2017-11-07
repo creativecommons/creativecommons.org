@@ -119,7 +119,14 @@
 
             <div dir="{{ get_ltr_rtl }}" style="{{ is_rtl_align }}"
                  id="content">
-               {% block body %}{% endblock %}
+              <div style="border: 1px solid darkred; border-radius: 5px; padding: 12px; margin: 12px auto;">
+                Creative Commons has updated its
+                  <a href="https://creativecommons.org/terms/">Master&nbsp;Terms&nbsp;of&nbsp;Service</a> and
+                  <a href="https://creativecommons.org/privacy/">Master&nbsp;Privacy&nbsp;Policy</a>,
+                  effective November 7, 2017.
+                  <em><strong>Before continuing on our websites or using our services, please review.</strong></em>
+              </div>
+              {% block body %}{% endblock %}
             </div>
 
             {% if page_style == "bare" %}
