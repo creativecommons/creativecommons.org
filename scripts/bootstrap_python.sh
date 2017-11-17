@@ -38,7 +38,7 @@ echo "/usr/lib/python2.7/dist-packages/" \
 
 pushd src
 
-REPOS=(cc.i18n cc.licenserdf cc.license)
+REPOS=(cc.i18n cc.licenserdf cc.license cc.engine)
 for i in "${REPOS[@]}"
 do
     if [ -d "${i}" ]
