@@ -9,10 +9,7 @@ python_env/lib
 python_env/local
 python_env/paste_errors.log
 python_env/.Python
-python_env/src/cc.engine
-python_env/src/cc.i18n
-python_env/src/cc.licenserdf
-python_env/src/cc.license
+python_env/src/
 docroot/license.rdf
 docroot/license_rdf
 docroot/rdf
