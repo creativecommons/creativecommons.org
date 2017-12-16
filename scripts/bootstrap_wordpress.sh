@@ -21,33 +21,8 @@ wget -O - https://getcomposer.org/installer | php
 
 php ${TOPDIR}/composer.phar install
 
-# Make sure wp-content hierarchy is correct
-
-mkdir -p ${TOPDIR}/docroot/wp-content/themes
 mkdir -p ${TOPDIR}/docroot/wp-content/uploads
 chgrp -R www-data ${TOPDIR}/docroot/wp-content/uploads
-
-#
-# Theme
-#
-
-if [ ! -d "${TOPDIR}/cc-wp-theme" ]
-then
-    git clone https://github.com/creativecommons/cc-wp-theme.git \
-        "${TOPDIR}/cc-wp-theme"
-else
-    pushd "${TOPDIR}/cc-wp-theme"
-    git pull
-    popd
-fi
-
-if [ ! -d "${TOPDIR}/docroot/wp-content/themes/creativecommons.org" ]
-then
-    ln -s "${TOPDIR}/cc-wp-theme/creativecommons.org" \
-       "docroot/wp-content/themes/creativecommons.org"
-    ln -s "${TOPDIR}/cc-wp-theme/creativecommons.org" \
-       "docroot/wp-content/themes/twentyfourteen"
-fi
 
 #
 # wp-config-local.php

@@ -5,63 +5,21 @@ TOPDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 pushd ${TOPDIR}
 
 #
-# Set up transifex
-#
-
-#
 # Set up Python env
 #
 
 pushd python_env
 
-virtualenv .
+virtualenv -p python3 .
 source bin/activate
 
-# No RDF in pip (it's rdfutils)
+git clone "https://github.com/creativecommons/cc.engine"
 
-for i in 'setuptools>=0.7' 'zope.interface>=3.8.0' Paste PasteDeploy \
-                           PasteScript rdfutils cssselect transifex-client \
-			   pysocks
-do
-    pip install $i
-done
-
-# On Ubuntu, virtualenv setups don't "see" dist-packages, which is
-# where Ubuntu-packaged modules go. This works around that problem:
-
-echo "/usr/lib/python2.7/dist-packages/" \
-     > lib/python2.7/site-packages/dist-packages.pth
-
-#
-# Check out and set up each Python module
-#
-
-pushd src
-
-REPOS=(cc.i18n cc.licenserdf cc.license cc.engine)
-for i in "${REPOS[@]}"
-do
-    if [ -d "${i}" ]
-    then
-        pushd "${i}"
-        git pull
-        popd
-    else
-        git clone "https://github.com/creativecommons/${i}.git"
-    fi
-done
-
-REPOS+=(cc.engine)
-for i in "${REPOS[@]}"
-do
-    pushd "${i}"
-    python bootstrap.py -v 2.1.1
-    bin/buildout
-    python setup.py develop
-    popd
-done
-
-popd # to python_env
+pushd cc.engine
+#REMOVE ME WHEN READY!!!!
+git checkout python3
+python setup.py develop
+popd
 
 #
 # compile_mo & transstats are needed by cc.engine at runtime, run them now
