@@ -198,7 +198,24 @@ body.rtl #deed-main {
     padding-left: 1em;
 }
 
-#deed-main ol { margin-left: 0; }
+#deed-main ol {
+  list-style-type: decimal;
+  margin-left: 0;
+}
+
+#deed-main ol.arabic { list-style-type: none; }
+
+
+/* Please read:
+   - https://www.w3schools.com/tags/att_ol_type.asp
+   - https://stackoverflow.com/questions/27104096/css-selector-type-var-not-selecting-lower-alpha-versus-upper-alpha
+*/
+#deed-main ol[type="a"] { list-style-type: lower-alpha; }
+/*#deed-main ol[type="A"] { list-style-type: upper-alpha; } no case-sensitive :( */
+#deed-main ol[type="a"] ol[type="a"] { list-style-type: upper-alpha; } /* crappy solution */
+#deed-main ol[type="i"] { list-style-type: lower-roman; }
+/*#deed-main ol[type="I"] { list-style-type: upper-roman; } no case-sensitive :( */
+#deed-main ol[type="i"] ol[type="i"] { list-style-type: upper-roman; } /* crappy solution */
 
 #deed-main ol li { list-style-image: none; }
 
