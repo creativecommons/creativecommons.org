@@ -81,13 +81,13 @@ class UpdateLicenseCode(object):
         """Verify the required placeholders exist and update file with common
            elements"""
         self.log("\n" + 'Processing: ' + filepath.name, 'verbose')
-        with filepath.open() as infile:
+        with filepath.open(encoding='utf-8') as infile:
             content = infile.read()
             
         if self.has_placeholders(content):
             self.log('   Updating content: ' + filepath.name, 'verbose')
             content = self.add_includes(content)
-            with filepath.open('w') as outfile:
+            with filepath.open('w', encoding='utf-8') as outfile:
                 outfile.write(content)
         else:
             self.log('   No placeholders, skipping: ' + filepath.name, 'standard')
