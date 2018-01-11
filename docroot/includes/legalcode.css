@@ -128,10 +128,6 @@ h3 {
     text-align: left;
 }
 
-body.rtl #deed-main {
-    text-align: right;
-}
-
 .pd #deed-main {
     border-color: #bbc0ab;
 }
@@ -164,6 +160,13 @@ body.rtl #deed-main {
 
 #deed-main-content .shaded :last-child { margin-bottom: 0; }
 
+#deed-main-content .usage-considerations {
+    background-color: #fff;
+    padding: 8px;
+    margin: 15px 0;
+    clear: both;
+}
+
 #deed-license {
     text-align:center;
     margin: 20px auto 0;
@@ -193,9 +196,18 @@ body.rtl #deed-main {
     width: 100%;
 }
 
+#deed-main p { margin: 1em 0; }
+
 #deed-main ol,
 #deed-main ul {
-    padding-left: 1em;
+    margin: 1.75em 0;
+    padding-left: 2em;
+}
+
+
+#deed-main ol ol,
+#deed-main ul ul {
+    margin: 0;
 }
 
 #deed-main ol {
