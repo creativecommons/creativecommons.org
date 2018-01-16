@@ -22,6 +22,7 @@
 
 body:not(.lang-en) .main-navigation,
 body:not(.lang-en) .secondary-navigation,
-body:not(.lang-en) .social-navigation {
+body:not(.lang-en) .social-navigation,
+body:not(.lang-en) #header-below {
   display: none;
 }
