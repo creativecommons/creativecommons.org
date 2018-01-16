@@ -560,7 +560,7 @@ li.nolaw::before {
 }
 
 li.publicdomain::before {
-    background-image: url("/images/deed/noc.png");
+    background-image: url("/images/deed/no_copyright_blue_x2.png");
 }
 
 /* Desktop small and smaller */
