@@ -75,10 +75,31 @@ h3 {
 #deed {
     background: #E9E9E9;
     color: #333;
-    margin: 40px auto 0;
+    margin: 40px 20px 0;
     max-width: 1140px;
     text-align: center;
 }
+
+@media screen and (min-width: 768px) {
+    #deed {
+        margin-left: auto;
+        margin-right: auto;
+        width: 750px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #deed {
+        width: 950px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #deed {
+        width: 976px;
+    }
+}
+
 
 #deed-head {
     background: linear-gradient(to bottom,rgba(0,181,218,1) 0%,rgba(0,165,200,1) 100%);
@@ -148,6 +169,14 @@ h3 {
 #deed-main-content {
     position: relative;
     margin: 50px 10%;
+}
+
+@media screen and (min-width: 1200px) {
+
+    #deed-main-content {
+        margin-left: 178px;
+        margin-right: 178px;
+    }
 }
 
 #deed-main-content .shaded {
