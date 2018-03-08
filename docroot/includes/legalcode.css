@@ -198,6 +198,45 @@ h3 {
     clear: both;
 }
 
+/* For animation read: https://stackoverflow.com/questions/3508605/how-can-i-transition-height-0-to-height-auto-using-css */
+#deed-main-content .cc-collapsible {
+    max-height: 5000px;
+    transition: max-height 0.25s ease-in;
+    position: relative;
+}
+
+#deed-main-content .cc-collapsible.collapsed {
+    max-height: 5.3em;
+    overflow: hidden;
+    transition: max-height 0.15s ease-out;
+}
+
+#deed-main-content .cc-collapsible .cc-collapsible__trigger {
+    background: linear-gradient(0deg, #fff 70%, transparent);
+    display: block;
+    padding: 1em 0 0.5em 0;
+    text-align: center;
+    width: 100%;
+}
+
+#deed-main-content .cc-collapsible.collapsed .cc-collapsible__trigger {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+#deed-main-content .cc-collapsible a:hover,
+#deed-main-content .cc-collapsible a:focus {
+    outline: none;
+    text-decoration: none;
+}
+
+
+#deed-main-content .cc-collapsible.collapsed a span {
+    display: inline-block;
+    transform: rotate(180deg);
+}
+
 #deed-license {
     text-align:center;
     margin: 20px auto 0;
