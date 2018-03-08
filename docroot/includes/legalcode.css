@@ -189,6 +189,8 @@ h3 {
 
 #deed-main-content .shaded :last-child { margin-bottom: 0; }
 
+#deed-main-content .cc-intro { font-style: italic; }
+
 #deed-main-content .usage-considerations {
     background-color: #fff;
     padding: 8px;
