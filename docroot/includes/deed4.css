@@ -173,6 +173,20 @@ body.hide-banner .site-footer .cc-footer-license {
 .pd-grey #deed-head {
 }
 
+#language-selector-block {
+    text-align: right;
+    /*font-size: 0.9em;*/
+    margin-top: 40px;
+}
+
+.language-selector-inner {
+    margin-right: -30px;
+}
+
+#language-selector-block select {
+    padding: 0;
+}
+
 #deed-main {
     background-color: #E9E9E9;
     text-align: left;
