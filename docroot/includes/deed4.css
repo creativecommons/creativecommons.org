@@ -187,6 +187,12 @@ body.hide-banner .site-footer .cc-footer-license {
     padding: 0;
 }
 
+.language-icon {
+    height: 32.5px;
+    width: 24px;
+    margin: 0 0.25em;
+}
+
 #deed-main {
     background-color: #E9E9E9;
     text-align: left;
