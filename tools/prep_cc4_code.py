@@ -25,7 +25,9 @@ class UpdateLicenseCode(object):
     placeholders = {\
         'head': ('<!-- Head Start - DO NOT DELETE -->', '<!-- Head End - DO NOT DELETE -->'), \
         'header': ('<!-- Site Header Start - DO NOT DELETE -->', '<!-- Site Header End - DO NOT DELETE -->'), \
-        'footer': ('<!-- Site Footer Start - DO NOT DELETE -->', '<!-- Site Footer End - DO NOT DELETE -->') }
+        'footer': ('<!-- Site Footer Start - DO NOT DELETE -->', '<!-- Site Footer End - DO NOT DELETE -->'), \
+        'language-selector': ('<!-- Language Selector Start - DO NOT DELETE -->', '<!-- Language Selector End - DO NOT DELETE -->') \
+    }
 
     image_map = {
         'by': {'file': 'attribution_icon_white_x2.png', 'alt_text': 'Attribution'},
@@ -128,6 +130,9 @@ class UpdateLicenseCode(object):
                 elif placeholder_pair == 'footer':
                     target = '</body>'
                     replacement = start + "\n" + end + "\n" + target
+                elif placeholder_pair == 'language-selector':
+                    target = '<!-- Site Header End - DO NOT DELETE -->'
+                    replacement = target + "\n" + start + "\n" + end
                 content = content.replace(target, replacement, 1)
         return content
 
