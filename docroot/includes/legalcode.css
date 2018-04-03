@@ -81,7 +81,7 @@ h3 {
 }
 
 @media screen and (min-width: 768px) {
-    #deed {
+    #deed, #language-selector-block {
         margin-left: auto;
         margin-right: auto;
         width: 750px;
@@ -89,17 +89,32 @@ h3 {
 }
 
 @media screen and (min-width: 992px) {
-    #deed {
+    #deed, #language-selector-block {
         width: 950px;
     }
 }
 
 @media screen and (min-width: 1200px) {
-    #deed {
+    #deed, #language-selector-block {
         width: 976px;
     }
 }
 
+#language-selector-block {
+    margin-top: 40px;
+    text-align: right;
+    font-size: 1.1em;
+}
+
+#language-selector-block .language-icon {
+    height: 32.5px;
+    width: 24px;
+    margin: 0 0.25em;
+}
+
+#language-selector-block select {
+    padding: 0;
+}
 
 #deed-head {
     background: linear-gradient(to bottom,rgba(0,181,218,1) 0%,rgba(0,165,200,1) 100%);

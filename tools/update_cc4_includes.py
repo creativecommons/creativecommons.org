@@ -24,7 +24,37 @@ class UpdateLicenseCode(object):
     placeholders = {\
         'head': ('<!-- Head Start - DO NOT DELETE -->', '<!-- Head End - DO NOT DELETE -->'), \
         'header': ('<!-- Site Header Start - DO NOT DELETE -->', '<!-- Site Header End - DO NOT DELETE -->'), \
-        'footer': ('<!-- Site Footer Start - DO NOT DELETE -->', '<!-- Site Footer End - DO NOT DELETE -->') }
+        'footer': ('<!-- Site Footer Start - DO NOT DELETE -->', '<!-- Site Footer End - DO NOT DELETE -->'), \
+        'language-selector': ('<!-- Language Selector Start - DO NOT DELETE -->', '<!-- Language Selector End - DO NOT DELETE -->') \
+    }
+
+    languages = {}
+
+    iso_to_language = { \
+        'ar': 'العربية',  'de': 'Deutsch',      'en': 'English',          'fi': 'suomeksi',  \
+        'fr': 'français', 'hr': 'hrvatski',     'id': 'bahasa Indonesia', 'it': 'italiano',  \
+        'ja': '日本語',    'mi': 'Te Reo Māori', 'nl': 'Nederlands',       'no': 'norsk',     \
+        'pl': 'polski',   'sv': 'svenska',      'tr': 'Türkçe',           'uk': 'українська' \
+    }
+
+    lang_sel_text = { \
+        'ar': 'هذة الصفحة متوفرة باللغات التالية:', \
+        'de': 'Diese Seite ist in folgenden Sprachen verfügbar:', \
+        'en': 'This page is available in the following languages:', \
+        'fi': 'Tämä sivu on saatavilla seuraavilla kielillä:', \
+        'fr': 'Cette page existe aussi dans les langues suivantes :', \
+        'hr': 'Ova stranica je dostupna na sljedećim jezicima:', \
+        'id': 'Laman ini tersedia dalam bahasa berikut:', \
+        'it': 'Questa pagina è disponibile nelle seguenti lingue:', \
+        'ja': 'このページは以下の言語でもご覧になれます:', \
+        'mi': 'E wātea ana tēnei whārangi i ēnei reo:', \
+        'nl': 'Deze pagina is beschikbaar in de volgende talen:', \
+        'no': 'Denne siden er tilgjengelig på følgende språk:', \
+        'pl': 'Strona jest dostępna w następujących językach:', \
+        'sv': 'Denna sida finns tillgänglig på följande språk:', \
+        'tr': 'Bu sayfa şu dillerde mevcuttur:', \
+        'uk': 'Ця сторінка доступна наступними мовами:', \
+    }
 
     def usage(self):
         print('')
@@ -87,6 +117,7 @@ class UpdateLicenseCode(object):
         if self.has_placeholders(content):
             self.log('   Updating content: ' + filepath.name, 'verbose')
             content = self.add_includes(content)
+            content = self.add_language_selector(content, filepath)
             with filepath.open('w', encoding='utf-8') as outfile:
                 outfile.write(content)
         else:
@@ -118,6 +149,61 @@ class UpdateLicenseCode(object):
             
         return content
         
+    def add_language_selector(self, content, filepath):
+        """Build and insert a language selector dropdown list."""
+        # Get a list of all the other languages for this license type and store it so
+        # it can be reused.
+        license_data = self.parse_filename(filepath)
+        if license_data['type'] not in self.languages:
+            self.languages[license_data['type']] = []
+            glob_string = license_data['type'] + '_' + license_data['version'] + '*.html'
+            language_file_list = [f for f in self.path.glob(glob_string)]
+            for filepath in language_file_list:
+                sibling_data = self.parse_filename(filepath)
+                self.languages[license_data['type']].append(sibling_data['language'])
+            self.languages[license_data['type']].sort()
+
+        current_language = license_data['language']
+        sibling_languages = self.languages[license_data['type']]
+
+        selector =  '<div id="language-selector-block" class="container">'
+        selector += '  <div class="language-selector-inner">'
+        selector += self.lang_sel_text[current_language]
+        selector += '    <img class="language-icon" src="/images/language_icon_x2.png" alt="Languages" />'
+        selector += '    <select>'
+        for iso_code in sibling_languages:
+            # Set the selected option to the current language of the page
+            selected = ''
+            if iso_code == current_language:
+                selected = ' selected="selected" '
+            # Determine to option value for the language. English breaks the pattern so handle it differently.
+            option_value = 'legalcode.' + iso_code
+            if iso_code == 'en':
+                option_value = 'legalcode'
+            # Add the selector vlaue
+            selector += '<option value="' + option_value + '"' + selected + '>' + self.iso_to_language[iso_code] + '</option>'
+        selector += '    </select>'
+        selector += '  </div>'
+        selector += '</div>'
+
+        # Add the language selector block to the content
+        start, end = UpdateLicenseCode.placeholders['language-selector']
+        target_string = re.search(start + '.*?' + end, content, re.DOTALL).group()
+        replacement = start + "\n" + selector + "\n" + end
+        content = content.replace(target_string, replacement, 1)
+
+        return content
+
+    def parse_filename(self, filepath):
+        license_info = filepath.name[0:-5].split('_');
+        type = license_info[0]
+        version = license_info[1]
+        if len(license_info) > 2:
+            language = license_info[2]
+        else:
+            language = 'en'
+        return {'type': type, 'version': version, 'language': language}
+
     def has_placeholders(self, content):
         """Verify all of the required placeholders exist in a file"""
         for placeholder_pair in UpdateLicenseCode.placeholders:
