@@ -116,7 +116,9 @@ class UpdateLicenseCode(object):
 
     def handle_placeholders(self, content):
         self.log('   Adding placeholders', 'verbose')
-        for placeholder_pair in UpdateLicenseCode.placeholders:
+        # The language selector has to come after the header. Because dictionaries don't
+        # maint order the easiest way to maintain order is sorting the interation keys.
+        for placeholder_pair in sorted(UpdateLicenseCode.placeholders):
             if self.has_placeholders(content, placeholder_pair):
                 self.log('   Found placeholder: ' + placeholder_pair + ', skipping', 'verbose')
             else:
