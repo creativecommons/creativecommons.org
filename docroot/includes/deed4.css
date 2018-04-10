@@ -75,6 +75,10 @@ body.hide-banner .site-footer .cc-footer-license {
     border-bottom-left-radius: 10px;
 }
 
+#primary {
+    margin-top: 10px;
+}
+
 .site-main {
     margin-bottom: 0;
 }
@@ -175,8 +179,7 @@ body.hide-banner .site-footer .cc-footer-license {
 
 #language-selector-block {
     text-align: right;
-    /*font-size: 0.9em;*/
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 .language-selector-inner {
