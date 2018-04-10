@@ -30,10 +30,10 @@ class UpdateLicenseCode(object):
     }
 
     image_map = {
-        'by': {'file': 'attribution_icon_white_x2.png', 'alt_text': 'Attribution'},
-        'sa': {'file': 'sa_white_x2.png', 'alt_text': 'Share Alike'},
-        'nd': {'file': 'nd_white_x2.png', 'alt_text': 'No Derivatives'},
-        'nc': {'file': 'nc_white_x2.png', 'alt_text': 'Non-Commerical'}
+        'by': {'file': 'attribution_icon_white.svg', 'alt_text': 'Attribution'},
+        'sa': {'file': 'sa_white.svg', 'alt_text': 'Share Alike'},
+        'nd': {'file': 'nd_white.svg', 'alt_text': 'No Derivatives'},
+        'nc': {'file': 'nc_white.svg', 'alt_text': 'Non-Commerical'}
     }
 
     def usage(self):
@@ -215,11 +215,11 @@ class UpdateLicenseCode(object):
         for lic_attr in lic_type_attrs:
             filename = UpdateLicenseCode.image_map[lic_attr]['file']
             alt_text = UpdateLicenseCode.image_map[lic_attr]['alt_text']
-            image_tag = '<img src="/images/deed/' + filename + '" alt="' + alt_text + '"/>'
+            image_tag = '<img src="/images/deed/svg/' + filename + '" alt="' + alt_text + '"/>'
             lic_images += '<span class="cc-icon-' + lic_attr + '">' + image_tag + '</span>'
         cc_logo_section = re.search('<div id="cc-logo">.*?</div>', content, re.DOTALL).group()
         new_cc_logo_section = '<div id="cc-logo">' \
-                              + '<span class="cc-icon-logo"><img src="/images/deed/cc_icon_white_x2.png" alt="CC"/></span>' \
+                              + '<span class="cc-icon-logo"><img src="/images/deed/svg/cc_white.svg" alt="CC"/></span>' \
                               + lic_images \
                               + '</div>'
         content = content.replace(cc_logo_section, new_cc_logo_section)
