@@ -223,6 +223,9 @@ h3 {
     float: none;
     border: 0;
     margin: 0;
+    height: 12px;
+    width: 12px;
+    transform: rotate(180deg);
 }
 
 #deed-main-content .cc-collapsible.collapsed {
