@@ -75,7 +75,7 @@ h3 {
 #deed {
     background: #E9E9E9;
     color: #333;
-    margin: 40px 20px 0;
+    margin: 10px 20px 0;
     max-width: 1140px;
     text-align: center;
 }
@@ -101,7 +101,7 @@ h3 {
 }
 
 #language-selector-block {
-    margin-top: 40px;
+    margin-top: 10px;
     text-align: right;
     font-size: 1.1em;
 }
@@ -208,7 +208,7 @@ h3 {
 
 #deed-main-content .usage-considerations {
     background-color: #fff;
-    padding: 8px;
+    /*padding: 8px;*/
     margin: 15px 0;
     clear: both;
 }
@@ -219,6 +219,11 @@ h3 {
     transition: max-height 0.25s ease-in;
     position: relative;
 }
+#deed-main-content .cc-collapsible img {
+    float: none;
+    border: 0;
+    margin: 0;
+}
 
 #deed-main-content .cc-collapsible.collapsed {
     max-height: 5.3em;
@@ -227,7 +232,7 @@ h3 {
 }
 
 #deed-main-content .cc-collapsible .cc-collapsible__trigger {
-    background: linear-gradient(0deg, #fff 70%, transparent);
+    background: linear-gradient(0deg, #fff 90%, transparent);
     display: block;
     padding: 1em 0 0.5em 0;
     text-align: center;

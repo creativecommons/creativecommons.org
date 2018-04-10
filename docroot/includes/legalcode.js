@@ -3,7 +3,7 @@
 
     // Make .usage-considerations collapsibles
     $('.usage-considerations').each(function() {
-      var $trigger = $('<a href="#" class="cc-collapsible__trigger"><span>^ ^ ^</span></a>');
+      var $trigger = $('<a href="#" class="cc-collapsible__trigger"><span><img src="/icons/up.png" /></span></a>');
 
       $trigger.click(function() {
         $(this).parent().toggleClass('collapsed');
