@@ -229,15 +229,15 @@ h3 {
 }
 
 #deed-main-content .cc-collapsible.collapsed {
-    max-height: 5.3em;
+    max-height: 6.3em;
     overflow: hidden;
     transition: max-height 0.15s ease-out;
 }
 
 #deed-main-content .cc-collapsible .cc-collapsible__trigger {
-    background: linear-gradient(0deg, #fff 90%, transparent);
+    background: linear-gradient(0deg, #fff 21%, transparent);
     display: block;
-    padding: 1em 0 0.5em 0;
+    padding: 5em 0 0.5em 0;
     text-align: center;
     width: 100%;
 }
