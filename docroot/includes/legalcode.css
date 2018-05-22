@@ -235,7 +235,7 @@ h3 {
 }
 
 #deed-main-content .cc-collapsible .cc-collapsible__trigger {
-    background: linear-gradient(0deg, #fff 21%, transparent);
+    background: linear-gradient(0deg, #fff 21%, rgba(255, 255, 255, 0.1));
     display: block;
     padding: 5em 0 0.5em 0;
     text-align: center;
