@@ -80,6 +80,12 @@ h3 {
     text-align: center;
 }
 
+#language-selector-block {
+    margin: 15px 20px;
+    text-align: right;
+    font-size: 1.1em;
+}
+
 @media screen and (min-width: 768px) {
     #deed, #language-selector-block {
         margin-left: auto;
@@ -98,12 +104,6 @@ h3 {
     #deed, #language-selector-block {
         width: 976px;
     }
-}
-
-#language-selector-block {
-    margin: 15px 20px;
-    text-align: right;
-    font-size: 1.1em;
 }
 
 #language-selector-block .language-icon {
