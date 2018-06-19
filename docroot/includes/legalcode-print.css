@@ -1,0 +1,69 @@
+@media print {
+
+  body {
+    font: 10pt/12pt Arial,"Trebuchet MS",Verdana,sans-serif;
+  }
+
+  .screen-only {
+    display: none !important;
+  }
+
+  .site-header-wrapper,
+  #menu-toggle,
+  #deed-foot,
+  .site-footer .cc-footer-links {
+    display: none;
+  }
+
+  h1, h2, h3 { line-height: 1.1; }
+
+  #deed-head { text-align: center; }
+
+  #cc-logo img {
+    display: inline-block;
+    height: 50px;
+    margin: 0 5px;
+  }
+
+  h1 {
+    border-bottom: solid 4px #000;
+    font-size: 20px;
+    clear: none;;
+    margin-top: 20px;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin: 30px 0 15px;
+  }
+
+  h3 {
+    font-size: 15px;
+    margin: 30px 0 15px;
+  }
+
+  #deed-license {
+    padding-bottom: 0.15em;
+    margin-bottom: 40px;
+  }
+
+  #deed-license h2 {
+    border-bottom: 2px solid #000;
+    display: inline-block;
+    font-size: 13px;
+    margin: 0;
+  }
+
+  #deed-main { clear: both; }
+
+  ol li,
+  ul li {
+    list-style-image: none;
+  }
+
+  body:not(.lang-en) .site-footer .cc-footer-contact,
+  body:not(.lang-en) .site-footer .cc-footer-license,
+  body:not(.lang-en) .site-footer .cc-footer-links {
+    display: none !important;
+  }
+}
