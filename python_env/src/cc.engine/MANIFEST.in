@@ -1,3 +1,0 @@
-recursive-include cc/engine/templates *.pt
-
-include cc/engine/iso3166.csv
