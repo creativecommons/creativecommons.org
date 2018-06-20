@@ -38,7 +38,7 @@ class UpdateLicenseCode(object):
         'pl': 'polski',   'sv': 'svenska',      'tr': 'Türkçe',           'uk': 'українська', \
         'ru': 'русский',  'pt': 'Português',    'lt': 'Lietuvių',         'lv': 'Latviski', \
         'es': 'Español',  'ms': 'Bahasa Malaysia', 'ca': 'Català',        'da': 'Dansk', \
-        'eo': 'Esperanto',   'gl': 'Galego',       'hu': 'Magyar',        'ru': 'română', \
+        'eo': 'Esperanto',   'gl': 'Galego',       'hu': 'Magyar',        'ro': 'română', \
         'sl': 'Slovenščina', 'is': 'Íslenska',     'cs': 'čeština',       'el': 'Ελληνικά',  \
         'be': 'Беларуская',  'bn': 'বাংলা',         'zh': '中文',           'ko': '한국어', \
         'es_ES': 'Castellano (España)' \
