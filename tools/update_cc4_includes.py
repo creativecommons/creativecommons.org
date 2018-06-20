@@ -32,28 +32,57 @@ class UpdateLicenseCode(object):
 
     iso_to_language = { \
         'ar': 'العربية',  'de': 'Deutsch',      'en': 'English',          'fi': 'suomeksi',  \
+        'fa': 'پارسی', \
         'fr': 'français', 'hr': 'hrvatski',     'id': 'bahasa Indonesia', 'it': 'italiano',  \
         'ja': '日本語',    'mi': 'Te Reo Māori', 'nl': 'Nederlands',       'no': 'norsk',     \
-        'pl': 'polski',   'sv': 'svenska',      'tr': 'Türkçe',           'uk': 'українська' \
+        'pl': 'polski',   'sv': 'svenska',      'tr': 'Türkçe',           'uk': 'українська', \
+        'ru': 'русский',  'pt': 'Português',    'lt': 'Lietuvių',         'lv': 'Latviski', \
+        'es': 'Español',  'ms': 'Bahasa Malaysia', 'ca': 'Català',        'da': 'Dansk', \
+        'eo': 'Esperanto',   'gl': 'Galego',       'hu': 'Magyar',        'ru': 'română', \
+        'sl': 'Slovenščina', 'is': 'Íslenska',     'cs': 'čeština',       'el': 'Ελληνικά',  \
+        'be': 'Беларуская',  'bn': 'বাংলা',         'zh': '中文',           'ko': '한국어', \
+        'es_ES': 'Castellano (España)' \
     }
 
     lang_sel_text = { \
         'ar': 'هذة الصفحة متوفرة باللغات التالية:', \
+        'be': 'Гэта старонка даступная на наступных мовах:', \
+        'bn': 'পৃষ্ঠাটি নিন্মোক্ত ভাষায় বিদ্যমান রয়েছে:', \
+        'ca': 'Aquesta pàgina està disponible en els idiomes següents:', \
+        'cs': 'Tato stránka je k dispozici v následujících jazycích:', \
+        'da': 'Denne side er tilgængelig på følgende sprog:', \
         'de': 'Diese Seite ist in folgenden Sprachen verfügbar:', \
+        'el': 'Η σελίδα αυτή είναι διαθέσιμη στις ακόλουθες γλώσσες:', \
         'en': 'This page is available in the following languages:', \
+        'eo': 'Ĉi tiu paĝo estas disponebla en la jenaj lingvoj:', \
+        'es': 'Esta página está disponible en los siguientes idiomas:', \
+        'es_ES': '', \
+        'fa': 'این صفحه به زبان های زیر در دسترس است : ', \
         'fi': 'Tämä sivu on saatavilla seuraavilla kielillä:', \
         'fr': 'Cette page existe aussi dans les langues suivantes :', \
+        'gl': 'Esta páxina tamén está dispoñíbel nos idiomas seguintes:', \
         'hr': 'Ova stranica je dostupna na sljedećim jezicima:', \
+        'hu': 'Ez az oldal az alábbi nyelveken érhető még el:', \
         'id': 'Laman ini tersedia dalam bahasa berikut:', \
+        'is': 'Þessi síða er tiltæk á eftirfarandi tungumálum:', \
         'it': 'Questa pagina è disponibile nelle seguenti lingue:', \
         'ja': 'このページは以下の言語でもご覧になれます:', \
+        'ko': '이 페이지는 다음의 언어로 이용할 수 있습니다.', \
+        'lt': 'Šis puslapis yra prienamas šiomis kalbomis:', \
+        'lv': 'Šī lapa ir pieejama sekojošās valodās:', \
         'mi': 'E wātea ana tēnei whārangi i ēnei reo:', \
+        'ms': 'Halaman ini boleh didapati dalam bahasa-bahasa berikut:', \
         'nl': 'Deze pagina is beschikbaar in de volgende talen:', \
         'no': 'Denne siden er tilgjengelig på følgende språk:', \
         'pl': 'Strona jest dostępna w następujących językach:', \
+        'pt': 'Esta página está disponível nas seguintes línguas:', \
+        'ro': 'Această pagină este disponibilă în următoarele limbi:', \
+        'ru': 'Эта страница доступна на следующих языках:', \
+        'sl': 'Ta stran je dosegljiva v naslednjih jezikih:', \
         'sv': 'Denna sida finns tillgänglig på följande språk:', \
         'tr': 'Bu sayfa şu dillerde mevcuttur:', \
         'uk': 'Ця сторінка доступна наступними мовами:', \
+        'zh': '声明：' \
     }
 
     def usage(self):
