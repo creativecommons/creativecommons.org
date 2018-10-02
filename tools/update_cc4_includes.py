@@ -41,7 +41,7 @@ class UpdateLicenseCode(object):
         'eo': 'Esperanto',   'gl': 'Galego',       'hu': 'Magyar',        'ro': 'română', \
         'sl': 'Slovenščina', 'is': 'Íslenska',     'cs': 'čeština',       'el': 'Ελληνικά',  \
         'be': 'Беларуская',  'bn': 'বাংলা',         'zh': '中文',           'ko': '한국어', \
-        'es_ES': 'Castellano (España)' \
+        'es_ES': 'Castellano (España)', 'eu': 'Basque' \
     }
 
     lang_sel_text = { \
@@ -57,6 +57,7 @@ class UpdateLicenseCode(object):
         'eo': 'Ĉi tiu paĝo estas disponebla en la jenaj lingvoj:', \
         'es': 'Esta página está disponible en los siguientes idiomas:', \
         'es_ES': '', \
+        'eu': 'Orri hau hizkuntza hauetan ikus daiteke:',\
         'fa': 'این صفحه به زبان های زیر در دسترس است : ', \
         'fi': 'Tämä sivu on saatavilla seuraavilla kielillä:', \
         'fr': 'Cette page existe aussi dans les langues suivantes :', \
