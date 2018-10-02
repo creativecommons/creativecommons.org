@@ -36,12 +36,12 @@ class UpdateLicenseCode(object):
         'fr': 'français', 'hr': 'hrvatski',     'id': 'bahasa Indonesia', 'it': 'italiano',  \
         'ja': '日本語',    'mi': 'Te Reo Māori', 'nl': 'Nederlands',       'no': 'norsk',     \
         'pl': 'polski',   'sv': 'svenska',      'tr': 'Türkçe',           'uk': 'українська', \
-        'ru': 'русский',  'pt': 'Português',    'lt': 'Lietuvių',         'lv': 'Latviski', \
+        'ru': 'русский',  'pt': 'Português',    'lt': 'Lietuvių',         'lv': 'latviski', \
         'es': 'Español',  'ms': 'Bahasa Malaysia', 'ca': 'Català',        'da': 'Dansk', \
         'eo': 'Esperanto',   'gl': 'Galego',       'hu': 'Magyar',        'ro': 'română', \
         'sl': 'Slovenščina', 'is': 'Íslenska',     'cs': 'čeština',       'el': 'Ελληνικά',  \
         'be': 'Беларуская',  'bn': 'বাংলা',         'zh': '中文',           'ko': '한국어', \
-        'es_ES': 'Castellano (España)', 'eu': 'Basque' \
+        'es_ES': 'Castellano (España)', 'eu': 'euskara' \
     }
 
     lang_sel_text = { \
