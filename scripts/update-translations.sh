@@ -10,10 +10,10 @@ pushd "$( dirname "${BASH_SOURCE[0]}" )/.."
 
 source python_env/bin/activate
 
-pushd python_env/src/i18n/
+pushd python_env/src/cc.i18n/
 
 git checkout master
-# Get latest changes so we don't clash with remote HEAD 
+# Get latest changes so we don't clash with remote HEAD
 git pull
 
 # Back to project root

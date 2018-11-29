@@ -30,7 +30,7 @@ class AddCC4Links(object):
     def usage(self):
         print('add-cc4-links.py LANGUAGE_CODE LANGUAGE_NAME')
         print('    e.g. add-cc4-links.py nl Nederlands')
-        print('    LANGUAGE_CODE must be 2 letters, the same used in filename.')
+        print('    LANGUAGE_CODE must be 2 letters or 2-hyphen-N, the same used in filename.')
         print('    LANGUAGE_NAME must be in the relevant language')
         print('                  if it contains whitespace, enclose in quotes.')
     
@@ -38,8 +38,8 @@ class AddCC4Links(object):
         # Make sure there are enough args
         # Make sure arg 2 is a language code
         # Make sure arg 3 is not a language code
-        self.args_ok = (len(sys.argv) == 3) and (len(sys.argv[1]) == 2) \
-                       and (len(sys.argv[2]) > 2)
+        self.args_ok = (len(sys.argv) == 3) and (len(sys.argv[1]) >= 2) \
+                       and (len(sys.argv[2]) >= 2)
         if self.args_ok:
             self.language_code = sys.argv[1]
             self.language_name = sys.argv[2]
