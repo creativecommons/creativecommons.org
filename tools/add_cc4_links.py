@@ -30,7 +30,7 @@ class AddCC4Links(object):
     def usage(self):
         print('add-cc4-links.py LANGUAGE_CODE LANGUAGE_NAME')
         print('    e.g. add-cc4-links.py nl Nederlands')
-        print('    LANGUAGE_CODE must be 2 letters, the same used in filename.')
+        print('    LANGUAGE_CODE must be 2 letters or 2-hyphen-N, the same used in filename.')
         print('    LANGUAGE_NAME must be in the relevant language')
         print('                  if it contains whitespace, enclose in quotes.')
     
@@ -38,8 +38,8 @@ class AddCC4Links(object):
         # Make sure there are enough args
         # Make sure arg 2 is a language code
         # Make sure arg 3 is not a language code
-        self.args_ok = (len(sys.argv) == 3) and (len(sys.argv[1]) == 2) \
-                       and (len(sys.argv[2]) > 2)
+        self.args_ok = (len(sys.argv) == 3) and (len(sys.argv[1]) >= 2) \
+                       and (len(sys.argv[2]) >= 2)
         if self.args_ok:
             self.language_code = sys.argv[1]
             self.language_name = sys.argv[2]
@@ -83,11 +83,22 @@ class AddCC4Links(object):
 
     def links_in_page(self, content):
         """Find the translated license links at the bottom of the page"""
-        return re.findall(r'//creativecommons\.org/licenses/[^/]+/4\.0/legalcode\.(..)">([^>]+)</a>', content)
+        return re.findall(r'//creativecommons\.org/licenses/[^/]+/4\.0/legalcode(\...)?">([^>]+)</a>', content)
 
-    def insert_at_index(self, links):
-        """Find the alphabetic position in the list of translated license links
-           to insert the link at"""
+    def is_rtl(self, content):
+        """Determine whether the page is in a right-to-left script"""
+        return (re.search(r' dir="rtl"', content) != None) or \
+            (re.search(r'class="rtl"', content) != None)
+
+    def insert_at_index_rtl(self, links):
+        index = -1
+        for i, match in reversed(list(enumerate(links))):
+            if self.language_name.casefold() < match[1].casefold():
+                index = i
+                break
+        return index
+
+    def insert_at_index_ltr(self, links):
         index = -1
         for match in links:
             if self.language_name.casefold() < match[1].casefold():
@@ -96,6 +107,15 @@ class AddCC4Links(object):
                 index += 1
         return index
 
+    
+    def insert_at_index(self, links, rtl):
+        """Find the alphabetic position in the list of translated license links
+           to insert the link at"""
+        if rtl:
+            return self.insert_at_index_rtl(links)
+        else:
+            return self.insert_at_index_ltr(links)
+            
     def insert_link(self, content, lic, links, index):
         """Insert the link to the correct version of the license
            in the correct position in the list of links at the bottom of the
@@ -127,13 +147,20 @@ class AddCC4Links(object):
             content = infile.read()
         links = self.links_in_page(content)
         if not self.file_contains_link_already(links):
-            index = self.insert_at_index(links)
+            rtl = self.is_rtl(content)
+            index = self.insert_at_index(links, rtl)
+            #print(links)
+            #print(index)
+            #print(links[index])
             updated_content = self.insert_link(content, lic, links, index)
             with filepath.open('w') as outfile:
                 outfile.write(updated_content)
-            print('Added link to file: ' + filepath.name)
-        else:
-            print('File already contains link: ' + filepath.name)
+            direction = 'ltr'
+            if rtl:
+                direction = 'rtl'
+            print('Added link to ' + direction + ' file: ' + filepath.name)
+        #else:
+        #   print('File already contains link: ' + filepath.name)
         
     def main(self):
         """Get the command line arguments, find the files, and process them"""

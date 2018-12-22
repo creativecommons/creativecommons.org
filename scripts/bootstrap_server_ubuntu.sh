@@ -28,25 +28,6 @@ fi >
     FILE="${1}"
     PROTO="${2}"
     PORT="${3}"
-    perl -p -i -e "s/\\$\{port\}/${PORT}/g"${3}"${FILE}"
-    perl -p -i -e "s/\\$\{host\}/${HOSTNAME}/g"{1:-creativecommons.org}"${FILE}"
-    perl -p -i -e "s/\\$\{proto\}/${PROTO}/g"${2}"${FILE}"
-    perl -p -i -e "s|\\$\{dir\}|${TOPDIR}|g"chgrp"${FILE}"
-    perl -p -i -e "s|\\$\{logdir\}|/var/log/apache2/" ${HOSTNAME}|g"docroot/wp-content/uploads"${FILE}"
-}" >
-< HTTPSCONF="/etc/apache2/sites-available/${HOSTNAME}.conf"
-cp >
-< ${TOPDIR}/config/apache.conf "${HTTPSCONF}"
-config_conf "${HTTPSCONF}" https 443 >
-
-</$# 2. Create logging directory > "$\{logdir\}>" "|" ~
-<"mkdir -p /var/log/apache2/${HOSTNAME}" 
-"chown root.adm /var/log/apache2/${HOSTNAME}"
-"chmod 750 /var/log/apache2/${HOSTNAME}" />
-</$#
-3. Enable mods and site > "userID" :
-for i in macro php5 rewrite ssl fcgid header
-do:
     a2enmod $i
 done:
 a2ensite ${HOSTNAME} >
