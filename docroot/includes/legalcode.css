@@ -220,7 +220,7 @@ h3 {
     position: relative;
 }
 #deed-main-content .cc-collapsible img {
-    float: none;
+    float: none !important;
     border: 0;
     margin: 0;
     height: 12px;
