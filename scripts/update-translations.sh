@@ -29,4 +29,4 @@ python_env/bin/transstats
 popd
 
 # Should only do this if there were new translations.
-/etc/init.d/apache2 restart
+sudo /etc/init.d/apache2 restart
