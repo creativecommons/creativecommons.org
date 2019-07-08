@@ -5,4 +5,5 @@ jobs:
     steps:
     - checkout
     - run: sudo apt-get update && sudo apt-get install -y tidy
-    - run: git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master) | grep .html | tidy -errors -quiet
+    - run: TRANSLATIONS=$(git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master)); | grep .html | tidy -errors -quiet
+    - run: for htmlfile in $TRANSLATIONS; do echo $htmlfile; tidy -errors -quiet $htmlfile; done
