@@ -22,7 +22,7 @@ jobs:
             - run:
                   name: clone link-checker
                   command: |
-                      git clone git@github.com:creativecommons/cc-link-checker.git ~/
+                      git clone git@github.com:creativecommons/cc-link-checker.git ~/cc-link-checker
             - run:
                   name: cd to link-checker
                   command: |
