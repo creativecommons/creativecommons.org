@@ -33,7 +33,7 @@ jobs:
                   name: run link-checker
                   command: |
                       mkdir test-reports
-                      pipenv run pytest -v --local --junitxml=test-reports/junit.xml
+                      pipenv run python ./link_checker.py --output-error test-reports/errorlog.txt
             - store_test_results:
                   path: test-reports
 workflows:
