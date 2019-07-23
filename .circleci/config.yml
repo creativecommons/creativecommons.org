@@ -1,9 +1,44 @@
 version: 2
 jobs:
-  build:
-    machine: true
-    steps:
-    - checkout
-    - run: sudo apt-get update && sudo apt-get install -y tidy
-    - run: TRANSLATIONS=$(git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master))
-    - run: for htmlfile in $TRANSLATIONS; do echo $htmlfile; tidy -errors -quiet $htmlfile; done
+    build-job:
+        machine: true
+        steps:
+            - checkout
+            - run: sudo apt-get update && sudo apt-get install -y tidy
+            - run: TRANSLATIONS=$(git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master))
+            - run: for htmlfile in $TRANSLATIONS; do echo $htmlfile; tidy -errors -quiet $htmlfile; done
+
+    broken-links:
+        working_directory: ~/creativecommons.org
+        docker:
+            # CircleCI Python images available at: https://hub.docker.com/r/circleci/python/
+            - image: circleci/python:3.6.4
+              environment:
+                  PIPENV_VENV_IN_PROJECT: true
+        steps:
+            - checkout
+            - run: sudo chown -R circleci:circleci /usr/local/bin
+            - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
+            - run:
+                  name: clone link-checker
+                  command: |
+                      git clone git@github.com:creativecommons/cc-link-checker.git ~/
+            - run:
+                  name: cd to link-checker
+                  command: |
+                      cd ~/cc-link-checker
+                      sudo pip install pipenv
+                      pipenv install
+            - run:
+                  name: run link-checker
+                  command: |
+                      mkdir test-reports
+                      pipenv run pytest -v --local --junitxml=test-reports/junit.xml
+            - store_test_results:
+                  path: test-reports
+workflows:
+    version: 2
+    workflow:
+        jobs:
+            - build-job
+            - broken-links
