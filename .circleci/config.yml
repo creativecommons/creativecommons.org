@@ -32,10 +32,11 @@ jobs:
             - run:
                   name: run link-checker
                   command: |
+                      cd ~/cc-link-checker
                       mkdir test-reports
                       pipenv run python ./link_checker.py --output-error test-reports/errorlog.txt
             - store_test_results:
-                  path: test-reports
+                  path: ~/cc-link-checker/test-reports
 workflows:
     version: 2
     workflow:
