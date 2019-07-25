@@ -34,7 +34,7 @@ jobs:
                   command: |
                       cd ~/cc-link-checker
                       mkdir test-reports
-                      pipenv run python ./link_checker.py --output-error test-reports/errorlog.txt
+                      pipenv run python ./link_checker.py --output-error test-reports/errorlog.txt --local
             - store_test_results:
                   path: ~/cc-link-checker/test-reports
 workflows:
