@@ -24,13 +24,13 @@ jobs:
                   command: |
                       git clone git@github.com:creativecommons/cc-link-checker.git ~/cc-link-checker
             - run:
-                  name: cd to link-checker
+                  name: Install dependencies
                   command: |
                       cd ~/cc-link-checker
                       sudo pip install pipenv
                       pipenv install
             - run:
-                  name: run link-checker
+                  name: Run link-checker
                   command: |
                       cd ~/cc-link-checker
                       mkdir test-reports
