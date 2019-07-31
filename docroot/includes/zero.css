@@ -69,16 +69,44 @@
 
 .bd textarea {
     border: 1px #555 solid;
-    padding: 5px;
-    padding-right: 0px;
+    padding: 1rem;
+	background-color: white;
+	border: 1px solid #C0C0C0;
+	border-radius: .3rem;
+	box-shadow: 0 1px 3px 1px rgba(0,0,0,.1);
 }
 
 .bd input,
 .bd iframe {
+	width: 100%;
     border: 1px #555 solid;
-    padding: 2px;
+    padding: 1rem;
+	background-color: white;
+	border: 1px solid #C0C0C0;
+	border-radius: .3rem;
+	box-shadow: 0 1px 3px 1px rgba(0,0,0,.1);
 }
-
+.bd input[type="checkbox"] {
+	position: relative;
+	width: 2rem;
+	top: .8rem;
+	float: left;
+}
+.bd input[type="submit"] {
+	padding: 0.84375em 0.875em 0.78125em;
+	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.046875em;
+	border: 0;
+}
+.bd iframe {
+	height: 40rem;
+}
+.bd select {
+	border: 1px solid #C0C0C0;
+	border-radius: .3rem;
+	box-shadow: 0 1px 3px 1px rgba(0,0,0,.1);
+}
 .yui-buttongroup {
     text-align: center;
 }
