@@ -200,11 +200,9 @@ h3 {
     padding: 20px;
 }
 
-#deed-main-content .shaded :first-child { margin-top: 0; }
+#deed-main-content .shaded :first-child { margin-top: 0; font-style: italic; }
 
 #deed-main-content .shaded :last-child { margin-bottom: 0; }
-
-#deed-main-content div:nth-child(2) { font-style: italic; }
 
 #deed-main-content .usage-considerations {
     background-color: #fff;
