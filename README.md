@@ -12,8 +12,7 @@ help and support
 This repostory is currently for:
 1. Public help and support [Issues][issues]
 2. Legalcode and translations
-3. Styles and other Includes
-4. Instllation of the website
+3. Installation of the website (including Styles and other Includes)
 
 [issues]: https://github.com/creativecommons/creativecommons.org/issues
 
@@ -118,14 +117,6 @@ CC0 1.0 | [Source File][cc-zero-source] | [Legal Code][cc-zero-legalcode] | [Dee
 [cc-zero-rdf]: https://creativecommons.org/publicdomain/zero/1.0/rdf
 
 
-## Styles and other Includes
-
-:warning: **WARNING:** Any change to style or other includes must be duplicated
-within the [creativecommons/new-creativecommons.org][neworg] respository.
-
-[neworg]: https://github.com/creativecommons/new-creativecommons.org
-
-
 ## Installation
 
 :warning: **WARNING:** Use of the bootstrap scripts in the master branch is NOT
@@ -156,6 +147,14 @@ In addition to this one, the following child repositories are also used:
 [cclicense]: https://github.com/creativecommons/cc.license
 [cclicenserdf]: https://github.com/creativecommons/cc.licenserdf
 [rdfadict]: https://github.com/creativecommons/rdfadict
+
+
+### Styles and other Includes
+
+:warning: **WARNING:** Any change to style or other includes must be duplicated
+within the [creativecommons/new-creativecommons.org][neworg] respository.
+
+[neworg]: https://github.com/creativecommons/new-creativecommons.org
 
 
 ## License
