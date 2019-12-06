@@ -19,7 +19,11 @@ trap '_es=${?};
 
 BRANCH="${1:-master}"
 DIR_SCRIPT="${0%/*}"
-DIR_TOP="${DIR_SCRIPT}/.."
+DIR_TOP="$(python -c \
+    'import os.path, sys; print(os.path.normpath(sys.argv[1]))' \
+    "${DIR_SCRIPT}/..")"
+DIR_ABS_TOP="$(python -c \
+    'import os.path, sys; print(os.path.realpath(sys.argv[1]))' "${DIR_TOP}")"
 
 # Change directory to project root
 pushd "${DIR_TOP}" >/dev/null
@@ -58,12 +62,12 @@ popd >/dev/null
 # Support the semantic web
 
 echo 'Create symlinks to support the semantic web'
-ln -fns ${DIR_TOP}/python_src/cc.licenserdf \
-   ${DIR_TOP}/docroot/cc.licenserdf
-ln -fns ${DIR_TOP}/docroot/cc.licenserdf/cc/licenserdf/rdf \
-   ${DIR_TOP}/docroot/rdf
+ln -fns python_src/cc.licenserdf \
+   docroot/cc.licenserdf
+ln -fns docroot/cc.licenserdf/cc/licenserdf/rdf \
+   docroot/rdf
 ln -fns ${DIR_TOP}/docroot/cc.licenserdf/cc/licenserdf/licenses \
-   ${DIR_TOP}/docroot/license_rdf
+   /docroot/license_rdf
 echo
 
 ###############################################################################
@@ -90,7 +94,7 @@ then
     echo '*skipping* Generate ccengine.fcgi (already exists)'
 else
     echo 'Generate ccengine.fcgi'
-    sed -e "s|@env_dir@|${DIR_TOP}/python_env|" \
+    sed -e "s|@env_dir@|${DIR_ABS_TOP}/python_env|" \
         < "python_src/bin/ccengine.fcgi.in" \
         > "python_env/bin/ccengine.fcgi"
     chmod 755 python_env/bin/ccengine.fcgi
