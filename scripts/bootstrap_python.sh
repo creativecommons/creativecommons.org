@@ -1,96 +1,125 @@
 #!/bin/bash
-
-TOPDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
-
-pushd ${TOPDIR}
-
 #
-# Set up transifex
-#
+# This script:
+# 1. Clones cc.engine and related respositories
+#    - Checks out ARG1 branch (if specified)
+# 2. Creates symlinks to support the semantic web
+# 3. Creates Python Environment via pipenv
+# 4. Generate ccengine.fcgi and copies config.ini into python_env
+# 5. Compiles mo files and transstats
+#    - Creates transstats.csv convenience symlink
+set -o errexit
+set -o errtrace
+set -o nounset
 
-#
-# Set up Python env
-#
+trap '_es=${?};
+    printf "${0}: line ${LINENO}: \"${BASH_COMMAND}\"";
+    printf " exited with a status of ${_es}\n";
+    exit ${_es}' ERR
 
-pushd python_env
+BRANCH="${1:-master}"
+DIR_SCRIPT="${0%/*}"
+DIR_TOP="${DIR_SCRIPT}/.."
 
-virtualenv .
-source bin/activate
+# Change directory to project root
+pushd "${DIR_TOP}" >/dev/null
 
-# No RDF in pip (it's rdfutils)
+###############################################################################
+# Clone/Update Repositories
 
-for i in 'setuptools>=0.7' 'zope.interface>=3.8.0' Paste PasteDeploy \
-                           PasteScript rdfutils cssselect transifex-client \
-			   pysocks
+pushd python_src >/dev/null
+REPOS=(cc.engine cc.i18n cc.license cc.licenserdf rdfadict)
+for _repo in "${REPOS[@]}"
 do
-    pip install $i
-done
-
-# On Ubuntu, virtualenv setups don't "see" dist-packages, which is
-# where Ubuntu-packaged modules go. This works around that problem:
-
-echo "/usr/lib/python2.7/dist-packages/" \
-     > lib/python2.7/site-packages/dist-packages.pth
-
-#
-# Check out and set up each Python module
-#
-
-pushd src
-
-REPOS=(cc.i18n cc.licenserdf cc.license cc.engine)
-for i in "${REPOS[@]}"
-do
-    if [ -d "${i}" ]
+    echo "${_repo}"
+    if [[ ! -d "${_repo}" ]]
     then
-        pushd "${i}"
-        git pull
-        popd
-    else
-        git clone "https://github.com/creativecommons/${i}.git"
+        git clone "https://github.com/creativecommons/${_repo}.git"
+        pushd "${_repo}">/dev/null
+        for _script in ../post-clone.d/*
+        do
+            [[ -x "${_script}" ]] || continue
+            "${_script}"
+        done
+        popd >/dev/null
+
     fi
+    pushd "${_repo}">/dev/null
+    git pull
+    git checkout ${BRANCH}
+    echo
+    popd >/dev/null
 done
 
-REPOS+=(cc.engine)
-for i in "${REPOS[@]}"
-do
-    pushd "${i}"
-    python bootstrap.py -v 2.1.1
-    bin/buildout
-    python setup.py develop
-    popd
-done
+# return from python_src
+popd >/dev/null
 
-popd # to python_env
-
-#
-# compile_mo & transstats are needed by cc.engine at runtime, run them now
-#
-
-bin/compile_mo
-bin/transstats
-
-popd # to topdir
-
-#
-# Generate ccengine.fcgi
-#
-
-sed -e "s|@env_dir@|${TOPDIR}/python_env|" \
-    < "python_env/bin/ccengine.fcgi.in" \
-    > "python_env/bin/ccengine.fcgi"
-
-chmod 755 python_env/bin/ccengine.fcgi
-
-#
+###############################################################################
 # Support the semantic web
-#
 
-ln -s ${TOPDIR}/python_env/src/cc.licenserdf \
-   ${TOPDIR}/docroot/cc.licenserdf
-ln -s ${TOPDIR}/docroot/cc.licenserdf/cc/licenserdf/rdf \
-   ${TOPDIR}/docroot/rdf
-ln -s ${TOPDIR}/docroot/cc.licenserdf/cc/licenserdf/licenses \
-   ${TOPDIR}/docroot/license_rdf
+echo 'Create symlinks to support the semantic web'
+ln -fns ${DIR_TOP}/python_src/cc.licenserdf \
+   ${DIR_TOP}/docroot/cc.licenserdf
+ln -fns ${DIR_TOP}/docroot/cc.licenserdf/cc/licenserdf/rdf \
+   ${DIR_TOP}/docroot/rdf
+ln -fns ${DIR_TOP}/docroot/cc.licenserdf/cc/licenserdf/licenses \
+   ${DIR_TOP}/docroot/license_rdf
+echo
 
-popd # to original
+###############################################################################
+# Create Python Environment
+
+if [[ ! -d .venv ]]
+then
+    echo 'ERROR: missing .venv directory' 1>&2
+    exit 1
+fi
+if [[ -f .venv/.project ]]
+then
+    echo '*skipping* Create Python Environment (already exists)'
+else
+    pipenv install
+fi
+echo
+
+###############################################################################
+# Generate ccengine.fcgi
+
+if [[ -f python_env/bin/ccengine.fcgi ]]
+then
+    echo '*skipping* Generate ccengine.fcgi (already exists)'
+else
+    echo 'Generate ccengine.fcgi'
+    sed -e "s|@env_dir@|${DIR_TOP}/python_env|" \
+        < "python_src/bin/ccengine.fcgi.in" \
+        > "python_env/bin/ccengine.fcgi"
+    chmod 755 python_env/bin/ccengine.fcgi
+fi
+echo
+if [[ -f python_env/config.ini ]]
+then
+    echo '*skipping* Copy config.ini into Python environment (already exists)'
+else
+    echo 'Copy config.ini into Python environment'
+    cp python_src/config.ini python_env/config.ini
+fi
+echo
+
+###############################################################################
+# compile_mo & transstats are needed by cc.engine at runtime, run them now
+
+echo 'Run compile_mo'
+pipenv run compile_mo
+echo
+echo 'Run transstats'
+pipenv run transstats
+echo
+echo 'Create transstats.csv convenience symlink'
+ln -fns python_src/cc.i18n/cc/i18n/transstats.csv .
+echo
+
+###############################################################################
+# Done!
+
+# return from DIR_TOP
+popd >/dev/null
