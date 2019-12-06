@@ -119,12 +119,6 @@ CC0 1.0 | [Source File][cc-zero-source] | [Legal Code][cc-zero-legalcode] | [Dee
 
 ## Installation
 
-:warning: **WARNING:** Use of the bootstrap scripts in the master branch is NOT
-recommended. Instead, see the [dev2019][dev2019] branch for current/ongoing
-work.
-
-[dev2019]: https://github.com/creativecommons/creativecommons.org/tree/dev2019
-
 
 ### Child Repositories
 
@@ -150,6 +144,34 @@ In addition to this one, the following child repositories are also used:
 
 As of 2019 December, there are around 9,700 lines of python code split between
 the repositories.
+
+
+### License Engine Setup
+
+:warning: **NOTE:** The dev2019 branch for this and the child repositories are
+currently under active development.
+
+1. **Install pipenv**: Make sure you have [pipenv][pipenvdocs] installed.
+2. **Execute Install Script**: `./sripts/setup_engine.sh`
+
+   1. Clones cc.engine and related respositories
+
+      - Checks out ARG1 branch (if specified)
+
+   2. Creates symlinks to support the semantic web
+   3. Creates Python Environment via pipenv
+   4. Generate ccengine.fcgi and copies config.ini into python_env
+   5. Compiles mo files and transstats
+
+      - Creates transstats.csv convenience symlink
+
+
+### Not Included
+
+This project does not currently include the [creativecommons/cc.api][ccapi]
+repository (which itself, depends on [creativecommons/cc.license][cclicense]).
+
+[ccapi]: https://github.com/creativecommons/cc.api
 
 
 ### Styles and other Includes
