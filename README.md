@@ -1,8 +1,8 @@
 # creativecommons.org
 
 Website parent project ([When we share, everyone wins - Creative
-Commons][ccorg]), legalcode and translations, and primary GitHub repository for
-public issues
+Commons][ccorg]), legalcode and translations, and GitHub Issues for public
+help and support
 
 [ccorg]: https://creativecommons.org/
 
