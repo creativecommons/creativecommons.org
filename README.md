@@ -148,6 +148,9 @@ In addition to this one, the following child repositories are also used:
 [cclicenserdf]: https://github.com/creativecommons/cc.licenserdf
 [rdfadict]: https://github.com/creativecommons/rdfadict
 
+As of 2019 December, there are around 9,700 lines of python code split between
+the repositories.
+
 
 ### Styles and other Includes
 
