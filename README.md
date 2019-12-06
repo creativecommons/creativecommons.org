@@ -48,12 +48,12 @@ Relevant directories:
 - [`tools`](tools/): tools to assist with managing the translations
 
 Also see:
-- [Legal Code Translation Policy - CC Public Wiki][wiki-legal-code]: Documents
+- [Legal Code Translation Policy - CC Public Wiki][translatepolicy]: Documents
   Legal/Translation process and policy
-- [Legal Tools Translation - Creative Commons][fourstatus]: Translation status
+- [Legal Tools Translation - CC Public Wiki][fourstatus]: Translation status
   for 4.0 and CC0 licenses
 
-[wiki-legal-code]: https://wiki.creativecommons.org/wiki/Legal_Code_Translation_Policy
+[translatepolicy]: https://wiki.creativecommons.org/wiki/Legal_Code_Translation_Policy
 [fourstatus]: https://wiki.creativecommons.org/wiki/Legal_Tools_Translation
 
 
