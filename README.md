@@ -1,6 +1,6 @@
 # creativecommons.org
 
-Website parent project, ([When we share, everyone wins - Creative
+Website parent project ([When we share, everyone wins - Creative
 Commons][ccorg]), legalcode and translations, and primary GitHub repository for
 public issues
 
@@ -10,7 +10,7 @@ public issues
 ## Overview
 
 This repostory is currently for:
-1. Public help and support [Issue] tracking
+1. Public help and support [Issues][issues]
 2. Legalcode and translations
 3. Styles and other Includes
 4. Instllation of the website
@@ -21,13 +21,14 @@ This repostory is currently for:
 ## Issues
 
 This repository's [Issues][issues] is also the primary location for public help
-and support issue tracking.
+and support.
 
 
 ## Legalcode and Translations
 
-The legalcode and translations files are located in
-[`docroot/legalcode`](docroot/legalcode/).
+Relevant directories:
+- [`docroot/legalcode`](docroot/legalcode/): legalcode and translations "source" files
+- [`tools`](tools/): tools to assist with managing the translations
 
 Also see:
 - [Legal Code Translation Policy - CC Public Wiki][wiki-legal-code]: Documents
@@ -101,36 +102,41 @@ CC0 1.0 | [Source File][cc-zero-source] | [Legal Code][cc-zero-legalcode] | [Dee
 
 ## Styles and other Includes
 
-... **DOCUMENTATION IN PROGRESS** ...
+:warning: **WARNING:** Any change to style or other includes must be duplicated
+within the [creativecommons/new-creativecommons.org][neworg] respository.
+
+[neworg]: https://github.com/creativecommons/new-creativecommons.org
 
 
 ## Installation
 
-... **DOCUMENTATION IN PROGRESS** ...
+:warning: **WARNING:** Use of the bootstrap scripts in the master branch is NOT
+recommended. Instead, see the [dev2019][dev2019] branch for current/ongoing
+work.
+
+[dev2019]: https://github.com/creativecommons/creativecommons.org/tree/dev2019
 
 
-### Sub-Repositories
+### Child Repositories
 
-In addition to this one, the following repositories are also used by the
-website:
+In addition to this one, the following child repositories are also used:
 
-- License Engine
+- License Engine (chooser, deeds, legalcode, RDFs):
 
   - [creativecommons/cc.engine][ccengine]
-  - [creativecommons/cc.i18n][cci18n])
+  - [creativecommons/cc.i18n][cci18n]
   - [creativecommons/cc.license][cclicense]
   - [creativecommons/cc.licenserdf][cclicenserdf]
   - [creativecommons/rdfadict][rdfadict]
 
-- WordPress
+- WordPress and styles:
 
   - [creativecommons/new-creativecommons.org][neworg]
 
 [ccengine]: https://github.com/creativecommons/cc.engine
-[cci18n]: https://github.com/creativecommons/cc.i18n9
+[cci18n]: https://github.com/creativecommons/cc.i18n
 [cclicense]: https://github.com/creativecommons/cc.license
 [cclicenserdf]: https://github.com/creativecommons/cc.licenserdf
-[neworg]:https://github.com/creativecommons/new-creativecommons.org
 [rdfadict]: https://github.com/creativecommons/rdfadict
 
 
