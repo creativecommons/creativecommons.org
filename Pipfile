@@ -1,3 +1,5 @@
+# pipenv alone does not setup the License Engine. See scripts/setup_engine.sh
+# and README.md
 [[source]]
 name = "pypi"
 url = "https://pypi.org/simple"

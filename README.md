@@ -151,19 +151,21 @@ the repositories.
 :warning: **NOTE:** The dev2019 branch for this and the child repositories are
 currently under active development.
 
-1. **Install pipenv**: Make sure you have [pipenv][pipenvdocs] installed.
+1. **Install prerequisites**:
+   - [Redland RDF Libraries][redland] Python bindings (`python-librdf` package
+     on Debian. Due to this prerequisite, setup on macOS is *not* recommended.)
+   - [pipenv][pipenvdocs] (`pipenv` package on Debian)
 2. **Execute Install Script**: `./sripts/setup_engine.sh`
-
    1. Clones cc.engine and related respositories
-
-      - Checks out ARG1 branch (if specified)
-
+      - Checks out specified branch (`ARG1`, defaults to `master`)
    2. Creates symlinks to support the semantic web
    3. Creates Python Environment via pipenv
    4. Generate ccengine.fcgi and copies config.ini into python_env
    5. Compiles mo files and transstats
+      - Creates `transstats.csv` convenience symlink
 
-      - Creates transstats.csv convenience symlink
+[pipenvdocs]:https://pipenv.readthedocs.io/en/latest/
+[redland]: http://librdf.org/
 
 
 ### Not Included
