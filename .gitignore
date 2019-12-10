@@ -1,14 +1,14 @@
 # symantic web symlinks
-docroot/cc.licenserdf
-docroot/license_rdf
 docroot/rdf
+docroot/license_rdf
+docroot/cc.licenserdf
 
 # repositories
-python_src/cc.engine/
-python_src/cc.i18n/
-python_src/cc.license/
-python_src/cc.licenserdf/
 python_src/rdfadict/
+python_src/cc.licenserdf/
+python_src/cc.license/
+python_src/cc.i18n/
+python_src/cc.engine/
 
 # transstats.csv symlink
 transstats.csv
