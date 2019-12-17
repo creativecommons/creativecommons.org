@@ -45,44 +45,44 @@ class UpdateLicenseCode(object):
 
     iso_to_language = {
         "ar": "العربية",
+        "be": "Беларуская",
+        "bn": "বাংলা",
+        "ca": "Català",
+        "cs": "čeština",
+        "da": "Dansk",
         "de": "Deutsch",
+        "el": "Ελληνικά",
         "en": "English",
-        "fi": "suomeksi",
+        "eo": "Esperanto",
+        "es": "Español",
+        "es_ES": "Castellano (España)",
+        "eu": "euskara",
         "fa": "پارسی",
+        "fi": "suomeksi",
         "fr": "français",
+        "gl": "Galego",
         "hr": "hrvatski",
+        "hu": "Magyar",
         "id": "bahasa Indonesia",
+        "is": "Íslenska",
         "it": "italiano",
         "ja": "日本語",
+        "ko": "한국어",
+        "lt": "Lietuvių",
+        "lv": "latviski",
         "mi": "Te Reo Māori",
+        "ms": "Bahasa Malaysia",
         "nl": "Nederlands",
         "no": "norsk",
         "pl": "polski",
+        "pt": "Português",
+        "ro": "română",
+        "ru": "русский",
+        "sl": "Slovenščina",
         "sv": "svenska",
         "tr": "Türkçe",
         "uk": "українська",
-        "ru": "русский",
-        "pt": "Português",
-        "lt": "Lietuvių",
-        "lv": "latviski",
-        "es": "Español",
-        "ms": "Bahasa Malaysia",
-        "ca": "Català",
-        "da": "Dansk",
-        "eo": "Esperanto",
-        "gl": "Galego",
-        "hu": "Magyar",
-        "ro": "română",
-        "sl": "Slovenščina",
-        "is": "Íslenska",
-        "cs": "čeština",
-        "el": "Ελληνικά",
-        "be": "Беларуская",
-        "bn": "বাংলা",
         "zh": "中文",
-        "ko": "한국어",
-        "es_ES": "Castellano (España)",
-        "eu": "euskara",
         "zh-Hans": "中文",
     }
 
@@ -223,8 +223,8 @@ class UpdateLicenseCode(object):
 
     def add_language_selector(self, content, filepath):
         """Build and insert a language selector dropdown list."""
-        # Get a list of all the other languages for this license type and store it so
-        # it can be reused.
+        # Get a list of all the other languages for this license type and store
+        # it so it can be reused.
         license_data = self.parse_filename(filepath)
         if license_data["type"] not in self.languages:
             self.languages[license_data["type"]] = []
@@ -250,7 +250,8 @@ class UpdateLicenseCode(object):
             selected = ""
             if iso_code == current_language:
                 selected = ' selected="selected" '
-            # Determine to option value for the language. English breaks the pattern so handle it differently.
+            # Determine to option value for the language. English breaks the
+            # pattern so handle it differently.
             option_value = "legalcode." + iso_code
             if iso_code == "en":
                 option_value = "legalcode"
