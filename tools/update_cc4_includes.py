@@ -41,7 +41,7 @@ class UpdateLicenseCode(object):
         'eo': 'Esperanto',   'gl': 'Galego',       'hu': 'Magyar',        'ro': 'română', \
         'sl': 'Slovenščina', 'is': 'Íslenska',     'cs': 'čeština',       'el': 'Ελληνικά',  \
         'be': 'Беларуская',  'bn': 'বাংলা',         'zh': '中文',           'ko': '한국어', \
-        'es_ES': 'Castellano (España)', 'eu': 'euskara' \
+        'es_ES': 'Castellano (España)', 'eu': 'euskara', 'zh-Hans': '中文', \
     }
 
     lang_sel_text = { \
@@ -83,7 +83,8 @@ class UpdateLicenseCode(object):
         'sv': 'Denna sida finns tillgänglig på följande språk:', \
         'tr': 'Bu sayfa şu dillerde mevcuttur:', \
         'uk': 'Ця сторінка доступна наступними мовами:', \
-        'zh': '声明：' \
+        'zh': '声明：', \
+        'zh-Hans': '本网页有下述几种语言版本:', \
     }
 
     def usage(self):
