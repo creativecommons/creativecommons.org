@@ -20,7 +20,8 @@ source bin/activate
 # No RDF in pip (it's rdfutils)
 
 for i in 'setuptools>=0.7' 'zope.interface>=3.8.0' Paste PasteDeploy \
-                           PasteScript rdfutils  cssselect transifex-client
+                           PasteScript rdfutils cssselect transifex-client \
+			   pysocks
 do
     pip install $i
 done
@@ -37,7 +38,7 @@ echo "/usr/lib/python2.7/dist-packages/" \
 
 pushd src
 
-REPOS=(i18n license.rdf cc.license)
+REPOS=(cc.i18n cc.licenserdf cc.license cc.engine)
 for i in "${REPOS[@]}"
 do
     if [ -d "${i}" ]
@@ -85,11 +86,11 @@ chmod 755 python_env/bin/ccengine.fcgi
 # Support the semantic web
 #
 
-ln -s ${TOPDIR}/python_env/src/license.rdf \
-   ${TOPDIR}/docroot/license.rdf
-ln -s ${TOPDIR}/docroot/license.rdf/cc/licenserdf/rdf \
+ln -s ${TOPDIR}/python_env/src/cc.licenserdf \
+   ${TOPDIR}/docroot/cc.licenserdf
+ln -s ${TOPDIR}/docroot/cc.licenserdf/cc/licenserdf/rdf \
    ${TOPDIR}/docroot/rdf
-ln -s ${TOPDIR}/docroot/license.rdf/cc/licenserdf/licenses \
+ln -s ${TOPDIR}/docroot/cc.licenserdf/cc/licenserdf/licenses \
    ${TOPDIR}/docroot/license_rdf
 
 popd # to original
