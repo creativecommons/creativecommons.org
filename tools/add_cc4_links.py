@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import re, sys
+import os.path, re, sys
 from pathlib import Path
 
 class AddCC4Links(object):
@@ -66,7 +66,8 @@ class AddCC4Links(object):
     def get_files(self):
         """Get all the 4.0 files *except* those we are linking to"""
         self.files = [f for f in self.path.glob('*_4.0*.html')
-                      if not f.match(self.exclude_pattern)]
+                      if (not os.path.islink(f) and
+                          not f.match(self.exclude_pattern))]
         self.files.sort()
 
     def process_files(self):
