@@ -67,6 +67,7 @@ class AddCC4Links(object):
         """Get all the 4.0 files *except* those we are linking to"""
         self.files = [f for f in self.path.glob('*_4.0*.html')
                       if not f.match(self.exclude_pattern)]
+        self.files.sort()
 
     def process_files(self):
         """Add links to all the license files"""
@@ -83,7 +84,7 @@ class AddCC4Links(object):
 
     def links_in_page(self, content):
         """Find the translated license links at the bottom of the page"""
-        return re.findall(r'//creativecommons\.org/licenses/[^/]+/4\.0/legalcode(\...)?">([^>]+)</a>', content)
+        return re.findall(r'//creativecommons\.org/licenses/[^/]+/4\.0/legalcode(\.[^"]{2,})?">([^>]+)</a>', content)
 
     def is_rtl(self, content):
         """Determine whether the page is in a right-to-left script"""
