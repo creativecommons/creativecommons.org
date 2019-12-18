@@ -17,6 +17,7 @@
 import os.path, re, sys
 from pathlib import Path
 
+
 class AddCC4Links(object):
     """Adds a link to a license, specified by language code and name, to all
        existing CC 4.0 license legalcodes where they do not already contain a
@@ -26,48 +27,53 @@ class AddCC4Links(object):
        or docroot/legalcode.
        Note that this code modifies files inline. Commit any other changes
        before running it."""
-    
+
     def usage(self):
-        print('add-cc4-links.py LANGUAGE_CODE LANGUAGE_NAME')
-        print('    e.g. add-cc4-links.py nl Nederlands')
-        print('    LANGUAGE_CODE must be 2 letters or 2-hyphen-N, the same used in filename.')
-        print('    LANGUAGE_NAME must be in the relevant language')
-        print('                  if it contains whitespace, enclose in quotes.')
-    
+        print("add-cc4-links.py LANGUAGE_CODE LANGUAGE_NAME")
+        print("    e.g. add-cc4-links.py nl Nederlands")
+        print(
+            "    LANGUAGE_CODE must be 2 letters or 2-hyphen-N, the same used in filename."
+        )
+        print("    LANGUAGE_NAME must be in the relevant language")
+        print("                  if it contains whitespace, enclose in quotes.")
+
     def get_args(self):
         # Make sure there are enough args
         # Make sure arg 2 is a language code
         # Make sure arg 3 is not a language code
-        self.args_ok = (len(sys.argv) == 3) and (len(sys.argv[1]) >= 2) \
-                       and (len(sys.argv[2]) >= 2)
+        self.args_ok = (
+            (len(sys.argv) == 3) and (len(sys.argv[1]) >= 2) and (len(sys.argv[2]) >= 2)
+        )
         if self.args_ok:
             self.language_code = sys.argv[1]
             self.language_name = sys.argv[2]
-            self.exclude_pattern = '*_4.0_' + self.language_code + '.html'
+            self.exclude_pattern = "*_4.0_" + self.language_code + ".html"
         else:
             self.usage()
         return self.args_ok
-    
+
     def get_path(self):
         """Where are the licenses?"""
         self.path = False
         path = Path.cwd()
         pathdir = path.name
-        if pathdir == 'legalcode':
+        if pathdir == "legalcode":
             self.path = path
-        if pathdir == 'docroot':
-            self.path = path / 'legalcode'
-        if pathdir == 'tools':
-            self.path = path.parent / 'docroot' /'legalcode'
+        if pathdir == "docroot":
+            self.path = path / "legalcode"
+        if pathdir == "tools":
+            self.path = path.parent / "docroot" / "legalcode"
         if not self.path:
-            print('Please run from within the checked-out project.')
+            print("Please run from within the checked-out project.")
         return self.path != False
 
     def get_files(self):
         """Get all the 4.0 files *except* those we are linking to"""
-        self.files = [f for f in self.path.glob('*_4.0*.html')
-                      if (not os.path.islink(f) and
-                          not f.match(self.exclude_pattern))]
+        self.files = [
+            f
+            for f in self.path.glob("*_4.0*.html")
+            if (not os.path.islink(f) and not f.match(self.exclude_pattern))
+        ]
         self.files.sort()
 
     def process_files(self):
@@ -77,20 +83,24 @@ class AddCC4Links(object):
 
     def file_license_and_language(self, filepath):
         """Get the license number and language code from the file path"""
-        elements = filepath.stem.split('_')
+        elements = filepath.stem.split("_")
         # Un-translated deeds don't have a language code, so set to English
         if len(elements) != 3:
-            elements += ['en']
+            elements += ["en"]
         return elements[0], elements[2]
 
     def links_in_page(self, content):
         """Find the translated license links at the bottom of the page"""
-        return re.findall(r'//creativecommons\.org/licenses/[^/]+/4\.0/legalcode(\.[^"]{2,})?">([^>]+)</a>', content)
+        return re.findall(
+            r'//creativecommons\.org/licenses/[^/]+/4\.0/legalcode(\.[^"]{2,})?">([^>]+)</a>',
+            content,
+        )
 
     def is_rtl(self, content):
         """Determine whether the page is in a right-to-left script"""
-        return (re.search(r' dir="rtl"', content) != None) or \
-            (re.search(r'class="rtl"', content) != None)
+        return (re.search(r' dir="rtl"', content) != None) or (
+            re.search(r'class="rtl"', content) != None
+        )
 
     def insert_at_index_rtl(self, links):
         index = -1
@@ -109,7 +119,6 @@ class AddCC4Links(object):
                 index += 1
         return index
 
-    
     def insert_at_index(self, links, rtl):
         """Find the alphabetic position in the list of translated license links
            to insert the link at"""
@@ -117,30 +126,43 @@ class AddCC4Links(object):
             return self.insert_at_index_rtl(links)
         else:
             return self.insert_at_index_ltr(links)
-            
+
     def insert_link(self, content, lic, links, index):
         """Insert the link to the correct version of the license
            in the correct position in the list of links at the bottom of the
            page"""
-        link = '<a href="//creativecommons.org/licenses/' + lic \
-                         + '/4.0/legalcode.' + self.language_code \
-                         + '">' + self.language_name + '</a>'
+        link = (
+            '<a href="//creativecommons.org/licenses/'
+            + lic
+            + "/4.0/legalcode."
+            + self.language_code
+            + '">'
+            + self.language_name
+            + "</a>"
+        )
         if index == -1:
             target = '<a href="//creativecommons.org/licenses/' + lic
-            replace = link + ', ' + target
+            replace = link + ", " + target
         else:
             lang = links[index][1]
-            target = '>' + lang + '</a>'
-            replace = target + ', ' + link
+            target = ">" + lang + "</a>"
+            replace = target + ", " + link
         return content.replace(target, replace, 1)
-    
+
     def file_contains_link_already(self, links):
         """Did we already add a link to this page?"""
-        return next((code for code, name in links
-                     if name == self.language_name
-                     or code == self.language_code),
-                    False) != False
-    
+        return (
+            next(
+                (
+                    code
+                    for code, name in links
+                    if name == self.language_name or code == self.language_code
+                ),
+                False,
+            )
+            != False
+        )
+
     def process_file(self, filepath):
         """Get the file's details and insert a link to the translated version
            into it"""
@@ -151,25 +173,26 @@ class AddCC4Links(object):
         if not self.file_contains_link_already(links):
             rtl = self.is_rtl(content)
             index = self.insert_at_index(links, rtl)
-            #print(links)
-            #print(index)
-            #print(links[index])
+            # print(links)
+            # print(index)
+            # print(links[index])
             updated_content = self.insert_link(content, lic, links, index)
-            with filepath.open('w') as outfile:
+            with filepath.open("w") as outfile:
                 outfile.write(updated_content)
-            direction = 'ltr'
+            direction = "ltr"
             if rtl:
-                direction = 'rtl'
-            print('Added link to ' + direction + ' file: ' + filepath.name)
-        #else:
+                direction = "rtl"
+            print("Added link to " + direction + " file: " + filepath.name)
+        # else:
         #   print('File already contains link: ' + filepath.name)
-        
+
     def main(self):
         """Get the command line arguments, find the files, and process them"""
         if self.get_args() and self.get_path():
             self.get_files()
             self.process_files()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     link_adder = AddCC4Links()
     link_adder.main()
