@@ -155,7 +155,8 @@ currently under active development.
    - [Redland RDF Libraries][redland] Python bindings (`python-librdf` package
      on Debian. Due to this prerequisite, setup on macOS is *not* recommended.)
    - [pipenv][pipenvdocs] (`pipenv` package on Debian)
-2. **Execute Install Script**: `./sripts/setup_engine.sh`
+2. **Execute Install Script**: `./scripts/setup_engine.sh`
+   ([`scripts/setup_engine.sh`](scripts/setup_engine.sh))
    1. Clones cc.engine and related respositories
       - Checks out specified branch (`ARG1`, defaults to `master`)
    2. Creates symlinks to support the semantic web
