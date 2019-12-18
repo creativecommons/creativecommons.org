@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import re, sys
+import os.path, re, sys
 from pathlib import Path
 
 
@@ -63,8 +63,9 @@ class AddCC0Links(object):
         self.files = [
             f
             for f in self.path.glob("zero_1.0*.html")
-            if not f.match(self.exclude_pattern)
+            if not os.path.islink(f) and not f.match(self.exclude_pattern)
         ]
+        self.files.sort()
 
     def process_files(self):
         """Add links to all the license files"""
@@ -82,7 +83,7 @@ class AddCC0Links(object):
     def links_in_page(self, content):
         """Find the translated license links at the bottom of the page"""
         return re.findall(
-            r'//creativecommons\.org/publicdomain/zero/1\.0/legalcode(\...)?">([^>]+)</a>',
+            r'//creativecommons\.org/publicdomain/zero/1\.0/legalcode(\.[^"]{2,})?">([^>]+)</a>',
             content,
         )
 
@@ -155,8 +156,8 @@ class AddCC0Links(object):
             with filepath.open("w") as outfile:
                 outfile.write(updated_content)
             print("Added link to file: " + filepath.name)
-        else:
-            print("File already contains link: " + filepath.name)
+        # else:
+        #    print("File already contains link: " + filepath.name)
 
     def main(self):
         """Get the command line arguments, find the files, and process them"""
