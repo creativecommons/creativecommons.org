@@ -1,5 +1,5 @@
 /**
- * Latvian Translations
+ * latviski Translations
  * By salix 17 April 2007
  */
 
