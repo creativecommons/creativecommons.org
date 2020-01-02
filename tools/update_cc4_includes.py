@@ -84,6 +84,7 @@ class UpdateLicenseCode(object):
         "uk": "українська",
         "zh": "中文",
         "zh-Hans": "中文",
+        "zh-Hant": "華語",
     }
 
     lang_sel_text = {
@@ -127,6 +128,7 @@ class UpdateLicenseCode(object):
         "uk": "Ця сторінка доступна наступними мовами:",
         "zh": "声明：",
         "zh-Hans": "本网页有下述几种语言版本:",
+        "zh-Hant": "本頁面也有下列各語言的版本:",
     }
 
     def usage(self):
