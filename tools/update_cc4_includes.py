@@ -14,8 +14,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import re, sys, re, getopt
 from pathlib import Path
+import getopt
+import re
+import sys
 
 
 class UpdateLicenseCode(object):
@@ -174,7 +176,7 @@ class UpdateLicenseCode(object):
             print("Please run from within the checked-out project.")
         if self.path:
             self.includes_path = Path(sys.path[0] + "/legalcode-includes")
-        return self.path != False
+        return self.path is not False
 
     def process_files(self, filelist):
         """File processing loop"""
@@ -195,7 +197,9 @@ class UpdateLicenseCode(object):
             with filepath.open("w", encoding="utf-8") as outfile:
                 outfile.write(content)
         else:
-            self.log("   No placeholders, skipping: " + filepath.name, "standard")
+            self.log(
+                "   No placeholders, skipping: " + filepath.name, "standard"
+            )
 
         return
 
@@ -218,7 +222,9 @@ class UpdateLicenseCode(object):
                 includetext = infile.read()
 
             replacement = start + "\n" + includetext + "\n" + end
-            target_string = re.search(start + ".*?" + end, content, re.DOTALL).group()
+            target_string = re.search(
+                start + ".*?" + end, content, re.DOTALL
+            ).group()
             content = content.replace(target_string, replacement, 1)
 
         return content
@@ -236,7 +242,9 @@ class UpdateLicenseCode(object):
             language_file_list = [f for f in self.path.glob(glob_string)]
             for filepath in language_file_list:
                 sibling_data = self.parse_filename(filepath)
-                self.languages[license_data["type"]].append(sibling_data["language"])
+                self.languages[license_data["type"]].append(
+                    sibling_data["language"]
+                )
             self.languages[license_data["type"]].sort()
 
         current_language = license_data["language"]
@@ -245,7 +253,10 @@ class UpdateLicenseCode(object):
         selector = '<div id="language-selector-block" class="container">'
         selector += '  <div class="language-selector-inner">'
         selector += self.lang_sel_text[current_language]
-        selector += '    <img class="language-icon" src="/images/language_icon_x2.png" alt="Languages" />'
+        selector += (
+            '    <img class="language-icon"'
+            ' src="/images/language_icon_x2.png" alt="Languages" />'
+        )
         selector += "    <select>"
         for iso_code in sibling_languages:
             # Set the selected option to the current language of the page
@@ -273,7 +284,9 @@ class UpdateLicenseCode(object):
 
         # Add the language selector block to the content
         start, end = UpdateLicenseCode.placeholders["language-selector"]
-        target_string = re.search(start + ".*?" + end, content, re.DOTALL).group()
+        target_string = re.search(
+            start + ".*?" + end, content, re.DOTALL
+        ).group()
         replacement = start + "\n" + selector + "\n" + end
         content = content.replace(target_string, replacement, 1)
 
@@ -292,7 +305,9 @@ class UpdateLicenseCode(object):
     def has_placeholders(self, content):
         """Verify all of the required placeholders exist in a file"""
         for placeholder_pair in UpdateLicenseCode.placeholders:
-            for placeholder in UpdateLicenseCode.placeholders[placeholder_pair]:
+            for placeholder in UpdateLicenseCode.placeholders[
+                placeholder_pair
+            ]:
                 if content.find(placeholder) == -1:
                     return False
         return True
