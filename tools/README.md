@@ -22,7 +22,7 @@ within this tools directory):
 ## License
 
 The license applies only to the tools in this directory:
--   [`LICENSE`](LICENSE) ([GPL-3.0-only] License)
+-   [`LICENSE`](LICENSE) ([GPL-3.0-only][gplv3] License)
 
 [gplv3]: https://opensource.org/licenses/GPL-3.0 "GNU General Public License version 3 | Open Source Initiative"
 
