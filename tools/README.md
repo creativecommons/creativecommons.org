@@ -1,4 +1,4 @@
-# tools
+# legalcode tools
 
 Tools for working with creativecommons.org's legal code content.
 
