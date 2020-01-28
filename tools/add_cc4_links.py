@@ -14,17 +14,21 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import os.path, re, sys
 from pathlib import Path
+import os.path
+import re
+import sys
 
 
 class AddCC4Links(object):
     """Adds a link to a license, specified by language code and name, to all
        existing CC 4.0 license legalcodes where they do not already contain a
        link to it.
+
        Make sure to run it in a checked out version of the creativecommons.org
        repository, either in the tools directory, docroot,
        or docroot/legalcode.
+
        Note that this code modifies files inline. Commit any other changes
        before running it."""
 
@@ -32,17 +36,22 @@ class AddCC4Links(object):
         print("add-cc4-links.py LANGUAGE_CODE LANGUAGE_NAME")
         print("    e.g. add-cc4-links.py nl Nederlands")
         print(
-            "    LANGUAGE_CODE must be 2 letters or 2-hyphen-N, the same used in filename."
+            "    LANGUAGE_CODE must be 2 letters or 2-hyphen-N,"
+            " the same used in filename."
         )
         print("    LANGUAGE_NAME must be in the relevant language")
-        print("                  if it contains whitespace, enclose in quotes.")
+        print(
+            "                  if it contains whitespace, enclose in quotes."
+        )
 
     def get_args(self):
         # Make sure there are enough args
         # Make sure arg 2 is a language code
         # Make sure arg 3 is not a language code
         self.args_ok = (
-            (len(sys.argv) == 3) and (len(sys.argv[1]) >= 2) and (len(sys.argv[2]) >= 2)
+            (len(sys.argv) == 3)
+            and (len(sys.argv[1]) >= 2)
+            and (len(sys.argv[2]) >= 2)
         )
         if self.args_ok:
             self.language_code = sys.argv[1]
@@ -65,7 +74,7 @@ class AddCC4Links(object):
             self.path = path.parent / "docroot" / "legalcode"
         if not self.path:
             print("Please run from within the checked-out project.")
-        return self.path != False
+        return self.path is not False
 
     def get_files(self):
         """Get all the 4.0 files *except* those we are linking to"""
@@ -92,14 +101,15 @@ class AddCC4Links(object):
     def links_in_page(self, content):
         """Find the translated license links at the bottom of the page"""
         return re.findall(
-            r'//creativecommons\.org/licenses/[^/]+/4\.0/legalcode(\.[^"]{2,})?">([^>]+)</a>',
+            r"//creativecommons\.org/licenses/[^/]+/4\.0/"
+            'legalcode([.][^"]{2,})?">([^>]+)</a>',
             content,
         )
 
     def is_rtl(self, content):
         """Determine whether the page is in a right-to-left script"""
-        return (re.search(r' dir="rtl"', content) != None) or (
-            re.search(r'class="rtl"', content) != None
+        return (re.search(r' dir="rtl"', content) is not None) or (
+            re.search(r'class="rtl"', content) is not None
         )
 
     def insert_at_index_rtl(self, links):
@@ -160,7 +170,7 @@ class AddCC4Links(object):
                 ),
                 False,
             )
-            != False
+            is not False
         )
 
     def process_file(self, filepath):

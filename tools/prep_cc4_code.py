@@ -14,14 +14,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import re, sys, re, getopt
 from pathlib import Path
+import getopt
+import re
+import sys
 
 
 class UpdateLicenseCode(object):
-    """One time script modifying 4.0 legal code files for updated look. This does not change
-       legal code language. It adds a header and footer placeholders, and updates the HTML head.
-       This allows the update_cc4_code.py script to function."""
+    """One time script modifying 4.0 legal code files for updated look. This
+    does not change legal code language. It adds a header and footer
+    placeholders, and updates the HTML head.
+
+    This allows the update_cc4_code.py script to function."""
 
     placeholders = {
         "head": (
@@ -43,7 +47,10 @@ class UpdateLicenseCode(object):
     }
 
     image_map = {
-        "by": {"file": "attribution_icon_white.svg", "alt_text": "Attribution"},
+        "by": {
+            "file": "attribution_icon_white.svg",
+            "alt_text": "Attribution",
+        },
         "sa": {"file": "sa_white.svg", "alt_text": "Share Alike"},
         "nd": {"file": "nd_white.svg", "alt_text": "No Derivatives"},
         "nc": {"file": "nc_white.svg", "alt_text": "Non-Commerical"},
@@ -62,8 +69,8 @@ class UpdateLicenseCode(object):
             print(message)
 
     def get_args(self):
-        """Get arguments/options and set corresponding flags. On validation error
-           print usage help"""
+        """Get arguments/options and set corresponding flags. On validation
+        error print usage help"""
         try:
             opts, args = getopt.getopt(sys.argv[1:], "va")
         except getopt.GetoptError:
@@ -95,7 +102,7 @@ class UpdateLicenseCode(object):
             print("Please run from within the checked-out project.")
         if self.path:
             self.includes_path = self.path / "includes"
-        return self.path != False
+        return self.path is not False
 
     def process_files(self, filelist):
         """File processing loop"""
@@ -129,8 +136,9 @@ class UpdateLicenseCode(object):
 
     def handle_placeholders(self, content):
         self.log("   Adding placeholders", "verbose")
-        # The language selector has to come after the header. Because dictionaries don't
-        # maint order the easiest way to maintain order is sorting the interation keys.
+        # The language selector has to come after the header. Because
+        # dictionaries don't maintain order the easiest way to maintain order
+        # is sorting the interation keys.
         for placeholder_pair in sorted(UpdateLicenseCode.placeholders):
             if self.has_placeholders(content, placeholder_pair):
                 self.log(
@@ -166,8 +174,12 @@ class UpdateLicenseCode(object):
         """Remove refererences to deed3 css stylesheets from HEAD"""
         self.log("   Removing deed3 css references from head", "verbose")
         content = re.sub(r"\n.*?<link.*?deed3\.css.*?>.*?\n", "\n", content)
-        content = re.sub(r"\n.*?<link.*?deed3\-print\.css.*?>.*?\n", "\n", content)
-        content = re.sub(r"\n.*?<link.*?deed3\-ie\.css.*?>.*?\n", "\n", content)
+        content = re.sub(
+            r"\n.*?<link.*?deed3\-print\.css.*?>.*?\n", "\n", content
+        )
+        content = re.sub(
+            r"\n.*?<link.*?deed3\-ie\.css.*?>.*?\n", "\n", content
+        )
         return content
 
     def handle_rtl_css(self, content):
@@ -175,9 +187,14 @@ class UpdateLicenseCode(object):
             and be renamed"""
         self.log("   Handling right to left css", "verbose")
         if content.find("deed3-rtl.css") != -1:
-            content = re.sub(r"\n.*?<link.*?deed3\-rtl\.css.*?>.*?\n", "\n", content)
+            content = re.sub(
+                r"\n.*?<link.*?deed3\-rtl\.css.*?>.*?\n", "\n", content
+            )
             bottom_placholder = UpdateLicenseCode.placeholders["head"][1]
-            new_rtl_css = '<link rel="stylesheet" type="text/css" href="/includes/legalcode-rtl.css" media="all">'
+            new_rtl_css = (
+                '<link rel="stylesheet" type="text/css"'
+                ' href="/includes/legalcode-rtl.css" media="all">'
+            )
             content = content.replace(
                 bottom_placholder, bottom_placholder + "\n" + new_rtl_css
             )
@@ -211,9 +228,15 @@ class UpdateLicenseCode(object):
         if body_tag.find(language_class) == -1:
             # If language class not on body, add it
             if body_tag.find("class") > 0:
-                existing_classes = re.search('class="(.*?)"', body_tag).group(1)
+                existing_classes = re.search('class="(.*?)"', body_tag).group(
+                    1
+                )
                 new_body_tag = (
-                    '<body class="' + existing_classes + " " + language_class + '">'
+                    '<body class="'
+                    + existing_classes
+                    + " "
+                    + language_class
+                    + '">'
                 )
             else:
                 new_body_tag = '<body class="' + language_class + '">'
@@ -236,17 +259,26 @@ class UpdateLicenseCode(object):
             filename = UpdateLicenseCode.image_map[lic_attr]["file"]
             alt_text = UpdateLicenseCode.image_map[lic_attr]["alt_text"]
             image_tag = (
-                '<img src="/images/deed/svg/' + filename + '" alt="' + alt_text + '"/>'
+                '<img src="/images/deed/svg/'
+                + filename
+                + '" alt="'
+                + alt_text
+                + '"/>'
             )
             lic_images += (
-                '<span class="cc-icon-' + lic_attr + '">' + image_tag + "</span>"
+                '<span class="cc-icon-'
+                + lic_attr
+                + '">'
+                + image_tag
+                + "</span>"
             )
         cc_logo_section = re.search(
             '<div id="cc-logo">.*?</div>', content, re.DOTALL
         ).group()
         new_cc_logo_section = (
             '<div id="cc-logo">'
-            + '<span class="cc-icon-logo"><img src="/images/deed/svg/cc_white.svg" alt="CC"/></span>'
+            + '<span class="cc-icon-logo">'
+            + '<img src="/images/deed/svg/cc_white.svg" alt="CC"/></span>'
             + lic_images
             + "</div>"
         )
@@ -254,7 +286,9 @@ class UpdateLicenseCode(object):
         return content
 
     def handling_consideration_blockquotes(self, content):
-        content = content.replace("<blockquote>", '<p class="usage-considerations">')
+        content = content.replace(
+            "<blockquote>", '<p class="usage-considerations">'
+        )
         content = content.replace("</blockquote>", "</p>")
         return content
 
