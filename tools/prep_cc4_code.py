@@ -168,6 +168,7 @@ class UpdateLicenseCode(object):
                 elif placeholder_pair == "legalcode":
                     re_pattern = re.compile(
                         r"""
+                        # Legalcode
                         ^\s*<div\ id="deed"
                         .*
                         ^\s*<li\ id="s8d">.*</li>\s*</ol>$
