@@ -180,15 +180,18 @@ class UpdateLicenseCode(object):
                 elif placeholder_pair == "language-footer":
                     re_pattern = re.compile(
                         r"""
+                        # Language footer - normal
                         ^\s*<p\ class="shaded(?:\ a-nobreak)?">\s*
                         <a(?:\ name="languages")?\ id="languages">
                         .*(?:\s*</p>)?
                         (?=\s*</div>\s*</div>\s*<div\ id="deed-foot">)
+                        # Language footer - missing 2nd closing div
                         |
                         ^\s*<p\ class="shaded(?:\ a-nobreak)?">\s*
                         <a(?:\ name="languages")?\ id="languages">
                         .*\s*</p>
                         (?=\s*</div>\s*<div\ id="deed-foot">)
+                        # Language footer - extra list markup w/random " char
                         |
                         ^\s*<p\ class="shaded(?:\ a-nobreak)?">\s*
                         <a(?:\ name="languages")?\ id="languages">
