@@ -312,21 +312,21 @@ class UpdateLicenseCode(object):
                 index = "legalcode"
             link = (
                 f'<a href="/licenses/{license_data["type"]}/4.0/{index}">'
-                f"{self.iso_to_language[iso_code]}</a>"
+                f"{self.iso_to_language[iso_code]}</a>,\n"
             )
-            if i != (len(sibling_languages) - 1):
-                link = f"{link},\n"
-
             footer = f'{footer}{link}'
+        footer = footer.rstrip(",\n")
 
         # Add the language footer block to the content
         start, end = UpdateLicenseCode.placeholders["language-footer"]
         target_string = re.search(
             f"{start}.*?{end}", content, re.DOTALL
         ).group()
-        if current_language == "ja":
-            period = "。"
+        if current_language in ["ja", "zh-Hans", "zh-Hant"]:
+            # Use ideographic full stop ("。")
+            period = "\u3002"
         else:
+            # Use ASCII period
             period = "."
         replacement = f"{start}\n{footer}{period}\n{end}"
         content = content.replace(target_string, replacement, 1)
