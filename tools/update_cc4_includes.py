@@ -42,6 +42,10 @@ class UpdateLicenseCode(object):
             "<!-- Language Selector Start - DO NOT DELETE -->",
             "<!-- Language Selector End - DO NOT DELETE -->",
         ),
+        "language-footer": (
+            "<!-- Language Footer Start - DO NOT DELETE -->",
+            "<!-- Language Footer End - DO NOT DELETE -->",
+        ),
     }
 
     languages = {}
@@ -214,6 +218,7 @@ class UpdateLicenseCode(object):
             self.log(f"   Updating content: {filepath.name}", "verbose")
             content = self.add_includes(content)
             content = self.add_language_selector(content, filepath)
+            content = self.add_language_footer(content, filepath)
             with filepath.open("w", encoding="utf-8") as outfile:
                 outfile.write(content)
         else:
@@ -287,6 +292,39 @@ class UpdateLicenseCode(object):
             f"{start}.*?{end}", content, re.DOTALL
         ).group()
         replacement = f"{start}\n{selector}\n{end}"
+        content = content.replace(target_string, replacement, 1)
+
+        return content
+
+    def add_language_footer(self, content, filepath):
+        """Build and insert a language footer dropdown list."""
+        license_data = self.license_data[filepath]
+        current_language = license_data["language"]
+        sibling_languages = self.languages[license_data["type"]]
+        footer = ''
+        for i, iso_code in enumerate(sibling_languages):
+            if iso_code == current_language:
+                continue
+            # Determine to option value for the language. English breaks the
+            # pattern so handle it differently.
+            index = f"legalcode.{iso_code}"
+            if iso_code == "en":
+                index = "legalcode"
+            link = (
+                f'<a href="/licenses/{license_data["type"]}/4.0/{index}">'
+                f"{self.iso_to_language[iso_code]}</a>"
+            )
+            if i != (len(sibling_languages) - 1):
+                link = f"{link},\n"
+
+            footer = f'{footer}{link}'
+
+        # Add the language footer block to the content
+        start, end = UpdateLicenseCode.placeholders["language-footer"]
+        target_string = re.search(
+            f"{start}.*?{end}", content, re.DOTALL
+        ).group()
+        replacement = f"{start}\n{footer}.\n{end}"
         content = content.replace(target_string, replacement, 1)
 
         return content
