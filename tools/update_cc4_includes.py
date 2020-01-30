@@ -324,7 +324,11 @@ class UpdateLicenseCode(object):
         target_string = re.search(
             f"{start}.*?{end}", content, re.DOTALL
         ).group()
-        replacement = f"{start}\n{footer}.\n{end}"
+        if current_language == "ja":
+            period = "。"
+        else:
+            period = "."
+        replacement = f"{start}\n{footer}{period}\n{end}"
         content = content.replace(target_string, replacement, 1)
 
         return content
