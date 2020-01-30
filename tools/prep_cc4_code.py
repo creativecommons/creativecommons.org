@@ -16,6 +16,7 @@
 
 from pathlib import Path
 import getopt
+import os
 import re
 import sys
 
@@ -43,6 +44,14 @@ class UpdateLicenseCode(object):
         "language-selector": (
             "<!-- Language Selector Start - DO NOT DELETE -->",
             "<!-- Language Selector End - DO NOT DELETE -->",
+        ),
+        "legalcode": (
+            "<!-- Legalcode Start - DO NOT DELETE -->",
+            "<!-- Legalcode End - DO NOT DELETE -->",
+        ),
+        "language-footer": (
+            "<!-- Language Footer Start - DO NOT DELETE -->",
+            "<!-- Language Footer End - DO NOT DELETE -->",
         ),
     }
 
@@ -78,12 +87,9 @@ class UpdateLicenseCode(object):
             return False
 
         self.verbose = False
-        self.add_placeholders = False
         for option in opts:
             if "-v" in option:
                 self.verbose = True
-            elif "-a" in option:
-                self.add_placeholders = True
 
         return True
 
@@ -115,7 +121,7 @@ class UpdateLicenseCode(object):
            - Remove references to deed3 css files
            - Remove inline styles
            - Remove Creative Commons text header"""
-        self.log("Processing: " + filepath.name, "verbose")
+        self.log(f"Processing: {filepath.name}", "verbose")
         with filepath.open(encoding="utf-8") as infile:
             content = infile.read()
         license_attrs = self.get_license_attrs(filepath.name)
@@ -130,7 +136,7 @@ class UpdateLicenseCode(object):
         content = self.add_type_logos(content, license_attrs["type"])
         content = self.handling_consideration_blockquotes(content)
 
-        self.log("   Updating content: " + filepath.name, "verbose")
+        self.log(f"   Updating content: {filepath.name}", "verbose")
         with filepath.open("w", encoding="utf-8") as outfile:
             outfile.write(content)
 
@@ -142,23 +148,64 @@ class UpdateLicenseCode(object):
         for placeholder_pair in sorted(UpdateLicenseCode.placeholders):
             if self.has_placeholders(content, placeholder_pair):
                 self.log(
-                    "   Found placeholder: " + placeholder_pair + ", skipping",
+                    f"   Found placeholder: {placeholder_pair}, skipping",
                     "verbose",
                 )
             else:
                 start, end = UpdateLicenseCode.placeholders[placeholder_pair]
                 if placeholder_pair == "head":
                     target = "</head>"
-                    replacement = start + "\n" + end + "\n" + target
+                    replacement = f"{start}\n{end}\n{target}"
                 elif placeholder_pair == "header":
                     target = re.search("<body.*?>", content).group()
-                    replacement = target + "\n" + start + "\n" + end
+                    replacement = f"{target}\n{start}\n{end}"
                 elif placeholder_pair == "footer":
                     target = "</body>"
-                    replacement = start + "\n" + end + "\n" + target
+                    replacement = f"{start}\n{end}\n{target}"
                 elif placeholder_pair == "language-selector":
                     target = "<!-- Site Header End - DO NOT DELETE -->"
-                    replacement = target + "\n" + start + "\n" + end
+                    replacement = f"{target}\n{start}\n{end}"
+                elif placeholder_pair == "legalcode":
+                    re_pattern = re.compile(
+                        r"""
+                        # Legalcode
+                        ^\s*<div\ id="deed"
+                        .*
+                        ^\s*<li\ id="s8d">.*</li>\s*</ol>$
+                        (?=\s*<p\ class="shaded">)
+                        """,
+                        re.DOTALL | re.MULTILINE | re.VERBOSE,
+                    )
+                    target = re_pattern.search(content).group()
+                    replacement = f"\n{start}\n{target.strip()}\n{end}\n"
+                elif placeholder_pair == "language-footer":
+                    re_pattern = re.compile(
+                        r"""
+                        # Language footer - normal
+                        ^\s*<p\ class="shaded(?:\ a-nobreak)?">\s*
+                        <a(?:\ name="languages")?\ id="languages">
+                        .*(?:\s*</p>)?
+                        (?=\s*</div>\s*</div>\s*<div\ id="deed-foot">)
+                        # Language footer - missing 2nd closing div
+                        |
+                        ^\s*<p\ class="shaded(?:\ a-nobreak)?">\s*
+                        <a(?:\ name="languages")?\ id="languages">
+                        .*\s*</p>
+                        (?=\s*</div>\s*<div\ id="deed-foot">)
+                        # Language footer - extra list markup w/random " char
+                        |
+                        ^\s*<p\ class="shaded(?:\ a-nobreak)?">\s*
+                        <a(?:\ name="languages")?\ id="languages">
+                        .*\s*</p>
+                        (?=
+                            \s*</li>\s*</ol>\s*</div>\s*</div>\s*"
+                            \s*<div\ id="deed-foot">
+                        )
+                        """,
+                        re.DOTALL | re.MULTILINE | re.VERBOSE,
+                    )
+                    target = re_pattern.search(content).group()
+                    replacement = f"{start}\n{target.strip()}\n{end}\n"
                 content = content.replace(target, replacement, 1)
         return content
 
@@ -259,28 +306,18 @@ class UpdateLicenseCode(object):
             filename = UpdateLicenseCode.image_map[lic_attr]["file"]
             alt_text = UpdateLicenseCode.image_map[lic_attr]["alt_text"]
             image_tag = (
-                '<img src="/images/deed/svg/'
-                + filename
-                + '" alt="'
-                + alt_text
-                + '"/>'
+                f'<img src="/images/deed/svg/{filename}" alt="{alt_text}"/>'
             )
             lic_images += (
-                '<span class="cc-icon-'
-                + lic_attr
-                + '">'
-                + image_tag
-                + "</span>"
+                f'<span class="cc-icon-{lic_attr}">{image_tag}</span>'
             )
         cc_logo_section = re.search(
             '<div id="cc-logo">.*?</div>', content, re.DOTALL
         ).group()
         new_cc_logo_section = (
-            '<div id="cc-logo">'
-            + '<span class="cc-icon-logo">'
-            + '<img src="/images/deed/svg/cc_white.svg" alt="CC"/></span>'
-            + lic_images
-            + "</div>"
+            '<div id="cc-logo"><span class="cc-icon-logo">'
+            '<img src="/images/deed/svg/cc_white.svg" alt="CC"/></span>'
+            f"{lic_images}</div>"
         )
         content = content.replace(cc_logo_section, new_cc_logo_section)
         return content
@@ -295,7 +332,11 @@ class UpdateLicenseCode(object):
     def main(self):
         """Get the command line arguments, find the files, and process them"""
         if self.get_args() and self.get_path():
-            file_list = [f for f in self.path.glob("*4.0*.html")]
+            file_list = [
+                f
+                for f in self.path.glob("*4.0*.html")
+                if not os.path.islink(f)
+            ]
             self.process_files(file_list)
 
 
