@@ -181,14 +181,15 @@ class UpdateLicenseCode(object):
                 elif placeholder_pair == "language-footer":
                     re_pattern = re.compile(
                         r"""
-                        # Language list
+                        # Language footer
                         (?P<prefix>
                             ^\s*<p\ class="shaded(?:\ a-nobreak)?">\s*
                             <a(?:\ name="languages")?\ id="languages">
                             .*?</a>[^<]+
                         )
                         (?P<languages>
-                            .*?</a>[.。]
+                            # \u3002 is ideographic full stop
+                            .*?</a>[.\u3002]
                         )
                         (?=.*officialtranslations)
                         """,
