@@ -16,6 +16,7 @@
 
 from pathlib import Path
 import getopt
+import os
 import re
 import sys
 
@@ -41,9 +42,17 @@ class UpdateLicenseCode(object):
             "<!-- Language Selector Start - DO NOT DELETE -->",
             "<!-- Language Selector End - DO NOT DELETE -->",
         ),
+        "language-footer": (
+            "<!-- Language Footer Start - DO NOT DELETE -->",
+            "<!-- Language Footer End - DO NOT DELETE -->",
+        ),
     }
 
     languages = {}
+
+    license_data = {}
+
+    license_types = []
 
     iso_to_language = {
         "ar": "العربية",
@@ -57,7 +66,6 @@ class UpdateLicenseCode(object):
         "en": "English",
         "eo": "Esperanto",
         "es": "Español",
-        "es_ES": "Castellano (España)",
         "eu": "euskara",
         "fa": "پارسی",
         "fi": "suomeksi",
@@ -65,19 +73,19 @@ class UpdateLicenseCode(object):
         "gl": "Galego",
         "hr": "hrvatski",
         "hu": "Magyar",
-        "id": "bahasa Indonesia",
+        "id": "Bahasa Indonesia",
         "is": "Íslenska",
         "it": "italiano",
         "ja": "日本語",
         "ko": "한국어",
         "lt": "Lietuvių",
         "lv": "latviski",
-        "mi": "Te Reo Māori",
+        "mi": "te reo Māori",
         "ms": "Bahasa Malaysia",
         "nl": "Nederlands",
         "no": "norsk",
         "pl": "polski",
-        "pt": "Português",
+        "pt": "português",
         "ro": "română",
         "ru": "русский",
         "sl": "Slovenščina",
@@ -101,7 +109,6 @@ class UpdateLicenseCode(object):
         "en": "This page is available in the following languages:",
         "eo": "Ĉi tiu paĝo estas disponebla en la jenaj lingvoj:",
         "es": "Esta página está disponible en los siguientes idiomas:",
-        "es_ES": "",
         "eu": "Orri hau hizkuntza hauetan ikus daiteke:",
         "fa": "این صفحه به زبان های زیر در دسترس است : ",
         "fi": "Tämä sivu on saatavilla seuraavilla kielillä:",
@@ -146,8 +153,8 @@ class UpdateLicenseCode(object):
             print(message)
 
     def get_args(self):
-        """Get arguments/options and set corresponding flags. On validation error
-           print usage help"""
+        """Get arguments/options and set corresponding flags. On validation
+           error print usage help"""
         try:
             opts, args = getopt.getopt(sys.argv[1:], "v")
         except getopt.GetoptError:
@@ -175,30 +182,48 @@ class UpdateLicenseCode(object):
         if not self.path:
             print("Please run from within the checked-out project.")
         if self.path:
-            self.includes_path = Path(sys.path[0] + "/legalcode-includes")
+            self.includes_path = Path(f"{sys.path[0]}/legalcode-includes")
         return self.path is not False
 
     def process_files(self, filelist):
         """File processing loop"""
+        languages = {}
+        license_types = []
+        # pre-process
+        for filepath in filelist:
+            license_data = self.parse_filename(filepath)
+            type_ = license_data["type"]
+            license_types.append(type_)
+            if type_ not in languages:
+                languages[type_] = []
+            languages[type_].append(license_data["language"])
+            self.license_data[filepath] = license_data
+        # sort and store data
+        self.license_types = sorted(list(set(license_types)))
+        for type_ in self.license_types:
+            self.languages[type_] = []
+            self.languages[type_] = sorted(list(set(languages[type_])))
+        # process files
         for filepath in filelist:
             self.process_file(filepath)
 
     def process_file(self, filepath):
         """Verify the required placeholders exist and update file with common
            elements"""
-        self.log("\n" + "Processing: " + filepath.name, "verbose")
+        self.log(f"\nProcessing: {filepath.name}", "verbose")
         with filepath.open(encoding="utf-8") as infile:
             content = infile.read()
 
         if self.has_placeholders(content):
-            self.log("   Updating content: " + filepath.name, "verbose")
+            self.log(f"   Updating content: {filepath.name}", "verbose")
             content = self.add_includes(content)
             content = self.add_language_selector(content, filepath)
+            content = self.add_language_footer(content, filepath)
             with filepath.open("w", encoding="utf-8") as outfile:
                 outfile.write(content)
         else:
             self.log(
-                "   No placeholders, skipping: " + filepath.name, "standard"
+                f"   No placeholders, skipping: {filepath.name}", "standard"
             )
 
         return
@@ -221,9 +246,9 @@ class UpdateLicenseCode(object):
             with includefile.open() as infile:
                 includetext = infile.read()
 
-            replacement = start + "\n" + includetext + "\n" + end
+            replacement = f"{start}\n{includetext}\n{end}"
             target_string = re.search(
-                start + ".*?" + end, content, re.DOTALL
+                f"{start}.*?{end}", content, re.DOTALL
             ).group()
             content = content.replace(target_string, replacement, 1)
 
@@ -231,63 +256,79 @@ class UpdateLicenseCode(object):
 
     def add_language_selector(self, content, filepath):
         """Build and insert a language selector dropdown list."""
-        # Get a list of all the other languages for this license type and store
-        # it so it can be reused.
-        license_data = self.parse_filename(filepath)
-        if license_data["type"] not in self.languages:
-            self.languages[license_data["type"]] = []
-            glob_string = (
-                license_data["type"] + "_" + license_data["version"] + "*.html"
-            )
-            language_file_list = [f for f in self.path.glob(glob_string)]
-            for filepath in language_file_list:
-                sibling_data = self.parse_filename(filepath)
-                self.languages[license_data["type"]].append(
-                    sibling_data["language"]
-                )
-            self.languages[license_data["type"]].sort()
-
+        license_data = self.license_data[filepath]
         current_language = license_data["language"]
         sibling_languages = self.languages[license_data["type"]]
 
-        selector = '<div id="language-selector-block" class="container">'
-        selector += '  <div class="language-selector-inner">'
-        selector += self.lang_sel_text[current_language]
-        selector += (
-            '    <img class="language-icon"'
-            ' src="/images/language_icon_x2.png" alt="Languages" />'
+        selector = (
+            '<div id="language-selector-block" class="container">'
+            '\n<div class="language-selector-inner">'
+            f"\n{self.lang_sel_text[current_language]}"
+            '\n<img class="language-icon"'
+            ' src="/images/language_icon_x2.png" alt="Languages">'
+            "\n<select>"
         )
-        selector += "    <select>"
         for iso_code in sibling_languages:
             # Set the selected option to the current language of the page
             selected = ""
             if iso_code == current_language:
-                selected = ' selected="selected" '
+                selected = ' selected="selected"'
             # Determine to option value for the language. English breaks the
             # pattern so handle it differently.
-            option_value = "legalcode." + iso_code
+            option_value = f"legalcode.{iso_code}"
             if iso_code == "en":
                 option_value = "legalcode"
             # Add the selector vlaue
-            selector += (
-                '<option value="'
-                + option_value
-                + '"'
-                + selected
-                + ">"
-                + self.iso_to_language[iso_code]
-                + "</option>"
+            selector = (
+                f'{selector}\n<option value="{option_value}"{selected}>'
+                f"{self.iso_to_language[iso_code]}"
+                "</option>"
             )
-        selector += "    </select>"
-        selector += "  </div>"
-        selector += "</div>"
+        selector = f"{selector}\n</select>\n</div>\n</div>"
 
         # Add the language selector block to the content
         start, end = UpdateLicenseCode.placeholders["language-selector"]
         target_string = re.search(
-            start + ".*?" + end, content, re.DOTALL
+            f"{start}.*?{end}", content, re.DOTALL
         ).group()
-        replacement = start + "\n" + selector + "\n" + end
+        replacement = f"{start}\n{selector}\n{end}"
+        content = content.replace(target_string, replacement, 1)
+
+        return content
+
+    def add_language_footer(self, content, filepath):
+        """Build and insert a language footer dropdown list."""
+        license_data = self.license_data[filepath]
+        current_language = license_data["language"]
+        sibling_languages = self.languages[license_data["type"]]
+        footer = ''
+        for i, iso_code in enumerate(sibling_languages):
+            if iso_code == current_language:
+                continue
+            # Determine to option value for the language. English breaks the
+            # pattern so handle it differently.
+            index = f"legalcode.{iso_code}"
+            if iso_code == "en":
+                index = "legalcode"
+            link = (
+                f'<a href="/licenses/{license_data["type"]}/4.0/{index}">'
+                f"{self.iso_to_language[iso_code]}</a>,\n"
+            )
+            footer = f'{footer}{link}'
+        footer = footer.rstrip(",\n")
+
+        # Add the language footer block to the content
+        start, end = UpdateLicenseCode.placeholders["language-footer"]
+        target_string = re.search(
+            f"{start}.*?{end}", content, re.DOTALL
+        ).group()
+        if current_language in ["ja", "zh-Hans", "zh-Hant"]:
+            # Use ideographic full stop ("。")
+            period = "\u3002"
+        else:
+            # Use ASCII period
+            period = "."
+        replacement = f"{start}\n{footer}{period}\n{end}"
         content = content.replace(target_string, replacement, 1)
 
         return content
@@ -315,7 +356,11 @@ class UpdateLicenseCode(object):
     def main(self):
         """Get the command line arguments, find the files, and process them"""
         if self.get_args() and self.get_path():
-            file_list = [f for f in self.path.glob("*4.0*.html")]
+            file_list = [
+                f
+                for f in self.path.glob("*4.0*.html")
+                if not os.path.islink(f)
+            ]
             self.process_files(file_list)
 
 

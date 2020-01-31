@@ -181,31 +181,22 @@ class UpdateLicenseCode(object):
                 elif placeholder_pair == "language-footer":
                     re_pattern = re.compile(
                         r"""
-                        # Language footer - normal
-                        ^\s*<p\ class="shaded(?:\ a-nobreak)?">\s*
-                        <a(?:\ name="languages")?\ id="languages">
-                        .*(?:\s*</p>)?
-                        (?=\s*</div>\s*</div>\s*<div\ id="deed-foot">)
-                        # Language footer - missing 2nd closing div
-                        |
-                        ^\s*<p\ class="shaded(?:\ a-nobreak)?">\s*
-                        <a(?:\ name="languages")?\ id="languages">
-                        .*\s*</p>
-                        (?=\s*</div>\s*<div\ id="deed-foot">)
-                        # Language footer - extra list markup w/random " char
-                        |
-                        ^\s*<p\ class="shaded(?:\ a-nobreak)?">\s*
-                        <a(?:\ name="languages")?\ id="languages">
-                        .*\s*</p>
-                        (?=
-                            \s*</li>\s*</ol>\s*</div>\s*</div>\s*"
-                            \s*<div\ id="deed-foot">
+                        # Language footer
+                        (?P<prefix>
+                            ^\s*<p\ class="shaded(?:\ a-nobreak)?">\s*
+                            <a(?:\ name="languages")?\ id="languages">
+                            .*?</a>[^<]+
                         )
+                        (?P<languages>
+                            # \u3002 is ideographic full stop
+                            .*?</a>[.\u3002]
+                        )
+                        (?=.*officialtranslations)
                         """,
                         re.DOTALL | re.MULTILINE | re.VERBOSE,
                     )
-                    target = re_pattern.search(content).group()
-                    replacement = f"{start}\n{target.strip()}\n{end}\n"
+                    target = re_pattern.search(content).group("languages")
+                    replacement = f"\n{start}\n{target.strip()}\n{end}\n"
                 content = content.replace(target, replacement, 1)
         return content
 
