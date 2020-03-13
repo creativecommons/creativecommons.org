@@ -38,8 +38,8 @@ set -o nounset
 pushd python_env/src/cc.i18n/ >/dev/null
 
 # Get latest changes so we don't clash with remote HEAD
-git checkout -q master
-git pull -q origin master
+git checkout -q transifex
+git pull -q origin transifex
 
 # Pull and commit new translations
 tx -q pull -a --mode developer
@@ -65,7 +65,7 @@ else
     set +o errexit
     git commit -q -a -m'Latest i18n updates from Transifex'
     set -o errexit
-    git push -q origin master
+    git push -q origin transifex
 
     # Change directory back to project root
     popd >/dev/null
