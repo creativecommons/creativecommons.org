@@ -13,6 +13,7 @@ This repostory is currently for:
 1. Public help and support [Issues][issues]
 2. Legalcode and translations
 3. Installation of the website (including Styles and other Includes)
+4. ~~License Engine (ccEngine) Setup~~
 
 [issues]: https://github.com/creativecommons/creativecommons.org/issues
 
@@ -119,12 +120,6 @@ CC0 1.0 | [Source File][cc-zero-source] | [Legal Code][cc-zero-legalcode] | [Dee
 
 ## Installation
 
-:warning: **WARNING:** Use of the bootstrap scripts in the master branch is NOT
-recommended. Instead, see the [dev2019][dev2019] branch for current/ongoing
-work.
-
-[dev2019]: https://github.com/creativecommons/creativecommons.org/tree/dev2019
-
 
 ### Child Repositories
 
@@ -150,6 +145,39 @@ In addition to this one, the following child repositories are also used:
 
 As of 2019 December, there are around 9,700 lines of python code split between
 the repositories.
+
+
+### License Engine Setup
+
+> :warning: **We do not support local development at this time. Creative
+> Commons maintains a staging server (configured per
+> [creativecommons/sre-salt-prime][sre-salt-prime]) for development.**
+
+1. **Install prerequisites**:
+   - [Redland RDF Libraries][redland] Python bindings (`python-librdf` package
+     on Debian. Due to this prerequisite, setup on macOS is *not* recommended.)
+   - [pipenv][pipenvdocs] (`pipenv` package on Debian)
+2. **Execute Install Script**: `./scripts/setup_engine.sh`
+   ([`scripts/setup_engine.sh`](scripts/setup_engine.sh))
+   1. Clones cc.engine and related respositories
+      - Checks out specified branch (`ARG1`, defaults to `master`)
+   2. Creates symlinks to support the semantic web
+   3. Creates Python Environment via pipenv
+   4. Generate ccengine.fcgi and copies config.ini into python_env
+   5. Compiles mo files and transstats
+      - Creates `transstats.csv` convenience symlink
+
+[sre-salt-prime]: https://github.com/creativecommons/sre-salt-prime
+[pipenvdocs]:https://pipenv.readthedocs.io/en/latest/
+[redland]: http://librdf.org/
+
+
+### Not Included
+
+This project does not currently include the [creativecommons/cc.api][ccapi]
+repository (which itself, depends on [creativecommons/cc.license][cclicense]).
+
+[ccapi]: https://github.com/creativecommons/cc.api
 
 
 ### Styles and other Includes
