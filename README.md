@@ -13,6 +13,7 @@ This repostory is currently for:
 1. Public help and support [Issues][issues]
 2. Legalcode and translations
 3. Installation of the website (including Styles and other Includes)
+4. ~~License Engine (ccEngine) Setup~~
 
 [issues]: https://github.com/creativecommons/creativecommons.org/issues
 
@@ -148,8 +149,9 @@ the repositories.
 
 ### License Engine Setup
 
-:warning: **NOTE:** The dev2019 branch for this and the child repositories are
-currently under active development.
+> :warning: **We do not support local development at this time. Creative
+> Commons maintains a staging server (configured per
+> [creativecommons/sre-salt-prime][sre-salt-prime]) for development.**
 
 1. **Install prerequisites**:
    - [Redland RDF Libraries][redland] Python bindings (`python-librdf` package
@@ -165,6 +167,7 @@ currently under active development.
    5. Compiles mo files and transstats
       - Creates `transstats.csv` convenience symlink
 
+[sre-salt-prime]: https://github.com/creativecommons/sre-salt-prime
 [pipenvdocs]:https://pipenv.readthedocs.io/en/latest/
 [redland]: http://librdf.org/
 
