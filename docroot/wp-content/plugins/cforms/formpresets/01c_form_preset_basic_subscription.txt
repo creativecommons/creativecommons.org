@@ -1,8 +1,0 @@
-_("Basic: *Newsletter* subscription form (w/ titles)")
-_("A small, two input field form that showcases regexp's (default value exclusion) and input field titles.")
-ff~~~Newsletter Registration$#$fieldsetstart$#$0$#$0$#$0$#$0$#$0
-ff~~~Your Name|Your Name|^(?!Your Name$)|title:Please enter your first and last name.$#$textfield$#$1$#$0$#$1$#$0$#$0
-ff~~~Your Email|||title:Only valid email addresses accepted.$#$textfield$#$1$#$1$#$0$#$0$#$0
-ri~~~(required)
-re~~~(valid email required)
-tf~~~0

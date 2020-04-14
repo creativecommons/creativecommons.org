@@ -1,0 +1,219 @@
+/* CC Deed CSS - Print */
+
+@media print {
+
+.screen-only {
+    display: none;
+}
+
+.print-only {
+    display: block;
+}
+
+a::after {
+    display: none;
+}
+
+.row {
+    margin: 0;
+}
+
+.site .skip-link,
+.screen-reader-text {
+    display: none;
+}
+
+.site-main {
+    margin-bottom: 0;
+}
+
+.site-header-wrapper,
+.site-footer-wrapper {
+    display: none;
+}
+
+#primary.content-area {
+    max-width: none;
+}
+
+#deed-donate-slide {
+    display: none !important;
+}
+
+#deed-head {
+    position: relative;
+    min-height: 1in;
+    margin-bottom: 2rem;
+    padding-left: 1.2in;
+}
+
+#deed-head .cc-logo-print {
+    margin-top: -0.1in;
+    width: 1in;
+    height: 1in;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#deed-head #cc-link {
+    display: none;
+}
+
+#deed-head h1 {
+    font-size: 3.8rem;
+    border-bottom: solid 4px #000;
+    padding-bottom: 0.15em;
+    margin-bottom: 0.15em;
+}
+
+#deed-head h2 {
+    font-size: 2rem;
+    margin-right: 10rem;
+    margin-left: 0;
+}
+
+body.rtl #deed-head h2 {
+    margin-right: 0;
+    margin-left: 10rem;
+}
+
+#deed-head .cc-license-icons {
+    display: none;
+}
+
+#deed-disclaimer {
+    padding: 0 0.1in;
+    font-size: 0.85em;
+}
+
+#deed-disclaimer .disclaimer {
+    display: none;
+}
+
+#deed-main a.helpLink {
+    color: inherit !important;
+    text-decoration: none !important;
+    border: none;
+}
+
+#deed-main #legalcode-block {
+    margin-bottom: 2rem;
+    margin-right: 1.2in;
+    margin-left: 0;
+}
+
+body.rtl #deed-main #legalcode-block {
+    margin-right: 0;
+    margin-left: 1.2in;
+}
+
+#deed-main-content #libre {
+    position: absolute;
+    top: 10rem;
+    right: 0;
+    left: auto;
+    width: 1.2in;
+    text-align: right;
+}
+
+body.rtl #deed-main-content #libre {
+    right: auto;
+    left: 0;
+}
+
+#deed-main-content ul {
+    list-style: none;
+    text-align: left !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#deed-main-content li {
+    list-style: none;
+    text-align: left !important;
+}
+
+#deed-main-content hr {
+    display: none;
+}
+
+#deed-rights .col-sm-offset-2.col-sm-8 {
+    width: 100%;
+    margin-left: 0;
+    padding: 0;
+}
+
+#license-freedoms-no-icons li.license {
+    font-size: 0.85em;
+}
+
+#footer {
+    display: none;
+    margin-top: 2rem;
+}
+
+#header-below,
+#languages {
+    display: none;
+}
+
+ul.license-properties {
+    list-style: hidden;
+    margin-bottom: 0;
+}
+
+li.license {
+    margin-left: 60px;
+}
+
+#deed-main-content li.by,
+#deed-main-content li.nc,
+#deed-main-content li.nc-jp,
+#deed-main-content li.nc-eu,
+#deed-main-content li.nd,
+#deed-main-content li.sa {
+    padding-left: 0;
+}
+
+#deed-main-content li.by::before,
+#deed-main-content li.nc::before,
+#deed-main-content li.nc-jp::before,
+#deed-main-content li.nc-eu::before,
+#deed-main-content li.nd::before,
+#deed-main-content li.sa::before {
+    display: none;
+}
+
+#deed-main-content li.by {
+    list-style-image: url('/images/deed/by.png');
+    list-style-position: outside;
+}
+
+#deed-main-content li.nc {
+    list-style-image: url('/images/deed/nc.png');
+    list-style-position: outside;
+}
+
+#deed-main-content li.nc-jp {
+    list-style-image: url('/images/deed/nc-nc-jp.png');
+    list-style-position: outside;
+}
+
+#deed-main-content li.nc-eu {
+    list-style-image: url('/images/deed/nc-eu.png');
+    list-style-position: outside;
+}
+
+#deed-main-content li.nd {
+    list-style-image: url('/images/deed/nd.png');
+    list-style-position: outside;
+}
+
+#deed-main-content li.sa {
+    list-style-image: url('/images/deed/sa.png');
+    list-style-position: outside;
+}
+
+}

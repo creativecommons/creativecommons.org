@@ -1,13 +1,17 @@
-python_env/bin
-!python_env/bin/ccengine.fcgi.in
-python_env/build
-python_env/include
-python_env/lib
-python_env/local
-python_env/paste_errors.log
-python_env/.Python
-docroot/wp-content/
-docroot/wordpress/
-#docroot/sitemap.*
-docroot/wp-config-local.php
-vendor/*
+# symantic web symlinks
+docroot/rdf
+docroot/license_rdf
+docroot/cc.licenserdf
+
+# repositories
+python_src/rdfadict/
+python_src/cc.licenserdf/
+python_src/cc.license/
+python_src/cc.i18n/
+python_src/cc.engine/
+
+# transstats.csv symlink
+transstats.csv
+
+# vim
+*.swp

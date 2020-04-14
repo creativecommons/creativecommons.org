@@ -1,0 +1,1547 @@
+/* CC Deed CSS */
+
+.screen-only {
+    display: block;
+}
+
+.print-only {
+    display: none;
+}
+
+.site-header-wrapper a:focus,
+.site-header-wrapper a:hover {
+    text-decoration: none;
+}
+
+body.rtl {
+    direction: rtl;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        width: 750px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .container {
+        width: 920px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 945px;
+    }
+}
+
+.site .skip-link {
+    top: 0;
+    left: 0;
+}
+
+body.hide-banner .site-header .menu-toggle,
+body.hide-banner .site-header .site-header-menu,
+body.hide-banner #content #header-below,
+body.hide-banner .site-footer .cc-footer-links,
+body.hide-banner .site-footer .cc-footer-contact,
+body.hide-banner .site-footer .cc-footer-license {
+    display: none !important;
+}
+
+#deed-bg {}
+
+.mockup-badge {
+    position: fixed;
+    background-color: #eee;
+    color: #060606;
+    padding: 0 1em;
+    top: 0;
+    opacity: 0.50;
+    font-size: 70%;
+}
+
+.left {
+    left: 0;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.right {
+    right: 0;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#primary {
+    margin-top: 10px;
+}
+
+.site-main {
+    margin-bottom: 0;
+}
+
+#deed {
+    color: #333;
+    text-align: center;
+}
+
+#deed-head {
+    background: #00B5DA;
+    background: rgba(0,181,218,1);
+    background: -moz-linear-gradient(top, rgba(0,181,218,1) 0%, rgba(0,165,200,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,181,218,1)), color-stop(100%, rgba(0,165,200,1)));
+    background: -webkit-linear-gradient(top, rgba(0,181,218,1) 0%, rgba(0,165,200,1) 100%);
+    background: -o-linear-gradient(top, rgba(0,181,218,1) 0%, rgba(0,165,200,1) 100%);
+    background: -ms-linear-gradient(top, rgba(0,181,218,1) 0%, rgba(0,165,200,1) 100%);
+    background: linear-gradient(to bottom, rgba(0,181,218,1) 0%, rgba(0,165,200,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00b5da', endColorstr='#00a5c8', GradientType=0 );
+    position: relative;
+    padding: 0 150px;
+}
+
+@media only screen and (max-width : 1275px) {
+    #deed-head {
+        padding: 0 50px;
+    }
+}
+
+@media only screen and (max-width : 992px) {
+    #deed-head {
+        padding: 0 10px;
+    }
+}
+
+#deed-head h1 {
+    margin: 0;
+}
+
+#deed-head span, #deed-foot span {
+    display: none;
+}
+
+#deed-head span.cc-license-icons {
+    display: block;
+    margin-bottom: 20px;
+}
+
+#deed-head span.cc-license-icons .icon {
+    display: inline-block;
+}
+
+#deed-head span.cc-license-title {
+    display: inline;
+}
+
+#deed-head span.cc-license-identifier {
+    display: inline-block;
+}
+
+#cc-logo img, span.icon img {
+    width: 62px;
+    height: 62px;
+}
+
+#deed-head #cc-link {
+    display: none;
+}
+
+.pd #cc-link {
+    display: block;
+    position: absolute;
+    top: 40px;
+    height: 35px;
+    width: 200px;
+}
+
+.pd #cc-link a {
+    height: 35px;
+    width: 200px;
+}
+
+.red #deed-head {
+}
+
+.yellow #deed-head {
+}
+
+.green #deed-head {
+}
+
+.pd #deed-head {
+    height: 100px;
+}
+
+.pd-grey #deed-head {
+}
+
+#language-selector-block {
+    text-align: right;
+    margin-top: 15px;
+}
+
+.language-selector-inner {
+    margin-right: -30px;
+}
+
+#language-selector-block select {
+    padding: 0;
+}
+
+.language-icon {
+    height: 32.5px;
+    width: 24px;
+    margin: 0 0.25em;
+}
+
+#deed-main {
+    background-color: #E9E9E9;
+    text-align: left;
+    padding: 15px 100px 0 100px;
+}
+
+@media only screen and (max-width : 1275px) {
+    #deed-main {
+        padding: 15px 0 0 0;
+    }
+}
+
+body.rtl #deed-main {
+    text-align: right;
+}
+
+.pd #deed-main {
+    border-color: #bbc0ab;
+}
+
+#deed-main .alert {
+    background-color: #fff;
+    border-color: #fff;
+    color: #333;
+    border-radius: 0;
+}
+
+#deed-main a.inline-help,
+#deed-main a.helpLink {
+    text-decoration: none;
+    font-weight: inherit;
+    border-bottom: 1px dashed #888;
+    cursor: help;
+}
+
+#deed-main-content {
+    position: relative;
+    margin: 0 15px;
+}
+
+#deed-license {
+    text-align:center;
+    width: auto;
+    margin: 40px 0;
+    font-weight: bold;
+    color: #fff;
+}
+
+#deed-license h2 {
+    margin: 0;
+    font-size: 2em;
+    padding: 0;
+    line-height: 1.1;
+}
+
+/* Desktop small and smaller */
+@media only screen and (max-width : 992px) {
+    #deed-license h2 {
+        font-size: 1.8em;
+    }
+}
+
+.pd #deed-license {
+    position: relative;
+    height: 100px;
+}
+
+.pd #deed-license h2 {
+    position: absolute;
+    bottom: 20px;
+    color: #333;
+    font-size: 2em;
+    text-shadow: 0 1px 0 #fff;
+    line-height: 1.2;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+#deed-main img {
+    margin-bottom:  5px;
+}
+
+#deed-disclaimer {
+    text-align: center;
+    font-size: 0.9em;
+}
+
+#deed-disclaimer .summary {
+}
+
+#deed-disclaimer a {
+  font-weight: normal;
+}
+
+#deed-rights {
+    padding: 0;
+}
+
+#deed-rights .license-properties {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.popover .popover-content a {
+  word-break: break-word;
+}
+
+@media only screen and (max-width : 710px) {
+
+}
+
+#deed-conditions {
+    padding: 0;
+}
+
+#deed-conditions ul {
+}
+
+#deed-conditions ul li ul {
+    margin-top: 8px;
+}
+
+#deed-understanding {
+    padding: 0;
+    margin-top: 0px;
+    margin-bottom: 33px;
+}
+
+.pd #deed-understanding {
+    padding-left: 10px;
+}
+.pd #deed-understanding ul {
+    padding-left: 0;
+}
+.pd #deed-understanding ul ul {
+    margin-left: 100px;
+}
+
+#deed-understanding li.license {
+    padding-left:0px;
+}
+
+#deed-understanding-zero {
+    /*                        padding: 0 10px;*/
+    margin-top: -20px;
+    margin-bottom: 0px;
+}
+
+#deed-understanding ul, #deed-understanding-zero ul {
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+}
+
+#deed-understanding ul ul, #deed-understanding-zero ul ul {
+    list-style-type:disc;
+    margin-top:1em;
+}
+
+#deed-conditions div.fineprint {
+    padding: 15px;
+    border: 1px solid #ddd;
+    color: #111;
+    font-size: 0.92em;
+}
+
+#deed-conditions-no-icons li.license {
+  padding-left:0px;
+}
+
+ul.license-properties {
+  margin-right: 1em;
+}
+
+#deed-conditions-no-icons,
+#license-freedoms-no-icons {
+  margin-right: 1em;
+}
+
+#license-freedoms-no-icons li.license {
+    padding-left: 0px;
+    font-size: 0.9em;
+}
+
+#deed-foot {
+    position: relative;
+    padding: 10px 0;
+    margin: 0 auto;
+    color: #fff;
+    text-align: left;
+}
+
+body.rtl #deed-foot {
+    text-align: right;
+}
+
+.pd #deed-foot {
+    color: #333;
+    overflow-y: inherit;
+}
+
+#deed-foot p {
+    margin: 0 20px;
+    padding: 0;
+}
+
+#deed hr {
+    background: #ffffff;
+    margin-bottom: 0px;
+    margin-top: 18px;
+}
+
+#deed a {
+    text-decoration: none;
+}
+
+#deed a:hover {
+    text-decoration: underline;
+}
+
+.pd a {
+    color: #4A4902;
+}
+
+.pd #deed-foot {
+    height: 70px;
+}
+
+.pd-grey #deed-foot {
+}
+
+#disclaimer {
+    float: right;
+    padding-right: 15px;
+    padding-left: 20px;
+}
+
+li strong {
+    color: #222;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+ul.license-properties {
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+}
+
+li.license {
+    list-style: none;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+ul.understanding li.license {
+    min-height: inherit;
+    padding-bottom: 15px;
+}
+
+li.license ul.license-properties {
+    padding-left: 0;
+}
+
+li.license p {
+    margin: 0;
+    padding: 0;
+}
+
+li.license-hidden {
+    list-style: none;
+}
+
+li.free {
+    background: url("http://mirrors.creativecommons.org/tmp/freedomdefined-50x50.png") 0 0 no-repeat;
+}
+
+li.share, li.remix, li.commercial {
+    padding-left: 0;
+    padding-bottom: 0;
+    min-height: 1em;
+}
+
+li.license + li.commercial {
+    margin-top: -15px;
+}
+
+li.devnations {
+    background: url("/images/deed/devnations.png") 0 0 no-repeat;
+}
+
+li.no-endorse{
+    background: url("/images/deed/no-endorse.png") 0 0 no-repeat;
+}
+
+li.by,
+li.nc,
+li.nc-jp,
+li.nc-eu,
+li.nd,
+li.sa,
+li.nolaw,
+li.publicdomain {
+    min-height: 70px; /* 62px (icon) + 8px (margin) */
+    padding-left: 90px;
+    margin-left: -90px;
+}
+
+body.rtl li.by,
+body.rtl li.nc,
+body.rtl li.nc-jp,
+body.rtl li.nc-eu,
+body.rtl li.nd,
+body.rtl li.sa,
+body.rtl li.nolaw,
+body.rtl li.publicdomain {
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 90px;
+    margin-right: -90px;
+}
+
+li.by::before,
+li.nc::before,
+li.nc-jp::before,
+li.nc-eu::before,
+li.nd::before,
+li.sa::before,
+li.nolaw::before,
+li.publicdomain::before {
+    position: absolute;
+    top: 4px;
+    right: auto;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: 62px 62px;
+    display: inline-block;
+    width: 62px;
+    height: 62px;
+    content:"";
+    -webkit-print-color-adjust: exact;
+}
+
+body.rtl li.by::before,
+body.rtl li.nc::before,
+body.rtl li.nc-jp::before,
+body.rtl li.nc-eu::before,
+body.rtl li.nd::before,
+body.rtl li.sa::before,
+body.rtl li.nolaw::before,
+body.rtl li.publicdomain::before {
+    right: 0;
+    left: auto;
+}
+
+li.by::before {
+    background-image: url('/images/deed/attribution_icon_blue_x2.png');
+}
+
+li.nc::before {
+    background-image: url('/images/deed/nc_blue_x2.png');
+}
+
+li.nc-jp::before {
+    background-image: url('/images/deed/nc-eu_blue_x2.png');
+}
+
+li.nc-eu::before {
+    background-image: url('/images/deed/nc-eu_blue_x2.png');
+}
+
+li.nd::before {
+    background-image: url('/images/deed/nd_blue_x2.png');
+}
+
+li.sa::before {
+    background-image: url('/images/deed/sa_blue_x2.png');
+}
+
+li.nolaw::before {
+    background-image: url("/images/deed/zero_blue_x2.png");
+}
+
+li.publicdomain::before {
+    background-image: url("/images/deed/no_copyright_blue_x2.png");
+}
+
+/* Desktop small and smaller */
+@media only screen and (max-width : 992px) {
+    li.by,
+    li.nc,
+    li.nc-jp,
+    li.nc-eu,
+    li.nd,
+    li.sa,
+    li.nolaw,
+    li.publicdomain {
+        padding-left: 90px;
+        margin-left: 0;
+    }
+
+    body.rtl li.by,
+    body.rtl li.nc,
+    body.rtl li.nc-jp,
+    body.rtl li.nc-eu,
+    body.rtl li.nd,
+    body.rtl li.sa,
+    body.rtl li.nolaw,
+    body.rtl li.publicdomain {
+        padding-right: 90px;
+        margin-right: 0;
+    }
+}
+
+/* Desktop small and smaller */
+@media only screen and (max-width : 710px) {
+    li.by,
+    li.nc,
+    li.nc-jp,
+    li.nc-eu,
+    li.nd,
+    li.sa,
+    li.nolaw,
+    li.publicdomain {
+        min-height: 50px; /* 42px (icon) + 8px (margin) */
+        padding-left: 60px;
+        margin-left: 0;
+    }
+
+    li.by::before,
+    li.nc::before,
+    li.nc-jp::before,
+    li.nc-eu::before,
+    li.nd::before,
+    li.sa::before,
+    li.nolaw::before,
+    li.publicdomain::before {
+        width: 42px;
+        height: 42px;
+        background-size: 42px 42px;
+    }
+
+    body.rtl li.by,
+    body.rtl li.nc,
+    body.rtl li.nc-jp,
+    body.rtl li.nc-eu,
+    body.rtl li.nd,
+    body.rtl li.sa,
+    body.rtl li.nolaw,
+    body.rtl li.publicdomain {
+        padding-right: 60px;
+        margin-right: 0;
+    }
+}
+
+li.sampling, li.samplingplus{
+    background: url("/images/deed/sampling.png") 0 0 no-repeat;
+}
+
+li.more {
+    background: url("/images/deed/more.png") 0 0 no-repeat;
+}
+
+li.notice {
+    background: url("/images/deed/notice.png") 0 0 no-repeat;
+}
+
+li.src {
+    background: url("/images/deed/src.png") 0 0 no-repeat;
+}
+
+/*li ul li.nolaw {*/
+    /*background: url("/images/deed/nolaw-small.png") 0 8px no-repeat;*/
+    /*padding-left: 32px;*/
+/*}*/
+
+li.usage-guidelines {
+    background: url("/images/deed/usage-guidelines.png") 0 0 no-repeat;
+    margin-bottom: 25px;
+}
+
+li ul li.usage-guidelines {
+    background: url("/images/deed/usage-guidelines-small.png") 0 6px no-repeat;
+    padding-left: 32px;
+    margin-bottom: 0;
+}
+
+/*li.publicdomain {*/
+    /*background: url("/images/deed/noc.png") 0 3px no-repeat;*/
+/*}*/
+
+li a {
+    color: #049CCF;
+    text-decoration: none;
+}
+
+#referrer-metadata {
+    padding: 20px;
+    border-style: dotted;
+}
+
+#referrer-metadata a {
+    color: #0000FF;
+    text-decoration: none;
+}
+
+blockquote {
+    padding:  8px;
+    background-color:  #eee;
+    margin:  15px 0;
+    clear: both;
+}
+
+h3 {
+    font-size: 1.75em;
+    margin: 1em .8em;
+
+}
+
+#libre {
+    margin-top: 1em;
+    left: 0;
+    right: 0;
+}
+
+body.rtl #libre {
+    left: 0;
+    right: 0;
+}
+
+body.rtl #deed-rights > .col-sm-offset-2.col-sm-8 {
+    /* Evil hack to swap the #libre element to the left */
+    float: right;
+    margin-left: 0;
+    margin-right: 16.66666667%;
+}
+
+#librepd {
+    width: 150px;
+    float: right;
+}
+
+#libre img, #libre a, #librepd img, #librepd a {
+    margin-top: 24px;
+    max-width: 140px;
+    height: auto;
+    border: none !important;
+}
+
+p.learn-more-cc {
+  text-align: center;
+  margin: 1em;
+}
+
+@media only screen and (max-width : 992px) {
+    #libre img {
+        max-width: 100px;
+    }
+}
+
+@media only screen and (max-width : 768px) {
+    #libre {
+        display: none;
+        width: 100px;
+        height: 100px;
+    }
+
+    #libre img, #libre a, #librepd img, #librepd a {
+        display: none;
+        height: auto;
+        border: none !important;
+    }
+}
+
+div.bd p {
+    color: #111;
+    line-height:140%;
+    padding-bottom:10px !important;
+    font-size: 0.92em;
+    margin: 0 !important;
+}
+
+#work-attribution-container {
+    border: 1px solid #D5D5D5;
+    margin-top: 10px;
+    padding: 7px;
+}
+
+#work-attribution-container input {
+    width: 93%;
+    border: 1px #888a85 solid;
+    height: 1.9em;
+}
+
+#attribution_help img, #citation_help img {
+    border: 0;
+    margin: 0;
+    float: none;
+}
+
+#work-details-block div {
+    margin-top: 0px;
+    padding-top:15px;
+    padding-bottom: 0px;
+    border-top: 1px solid #ddd;
+}
+
+#work-details-block div ul {
+    list-style: none;
+}
+
+#work-details-item-title {
+    display: inline-block;
+    width: 6em;
+    text-align: right;
+    margin-right: 0.5em;
+}
+
+/* This is for the GNU/GPL license: list must start at 0 and the attribute start='0' is not allowed in xhtml*/
+ol.gpl {
+    counter-reset: item -1;
+}
+
+li.gpl {
+    list-style: none;
+}
+
+li.gpl:before {
+    content: counter(item) ". ";
+    counter-increment: item;
+}
+
+/* CC Network Related */
+.network {
+    padding: 8px !important;
+    margin-top: 1em !important;
+    background-color: #d4efb9;
+}
+
+/* Language translations box */
+div#languages {
+    text-align: center;
+    font-size: 0.9em;
+    padding-bottom: 50px;
+}
+
+div#languages a {
+}
+
+div#languages p {
+    margin-top: 0;
+}
+
+.help_panel {
+    display:none;
+}
+
+#help_publicity_rights, #help_endorsement, #help_citation_help, #help_who_is_affirmer, #help_disclaimer {
+    visibility: hidden;
+    height: 0;
+}
+
+#help_publicity_rights_c > #help_publicity_rights,
+#help_endorsement_c > #help_endorsement,
+#help_citation_ehlp_c > #help_citation_help,
+#help_who_is_affirmer_c > #help_who_is_affirmer_c,
+#help_disclaimer_c > #help_disclaimer {
+    height: auto;
+}
+
+ol.arabic-markers {
+    list-style-type: none;
+}
+
+#thank-you-footer {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+#thank-you-footer p {
+    text-align: left;
+}
+
+
+#footer {
+    margin-top: 44px;
+}
+
+
+/* Small device adjustments */
+@media screen and (max-width: 768px) {
+    html {
+        -ms-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    #deed {
+        margin: 0;
+        padding: 0;
+    }
+
+    #deed,
+    #deed-head,
+    #cc-link a,
+    #deed-disclaimer,
+    ul.license-properties {
+        width: auto;
+    }
+
+    #deed-main,
+    .green #deed-rights ul.license-properties {
+        /* need style trumps */
+        width: auto !important;
+    }
+
+    #deed-head,
+    #deed-rights,
+    #deed-conditions,
+    #deed-understanding {
+        /* trump rtl positioning */
+        background-position: center top !important;
+    }
+
+    #deed-main-content {
+        margin: 0;
+    }
+
+    #deed-disclaimer {
+        margin: 0 10px;
+    }
+
+    .green #deed-disclaimer {
+        margin-right: 100px;
+    }
+
+    #libre {
+        right: 10px;
+    }
+
+    ul {
+        padding: 0 10px;
+    }
+
+    #deed-rights ul.license-properties {
+        padding: 0 20px;
+    }
+
+    li.license {
+        padding-bottom: 0;
+    }
+
+    #deed-understanding {
+        margin-bottom: 0;
+    }
+
+    #thank-you-footer {
+        max-width: 90%;
+    }
+
+}
+
+
+/* Donate Footer Styles
+------------------------------------ */
+#deed-donate-footer {
+    background-color: #424242;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width: 768px;
+    padding: 10px 0;
+    color: #333;
+    margin: 20px auto;
+}
+
+.footer-trigger {
+    background-color: #fff;
+    width: 710px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-logo {
+    float: left;
+    margin-right: 20px;
+}
+
+.footer-trigger p {
+    text-align: left;
+    margin: 0;
+}
+
+.footer-trigger button {
+    background: rgba(152,182,0,.8);
+    display:inline-block;
+    text-align: center;
+    padding: .5em 1em;
+    border: 0;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-box-shadow:inset 2px 2px 6px 0 rgba(0,0,0,.2);
+    box-shadow:inset 2px 2px 6px 0 rgba(0,0,0,.2);
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+    margin: 15px 0 0;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.footer-trigger button:hover {
+    background: rgba(152,182,0,1);
+}
+
+@media screen and (max-width: 788px) {
+    #deed-donate-footer {
+        width: 90%;
+        padding: 0;
+        background-color: #fff;
+    }
+    .footer-trigger {
+        width: 90%;
+        padding: 20px 5%;
+        background: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .footer-logo { display: none; }
+}
+
+/* Donate Slide Styles
+------------------------------------ */
+
+#deed-donate-slide {
+    font-family: "Source Sans Pro", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#deed-donate-slide button,
+#deed-donate-slide input[type="reset"],
+#deed-donate-slide input[type="button"],
+#deed-donate-slide input[type="submit"] {
+    font-family: "Source Sans Pro", sans-serif;
+    letter-spacing: 0.046875em;
+}
+
+.js #deed-donate-slide { display: none; }
+
+.js #deed-donate-slide.reveal { display: block; }
+
+#deed-donate-slide {
+    line-height: 17px;
+    text-align: center;
+    color: #fff;
+}
+
+#deed-donate-slide.slider {
+    width: 290px;
+    max-height: 100%;
+    margin: 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: block;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transition: transform .3s ease-in-out;
+    -moz-transition: transform .3s ease-in-out;
+    -o-transition: transform .3s ease-in-out;
+    -ms-transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+}
+
+#deed-donate-slide.slider.reveal {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -o-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.slide-close {
+    background: url('../images/deed/slide-close.png') no-repeat center center;
+    width: 16px;
+    height: 17px;
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    opacity: .6;
+    text-indent: -99999px;
+    z-index: 999;
+}
+
+.slide-close:hover { opacity: 1; }
+
+.slide-tab { display: none; }
+
+
+/* Donate box */
+
+.donate-box {
+    position: relative;
+}
+
+.donate-box .widget-inner {
+    padding: 15px;
+    position: relative;
+    background: #F3F3F3;
+    border-top: 10px solid #01A635;
+    -webkit-box-shadow: 0px 0px 20px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 20px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 20px -4px rgba(0,0,0,0.75);
+}
+
+.donate-box .gform_wrapper { margin: 0; }
+
+.donate-box .widget-inner .gform_fields > li { margin: 0; }
+
+/*.donate-box .widget-inner h2 {
+    align-items: center;
+    background-size: 66px;
+    display: flex;
+    line-height: 1em;
+    margin-bottom: 20px;
+    min-height: 60px;
+    padding-left: 80px;
+}*/
+
+.donate-box .widget-inner  #field_2_1 > label { display: none; }
+
+.donate-box .widget-inner  #field_10_1 > label {
+    color: black;
+    font-size: 1.85rem;
+    line-height: 1em;
+    margin: 4px 0;
+ }
+
+.donate-box .widget-inner .ginput_container_radio {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.donate-box .widget-inner .gfield_radio {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 8px 0;
+}
+
+/* Radio buttons */
+.gchoice_10_1_3 { display: none; }
+
+.donate-box .widget-inner .gfield_radio > li {
+    box-sizing: border-box;
+    flex: 0 0 48%;
+    max-width: 48%;
+    margin: 5px 0 0 0;
+    overflow: visible;
+    position: relative;
+    list-style-image: none;
+}
+
+.donate-box .widget-inner .gfield_radio > li:last-child {
+    border-color: #d4d4d4;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 4px 4px 4px 25px;
+    height: 41px;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.donate-box .widget-inner .gfield_radio > li:last-child::before {
+    content: "$";
+    /*font-family: "cc-fontello";*/
+    font-style: normal;
+    font-weight: bold;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-top: -1px;
+    margin-right: 0;
+    text-align: center;
+    opacity: .8;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
+    margin-left: .15em;
+    font-size: 2rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);
+    color: #464646;
+    left: -25px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.donate-box .widget-inner .gfield_radio > li:last-child input {
+    line-height: 1.6em;
+    padding: 1px 3px;
+}
+
+.donate-box .widget-inner .gfield_radio > li.selected { border-color: #01A635; }
+
+.donate-box .widget-inner .gfield_radio > li.selected:last-child::before { color: #FFF; }
+
+.donate-box .widget-inner .gfield_radio > li input {
+    background: #F3F3F3;
+    border: 0 none;
+    margin-bottom: 0;
+    width: 100% !important;
+    height: 100%;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 1.2em;
+    text-align: center;
+ }
+
+.donate-box .widget-inner .gfield_radio > li input[type="radio"] { display: none; }
+
+.donate-box .widget-inner .gfield_radio > li label {
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1.8rem !important;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1em;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding: .5em 0em;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: -webkit-linear-gradient(top, #FFFFFF, #D3D3D3);
+    background-image: linear-gradient(180deg, #FFFFFF, #D3D3D3);
+    border-color: #d4d4d4;
+    box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.6);
+    color: #333333;
+    display: block;
+    width: 100%;
+}
+
+.donate-box .widget-inner .gfield_radio > li label:hover {
+    background: linear-gradient(0deg, #D2D2D2, #A1A1A1);
+    border-color: #b2b2b2;
+}
+
+.donate-box .widget-inner .gfield_radio > li input[type="radio"]:checked + label {
+    background: #01A635;
+    border-color: #018d2d;
+    border-right-color: #01bf3d;
+    border-top-color: #0ffe5a;
+    box-shadow: 1px 1px 0px 1px rgba(0, 65, 21, 0.6);
+    color: #fff;
+}
+
+/* End of: Radio buttons */
+.gform_footer {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.gform_button#gform_submit_button_10 {
+    align-self: flex-start;
+    background: url('donate-button-bevel-sprite.png') no-repeat right top;
+    background-size: auto 94px;
+    box-shadow: none;
+    border: 0 none;
+    color: white;
+    font-size: 20px;
+    line-height: 1em;
+    height: 47px;
+    max-width: 232px;
+    padding: 10px 0.846153846em;
+    text-transform: none !important;
+    width: 100%;
+}
+
+.gform_button#gform_submit_button_10:hover,
+.gform_button#gform_submit_button_10:focus {
+    background-position: right bottom;
+}
+
+
+@media only screen and (max-width : 1275px) {
+    .donate-box .widget-inner {
+        padding: 10px;
+        border-top: none;
+        border-left: 10px solid #01A635;
+    }
+
+    .donate-box .widget-inner  #field_10_1 > label {
+        display: none;
+    }
+
+    .donate-box .widget-inner .ginput_container_radio {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .donate-box .widget-inner .gfield_radio {
+        flex-grow: 1;
+        margin: 0;
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
+
+    .donate-box .widget-inner .gfield_radio > li {
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: 0;
+        margin: 0 12px 0 0;
+        max-width: none;
+        height: 47px; /* matches .gform_button#gform_submit_button_10 */
+    }
+
+    .donate-box .widget-inner .gfield_radio > li label {
+        height: 100%;
+    }
+
+    .donate-box .widget-inner .gfield_radio > li input {
+        height: 100%;
+    }
+
+    .donate-box .widget-inner .gfield_radio > li.gchoice_10_1_4 {
+        height: 47px;
+        border-left-width: 25px;
+    }
+
+    .donate-box .widget-inner .gfield_radio > li.gchoice_10_1_4::before {
+        left: -25px;
+        margin-right: 0;
+        margin-left: .15em;
+    }
+
+    .gform_button#gform_submit_button_10 {
+        margin: 0 !important;
+        width: auto;
+        padding: 10px 1em 10px 0.846153846em;
+        font-size: 1.1em;
+        line-height: 1em;
+    }
+}
+
+@media only screen and (max-width : 1060px) {
+    .donate-box .widget-inner .gfield_radio > li {
+        display: none;
+    }
+
+    .donate-box .widget-inner .gfield_radio > li.gchoice_10_1_2,
+    .donate-box .widget-inner .gfield_radio > li.gchoice_10_1_3,
+    .donate-box .widget-inner .gfield_radio > li.gchoice_10_1_4 {
+        display: block;
+    }
+}
+
+@media only screen and (max-width : 992px) {
+    .donate-box .widget-inner .gfield_radio > li.gchoice_10_1_2 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width : 710px) {
+    .donate-box .widget-inner .gfield_radio {
+        flex-grow: 0;
+    }
+
+    .donate-box .widget-inner .gfield_radio > li.gchoice_10_1_3 {
+        display: none;
+    }
+}
+
+/* end donate box */
+
+
+/* --- Message --- */
+.slide-trigger {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 12px 15px 15px 15px;
+    max-height: 70vh;
+    overflow: auto;
+    background: rgba(238,91,50,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(238,91,50,1) 0%, rgba(250,118,41,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(238,91,50,1)), color-stop(100%, rgba(250,118,41,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(238,91,50,1) 0%, rgba(250,118,41,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(238,91,50,1) 0%, rgba(250,118,41,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(238,91,50,1) 0%, rgba(250,118,41,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(238,91,50,1) 0%, rgba(250,118,41,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee5b32', endColorstr='#fa7629', GradientType=1 );
+    -moz-box-shadow: 1px 2px 6px rgba(0,0,0,.3);
+    -webkit-box-shadow: 1px 2px 6px rgba(0,0,0,.3);
+    box-shadow: 1px 2px 6px rgba(0,0,0,.3);
+}
+
+.slide-trigger img.slide-logo {
+    display: block;
+    margin: 0 auto;
+    width: 45px;
+    height: auto;
+}
+
+.slide-trigger p.desktop-only {
+    display: block;
+    margin: 8px 0 10px 0;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.82em;
+    line-height: 1.2em;
+}
+
+.slide-trigger p.mobile-only {
+    display: none;
+}
+
+.slide-trigger button {
+    background: rgba(70,34,18,.3);
+    display:inline-block;
+    padding: .5em 1em;
+    border: 0;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-box-shadow:inset 2px 2px 6px 0 rgba(0,0,0,.2);
+    box-shadow:inset 2px 2px 6px 0 rgba(0,0,0,.2);
+    color: #fff;
+    font-size: 20px;
+    /*font-weight: bold;*/
+    margin: 15px 0 0;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.slide-trigger button:hover {
+    background: rgba(70,34,18,.6);
+}
+
+@media screen and (max-width: 1275px) {
+    #deed-donate-slide.slider {
+        z-index: 100;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        -webkit-transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -o-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        transform: translateY(100%);
+    }
+
+    #deed-donate-slide.reveal {
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -o-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    .slide-close {
+        background: url('../images/deed/slide-close.png') no-repeat center center;
+        width: 26px;
+        height: 28px;
+        top: 0;
+        right: 0;
+        opacity: .6;
+    }
+
+    .slide-trigger {
+        padding: 5px 10px 10px 10px;
+        margin: 0;
+        max-height: none;
+    }
+
+    .slide-trigger p.desktop-only {
+        display: none;
+    }
+
+    .slide-trigger p.mobile-only {
+        display: block;
+        margin: 10px 0  15px 0;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    .slide-trigger .donate-box .widget-inner {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .slide-trigger img.slide-logo { display: none; }
+
+    .slide-trigger button {
+        margin: 5px 0 0;
+    }
+}
+
+.a-nobreak a {
+    white-space:nowrap;
+}

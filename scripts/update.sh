@@ -85,7 +85,7 @@ source python_env/bin/activate
 if [[ $1 == "update-l10n" || $2 == "update-l10n" ]]
 then
     # Update l10n strings in i18n submodule and sync with Transifex/GitHub
-    cd python_env/src/i18n/
+    cd python_env/src/cc.i18n/
 
     git checkout master # make sure we're on a branch, git submodules
     git pull            # have a bad habit of having a detached HEAD
@@ -109,15 +109,15 @@ then
 
     # Update toplevel repository to point to latest i18n rev
     cd "${TOPDIR}"
-    git commit -m "Update i18n submodule with latest strings/translations" python_env/src/i18n
+    git commit -m "Update i18n submodule with latest strings/translations" python_env/src/cc.i18n
     git push
 fi
 
 # In case translation files changed:
 python_env/bin/compile_mo
 python_env/bin/transstats
-python_env/src/i18n/bin/compile_mo
-python_env/src/i18n/bin/transstats
+python_env/src/cc.i18n/bin/compile_mo
+python_env/src/cc.i18n/bin/transstats
 
 # Eek - how do we figure out if a restart is needed?
 sudo /etc/init.d/apache2 restart
