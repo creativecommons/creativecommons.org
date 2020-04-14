@@ -14,28 +14,38 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import re, sys
 from pathlib import Path
+import os.path
+import re
+import sys
+
 
 class AddCC0Links(object):
-
     def usage(self):
-        print('add-cc0-links.py LANGUAGE_CODE LANGUAGE_NAME')
-        print('    e.g. add-cc0-links.py nl Nederlands')
-        print('    LANGUAGE_CODE must be 2 letters or 2-hyphen-N, the same used in filename.')
-        print('    LANGUAGE_NAME must be in the relevant language')
-        print('                  if it contains whitespace, enclose in quotes.')
+        print("add-cc0-links.py LANGUAGE_CODE LANGUAGE_NAME")
+        print("    e.g. add-cc0-links.py nl Nederlands")
+        print(
+            "    LANGUAGE_CODE must be 2 letters or 2-hyphen-N,"
+            " the same used in filename."
+        )
+        print("    LANGUAGE_NAME must be in the relevant language")
+        print(
+            "                  if it contains whitespace, enclose in quotes."
+        )
 
     def get_args(self):
         # Make sure there are enough args
         # Make sure arg 2 is a language code
         # Make sure arg 3 is not a language code
-        self.args_ok = (len(sys.argv) == 3) and (len(sys.argv[1]) >= 2) \
-                       and (len(sys.argv[2]) >= 2)
+        self.args_ok = (
+            (len(sys.argv) == 3)
+            and (len(sys.argv[1]) >= 2)
+            and (len(sys.argv[2]) >= 2)
+        )
         if self.args_ok:
             self.language_code = sys.argv[1]
             self.language_name = sys.argv[2]
-            self.exclude_pattern = 'zero_1.0_' + self.language_code + '.html'
+            self.exclude_pattern = "zero_1.0_" + self.language_code + ".html"
         else:
             self.usage()
         return self.args_ok
@@ -45,20 +55,24 @@ class AddCC0Links(object):
         self.path = False
         path = Path.cwd()
         pathdir = path.name
-        if pathdir == 'legalcode':
+        if pathdir == "legalcode":
             self.path = path
-        if pathdir == 'docroot':
-            self.path = path / 'legalcode'
-        if pathdir == 'tools':
-            self.path = path.parent / 'docroot' /'legalcode'
+        if pathdir == "docroot":
+            self.path = path / "legalcode"
+        if pathdir == "tools":
+            self.path = path.parent / "docroot" / "legalcode"
         if not self.path:
-            print('Please run from within the checked-out project.')
-        return self.path != False
+            print("Please run from within the checked-out project.")
+        return self.path is not False
 
     def get_files(self):
         """Get all the CC0 files *except* those we are linking to"""
-        self.files = [f for f in self.path.glob('zero_1.0*.html')
-                      if not f.match(self.exclude_pattern)]
+        self.files = [
+            f
+            for f in self.path.glob("zero_1.0*.html")
+            if not os.path.islink(f) and not f.match(self.exclude_pattern)
+        ]
+        self.files.sort()
 
     def process_files(self):
         """Add links to all the license files"""
@@ -67,19 +81,23 @@ class AddCC0Links(object):
 
     def file_license_and_language(self, filepath):
         """Get the license number and language code from the file path"""
-        elements = filepath.stem.split('_')
+        elements = filepath.stem.split("_")
         # Un-translated deeds don't have a language code, so set to English
         if len(elements) != 3:
-            elements += ['en']
+            elements += ["en"]
         return elements[0], elements[2]
 
     def links_in_page(self, content):
         """Find the translated license links at the bottom of the page"""
-        return re.findall(r'//creativecommons\.org/publicdomain/zero/1\.0/legalcode(\...)?">([^>]+)</a>', content)
+        return re.findall(
+            r"//creativecommons\.org/publicdomain/zero/1\.0/"
+            'legalcode([.][^"]{2,})?">([^>]+)</a>',
+            content,
+        )
 
     def is_rtl(self, content):
         """Determine whether the page is in a right-to-left script"""
-        return re.search(r' dir="rtl"', content) != None
+        return re.search(r' dir="rtl"', content) is not None
 
     def insert_at_index(self, links, rtl):
         """Find the alphabetic position in the list of translated license links
@@ -98,22 +116,35 @@ class AddCC0Links(object):
         """Insert the link to the correct version of the license
            in the correct position in the list of links at the bottom of the
            page"""
-        link = '<a href="//creativecommons.org/publicdomain/zero/1.0/legalcode.' + self.language_code + '">' + self.language_name + '</a>'
+        link = (
+            '<a href="//creativecommons.org/publicdomain/zero/1.0/legalcode.'
+            + self.language_code
+            + '">'
+            + self.language_name
+            + "</a>"
+        )
         if index == -1:
             target = '<a href="//creativecommons.org/publicdomain/zero/1.0/'
-            replace = link + ', ' + target
+            replace = link + ", " + target
         else:
             lang = links[index][1]
-            target = '>' + lang + '</a>'
-            replace = target + ', ' + link
+            target = ">" + lang + "</a>"
+            replace = target + ", " + link
         return content.replace(target, replace, 1)
 
     def file_contains_link_already(self, links):
         """Did we already add a link to this page?"""
-        return next((code for code, name in links
-                     if name == self.language_name
-                     or code == self.language_code),
-                    False) != False
+        return (
+            next(
+                (
+                    code
+                    for code, name in links
+                    if name == self.language_name or code == self.language_code
+                ),
+                False,
+            )
+            is not False
+        )
 
     def process_file(self, filepath):
         """Get the file's details and insert a link to the translated version
@@ -130,11 +161,11 @@ class AddCC0Links(object):
             print(index)
             print(links[index])
             updated_content = self.insert_link(content, lic, links, index)
-            with filepath.open('w') as outfile:
+            with filepath.open("w") as outfile:
                 outfile.write(updated_content)
-            print('Added link to file: ' + filepath.name)
-        else:
-            print('File already contains link: ' + filepath.name)
+            print("Added link to file: " + filepath.name)
+        # else:
+        #    print("File already contains link: " + filepath.name)
 
     def main(self):
         """Get the command line arguments, find the files, and process them"""
@@ -142,6 +173,7 @@ class AddCC0Links(object):
             self.get_files()
             self.process_files()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     link_adder = AddCC0Links()
     link_adder.main()
