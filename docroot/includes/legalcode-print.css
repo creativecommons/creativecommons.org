@@ -1,16 +1,20 @@
 @media print {
 
   body {
-    font: 10pt/12pt Arial,"Trebuchet MS",Verdana,sans-serif;
+    padding: 2rem;
+    font: 11pt/12pt Arial,"Trebuchet MS",Verdana,sans-serif;
+    line-height: 18pt;
   }
-
   .screen-only {
     display: none !important;
   }
-
+  /*HIDE ELEMENTS*/
+  #header-below,
+  #language-selector-block,
   .site-header-wrapper,
   #menu-toggle,
   #deed-foot,
+  #colophon,
   .site-footer .cc-footer-links {
     display: none;
   }
@@ -18,7 +22,17 @@
   h1, h2, h3 { line-height: 1.1; }
 
   #deed-head { text-align: center; }
-
+  #deed-head h1 {
+    margin-bottom: .5rem;
+    padding-bottom: .5rem;
+  }
+  .cc-collapsible a {
+    display: none;
+  }
+  #cc-logo {
+    padding: 1rem;
+    background-color: #8C8C8C;
+  }
   #cc-logo img {
     display: inline-block;
     height: 50px;
@@ -55,6 +69,27 @@
   }
 
   #deed-main { clear: both; }
+
+
+  /* This stanza should be maintained in parallel with legalcode.css
+   *
+   * Please read:
+   * - https://www.w3schools.com/tags/att_ol_type.asp
+   * - https://stackoverflow.com/questions/27104096/css-selector-type-var-not-selecting-lower-alpha-versus-upper-alpha
+   *
+   * The solution below is not-ideal.
+   */
+  #deed-main ol[type="a"] { list-style-type: lower-alpha; }
+  /* not case-sensitive :(
+   * #deed-main ol[type="A"] { list-style-type: upper-alpha; }
+   */
+  #deed-main ol[type="a"] ol[type="a"] { list-style-type: upper-alpha; }
+  #deed-main ol[type="i"] { list-style-type: lower-roman; }
+  /* not case-sensitive :(
+   * #deed-main ol[type="I"] { list-style-type: upper-roman; }
+   */
+  #deed-main ol[type="i"] ol[type="i"] { list-style-type: upper-roman; }
+
 
   ol li,
   ul li {
