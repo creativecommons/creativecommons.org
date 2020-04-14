@@ -1,0 +1,9 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+    - checkout
+    - run: sudo apt-get update && sudo apt-get install -y tidy
+    - run: TRANSLATIONS=$(git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master))
+    - run: for htmlfile in $TRANSLATIONS; do echo $htmlfile; tidy -errors -quiet $htmlfile; done

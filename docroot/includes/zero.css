@@ -1,84 +1,112 @@
-	.yui-module .hd { 
-	    font-size: 150%;
-	    color: #FFF;
-	    background-color: #43594a; 
-	    padding: 5px;
-	    margin-top: 5px;
-	    margin-bottom: 5px;
-	}
+.yui-module .hd {
+    font-size: 150%;
+    color: #FFF;
+    background-color: #43594a;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
-	.yui-module .bd th {
-	    width: 40%;
-	    text-align:right;
-	}
+.yui-module .bd th {
+    width: 40%;
+    text-align:right;
+}
 
-	.yui-module .bd td {
-	    padding-left: 20px;
-	}
+.yui-module .bd td {
+    padding-left: 20px;
+}
 
-	.yui-module .bd tr {
-	    vertical-align:top;
-	    font-family:sans-serif;
-	    font-size: 80% !important;
-	    margin-bottom: 20px;
-	}
+.yui-module .bd tr {
+    vertical-align:top;
+    font-family:sans-serif;
+    font-size: 80% !important;
+    margin-bottom: 20px;
+}
 
-	.yui-module .bd .form-row {
-		clear: both;
-		padding-top: 10px !important;
-		width: 100%;
-	}
+.yui-module .bd .form-row {
+    clear: both;
+    padding-top: 10px !important;
+    width: 100%;
+}
 
-	.yui-module .bd {
-		padding-top: 10px;
-	}
+.yui-module .bd {
+    padding-top: 10px;
+}
 
-	.yui-module .bd p {
-		padding-bottom: 10px;
-	}
+.yui-module .bd p {
+    padding-bottom: 10px;
+}
 
-	.yui-module .bd .form-question {
-		width: 30%;
-		text-align: right;
-		font-weight: bold;
-		font-size: 105%;
-		float: left;
-	}
+.yui-module .bd .form-question {
+    width: 30%;
+    text-align: right;
+    font-weight: bold;
+    font-size: 105%;
+    float: left;
+}
 
-	.yui-module .bd .form-answer {
-		float: left;
-		width: 57%;
-		padding-left: 2%;
-	}
+.yui-module .bd .form-answer {
+    float: left;
+    width: 57%;
+    padding-left: 2%;
+}
 
-	.yui-module .bd .form-answer input.form-field {
-		width: 90%;
-	}
+.yui-module .bd .form-answer input.form-field {
+    width: 90%;
+}
 
-	.yui-module .bd .form-answer iframe.form-field {
-		width: 100%;
-	}
+.yui-module .bd .form-answer iframe.form-field {
+    width: 100%;
+}
 
 .preview {
-   border: 1px #555 solid;
-   margin-bottom: 10px;
-   margin-top: 10px;
-   padding: 10px;
-   text-align: center;
+    border: 1px #555 solid;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
 }
 
 .bd textarea {
     border: 1px #555 solid;
-    padding: 5px;
-    padding-right: 0px;
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid #C0C0C0;
+    border-radius: .3rem;
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,.1);
 }
 
 .bd input,
 .bd iframe {
+    width: 100%;
     border: 1px #555 solid;
-    padding: 2px;
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid #C0C0C0;
+    border-radius: .3rem;
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,.1);
 }
-
+.bd input[type="checkbox"] {
+    position: relative;
+    width: 2rem;
+    top: .8rem;
+    float: left;
+}
+.bd input[type="submit"] {
+    padding: 0.84375em 0.875em 0.78125em;
+    font-family: Montserrat, "Helvetica Neue", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.046875em;
+    border: 0;
+}
+.bd iframe {
+    height: 40rem;
+}
+.bd select {
+    border: 1px solid #C0C0C0;
+    border-radius: .3rem;
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,.1);
+}
 .yui-buttongroup {
     text-align: center;
 }
@@ -93,23 +121,23 @@
 }
 
 #alpha {
-       width:99%;
+    width:99%;
 }
 
 #beta {
-      display: none;
+    display: none;
 }
 
 .x-panel-header-text {
-      font-size: 200%;
+    font-size: 200%;
 }
 
 .indent {
-	margin-left: 15px;
+    margin-left: 15px;
 }
 
 strong {
-       font-weight: bold !important;
+    font-weight: bold !important;
 }
 
 .yui-nav {
@@ -117,14 +145,14 @@ strong {
 }
 
 #yui-history-iframe {
-  position:absolute;
-  top:0; left:0;
-  width:1px; height:1px;
-  visibility:hidden;
+    position:absolute;
+    top:0; left:0;
+    width:1px; height:1px;
+    visibility:hidden;
 }
 
 .help_panel {
-display:none;
+    display:none;
 }
 
 div.success {
