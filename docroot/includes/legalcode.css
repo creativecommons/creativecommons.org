@@ -200,11 +200,9 @@ h3 {
     padding: 20px;
 }
 
-#deed-main-content .shaded :first-child { margin-top: 0; }
+#deed-main-content .shaded :first-child { margin-top: 0; font-style: italic; }
 
 #deed-main-content .shaded :last-child { margin-bottom: 0; }
-
-#deed-main-content div:nth-child(2) { font-style: italic; }
 
 #deed-main-content .usage-considerations {
     background-color: #fff;
@@ -220,7 +218,7 @@ h3 {
     position: relative;
 }
 #deed-main-content .cc-collapsible img {
-    float: none !important;
+    float: none;
     border: 0;
     margin: 0;
     height: 12px;
@@ -310,16 +308,25 @@ h3 {
 #deed-main ol.arabic { list-style-type: none; }
 
 
-/* Please read:
-   - https://www.w3schools.com/tags/att_ol_type.asp
-   - https://stackoverflow.com/questions/27104096/css-selector-type-var-not-selecting-lower-alpha-versus-upper-alpha
-*/
+/* This stanza should be maintained in parallel with legalcode-print.css
+ *
+ * Please read:
+ * - https://www.w3schools.com/tags/att_ol_type.asp
+ * - https://stackoverflow.com/questions/27104096/css-selector-type-var-not-selecting-lower-alpha-versus-upper-alpha
+ *
+ * The solution below is not-ideal.
+ */
 #deed-main ol[type="a"] { list-style-type: lower-alpha; }
-/*#deed-main ol[type="A"] { list-style-type: upper-alpha; } no case-sensitive :( */
-#deed-main ol[type="a"] ol[type="a"] { list-style-type: upper-alpha; } /* crappy solution */
+/* not case-sensitive :(
+ * #deed-main ol[type="A"] { list-style-type: upper-alpha; }
+ */
+#deed-main ol[type="a"] ol[type="a"] { list-style-type: upper-alpha; }
 #deed-main ol[type="i"] { list-style-type: lower-roman; }
-/*#deed-main ol[type="I"] { list-style-type: upper-roman; } no case-sensitive :( */
-#deed-main ol[type="i"] ol[type="i"] { list-style-type: upper-roman; } /* crappy solution */
+/* not case-sensitive :(
+ * #deed-main ol[type="I"] { list-style-type: upper-roman; }
+ */
+#deed-main ol[type="i"] ol[type="i"] { list-style-type: upper-roman; }
+
 
 #deed-main ol li { list-style-image: none; }
 
