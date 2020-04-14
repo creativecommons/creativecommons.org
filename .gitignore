@@ -1,57 +1,17 @@
-cc-wp-theme
-vendor
-composer.phar
-python_env/bin
-!python_env/bin/ccengine.fcgi.in
-python_env/build
-python_env/include
-python_env/lib
-python_env/local
-python_env/paste_errors.log
-python_env/.Python
-python_env/src/
-docroot/license.rdf
-docroot/license_rdf
+# symantic web symlinks
 docroot/rdf
-docroot/wp-content/
-docroot/wordpress/
-#docroot/sitemap.*
-docroot/wp-config-local.php
-vendor/*# -*- mode: gitignore; -*-
-*~
-\#*\#
-/.emacs.desktop
-/.emacs.desktop.lock
-*.elc
-#*.apk
-*.exe
-*.dmg
-auto-save-list
-tramp
-.\#*
+docroot/license_rdf
+docroot/cc.licenserdf
+
+# repositories
+python_src/rdfadict/
+python_src/cc.licenserdf/
+python_src/cc.license/
+python_src/cc.i18n/
+python_src/cc.engine/
+
+# transstats.csv symlink
+transstats.csv
+
+# vim
 *.swp
-
-# Org-mode
-.org-id-locations
-*_archive
-
-# flymake-mode
-*_flymake.*
-
-# eshell files
-/eshell/history
-/eshell/lastdir
-
-# elpa packages
-/elpa/
-
-# reftex files
-*.rel
-
-# AUCTeX auto folder
-/auto/
-
-# apitest
-/apitest/node_modules
-
-.DS_Store
