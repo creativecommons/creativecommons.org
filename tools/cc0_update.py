@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # vim: set fileencoding=utf-8:
 
-"""Add/Update the language list at the bottom of all CC0 legalcode files."""
+"""Add/Update the language list at the bottom of all CC0 legalcode files.
+"""
 
 # Copyright 2016, 2017 Creative Commons
 #
@@ -47,6 +48,8 @@ class ToolError(Exception):
 
 
 def diff_changes(filename, old, new):
+    """Display changes as a colorized unified diff.
+    """
     diff = list(
         difflib.unified_diff(
             old.split("\n"),
@@ -56,10 +59,6 @@ def diff_changes(filename, old, new):
             n=3,
         )
     )
-    # Limit diff lines to two terminal lines (max 160 characters)
-    # for i, line in enumerate(diff):
-    #     if len(line) > 160:
-    #         diff[i] = f"{line[0:157]}..."
     # Color diff output
     rst = "\033[0m"
     for i, line in enumerate(diff):
@@ -79,6 +78,10 @@ def diff_changes(filename, old, new):
 
 
 def update_lang_footer(args, filename, content, lang_tags):
+    """Replace the contents of the language footer (everything between the
+    FOOTER_COMMENTS) with a list of links based on the legalcode files
+    currently present.
+    """
     print(f"{filename}: inserting language footer links")
     current_language = lang_tags_from_filenames(filename)[0]
     footer = ""
@@ -116,6 +119,8 @@ def update_lang_footer(args, filename, content, lang_tags):
 
 
 def has_footer_comments(content):
+    """Determine if the FOOTER_COMMENTS are already present.
+    """
     for comment in FOOTER_COMMENTS:
         if content.find(comment) == -1:
             return False
@@ -123,6 +128,9 @@ def has_footer_comments(content):
 
 
 def insert_missing_lang_footer_comments(args, filename, content):
+    """Insert the FOOTER_COMMENTS in the appropriate locations, if they are not
+    present.
+    """
     if has_footer_comments(content):
         print(f"{filename}: language footer comments present: skipping insert")
         return content
@@ -165,12 +173,17 @@ def insert_missing_lang_footer_comments(args, filename, content):
 
 
 def has_correct_faq_officialtranslations(content):
+    """Determine if the link to the tranlsation FAQ is correct.
+    """
     if content.find(f'"FAQ_TRANSLATION_LINK"') == -1:
         return False
     return True
 
 
 def normalize_faq_translation_link(args, filename, content):
+    """Replace various incorrect translation FAQ links with the correct link
+    (FAQ_TRANSLATION_LINK).
+    """
     if has_correct_faq_officialtranslations(content):
         print(
             f"{filename}: correct translation FAQ link: skipping normalization"
@@ -210,6 +223,8 @@ def normalize_faq_translation_link(args, filename, content):
 
 
 def process_file_contents(args, file_list, lang_tags):
+    """Process each of the CC0 legalcode files and update them, as necessary.
+    """
     for filename in file_list:
         with open(filename, "r", encoding="utf-8") as file_in:
             content = file_in.read()
@@ -238,7 +253,7 @@ def process_file_contents(args, file_list, lang_tags):
 
 
 def lang_tags_from_filenames(file_list):
-    """Extract RFC 5646 language tags from filename
+    """Extract RFC 5646 language tags from filename(s)
     """
     if isinstance(file_list, str):
         lang_tags = [file_list.split(".")[1][2:]]
