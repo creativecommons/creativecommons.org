@@ -1,0 +1,302 @@
+#!/usr/bin/env python3
+# vim: set fileencoding=utf-8:
+
+"""Add/Update the language list at the bottom of all CC0 legalcode files."""
+
+# Copyright 2016, 2017 Creative Commons
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Standard library
+import argparse
+import difflib
+import glob
+import os.path
+import re
+import sys
+import traceback
+
+
+# Local/library specific
+import lang_tag_to
+
+
+FAQ_TRANSLATION_LINK = "/FAQ#officialtranslations"
+FOOTER_COMMENTS = [
+    "<!-- Language Footer Start - DO NOT DELETE -->",
+    "<!-- Language Footer End --- DO NOT DELETE -->",
+]
+
+
+class ToolError(Exception):
+    def __init__(self, message, code=None):
+        self.code = code if code else 1
+        message = "({}) {}".format(self.code, message)
+        super(ToolError, self).__init__(message)
+
+
+def diff_changes(filename, old, new):
+    diff = list(
+        difflib.unified_diff(
+            old.split("\n"),
+            new.split("\n"),
+            fromfile=f"{filename}: current",
+            tofile=f"{filename}: proposed",
+            n=3,
+        )
+    )
+    # Limit diff lines to two terminal lines (max 160 characters)
+    # for i, line in enumerate(diff):
+    #     if len(line) > 160:
+    #         diff[i] = f"{line[0:157]}..."
+    # Color diff output
+    rst = "\033[0m"
+    for i, line in enumerate(diff):
+        if line.startswith("---"):
+            diff[i] = f"\033[91m{line.rstrip()}{rst}"
+        elif line.startswith("+++"):
+            diff[i] = f"\033[92m{line.rstrip()}{rst}"
+        elif line.startswith("@"):
+            diff[i] = f"\033[36m{line.rstrip()}{rst}"
+        elif line.startswith("-"):
+            diff[i] = f"\033[31m{line}{rst}"
+        elif line.startswith("+"):
+            diff[i] = f"\033[32m{line}{rst}"
+        else:
+            diff[i] = f"\033[90m{line}{rst}"
+    print("\n".join(diff))
+
+
+def update_lang_footer(args, filename, content, lang_tags):
+    print(f"{filename}: inserting language footer links")
+    current_language = lang_tags_from_filenames(filename)[0]
+    footer = ""
+    for lang_tag in lang_tags:
+        if lang_tag == current_language:
+            continue
+        # Determine to option value for the language. English breaks the
+        # pattern so handle it differently.
+        if lang_tag == "en":
+            index = "legalcode"
+        else:
+            index = f"legalcode.{lang_tag}"
+        link = (
+            f'<a href="/publicdomain/zero/1.0/{index}">'
+            f"{lang_tag_to.LABEL[lang_tag]}</a>,\n"
+        )
+        footer = f"{footer}{link}"
+    footer = footer.rstrip(",\n")
+    # Add the language footer block to the content
+    start, end = FOOTER_COMMENTS
+    target = re.search(f"{start}.*{end}", content, re.DOTALL).group()
+    if current_language in ["ja", "zh-Hans", "zh-Hant"]:
+        # Use ideographic full stop ("。")
+        period = "\u3002"
+    else:
+        # Use ASCII period
+        period = "."
+    replacement = f"{start}\n{footer}{period}\n{end}"
+    if args.debug:
+        new_content = content.replace(target, replacement, 1)
+        diff_changes(filename, content, new_content)
+        return new_content
+    else:
+        return content.replace(target, replacement, 1)
+
+
+def has_footer_comments(content):
+    for comment in FOOTER_COMMENTS:
+        if content.find(comment) == -1:
+            return False
+    return True
+
+
+def insert_missing_lang_footer_comments(args, filename, content):
+    if has_footer_comments(content):
+        print(f"{filename}: language footer comments present: skipping insert")
+        return content
+    print(f"{filename}: inserting language footer HTML comments")
+    re_pattern = re.compile(
+        f"""
+        (?P<prefix>
+            <blockquote>\\s*<a\\ id="languages">[^<]*</a>[^<]+
+        )
+        (?P<target>
+            # Maches all language link anchors
+            #      Period or Ideographic Full Stop (\u3002)
+            .+</a>[.\u3002]
+        )
+        (?P<suffix>
+            .*"{FAQ_TRANSLATION_LINK}"
+        )
+        """,
+        re.DOTALL | re.MULTILINE | re.VERBOSE,
+    )
+    matches = re_pattern.search(content)
+    if matches is None:
+        print(
+            f"{filename}: ERROR: language block not matched. Aborting"
+            " processing"
+        )
+        return None
+    target = matches.group("target")
+    replacement = (
+        f"\n{FOOTER_COMMENTS[0]}\n"
+        f"{target.strip()}\n"
+        f"{FOOTER_COMMENTS[1]}\n"
+    )
+    if args.debug:
+        new_content = content.replace(target, replacement, 1)
+        diff_changes(filename, content, new_content)
+        return new_content
+    else:
+        return content.replace(target, replacement, 1)
+
+
+def has_correct_faq_officialtranslations(content):
+    if content.find(f'"FAQ_TRANSLATION_LINK"') == -1:
+        return False
+    return True
+
+
+def normalize_faq_translation_link(args, filename, content):
+    if has_correct_faq_officialtranslations(content):
+        print(
+            f"{filename}: correct translation FAQ link: skipping normalization"
+        )
+        return content
+    print(f"{filename}: normalizing translation FAQ link")
+    re_pattern = re.compile(
+        r"""
+        (?P<prefix>
+            HREF="
+        )
+        (?P<target>
+            # Matches various translation FAQ URLs
+            [^"]*CREATIVECOMMONS.ORG/FAQ[^"]*
+        )
+        (?P<suffix>
+            "
+        )
+        """,
+        re.DOTALL | re.IGNORECASE | re.MULTILINE | re.VERBOSE,
+    )
+    matches = re_pattern.search(content)
+    if matches is None:
+        print(
+            f"{filename}: ERROR: translation link not matched. Aborting"
+            " processing"
+        )
+        return
+    target = matches.group("target")
+    replacement = FAQ_TRANSLATION_LINK
+    if args.debug:
+        new_content = content.replace(target, replacement, 1)
+        diff_changes(filename, content, new_content)
+        return new_content
+    else:
+        return content.replace(target, replacement, 1)
+
+
+def process_file_contents(args, file_list, lang_tags):
+    for filename in file_list:
+        with open(filename, "r", encoding="utf-8") as file_in:
+            content = file_in.read()
+        new_content = normalize_faq_translation_link(args, filename, content)
+        if new_content is None:
+            sys.exit(1)
+        new_content = insert_missing_lang_footer_comments(
+            args, filename, new_content
+        )
+        if new_content is None:
+            sys.exit(1)
+        new_content = update_lang_footer(
+            args, filename, new_content, lang_tags
+        )
+        if new_content is None:
+            sys.exit(1)
+        if content == new_content:
+            print(f"{filename}: No changes: skipping writing back to file")
+        elif args.debug:
+            print(f"{filename}: DEBUG: skipping writing changes to file")
+        else:
+            print(f"{filename}: Writing changes to file")
+            with open(filename, "w", encoding="utf-8") as file_out:
+                file_out.write(new_content)
+        print()
+
+
+def lang_tags_from_filenames(file_list):
+    """Extract RFC 5646 language tags from filename
+    """
+    if isinstance(file_list, str):
+        lang_tags = [file_list.split(".")[1][2:]]
+    else:
+        lang_tags = list(
+            set([filename.split(".")[1][2:] for filename in file_list])
+        )
+    try:
+        lang_tags[lang_tags.index("")] = "en"
+    except ValueError:
+        pass
+    lang_tags.sort()
+    return lang_tags
+
+
+def setup():
+    """Instantiate and configure argparse and logging.
+
+    Return argsparse namespace.
+    """
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument(
+        "-d",
+        "--debug",
+        action="store_true",
+        help="Debug mode: list changes without modification",
+    )
+    args = ap.parse_args()
+    return args
+
+
+def main():
+    args = setup()
+    file_list = sorted(
+        [
+            filename
+            for filename in glob.glob("zero_1.0*.html")
+            if os.path.isfile(filename)
+            if not os.path.islink(filename)
+        ]
+    )
+    lang_tags = lang_tags_from_filenames(file_list)
+    process_file_contents(args, file_list, lang_tags)
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except SystemExit as e:
+        sys.exit(e.code)
+    except KeyboardInterrupt:
+        print("INFO (130) Halted via KeyboardInterrupt.", file=sys.stderr)
+        sys.exit(130)
+    except ToolError:
+        error_type, error_value, error_traceback = sys.exc_info()
+        print("CRITICAL {}".format(error_value), file=sys.stderr)
+        sys.exit(error_value.code)
+    except:  # noqa: ignore flake8: E722 do not use bare 'except'
+        print("ERROR (1) Unhandled exception:", file=sys.stderr)
+        print(traceback.print_exc(), file=sys.stderr)
+        sys.exit(1)
