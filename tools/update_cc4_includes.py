@@ -301,7 +301,7 @@ class UpdateLicenseCode(object):
         license_data = self.license_data[filepath]
         current_language = license_data["language"]
         sibling_languages = self.languages[license_data["type"]]
-        footer = ''
+        footer = ""
         for i, iso_code in enumerate(sibling_languages):
             if iso_code == current_language:
                 continue
@@ -314,7 +314,7 @@ class UpdateLicenseCode(object):
                 f'<a href="/licenses/{license_data["type"]}/4.0/{index}">'
                 f"{self.iso_to_language[iso_code]}</a>,\n"
             )
-            footer = f'{footer}{link}'
+            footer = f"{footer}{link}"
         footer = footer.rstrip(",\n")
 
         # Add the language footer block to the content
