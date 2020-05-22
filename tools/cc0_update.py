@@ -28,7 +28,6 @@ import re
 import sys
 import traceback
 
-
 # Local/library specific
 import lang_tag_to
 
@@ -36,7 +35,7 @@ import lang_tag_to
 FAQ_TRANSLATION_LINK = "/FAQ#officialtranslations"
 FOOTER_COMMENTS = [
     "<!-- Language Footer Start - DO NOT DELETE -->",
-    "<!-- Language Footer End --- DO NOT DELETE -->",
+    "<!-- Language Footer End - - DO NOT DELETE -->",
 ]
 
 
@@ -175,7 +174,7 @@ def insert_missing_lang_footer_comments(args, filename, content):
 def has_correct_faq_officialtranslations(content):
     """Determine if the link to the tranlsation FAQ is correct.
     """
-    if content.find(f'"FAQ_TRANSLATION_LINK"') == -1:
+    if content.find(f'"{FAQ_TRANSLATION_LINK}"') == -1:
         return False
     return True
 
