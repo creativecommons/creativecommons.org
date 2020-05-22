@@ -28,6 +28,7 @@ import lang_tag_to
 class UpdateLicenseCode(object):
     """Add common elements -- current Site Header, Site Footer, and Head
        statements -- to licence code HTML files."""
+
     placeholders = {
         "head": (
             "<!-- Head Start - DO NOT DELETE -->",
