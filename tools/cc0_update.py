@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # vim: set fileencoding=utf-8:
 
-"""Add/Update the language list at the bottom of all CC0 legalcode files.
+"""Normalize file and add/update the language list at the bottom of all CC0
+legalcode files.
 """
 
 # Copyright 2016, 2017 Creative Commons
@@ -81,7 +82,6 @@ def update_lang_footer(args, filename, content, lang_tags):
     FOOTER_COMMENTS) with a list of links based on the legalcode files
     currently present.
     """
-    print(f"{filename}: inserting language footer links")
     current_language = lang_tags_from_filenames(filename)[0]
     footer = ""
     for lang_tag in lang_tags:
@@ -109,6 +109,13 @@ def update_lang_footer(args, filename, content, lang_tags):
         # Use ASCII period
         period = "."
     replacement = f"{start}\n{footer}{period}\n{end}"
+    if target == replacement:
+        print(
+            f"{filename}:     Skipping unneeded insertion of language footer"
+            " links"
+        )
+    else:
+        print(f"{filename}: Inserting language footer links")
     if args.debug:
         new_content = content.replace(target, replacement, 1)
         diff_changes(filename, content, new_content)
@@ -131,7 +138,10 @@ def insert_missing_lang_footer_comments(args, filename, content):
     present.
     """
     if has_footer_comments(content):
-        print(f"{filename}: language footer comments present: skipping insert")
+        print(
+            f"{filename}:     Skipping unneeded language footer comments"
+            "insertion"
+        )
         return content
     print(f"{filename}: inserting language footer HTML comments")
     re_pattern = re.compile(
@@ -172,7 +182,7 @@ def insert_missing_lang_footer_comments(args, filename, content):
 
 
 def has_correct_faq_officialtranslations(content):
-    """Determine if the link to the tranlsation FAQ is correct.
+    """Determine if the link to the translation FAQ is correct.
     """
     if content.find(f'"{FAQ_TRANSLATION_LINK}"') == -1:
         return False
@@ -185,7 +195,8 @@ def normalize_faq_translation_link(args, filename, content):
     """
     if has_correct_faq_officialtranslations(content):
         print(
-            f"{filename}: correct translation FAQ link: skipping normalization"
+            f"{filename}:     Skipping unneeded translation FAQ link"
+            " normalization"
         )
         return content
     print(f"{filename}: normalizing translation FAQ link")
@@ -221,13 +232,77 @@ def normalize_faq_translation_link(args, filename, content):
         return content.replace(target, replacement, 1)
 
 
+def has_correct_languages_anchor(content):
+    """Determine if language anchor uses id
+    """
+    if content.find('id="languages"') == -1:
+        return False
+    return True
+
+
+def normalize_languages_anchor(args, filename, content):
+    """Replace name with id in languages anchor (HTML5 compatibility)
+    """
+    if has_correct_languages_anchor(content):
+        print(
+            f"{filename}:     Skipping unneeded language anchor normalization"
+        )
+        return content
+    print(f"{filename}: normalizing language anchor id")
+    re_pattern = re.compile("name=['\"]languages['\"]", re.IGNORECASE)
+    matches = re_pattern.search(content)
+    if matches is None:
+        print(
+            f"{filename}: ERROR: languages anchor not matched. Aborting"
+            " processing"
+        )
+        return
+    target = matches.group()
+    replacement = 'id="languages"'
+    if args.debug:
+        new_content = content.replace(target, replacement, 1)
+        diff_changes(filename, content, new_content)
+        return new_content
+    else:
+        return content.replace(target, replacement, 1)
+
+
+def normalize_line_endings(args, filename, content):
+    """Normalize line endings to unix LF (\\n)
+    """
+    re_pattern = re.compile("\r(?!\n)")
+    matches = re_pattern.findall(content)
+    message = ""
+    if matches:
+        message = f" {len(matches)} mac newlines (CR)"
+    re_pattern = re.compile("\r\n")
+    matches = re_pattern.findall(content)
+    if matches:
+        if message:
+            message = f"{message} and"
+        message = f"{message} {len(matches)} windows newlines (CRLF)"
+    if message:
+        print(f"{filename}: Converting{message} to unix newlines (LF)")
+        return "\n".join(content.split("\r\n"))
+    else:
+        print(f"{filename}:     Skipping unneeded newline conversion")
+        return content
+
+
 def process_file_contents(args, file_list, lang_tags):
     """Process each of the CC0 legalcode files and update them, as necessary.
     """
     for filename in file_list:
-        with open(filename, "r", encoding="utf-8") as file_in:
+        with open(filename, "r", encoding="utf-8", newline="") as file_in:
             content = file_in.read()
-        new_content = normalize_faq_translation_link(args, filename, content)
+        new_content = content
+        new_content = normalize_line_endings(args, filename, new_content)
+        new_content = normalize_languages_anchor(args, filename, new_content)
+        if new_content is None:
+            sys.exit(1)
+        new_content = normalize_faq_translation_link(
+            args, filename, new_content
+        )
         if new_content is None:
             sys.exit(1)
         new_content = insert_missing_lang_footer_comments(
@@ -241,9 +316,11 @@ def process_file_contents(args, file_list, lang_tags):
         if new_content is None:
             sys.exit(1)
         if content == new_content:
-            print(f"{filename}: No changes: skipping writing back to file")
+            print(
+                f"{filename}:     Skipping writing back to file (no changes)"
+            )
         elif args.debug:
-            print(f"{filename}: DEBUG: skipping writing changes to file")
+            print(f"{filename}: DEBUG:     Skipping writing changes to file")
         else:
             print(f"{filename}: Writing changes to file")
             with open(filename, "w", encoding="utf-8") as file_out:
