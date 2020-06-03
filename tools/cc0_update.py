@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # vim: set fileencoding=utf-8:
 
-"""Add/Update the language list at the bottom of all CC0 legalcode files.
+"""Normalize file and add/update the language list at the bottom of all CC0
+legalcode files.
 """
 
 # Copyright 2016, 2017 Creative Commons
@@ -181,7 +182,7 @@ def insert_missing_lang_footer_comments(args, filename, content):
 
 
 def has_correct_faq_officialtranslations(content):
-    """Determine if the link to the tranlsation FAQ is correct.
+    """Determine if the link to the translation FAQ is correct.
     """
     if content.find(f'"{FAQ_TRANSLATION_LINK}"') == -1:
         return False
@@ -232,7 +233,7 @@ def normalize_faq_translation_link(args, filename, content):
 
 
 def has_correct_languages_anchor(content):
-    """Determine if the link to the tranlsation FAQ is correct.
+    """Determine if language anchor uses id
     """
     if content.find('id="languages"') == -1:
         return False
@@ -240,8 +241,7 @@ def has_correct_languages_anchor(content):
 
 
 def normalize_languages_anchor(args, filename, content):
-    """Replace various incorrect translation FAQ links with the correct link
-    (FAQ_TRANSLATION_LINK).
+    """Replace name with id in languages anchor (HTML5 compatibility)
     """
     if has_correct_languages_anchor(content):
         print(
@@ -268,7 +268,7 @@ def normalize_languages_anchor(args, filename, content):
 
 
 def normalize_line_endings(args, filename, content):
-    """Normalize line endings to unix (\\n)
+    """Normalize line endings to unix LF (\\n)
     """
     re_pattern = re.compile("\r(?!\n)")
     matches = re_pattern.findall(content)
