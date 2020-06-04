@@ -14,11 +14,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Standard library
 from pathlib import Path
 import getopt
 import os
 import re
 import sys
+
+# Local/library specific
+import lang_tag_to
 
 
 class UpdateLicenseCode(object):
@@ -47,98 +51,11 @@ class UpdateLicenseCode(object):
             "<!-- Language Footer End - DO NOT DELETE -->",
         ),
     }
-
     languages = {}
-
     license_data = {}
-
     license_types = []
-
-    iso_to_language = {
-        "ar": "العربية",
-        "be": "Беларуская",
-        "bn": "বাংলা",
-        "ca": "Català",
-        "cs": "čeština",
-        "da": "Dansk",
-        "de": "Deutsch",
-        "el": "Ελληνικά",
-        "en": "English",
-        "eo": "Esperanto",
-        "es": "Español",
-        "eu": "euskara",
-        "fa": "پارسی",
-        "fi": "suomeksi",
-        "fr": "français",
-        "gl": "Galego",
-        "hr": "hrvatski",
-        "hu": "Magyar",
-        "id": "Bahasa Indonesia",
-        "is": "Íslenska",
-        "it": "italiano",
-        "ja": "日本語",
-        "ko": "한국어",
-        "lt": "Lietuvių",
-        "lv": "latviski",
-        "mi": "te reo Māori",
-        "ms": "Bahasa Malaysia",
-        "nl": "Nederlands",
-        "no": "norsk",
-        "pl": "polski",
-        "pt": "português",
-        "ro": "română",
-        "ru": "русский",
-        "sl": "Slovenščina",
-        "sv": "svenska",
-        "tr": "Türkçe",
-        "uk": "українська",
-        "zh": "中文",
-        "zh-Hans": "中文",
-        "zh-Hant": "華語",
-    }
-
-    lang_sel_text = {
-        "ar": "هذة الصفحة متوفرة باللغات التالية:",
-        "be": "Гэта старонка даступная на наступных мовах:",
-        "bn": "পৃষ্ঠাটি নিন্মোক্ত ভাষায় বিদ্যমান রয়েছে:",
-        "ca": "Aquesta pàgina està disponible en els idiomes següents:",
-        "cs": "Tato stránka je k dispozici v následujících jazycích:",
-        "da": "Denne side er tilgængelig på følgende sprog:",
-        "de": "Diese Seite ist in folgenden Sprachen verfügbar:",
-        "el": "Η σελίδα αυτή είναι διαθέσιμη στις ακόλουθες γλώσσες:",
-        "en": "This page is available in the following languages:",
-        "eo": "Ĉi tiu paĝo estas disponebla en la jenaj lingvoj:",
-        "es": "Esta página está disponible en los siguientes idiomas:",
-        "eu": "Orri hau hizkuntza hauetan ikus daiteke:",
-        "fa": "این صفحه به زبان های زیر در دسترس است : ",
-        "fi": "Tämä sivu on saatavilla seuraavilla kielillä:",
-        "fr": "Cette page existe aussi dans les langues suivantes :",
-        "gl": "Esta páxina tamén está dispoñíbel nos idiomas seguintes:",
-        "hr": "Ova stranica je dostupna na sljedećim jezicima:",
-        "hu": "Ez az oldal az alábbi nyelveken érhető még el:",
-        "id": "Laman ini tersedia dalam bahasa berikut:",
-        "is": "Þessi síða er tiltæk á eftirfarandi tungumálum:",
-        "it": "Questa pagina è disponibile nelle seguenti lingue:",
-        "ja": "このページは以下の言語でもご覧になれます:",
-        "ko": "이 페이지는 다음의 언어로 이용할 수 있습니다.",
-        "lt": "Šis puslapis yra prienamas šiomis kalbomis:",
-        "lv": "Šī lapa ir pieejama sekojošās valodās:",
-        "mi": "E wātea ana tēnei whārangi i ēnei reo:",
-        "ms": "Halaman ini boleh didapati dalam bahasa-bahasa berikut:",
-        "nl": "Deze pagina is beschikbaar in de volgende talen:",
-        "no": "Denne siden er tilgjengelig på følgende språk:",
-        "pl": "Strona jest dostępna w następujących językach:",
-        "pt": "Esta página está disponível nas seguintes línguas:",
-        "ro": "Această pagină este disponibilă în următoarele limbi:",
-        "ru": "Эта страница доступна на следующих языках:",
-        "sl": "Ta stran je dosegljiva v naslednjih jezikih:",
-        "sv": "Denna sida finns tillgänglig på följande språk:",
-        "tr": "Bu sayfa şu dillerde mevcuttur:",
-        "uk": "Ця сторінка доступна наступними мовами:",
-        "zh": "声明：",
-        "zh-Hans": "本网页有下述几种语言版本:",
-        "zh-Hant": "本頁面也有下列各語言的版本:",
-    }
+    iso_to_language = lang_tag_to.LABEL
+    lang_sel_text = lang_tag_to.SELECT_TEXT
 
     def usage(self):
         print("")
@@ -301,7 +218,7 @@ class UpdateLicenseCode(object):
         license_data = self.license_data[filepath]
         current_language = license_data["language"]
         sibling_languages = self.languages[license_data["type"]]
-        footer = ''
+        footer = ""
         for i, iso_code in enumerate(sibling_languages):
             if iso_code == current_language:
                 continue
@@ -314,7 +231,7 @@ class UpdateLicenseCode(object):
                 f'<a href="/licenses/{license_data["type"]}/4.0/{index}">'
                 f"{self.iso_to_language[iso_code]}</a>,\n"
             )
-            footer = f'{footer}{link}'
+            footer = f"{footer}{link}"
         footer = footer.rstrip(",\n")
 
         # Add the language footer block to the content
