@@ -59,6 +59,8 @@ def diff_changes(filename, old, new):
             n=3,
         )
     )
+    if not diff:
+        return
     # Color diff output
     rst = "\033[0m"
     for i, line in enumerate(diff):
@@ -350,12 +352,23 @@ def setup():
 
     Return argsparse namespace.
     """
+    default_glob = ["zero_1.0*.html"]
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument(
         "-d",
         "--debug",
         action="store_true",
         help="Debug mode: list changes without modification",
+    )
+    ap.add_argument(
+        "globs",
+        nargs="*",
+        default=default_glob,
+        help=(
+            "Filename or shell glob of the file(s) that will be updated"
+            f' (default: "{default_glob[0]}")'
+        ),
+        metavar="FILENAME",
     )
     args = ap.parse_args()
     return args
@@ -364,12 +377,17 @@ def setup():
 def main():
     args = setup()
     file_list = sorted(
-        [
-            filename
-            for filename in glob.glob("zero_1.0*.html")
-            if os.path.isfile(filename)
-            if not os.path.islink(filename)
-        ]
+        list(
+            set(
+                [
+                    filename
+                    for fileglob in args.globs
+                    for filename in glob.glob(fileglob)
+                    if os.path.isfile(filename)
+                    if not os.path.islink(filename)
+                ]
+            )
+        )
     )
     lang_tags = lang_tags_from_filenames(file_list)
     process_file_contents(args, file_list, lang_tags)
