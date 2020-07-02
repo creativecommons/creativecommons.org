@@ -33,7 +33,7 @@ import traceback
 import lang_tag_to
 
 
-FAQ_TRANSLATION_LINK = "/faq#officialtranslations"
+FAQ_TRANSLATION_LINK = "/faq/#officialtranslations"
 FOOTER_COMMENTS = [
     "<!-- Language Footer Start - DO NOT DELETE -->",
     "<!-- Language Footer End - - DO NOT DELETE -->",
@@ -209,7 +209,7 @@ def normalize_faq_translation_link(args, filename, content):
         )
         (?P<target>
             # Matches various translation FAQ URLs
-            [^'"]*/[Ff][Aa][Qq][#][^'"]*
+            [^'"]*/[Ff][Aa][Qq]/?[#][^'"]*
         )
         (?P<suffix>
             ['"]
