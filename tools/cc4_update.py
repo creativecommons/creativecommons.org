@@ -158,7 +158,7 @@ COMMENTS = OrderedDict(
         },
     }
 )
-FAQ_TRANSLATION_LINK = "/FAQ#officialtranslations"
+FAQ_TRANSLATION_LINK = "/faq/#officialtranslations"
 
 
 class ToolError(Exception):
@@ -387,17 +387,17 @@ def normalize_faq_translation_link(args, filename, content):
     re_pattern = re.compile(
         r"""
         (?P<prefix>
-            href="
+            href=['"]
         )
         (?P<target>
             # Matches various translation FAQ URLs
-            [^'"]*/faq[#][^'"]*
+            [^'"]*/[Ff][Aa][Qq]/?[#][^'"]*
         )
         (?P<suffix>
-            "
+            ['"]
         )
         """,
-        re.DOTALL | re.IGNORECASE | re.MULTILINE | re.VERBOSE,
+        re.DOTALL | re.MULTILINE | re.VERBOSE,
     )
     matches = re_pattern.search(content)
     if matches is None:
