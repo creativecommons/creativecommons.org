@@ -96,7 +96,7 @@ def update_lang_footer(args, filename, content, lang_tags):
         else:
             index = f"legalcode.{lang_tag}"
         link = (
-            f'<a href="/publicdomain/zero/1.0/{index}">'
+            f'<a href="/publicdomain/zero/1.1/{index}">'
             f"{lang_tag_to.LABEL[lang_tag]}</a>,\n"
         )
         footer = f"{footer}{link}"
@@ -352,7 +352,7 @@ def setup():
 
     Return argsparse namespace.
     """
-    default_glob = ["zero_1.0*.html"]
+    default_glob = ["zero_1.1*.html"]
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument(
         "-d",
