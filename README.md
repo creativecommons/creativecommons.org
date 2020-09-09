@@ -80,7 +80,7 @@ CC BY-NC 4.0 | [Source File][cc-by-nc-source] | [Legal Code][cc-by-nc-legalcode]
 CC BY-ND 4.0 | [Source File][cc-by-nd-source] | [Legal Code][cc-by-nd-legalcode] | [Deed][cc-by-nd-deed] | [RDF][cc-by-nd-rdf]
 CC BY-SA 4.0 | [Source File][cc-by-sa-source] | [Legal Code][cc-by-sa-legalcode] | [Deed][cc-by-sa-deed] | [RDF][cc-by-sa-rdf]
 CC BY 4.0 | [Source File][cc-by-source] | [Legal Code][cc-by-legalcode] | [Deed][cc-by-deed] | [RDF][cc-by-rdf]
-CC0 1.0 | [Source File][cc-zero-source] | [Legal Code][cc-zero-legalcode] | [Deed][cc-zero-deed] | [RDF][cc-zero-rdf]
+CC0 1.1 | [Source File][cc-zero-source] | [Legal Code][cc-zero-legalcode] | [Deed][cc-zero-deed] | [RDF][cc-zero-rdf]
 
 [cc-by-nc-nd-source]: docroot/legalcode/by-nc-nd_4.0.html
 [cc-by-nc-nd-legalcode]: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.en
@@ -112,10 +112,10 @@ CC0 1.0 | [Source File][cc-zero-source] | [Legal Code][cc-zero-legalcode] | [Dee
 [cc-by-deed]: https://creativecommons.org/licenses/by/4.0/deed.en
 [cc-by-rdf]: https://creativecommons.org/licenses/by/4.0/rdf
 
-[cc-zero-source]: docroot/legalcode/zero_1.0.html
-[cc-zero-legalcode]: https://creativecommons.org/publicdomain/zero/1.0/legalcode.en
-[cc-zero-deed]: https://creativecommons.org/publicdomain/zero/1.0/deed.en
-[cc-zero-rdf]: https://creativecommons.org/publicdomain/zero/1.0/rdf
+[cc-zero-source]: docroot/legalcode/zero_1.1.html
+[cc-zero-legalcode]: https://creativecommons.org/publicdomain/zero/1.1/legalcode.en
+[cc-zero-deed]: https://creativecommons.org/publicdomain/zero/1.1/deed.en
+[cc-zero-rdf]: https://creativecommons.org/publicdomain/zero/1.1/rdf
 
 
 ## Installation
