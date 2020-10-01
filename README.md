@@ -193,3 +193,6 @@ within the [creativecommons/new-creativecommons.org][neworg] respository.
 - [`LICENSE`](LICENSE) (Expat/[MIT][mit] License)
 
 [mit]: http://www.opensource.org/licenses/MIT "The MIT License | Open Source Initiative"
+## use Bootstrap framework 
+## import wow.main.js
+## use parallax effect 
