@@ -1,4 +1,4 @@
-# creativecommons.org
+# CreativeCommons.org
 
 Website parent project ([When we share, everyone wins - Creative
 Commons][ccorg]), legalcode and translations, and GitHub Issues for public
@@ -12,7 +12,7 @@ help and support
 This repostory is currently for:
 1. Public help and support [Issues][issues]
 2. Legalcode and translations
-3. Installation of the website (including Styles and other Includes)
+3. Installation of the website (including Styles and other includes)
 4. ~~License Engine (ccEngine) Setup~~
 
 [issues]: https://github.com/creativecommons/creativecommons.org/issues
@@ -50,7 +50,7 @@ Relevant directories:
 
 Also see:
 - [Legal Code Translation Policy - CC Public Wiki][translatepolicy]: Documents
-  Legal/Translation process and policy
+  Legal/Translation process and policies
 - [Legal Tools Translation - CC Public Wiki][fourstatus]: Translation status
   for 4.0 and CC0 licenses
 
