@@ -7,7 +7,7 @@ help and support
 [ccorg]: https://creativecommons.org/
 
 
-## Overview
+## Overview of the creativecommons.org
 
 This repostory is currently for:
 1. Public help and support [Issues][issues]
@@ -18,7 +18,7 @@ This repostory is currently for:
 [issues]: https://github.com/creativecommons/creativecommons.org/issues
 
 
-## Code of Conduct
+## Code of Conduct of creativecommons.org
 
 [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md):
 > The Creative Commons team is committed to fostering a welcoming community.
