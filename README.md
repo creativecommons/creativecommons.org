@@ -1,4 +1,4 @@
-# creativecommons.org
+# creativecommons.org ##
 
 Website parent project ([When we share, everyone wins - Creative
 Commons][ccorg]), legalcode and translations, and GitHub Issues for public
@@ -7,7 +7,7 @@ help and support
 [ccorg]: https://creativecommons.org/
 
 
-## Overview
+## Overview ##
 
 This repostory is currently for:
 1. Public help and support [Issues][issues]
@@ -18,7 +18,7 @@ This repostory is currently for:
 [issues]: https://github.com/creativecommons/creativecommons.org/issues
 
 
-## Code of Conduct
+## Code of Conduct ##
 
 [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md):
 > The Creative Commons team is committed to fostering a welcoming community.
@@ -31,18 +31,18 @@ This repostory is currently for:
 [reporting_guide]:https://opensource.creativecommons.org/community/code-of-conduct/enforcement/
 
 
-## Contributing
+## Contributing ##
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 
-## Issues
+## Issues ##
 
 This repository's [Issues][issues] is also the primary location for public help
 and support.
 
 
-## Legalcode and Translations
+## Legalcode and Translations ##
 
 Relevant directories:
 - [`docroot/legalcode`](docroot/legalcode/): legalcode and translations "source" files
@@ -58,7 +58,7 @@ Also see:
 [fourstatus]: https://wiki.creativecommons.org/wiki/Legal_Tools_Translation
 
 
-### English Licenses
+### English Licenses ###
 *Our public copyright licenses incorporate a unique and innovative
 "three-layer" design*:
 1. **Legal code**: the traditional legal tool *that most lawyers know and love*
@@ -118,10 +118,10 @@ CC0 1.0 | [Source File][cc-zero-source] | [Legal Code][cc-zero-legalcode] | [Dee
 [cc-zero-rdf]: https://creativecommons.org/publicdomain/zero/1.0/rdf
 
 
-## Installation
+## Installation ##
 
 
-### Child Repositories
+### Child Repositories ###
 
 In addition to this one, the following child repositories are also used:
 
@@ -137,17 +137,17 @@ In addition to this one, the following child repositories are also used:
 
   - [creativecommons/new-creativecommons.org][neworg]
 
-[ccengine]: https://github.com/creativecommons/cc.engine
-[cci18n]: https://github.com/creativecommons/cc.i18n
-[cclicense]: https://github.com/creativecommons/cc.license
-[cclicenserdf]: https://github.com/creativecommons/cc.licenserdf
-[rdfadict]: https://github.com/creativecommons/rdfadict
+[ccengine] : https://github.com/creativecommons/cc.engine
+[cci18n] : https://github.com/creativecommons/cc.i18n
+[cclicense] : https://github.com/creativecommons/cc.license
+[cclicenserdf] : https://github.com/creativecommons/cc.licenserdf
+[rdfadict] : https://github.com/creativecommons/rdfadict
 
 As of 2019 December, there are around 9,700 lines of python code split between
 the repositories.
 
 
-### License Engine Setup
+### License Engine Setup ###
 
 > :warning: **We do not support local development at this time. Creative
 > Commons maintains a staging server (configured per
@@ -172,7 +172,7 @@ the repositories.
 [redland]: http://librdf.org/
 
 
-### Not Included
+### Not Included ###
 
 This project does not currently include the [creativecommons/cc.api][ccapi]
 repository (which itself, depends on [creativecommons/cc.license][cclicense]).
@@ -180,7 +180,7 @@ repository (which itself, depends on [creativecommons/cc.license][cclicense]).
 [ccapi]: https://github.com/creativecommons/cc.api
 
 
-### Styles and other Includes
+### Styles and other Includes ###
 
 :warning: **WARNING:** Any change to style or other includes must be duplicated
 within the [creativecommons/new-creativecommons.org][neworg] respository.
@@ -188,7 +188,7 @@ within the [creativecommons/new-creativecommons.org][neworg] respository.
 [neworg]: https://github.com/creativecommons/new-creativecommons.org
 
 
-## License
+## License ##
 
 - [`LICENSE`](LICENSE) (Expat/[MIT][mit] License)
 
