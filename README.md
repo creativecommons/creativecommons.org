@@ -36,7 +36,7 @@ This repostory is currently for:
 See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 
-## Issues
+## Issues of repository
 
 This repository's [Issues][issues] is also the primary location for public help
 and support.
