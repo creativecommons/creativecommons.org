@@ -1,7 +1,8 @@
 # creativecommons.org
+logr - An Amazing Project
 
 Website parent project ([When we share, everyone wins - Creative
-Commons][ccorg]), legalcode and translations, and GitHub Issues for public
+Commons][ccorg]), legal code and translations, and GitHub Issues for public
 help and support
 
 [ccorg]: https://creativecommons.org/
@@ -21,7 +22,7 @@ This repostory is currently for:
 ## Code of Conduct
 
 [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md):
-> The Creative Commons team is committed to fostering a welcoming community.
+> The Creative Commons team is committed to fostering a welcome community.
 > This project and all other Creative Commons open source projects are governed
 > by our [Code of Conduct][code_of_conduct]. Please report unacceptable
 > behavior to [conduct@creativecommons.org](mailto:conduct@creativecommons.org)
@@ -58,14 +59,14 @@ Also see:
 [fourstatus]: https://wiki.creativecommons.org/wiki/Legal_Tools_Translation
 
 
-### English Licenses
+###  Licenses
 *Our public copyright licenses incorporate a unique and innovative
 "three-layer" design*:
 1. **Legal code**: the traditional legal tool *that most lawyers know and love*
 2. Human Readable **Deed**: *a format that normal people can read... a handy
    reference for licensors and licensees*
 3. Machine Readable **RDF**: *recognizes that software, from search engines to
-   office productivity to music editing, plays an enormous role in the
+    productivity to  editing, plays an enormous role in the
    creation, copying, discovery, and distribution of works*
 ([Three “Layers” Of Licenses - About The Licenses - Creative
 Commons][threelayer])
@@ -143,7 +144,7 @@ In addition to this one, the following child repositories are also used:
 [cclicenserdf]: https://github.com/creativecommons/cc.licenserdf
 [rdfadict]: https://github.com/creativecommons/rdfadict
 
-As of 2019 December, there are around 9,700 lines of python code split between
+As of 2019 December, there are around 9,700 lines of  code split between
 the repositories.
 
 
@@ -151,10 +152,10 @@ the repositories.
 
 > :warning: **We do not support local development at this time. Creative
 > Commons maintains a staging server (configured per
-> [creativecommons/sre-salt-prime][sre-salt-prime]) for development.**
+> [creativecommons/sre--prime][sre--prime]) for development.**
 
 1. **Install prerequisites**:
-   - [Redland RDF Libraries][redland] Python bindings (`python-librdf` package
+   - [Redland RDF Libraries][redland]  bindings (`-librdf` package
      on Debian. Due to this prerequisite, setup on macOS is *not* recommended.)
    - [pipenv][pipenvdocs] (`pipenv` package on Debian)
 2. **Execute Install Script**: `./scripts/setup_engine.sh`
@@ -162,12 +163,12 @@ the repositories.
    1. Clones cc.engine and related respositories
       - Checks out specified branch (`ARG1`, defaults to `master`)
    2. Creates symlinks to support the semantic web
-   3. Creates Python Environment via pipenv
+   3. Creates  Environment via pipenv
    4. Generate ccengine.fcgi and copies config.ini into python_env
    5. Compiles mo files and transstats
       - Creates `transstats.csv` convenience symlink
 
-[sre-salt-prime]: https://github.com/creativecommons/sre-salt-prime
+[sre--prime]: https://github.com/creativecommons/sre--prime
 [pipenvdocs]:https://pipenv.readthedocs.io/en/latest/
 [redland]: http://librdf.org/
 
