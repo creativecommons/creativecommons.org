@@ -62,7 +62,7 @@ Also see:
 *Our public copyright licenses incorporate a unique and innovative
 "three-layer" design*:
 1. **Legal code**: the traditional legal tool *that most lawyers know and love*
-2. Human Readable **Deed**: *a format that normal people can read... a handy
+2. Human Readable **Deed**: *a format that normal people can read... an handy
    reference for licensors and licensees*
 3. Machine Readable **RDF**: *recognizes that software, from search engines to
    office productivity to music editing, plays an enormous role in the
