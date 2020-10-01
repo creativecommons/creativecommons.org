@@ -40,6 +40,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 This repository's [Issues][issues] is also the primary location for public help
 and support.
+- Folks can learn new things while contributing to this project.
 
 
 ## Legalcode and Translations
