@@ -11,8 +11,8 @@ help and support
 
 This repostory is currently for:
 1. Public help and support [Issues][issues]
-2. Legalcode and translations
-3. Installation of the website (including Styles and other Includes)
+2. Simple Legalcode and translations
+3. Easily Installation of the website (including Styles and other Includes)
 4. ~~License Engine (ccEngine) Setup~~
 
 [issues]: https://github.com/creativecommons/creativecommons.org/issues
