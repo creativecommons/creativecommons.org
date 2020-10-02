@@ -9,7 +9,7 @@ help and support
 
 ## Overview
 
-This repostory is currently for:
+This repository is currently for:
 1. Public help and support [Issues][issues]
 2. Legalcode and translations
 3. Installation of the website (including Styles and other Includes)
@@ -49,7 +49,7 @@ Relevant directories:
 - [`tools`](tools/): tools to assist with managing the translations
 
 Also see:
-- [Legal Code Translation Policy - CC Public Wiki][translatepolicy]: Documents
+- [LegalCode Translation Policy - CC Public Wiki][translatepolicy]: Documents
   Legal/Translation process and policy
 - [Legal Tools Translation - CC Public Wiki][fourstatus]: Translation status
   for 4.0 and CC0 licenses
@@ -159,8 +159,8 @@ the repositories.
    - [pipenv][pipenvdocs] (`pipenv` package on Debian)
 2. **Execute Install Script**: `./scripts/setup_engine.sh`
    ([`scripts/setup_engine.sh`](scripts/setup_engine.sh))
-   1. Clones cc.engine and related respositories
-      - Checks out specified branch (`ARG1`, defaults to `master`)
+   1. Clones cc.engine and related repositories
+      - Checks out specific branch (`ARG1`, defaults to `master`)
    2. Creates symlinks to support the semantic web
    3. Creates Python Environment via pipenv
    4. Generate ccengine.fcgi and copies config.ini into python_env
@@ -183,7 +183,7 @@ repository (which itself, depends on [creativecommons/cc.license][cclicense]).
 ### Styles and other Includes
 
 :warning: **WARNING:** Any change to style or other includes must be duplicated
-within the [creativecommons/new-creativecommons.org][neworg] respository.
+within the [creativecommons/new-creativecommons.org][neworg] repository.
 
 [neworg]: https://github.com/creativecommons/new-creativecommons.org
 
