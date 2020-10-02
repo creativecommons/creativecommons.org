@@ -1,17 +1,17 @@
-# OVERVIEW OF COMMENT LINE
-## LINE NO.16 creativecommons.org
-## LINE NO.25 Overview OF REPO
-## LINE NO.36 Code of Conduct
-## LINE NO.49 Contributing
-## LINE NO.55 Issues
-## LINE NO.60 Legalcode and Translations
-## LINE NO.76 English Licenses
-## LINE NO.136 Installation
-## LINE NO.139 Child Repositories
-## LINE NO.165 License Engine Setup
-## LINE NO.190 Not Included
-## LINE NO.198 Styles and other Includes
-## LINE NO.206 License
+# OVERVIEW
+creativecommons.org
+Overview OF REPO
+Code of Conduct
+Contributing
+Issues
+Legalcode and Translations
+English Licenses
+Installation
+Child Repositories
+License Engine Setup
+Not Included
+Styles and other Includes
+License
 
 # creativecommons.org
 
