@@ -160,7 +160,7 @@ the repositories.
 2. **Execute Install Script**: `./scripts/setup_engine.sh`
    ([`scripts/setup_engine.sh`](scripts/setup_engine.sh))
    1. Clones cc.engine and related repositories
-      - Checks out specific branch (`ARG1`, defaults to `master`)
+      - Checks out specified branch (`ARG1`, defaults to `master`)
    2. Creates symlinks to support the semantic web
    3. Creates Python Environment via pipenv
    4. Generate ccengine.fcgi and copies config.ini into python_env
