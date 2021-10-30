@@ -62,8 +62,8 @@ Ext.form.HtmlEditor = Ext.extend(Ext.form.Field, {
      */
     fontFamilies : [
         'Arial',
-        'Courier New',
         'Tahoma',
+        'Courier New',
         'Times New Roman',
         'Verdana'
     ],
@@ -142,7 +142,7 @@ Ext.form.HtmlEditor = Ext.extend(Ext.form.Field, {
 
     createFontOptions : function(){
         var buf = [], fs = this.fontFamilies, ff, lc;
-        for(var i = 0, len = fs.length; i< len; i++){
+        for(var i = 0, len = fs.length; i< len ; i++){
             ff = fs[i];
             lc = ff.toLowerCase();
             buf.push(
@@ -310,7 +310,7 @@ Ext.form.HtmlEditor = Ext.extend(Ext.form.Field, {
      * want to change the initialization markup of the iframe (e.g. to add stylesheets).
      */
     getDocMarkup : function(){
-        return '<html><head><style type="text/css">body{border:0;margin:0;padding:3px;height:98%;cursor:text;}</style></head><body></body></html>';
+        return '<html><head><style type="text/css">body{border:0;margin:0;padding:4px;height:98%;cursor:text;}</style></head><body></body></html>';
     },
 
     getEditorBody : function(){
