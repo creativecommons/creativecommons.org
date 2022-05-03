@@ -1,4 +1,4 @@
-name: tidy
+name: lint
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  checks:
+  tidy:
     runs-on: ubuntu-latest
 
     steps:
