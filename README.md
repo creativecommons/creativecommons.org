@@ -9,7 +9,7 @@ help and support
 
 ## Overview
 
-This repostory is currently for:
+This repository is currently for:
 1. Public help and support [Issues][issues]
 2. Legalcode and translations
 3. Installation of the website (including Styles and other Includes)
@@ -45,7 +45,8 @@ and support.
 ## Legalcode and Translations
 
 Relevant directories:
-- [`docroot/legalcode`](docroot/legalcode/): legalcode and translations "source" files
+- [`docroot/legalcode`](docroot/legalcode/): legalcode and translations "source"
+  files
 - [`tools`](tools/): tools to assist with managing the translations
 
 Also see:
@@ -183,7 +184,7 @@ repository (which itself, depends on [creativecommons/cc.license][cclicense]).
 ### Styles and other Includes
 
 :warning: **WARNING:** Any change to style or other includes must be duplicated
-within the [creativecommons/new-creativecommons.org][neworg] respository.
+within the [creativecommons/new-creativecommons.org][neworg] repository.
 
 [neworg]: https://github.com/creativecommons/new-creativecommons.org
 
