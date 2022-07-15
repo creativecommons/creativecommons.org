@@ -149,10 +149,10 @@ Section 2 -- Scope.
           non-sublicensable, non-exclusive, irrevocable license to
           exercise the Licensed Rights in the Licensed Material to:
 
-            a. reproduce and Share the Licensed Material, in whole or
+            A. reproduce and Share the Licensed Material, in whole or
                in part; and
 
-            b. produce, reproduce, and Share Adapted Material.
+            B. produce, reproduce, and Share Adapted Material.
 
        2. Exceptions and Limitations. For the avoidance of doubt, where
           Exceptions and Limitations apply to Your use, this Public
@@ -176,19 +176,19 @@ Section 2 -- Scope.
 
        5. Downstream recipients.
 
-            a. Offer from the Licensor -- Licensed Material. Every
+            A. Offer from the Licensor -- Licensed Material. Every
                recipient of the Licensed Material automatically
                receives an offer from the Licensor to exercise the
                Licensed Rights under the terms and conditions of this
                Public License.
 
-            b. Additional offer from the Licensor -- Adapted Material.
+            B. Additional offer from the Licensor -- Adapted Material.
                Every recipient of Adapted Material from You
                automatically receives an offer from the Licensor to
                exercise the Licensed Rights in the Adapted Material
                under the conditions of the Adapter's License You apply.
 
-            c. No downstream restrictions. You may not offer or impose
+            C. No downstream restrictions. You may not offer or impose
                any additional or different terms or conditions on, or
                apply any Effective Technological Measures to, the
                Licensed Material if doing so restricts exercise of the
@@ -233,7 +233,7 @@ following conditions.
        1. If You Share the Licensed Material (including in modified
           form), You must:
 
-            a. retain the following if it is supplied by the Licensor
+            A. retain the following if it is supplied by the Licensor
                with the Licensed Material:
 
                  i. identification of the creator(s) of the Licensed
@@ -252,10 +252,10 @@ following conditions.
                  v. a URI or hyperlink to the Licensed Material to the
                     extent reasonably practicable;
 
-            b. indicate if You modified the Licensed Material and
+            B. indicate if You modified the Licensed Material and
                retain an indication of any previous modifications; and
 
-            c. indicate the Licensed Material is licensed under this
+            C. indicate the Licensed Material is licensed under this
                Public License, and include the text of, or the URI or
                hyperlink to, this Public License.
 
