@@ -1,0 +1,27 @@
+name: lint
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  tidy:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Install system dependencies
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y tidy
+
+    # https://github.com/actions/checkout
+    - uses: actions/checkout@v2
+
+    - name: Tidy Legal Code
+      run: |
+        ./tools/tidy_legalcode.sh
