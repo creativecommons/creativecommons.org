@@ -11,6 +11,7 @@ LABEL = {
     "cs": "čeština",
     "da": "Dansk",
     "de": "Deutsch",
+    "ee": "Eʋegbe",
     "el": "Ελληνικά",
     "en": "English",
     "eo": "Esperanto",
