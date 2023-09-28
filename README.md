@@ -1,5 +1,7 @@
 # creativecommons.org
 
+Legacy legal code translations and general support issues
+
 
 ## Help and support
 

@@ -1,8 +1,8 @@
 # Whether this GitHub repo is engineering related
 engineering_project: true
 # Name of the repository/project in English
-english_name: License chooser and license display code
+english_name: Legacy legal code translations and general support issues
 # All technologies used
-technologies: Python, bash
+technologies: Bash, HTML, Python
 # Whether this repository should be featured on the CC Open Source site
 featured: false
