@@ -1,6 +1,7 @@
 # creativecommons.org
 
-Legacy legal code translations and GitHub issues for help with digital resources
+Legacy legal code translations and GitHub issues for help with CC digital
+resources
 
 
 ## Help and support
