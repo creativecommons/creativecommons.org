@@ -1,12 +1,19 @@
 # creativecommons.org
 
-Legacy legal code translations and general support issues
+Legacy legal code translations and GitHub issues for help with CC digital
+resources
 
 
 ## Help and support
 
-You can open an [issue][support] or see [Contact | Creative Commons][contact].
+Many questions are answered in our [FAQ][faq] and you can find out more about
+our [Global Network][network].
 
+For help with Creative Commons (CC) digital resources, you can open an
+[issue][support]. Otherwise, please see [Contact | Creative Commons][contact].
+
+[faq]: https://creativecommons.org/faq/
+[network]: https://network.creativecommons.org/
 [support]: https://github.com/creativecommons/creativecommons.org/issues
 [contact]: https://creativecommons.org/about/contact/
 
@@ -19,7 +26,7 @@ Transifex:
 - CC Legal Tools App: [creativecommons/cc-legal-tools-app][app]
 - CC Legal Tools Data: [creativecommons/cc-legal-tools-data][data]
 
-Relevant repository directories:
+Relevant legacy repository directories:
 - [`docroot/legalcode`](docroot/legalcode/): legalcode and translations
   "source" files
 - [`tools`](tools/): tools to assist with managing the translations
@@ -34,6 +41,16 @@ Also see:
 [data]: https://github.com/creativecommons/cc-legal-tools-data
 [translatepolicy]: https://wiki.creativecommons.org/wiki/Legal_Code_Translation_Policy
 [fourstatus]: https://wiki.creativecommons.org/wiki/Legal_Tools_Translation
+
+
+## CreativeCommons.org website
+
+For information on development of the CreativeCommons.org, please see the
+following repository. It describes the public facing components of the website:
+- [creativecommons/index-dev-env][index-dev-env]: _Local development environment
+  for CreativeCommons.org (product name: index)_
+
+[index-dev-env]: https://github.com/creativecommons/index-dev-env/
 
 
 ## Code of conduct
